@@ -9,7 +9,7 @@ struct zkaqn9Jn: View {
                     size: 16,
                     weight: .semibold
                 )
-        }
+        }.ignoresSafeArea()
     }
 }
 

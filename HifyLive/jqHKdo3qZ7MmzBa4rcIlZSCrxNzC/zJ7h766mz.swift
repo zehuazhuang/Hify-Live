@@ -6,6 +6,7 @@ struct ZJ7h766mz: View {
     var body: some View {
         if let dWP3EbuajZ1lDsNAJRE8AzflDnN = UIImage(named: tMmEWWlfgUag) {
             Image(uiImage: dWP3EbuajZ1lDsNAJRE8AzflDnN)
+                .resizable()
         } else {
             Color.clear
         }
