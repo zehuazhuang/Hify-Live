@@ -14,14 +14,16 @@ struct HifyLiveApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                //启动view
-                zkaqn9Jn()
-                //loading view
-                if xZLto.kpjdlNA22 {
-                    BMTU5LVVTQYLXCZaN()
-                        .transition(.opacity)
-                        .zIndex(1)
+            NavigationStack{
+                ZStack {
+                    //启动view
+                    zkaqn9Jn()
+                    //loading view
+                    if xZLto.kpjdlNA22 {
+                        BMTU5LVVTQYLXCZaN()
+                            .transition(.opacity)
+                            .zIndex(1)
+                    }
                 }
             }
         }
