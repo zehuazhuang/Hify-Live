@@ -12,28 +12,39 @@ struct zkaqn9Jn: View {
                 Spacer()
                 VStack(spacing: 68){
                     VStack(spacing: 24) {
-                        RoundedRectangle(cornerRadius: 36)
-                            .fill(Color.white)
-                            .frame(height: 48)
-                            .overlay(alignment: .center) {
-                                HStack{
-                                    RoundedRectangle(cornerRadius: 0)
-                                        .fill(Color.clear)
-                                        .frame(width: 24,height: 24)
-                                        .overlay {
-                                            ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
-                                        }
-                                    Spacer()
-                                }
-                                .padding(.leading,24)
-                                Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 16,
-                                        weight: .semibold,
-                                        color: Color(red: 13/255, green: 13/255, blue: 18/255)
-                                    )
+                        Button{
+                            // 显示全局 loading
+                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                            
+                            // 模拟网络请求或耗时操作
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                // 隐藏全局 loading
+                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                             }
-                            .padding(.horizontal,36)
+                        }label:{
+                            RoundedRectangle(cornerRadius: 36)
+                                .fill(Color.white)
+                                .frame(height: 48)
+                                .overlay(alignment: .center) {
+                                    HStack{
+                                        RoundedRectangle(cornerRadius: 0)
+                                            .fill(Color.clear)
+                                            .frame(width: 24,height: 24)
+                                            .overlay {
+                                                ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
+                                            }
+                                        Spacer()
+                                    }
+                                    .padding(.leading,24)
+                                    Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 16,
+                                            weight: .semibold,
+                                            color: Color(red: 13/255, green: 13/255, blue: 18/255)
+                                        )
+                                }
+                        }
+                        .padding(.horizontal,36)
                         RoundedRectangle(cornerRadius: 36)
                             .fill(Color.white.opacity(0.15))
                             .frame(height: 48)

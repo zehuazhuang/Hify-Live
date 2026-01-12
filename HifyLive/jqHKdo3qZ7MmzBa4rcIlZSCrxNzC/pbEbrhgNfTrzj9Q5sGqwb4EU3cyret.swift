@@ -2,7 +2,6 @@ import Foundation
 import CommonCrypto
 
 extension String {
-
     /// AES-CBC Base64 解密（等价 Dart encrypt）
     func bFHEatcgE4zzU9TCfDonsu() -> String {
         guard !isEmpty else { return "" }

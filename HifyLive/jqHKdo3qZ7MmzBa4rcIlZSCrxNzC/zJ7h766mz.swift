@@ -1,5 +1,6 @@
 import SwiftUI
 
+//渲染图片封装
 struct ZJ7h766mz: View {
     let tMmEWWlfgUag: String
 
