@@ -13,14 +13,7 @@ struct zkaqn9Jn: View {
                 VStack(spacing: 68){
                     VStack(spacing: 24) {
                         Button{
-                            // 显示全局 loading
-                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                             
-                            // 模拟网络请求或耗时操作
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                // 隐藏全局 loading
-                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                            }
                         }label:{
                             RoundedRectangle(cornerRadius: 36)
                                 .fill(Color.white)
@@ -45,27 +38,39 @@ struct zkaqn9Jn: View {
                                 }
                         }
                         .padding(.horizontal,36)
-                        RoundedRectangle(cornerRadius: 36)
-                            .fill(Color.white.opacity(0.15))
-                            .frame(height: 48)
-                            .overlay(alignment: .center) {
-                                HStack{
-                                    RoundedRectangle(cornerRadius: 0)
-                                        .fill(Color.clear)
-                                        .frame(width: 24,height: 24)
-                                        .overlay {
-                                            ZJ7h766mz(tMmEWWlfgUag: "p4Yrh5nhh4jpLxEbwXhHLe")
-                                        }
-                                    Spacer()
+                        Button{
+                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                            MNcU5G2d5lovPsrWsZR.qmeyXuu0AeNRHIjoVH8WkPZTOKbDpgVv.uN4EYG5707zDhAdkPqw(x32VMaqCadHB: dy8ovFCSzlHO2h()) { sVaytka8rmaCF in
+                                switch sVaytka8rmaCF {
+                                case .success(let on98qnn55lS6bK68e):
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                case .failure(let iuPlC12QP4naQBkEjgl90TI):
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                 }
-                                .padding(.leading,24)
-                                Text("GqyBR3olQZduFJKAM8yvTA==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 16,
-                                        weight: .semibold,
-                                    )
                             }
-                            .padding(.horizontal,36)
+                        }label:{
+                            RoundedRectangle(cornerRadius: 36)
+                                .fill(Color.white.opacity(0.15))
+                                .frame(height: 48)
+                                .overlay(alignment: .center) {
+                                    HStack{
+                                        RoundedRectangle(cornerRadius: 0)
+                                            .fill(Color.clear)
+                                            .frame(width: 24,height: 24)
+                                            .overlay {
+                                                ZJ7h766mz(tMmEWWlfgUag: "p4Yrh5nhh4jpLxEbwXhHLe")
+                                            }
+                                        Spacer()
+                                    }
+                                    .padding(.leading,24)
+                                    Text("GqyBR3olQZduFJKAM8yvTA==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 16,
+                                            weight: .semibold,
+                                        )
+                                }
+                        }
+                        .padding(.horizontal,36)
                         RoundedRectangle(cornerRadius: 36)
                             .fill(Color.white.opacity(0.15))
                             .frame(height: 48)
@@ -111,6 +116,12 @@ struct zkaqn9Jn: View {
                 }
             }
         }.ignoresSafeArea()
+    }
+    
+    func dy8ovFCSzlHO2h() -> UIViewController {
+        UIApplication.shared.connectedScenes
+            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+            .first?.rootViewController ?? UIViewController()
     }
 }
 

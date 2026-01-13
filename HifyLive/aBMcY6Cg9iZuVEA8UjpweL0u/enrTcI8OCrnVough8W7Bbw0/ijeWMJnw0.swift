@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ijeWMJnw0: View {
     
+    let oWICU3h: RbqBb46vxbGKGmsnZWA1R9Vx3M
+    
     @State private var mIAT9zbKJKGtarbSPX1QSZm: String = ""
     @FocusState private var eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb: Bool
     
