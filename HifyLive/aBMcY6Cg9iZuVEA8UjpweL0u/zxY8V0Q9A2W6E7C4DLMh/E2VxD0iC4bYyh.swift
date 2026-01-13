@@ -4,7 +4,6 @@ import SwiftUI
 import SwiftfulRouting
 
 
-
 struct E2VxD0iC4bYyh: View {
     let evntemporaeCol = [
         GridItem(.adaptive(minimum: 168), spacing: 7)
@@ -89,9 +88,11 @@ struct E2VxD0iC4bYyh: View {
                 ScrollView{
                     VStack{
                         LazyVGrid(columns: evntemporaeCol, spacing: 7) {
-                            ForEach(0..<5) {index in
+                            ForEach(liveList.indices,id: \.self) {index in
                                     ZStack{
-                                        Color.blue
+                                      
+                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: liveList[index]["backgroundImgUrl"])
+                                            .frame(width: 168, height: 205)
                                         HStack(alignment: .top){
                                             HStack{
                                                 ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
@@ -140,7 +141,7 @@ struct E2VxD0iC4bYyh: View {
                                             HStack(spacing: 2){
                                                 ZJ7h766mz(tMmEWWlfgUag: "C7M2Z8A1L9tqS34")
                                                     .frame(width: 24, height: 24)
-                                                Text("LIVE")
+                                                Text("146UaT+ePLcQEToZue3EtQ==".bFHEatcgE4zzU9TCfDonsu())
                                                     .font(.system(size: 14, weight: .semibold))
                                                     .foregroundColor(.white)
                                             }
@@ -161,44 +162,20 @@ struct E2VxD0iC4bYyh: View {
                 }
             }.padding(.horizontal,16)
         }.task {
-            await loadLiveList()
+            await loaM8L0ADECWd()
         }
     }
     @MainActor
-    func loadLiveList() async {
-        isLoading = true
-        do {
-            let json = try await queryLiveList()
-          //  let json = try await hifylogin()
-          
-            
-            if let resultString = json["result"] as? String {
-                        print("接口 result 字符串:", resultString)
-                let shuzu = resultString.hL9dV3bQ2fK6sJ8p()
-                print(shuzu)
-                if let dict = J9Kp2L8sD5VqF(gentlewRows: shuzu),
-                   let rows = dict["rows"] as? [[String: Any]] {
-
-                    DispatchQueue.main.async {
-                        self.liveList = rows
-                    }
-                }
+    func loaM8L0ADECWd() async {
+            do {
+                let owresthResult = try await rP6kV1bS8qX3nT7()
+                self.liveList = owresthResult
+               
+                print(self.liveList)
+                print("---------------------")
+                print(self.liveList.count)
+            } catch {
+                print(error)
             }
-                    
-                
-            print(liveList)
-            
-            
-        } catch {
-            print("接口调用失败:", error)
-            self.liveList = []
         }
-        isLoading = false
-        
-      
-
-        
-       
-
-    }
 }
