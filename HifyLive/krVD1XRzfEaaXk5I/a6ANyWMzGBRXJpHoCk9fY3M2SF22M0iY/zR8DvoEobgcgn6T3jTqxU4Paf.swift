@@ -7,6 +7,11 @@
 
 import Foundation
 
+func J9Kp2L8sD5VqF(gentlewRows: String) -> [String: Any]? {
+    guard let data = gentlewRows.data(using: .utf8) else { return nil }
+    return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+}
+
 
 @MainActor
 func queryLiveList() async throws -> [String: Any] {

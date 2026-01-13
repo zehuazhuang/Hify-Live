@@ -1,7 +1,7 @@
 
 
 import SwiftUI
-
+import SwiftfulRouting
 
 
 
@@ -12,10 +12,10 @@ struct E2VxD0iC4bYyh: View {
     @State private var ecorjazyType: Bool = true
     @State private var liveList: [[String: Any]] = []
     @State private var isLoading: Bool = false
+    @Environment(\.router) var rM9Z8S7A1ql
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
-                            .frame(maxWidth: .infinity,maxHeight: .infinity)
                             .ignoresSafeArea()
             
             
@@ -43,6 +43,7 @@ struct E2VxD0iC4bYyh: View {
                             
                         }
                         .frame(width: 102,height: 34)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             withAnimation{
                                 ecorjazyType = true
@@ -63,6 +64,7 @@ struct E2VxD0iC4bYyh: View {
                             }
                         }
                         .frame(width: 102,height: 34)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             withAnimation{
                                 ecorjazyType = false
@@ -75,6 +77,11 @@ struct E2VxD0iC4bYyh: View {
                     Spacer()
                     ZJ7h766mz(tMmEWWlfgUag: "Zq7S9M2C18L4A3t")
                         .frame(width: 36, height: 36)
+                        .onTapGesture {
+                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                QsS1CqA9M8tL2fs()
+                                    }
+                        }
                     Spacer().frame(width: 16)
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
@@ -164,14 +171,19 @@ struct E2VxD0iC4bYyh: View {
             let json = try await queryLiveList()
           //  let json = try await hifylogin()
           
-            // 假设接口返回里有 data 数组
+            
             if let resultString = json["result"] as? String {
                         print("接口 result 字符串:", resultString)
-                
-                print(resultString.hL9dV3bQ2fK6sJ8p())
-                    } else {
-                        print("接口 result 字段不存在或不是字符串")
+                let shuzu = resultString.hL9dV3bQ2fK6sJ8p()
+                print(shuzu)
+                if let dict = J9Kp2L8sD5VqF(gentlewRows: shuzu),
+                   let rows = dict["rows"] as? [[String: Any]] {
+
+                    DispatchQueue.main.async {
+                        self.liveList = rows
                     }
+                }
+            }
                     
                 
             print(liveList)

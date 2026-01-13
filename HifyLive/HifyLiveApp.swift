@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 @main
 struct HifyLiveApp: App {
@@ -14,10 +15,11 @@ struct HifyLiveApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack{
+            RouterView { router in
                 ZStack {
                     //启动view
-                    zkaqn9Jn()
+                    //zkaqn9Jn()
+                    ME9B8ZCwVQxn()
                     //loading view
                     if xZLto.kpjdlNA22 {
                         BMTU5LVVTQYLXCZaN()

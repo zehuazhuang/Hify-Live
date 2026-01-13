@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C4362F15E61600365091 /* SwiftfulRouting */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		DDECD4CD2F148B820016E861 /* HifyLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HifyLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = HifyLive;
 			packageProductDependencies = (
+				DDE0C4362F15E61600365091 /* SwiftfulRouting */,
 			);
 			productName = HifyLive;
 			productReference = DDECD4CD2F148B820016E861 /* HifyLive.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = DDECD4C42F148B820016E861;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDECD4CE2F148B820016E861 /* Products */;
 			projectDirPath = "";
@@ -349,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DDE0C4362F15E61600365091 /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DDECD4C52F148B820016E861 /* Project object */;
 }

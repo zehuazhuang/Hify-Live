@@ -58,6 +58,6 @@ struct ME9B8ZCwVQxn: View {
                                        color: crformanchSelect == aenteckTab ? .white : .white.opacity(0.4)
                                    )
                       }
-           }
+           }.frame(width: 60,height: 47)
        }
 }
