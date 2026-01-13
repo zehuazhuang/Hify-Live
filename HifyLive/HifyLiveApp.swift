@@ -24,9 +24,10 @@ struct HifyLiveApp: App {
                     if xZLto.kpjdlNA22 {
                         BMTU5LVVTQYLXCZaN()
                             .transition(.opacity)
-                            .zIndex(1)
+                            .zIndex(20)
                     }
                 }
+                .overlay(dqUmaY6jE7tRWpendJ())
             }
         }
     }
