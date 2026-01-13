@@ -7,7 +7,7 @@ struct HifyLiveApp: App {
     
     init() {
         //初始化Google clientID
-        let o6MRo8D6tOTcnXAAolXpRTXtHXKTg = "UxrD5ZvlHk815TGZPkGosRbvD1QiNBhwZgPEhDhK+3EoydMlF6DmJPi54jh5vxJcYRSmtjWV374z2DYG8hfkOVu4tmwGpGOF/lpXVKNFjSc=".bFHEatcgE4zzU9TCfDonsu()
+        let o6MRo8D6tOTcnXAAolXpRTXtHXKTg = "499091235682-4efa6ed193di5agivikcad3vj1e0eq9u.apps.googleusercontent.com"
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: o6MRo8D6tOTcnXAAolXpRTXtHXKTg)
     }
     

@@ -269,7 +269,3 @@ struct ijeWMJnw0: View {
             }
     }
 }
-
-#Preview {
-    ijeWMJnw0()
-}
