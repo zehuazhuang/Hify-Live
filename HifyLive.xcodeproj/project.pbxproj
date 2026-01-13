@@ -10,6 +10,7 @@
 		DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */; };
 		DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */; };
 		DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C4362F15E61600365091 /* SwiftfulRouting */; };
+		DDE0C5CB2F15F64A00365091 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C5CA2F15F64A00365091 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE0C5CB2F15F64A00365091 /* Kingfisher in Frameworks */,
 				DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */,
 				DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */,
 				DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */,
@@ -90,6 +92,7 @@
 				DDE0C4362F15E61600365091 /* SwiftfulRouting */,
 				DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */,
 				DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */,
+				DDE0C5CA2F15F64A00365091 /* Kingfisher */,
 			);
 			productName = HifyLive;
 			productReference = DDECD4CD2F148B820016E861 /* HifyLive.app */;
@@ -122,6 +125,7 @@
 			packageReferences = (
 				DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
 				DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDECD4CE2F148B820016E861 /* Products */;
@@ -383,6 +387,14 @@
 				minimumVersion = 6.1.8;
 			};
 		};
+		DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -400,6 +412,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
 			productName = SwiftfulRouting;
+		};
+		DDE0C5CA2F15F64A00365091 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
