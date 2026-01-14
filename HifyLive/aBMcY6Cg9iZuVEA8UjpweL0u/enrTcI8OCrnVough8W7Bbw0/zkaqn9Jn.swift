@@ -1,4 +1,5 @@
 import SwiftUI
+import PhotosUI
 import SwiftfulRouting
 
 struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
@@ -53,6 +54,39 @@ struct zkaqn9Jn: View {
     
     @Environment(\.router) var hTU5wZj8E2nU59
     
+    
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var image: UIImage?
+    
+    func uploadImage(_ uiImage: UIImage) {
+        guard let data = uiImage.jpegData(compressionQuality: 0.8) else { return }
+
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(UUID().uuidString).jpg")
+        do {
+            try data.write(to: tempURL)
+        } catch {
+            print("写入临时文件失败:", error)
+            return
+        }
+
+        let objectKey = "\(UUID().uuidString).jpg"
+        OSSUploader.shared.upload(fileURL: tempURL, objectKey: objectKey, progress: { ratio in
+            print("上传进度: \(Int(ratio * 100))%")
+        }) { result in
+            defer {
+                // 上传完成后删除临时文件
+                try? FileManager.default.removeItem(at: tempURL)
+            }
+
+            switch result {
+            case .success(let url):
+                print("上传成功:", url)
+            case .failure(let error):
+                print("上传失败:", error)
+            }
+        }
+    }
+    
     var body: some View {
         ZStack{
             ZJ7h766mz(tMmEWWlfgUag: "qS7I9tZ871czCL32")
@@ -64,30 +98,53 @@ struct zkaqn9Jn: View {
                 Spacer()
                 VStack(spacing: 68){
                     VStack(spacing: 24) {
-                        Button{
-                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("dBIBXtB3UawTIMQ9baGlLg==")
-                        }label:{
-                            RoundedRectangle(cornerRadius: 36)
-                                .fill(Color.white)
-                                .frame(height: 48)
-                                .overlay(alignment: .center) {
-                                    HStack{
-                                        RoundedRectangle(cornerRadius: 0)
-                                            .fill(Color.clear)
-                                            .frame(width: 24,height: 24)
-                                            .overlay {
-                                                ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
-                                            }
-                                        Spacer()
+                        PhotosPicker(
+                            selection: $selectedItem,
+                            matching: .images,
+                            photoLibrary: .shared(),
+                            label: {
+                                RoundedRectangle(cornerRadius: 36)
+                                    .fill(Color.white)
+                                    .frame(height: 48)
+                                    .overlay(alignment: .center) {
+                                        HStack{
+                                            RoundedRectangle(cornerRadius: 0)
+                                                .fill(Color.clear)
+                                                .frame(width: 24,height: 24)
+                                                .overlay {
+                                                    ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
+                                                }
+                                            Spacer()
+                                        }
+                                        .padding(.leading,24)
+                                        Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16,
+                                                weight: .semibold,
+                                                color: Color(red: 13/255, green: 13/255, blue: 18/255)
+                                            )
                                     }
-                                    .padding(.leading,24)
-                                    Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
-                                        .g0LIIcoZQsOjyND9(
-                                            size: 16,
-                                            weight: .semibold,
-                                            color: Color(red: 13/255, green: 13/255, blue: 18/255)
-                                        )
+                            }
+                        )
+                        .onChange(of: selectedItem) { newItem in
+                            guard let newItem else { return }
+                            
+                            // 先加载为 Data
+                            newItem.loadTransferable(type: Data.self) { result in
+                                switch result {
+                                case .success(let data?):
+                                    if let uiImage = UIImage(data: data) {
+                                        DispatchQueue.main.async {
+                                            self.image = uiImage
+                                            self.uploadImage(uiImage) // 上传图片
+                                        }
+                                    }
+                                case .success(nil):
+                                    print("没有选择图片")
+                                case .failure(let error):
+                                    print("选择图片失败:", error)
                                 }
+                            }
                         }
                         .padding(.horizontal,36)
                         Button{
@@ -168,27 +225,27 @@ struct zkaqn9Jn: View {
                                 }
                         }
                         .padding(.horizontal,36)
-                        RoundedRectangle(cornerRadius: 36)
-                            .fill(Color.white.opacity(0.15))
-                            .frame(height: 48)
-                            .overlay(alignment: .center) {
-                                HStack{
-                                    RoundedRectangle(cornerRadius: 0)
-                                        .fill(Color.clear)
-                                        .frame(width: 24,height: 24)
-                                        .overlay {
-                                            ZJ7h766mz(tMmEWWlfgUag: "bnrAYa3PAg0WbL3lpWXzVp2Jmt2I")
-                                        }
-                                    Spacer()
-                                }
-                                .padding(.leading,24)
-                                Text("I9zk5wRlDKY72GaixML2yw==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 16,
-                                        weight: .semibold,
-                                    )
-                            }
-                            .padding(.horizontal,36)
+                        //                        RoundedRectangle(cornerRadius: 36)
+                        //                            .fill(Color.white.opacity(0.15))
+                        //                            .frame(height: 48)
+                        //                            .overlay(alignment: .center) {
+                        //                                HStack{
+                        //                                    RoundedRectangle(cornerRadius: 0)
+                        //                                        .fill(Color.clear)
+                        //                                        .frame(width: 24,height: 24)
+                        //                                        .overlay {
+                        //                                            ZJ7h766mz(tMmEWWlfgUag: "bnrAYa3PAg0WbL3lpWXzVp2Jmt2I")
+                        //                                        }
+                        //                                    Spacer()
+                        //                                }
+                        //                                .padding(.leading,24)
+                        //                                Text("I9zk5wRlDKY72GaixML2yw==".bFHEatcgE4zzU9TCfDonsu())
+                        //                                    .g0LIIcoZQsOjyND9(
+                        //                                        size: 16,
+                        //                                        weight: .semibold,
+                        //                                    )
+                        //                            }
+                        //                            .padding(.horizontal,36)
                     }
                     VStack(spacing: 0){
                         HStack(spacing: 0) { Text("JYw50MN182cCw/XQmmjS00do2RvFcYO7hBzR/X2HSMb5KknzdLCg2neQVYUB5tUp".bFHEatcgE4zzU9TCfDonsu())

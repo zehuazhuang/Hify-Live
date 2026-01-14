@@ -128,6 +128,7 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                     }
                 }
                 .padding(.top,3)
+                .padding(.bottom,34)
                 .padding(.horizontal,16)
             }
         }

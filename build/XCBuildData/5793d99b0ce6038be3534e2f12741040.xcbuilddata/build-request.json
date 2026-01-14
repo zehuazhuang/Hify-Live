@@ -1,0 +1,52 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98f0b1128ad90d775f50591083ffcc995e"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e985daec322fab497223b0ae44c34ce216d"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98f94268e0ad36e009d2987c1bca251d0a"
+    }
+  ],
+  "containerPath" : "/Users/yangyang/muyifeiyang/flutter/Hify-Live/Pods/Pods.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/yangyang/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/yangyang/Library/Developer/Xcode/DerivedData/Pods-boplahwodgeatwclgwnegvvdrbis/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/yangyang/Library/Developer/Xcode/DerivedData/Pods-boplahwodgeatwclgwnegvvdrbis/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : false
+}

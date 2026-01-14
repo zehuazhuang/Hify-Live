@@ -244,16 +244,21 @@ struct ijeWMJnw0: View {
                                         .overlay {
                                             HStack(spacing: 0) {
                                                 ZStack(alignment: .leading) {
-                                                    if let p65eftKgEH2iK4vxsv1N72Hy5BAK = ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4,
-                                                       let nF691hx5Vefx4 = p65eftKgEH2iK4vxsv1N72Hy5BAK["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String {
-
-                                                        Text(nF691hx5Vefx4)
-                                                            .g0LIIcoZQsOjyND9(
-                                                                size: 16,
-                                                                weight: .semibold,
-                                                                color: Color.white
-                                                            )
-
+                                                    if let p65eftKgEH2iK4vxsv1N72Hy5BAK = ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 {
+                                                        HStack(spacing: 8) {
+                                                            Text(p65eftKgEH2iK4vxsv1N72Hy5BAK["sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 26
+                                                                )
+                                                            Text(p65eftKgEH2iK4vxsv1N72Hy5BAK["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 16,
+                                                                    weight: .semibold,
+                                                                    color: Color.white
+                                                                )
+                                                                .lineLimit(1)
+                                                                .truncationMode(.tail)
+                                                        }
                                                     } else {
                                                         Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
                                                             .g0LIIcoZQsOjyND9(
@@ -318,15 +323,34 @@ struct ijeWMJnw0: View {
                             }
                             .padding(.horizontal,22)
                         }
-                        ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
-                            .frame(width: 262,height: 46)
-                            .overlay(alignment: .center) {
-                                Text("K3Jej3bXBBnErqFt0XpE6w==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 18,
-                                        weight: .semibold
-                                    )
+                        Button{
+                            if mIAT9zbKJKGtarbSPX1QSZm.isEmpty {
+                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("P1XBn32shPZ0IyNZUWkhNQyh39aQXiyicZEAp+0/sz4=")
+                                return
                             }
+                            if mQFLX0m0nVIAxht9uUGhln5su8 == nil {
+                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("RWs9iluW3rAGcPC0YktbQEMX7ggeRBueuJokiBrDAOI=")
+                                return
+                            }
+                            if uj8O1bVbC9SQl6E469ySfpfYW678G == nil {
+                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("RWs9iluW3rAGcPC0YktbQNd8xOCdtFRwZmg29V23Uxw=")
+                                return
+                            }
+                            if ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 == nil {
+                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("RWs9iluW3rAGcPC0YktbQIPcr4okNQOHytt0qvGfv10=")
+                                return
+                            }
+                        } label: {
+                            ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
+                                .frame(width: 262,height: 46)
+                                .overlay(alignment: .center) {
+                                    Text("K3Jej3bXBBnErqFt0XpE6w==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 18,
+                                            weight: .semibold
+                                        )
+                                }
+                        }
                     }
                     .padding(.bottom, 41)
                 }
@@ -370,6 +394,9 @@ struct ijeWMJnw0: View {
         }.ignoresSafeArea()
             .onTapGesture {
                 eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
+            }
+            .onAppear {
+                ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 = nil
             }
     }
 }

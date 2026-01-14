@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'Pods-HifyLive' in project 'Pods'
+➜ Explicit dependency on target 'AliyunOSSiOS' in project 'Pods'
+Target 'AliyunOSSiOS' in project 'Pods'
+➜ Explicit dependency on target 'AliyunOSSiOS-AliyunOSSiOS_Privacy' in project 'Pods'
+Target 'AliyunOSSiOS-AliyunOSSiOS_Privacy' in project 'Pods' (no dependencies)
