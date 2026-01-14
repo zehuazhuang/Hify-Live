@@ -130,6 +130,7 @@
 				DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */,
+				DD2931752F177E2D00A06CA0 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDECD4CE2F148B820016E861 /* Products */;
@@ -381,6 +382,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.1.0;
+			};
+		};
+		DD2931752F177E2D00A06CA0 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
 			};
 		};
 		DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
