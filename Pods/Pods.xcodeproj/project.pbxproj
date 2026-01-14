@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 71;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,7 +41,7 @@
 		30D5C50A52FA6139CCDF5966F4296736 /* OSSGetObjectTaggingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DDFEA71B23C5CA3A872AA0B941EAD12 /* OSSGetObjectTaggingRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31CCE24843F18CF8FB0E90F4DDF99723 /* OSSDeleteMultipleObjectsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 1555CA5E4E6838DCB92C0293123FEC21 /* OSSDeleteMultipleObjectsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		327F8D3DD176743A1F2588C648EB2329 /* OSSCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E80EDF720F445BD38EC32F5972183C0 /* OSSCompat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		343FA23B4027F43CFCFB6A981593E67C /* AliyunOSSiOS_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS_Privacy.bundle */; };
+		343FA23B4027F43CFCFB6A981593E67C /* AliyunOSSiOS-AliyunOSSiOS_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = 5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS-AliyunOSSiOS_Privacy */; };
 		3B35B88EE7E45F3FFEA4473C514B304C /* OSSNSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 84C35B83D79E6AB31F4B3D59257DB179 /* OSSNSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		416641ABEFF65B3B82C169D7757176E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E253092E63A0317C9BBDFF9EC96EF2A7 /* Foundation.framework */; };
 		44229A5739A1CA25860DAB568183E751 /* OSSGetSymlinkResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 9049E1F603B111694DB1AA82A8233ED7 /* OSSGetSymlinkResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,13 +171,13 @@
 		107454EE71CCE4AF7C5819410448A329 /* NSData+OSS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+OSS.m"; path = "AliyunOSSSDK/NSData+OSS.m"; sourceTree = "<group>"; };
 		1317714E93200E0DD70EC0FDAD57CAD8 /* AliyunOSSiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AliyunOSSiOS.debug.xcconfig; sourceTree = "<group>"; };
 		131F13BE2B8EBCEEFAFF7E4D92DB67F8 /* OSSReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSReachability.h; path = AliyunOSSSDK/OSSFileLog/OSSReachability.h; sourceTree = "<group>"; };
-		14A3FE4DA4CE007A926AAC6102122F2E /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AliyunOSSiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A3FE4DA4CE007A926AAC6102122F2E /* AliyunOSSiOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AliyunOSSiOS; path = AliyunOSSiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1555CA5E4E6838DCB92C0293123FEC21 /* OSSDeleteMultipleObjectsResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSDeleteMultipleObjectsResult.h; path = AliyunOSSSDK/OSSDeleteMultipleObjectsResult.h; sourceTree = "<group>"; };
 		160E109743577EACA730EDDDB96EB4F9 /* OSSDeleteObjectTaggingResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSDeleteObjectTaggingResult.m; path = AliyunOSSSDK/OSSDeleteObjectTaggingResult.m; sourceTree = "<group>"; };
 		178F42DE1A6464050399963795F32B2B /* OSSPutObjectTaggingRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSPutObjectTaggingRequest.m; path = AliyunOSSSDK/OSSPutObjectTaggingRequest.m; sourceTree = "<group>"; };
 		189F7068459B2661086FCF577BB8FCBE /* OSSDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSDefine.h; path = AliyunOSSSDK/OSSDefine.h; sourceTree = "<group>"; };
 		1A8AE4D877AE0AF8D08E0276F3516F58 /* OSSTaskCompletionSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSTaskCompletionSource.h; path = AliyunOSSSDK/OSSTask/OSSTaskCompletionSource.h; sourceTree = "<group>"; };
-		1A91485D1CD61C02464132F3C14B9862 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = AliyunOSSSDK/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1A91485D1CD61C02464132F3C14B9862 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = AliyunOSSSDK/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1B38AE3A19284D33FBE1D912A03E68FA /* OSSXMLDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSXMLDictionary.m; path = AliyunOSSSDK/OSSXMLDictionary.m; sourceTree = "<group>"; };
 		1DDFEA71B23C5CA3A872AA0B941EAD12 /* OSSGetObjectTaggingRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSGetObjectTaggingRequest.h; path = AliyunOSSSDK/OSSGetObjectTaggingRequest.h; sourceTree = "<group>"; };
 		2194C376108D44C86F884A8D8902983D /* Pods-HifyLive-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HifyLive-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		5788D4FBBF5CD35681FE58A5689767CC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		579468E52502FD82B864E18CA7835716 /* OSSSignerParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSSignerParams.m; path = AliyunOSSSDK/Signer/OSSSignerParams.m; sourceTree = "<group>"; };
 		5BEA15A1CC4C339E69D2DED3610B06F9 /* OSSServiceSignature.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSServiceSignature.m; path = AliyunOSSSDK/Signer/OSSServiceSignature.m; sourceTree = "<group>"; };
-		5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AliyunOSSiOS_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS-AliyunOSSiOS_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "AliyunOSSiOS-AliyunOSSiOS_Privacy"; path = AliyunOSSiOS_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E751993EDBC3F208784878EE638171C /* OSSCancellationToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSCancellationToken.m; path = AliyunOSSSDK/OSSTask/OSSCancellationToken.m; sourceTree = "<group>"; };
 		5F889A9DB700787FEE59B4E4996E7AE3 /* OSSExecutor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSExecutor.m; path = AliyunOSSSDK/OSSTask/OSSExecutor.m; sourceTree = "<group>"; };
 		6228BE3BC6726128E9932FE2336E402F /* AliyunOSSiOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AliyunOSSiOS.h; path = "Supporting Files/AliyunOSSiOS.h"; sourceTree = "<group>"; };
@@ -235,14 +235,14 @@
 		7C667DAA00EA32E6D2B6A961D2BC27D5 /* OSSRestoreObjectResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSRestoreObjectResult.h; path = AliyunOSSSDK/OSSRestoreObjectResult.h; sourceTree = "<group>"; };
 		7DA9022BAE432A31E222CF0B4059C158 /* Pods-HifyLive-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HifyLive-umbrella.h"; sourceTree = "<group>"; };
 		7E80EDF720F445BD38EC32F5972183C0 /* OSSCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSCompat.h; path = AliyunOSSSDK/OSSCompat.h; sourceTree = "<group>"; };
-		7EC46A40A017858037A5C8C6032CCB5F /* Pods_HifyLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EC46A40A017858037A5C8C6032CCB5F /* Pods-HifyLive */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HifyLive"; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3FF4548B08ADF3D1FC3B549B4E11DC /* OSSGetSymlinkRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSGetSymlinkRequest.m; path = AliyunOSSSDK/OSSGetSymlinkRequest.m; sourceTree = "<group>"; };
 		84116F53FCE7453F3F3A0FBD7B40F322 /* OSSCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSCompat.m; path = AliyunOSSSDK/OSSCompat.m; sourceTree = "<group>"; };
 		84C35B83D79E6AB31F4B3D59257DB179 /* OSSNSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSNSLogger.h; path = AliyunOSSSDK/OSSFileLog/OSSNSLogger.h; sourceTree = "<group>"; };
 		863DE3663B2489D8D1F9E6DF988987EB /* OSSConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSConstants.m; path = AliyunOSSSDK/OSSConstants.m; sourceTree = "<group>"; };
 		872E1202355BDED387368E209EC93876 /* OSSGetObjectACLRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSGetObjectACLRequest.m; path = AliyunOSSSDK/OSSGetObjectACLRequest.m; sourceTree = "<group>"; };
 		89238B8A287D8CAFFC0008862882731E /* OSSSignerBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSSignerBase.m; path = AliyunOSSSDK/Signer/OSSSignerBase.m; sourceTree = "<group>"; };
-		8B1879A87F4560E37141DBAE4211431C /* aos_crc64.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aos_crc64.c; path = AliyunOSSSDK/aos_crc64.c; sourceTree = "<group>"; };
+		8B1879A87F4560E37141DBAE4211431C /* aos_crc64.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aos_crc64.c; path = AliyunOSSSDK/aos_crc64.c; sourceTree = "<group>"; };
 		8D06E59BF07B32741B1892AF2796009D /* OSSDeleteMultipleObjectsRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSDeleteMultipleObjectsRequest.m; path = AliyunOSSSDK/OSSDeleteMultipleObjectsRequest.m; sourceTree = "<group>"; };
 		8DF1A55107ED7DEA1AE275A005617FFF /* ResourceBundle-AliyunOSSiOS_Privacy-AliyunOSSiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-AliyunOSSiOS_Privacy-AliyunOSSiOS-Info.plist"; sourceTree = "<group>"; };
 		9049E1F603B111694DB1AA82A8233ED7 /* OSSGetSymlinkResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSGetSymlinkResult.h; path = AliyunOSSSDK/OSSGetSymlinkResult.h; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		93585172F1B9E4A6A9A351C9460C8F9F /* OSSDDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OSSDDLog.m; path = AliyunOSSSDK/OSSFileLog/OSSDDLog.m; sourceTree = "<group>"; };
 		9C6DDCAF620ACE6EBB6785116C77B43F /* OSSV1Signer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSV1Signer.h; path = AliyunOSSSDK/Signer/OSSV1Signer.h; sourceTree = "<group>"; };
 		9D361CF1430235982FC9BFC70A0A36A4 /* OSSGetBucketInfoRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSGetBucketInfoRequest.h; path = AliyunOSSSDK/OSSGetBucketInfoRequest.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F9D17951E0BBC14D7624EF09C461C8D /* OSSNetworkingRequestDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSNetworkingRequestDelegate.h; path = AliyunOSSSDK/OSSNetworkingRequestDelegate.h; sourceTree = "<group>"; };
 		9FD4F2B93CCD84F0A7957D283D4708EC /* OSSPutSymlinkRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSPutSymlinkRequest.h; path = AliyunOSSSDK/OSSPutSymlinkRequest.h; sourceTree = "<group>"; };
 		A0145DF5DC8D7774BED0BA7ADC6DF0DA /* OSSCancellationToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OSSCancellationToken.h; path = AliyunOSSSDK/OSSTask/OSSCancellationToken.h; sourceTree = "<group>"; };
@@ -368,9 +368,9 @@
 		A492136D4F23FBBEFBF2BC03354451D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				14A3FE4DA4CE007A926AAC6102122F2E /* AliyunOSSiOS.framework */,
-				5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS_Privacy.bundle */,
-				7EC46A40A017858037A5C8C6032CCB5F /* Pods_HifyLive.framework */,
+				14A3FE4DA4CE007A926AAC6102122F2E /* AliyunOSSiOS */,
+				5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS-AliyunOSSiOS_Privacy */,
+				7EC46A40A017858037A5C8C6032CCB5F /* Pods-HifyLive */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -547,6 +547,7 @@
 				AB8AB40864D421591A528E5E48909BB1 /* Resources */,
 				CF67E20F0774572EE8B98DFA9F0D886C /* Support Files */,
 			);
+			name = AliyunOSSiOS;
 			path = AliyunOSSiOS;
 			sourceTree = "<group>";
 		};
@@ -667,7 +668,7 @@
 			);
 			name = "AliyunOSSiOS-AliyunOSSiOS_Privacy";
 			productName = AliyunOSSiOS_Privacy;
-			productReference = 5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS_Privacy.bundle */;
+			productReference = 5D73ED9DCB04D101A1FA489C7FB2A54D /* AliyunOSSiOS-AliyunOSSiOS_Privacy */;
 			productType = "com.apple.product-type.bundle";
 		};
 		C1FD11F5F7EBFF63F845CDF963F73E1A /* AliyunOSSiOS */ = {
@@ -686,7 +687,7 @@
 			);
 			name = AliyunOSSiOS;
 			productName = AliyunOSSiOS;
-			productReference = 14A3FE4DA4CE007A926AAC6102122F2E /* AliyunOSSiOS.framework */;
+			productReference = 14A3FE4DA4CE007A926AAC6102122F2E /* AliyunOSSiOS */;
 			productType = "com.apple.product-type.framework";
 		};
 		D6BC4996649F2DCA87291857CCC888DC /* Pods-HifyLive */ = {
@@ -705,7 +706,7 @@
 			);
 			name = "Pods-HifyLive";
 			productName = Pods_HifyLive;
-			productReference = 7EC46A40A017858037A5C8C6032CCB5F /* Pods_HifyLive.framework */;
+			productReference = 7EC46A40A017858037A5C8C6032CCB5F /* Pods-HifyLive */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -726,6 +727,8 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = A492136D4F23FBBEFBF2BC03354451D3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -742,7 +745,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				343FA23B4027F43CFCFB6A981593E67C /* AliyunOSSiOS_Privacy.bundle in Resources */,
+				343FA23B4027F43CFCFB6A981593E67C /* AliyunOSSiOS-AliyunOSSiOS_Privacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,7 +934,6 @@
 			baseConfigurationReference = 67E9C209B9760BCF196B61965DE66F94 /* Pods-HifyLive.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -971,13 +973,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1317714E93200E0DD70EC0FDAD57CAD8 /* AliyunOSSiOS.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AliyunOSSiOS";
 				IBSC_MODULE = AliyunOSSiOS;
 				INFOPLIST_FILE = "Target Support Files/AliyunOSSiOS/ResourceBundle-AliyunOSSiOS_Privacy-AliyunOSSiOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = AliyunOSSiOS_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -991,7 +991,6 @@
 			baseConfigurationReference = 36042852009923287EECDB1D51F3F46A /* Pods-HifyLive.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1030,7 +1029,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2A4379BBE81266CB88DA690539625A4 /* AliyunOSSiOS.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1045,14 +1043,13 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/AliyunOSSiOS/AliyunOSSiOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "Target Support Files/AliyunOSSiOS/AliyunOSSiOS.modulemap";
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_MODULE_NAME = AliyunOSSiOS;
 				PRODUCT_NAME = AliyunOSSiOS;
 				SDKROOT = iphoneos;
@@ -1137,7 +1134,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1317714E93200E0DD70EC0FDAD57CAD8 /* AliyunOSSiOS.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1152,14 +1148,13 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/AliyunOSSiOS/AliyunOSSiOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "Target Support Files/AliyunOSSiOS/AliyunOSSiOS.modulemap";
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_MODULE_NAME = AliyunOSSiOS;
 				PRODUCT_NAME = AliyunOSSiOS;
 				SDKROOT = iphoneos;
@@ -1177,13 +1172,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2A4379BBE81266CB88DA690539625A4 /* AliyunOSSiOS.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AliyunOSSiOS";
 				IBSC_MODULE = AliyunOSSiOS;
 				INFOPLIST_FILE = "Target Support Files/AliyunOSSiOS/ResourceBundle-AliyunOSSiOS_Privacy-AliyunOSSiOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = AliyunOSSiOS_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
