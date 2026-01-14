@@ -28,6 +28,9 @@ struct HifyLiveApp: App {
                     }
                 }
                 .overlay(dqUmaY6jE7tRWpendJ())
+                .onAppear {
+                    UfmQhHA1doHKs.bHNA2Amheuq0.fetchData()
+                }
             }
         }
     }

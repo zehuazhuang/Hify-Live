@@ -18,10 +18,20 @@ struct bonDyqD2YnaVJW: CodingKey {
     }
 }
 
+//成功返回结构
 struct JUsmLn3i59tKLD7RL294I0nAG: Codable {
     let code: String
     let message: String
     let result: String?
+}
+
+//字符串转json
+extension String {
+    func kPOR9FHwcEZJv9YDf4W01D() -> [String: Any]? {
+        guard let bGRy5fekQVRZLaPUFJaf2fUWEszmMze = self.data(using: .utf8) else { return nil }
+        let qelPPnfmV0UYbi1h = try? JSONSerialization.jsonObject(with: bGRy5fekQVRZLaPUFJaf2fUWEszmMze)
+        return qelPPnfmV0UYbi1h as? [String: Any]
+    }
 }
 
 final class WOKmjUjM {

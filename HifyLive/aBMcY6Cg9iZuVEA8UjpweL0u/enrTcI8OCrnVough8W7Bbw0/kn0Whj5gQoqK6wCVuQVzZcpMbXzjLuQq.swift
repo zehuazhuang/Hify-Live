@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
+    
+    var qiizd0IijFdcEjzdYt: (Int) -> Void
+    
     var body: some View {
         ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
             .frame(maxWidth: .infinity)
@@ -33,6 +36,9 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                                         )
                                 }
                             }
+                            .onTapGesture {
+                                qiizd0IijFdcEjzdYt(1)
+                            }
                         RoundedRectangle(cornerRadius: 24)
                             .fill(Color.white.opacity(0.15))
                             .frame(height: 46)
@@ -45,6 +51,9 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                                             size: 16
                                         )
                                 }
+                            }
+                            .onTapGesture {
+                                qiizd0IijFdcEjzdYt(2)
                             }
                         RoundedRectangle(cornerRadius: 24)
                             .fill(Color.white.opacity(0.15))
@@ -59,14 +68,13 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                                         )
                                 }
                             }
+                            .onTapGesture {
+                                qiizd0IijFdcEjzdYt(0)
+                            }
                     }
                     .padding(.horizontal,36)
                     Spacer()
                 }
             }
     }
-}
-
-#Preview {
-    kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq()
 }

@@ -1,8 +1,16 @@
 import SwiftUI
 
 struct bviVhbptEhW0H38XWrfeY: View {
+    let c3sCP6rP7ICn6KqNSRV6dSlEy: Date
+    var ceWa39zGt: (Date) -> Void
     
     @State private var h00RqGIatisYGH8aaaKHpjbkg143FTlr = Date()
+    
+    init(bfm778: Date, xf0KcA1MrO5QockCp0rQVXhvMjYlb2: @escaping (Date) -> Void) {
+        self.c3sCP6rP7ICn6KqNSRV6dSlEy = bfm778
+        self.ceWa39zGt = xf0KcA1MrO5QockCp0rQVXhvMjYlb2
+        _h00RqGIatisYGH8aaaKHpjbkg143FTlr = State(initialValue: bfm778)
+    }
     
     var body: some View {
         ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
@@ -27,7 +35,7 @@ struct bviVhbptEhW0H38XWrfeY: View {
                         .padding(.horizontal,16)
                     Spacer()
                     Button{
-                        print(h00RqGIatisYGH8aaaKHpjbkg143FTlr)
+                        ceWa39zGt(h00RqGIatisYGH8aaaKHpjbkg143FTlr)
                     }label:{
                         ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
                             .frame(width: 262,height: 46)
@@ -43,10 +51,6 @@ struct bviVhbptEhW0H38XWrfeY: View {
                 .padding(.bottom,37)
             }
     }
-}
-
-#Preview {
-    bviVhbptEhW0H38XWrfeY()
 }
 
 

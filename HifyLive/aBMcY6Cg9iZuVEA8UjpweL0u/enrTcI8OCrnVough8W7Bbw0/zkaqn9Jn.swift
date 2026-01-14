@@ -108,11 +108,32 @@ struct zkaqn9Jn: View {
                                         case .success(let cmBllstUOfe):
                                             print(cmBllstUOfe.code)
                                             if cmBllstUOfe.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-                                                print("成功:", cmBllstUOfe.result ?? "")
+                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                                guard
+                                                    let j9NQ5xqz3ZL = cmBllstUOfe.result,
+                                                    !j9NQ5xqz3ZL.isEmpty
+                                                else {
+                                                    return
+                                                }
+                                                let c55guwIGLg4RHRJey8dk9m3jln8NMOo =
+                                                j9NQ5xqz3ZL.hL9dV3bQ2fK6sJ8p()
+                                                if let nAT4VBfqN62FOc8x6XFADpNqJ = c55guwIGLg4RHRJey8dk9m3jln8NMOo.kPOR9FHwcEZJv9YDf4W01D() {
+                                                    let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]
+                                                    print("成功 userInfo:", hOQva7h2 ?? "nil")
+                                                    if let qb9c6NkMMK5 = hOQva7h2 as? [String: Any] {
+                                                        // 老用户
+                                                        print(qb9c6NkMMK5)
+                                                    } else {
+                                                        // 新用户（nil 或 NSNull 都会进这里）
+                                                        hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
+                                                            ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e)
+                                                        }
+                                                    }
+                                                }
                                             } else {
+                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(cmBllstUOfe.message,z2E1geUN5miQ95SpoCG: false)
                                             }
-                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                             
                                         case .failure(_):
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()

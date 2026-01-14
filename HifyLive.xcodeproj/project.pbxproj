@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0E53D22F1749120060F729 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = DD0E53D12F1749120060F729 /* Gzip */; };
 		DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */; };
 		DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */; };
 		DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C4362F15E61600365091 /* SwiftfulRouting */; };
@@ -44,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE0C5CB2F15F64A00365091 /* Kingfisher in Frameworks */,
+				DD0E53D22F1749120060F729 /* Gzip in Frameworks */,
 				DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */,
 				DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */,
 				DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */,
@@ -93,6 +95,7 @@
 				DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */,
 				DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */,
 				DDE0C5CA2F15F64A00365091 /* Kingfisher */,
+				DD0E53D12F1749120060F729 /* Gzip */,
 			);
 			productName = HifyLive;
 			productReference = DDECD4CD2F148B820016E861 /* HifyLive.app */;
@@ -126,6 +129,7 @@
 				DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
 				DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDECD4CE2F148B820016E861 /* Products */;
@@ -371,6 +375,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/1024jp/GzipSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 		DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -398,6 +410,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DD0E53D12F1749120060F729 /* Gzip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */;
+			productName = Gzip;
+		};
 		DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
