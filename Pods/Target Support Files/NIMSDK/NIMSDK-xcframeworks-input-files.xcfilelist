@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/NIMSDK/NIMSDK-xcframeworks.sh
+${PODS_ROOT}/NIMSDK/NIMSDK/NIMSDK.xcframework
+${PODS_ROOT}/NIMSDK/NIMWS/NIMSocketRocket.xcframework
+${PODS_ROOT}/NIMSDK/NIMQuic/NIMQuic.xcframework
+${PODS_ROOT}/NIMSDK/NIMAVChat/NIMAVChat.xcframework
+${PODS_ROOT}/NIMSDK/NIMDB/NIMDBEx.xcframework
+${PODS_ROOT}/NIMSDK/NIMAVChat/NMC.xcframework
+${PODS_ROOT}/NIMSDK/NIMAVChat/NMCBasicModuleFramework.xcframework
+${PODS_ROOT}/NIMSDK/NIMNOS/NIMNOS.xcframework
