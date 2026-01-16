@@ -4,7 +4,7 @@
 //
 //  Created by yangyang on 2026/1/15.
 //
-
+//初始化云信
 import UIKit
 import NIMSDK
 

@@ -8,6 +8,9 @@ struct ME9B8ZCwVQxn: View {
         case eormakgnaM
     }
     @State private var crformanchSelect: NgcenieTab = .lonaranpeH
+    
+    @State private var s4V9Y0A2C6WEL = false //聊天页more底部弹框
+    @State private var shR2D3nR8Q = false //清空消息二次弹窗
     var body: some View {
         ZStack {
             Group {
@@ -15,7 +18,9 @@ struct ME9B8ZCwVQxn: View {
                 case .lonaranpeH:
                     E2VxD0iC4bYyh()
                 case .rongrandtM:
-                    jQp7ZL9aM8Wtm()
+                    jQp7ZL9aM8Wtm(mo0LQ7DAi: {
+                            s4V9Y0A2C6WEL = true
+                    })
                 case .eormakgnaM:
                     C8Z2x4M6YV9m()
                 }
@@ -39,6 +44,22 @@ struct ME9B8ZCwVQxn: View {
                         }
                     }
                 }
+            if s4V9Y0A2C6WEL {
+                ZV6K3W8qN5re(sE92F3V9XA: $s4V9Y0A2C6WEL, qkS5hN2V8: {
+                    withAnimation{
+                        shR2D3nR8Q = true
+                    }
+                    
+                })
+                 
+            }
+            
+            if shR2D3nR8Q {
+                CQ7E8ZC2A4Y0le(heS7pC8R2J: $shR2D3nR8Q)
+                    
+            }
+            
+                
             }
             .edgesIgnoringSafeArea(.bottom)
             

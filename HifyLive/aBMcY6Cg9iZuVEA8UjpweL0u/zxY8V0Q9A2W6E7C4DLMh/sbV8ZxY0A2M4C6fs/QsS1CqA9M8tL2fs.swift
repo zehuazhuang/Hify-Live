@@ -1,3 +1,4 @@
+//搜索页面
 import SwiftUI
 import SwiftfulRouting
 
@@ -27,7 +28,7 @@ struct QsS1CqA9M8tL2fs: View {
                     sZ4V2b7EALDWCou(
                         q2C4Mtl3iNa: $q2C4Mtl3iNa,
                         i6L2M4Yai0s: $iZQ7xV4bM8Ys, on8M9xY6Q0: {velogranText in
-                            print(piaoncapType)
+                           
                             
                             Task { @MainActor in
                                 do {
@@ -44,7 +45,7 @@ struct QsS1CqA9M8tL2fs: View {
                                        print(error)
                                    }
                                 
-                                print(searchResults.count)
+                               
                                 }
                             
                         }

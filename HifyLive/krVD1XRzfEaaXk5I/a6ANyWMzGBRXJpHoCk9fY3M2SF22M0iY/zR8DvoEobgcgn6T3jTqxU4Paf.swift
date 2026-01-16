@@ -86,7 +86,7 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
     request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
     
     
-    print("搜索类型\(type)")
+    
     
     let body: [String: Any] = [
         "currentPage": 1,
@@ -117,14 +117,23 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
         return []
     }
     
-    // 把 JSON 字符串转换成数组
+    // 将 JSON 数据转换为数组
     let resultArray = try JSONSerialization.jsonObject(with: resultData, options: [])
+    
     guard let array = resultArray as? [[String: Any]] else {
         return []
     }
-    print(array)
+
+    // 按 joinNum 从大到小排序
+    let sortedArray = array.sorted { dict1, dict2 in
+        let joinNum1 = dict1["joinNum"] as? Int ?? 0
+        let joinNum2 = dict2["joinNum"] as? Int ?? 0
+        return joinNum1 > joinNum2
+    }
+
     
-    return array
+    
+    return sortedArray
 }
 
 

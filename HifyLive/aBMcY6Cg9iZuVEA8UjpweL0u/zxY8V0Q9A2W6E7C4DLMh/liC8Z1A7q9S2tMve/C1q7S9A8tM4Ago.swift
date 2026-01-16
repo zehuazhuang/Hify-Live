@@ -50,7 +50,7 @@ final class AgoraManager: NSObject {
         engine?.leaveChannel(nil)
         remoteViews.removeAll()
     }
-
+    
     // 给外部提供方法，绑定远端视图
     func bindRemoteView(_ view: UIView, for uid: UInt) {
         remoteViews[uid] = view
