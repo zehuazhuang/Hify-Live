@@ -9,6 +9,7 @@ struct E2VxD0iC4bYyh: View {
     @State private var ecorjazyType: Bool = true
     @State private var isLoading: Bool = false
     @Environment(\.router) var rM9Z8S7A1ql
+    @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -79,12 +80,30 @@ struct E2VxD0iC4bYyh: View {
                     Spacer().frame(width: 16)
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
+                        .onTapGesture {
+//                            print(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["yxAccid"])
+//                            print(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["imToken"])
+//                            print(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["token"])
+                        }
                 }
                 ScrollView{
                     VStack{
                         LazyVGrid(columns: evntemporaeCol, spacing: 7) {
                             ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
                                 rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
+                                    .onTapGesture{
+                                        
+                                        if let channelId = X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index]["agoraChannelId"] as? String {
+                                               print("点击的房间 channelId:", channelId)
+                                               rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                   LiveRoomPage(channelId: channelId)
+                                               }
+                                           } else {
+                                               print("agoraChannelId 获取失败")
+                                           }
+
+                                    }
+                                
                             }
                         }
                     }

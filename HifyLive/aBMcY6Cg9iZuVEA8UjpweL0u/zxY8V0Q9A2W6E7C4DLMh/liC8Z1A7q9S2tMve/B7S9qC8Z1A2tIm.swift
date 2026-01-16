@@ -1,9 +1,3 @@
-//
-//  B7S9qC8Z1A2tIm.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/15.
-//
 
 import Foundation
 import NIMSDK

@@ -5,6 +5,9 @@ import SwiftfulRouting
 @main
 struct HifyLiveApp: App {
     
+    // 关联 AppDelegate
+       @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     init() {
         //初始化Google clientID
         let o6MRo8D6tOTcnXAAolXpRTXtHXKTg = "499091235682-4efa6ed193di5agivikcad3vj1e0eq9u.apps.googleusercontent.com"

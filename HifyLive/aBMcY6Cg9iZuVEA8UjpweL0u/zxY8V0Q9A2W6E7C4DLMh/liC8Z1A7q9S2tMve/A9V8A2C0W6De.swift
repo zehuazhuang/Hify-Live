@@ -1,9 +1,4 @@
-//
-//  A9V8A2C0W6De.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/15.
-//
+
 //初始化云信
 import UIKit
 import NIMSDK
@@ -18,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 1️⃣ 初始化云信
         // 如果暂时不需要推送证书，传空字符串 ""
-        NIMSDK.shared().register(withAppID: "你的云信AppKey", cerName: "")
+        NIMSDK.shared().register(withAppID: "124f689baed25c488e1330bc42e528af", cerName: "")
 
         return true
     }

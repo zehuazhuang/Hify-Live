@@ -136,13 +136,75 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
     return sortedArray
 }
 
-
-
 @MainActor
-func hifyand() async throws -> [String: Any] {
+func getRtctoken() async throws -> [String: Any] {
     
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "https://testaes.cphub.link/api/search/newLive/query") else {
+    guard let url = URL(string: "https://testaes.cphub.link/api/index/getAgoraRtmToken") else {
+        throw URLError(.badURL)
+    }
+    
+    // 2️⃣ 构建请求
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("11111111", forHTTPHeaderField: "appId")
+    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("29B7219BB17045C188A6DA5EE214FFC1", forHTTPHeaderField: "loginToken")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
+    
+//    let body: [String: Any] = [
+//        "anchorId": pmpresoZUid,
+//        "type": 1
+//    ]
+    
+//    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+//    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+//        throw NSError(domain: "LiveAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "JSON 转 String 失败"])
+//    }
+    
+//    // 3️⃣ 加密
+//    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+//    request.httpBody = encryptedString.data(using: .utf8)
+    
+    // 4️⃣ 发送请求
+    let (data, response) = try await URLSession.shared.data(for: request)
+    
+    if let httpResponse = response as? HTTPURLResponse {
+        print("HTTP Status Code:", httpResponse.statusCode)
+    }
+    
+    // 5️⃣ 解析返回 JSON
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "LiveAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "返回数据不是字典"])
+    }
+    
+    // 6️⃣ 取出 result 并解密
+    guard let result = dict["result"] as? String else {
+        throw NSError(domain: "LiveAPI", code: -2, userInfo: [NSLocalizedDescriptionKey: "result 不存在或不是 String"])
+    }
+    
+    let decryptedString = result.hL9dV3bQ2fK6sJ8p()
+    
+    // 7️⃣ 将解密后的字符串转为 Data
+    guard let resultData = decryptedString.data(using: .utf8) else {
+        throw NSError(domain: "LiveAPI", code: -3, userInfo: [NSLocalizedDescriptionKey: "解密字符串转 Data 失败"])
+    }
+    
+    // 8️⃣ 将 Data 转 JSON
+    let resultJson = try JSONSerialization.jsonObject(with: resultData, options: [])
+    
+    print(resultJson)
+
+    return ["result": resultJson]
+}
+
+@MainActor
+func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
+    
+    // 1️⃣ 构建 URL
+    guard let url = URL(string: "https://testaes.cphub.link/api/agora/live/getRoomAndJoinRoomV2") else {
         throw URLError(.badURL)
     }
     
@@ -156,11 +218,8 @@ func hifyand() async throws -> [String: Any] {
     request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
     
     let body: [String: Any] = [
-        "currentPage": 1,
-        "pageSize": 6,
-        "type": 1,
-        "searchTime": "2025-12-24 17:16:15",
-        "searchValue": "s"
+        "anchorId": pmpresoZUid,
+        "type": 1
     ]
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
