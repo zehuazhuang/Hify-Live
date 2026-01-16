@@ -31,8 +31,12 @@ final class MNcU5G2d5lovPsrWsZR {
         
         GIDSignIn.sharedInstance.signIn(withPresenting: x32VMaqCadHB) { rzo6JTOSe, kITBKFnqW0U9iWn in
             
-            if let drTjFQ1lBMLEfCUoueq2HkdI = kITBKFnqW0U9iWn {
-                hDOsS75RkSohRjdLbqacl3HZOsNOzj1N(.failure(drTjFQ1lBMLEfCUoueq2HkdI))
+            if let drTjFQ1lBMLEfCUoueq2HkdI = kITBKFnqW0U9iWn as NSError? {
+                if drTjFQ1lBMLEfCUoueq2HkdI.code == GIDSignInError.canceled.rawValue {
+                    hDOsS75RkSohRjdLbqacl3HZOsNOzj1N(.failure(NSError(domain: "AuthService", code: drTjFQ1lBMLEfCUoueq2HkdI.code, userInfo: [NSLocalizedDescriptionKey: "用户取消登录"])))
+                } else  {
+                    hDOsS75RkSohRjdLbqacl3HZOsNOzj1N(.failure(drTjFQ1lBMLEfCUoueq2HkdI))
+                }
                 return
             }
             

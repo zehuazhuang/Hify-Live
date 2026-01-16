@@ -1,4 +1,5 @@
 import SwiftUI
+import GoogleSignIn
 import SwiftfulRouting
 
 struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
@@ -192,8 +193,12 @@ struct zkaqn9Jn: View {
                                             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("hhOl6/VUEq+mQVyGto4rnS/pNZHCom6WeachEyfneieYY3GFdHKoa4iQygGkvAQm")
                                         }
                                     }
-                                case .failure(_):
-                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")
+                                case .failure(let u0lXlYLQiGrjGGOpB9Mp as NSError):
+                                    if u0lXlYLQiGrjGGOpB9Mp.code == GIDSignInError.canceled.rawValue {
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")
+                                    } else {
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=")
+                                    }
                                     EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                 }
                             }

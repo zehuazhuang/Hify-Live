@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct C8Z2x4M6YV9m: View {
+    
+    @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
+    
     var body: some View {
         ZStack {
             ZJ7h766mz(tMmEWWlfgUag: "qS7I9tZ871czCL32")
@@ -13,7 +16,7 @@ struct C8Z2x4M6YV9m: View {
                                     .fill(Color.white.opacity(0.2))
                                     .frame(width: 76)
                                     .overlay(alignment: .center) {
-                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.js.design/assets/img/692d4e10b5e8b987e5416d49.png#5538bf5f6501f791c85a6172ab6af9f6")
+                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()])
                                             .frame(width: 68,height: 68)
                                             .clipShape(Circle())
                                     }

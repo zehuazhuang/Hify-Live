@@ -35,6 +35,13 @@ final class ZRsco2bysq39NmLBBhFtU044p: ObservableObject {
         }
     }
     
+    // imToken (只存储，不绑定视图)
+    var ndyZHpylAsdd: String {
+        didSet {
+            UserDefaults.standard.set(ndyZHpylAsdd, forKey: "pCL11FbN1Z")
+        }
+    }
+    
     private init() {
         // 加载 token
         self.fiaiU4sbcNXzTzXA = UserDefaults.standard.string(forKey: "oxwNbT")
@@ -53,6 +60,9 @@ final class ZRsco2bysq39NmLBBhFtU044p: ObservableObject {
         
         // 加载云信 ID
         self.fP9yQC0UH00 = UserDefaults.standard.string(forKey: "wcCqVFtg6yx") ?? ""
+        
+        // 加载 imToken
+        self.ndyZHpylAsdd = UserDefaults.standard.string(forKey: "pCL11FbN1Z") ?? ""
    
     }
     
