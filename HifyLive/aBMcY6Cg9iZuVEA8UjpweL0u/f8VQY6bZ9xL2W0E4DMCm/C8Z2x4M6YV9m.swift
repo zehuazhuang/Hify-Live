@@ -1,6 +1,30 @@
 import SwiftUI
+import SwiftfulRouting
+
+//国旗UI
+struct AkKkhrVKXgV7pdSjWNgPrAjgIK: View {
+    
+    var bzXRO5mSpuwI2eSGs: String = ""
+    
+    init() {
+        if let h4YQfCFpFLXxKPTWuGWvRUeHFog = UfmQhHA1doHKs.bHNA2Amheuq0.o6Ex5Lgp7q46dDOd3db {
+            if let pZ8l80wo4vJh7AE = h4YQfCFpFLXxKPTWuGWvRUeHFog.first(where: { ($0.string("sAocvCi8BLuHyjCjoxpviQ==".bFHEatcgE4zzU9TCfDonsu()) == IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu())) }) {
+                self.bzXRO5mSpuwI2eSGs = pZ8l80wo4vJh7AE.string("sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu())
+            }
+        }
+    }
+    
+    
+    var body: some View {
+        Text(bzXRO5mSpuwI2eSGs)
+            .g0LIIcoZQsOjyND9(size: 26)
+    }
+}
+
 
 struct C8Z2x4M6YV9m: View {
+    
+    @Environment(\.router) var f3gXkYHZIUAUWNv5SX2nZKCo
     
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     
@@ -12,14 +36,22 @@ struct C8Z2x4M6YV9m: View {
                     VStack(spacing: 20) {
                         VStack(spacing: 12) {
                             HStack(spacing: 16) {
-                                Circle()
-                                    .fill(Color.white.opacity(0.2))
-                                    .frame(width: 76)
-                                    .overlay(alignment: .center) {
-                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
-                                            .frame(width: 68,height: 68)
-                                            .clipShape(Circle())
+                                Button{
+                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
+                                        WUjfoptOKs8pZfhSAH0duplG {
+                                            lhOJY7byauJZOO6Kfr3SaKy6()
+                                        }
                                     }
+                                } label: {
+                                    Circle()
+                                        .fill(Color.white.opacity(0.2))
+                                        .frame(width: 76)
+                                        .overlay(alignment: .center) {
+                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
+                                                .frame(width: 68,height: 68)
+                                                .clipShape(Circle())
+                                        }
+                                }
                                 VStack(alignment: .leading,spacing: 4) {
                                     HStack(spacing: 16) {
                                         Text(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
@@ -29,6 +61,7 @@ struct C8Z2x4M6YV9m: View {
                                             )
                                             .lineLimit(1)
                                             .truncationMode(.tail)
+                                        AkKkhrVKXgV7pdSjWNgPrAjgIK()
                                     }
                                     HStack(spacing: 16) {
                                         HStack(spacing: 4) {
@@ -36,7 +69,7 @@ struct C8Z2x4M6YV9m: View {
                                                 ZJ7h766mz(tMmEWWlfgUag: x3r45aKu1Bx == 0 ? "vK1PV3wuy5o4JGId" : x3r45aKu1Bx == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy")
                                                     .frame(width: 24,height: 24)
                                             } else {
-                                                ZJ7h766mz(tMmEWWlfgUag: "h8bx8HHiJD1BodEG8Zfzl")
+                                                ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
                                                     .frame(width: 24,height: 24)
                                             }
                                             Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
@@ -55,7 +88,7 @@ struct C8Z2x4M6YV9m: View {
                                                     )
                                                 )
                                                 UIPasteboard.general.string = gjikAoPvX
-                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("WcL50Np5GVd6t5bX/HF7hmnzlsK5RfSE/aWPAoF0bgiJkyDwmaEHPZELiqE2aMEk")
+                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==")
                                             } label: {
                                                 ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX")
                                                     .frame(width: 16,height: 16)

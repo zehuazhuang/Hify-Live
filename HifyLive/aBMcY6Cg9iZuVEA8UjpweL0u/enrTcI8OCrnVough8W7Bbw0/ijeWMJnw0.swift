@@ -103,11 +103,12 @@ struct ijeWMJnw0: View {
             Color(red: 13/255, green: 13/255, blue: 18/255)
             VStack(spacing: 24) {
                 HStack(spacing: 12) {
-                    ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
-                        .frame(width: 24,height: 24)
-                        .onTapGesture {
-                            n2RtsNgz80jUO3jgDqqJqHW2.dismissScreen()
-                        }
+                    Button{
+                        n2RtsNgz80jUO3jgDqqJqHW2.dismissScreen()
+                    } label: {
+                        ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
+                            .frame(width: 24,height: 24)
+                    }
                     Text("yg+DSKvFibu+vtTkhp8RpQ==".bFHEatcgE4zzU9TCfDonsu())
                         .g0LIIcoZQsOjyND9(
                             size: 18,
@@ -239,47 +240,48 @@ struct ijeWMJnw0: View {
                                             )
                                         Spacer()
                                     }
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
-                                        .frame(height: 46)
-                                        .overlay {
-                                            HStack(spacing: 0) {
-                                                ZStack(alignment: .leading) {
-                                                    if let lWkJQO = mQFLX0m0nVIAxht9uUGhln5su8 {
-                                                        Text(kUe9UtFYAvsMtAN1.string(from: lWkJQO))
-                                                            .g0LIIcoZQsOjyND9(
-                                                                size: 16,
-                                                                weight: .semibold,
-                                                                color: Color.white
-                                                            )
-                                                    } else {
-                                                        Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
-                                                            .g0LIIcoZQsOjyND9(
-                                                                size: 16,
-                                                                color: Color.white.opacity(0.4)
-                                                            )
+                                    Button{
+                                        eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
+                                        withAnimation (.spring()) {
+                                            q4L7RemZyJv1BuPIAmKMZ3vaTsg = true
+                                            t8dM64f2Hl = false
+                                        }
+                                    } label: {
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
+                                            .frame(height: 46)
+                                            .overlay {
+                                                HStack(spacing: 0) {
+                                                    ZStack(alignment: .leading) {
+                                                        if let lWkJQO = mQFLX0m0nVIAxht9uUGhln5su8 {
+                                                            Text(kUe9UtFYAvsMtAN1.string(from: lWkJQO))
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 16,
+                                                                    weight: .semibold,
+                                                                    color: Color.white
+                                                                )
+                                                        } else {
+                                                            Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 16,
+                                                                    color: Color.white.opacity(0.4)
+                                                                )
+                                                        }
                                                     }
+                                                    Spacer()
+                                                    ZJ7h766mz(tMmEWWlfgUag: "nBh6zPDySZjUktI4oc6uo")
+                                                        .frame(width: 20,height: 20)
                                                 }
-                                                Spacer()
-                                                ZJ7h766mz(tMmEWWlfgUag: "nBh6zPDySZjUktI4oc6uo")
-                                                    .frame(width: 20,height: 20)
+                                                .padding(.horizontal,16)
                                             }
-                                            .padding(.horizontal,16)
-                                        }
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .stroke(
-                                                    t8dM64f2Hl ? Color.red : Color.clear,
-                                                    lineWidth: 1
-                                                )
-                                        )
-                                        .onTapGesture {
-                                            eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
-                                            withAnimation (.spring()) {
-                                                q4L7RemZyJv1BuPIAmKMZ3vaTsg = true
-                                                t8dM64f2Hl = false
-                                            }
-                                        }
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .stroke(
+                                                        t8dM64f2Hl ? Color.red : Color.clear,
+                                                        lineWidth: 1
+                                                    )
+                                            )
+                                    }
                                 }
                                 VStack(spacing: 9) {
                                     HStack(spacing: 4) {
@@ -291,54 +293,55 @@ struct ijeWMJnw0: View {
                                             )
                                         Spacer()
                                     }
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
-                                        .frame(height: 46)
-                                        .overlay {
-                                            HStack(spacing: 0) {
-                                                ZStack(alignment: .leading) {
-                                                    if let sXhwIvZgZm5 = uj8O1bVbC9SQl6E469ySfpfYW678G {
-                                                        Text({
-                                                            switch sXhwIvZgZm5 {
-                                                            case 1: return "LmkN2QmpsDt/RNDYrWqCww==".bFHEatcgE4zzU9TCfDonsu()
-                                                            case 2: return "xhrWYspSsmKPD+0ke6yevQ==".bFHEatcgE4zzU9TCfDonsu()
-                                                            case 0: return "9oqUCKDdH7g2d1tzqh3Kjw==".bFHEatcgE4zzU9TCfDonsu()
-                                                            default: return "9oqUCKDdH7g2d1tzqh3Kjw==".bFHEatcgE4zzU9TCfDonsu()
-                                                            }
-                                                        }())
-                                                        .g0LIIcoZQsOjyND9(
-                                                            size: 16,
-                                                            weight: .semibold,
-                                                            color: Color.white
-                                                        )
-                                                    } else {
-                                                        Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
+                                    Button{
+                                        eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
+                                        withAnimation (.spring()) {
+                                            v5FogKAlSXvg = true
+                                            fDh5Q2siKUyAQSVbhXs1K = false
+                                        }
+                                    } label: {
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
+                                            .frame(height: 46)
+                                            .overlay {
+                                                HStack(spacing: 0) {
+                                                    ZStack(alignment: .leading) {
+                                                        if let sXhwIvZgZm5 = uj8O1bVbC9SQl6E469ySfpfYW678G {
+                                                            Text({
+                                                                switch sXhwIvZgZm5 {
+                                                                case 1: return "LmkN2QmpsDt/RNDYrWqCww==".bFHEatcgE4zzU9TCfDonsu()
+                                                                case 2: return "xhrWYspSsmKPD+0ke6yevQ==".bFHEatcgE4zzU9TCfDonsu()
+                                                                case 0: return "9oqUCKDdH7g2d1tzqh3Kjw==".bFHEatcgE4zzU9TCfDonsu()
+                                                                default: return "9oqUCKDdH7g2d1tzqh3Kjw==".bFHEatcgE4zzU9TCfDonsu()
+                                                                }
+                                                            }())
                                                             .g0LIIcoZQsOjyND9(
                                                                 size: 16,
-                                                                color: Color.white.opacity(0.4)
+                                                                weight: .semibold,
+                                                                color: Color.white
                                                             )
+                                                        } else {
+                                                            Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 16,
+                                                                    color: Color.white.opacity(0.4)
+                                                                )
+                                                        }
                                                     }
+                                                    Spacer()
+                                                    ZJ7h766mz(tMmEWWlfgUag: "nBh6zPDySZjUktI4oc6uo")
+                                                        .frame(width: 20,height: 20)
                                                 }
-                                                Spacer()
-                                                ZJ7h766mz(tMmEWWlfgUag: "nBh6zPDySZjUktI4oc6uo")
-                                                    .frame(width: 20,height: 20)
+                                                .padding(.horizontal,16)
                                             }
-                                            .padding(.horizontal,16)
-                                        }
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .stroke(
-                                                    fDh5Q2siKUyAQSVbhXs1K ? Color.red : Color.clear,
-                                                    lineWidth: 1
-                                                )
-                                        )
-                                        .onTapGesture {
-                                            eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
-                                            withAnimation (.spring()) {
-                                                v5FogKAlSXvg = true
-                                                fDh5Q2siKUyAQSVbhXs1K = false
-                                            }
-                                        }
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .stroke(
+                                                        fDh5Q2siKUyAQSVbhXs1K ? Color.red : Color.clear,
+                                                        lineWidth: 1
+                                                    )
+                                            )
+                                    }
                                 }
                                 VStack(spacing: 9) {
                                     HStack(spacing: 4) {
@@ -350,56 +353,57 @@ struct ijeWMJnw0: View {
                                             )
                                         Spacer()
                                     }
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
-                                        .frame(height: 46)
-                                        .overlay {
-                                            HStack(spacing: 0) {
-                                                ZStack(alignment: .leading) {
-                                                    if let p65eftKgEH2iK4vxsv1N72Hy5BAK = ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 {
-                                                        HStack(spacing: 8) {
-                                                            Text(p65eftKgEH2iK4vxsv1N72Hy5BAK["sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                                                .g0LIIcoZQsOjyND9(
-                                                                    size: 26
-                                                                )
-                                                            Text(p65eftKgEH2iK4vxsv1N72Hy5BAK["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                    Button{
+                                        gjQ0haTFS7I7wobKnyS = false
+                                        n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
+                                            WUjfoptOKs8pZfhSAH0duplG {
+                                                zpPt6HEcUfuVXHI2CXtIaD1P()
+                                            }
+                                        }
+                                    } label: {
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
+                                            .frame(height: 46)
+                                            .overlay {
+                                                HStack(spacing: 0) {
+                                                    ZStack(alignment: .leading) {
+                                                        if let p65eftKgEH2iK4vxsv1N72Hy5BAK = ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 {
+                                                            HStack(spacing: 8) {
+                                                                Text(p65eftKgEH2iK4vxsv1N72Hy5BAK["sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                                    .g0LIIcoZQsOjyND9(
+                                                                        size: 26
+                                                                    )
+                                                                Text(p65eftKgEH2iK4vxsv1N72Hy5BAK["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                                    .g0LIIcoZQsOjyND9(
+                                                                        size: 16,
+                                                                        weight: .semibold,
+                                                                        color: Color.white
+                                                                    )
+                                                                    .lineLimit(1)
+                                                                    .truncationMode(.tail)
+                                                            }
+                                                        } else {
+                                                            Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
                                                                 .g0LIIcoZQsOjyND9(
                                                                     size: 16,
-                                                                    weight: .semibold,
-                                                                    color: Color.white
+                                                                    color: Color.white.opacity(0.4)
                                                                 )
-                                                                .lineLimit(1)
-                                                                .truncationMode(.tail)
                                                         }
-                                                    } else {
-                                                        Text("E74pPuF/iUk17k2LjaNecw==".bFHEatcgE4zzU9TCfDonsu())
-                                                            .g0LIIcoZQsOjyND9(
-                                                                size: 16,
-                                                                color: Color.white.opacity(0.4)
-                                                            )
                                                     }
+                                                    Spacer()
+                                                    ZJ7h766mz(tMmEWWlfgUag: "nBh6zPDySZjUktI4oc6uo")
+                                                        .frame(width: 20,height: 20)
                                                 }
-                                                Spacer()
-                                                ZJ7h766mz(tMmEWWlfgUag: "nBh6zPDySZjUktI4oc6uo")
-                                                    .frame(width: 20,height: 20)
+                                                .padding(.horizontal,16)
                                             }
-                                            .padding(.horizontal,16)
-                                        }
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .stroke(
-                                                    gjQ0haTFS7I7wobKnyS ? Color.red : Color.clear,
-                                                    lineWidth: 1
-                                                )
-                                        )
-                                        .onTapGesture {
-                                            gjQ0haTFS7I7wobKnyS = false
-                                            n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    zpPt6HEcUfuVXHI2CXtIaD1P()
-                                                }
-                                            }
-                                        }
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .stroke(
+                                                        gjQ0haTFS7I7wobKnyS ? Color.red : Color.clear,
+                                                        lineWidth: 1
+                                                    )
+                                            )
+                                    }
                                 }
                                 //                                VStack(spacing: 10) {
                                 //                                    HStack(spacing: 0) {

@@ -33,22 +33,17 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
             Color(red: 13/255, green: 13/255, blue: 18/255)
             VStack(spacing: 0) {
                 HStack(spacing: 12) {
-                    ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
-                        .frame(width: 24,height: 24)
-                        .onTapGesture {
-                            vlmreWUQbQrsDKFfZtM3Niti.dismissScreen()
-                        }
+                    Button{
+                        vlmreWUQbQrsDKFfZtM3Niti.dismissScreen()
+                    } label: {
+                        ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
+                            .frame(width: 24,height: 24)
+                    }
                     Text("IIcD4XUcyOX7TLBvuArCSA==".bFHEatcgE4zzU9TCfDonsu())
                         .g0LIIcoZQsOjyND9(
                             size: 18,
                             weight: .semibold
                         )
-                        .onTapGesture {
-                            
-                            print(1)
-                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("P1XBn32shPZ0IyNZUWkhNQyh39aQXiyicZEAp+0/sz4=")
-                            print(2)
-                        }
                     Spacer()
                 }
                 .padding(.top,58)
@@ -101,28 +96,29 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                         ForEach(uJmhiqFsRDGzvObN4Bi4.indices, id: \.self) { qZBXpP5XfUZ05ynY3kNq in
                             let cuiITaXSxQgvX2NWtFmfnBxf = uJmhiqFsRDGzvObN4Bi4[qZBXpP5XfUZ05ynY3kNq]
 
-                            VStack(spacing: 0) {
-                                HStack(spacing: 8) {
-                                    Text(cuiITaXSxQgvX2NWtFmfnBxf["sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                        .g0LIIcoZQsOjyND9(size: 26)
-
-                                    Text(cuiITaXSxQgvX2NWtFmfnBxf["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                        .g0LIIcoZQsOjyND9(size: 16)
-                                        .lineLimit(1)
-
-                                    Spacer()
-                                }
-                                .padding(.top, 20)
-                                .padding(.bottom, 12)
-
-                                RoundedRectangle(cornerRadius: 0)
-                                    .fill(Color.white.opacity(0.15))
-                                    .frame(height: 1)
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
+                            Button{
                                 lr7J7X4retLhiZiJuwDo7.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 = cuiITaXSxQgvX2NWtFmfnBxf
                                 vlmreWUQbQrsDKFfZtM3Niti.dismissScreen()
+                            } label: {
+                                VStack(spacing: 0) {
+                                    HStack(spacing: 8) {
+                                        Text(cuiITaXSxQgvX2NWtFmfnBxf["sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                            .g0LIIcoZQsOjyND9(size: 26)
+
+                                        Text(cuiITaXSxQgvX2NWtFmfnBxf["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                            .g0LIIcoZQsOjyND9(size: 16)
+                                            .lineLimit(1)
+
+                                        Spacer()
+                                    }
+                                    .padding(.top, 20)
+                                    .padding(.bottom, 12)
+
+                                    RoundedRectangle(cornerRadius: 0)
+                                        .fill(Color.white.opacity(0.15))
+                                        .frame(height: 1)
+                                }
+                                .contentShape(Rectangle())
                             }
                         }
                         

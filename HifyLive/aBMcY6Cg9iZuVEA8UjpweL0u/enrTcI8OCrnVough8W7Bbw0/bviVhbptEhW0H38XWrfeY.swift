@@ -34,7 +34,7 @@ struct bviVhbptEhW0H38XWrfeY: View {
                         .frame(height: 238)
                     Button{
                         ceWa39zGt(h00RqGIatisYGH8aaaKHpjbkg143FTlr)
-                    }label:{
+                    } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
                             .frame(width: 262,height: 46)
                             .overlay(alignment: .center) {
@@ -70,7 +70,7 @@ struct Zla06e0o3TBel4XGGVvR3W: UIViewControllerRepresentable {
     func updateUIViewController(_ oDg1fBN1H7: AC3yCJzQl8F, context: Context) {
         // 延迟设置初始日期，避免在 SwiftUI 渲染阶段直接修改状态
         DispatchQueue.main.async {
-            oDg1fBN1H7.setDate(cgg7YTFDONqBktWGl2)
+            oDg1fBN1H7.xZPhqS6PdVxIWKPRBbEC9fbNqJnGD(cgg7YTFDONqBktWGl2)
         }
     }
 }
@@ -83,30 +83,30 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     private let ocGsEIjN = UIPickerView()
     private var uicjQvlJCL7blIt76Bb0Quc: [Int] = []
     private let xTPuE1HZZgp756: [Int] = Array(1...12)
-    private var days: [Int] = []
+    private var zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX: [Int] = []
     
-    private var selectedYear: Int = 2004
-    private var selectedMonth: Int = 1
-    private var selectedDay: Int = 1
+    private var nGonwL9js3jMdjOItZW: Int = 2004
+    private var ugXlCBp4PNPkGzhwDfqZ: Int = 1
+    private var fYRveOkNm28Yer: Int = 1
     
-    private let rowHeight: CGFloat = 40
-    private let fontSize: CGFloat = 22
+    private let qzfw5iWZ: CGFloat = 40
+    private let jkL5Nwqw: CGFloat = 22
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
-        let calendar = Calendar.current
-        let currentYear = calendar.component(.year, from: Date())
-        let maxYear = currentYear - 18
-        let minYear = currentYear - 100
-        uicjQvlJCL7blIt76Bb0Quc = Array(minYear...maxYear)
+        let go5hAFYvsPL5PbYHuRp5car6doup = Calendar.current
+        let iJoEA5uwt02oF7J1383Sz = go5hAFYvsPL5PbYHuRp5car6doup.component(.year, from: Date())
+        let okplg1t6xLJ6L10AS0ru01miV6KmQ = iJoEA5uwt02oF7J1383Sz - 18
+        let jkYLVIZKy0xn9zrAiRmVfYLv6IW = iJoEA5uwt02oF7J1383Sz - 100
+        uicjQvlJCL7blIt76Bb0Quc = Array(jkYLVIZKy0xn9zrAiRmVfYLv6IW...okplg1t6xLJ6L10AS0ru01miV6KmQ)
 
-        let defaultDate = lrmFzWU1E5bNWoZsNJ
-        selectedYear = calendar.component(.year, from: defaultDate)
-        selectedMonth = calendar.component(.month, from: defaultDate)
-        selectedDay = calendar.component(.day, from: defaultDate)
-        updateDays()
+        let f4Pylo = lrmFzWU1E5bNWoZsNJ
+        nGonwL9js3jMdjOItZW = go5hAFYvsPL5PbYHuRp5car6doup.component(.year, from: f4Pylo)
+        ugXlCBp4PNPkGzhwDfqZ = go5hAFYvsPL5PbYHuRp5car6doup.component(.month, from: f4Pylo)
+        fYRveOkNm28Yer = go5hAFYvsPL5PbYHuRp5car6doup.component(.day, from: f4Pylo)
+        aW9xQvtoesfi235gz()
 
         ocGsEIjN.dataSource = self
         ocGsEIjN.delegate = self
@@ -121,112 +121,103 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         ])
 
         // 设置选中行
-        if let yearIndex = uicjQvlJCL7blIt76Bb0Quc.firstIndex(of: selectedYear) {
-            ocGsEIjN.selectRow(yearIndex, inComponent: 0, animated: false)
+        if let n9Uu4NosYdh1MclvgdCu8rjv = uicjQvlJCL7blIt76Bb0Quc.firstIndex(of: nGonwL9js3jMdjOItZW) {
+            ocGsEIjN.selectRow(n9Uu4NosYdh1MclvgdCu8rjv, inComponent: 0, animated: false)
         }
-        ocGsEIjN.selectRow(selectedMonth - 1, inComponent: 1, animated: false)
-        ocGsEIjN.selectRow(selectedDay - 1, inComponent: 2, animated: false)
+        ocGsEIjN.selectRow(ugXlCBp4PNPkGzhwDfqZ - 1, inComponent: 1, animated: false)
+        ocGsEIjN.selectRow(fYRveOkNm28Yer - 1, inComponent: 2, animated: false)
 
-        notifyDateChanged()
+        gGSpHGgSSZkkohJ8qsR()
     }
     
-    func setDate(_ date: Date) {
-        let calendar = Calendar.current
-        selectedYear = calendar.component(.year, from: date)
-        selectedMonth = calendar.component(.month, from: date)
-        selectedDay = calendar.component(.day, from: date)
-        updateDays()
+    func xZPhqS6PdVxIWKPRBbEC9fbNqJnGD(_ b5AL3Y7wSS: Date) {
+        let fNjwmk4uBWViWYcCwIK8 = Calendar.current
+        nGonwL9js3jMdjOItZW = fNjwmk4uBWViWYcCwIK8.component(.year, from: b5AL3Y7wSS)
+        ugXlCBp4PNPkGzhwDfqZ = fNjwmk4uBWViWYcCwIK8.component(.month, from: b5AL3Y7wSS)
+        fYRveOkNm28Yer = fNjwmk4uBWViWYcCwIK8.component(.day, from: b5AL3Y7wSS)
+        aW9xQvtoesfi235gz()
         ocGsEIjN.reloadAllComponents()
-        ocGsEIjN.selectRow(uicjQvlJCL7blIt76Bb0Quc.firstIndex(of: selectedYear) ?? 0, inComponent: 0, animated: false)
-        ocGsEIjN.selectRow(selectedMonth - 1, inComponent: 1, animated: false)
-        ocGsEIjN.selectRow(selectedDay - 1, inComponent: 2, animated: false)
-        notifyDateChanged()
+        ocGsEIjN.selectRow(uicjQvlJCL7blIt76Bb0Quc.firstIndex(of: nGonwL9js3jMdjOItZW) ?? 0, inComponent: 0, animated: false)
+        ocGsEIjN.selectRow(ugXlCBp4PNPkGzhwDfqZ - 1, inComponent: 1, animated: false)
+        ocGsEIjN.selectRow(fYRveOkNm28Yer - 1, inComponent: 2, animated: false)
+        gGSpHGgSSZkkohJ8qsR()
     }
     
-    private func notifyDateChanged() {
-        var comps = DateComponents()
-        comps.year = selectedYear
-        comps.month = selectedMonth
-        comps.day = selectedDay
-        if let date = Calendar.current.date(from: comps) {
-            fhCH1a5FKGUuFxRAnEicRFz8u?(date)
+    private func gGSpHGgSSZkkohJ8qsR() {
+        var vS3gWtZGzOxyGwpFH9ajbhcL = DateComponents()
+        vS3gWtZGzOxyGwpFH9ajbhcL.year = nGonwL9js3jMdjOItZW
+        vS3gWtZGzOxyGwpFH9ajbhcL.month = ugXlCBp4PNPkGzhwDfqZ
+        vS3gWtZGzOxyGwpFH9ajbhcL.day = fYRveOkNm28Yer
+        if let shWnorkKJmGy53jJW = Calendar.current.date(from: vS3gWtZGzOxyGwpFH9ajbhcL) {
+            fhCH1a5FKGUuFxRAnEicRFz8u?(shWnorkKJmGy53jJW)
         }
     }
     
-    private func updateDays() {
-        var comps = DateComponents()
-        comps.year = selectedYear
-        comps.month = selectedMonth
-        let calendar = Calendar.current
-        let date = calendar.date(from: comps) ?? Date()
-        let range = calendar.range(of: .day, in: .month, for: date) ?? 1..<32
-        days = Array(range)
+    private func aW9xQvtoesfi235gz() {
+        var majJbyAOh0c = DateComponents()
+        majJbyAOh0c.year = nGonwL9js3jMdjOItZW
+        majJbyAOh0c.month = ugXlCBp4PNPkGzhwDfqZ
+        let djz8WzTCHwN02UoGaSU = Calendar.current
+        let ewx4jVG47 = djz8WzTCHwN02UoGaSU.date(from: majJbyAOh0c) ?? Date()
+        let kX2c30BUAIk0BdlET3grvWHHrh7Fch3 = djz8WzTCHwN02UoGaSU.range(of: .day, in: .month, for: ewx4jVG47) ?? 1..<32
+        zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX = Array(kX2c30BUAIk0BdlET3grvWHHrh7Fch3)
     }
     
     // MARK: - UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 3 }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch component {
+    func numberOfComponents(in qJwMEHVN5xtYoUlFl4m1: UIPickerView) -> Int { 3 }
+    func pickerView(_ tGmJ4VjedMEBDGnvzLq58Agy6URUkH0G: UIPickerView, numberOfRowsInComponent ewdBuL6YBKUb3YK9KXmGnu8: Int) -> Int {
+        switch ewdBuL6YBKUb3YK9KXmGnu8 {
         case 0: return uicjQvlJCL7blIt76Bb0Quc.count
         case 1: return xTPuE1HZZgp756.count
-        case 2: return days.count
+        case 2: return zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX.count
         default: return 0
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 80 }
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { rowHeight }
+    func pickerView(_ d3AC57TAp56zRqbaBf: UIPickerView, widthForComponent pj8Cl8RKTMsfaR8yUAXXYK: Int) -> CGFloat { 80 }
+    func pickerView(_ h7hdfmkj2z8zJWNi: UIPickerView, rowHeightForComponent e870JvS: Int) -> CGFloat { qzfw5iWZ }
     
     // MARK: - 自定义行视图
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label: UILabel
-        if let labelView = view as? UILabel {
-            label = labelView
+    func pickerView(_ xbO8q3o1vLrJu8KZFl7i: UIPickerView, viewForRow vgVgHRijaLWpgJfuyM: Int, forComponent vYgZfzVudNYJmHAbDaBolc52Ai0: Int, reusing kWr9B2embN8v3QHFw: UIView?) -> UIView {
+        let w58RNgfKoD: UILabel
+        if let c4bOufJ78vGg6 = view as? UILabel {
+            w58RNgfKoD = c4bOufJ78vGg6
         } else {
-            label = UILabel()
-            label.textAlignment = .center
+            w58RNgfKoD = UILabel()
+            w58RNgfKoD.textAlignment = .center
         }
         
         // 设置文本
-        switch component {
-        case 0: label.text = "\(uicjQvlJCL7blIt76Bb0Quc[row])"
-        case 1: label.text = "\(xTPuE1HZZgp756[row])"
-        case 2: label.text = "\(days[row])"
+        switch vYgZfzVudNYJmHAbDaBolc52Ai0 {
+        case 0: w58RNgfKoD.text = "\(uicjQvlJCL7blIt76Bb0Quc[vgVgHRijaLWpgJfuyM])"
+        case 1: w58RNgfKoD.text = "\(xTPuE1HZZgp756[vgVgHRijaLWpgJfuyM])"
+        case 2: w58RNgfKoD.text = "\(zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX[vgVgHRijaLWpgJfuyM])"
         default: break
         }
         
-        // 判断是否选中
-        let isSelected: Bool
-        switch component {
-        case 0: isSelected = (uicjQvlJCL7blIt76Bb0Quc[row] == selectedYear)
-        case 1: isSelected = (xTPuE1HZZgp756[row] == selectedMonth)
-        case 2: isSelected = (days[row] == selectedDay)
-        default: isSelected = false
-        }
-        
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
-        return label
+        w58RNgfKoD.textColor = .white
+        w58RNgfKoD.font = UIFont.systemFont(ofSize: jkL5Nwqw, weight: .semibold)
+        return w58RNgfKoD
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch component {
-        case 0: selectedYear = uicjQvlJCL7blIt76Bb0Quc[row]
-        case 1: selectedMonth = xTPuE1HZZgp756[row]
-        case 2: selectedDay = days[row]
+    func pickerView(_ ldY9ZUEj0yyI1OcpfhZJhCqKKCp: UIPickerView, didSelectRow nPXP9jGaFEHIZnVG2qnkJiyr: Int, inComponent cKIOqse6uqXbuOUtUd1lmE: Int) {
+        switch cKIOqse6uqXbuOUtUd1lmE {
+        case 0: nGonwL9js3jMdjOItZW = uicjQvlJCL7blIt76Bb0Quc[nPXP9jGaFEHIZnVG2qnkJiyr]
+        case 1: ugXlCBp4PNPkGzhwDfqZ = xTPuE1HZZgp756[nPXP9jGaFEHIZnVG2qnkJiyr]
+        case 2: fYRveOkNm28Yer = zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX[nPXP9jGaFEHIZnVG2qnkJiyr]
         default: break
         }
         
-        if component == 0 || component == 1 {
-            let oldDay = selectedDay
-            updateDays()
+        if cKIOqse6uqXbuOUtUd1lmE == 0 || cKIOqse6uqXbuOUtUd1lmE == 1 {
+            let xHHOi22yV7KsAfQHPDKDnMp = fYRveOkNm28Yer
+            aW9xQvtoesfi235gz()
             ocGsEIjN.reloadComponent(2)
-            let dayIndex = min(oldDay - 1, days.count - 1)
-            selectedDay = days[dayIndex]
-            ocGsEIjN.selectRow(dayIndex, inComponent: 2, animated: true)
+            let loHp1l2W = min(xHHOi22yV7KsAfQHPDKDnMp - 1, zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX.count - 1)
+            fYRveOkNm28Yer = zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX[loHp1l2W]
+            ocGsEIjN.selectRow(loHp1l2W, inComponent: 2, animated: true)
         }
         
         ocGsEIjN.reloadAllComponents() // 刷新字体样式
-        notifyDateChanged()
+        gGSpHGgSSZkkohJ8qsR()
     }
 }
