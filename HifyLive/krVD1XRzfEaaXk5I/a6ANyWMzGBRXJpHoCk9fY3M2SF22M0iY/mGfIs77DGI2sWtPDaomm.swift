@@ -89,10 +89,23 @@ final class WOKmjUjM {
             return
         }
         
-        URLSession.shared.dataTask(with: biHmuVi1B21WPGO) { fHzNVSPyWl1PBPEr, _, iXeEEC6uYGesqcZFyS0azNH in
+        URLSession.shared.dataTask(with: biHmuVi1B21WPGO) { fHzNVSPyWl1PBPEr, odwmhGvKuEz7uG, iXeEEC6uYGesqcZFyS0azNH in
             DispatchQueue.main.async {
                 if let uAt05y7M7XH5pq = iXeEEC6uYGesqcZFyS0azNH {
                     eUBbaLZvAje5GLxMb(.failure(uAt05y7M7XH5pq))
+                    return
+                }
+                
+                guard let bWtqmD7lucTVd = odwmhGvKuEz7uG as? HTTPURLResponse else {
+                    eUBbaLZvAje5GLxMb(.failure(NSError(domain: "Fe2JSs8C9JrZKzj2C0oNlg==".bFHEatcgE4zzU9TCfDonsu(), code: -1)))
+                    return
+                }
+                
+                // 检测 401
+                if bWtqmD7lucTVd.statusCode == 401 {
+//                    print("⚠️ Token 已过期，请重新登录")
+                    ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw() // 清除 token
+                    NotificationCenter.default.post(name: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"), object: nil)
                     return
                 }
                 
