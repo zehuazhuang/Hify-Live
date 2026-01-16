@@ -11,7 +11,6 @@ struct HifyLiveApp: App {
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: o6MRo8D6tOTcnXAAolXpRTXtHXKTg)
     }
     
-    @StateObject private var xZLto = EfqJ9.hlLgQUr6MegOX6Bv
     @StateObject private var qHyGWbkl4J6y35 = IyfdHMdY.bTa3L6BoprG
     
     @Environment(\.router) var arUac4mWLUCiC20zQa4D1lVuz4vWW
@@ -23,7 +22,9 @@ struct HifyLiveApp: App {
                     //判断是否存在token，存在进首页，不存在去登录
                     if ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.wFwG2LK27RYmRSty {
                         if qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt {
-                            ME9B8ZCwVQxn()
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                ME9B8ZCwVQxn()
+                            }
                         } else {
                             //获取当前登录用户数据
                             h7xAdXMHidxlrtblkRACwZ8kTw6QO()
@@ -48,21 +49,27 @@ struct HifyLiveApp: App {
                                             } else {
                                                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
-                                                    zkaqn9Jn()
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        zkaqn9Jn()
+                                                    }
                                                 }
                                             }
                                             
                                         case .failure(_):
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                             arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
-                                                zkaqn9Jn()
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    zkaqn9Jn()
+                                                }
                                             }
                                         }
                                     }
                                 }
                         }
                     } else {
-                        zkaqn9Jn()
+                        WUjfoptOKs8pZfhSAH0duplG {
+                            zkaqn9Jn()
+                        }
                     }
                 }
                 .onAppear {
@@ -71,7 +78,7 @@ struct HifyLiveApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
                     QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("CF/pQfyETmTqnvPASaLzZqpNGUPBRIo9Z7z0oPoNL/elWQYGLZRU+1kaFCnxQ07D")
                     router.showScreen(.fullScreenCover) { _ in
-                        zkaqn9Jn() // 你的登录页
+                        WUjfoptOKs8pZfhSAH0duplG {zkaqn9Jn()} // 你的登录页
                     }
                 }
             }

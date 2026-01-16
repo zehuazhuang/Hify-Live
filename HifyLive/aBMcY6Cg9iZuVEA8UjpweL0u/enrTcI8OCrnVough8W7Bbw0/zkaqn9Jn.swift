@@ -162,7 +162,9 @@ struct zkaqn9Jn: View {
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=")
                                                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                                         hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                                                            ME9B8ZCwVQxn()
+                                                                            WUjfoptOKs8pZfhSAH0duplG {
+                                                                                ME9B8ZCwVQxn()
+                                                                            }
                                                                         }
                                                                     }
                                                                 } else {
@@ -179,7 +181,9 @@ struct zkaqn9Jn: View {
                                                         // 新用户（nil 或 NSNull 都会进这里）
                                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                         hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                                            ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                            WUjfoptOKs8pZfhSAH0duplG {
+                                                                ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -263,7 +267,9 @@ struct zkaqn9Jn: View {
                                 .underline()
                                 .onTapGesture {
                                     hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                        R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
+                                        WUjfoptOKs8pZfhSAH0duplG {
+                                            R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
+                                        }
                                     }
                                 }
                         }
@@ -277,7 +283,9 @@ struct zkaqn9Jn: View {
                                 .underline()
                                 .onTapGesture {
                                     hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                        R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
+                                        WUjfoptOKs8pZfhSAH0duplG {
+                                            R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
+                                        }
                                     }
                                 }
                         }

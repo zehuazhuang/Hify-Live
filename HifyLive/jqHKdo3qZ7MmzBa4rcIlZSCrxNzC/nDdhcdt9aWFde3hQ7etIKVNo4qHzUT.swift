@@ -3,6 +3,33 @@ import Combine
 
 //toast
 
+struct WUjfoptOKs8pZfhSAH0duplG<pZvePB2YhReAp6: View>: View {
+    let hxG8wfUYjRwRzYIdMmbpiIUUI: pZvePB2YhReAp6
+
+    
+    @StateObject private var xZLto = EfqJ9.hlLgQUr6MegOX6Bv
+    
+    
+    init(@ViewBuilder qT1pcbSu1NhjQovXgZFtQd9P5: () -> pZvePB2YhReAp6) {
+        self.hxG8wfUYjRwRzYIdMmbpiIUUI = qT1pcbSu1NhjQovXgZFtQd9P5()
+    }
+
+
+    var body: some View {
+        ZStack {
+            hxG8wfUYjRwRzYIdMmbpiIUUI
+            //loading view
+            if xZLto.kpjdlNA22 {
+                BMTU5LVVTQYLXCZaN()
+                    .transition(.opacity)
+                    .zIndex(20)
+            }
+            dqUmaY6jE7tRWpendJ()
+                .zIndex(10)
+        }
+    }
+}
+
 final class QlzJ4yJcxJXY2paN: ObservableObject {
     static let rmjXXUocPJY2DEcTxiziKU6Nehjz1q = QlzJ4yJcxJXY2paN()
     

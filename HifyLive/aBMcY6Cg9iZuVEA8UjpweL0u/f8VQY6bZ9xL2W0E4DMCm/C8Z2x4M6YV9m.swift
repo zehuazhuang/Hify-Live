@@ -232,8 +232,6 @@ struct C8Z2x4M6YV9m: View {
                 .padding(.top,68)
                 .padding(.bottom,29)
             }
-            dqUmaY6jE7tRWpendJ()
-                .zIndex(10)
         }
         .ignoresSafeArea()
     }

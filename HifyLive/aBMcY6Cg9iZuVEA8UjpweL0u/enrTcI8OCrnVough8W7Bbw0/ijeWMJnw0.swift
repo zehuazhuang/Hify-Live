@@ -395,7 +395,9 @@ struct ijeWMJnw0: View {
                                         .onTapGesture {
                                             gjQ0haTFS7I7wobKnyS = false
                                             n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
-                                                zpPt6HEcUfuVXHI2CXtIaD1P()
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    zpPt6HEcUfuVXHI2CXtIaD1P()
+                                                }
                                             }
                                         }
                                 }
@@ -485,7 +487,9 @@ struct ijeWMJnw0: View {
                                                 IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7 = oeUbLj7s7zB6
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("O+768P8m4+RBzx9Wfs59VxDj5rLB58mh8yswpq0JtVY=")
                                                 n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
-                                                    ME9B8ZCwVQxn()
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        ME9B8ZCwVQxn()
+                                                    }
                                                 }
                                             }
                                         } else {
@@ -550,13 +554,6 @@ struct ijeWMJnw0: View {
                     .transition(.move(edge: .bottom))
                 }
             }
-            if b311AqIo0GvW8L8UXU3M1y.kpjdlNA22 {
-                BMTU5LVVTQYLXCZaN()
-                    .transition(.opacity)
-                    .zIndex(20)
-            }
-            dqUmaY6jE7tRWpendJ()
-                .zIndex(10)
         }.ignoresSafeArea()
             .onTapGesture {
                 eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false

@@ -37,7 +37,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .onTapGesture {
                         aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
+                            }
                         }
                     }
                     HStack(spacing: 0) {
@@ -52,7 +54,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .onTapGesture {
                         aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
+                            }
                         }
                     }
                     HStack(spacing: 0) {
@@ -67,7 +71,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .onTapGesture {
                         aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            js9GbCBiFR825bdWb7p7kVVWaBoE()
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                js9GbCBiFR825bdWb7p7kVVWaBoE()
+                            }
                         }
                     }
                 }
