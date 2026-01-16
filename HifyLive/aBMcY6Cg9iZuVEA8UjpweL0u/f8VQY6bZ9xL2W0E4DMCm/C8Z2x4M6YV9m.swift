@@ -6,7 +6,7 @@ struct C8Z2x4M6YV9m: View {
     
     var body: some View {
         ZStack {
-            ZJ7h766mz(tMmEWWlfgUag: "qS7I9tZ871czCL32")
+            ZJ7h766mz(tMmEWWlfgUag: "ziFHlaHt9TDT8JNoUekRk7yFke")
             ScrollView {
                 VStack(spacing: 72) {
                     VStack(spacing: 20) {
@@ -16,13 +16,13 @@ struct C8Z2x4M6YV9m: View {
                                     .fill(Color.white.opacity(0.2))
                                     .frame(width: 76)
                                     .overlay(alignment: .center) {
-                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()])
+                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
                                             .frame(width: 68,height: 68)
                                             .clipShape(Circle())
                                     }
                                 VStack(alignment: .leading,spacing: 4) {
                                     HStack(spacing: 16) {
-                                        Text("Keselek")
+                                        Text(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .semibold,
@@ -32,19 +32,34 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                     HStack(spacing: 16) {
                                         HStack(spacing: 4) {
-                                            ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy")
-                                                .frame(width: 24,height: 24)
-                                            Text("30")
+                                            if let x3r45aKu1Bx = (qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int) {
+                                                ZJ7h766mz(tMmEWWlfgUag: x3r45aKu1Bx == 0 ? "vK1PV3wuy5o4JGId" : x3r45aKu1Bx == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy")
+                                                    .frame(width: 24,height: 24)
+                                            } else {
+                                                ZJ7h766mz(tMmEWWlfgUag: "h8bx8HHiJD1BodEG8Zfzl")
+                                                    .frame(width: 24,height: 24)
+                                            }
+                                            Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
                                                 .g0LIIcoZQsOjyND9()
                                         }
                                         RoundedRectangle(cornerRadius: 0)
                                             .fill(Color.white.opacity(0.4))
                                             .frame(width: 1,height: 13)
                                         HStack(spacing: 4) {
-                                            Text("ID：10000079")
+                                            Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())))
                                                 .g0LIIcoZQsOjyND9()
-                                            ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX")
-                                                .frame(width: 16,height: 16)
+                                            Button{
+                                                let gjikAoPvX = String(
+                                                    qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int(
+                                                        "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
+                                                    )
+                                                )
+                                                UIPasteboard.general.string = gjikAoPvX
+                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("WcL50Np5GVd6t5bX/HF7hmnzlsK5RfSE/aWPAoF0bgiJkyDwmaEHPZELiqE2aMEk")
+                                            } label: {
+                                                ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX")
+                                                    .frame(width: 16,height: 16)
+                                            }
                                         }
                                     }
                                 }
@@ -217,6 +232,8 @@ struct C8Z2x4M6YV9m: View {
                 .padding(.top,68)
                 .padding(.bottom,29)
             }
+            dqUmaY6jE7tRWpendJ()
+                .zIndex(10)
         }
         .ignoresSafeArea()
     }

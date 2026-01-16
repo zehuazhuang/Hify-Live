@@ -13,3 +13,14 @@ final class IyfdHMdY: ObservableObject {
     /// 是否已加载完数据
     @Published var rzeKD010L4fVwfSUlarrt: Bool = false
 }
+
+extension Dictionary where Key == String, Value == Any {
+
+    func string(_ key: String, default def: String = "") -> String {
+        self[key] as? String ?? def
+    }
+
+    func int(_ key: String, default def: Int = 0) -> Int {
+        self[key] as? Int ?? def
+    }
+}

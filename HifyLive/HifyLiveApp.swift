@@ -2,31 +2,6 @@ import GoogleSignIn
 import SwiftUI
 import SwiftfulRouting
 
-
-struct uHYeXunyhHKJK7QDdQI46W: Codable {
-    
-    let sjcRdDTK: Int //用户ID
-    let fQQWhWMIMla1kWr: String //云信ID
-    
-    func encode(to encoder: Encoder) throws {
-        var xlZ4NMI1SwBAYpXr1 = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
-        
-        try xlZ4NMI1SwBAYpXr1.encode(
-            sjcRdDTK,
-            forKey: bonDyqD2YnaVJW(
-                "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
-            )
-        )
-        
-        try xlZ4NMI1SwBAYpXr1.encode(
-            fQQWhWMIMla1kWr,
-            forKey: bonDyqD2YnaVJW(
-                "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()
-            )
-        )
-    }
-}
-
 @main
 struct HifyLiveApp: App {
     
@@ -53,8 +28,7 @@ struct HifyLiveApp: App {
                             //获取当前登录用户数据
                             h7xAdXMHidxlrtblkRACwZ8kTw6QO()
                                 .onAppear {
-                                    let ynVm9Eu9qXtHxVzDpKzMrG8Cqopy = uHYeXunyhHKJK7QDdQI46W(sjcRdDTK: ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC, fQQWhWMIMla1kWr: ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fP9yQC0UH00)
-                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "jd+Je9oaVKuQ4jHkoZazeiUeAljC8YlPdz+5tirNkKw=".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: ynVm9Eu9qXtHxVzDpKzMrG8Cqopy) { (fyx2rOxV8T5fTGMyPa4: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu(),b3q0LlCSk: [String: String](),) { (fyx2rOxV8T5fTGMyPa4: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                         switch fyx2rOxV8T5fTGMyPa4 {
                                         case .success(let cmBllstUOfe):
                                             print(cmBllstUOfe.code)
