@@ -176,6 +176,7 @@ struct zkaqn9Jn: View {
                                                         }
                                                     } else {
                                                         // 新用户（nil 或 NSNull 都会进这里）
+                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                         hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
                                                             ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
                                                         }
