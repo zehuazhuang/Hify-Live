@@ -3,7 +3,7 @@ import SwiftUI
 struct JqA1kMoFobuvplkZO5w4FWsenOf {
     // 默认字体系列
     static let q3BkrvU = "Barlow-Regular" //400
-    static let zWTRQwd2xmNPrgaM6CmNswzFmNKJNL0 = "Barlow-Medium" //600
+    static let zWTRQwd2xmNPrgaM6CmNswzFmNKJNL0 = "Barlow-Medium" //500
     static let xMWTBl16DkUAifDmZD892UuMAv = "Barlow-SemiBold" //600
     static let rRhYwcR9vtOk65ELrsUlV3 = "Barlow-Black" //900
 

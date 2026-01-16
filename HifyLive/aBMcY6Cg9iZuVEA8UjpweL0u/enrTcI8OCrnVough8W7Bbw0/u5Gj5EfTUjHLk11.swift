@@ -1,13 +1,31 @@
 import SwiftUI
 import WebKit
+import SwiftfulRouting
 
 struct R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3: View {
     
     let irJBAop3c1cEIKUf3jOsmjxJfVg:String
     
+    @Environment(\.router) var uROx9OAsQCkQ
+    
     var body: some View {
-        syxPKymheDuHDpj8YZDphHB1(woYpip7cBo2EKQWEWjD6eqwol: irJBAop3c1cEIKUf3jOsmjxJfVg)
-            .edgesIgnoringSafeArea(.all)
+        ZStack {
+            Color(red: 13/255, green: 13/255, blue: 18/255)
+            VStack(spacing: 10) {
+                HStack(spacing: 12) {
+                    ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
+                        .frame(width: 24,height: 24)
+                        .onTapGesture {
+                            uROx9OAsQCkQ.dismissScreen()
+                        }
+                    Spacer()
+                }
+                .padding(.top,58)
+                .padding(.leading,16)
+                syxPKymheDuHDpj8YZDphHB1(woYpip7cBo2EKQWEWjD6eqwol: irJBAop3c1cEIKUf3jOsmjxJfVg)
+            }
+        }
+        .ignoresSafeArea()
     }
 }
 

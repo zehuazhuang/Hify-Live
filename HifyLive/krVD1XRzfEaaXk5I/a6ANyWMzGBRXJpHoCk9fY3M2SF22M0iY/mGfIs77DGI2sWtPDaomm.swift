@@ -51,6 +51,7 @@ final class WOKmjUjM {
             "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu(): "1.0.1",//appVersion
             "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu(): nmZuLwUv.fiaiU4sbcNXzTzXA ?? "",//loginToken
             "xGWm0Zhs5rl1HzU63Yd4hA==".bFHEatcgE4zzU9TCfDonsu(): "f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(),//content-type --- application/json
+            "Accept": "f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(),//Accept --- application/json
             "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu(): nmZuLwUv.nOlVkD, //deviceNo
         ]
     }
@@ -62,65 +63,66 @@ final class WOKmjUjM {
     ///   - completion: 返回 Data（原始），由调用方自己决定解析方式
     func u4zc01qpmnxgrZY2kpPJSCrCCWhUIptZ<T: Codable>(
         d91f2YK: String,
-        body: T,
-        completion: @escaping (Result<Data, Error>) -> Void
+        lCPuY6S9Ov185igRRdGb8fQizbjuqw: T,
+        eUBbaLZvAje5GLxMb: @escaping (Result<Data, Error>) -> Void
     ) {
-        let url = sqvbWkPN.appendingPathComponent(d91f2YK)
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = mUKxiOp6eoowXkAujNLiR()
+        let tmXsNyLk9jl = sqvbWkPN.appendingPathComponent(d91f2YK)
+        var biHmuVi1B21WPGO = URLRequest(url: tmXsNyLk9jl)
+        biHmuVi1B21WPGO.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu() //POST
+        biHmuVi1B21WPGO.allHTTPHeaderFields = mUKxiOp6eoowXkAujNLiR()
+        print("请求头: \(biHmuVi1B21WPGO.allHTTPHeaderFields ?? [:])")
         
         do {
-            let jsonData = try JSONEncoder().encode(body)
+            let d7hTYfwIR = try JSONEncoder().encode(lCPuY6S9Ov185igRRdGb8fQizbjuqw)
             
-            guard let jsonString = String(data: jsonData, encoding: .utf8) else {
-                throw NSError(domain: "LiveAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode JSON"])
+            guard let nEa4KCzHwxluWISVzOXqVwukQ9 = String(data: d7hTYfwIR, encoding: .utf8) else {
+                throw NSError(domain: "rS5burW4QkK/9yJ7MUbz4A==".bFHEatcgE4zzU9TCfDonsu(), code: -1, userInfo: [NSLocalizedDescriptionKey: "EFbsDh1PQGFj37y1bb/KJ75hHJu8VfRfhEGPBcQVaVg=".bFHEatcgE4zzU9TCfDonsu()])
             }
             
-            let encryptedString = jsonString.tYwP1zF6sM8vR2kq() // 你的加密方法
+            let o2HZU0mJ = nEa4KCzHwxluWISVzOXqVwukQ9.tYwP1zF6sM8vR2kq() // 你的加密方法
             print("加密数据")
-            print(encryptedString)
-            request.httpBody = encryptedString.data(using: .utf8)
+            print(o2HZU0mJ)
+            biHmuVi1B21WPGO.httpBody = o2HZU0mJ.data(using: .utf8)
             
         } catch {
-            completion(.failure(error))
+            eUBbaLZvAje5GLxMb(.failure(error))
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        URLSession.shared.dataTask(with: biHmuVi1B21WPGO) { fHzNVSPyWl1PBPEr, _, iXeEEC6uYGesqcZFyS0azNH in
             DispatchQueue.main.async {
-                if let error = error {
-                    completion(.failure(error))
+                if let uAt05y7M7XH5pq = iXeEEC6uYGesqcZFyS0azNH {
+                    eUBbaLZvAje5GLxMb(.failure(uAt05y7M7XH5pq))
                     return
                 }
                 
-                guard let data = data else {
-                    completion(.failure(NSError(domain: "No data", code: -1)))
+                guard let tQk6UNCOXMjVF = fHzNVSPyWl1PBPEr else {
+                    eUBbaLZvAje5GLxMb(.failure(NSError(domain: "ovcyqbDoQ72QpXRndBdOXg==".bFHEatcgE4zzU9TCfDonsu(), code: -1)))
                     return
                 }
                 
-                completion(.success(data))
+                eUBbaLZvAje5GLxMb(.success(tQk6UNCOXMjVF))
             }
         }.resume()
     }
     
     /// POST 请求（解析成 Codable）
-    func postCodable<T: Codable, U: Codable>(
-        path: String,
-        body: T,
-        completion: @escaping (Result<U, Error>) -> Void
+    func zhuqPvhpwoDjs<T: Codable, U: Codable>(
+        tk5afnKIwTiQL5Ai79O0AnK3f5G: String,
+        b3q0LlCSk: T,
+        vz8mIZ: @escaping (Result<U, Error>) -> Void
     ) {
-        u4zc01qpmnxgrZY2kpPJSCrCCWhUIptZ(d91f2YK:path , body: body) { result in
-            switch result {
-            case .success(let data):
+        u4zc01qpmnxgrZY2kpPJSCrCCWhUIptZ(d91f2YK:tk5afnKIwTiQL5Ai79O0AnK3f5G , lCPuY6S9Ov185igRRdGb8fQizbjuqw: b3q0LlCSk) { td9MXst2FJp5tH in
+            switch td9MXst2FJp5tH {
+            case .success(let deHtiwXgwor6oBoAdpZwniF):
                 do {
-                    let decoded = try JSONDecoder().decode(U.self, from: data)
-                    completion(.success(decoded))
+                    let kLUC87riFAgqL = try JSONDecoder().decode(U.self, from: deHtiwXgwor6oBoAdpZwniF)
+                    vz8mIZ(.success(kLUC87riFAgqL))
                 } catch {
-                    completion(.failure(error))
+                    vz8mIZ(.failure(error))
                 }
-            case .failure(let error):
-                completion(.failure(error))
+            case .failure(let qPAVFt1Qv0QCN7WnvV3):
+                vz8mIZ(.failure(qPAVFt1Qv0QCN7WnvV3))
             }
         }
     }

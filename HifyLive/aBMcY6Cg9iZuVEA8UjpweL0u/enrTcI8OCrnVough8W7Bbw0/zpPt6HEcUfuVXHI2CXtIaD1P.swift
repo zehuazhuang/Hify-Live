@@ -43,6 +43,12 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                             size: 18,
                             weight: .semibold
                         )
+                        .onTapGesture {
+                            
+                            print(1)
+                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("P1XBn32shPZ0IyNZUWkhNQyh39aQXiyicZEAp+0/sz4=")
+                            print(2)
+                        }
                     Spacer()
                 }
                 .padding(.top,58)

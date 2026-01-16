@@ -21,6 +21,20 @@ final class ZRsco2bysq39NmLBBhFtU044p: ObservableObject {
         }
     }
     
+    // 用户 ID (只存储，不绑定视图)
+    var bM7TelSL1RiLs8539FWAC: Int {
+        didSet {
+            UserDefaults.standard.set(bM7TelSL1RiLs8539FWAC, forKey: "z1qmzcroCWl4Uez7pNQ3P0RXSCGubJ")
+        }
+    }
+    
+    // 云信 ID (只存储，不绑定视图)
+    var fP9yQC0UH00: String {
+        didSet {
+            UserDefaults.standard.set(fP9yQC0UH00, forKey: "wcCqVFtg6yx")
+        }
+    }
+    
     private init() {
         // 加载 token
         self.fiaiU4sbcNXzTzXA = UserDefaults.standard.string(forKey: "oxwNbT")
@@ -33,6 +47,13 @@ final class ZRsco2bysq39NmLBBhFtU044p: ObservableObject {
             self.nOlVkD = xVFq5S9azu
             UserDefaults.standard.set(xVFq5S9azu, forKey: "u7mB2y4nkLmWRpQB7v")
         }
+        
+        // 加载用户 ID
+        self.bM7TelSL1RiLs8539FWAC = UserDefaults.standard.integer(forKey: "z1qmzcroCWl4Uez7pNQ3P0RXSCGubJ") // 如果不存在，会返回 0
+        
+        // 加载云信 ID
+        self.fP9yQC0UH00 = UserDefaults.standard.string(forKey: "wcCqVFtg6yx") ?? ""
+   
     }
     
     /// 是否已登录-- token是否存在

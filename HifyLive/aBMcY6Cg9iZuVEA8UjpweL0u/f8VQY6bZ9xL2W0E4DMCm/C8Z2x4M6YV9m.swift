@@ -79,7 +79,7 @@ struct C8Z2x4M6YV9m: View {
                                         Color.white.opacity(0.1),
                                         lineWidth: 1
                                     )
-                                    .frame(width: 209,height: 78)
+                                    .frame(height: 78)
                                     .overlay {
                                         ZJ7h766mz(tMmEWWlfgUag: "ewkwdg82JnajVffQKKJvEzzGNHepKO")
                                         VStack(alignment: .leading, spacing: 5) {
@@ -101,10 +101,6 @@ struct C8Z2x4M6YV9m: View {
                                         .padding(.leading,16)
                                     }
                                 RoundedRectangle(cornerRadius: 12)
-                                    .stroke(
-                                        Color.white.opacity(0.1),
-                                        lineWidth: 1
-                                    )
                                     .frame(width: 127,height: 78)
                                     .overlay {
                                         ZJ7h766mz(tMmEWWlfgUag: "dNYdnd")
@@ -122,6 +118,90 @@ struct C8Z2x4M6YV9m: View {
                                         .padding(.leading,16)
                                     }
                             }
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    HStack(spacing: 8) {
+                                        ZJ7h766mz(tMmEWWlfgUag: "mC8m48bHtb35cMV")
+                                            .frame(width: 26,height: 26)
+                                        Text("1DvzZzsH5HkmS0//ed72fg==".bFHEatcgE4zzU9TCfDonsu())
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16
+                                            )
+                                    }
+                                    Spacer()
+                                    ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                        .frame(width: 24,height: 24)
+                                }
+                                .padding(.all,12)
+                                HStack(spacing: 0) {
+                                    HStack(spacing: 8) {
+                                        ZJ7h766mz(tMmEWWlfgUag: "dRXAyI")
+                                            .frame(width: 26,height: 26)
+                                        Text("u6ofXMGtiahsJ31KIcRvuw==".bFHEatcgE4zzU9TCfDonsu())
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16
+                                            )
+                                    }
+                                    Spacer()
+                                    ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                        .frame(width: 24,height: 24)
+                                }
+                                .padding(.all,12)
+                            }
+                            .padding(.vertical,4)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(red: 24/255, green: 22/255, blue: 33/255))
+                            )
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    HStack(spacing: 8) {
+                                        ZJ7h766mz(tMmEWWlfgUag: "rcwkty")
+                                            .frame(width: 26,height: 26)
+                                        Text("8oTJRZo4BczbG5KICEFzWg==".bFHEatcgE4zzU9TCfDonsu())
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16
+                                            )
+                                    }
+                                    Spacer()
+                                    ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                        .frame(width: 24,height: 24)
+                                }
+                                .padding(.all,12)
+                                HStack(spacing: 0) {
+                                    HStack(spacing: 8) {
+                                        ZJ7h766mz(tMmEWWlfgUag: "uLpQEr9hLtV3BavMXPgLNJJrPiTF")
+                                            .frame(width: 26,height: 26)
+                                        Text("jJZuRCz65qh1LFbiFGPnOA==".bFHEatcgE4zzU9TCfDonsu())
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16
+                                            )
+                                    }
+                                    Spacer()
+                                    ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                        .frame(width: 24,height: 24)
+                                }
+                                .padding(.all,12)
+                                HStack(spacing: 0) {
+                                    HStack(spacing: 8) {
+                                        ZJ7h766mz(tMmEWWlfgUag: "bI3wkNyzCyPXGCpro")
+                                            .frame(width: 26,height: 26)
+                                        Text("k8e57l1EWt3riG/LDFHXfA==".bFHEatcgE4zzU9TCfDonsu())
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16
+                                            )
+                                    }
+                                    Spacer()
+                                    ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                        .frame(width: 24,height: 24)
+                                }
+                                .padding(.all,12)
+                            }
+                            .padding(.vertical,4)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(red: 24/255, green: 22/255, blue: 33/255))
+                            )
                         }
                     }
                     Text("T61SbTU+0q90Ny7Mxr7V2g==".bFHEatcgE4zzU9TCfDonsu())
