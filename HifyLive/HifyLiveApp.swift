@@ -52,15 +52,11 @@ struct HifyLiveApp: App {
                                                 }
                                             }
                                             
-                                        case .failure(let u0lXlYLQiGrjGGOpB9Mp):
-                                            var uArr57u4wCFEBiObMWHD5lidt7K:String = ""
-                                            if let lceNSIyqcTobVEYEgAQrxBBYhBKmg5B = u0lXlYLQiGrjGGOpB9Mp as? UVvaHCnbKWNk4KQPzW5aJDt {
-                                                uArr57u4wCFEBiObMWHD5lidt7K = lceNSIyqcTobVEYEgAQrxBBYhBKmg5B.eUJLh
-                                            } else {
-                                                uArr57u4wCFEBiObMWHD5lidt7K = u0lXlYLQiGrjGGOpB9Mp.localizedDescription
-                                            }
-                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(uArr57u4wCFEBiObMWHD5lidt7K)
+                                        case .failure(_):
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                            arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
+                                                zkaqn9Jn()
+                                            }
                                         }
                                     }
                                 }
