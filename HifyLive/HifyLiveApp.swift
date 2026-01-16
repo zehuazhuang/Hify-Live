@@ -28,7 +28,7 @@ struct HifyLiveApp: App {
                             //获取当前登录用户数据
                             h7xAdXMHidxlrtblkRACwZ8kTw6QO()
                                 .onAppear {
-                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu(),b3q0LlCSk: [String: String](),) { (fyx2rOxV8T5fTGMyPa4: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "gwkJDSPvuIdbiSZMMSMa6nqC3rKE3+qsHYeGVuBnHPc=".bFHEatcgE4zzU9TCfDonsu(),b3q0LlCSk: [String: String](),) { (fyx2rOxV8T5fTGMyPa4: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                         switch fyx2rOxV8T5fTGMyPa4 {
                                         case .success(let cmBllstUOfe):
                                             print(cmBllstUOfe.code)
@@ -51,11 +51,16 @@ struct HifyLiveApp: App {
                                                     zkaqn9Jn()
                                                 }
                                             }
-                                        case .failure(_):
-                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                            arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
-                                                zkaqn9Jn()
+                                            
+                                        case .failure(let u0lXlYLQiGrjGGOpB9Mp):
+                                            var uArr57u4wCFEBiObMWHD5lidt7K:String = ""
+                                            if let lceNSIyqcTobVEYEgAQrxBBYhBKmg5B = u0lXlYLQiGrjGGOpB9Mp as? UVvaHCnbKWNk4KQPzW5aJDt {
+                                                uArr57u4wCFEBiObMWHD5lidt7K = lceNSIyqcTobVEYEgAQrxBBYhBKmg5B.eUJLh
+                                            } else {
+                                                uArr57u4wCFEBiObMWHD5lidt7K = u0lXlYLQiGrjGGOpB9Mp.localizedDescription
                                             }
+                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(uArr57u4wCFEBiObMWHD5lidt7K)
+                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                         }
                                     }
                                 }
@@ -63,14 +68,6 @@ struct HifyLiveApp: App {
                     } else {
                         zkaqn9Jn()
                     }
-                    //loading view
-                    if xZLto.kpjdlNA22 {
-                        BMTU5LVVTQYLXCZaN()
-                            .transition(.opacity)
-                            .zIndex(20)
-                    }
-                    dqUmaY6jE7tRWpendJ()
-                        .zIndex(10)
                 }
                 .onAppear {
                     UfmQhHA1doHKs.bHNA2Amheuq0.e3lm29iotZr1P6CsH()

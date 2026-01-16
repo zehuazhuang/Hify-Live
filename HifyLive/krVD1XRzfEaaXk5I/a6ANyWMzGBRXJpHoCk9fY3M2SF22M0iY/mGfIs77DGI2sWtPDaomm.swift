@@ -34,6 +34,12 @@ extension String {
     }
 }
 
+struct UVvaHCnbKWNk4KQPzW5aJDt: Error {
+    let cj1N1slhsxdjKjCewAzR3TFUsJw: String
+    
+    var eUJLh: String { cj1N1slhsxdjKjCewAzR3TFUsJw }
+}
+
 final class WOKmjUjM {
     
     static let dq0JZ94RcmDb3 = WOKmjUjM()
@@ -91,13 +97,13 @@ final class WOKmjUjM {
         
         URLSession.shared.dataTask(with: biHmuVi1B21WPGO) { fHzNVSPyWl1PBPEr, odwmhGvKuEz7uG, iXeEEC6uYGesqcZFyS0azNH in
             DispatchQueue.main.async {
-                if let uAt05y7M7XH5pq = iXeEEC6uYGesqcZFyS0azNH {
-                    eUBbaLZvAje5GLxMb(.failure(uAt05y7M7XH5pq))
+                if let _ = iXeEEC6uYGesqcZFyS0azNH {
+                    eUBbaLZvAje5GLxMb(.failure(UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw:"9fZeXzm2b8JDi9URhrOPCQ==".bFHEatcgE4zzU9TCfDonsu())))
                     return
                 }
                 
                 guard let bWtqmD7lucTVd = odwmhGvKuEz7uG as? HTTPURLResponse else {
-                    eUBbaLZvAje5GLxMb(.failure(NSError(domain: "Fe2JSs8C9JrZKzj2C0oNlg==".bFHEatcgE4zzU9TCfDonsu(), code: -1)))
+                    eUBbaLZvAje5GLxMb(.failure(UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw:"2DM2Z94bu6d8JPzzIf8jsun0SnWw62x3q/6Ntp98akQkE0An2ZjWccqq39/HHg1pN2F46Szhu50OUr5rn+kPTw==".bFHEatcgE4zzU9TCfDonsu())))
                     return
                 }
                 
@@ -110,7 +116,7 @@ final class WOKmjUjM {
                 }
                 
                 guard let tQk6UNCOXMjVF = fHzNVSPyWl1PBPEr else {
-                    eUBbaLZvAje5GLxMb(.failure(NSError(domain: "ovcyqbDoQ72QpXRndBdOXg==".bFHEatcgE4zzU9TCfDonsu(), code: -1)))
+                    eUBbaLZvAje5GLxMb(.failure(UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw:"zKJ0JhTyNQKhBwONwPSNv/6ZA+dkt4xcIDrr2g61RgHGWBNMyyqv0OYQoTDCFFpy".bFHEatcgE4zzU9TCfDonsu())))
                     return
                 }
                 
@@ -134,8 +140,14 @@ final class WOKmjUjM {
                 } catch {
                     vz8mIZ(.failure(error))
                 }
-            case .failure(let qPAVFt1Qv0QCN7WnvV3):
-                vz8mIZ(.failure(qPAVFt1Qv0QCN7WnvV3))
+            case .failure(let bxtX6INFNIOUXbK6Gsja):
+                let yf37ozbFnvBsnl: UVvaHCnbKWNk4KQPzW5aJDt
+                if let gft5ya = bxtX6INFNIOUXbK6Gsja as? UVvaHCnbKWNk4KQPzW5aJDt {
+                    yf37ozbFnvBsnl = gft5ya
+                } else {
+                    yf37ozbFnvBsnl = UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw: bxtX6INFNIOUXbK6Gsja.localizedDescription)
+                }
+                vz8mIZ(.failure(yf37ozbFnvBsnl))
             }
         }
     }

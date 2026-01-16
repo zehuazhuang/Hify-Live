@@ -53,7 +53,7 @@ struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
 struct zkaqn9Jn: View {
     
     @Environment(\.router) var hTU5wZj8E2nU59
-
+    
     var body: some View {
         ZStack{
             ZJ7h766mz(tMmEWWlfgUag: "qS7I9tZ871czCL32")
@@ -65,28 +65,28 @@ struct zkaqn9Jn: View {
                 Spacer()
                 VStack(spacing: 68){
                     VStack(spacing: 24) {
-//                        RoundedRectangle(cornerRadius: 36)
-//                            .fill(Color.white)
-//                            .frame(height: 48)
-//                            .overlay(alignment: .center) {
-//                                HStack{
-//                                    RoundedRectangle(cornerRadius: 0)
-//                                        .fill(Color.clear)
-//                                        .frame(width: 24,height: 24)
-//                                        .overlay {
-//                                            ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
-//                                        }
-//                                    Spacer()
-//                                }
-//                                .padding(.leading,24)
-//                                Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
-//                                    .g0LIIcoZQsOjyND9(
-//                                        size: 16,
-//                                        weight: .semibold,
-//                                        color: Color(red: 13/255, green: 13/255, blue: 18/255)
-//                                    )
-//                            }
-//                            .padding(.horizontal,36)
+                        //                        RoundedRectangle(cornerRadius: 36)
+                        //                            .fill(Color.white)
+                        //                            .frame(height: 48)
+                        //                            .overlay(alignment: .center) {
+                        //                                HStack{
+                        //                                    RoundedRectangle(cornerRadius: 0)
+                        //                                        .fill(Color.clear)
+                        //                                        .frame(width: 24,height: 24)
+                        //                                        .overlay {
+                        //                                            ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
+                        //                                        }
+                        //                                    Spacer()
+                        //                                }
+                        //                                .padding(.leading,24)
+                        //                                Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
+                        //                                    .g0LIIcoZQsOjyND9(
+                        //                                        size: 16,
+                        //                                        weight: .semibold,
+                        //                                        color: Color(red: 13/255, green: 13/255, blue: 18/255)
+                        //                                    )
+                        //                            }
+                        //                            .padding(.horizontal,36)
                         Button{
                             EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                             MNcU5G2d5lovPsrWsZR.qmeyXuu0AeNRHIjoVH8WkPZTOKbDpgVv.uN4EYG5707zDhAdkPqw(x32VMaqCadHB: dy8ovFCSzlHO2h()) { sVaytka8rmaCF in
@@ -136,7 +136,7 @@ struct zkaqn9Jn: View {
                                                         let nrTgHasms = DateFormatter()
                                                         nrTgHasms.dateFormat = "rpxVSISmgtmCzrTRpHhzTw==".bFHEatcgE4zzU9TCfDonsu()
                                                         nrTgHasms.timeZone = TimeZone.current // 或者指定时区
-
+                                                        
                                                         let jZU3hAIkF1Q2ZT61Lpo7W2 = nrTgHasms.string(from: zX6HlaP)
                                                         
                                                         let tjo7FSBXRqDGtC42gybnBERwh = cpEtaR(wKrCAroUqTbC2rd9pcKfELDDQ: on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG, hVH5DxQ7Q558SdJWLt: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", cImAJ4BdZYF9hJ4x: String(nAT4VBfqN62FOc8x6XFADpNqJ["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0), hmNWPkT: on98qnn55lS6bK68e.sI9ab2lfhqbpaKAkkJ18gYAi ?? "", fRKTOb3: qb9c6NkMMK5["BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", oT9WD2aupYPQUmLUQMwvo: qb9c6NkMMK5["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", wLsFSPTENSsbKoQTDC:qb9c6NkMMK5["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0, spnXcOm: qb9c6NkMMK5["n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", ptxrDJchMpilBtm: jZU3hAIkF1Q2ZT61Lpo7W2, vOPrjVF8S5VO8uXporotTUlUO: qb9c6NkMMK5["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] ?? [],)
@@ -188,9 +188,15 @@ struct zkaqn9Jn: View {
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(cmBllstUOfe.message,z2E1geUN5miQ95SpoCG: false)
                                             }
                                             
-                                        case .failure(_):
+                                        case .failure(let u0lXlYLQiGrjGGOpB9Mp):
+                                            var uArr57u4wCFEBiObMWHD5lidt7K:String = ""
+                                            if let lceNSIyqcTobVEYEgAQrxBBYhBKmg5B = u0lXlYLQiGrjGGOpB9Mp as? UVvaHCnbKWNk4KQPzW5aJDt {
+                                                uArr57u4wCFEBiObMWHD5lidt7K = lceNSIyqcTobVEYEgAQrxBBYhBKmg5B.eUJLh
+                                            } else {
+                                                uArr57u4wCFEBiObMWHD5lidt7K = u0lXlYLQiGrjGGOpB9Mp.localizedDescription
+                                            }
+                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(uArr57u4wCFEBiObMWHD5lidt7K)
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("hhOl6/VUEq+mQVyGto4rnS/pNZHCom6WeachEyfneieYY3GFdHKoa4iQygGkvAQm")
                                         }
                                     }
                                 case .failure(let u0lXlYLQiGrjGGOpB9Mp as NSError):
