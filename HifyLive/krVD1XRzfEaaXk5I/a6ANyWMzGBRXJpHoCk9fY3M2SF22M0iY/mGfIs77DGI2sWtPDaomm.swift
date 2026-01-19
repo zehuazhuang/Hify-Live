@@ -40,6 +40,7 @@ struct UVvaHCnbKWNk4KQPzW5aJDt: Error {
     var eUJLh: String { cj1N1slhsxdjKjCewAzR3TFUsJw }
 }
 
+//post请求封装
 final class WOKmjUjM {
     
     static let dq0JZ94RcmDb3 = WOKmjUjM()

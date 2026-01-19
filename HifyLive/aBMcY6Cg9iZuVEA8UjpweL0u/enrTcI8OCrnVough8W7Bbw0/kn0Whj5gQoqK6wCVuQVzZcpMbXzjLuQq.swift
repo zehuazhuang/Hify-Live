@@ -1,5 +1,6 @@
 import SwiftUI
 
+//性别选择弹框
 struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
     
     var qiizd0IijFdcEjzdYt: (Int) -> Void

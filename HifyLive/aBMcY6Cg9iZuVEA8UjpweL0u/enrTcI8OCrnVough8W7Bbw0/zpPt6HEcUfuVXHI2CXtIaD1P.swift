@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftfulRouting
 
+//国家选择页面
 struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
     @ObservedObject var hAgiZOpZ = UfmQhHA1doHKs.bHNA2Amheuq0
     @ObservedObject var lr7J7X4retLhiZiJuwDo7 = Y4x7FkE3Q18iArhSXlC4Q5Z9.rGZrJ0Qgm4
@@ -12,16 +13,16 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
     
     var uJmhiqFsRDGzvObN4Bi4: [[String: Any]] {
         guard let h4YQfCFpFLXxKPTWuGWvRUeHFog = hAgiZOpZ.o6Ex5Lgp7q46dDOd3db else { return [] }
-
+        
         let g4QlgUdQ5k = pbPeJ
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
-
+        
         // 没输入搜索词 → 全部返回
         if g4QlgUdQ5k.isEmpty {
             return h4YQfCFpFLXxKPTWuGWvRUeHFog
         }
-
+        
         return h4YQfCFpFLXxKPTWuGWvRUeHFog.filter { iesn0od46 in
             let oNQi0QZO4gWUQvtrgMieNumbaAf = (iesn0od46["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String)?.lowercased() ?? ""
             return oNQi0QZO4gWUQvtrgMieNumbaAf.contains(g4QlgUdQ5k)
@@ -92,10 +93,10 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                     .padding(.horizontal,16)
                 ScrollView {
                     VStack(spacing: 0) {
-
+                        
                         ForEach(uJmhiqFsRDGzvObN4Bi4.indices, id: \.self) { qZBXpP5XfUZ05ynY3kNq in
                             let cuiITaXSxQgvX2NWtFmfnBxf = uJmhiqFsRDGzvObN4Bi4[qZBXpP5XfUZ05ynY3kNq]
-
+                            
                             Button{
                                 lr7J7X4retLhiZiJuwDo7.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 = cuiITaXSxQgvX2NWtFmfnBxf
                                 vlmreWUQbQrsDKFfZtM3Niti.dismissScreen()
@@ -104,16 +105,19 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                                     HStack(spacing: 8) {
                                         Text(cuiITaXSxQgvX2NWtFmfnBxf["sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
                                             .g0LIIcoZQsOjyND9(size: 26)
-
-                                        Text(cuiITaXSxQgvX2NWtFmfnBxf["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                            .g0LIIcoZQsOjyND9(size: 16)
-                                            .lineLimit(1)
-
+                                        
+                                        if pbPeJ.count > 0 {
+                                            i8WLc5e4KQTLECD3Dkpj8whZ53zXoA5l(cuiITaXSxQgvX2NWtFmfnBxf["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", eu35TPnxbaJLOeFBDIjy5: pbPeJ)
+                                        } else {
+                                            Text(cuiITaXSxQgvX2NWtFmfnBxf["eISSNYutN9jGiUUhHjL8DA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                                .g0LIIcoZQsOjyND9(size: 16)
+                                        }
+                                        
                                         Spacer()
                                     }
                                     .padding(.top, 20)
                                     .padding(.bottom, 12)
-
+                                    
                                     RoundedRectangle(cornerRadius: 0)
                                         .fill(Color.white.opacity(0.15))
                                         .frame(height: 1)
@@ -143,4 +147,47 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
 
 #Preview {
     zpPt6HEcUfuVXHI2CXtIaD1P()
+}
+
+//输入框文案匹配高亮封装
+func i8WLc5e4KQTLECD3Dkpj8whZ53zXoA5l(
+    _ vUeVIOkVaRSFzObuz66J6So9yvO: String,
+    eu35TPnxbaJLOeFBDIjy5: String
+) -> Text {
+    guard !eu35TPnxbaJLOeFBDIjy5.isEmpty else {
+        return Text(vUeVIOkVaRSFzObuz66J6So9yvO)
+            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
+            .foregroundColor(Color.white.opacity(0.39))
+    }
+    
+    let vx3s2E = vUeVIOkVaRSFzObuz66J6So9yvO.lowercased()
+    let oVMhziB6OmY0gDaersopLLX = eu35TPnxbaJLOeFBDIjy5.lowercased()
+    
+    var i4QHWViornHFbNtopokxnPmTCc = Text("")
+    var yLoKBY6KcYz8UZ1ccAnrLd5 = vUeVIOkVaRSFzObuz66J6So9yvO.startIndex
+    
+    while let xc7TQXs8LbSaIYO4P4zIZf = vx3s2E.range(
+        of: oVMhziB6OmY0gDaersopLLX,
+        range: yLoKBY6KcYz8UZ1ccAnrLd5..<vUeVIOkVaRSFzObuz66J6So9yvO.endIndex
+    ) {
+        // 普通文本
+        i4QHWViornHFbNtopokxnPmTCc = i4QHWViornHFbNtopokxnPmTCc + Text(vUeVIOkVaRSFzObuz66J6So9yvO[yLoKBY6KcYz8UZ1ccAnrLd5..<xc7TQXs8LbSaIYO4P4zIZf.lowerBound])
+            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
+            .foregroundColor(Color.white.opacity(0.39))
+        
+        // 高亮文本
+        i4QHWViornHFbNtopokxnPmTCc = i4QHWViornHFbNtopokxnPmTCc + Text(vUeVIOkVaRSFzObuz66J6So9yvO[xc7TQXs8LbSaIYO4P4zIZf])
+            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
+            .foregroundColor(Color.white)
+        
+        
+        yLoKBY6KcYz8UZ1ccAnrLd5 = xc7TQXs8LbSaIYO4P4zIZf.upperBound
+    }
+    
+    // 剩余文本
+    i4QHWViornHFbNtopokxnPmTCc = i4QHWViornHFbNtopokxnPmTCc + Text(vUeVIOkVaRSFzObuz66J6So9yvO[yLoKBY6KcYz8UZ1ccAnrLd5..<vUeVIOkVaRSFzObuz66J6So9yvO.endIndex])
+        .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
+        .foregroundColor(Color.white.opacity(0.39))
+    
+    return i4QHWViornHFbNtopokxnPmTCc
 }

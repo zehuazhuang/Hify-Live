@@ -1,8 +1,7 @@
 import GoogleSignIn
 import UIKit
 
-//google login
-
+//Google登录配置
 struct RbqBb46vxbGKGmsnZWA1R9Vx3M {
     let c5O9meXEy5dOelOBZ3QpElqG: String      // google / apple / facebook
     let qG9OYdC: String       //userid

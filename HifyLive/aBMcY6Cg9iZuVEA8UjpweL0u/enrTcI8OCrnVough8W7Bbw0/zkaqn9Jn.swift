@@ -2,6 +2,7 @@ import SwiftUI
 import GoogleSignIn
 import SwiftfulRouting
 
+//判断是否老用户接口参数配置
 struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
     
     let bqFlC8rSGVAykM: String //platform
@@ -50,6 +51,7 @@ struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
     }
 }
 
+//登录页面
 struct zkaqn9Jn: View {
     
     @Environment(\.router) var hTU5wZj8E2nU59

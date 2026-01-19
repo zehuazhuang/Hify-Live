@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftfulRouting
 
+//about me 页面
 struct yDO7bVocx9JH0msGgIyRUs6e: View {
     
     @Environment(\.router) var aks3LmV9p5dZuUntacOaleWfgeyd7s

@@ -8,6 +8,7 @@ class Y4x7FkE3Q18iArhSXlC4Q5Z9: ObservableObject {
     @Published var kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4: [String: Any]? = nil
 }
 
+//注册页面
 struct ijeWMJnw0: View {
     
     let oWICU3h: RbqBb46vxbGKGmsnZWA1R9Vx3M
@@ -568,6 +569,7 @@ struct ijeWMJnw0: View {
     }
 }
 
+//注册接口参数配置
 struct cpEtaR: Codable {
     
     let wKrCAroUqTbC2rd9pcKfELDDQ: String //platform

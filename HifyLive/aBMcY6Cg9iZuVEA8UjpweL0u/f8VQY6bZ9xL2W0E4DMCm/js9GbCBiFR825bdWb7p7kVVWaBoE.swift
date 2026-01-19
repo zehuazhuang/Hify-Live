@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftfulRouting
 
+//删除账号页面
 struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
     
     @Environment(\.router) var lVyNB84lDy1ypiV3

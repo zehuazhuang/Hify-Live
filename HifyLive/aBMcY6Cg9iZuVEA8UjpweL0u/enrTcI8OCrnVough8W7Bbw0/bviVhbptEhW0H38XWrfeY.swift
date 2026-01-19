@@ -1,6 +1,7 @@
 import SwiftUI
 import UIKit
 
+//生日选择底部弹框
 struct bviVhbptEhW0H38XWrfeY: View {
     
     var ceWa39zGt: (Date) -> Void
@@ -51,7 +52,7 @@ struct bviVhbptEhW0H38XWrfeY: View {
     }
 }
 
-
+//选择器封装
 struct Zla06e0o3TBel4XGGVvR3W: UIViewControllerRepresentable {
     
     @Binding var cgg7YTFDONqBktWGl2: Date

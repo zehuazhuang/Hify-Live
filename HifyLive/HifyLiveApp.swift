@@ -17,6 +17,8 @@ struct HifyLiveApp: App {
     @StateObject private var qHyGWbkl4J6y35 = IyfdHMdY.bTa3L6BoprG
     
     @Environment(\.router) var arUac4mWLUCiC20zQa4D1lVuz4vWW
+    //通知
+    @StateObject private var uZzJSmXjKpb1nJ49 = NOHpxY.j9lChKVFzjtP37aeBd
     
     var body: some Scene {
         WindowGroup {
@@ -67,7 +69,6 @@ struct HifyLiveApp: App {
                                                     }
                                                 }
                                             } else {
-                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
                                                     WUjfoptOKs8pZfhSAH0duplG {
                                                         zkaqn9Jn()
@@ -76,7 +77,6 @@ struct HifyLiveApp: App {
                                             }
                                             
                                         case .failure(_):
-                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                             arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
                                                 WUjfoptOKs8pZfhSAH0duplG {
                                                     zkaqn9Jn()
@@ -95,6 +95,7 @@ struct HifyLiveApp: App {
                 .onAppear {
                     UfmQhHA1doHKs.bHNA2Amheuq0.e3lm29iotZr1P6CsH()
                 }
+                //判断token是否过期，到登录页面
                 .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
                     QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("CF/pQfyETmTqnvPASaLzZqpNGUPBRIo9Z7z0oPoNL/elWQYGLZRU+1kaFCnxQ07D")
                     router.showScreen(.fullScreenCover) { _ in

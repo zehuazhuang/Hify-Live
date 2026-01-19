@@ -1,5 +1,6 @@
 import SwiftUI
 
+//头像更换选择弹框
 struct f52Zxoy0vfJtZQ8pdH9SQ: View {
     
     var p6JuwoLebzf2SwHZu: (Int) -> Void

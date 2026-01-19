@@ -1,6 +1,10 @@
 import SwiftUI
 
+//退出登录弹框
 struct edUaA4t78: View {
+    
+    var zu3HcMXPeFbA9jPbx7NGu: (Int) -> Void
+    
     var body: some View {
         VStack(spacing: 24) {
             VStack(spacing: 10) {
@@ -20,27 +24,35 @@ struct edUaA4t78: View {
                         )
                         .multilineTextAlignment(.center)
                     HStack(spacing: 12) {
-                        RoundedRectangle(cornerRadius: 325)
-                            .fill(Color.white.opacity(0.25))
-                            .frame(width: 90,height: 46)
-                            .overlay(alignment: .center) {
-                                Text("ughEnrHH8idFaI0NbZK2QA==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 18,
-                                        weight: .medium
-                                    )
-                            }
-                        RoundedRectangle(cornerRadius: 325)
-                            .fill(Color.white.opacity(0.25))
-                            .frame(width: 136,height: 46)
-                            .overlay(alignment: .center) {
-                                ZJ7h766mz(tMmEWWlfgUag: "kYSIeo")
-                                Text("hbRPSikZjt3gcfaAIKa5Rw==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 18,
-                                        weight: .semibold
-                                    )
-                            }
+                        Button{
+                            zu3HcMXPeFbA9jPbx7NGu(0)
+                        } label: {
+                            RoundedRectangle(cornerRadius: 325)
+                                .fill(Color.white.opacity(0.25))
+                                .frame(width: 90,height: 46)
+                                .overlay(alignment: .center) {
+                                    Text("ughEnrHH8idFaI0NbZK2QA==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 18,
+                                            weight: .medium
+                                        )
+                                }
+                        }
+                        Button{
+                            zu3HcMXPeFbA9jPbx7NGu(1)
+                        } label: {
+                            RoundedRectangle(cornerRadius: 325)
+                                .fill(Color.white.opacity(0.25))
+                                .frame(width: 136,height: 46)
+                                .overlay(alignment: .center) {
+                                    ZJ7h766mz(tMmEWWlfgUag: "kYSIeo")
+                                    Text("hbRPSikZjt3gcfaAIKa5Rw==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 18,
+                                            weight: .semibold
+                                        )
+                                }
+                        }
                     }
                 }
             }
@@ -61,10 +73,12 @@ struct edUaA4t78: View {
                         .frame(height: 72)
                 })
             )
+            Button{
+                zu3HcMXPeFbA9jPbx7NGu(0)
+            } label: {
+                ZJ7h766mz(tMmEWWlfgUag: "usatuZc4VJMZtenkP8vSbx1wVDb")
+                    .frame(width: 32,height: 32)
+            }
         }
     }
-}
-
-#Preview {
-    edUaA4t78()
 }

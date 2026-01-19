@@ -10,6 +10,12 @@ final class IyfdHMdY: ObservableObject {
     /// 原始用户 JSON（字段不固定）
     @Published var iBmPfFGfxu5JV7Aii7: [String: Any] = [:]
     
+    /// 关注
+    @Published var n1G8RlzpcQK: [[String: Any]] = []
+    
+    /// 粉丝
+    @Published var iF2ouR0gHFDSr3GJ: [[String: Any]] = []
+    
     /// 是否已加载完数据
     @Published var rzeKD010L4fVwfSUlarrt: Bool = false
 }
