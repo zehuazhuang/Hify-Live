@@ -35,6 +35,7 @@ struct HifyLiveApp: App {
                                     WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "gwkJDSPvuIdbiSZMMSMa6nqC3rKE3+qsHYeGVuBnHPc=".bFHEatcgE4zzU9TCfDonsu(),b3q0LlCSk: [String: String](),) { (fyx2rOxV8T5fTGMyPa4: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                         switch fyx2rOxV8T5fTGMyPa4 {
                                         case .success(let cmBllstUOfe):
+                                            
                                             print(cmBllstUOfe.code)
                                             if cmBllstUOfe.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                                                 guard
@@ -44,10 +45,26 @@ struct HifyLiveApp: App {
                                                     return
                                                 }
                                                 let uPukTwrgs = fz22OtQBJxCc32wUpCIJle9BCDp3t.hL9dV3bQ2fK6sJ8p()
+                                                
+                                                
                                                 print(uPukTwrgs)
                                                 if let l63QEV2C = uPukTwrgs.kPOR9FHwcEZJv9YDf4W01D() {
                                                     qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = l63QEV2C
                                                     qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
+                                                    
+                                                   
+                                                    if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
+                                                       let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
+                                                        
+                                                        NIMManager.shared.login(account: yX5tB1x, token: ilgJ9kMFt) { success in
+                                                            if success {
+                                                                print("✔️ 云信 IM 登录成功")
+                                                                // 后续获取会话/发送消息等
+                                                            } else {
+                                                                print("❌ 云信 IM 登录失败")
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             } else {
                                                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()

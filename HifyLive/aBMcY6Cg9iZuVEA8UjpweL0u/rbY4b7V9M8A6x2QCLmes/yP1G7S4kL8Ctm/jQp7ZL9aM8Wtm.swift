@@ -1,10 +1,13 @@
 
 //聊天页
 import SwiftUI
+import NIMSDK
 
 struct jQp7ZL9aM8Wtm: View {
     @State private var echjeteaType: Int = 0
     let mo0LQ7DAi : () -> Void
+    @State private var sL2mJ9P6Q: [NIMRecentSession] = []
+    
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -69,12 +72,16 @@ struct jQp7ZL9aM8Wtm: View {
                     
                 }.padding(.horizontal,16)
                 if (echjeteaType == 0) {
-                    J9L2X1pF8D5ms()
+                    J9L2X1pF8D5ms(sessions: sL2mJ9P6Q)
                 }else{
                     VH5N3B7tQ6fri()
                 }
             }
           
+        }.onAppear{
+            RecentSessionManager.shared.fetchRecentSessions {
+                    self.sL2mJ9P6Q = RecentSessionManager.shared.cache
+                }
         }
     }
 }

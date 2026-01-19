@@ -29,24 +29,23 @@ struct VH5N3B7tQ6fri: View {
             }
             .padding(.horizontal, 16)
             ScrollView{
-                LazyVStack(spacing:8){
-                    ForEach(0..<4){index in
-                        tD4C1N7pR6Sli()
-                            
-                            .swipeActions(edge: .trailing) {
-                                Button(role: .destructive) {
-                                    if let i = indices.firstIndex(of: index) {
-                                        indices.remove(at: i)
-                                    }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                            .listRowInsets(EdgeInsets())
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                    }
-                }
+//                LazyVStack(spacing:8){
+//                    ForEach(0..<4){index in
+//                        tD4C1N7pR6Sli(recent: [])
+//                            .swipeActions(edge: .trailing) {
+//                                Button(role: .destructive) {
+//                                    if let i = indices.firstIndex(of: index) {
+//                                        indices.remove(at: i)
+//                                    }
+//                                } label: {
+//                                    Label("Delete", systemImage: "trash")
+//                                }
+//                            }
+//                            .listRowInsets(EdgeInsets())
+//                            .listRowSeparator(.hidden)
+//                            .listRowBackground(Color.clear)
+//                    }
+//                }
             }
             
         }

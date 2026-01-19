@@ -2,10 +2,13 @@
 
 //message模块
 import SwiftUI
+import NIMSDK
+import SwiftfulRouting
 
 struct J9L2X1pF8D5ms: View {
-    @State private var indices = Array(0..<4)
-    
+   
+    var sessions: [NIMRecentSession] = []
+    @Environment(\.router) var rM9Z8S7A1ql
     var body: some View {
         ZStack{
             VStack(spacing:4){
@@ -70,14 +73,24 @@ struct J9L2X1pF8D5ms: View {
                                               ), Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.15)], startPoint: .leading, endPoint: .trailing)
                         )
                 }
-                List{
-                    ForEach(0..<4){index in
-                        tD4C1N7pR6Sli()
+                List {
+                    ForEach(Array(sessions.enumerated()), id: \.element.session?.sessionId) { index, recent in
+                        tD4C1N7pR6Sli(rN1Z8mR: recent)  // 传入 recent
                             .padding(.vertical, 4)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                            if let session = recent.session {
+                                                
+
+                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                    CgZU7mTgY46l(session: session)
+                                                }
+                                            }
+                                        }
                             .swipeActions(edge: .trailing) {
                                 Button(role: .destructive) {
-                                    if let i = indices.firstIndex(of: index) {
-                                        indices.remove(at: i)
+                                    DispatchQueue.main.async {
+                                    //    sessions.remove(at: index)
                                     }
                                 } label: {
                                     Label("Delete", systemImage: "trash")
@@ -87,8 +100,9 @@ struct J9L2X1pF8D5ms: View {
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                     }
-                }.listStyle(.plain)
-                    .background(Color.clear)
+                }
+                .listStyle(.plain)
+                .background(Color.clear)
                 
                 
             }

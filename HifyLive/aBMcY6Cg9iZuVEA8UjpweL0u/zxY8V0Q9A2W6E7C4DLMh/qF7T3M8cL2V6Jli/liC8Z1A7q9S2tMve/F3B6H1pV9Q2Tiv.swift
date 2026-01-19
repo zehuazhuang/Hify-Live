@@ -44,6 +44,8 @@ struct LiveRoomPage: View {
                         fetchRtcToken()
                     }
             }
+            
+            
         }
     }
     
