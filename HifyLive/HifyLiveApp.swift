@@ -62,6 +62,13 @@ struct HifyLiveApp: App {
                                                             if success {
                                                                 print("✔️ 云信 IM 登录成功")
                                                                 // 后续获取会话/发送消息等
+                                                                RecentSessionManager.shared.fetchRecentSessions {
+                                                                        // 通知你的 RecentSessionStore 刷新 UI
+                                                                        DispatchQueue.main.async {
+                                                                            // 如果你用单例存储 store
+                                                                            RecentSessionStore.shared.cache = RecentSessionManager.shared.cache
+                                                                        }
+                                                                    }
                                                             } else {
                                                                 print("❌ 云信 IM 登录失败")
                                                             }

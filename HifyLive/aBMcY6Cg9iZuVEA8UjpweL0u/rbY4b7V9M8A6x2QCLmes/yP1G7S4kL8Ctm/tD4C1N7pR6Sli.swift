@@ -4,15 +4,15 @@ import SwiftUI
 import NIMSDK
 
 struct tD4C1N7pR6Sli: View {
-    let rN1Z8mR: NIMRecentSession
-    @State private var nickname: String = ""
-    @State private var avatarUrl: String = ""
+    @ObservedObject var rN1Z8mR: CachedRecentSession
+    let onTap: (CachedRecentSession) -> Void
+    let onDelete: (CachedRecentSession) -> Void
 
     var body: some View {
         HStack(spacing:10){
             ZStack{
                 ZStack{
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: avatarUrl)
+                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: rN1Z8mR.avatarUrl)
                                        .frame(width: 44, height: 44)
                                        .clipShape(Circle())
                 }.frame(width: 48, height: 48)
@@ -25,12 +25,12 @@ struct tD4C1N7pR6Sli: View {
                                    .padding(.bottom,2)
             }.frame(width: 48, height: 48)
             VStack(alignment:.leading,spacing:3){
-                Text(nickname)
+                Text(rN1Z8mR.nickname)
                                 .g0LIIcoZQsOjyND9(
                                     size: 14,
                                     weight: .regular
                                 )
-                Text(rN1Z8mR.lastMessage?.text ?? "")
+                Text(rN1Z8mR.lastMessageText)
                                 .g0LIIcoZQsOjyND9(
                                     size: 14,
                                     weight: .regular,
@@ -42,7 +42,7 @@ struct tD4C1N7pR6Sli: View {
             
                 VStack{
                     Text(
-                        Date(timeIntervalSince1970: rN1Z8mR.lastMessage?.timestamp ?? 0)
+                        Date(timeIntervalSince1970: rN1Z8mR.timestamp)
                             .Jq9K2pW7Lr()
                     )
                                     .g0LIIcoZQsOjyND9(
@@ -65,7 +65,7 @@ struct tD4C1N7pR6Sli: View {
                             )
                     }
                   
-                }.frame(width: 35,height: 48)
+                }.frame(height: 48)
            
             
         }.frame(height: 76)
@@ -75,18 +75,14 @@ struct tD4C1N7pR6Sli: View {
             LinearGradient(
                 colors: [Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.06
                               ), Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.05)], startPoint: .leading, endPoint: .trailing)
-        ).onAppear{
-            if let accid = rN1Z8mR.session?.sessionId,
-               let info = UserManager.shared.getCachedUserInfo(accid: accid) {
-                self.nickname = info.nickname
-                self.avatarUrl = info.avatarUrl
-            } else if let accid = rN1Z8mR.session?.sessionId {
-                UserManager.shared.getUserInfo(accid: accid) { nickname, avatarUrl in
-                    self.nickname = nickname
-                    self.avatarUrl = avatarUrl
-                }
+        )
+        .onTapGesture { onTap(rN1Z8mR) }
+        .swipeActions(edge: .trailing) {
+            Button(role: .destructive) { onDelete(rN1Z8mR) } label: {
+                Label("Delete", systemImage: "trash")
             }
         }
+        
     }
     
 

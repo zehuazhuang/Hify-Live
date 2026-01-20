@@ -17,6 +17,7 @@ struct CgZU7mTgY46l: View {
     }
     @Environment(\.router) var rM9Z8S7A1ql
     @State private var keyboardHeight: CGFloat = 0
+    let sq8dM6yIm: String = IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7["icon"] as? String ?? ""
 
     var body: some View {
         ZStack{
@@ -56,27 +57,63 @@ struct CgZU7mTgY46l: View {
                             .frame(width: 24,height: 24)
                     }
                 }
+
                 // MARK: 消息列表
                                 ScrollViewReader { proxy in
                                     ScrollView(showsIndicators:false) {
-                                        LazyVStack(spacing: 8) {
+                                        LazyVStack(spacing: 16) {
                                             ForEach(vm.messages, id: \.messageId) { msg in
                                                 HStack {
                                                     if msg.isOutgoingMsg {
                                                         Spacer()
-                                                        Text(msg.text ?? "")
-                                                            .padding(8)
-                                                            .background(Color.blue)
-                                                            .cornerRadius(8)
-                                                            .foregroundColor(.white)
+                                                        HStack(spacing:8){
+                                                            Text(msg.text ?? "")
+                                                                            .g0LIIcoZQsOjyND9(
+                                                                                size: 14,
+                                                                                weight: .regular
+                                                                            )
+                                                                            .padding(.horizontal,16)
+                                                                            .padding(.vertical,13)
+                                                                            .background(
+                                                                                LinearGradient(colors: [Color(
+                                                                                                              red: 120 / 255,
+                                                                                                              green: 223 / 255,
+                                                                                                              blue: 255 / 255,
+                                                                                                              opacity: 0.32
+                                                                                                          ), Color(
+                                                                                                              red: 84 / 255,
+                                                                                                              green: 105 / 255,
+                                                                                                              blue: 199 / 255,
+                                                                                                              opacity: 0.25
+                                                                                                          )], startPoint: .leading, endPoint: .trailing)
+                                                                            )
+                                                                            .clipShape(s7q2ZC1S9A4tM8L3(radius: 12, corners: [.topLeft,.bottomLeft,.bottomRight]))
+                                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: sq8dM6yIm)
+                                                                .frame(width: 32,height: 32)
+                                                                .clipShape(Circle())
+                                                        }
+                                                        
                                                     } else {
-                                                        Text(msg.text ?? "")
-                                                            .padding(8)
-                                                            .background(Color.gray.opacity(0.2))
-                                                            .cornerRadius(8)
+                                                        HStack(spacing:8){
+                                                            Text(msg.text ?? "")
+                                                                            .g0LIIcoZQsOjyND9(
+                                                                                size: 14,
+                                                                                weight: .regular
+                                                                            )
+                                                                            .padding(.horizontal,16)
+                                                                            .padding(.vertical,13)
+                                                                            .background(
+                                                                                .white.opacity(0.15)
+                                                                            )
+                                                                            .clipShape(s7q2ZC1S9A4tM8L3(radius: 12, corners: [.topLeft,.bottomLeft,.bottomRight]))
+                                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: sq8dM6yIm)
+                                                                .frame(width: 32,height: 32)
+                                                                .clipShape(Circle())
+                                                        }
                                                         Spacer()
                                                     }
                                                 }
+                                                
                                                 .id(msg.messageId)
                                             }
                                         }
