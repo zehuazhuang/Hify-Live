@@ -50,7 +50,7 @@ final class UfmQhHA1doHKs: ObservableObject {
                             if let bMHS63lL9v67ma5HGA = try JSONSerialization.jsonObject(with: moxtx0d1FWIrh1iobpilfqdgXp7A3YX, options: []) as? [[String: Any]] {
                                 DispatchQueue.main.async {
                                     self.o6Ex5Lgp7q46dDOd3db = bMHS63lL9v67ma5HGA // 数组，每个元素是字典
-//                                    print("接口数据已保存到内存:", bMHS63lL9v67ma5HGA)
+                                    print(bMHS63lL9v67ma5HGA)
                                 }
                             } else {
 //                                print("解析 JSON 失败: 不是数组")

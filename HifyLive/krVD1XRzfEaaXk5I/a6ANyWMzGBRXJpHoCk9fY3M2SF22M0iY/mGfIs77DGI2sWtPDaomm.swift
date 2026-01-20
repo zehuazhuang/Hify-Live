@@ -152,4 +152,30 @@ final class WOKmjUjM {
             }
         }
     }
+    
+    /// POST 请求（async / await）
+    func j36UQlXa0<T: Codable, U: Codable>(
+        xH0OPzEYR4M5ewWkZQAveq6Vy7: String,
+        tD5tEJZTT0NlaIX7eMREG92BhO3n: T
+    ) async throws -> U {
+        try await withCheckedThrowingContinuation { vPBjxM0F3RljYto in
+            zhuqPvhpwoDjs(
+                tk5afnKIwTiQL5Ai79O0AnK3f5G: xH0OPzEYR4M5ewWkZQAveq6Vy7,
+                b3q0LlCSk: tD5tEJZTT0NlaIX7eMREG92BhO3n
+            ) { (jIpeCs8u8aCybmHDkNyl0s9ubDnihvo: Result<U, Error>) in
+                switch jIpeCs8u8aCybmHDkNyl0s9ubDnihvo {
+                case .success(let bDzKb9cGLKC4kzyfKtbcX8v9):
+                    vPBjxM0F3RljYto.resume(returning: bDzKb9cGLKC4kzyfKtbcX8v9)
+                case .failure(let bxtX6INFNIOUXbK6Gsja):
+                    let yf37ozbFnvBsnl: UVvaHCnbKWNk4KQPzW5aJDt
+                    if let gft5ya = bxtX6INFNIOUXbK6Gsja as? UVvaHCnbKWNk4KQPzW5aJDt {
+                        yf37ozbFnvBsnl = gft5ya
+                    } else {
+                        yf37ozbFnvBsnl = UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw: bxtX6INFNIOUXbK6Gsja.localizedDescription)
+                    }
+                    vPBjxM0F3RljYto.resume(throwing: yf37ozbFnvBsnl)
+                }
+            }
+        }
+    }
 }

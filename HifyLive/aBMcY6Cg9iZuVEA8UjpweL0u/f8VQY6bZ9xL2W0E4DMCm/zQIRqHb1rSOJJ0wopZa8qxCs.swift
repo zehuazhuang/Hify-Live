@@ -63,28 +63,31 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                     Spacer()
                                     VStack(alignment: .trailing, spacing: 28){
                                         ScrollView(.horizontal) {
-                                            HStackLayout(spacing: 6){
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.white.opacity(0.32))
-                                                    .frame(width: 42,height: 32)
-                                                    .overlay(alignment: .center) {
-                                                        ZJ7h766mz(tMmEWWlfgUag: "yJv1l88NyCjeIR2yve6vkxIHscdO")
-                                                            .frame(width: 16,height: 16)
-                                                    }
-                                                if let wqdTL6HFJhuW3psA: [String] =  htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
-                                                    ForEach(wqdTL6HFJhuW3psA, id: \.self) { zcPI03pbcA in
-                                                        Button {
-                                                            if let zvI1jA4wuQeGrx0krc0 = wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) {
-                                                                fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
-                                                            }
-                                                        } label: {
-                                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
-                                                                .frame(width: 42, height: 32)
-                                                                .clipShape(RoundedRectangle(cornerRadius: 4))
-                                                                .overlay {
-                                                                    RoundedRectangle(cornerRadius: 4)
-                                                                        .stroke(Color.white.opacity(wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
+                                            VStack(alignment: .trailing) {
+                                                HStackLayout(spacing: 6){
+                                                    Spacer()
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .fill(Color.white.opacity(0.32))
+                                                        .frame(width: 42,height: 32)
+                                                        .overlay(alignment: .center) {
+                                                            ZJ7h766mz(tMmEWWlfgUag: "yJv1l88NyCjeIR2yve6vkxIHscdO")
+                                                                .frame(width: 16,height: 16)
+                                                        }
+                                                    if let wqdTL6HFJhuW3psA: [String] =  htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
+                                                        ForEach(wqdTL6HFJhuW3psA, id: \.self) { zcPI03pbcA in
+                                                            Button {
+                                                                if let zvI1jA4wuQeGrx0krc0 = wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) {
+                                                                    fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
                                                                 }
+                                                            } label: {
+                                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
+                                                                    .frame(width: 42, height: 32)
+                                                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                                                    .overlay {
+                                                                        RoundedRectangle(cornerRadius: 4)
+                                                                            .stroke(Color.white.opacity(wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
+                                                                    }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -211,9 +214,67 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         .overlay(content: {
                                             ZStack(alignment: .bottomTrailing) {
                                                 Rectangle()
-                                                    .fill(Color.blue)
-                                                    .frame(width: 100, height: 60)
+                                                    .fill(Color.white.opacity(0.15))
+                                                    .frame(width: 69, height: 25)
                                                     .clipShape(CustomCorners(radius: 12, corners: [.topLeft, .bottomRight]))
+                                                    .overlay {
+                                                        HStack(spacing: 0) {
+                                                            ZJ7h766mz(tMmEWWlfgUag: "owgxknGzqKWaH0DI3F5")
+                                                                .frame(width: 20,height: 20)
+                                                            Text("12")
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 16,
+                                                                    color: Color.white.opacity(0.6)
+                                                                )
+                                                            Spacer()
+                                                        }
+                                                        .padding(.horizontal,6)
+                                                    }
+                                                HStack(alignment: .top,spacing: 8) {
+                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.js.design/assets/img/692d4e10b5e8b987e5416d49.png#5538bf5f6501f791c85a6172ab6af9f6")
+                                                        .frame(width: 148,height: 87)
+                                                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                        .overlay(alignment: .topLeading) {
+                                                            Rectangle()
+                                                                .fill(Color.black.opacity(0.6))
+                                                                .frame(width: 74,height: 19)
+                                                                .clipShape(CustomCorners(radius: 7, corners: [.topLeft, .bottomRight]))
+                                                                .overlay {
+                                                                    HStack(spacing: 2) {
+                                                                        ZJ7h766mz(tMmEWWlfgUag: "hJnx7spPyFWB8ebrE8P11QImyLKy")
+                                                                            .frame(width: 16,height: 16)
+                                                                        Text("Make Friends")
+                                                                            .g0LIIcoZQsOjyND9(
+                                                                                size: 12
+                                                                            )
+                                                                            .lineLimit(1)
+                                                                            .truncationMode(.tail)
+                                                                    }
+                                                                    .padding(.horizontal,4)
+                                                                }
+                                                        }
+                                                    VStack(alignment: .leading,spacing: 8) {
+                                                        HStack(spacing: 0) {
+                                                            Text("Let's all sing.")
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    size: 16,
+                                                                    weight: .semibold
+                                                                )
+                                                                .lineLimit(1)
+                                                                .truncationMode(.tail)
+                                                            Spacer()
+                                                        }
+                                                        Text("Introduction to the live...")
+                                                            .g0LIIcoZQsOjyND9(
+                                                                color: Color.white.opacity(0.6)
+                                                            )
+                                                            .lineLimit(1)
+                                                            .truncationMode(.tail)
+                                                    }
+                                                    .padding(.top,7)
+                                                    .padding(.trailing,20)
+                                                }
+                                                .padding(.horizontal,4)
                                             }
                                         })
                                         .padding(.horizontal,16)

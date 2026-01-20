@@ -152,12 +152,16 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
 //输入框文案匹配高亮封装
 func i8WLc5e4KQTLECD3Dkpj8whZ53zXoA5l(
     _ vUeVIOkVaRSFzObuz66J6So9yvO: String,
-    eu35TPnxbaJLOeFBDIjy5: String
+    eu35TPnxbaJLOeFBDIjy5: String,
+    hOJZ7I0DrjWv4jM8nKyK1Sq6ESUnj: Color = Color.white.opacity(0.39), //普通颜色
+    jNlN8bWwqoxxy8YmVpUqcusW6NqAV: Color = Color.white, //高亮颜色
+    mY0c7aJw0GJoOZ1dbL8eaEi: Int = 16, //字号
+    zV5GeEg: Font.Weight = .regular, //字重
 ) -> Text {
     guard !eu35TPnxbaJLOeFBDIjy5.isEmpty else {
         return Text(vUeVIOkVaRSFzObuz66J6So9yvO)
-            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
-            .foregroundColor(Color.white.opacity(0.39))
+            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(mY0c7aJw0GJoOZ1dbL8eaEi), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: zV5GeEg))
+            .foregroundColor(hOJZ7I0DrjWv4jM8nKyK1Sq6ESUnj)
     }
     
     let vx3s2E = vUeVIOkVaRSFzObuz66J6So9yvO.lowercased()
@@ -172,13 +176,13 @@ func i8WLc5e4KQTLECD3Dkpj8whZ53zXoA5l(
     ) {
         // 普通文本
         i4QHWViornHFbNtopokxnPmTCc = i4QHWViornHFbNtopokxnPmTCc + Text(vUeVIOkVaRSFzObuz66J6So9yvO[yLoKBY6KcYz8UZ1ccAnrLd5..<xc7TQXs8LbSaIYO4P4zIZf.lowerBound])
-            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
-            .foregroundColor(Color.white.opacity(0.39))
+            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(mY0c7aJw0GJoOZ1dbL8eaEi), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: zV5GeEg))
+            .foregroundColor(hOJZ7I0DrjWv4jM8nKyK1Sq6ESUnj)
         
         // 高亮文本
         i4QHWViornHFbNtopokxnPmTCc = i4QHWViornHFbNtopokxnPmTCc + Text(vUeVIOkVaRSFzObuz66J6So9yvO[xc7TQXs8LbSaIYO4P4zIZf])
-            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
-            .foregroundColor(Color.white)
+            .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(mY0c7aJw0GJoOZ1dbL8eaEi), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: zV5GeEg))
+            .foregroundColor(jNlN8bWwqoxxy8YmVpUqcusW6NqAV)
         
         
         yLoKBY6KcYz8UZ1ccAnrLd5 = xc7TQXs8LbSaIYO4P4zIZf.upperBound
@@ -186,8 +190,8 @@ func i8WLc5e4KQTLECD3Dkpj8whZ53zXoA5l(
     
     // 剩余文本
     i4QHWViornHFbNtopokxnPmTCc = i4QHWViornHFbNtopokxnPmTCc + Text(vUeVIOkVaRSFzObuz66J6So9yvO[yLoKBY6KcYz8UZ1ccAnrLd5..<vUeVIOkVaRSFzObuz66J6So9yvO.endIndex])
-        .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(16), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular))
-        .foregroundColor(Color.white.opacity(0.39))
+        .font(JqA1kMoFobuvplkZO5w4FWsenOf.yVvo9b0xKtZE0(gpMpmhPhxS73zlFX24e2W5x8ZNX6q: CGFloat(mY0c7aJw0GJoOZ1dbL8eaEi), iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: zV5GeEg))
+        .foregroundColor(hOJZ7I0DrjWv4jM8nKyK1Sq6ESUnj)
     
     return i4QHWViornHFbNtopokxnPmTCc
 }
