@@ -11,6 +11,7 @@ struct ME9B8ZCwVQxn: View {
     
     @State private var s4V9Y0A2C6WEL = false //聊天页more底部弹框
     @State private var shR2D3nR8Q = false //清空消息二次弹窗
+    @StateObject private var unreadStore = GlobalUnreadStore.shared //消息未读
     var body: some View {
         ZStack {
             Group {
@@ -28,7 +29,7 @@ struct ME9B8ZCwVQxn: View {
              .frame(maxWidth: .infinity, maxHeight: .infinity)
                 VStack {
                     Spacer()
-                    ZStack{
+                    ZStack(alignment:.top){
                         ZJ7h766mz(tMmEWWlfgUag: "gZ8A2C9S1MqtLnav")
                                            .frame(height: 90)
                                            .frame(maxWidth: .infinity)
@@ -36,12 +37,27 @@ struct ME9B8ZCwVQxn: View {
                             Spacer()
                             nS9Zq7L4A1(aenteckTab: .lonaranpeH, haiecenseImg: "a8ZC7S9M1Aq4tLh",battemeneSeleImg:"q1qC9Z7S2t8LMsh", semblrmdanTi: "HlSMLF3CyqbA10eJ++BMNw==".bFHEatcgE4zzU9TCfDonsu())
                             Spacer()
-                            nS9Zq7L4A1(aenteckTab: .rongrandtM, haiecenseImg: "qw1q7Z9S4A2t8Lm",battemeneSeleImg:"ef9A7q8S2tCL134sm", semblrmdanTi: "jvt4DOrKwG4ULVh/g9AJFA==".bFHEatcgE4zzU9TCfDonsu())
+                            ZStack{
+                                nS9Zq7L4A1(aenteckTab: .rongrandtM, haiecenseImg: "qw1q7Z9S4A2t8Lm",battemeneSeleImg:"ef9A7q8S2tCL134sm", semblrmdanTi: "jvt4DOrKwG4ULVh/g9AJFA==".bFHEatcgE4zzU9TCfDonsu())
+                                
+                                if  unreadStore.totalUnread > 0 {
+                                    ZStack{
+                                        Circle()
+                                            .fill(.red)
+                                            .frame(width: 20,height: 20)
+                                        Text(unreadStore.totalUnread > 99 ? "99+" : "\(unreadStore.totalUnread)")
+                                                        .g0LIIcoZQsOjyND9(
+                                                            size: 14,
+                                                            weight: .regular
+                                                        )
+                                        }.offset(x: 16, y: -28)
+                                    }
+                            }
                             
                             Spacer()
                             nS9Zq7L4A1(aenteckTab: .eormakgnaM, haiecenseImg: "n2Z7S8M9q1tCL3m",battemeneSeleImg:"y9ZxM4C0Q8VY2L7Wsm", semblrmdanTi: "jjtFoJO8UHJSa1GFNwb9rA==".bFHEatcgE4zzU9TCfDonsu())
                             Spacer()
-                        }
+                        }.padding(.top,10)
                     }
                 }
             if s4V9Y0A2C6WEL {

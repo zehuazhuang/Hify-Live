@@ -5,8 +5,7 @@ struct AqS7C1A2tLt: View {
     var body: some View {
         VStack(spacing:4){
             ZStack{
-                ZJ7h766mz(tMmEWWlfgUag: "jbZ38Z9M43")
-                                   .frame(width: 56, height: 56)
+                aW6MZ4xQ7L0Ez().frame(width: 56, height: 56)
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
                     .frame(width: 52,height: 52)
                     .clipShape(Circle())
@@ -32,5 +31,32 @@ struct AqS7C1A2tLt: View {
                                 .truncationMode(.tail)
             
         }.frame(width: 56)
+    }
+}
+//光圈动画
+struct aW6MZ4xQ7L0Ez: View {
+    @State private var pR9dV2sF1kUo = false
+
+    var body: some View {
+        Circle()
+            .stroke(
+                AngularGradient(
+                    colors: [
+                        Color(red: 217/255, green: 28/255, blue: 255/255).opacity(0.72),
+                        Color(red: 49/255, green: 198/255, blue: 232/255).opacity(0.1)
+                    ],
+                    center: .center
+                ),
+                lineWidth: 1
+            )
+            .rotationEffect(.degrees(pR9dV2sF1kUo ? 360 : 0))
+            .onAppear {
+                withAnimation(
+                    .linear(duration: 1.6)
+                        .repeatForever(autoreverses: false)
+                ) {
+                    pR9dV2sF1kUo = true
+                }
+            }
     }
 }

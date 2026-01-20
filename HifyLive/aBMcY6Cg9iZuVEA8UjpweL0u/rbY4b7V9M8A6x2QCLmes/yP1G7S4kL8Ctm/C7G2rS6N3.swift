@@ -4,7 +4,7 @@
 //
 //  Created by yangyang on 2026/1/19.
 //
-
+//对话用户缓存
 import NIMSDK
 import Foundation
 

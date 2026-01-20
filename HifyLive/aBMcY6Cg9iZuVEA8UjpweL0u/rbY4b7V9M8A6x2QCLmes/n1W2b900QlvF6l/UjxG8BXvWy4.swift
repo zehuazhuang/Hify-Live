@@ -7,7 +7,40 @@
 
 import Combine
 import SwiftUI
+import NIMSDK
 
+//对话模型
+class CachedRecentSession: Identifiable, ObservableObject {
+    let id = UUID()
+    let session: NIMSession
+    let sessionId: String
+    let sessionType: NIMSessionType
+    @Published var lastMessageText: String
+    @Published var timestamp: TimeInterval
+    @Published var unreadCount: Int
+    @Published var nickname: String
+    @Published var avatarUrl: String
+
+    init(session: NIMSession,
+         sessionId: String,
+         sessionType: NIMSessionType,
+         lastMessageText: String,
+         timestamp: TimeInterval,
+         unreadCount: Int,
+         nickname: String,
+         avatarUrl: String) {
+        self.session = session
+        self.sessionId = sessionId
+        self.sessionType = sessionType
+        self.lastMessageText = lastMessageText
+        self.timestamp = timestamp
+        self.unreadCount = unreadCount
+        self.nickname = nickname
+        self.avatarUrl = avatarUrl
+    }
+}
+
+//对话缓存存储
 class RecentSessionStore: ObservableObject {
     static let shared = RecentSessionStore()
     // 统一使用 cache 作为数据源
@@ -40,5 +73,19 @@ class RecentSessionStore: ObservableObject {
     func removeSession(withId id: UUID) {
         RecentSessionManager.shared.removeSession(withId: id)
         self.cache = RecentSessionManager.shared.cache
+    }
+}
+
+extension RecentSessionStore {
+    func markSessionRead(sessionId: String) {
+        guard let index = cache.firstIndex(where: { $0.sessionId == sessionId }) else {
+            return
+        }
+
+        cache[index].unreadCount = 0
+
+        // 可选：同步给云信 SDK
+        let session = cache[index].session
+        NIMSDK.shared().conversationManager.markAllMessagesRead(in: session)
     }
 }
