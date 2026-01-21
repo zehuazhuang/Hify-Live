@@ -375,10 +375,6 @@ struct C8Z2x4M6YV9m: View {
             }
         }
         .ignoresSafeArea()
-        .onAppear {
-            vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
-            vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
-        }
         .onChange(of: cOVPp3) { eGPIJc7hlg9zdF in
             if eGPIJc7hlg9zdF == .active {
                 xycvz.s1UvUY5jDYFvHb3j0() // 再次检查权限状态
@@ -386,37 +382,38 @@ struct C8Z2x4M6YV9m: View {
         }
     }
     
-    func vf0AD3wYQxpfxxjs2pE7PuO66Wls(_ tfKmqT:Int) -> Void {
-        let hsiIAmjydsN5mMcG9 = hQ3WIqHVGH7oTmiDkGXDUO5HL9GjhFQ4(daFmc3QiCLth5mq3q1: tfKmqT, iQZrp8Zk6afD: ZoJOsS30O6aFGB936Oc0s.ahhr4vY6c0BLPJuChjgiYlBUhZHI())
-        WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "gwkJDSPvuIdbiSZMMSMa6kOJyXJzNPfmTnk8iPCNnFY=".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: hsiIAmjydsN5mMcG9) { (wF5G6xKQo: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
-            switch wF5G6xKQo {
-            case .success(let s5TNBPiUhvB0j2sNDBUXeqj0SxJ):
-                print(s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code)
-                if s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-                    guard
-                        let mT0s4u = s5TNBPiUhvB0j2sNDBUXeqj0SxJ.result,
-                        !mT0s4u.isEmpty
-                    else {
-                        return
+}
+
+func vf0AD3wYQxpfxxjs2pE7PuO66Wls(_ tfKmqT:Int) -> Void {
+    let hsiIAmjydsN5mMcG9 = hQ3WIqHVGH7oTmiDkGXDUO5HL9GjhFQ4(daFmc3QiCLth5mq3q1: tfKmqT, iQZrp8Zk6afD: ZoJOsS30O6aFGB936Oc0s.ahhr4vY6c0BLPJuChjgiYlBUhZHI())
+    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "gwkJDSPvuIdbiSZMMSMa6kOJyXJzNPfmTnk8iPCNnFY=".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: hsiIAmjydsN5mMcG9) { (wF5G6xKQo: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+        switch wF5G6xKQo {
+        case .success(let s5TNBPiUhvB0j2sNDBUXeqj0SxJ):
+            print(s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code)
+            if s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+                guard
+                    let mT0s4u = s5TNBPiUhvB0j2sNDBUXeqj0SxJ.result,
+                    !mT0s4u.isEmpty
+                else {
+                    return
+                }
+                let dcGZKkYUKbJNZZgk2 = mT0s4u.hL9dV3bQ2fK6sJ8p()
+                print(dcGZKkYUKbJNZZgk2)
+                if let f76DZRisVsTFhewp7jgbppPvZJ4p7cIq = dcGZKkYUKbJNZZgk2.niBylJAjsTHPDww() {
+                    if tfKmqT == 3 {
+                        IyfdHMdY.bTa3L6BoprG.n1G8RlzpcQK = f76DZRisVsTFhewp7jgbppPvZJ4p7cIq
                     }
-                    let dcGZKkYUKbJNZZgk2 = mT0s4u.hL9dV3bQ2fK6sJ8p()
-                    print(dcGZKkYUKbJNZZgk2)
-                    if let f76DZRisVsTFhewp7jgbppPvZJ4p7cIq = dcGZKkYUKbJNZZgk2.niBylJAjsTHPDww() {
-                        if tfKmqT == 3 {
-                            qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK = f76DZRisVsTFhewp7jgbppPvZJ4p7cIq
-                        }
-                        if tfKmqT == 2 {
-                            qVi2QJ0SeDluhZ9xoQ8V7.iF2ouR0gHFDSr3GJ = f76DZRisVsTFhewp7jgbppPvZJ4p7cIq
-                        }
+                    if tfKmqT == 2 {
+                        IyfdHMdY.bTa3L6BoprG.iF2ouR0gHFDSr3GJ = f76DZRisVsTFhewp7jgbppPvZJ4p7cIq
                     }
                 }
-            case .failure(_):
-                if tfKmqT == 3 {
-                    qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK = []
-                }
-                if tfKmqT == 2 {
-                    qVi2QJ0SeDluhZ9xoQ8V7.iF2ouR0gHFDSr3GJ = []
-                }
+            }
+        case .failure(_):
+            if tfKmqT == 3 {
+                IyfdHMdY.bTa3L6BoprG.n1G8RlzpcQK = []
+            }
+            if tfKmqT == 2 {
+                IyfdHMdY.bTa3L6BoprG.iF2ouR0gHFDSr3GJ = []
             }
         }
     }

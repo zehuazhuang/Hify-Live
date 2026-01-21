@@ -161,6 +161,11 @@ struct zkaqn9Jn: View {
                                                                         ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC = u5vLFlYL5m6LMIVVh08Uj5D["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0
                                                                         ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fP9yQC0UH00 =  u5vLFlYL5m6LMIVVh08Uj5D["HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? ""
                                                                         IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7 = u5vLFlYL5m6LMIVVh08Uj5D
+                                                                        
+                                                                        //获取关注粉丝列表
+                                                                        vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                                                                        vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+                                                                        
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=")
                                                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                                         hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in

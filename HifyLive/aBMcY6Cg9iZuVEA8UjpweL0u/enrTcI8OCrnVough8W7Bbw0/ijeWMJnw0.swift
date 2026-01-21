@@ -490,6 +490,11 @@ struct ijeWMJnw0: View {
                                                 ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC = oeUbLj7s7zB6["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0
                                                 ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fP9yQC0UH00 =  oeUbLj7s7zB6["HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? ""
                                                 IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7 = oeUbLj7s7zB6
+                                                
+                                                //获取关注粉丝列表
+                                                vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                                                vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+                                                
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("O+768P8m4+RBzx9Wfs59VxDj5rLB58mh8yswpq0JtVY=")
                                                 n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
                                                     WUjfoptOKs8pZfhSAH0duplG {

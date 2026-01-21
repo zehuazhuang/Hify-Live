@@ -52,8 +52,10 @@ struct HifyLiveApp: App {
                                                 print(uPukTwrgs)
                                                 if let l63QEV2C = uPukTwrgs.kPOR9FHwcEZJv9YDf4W01D() {
                                                     qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = l63QEV2C
-                                                    qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
                                                     
+                                                    //获取关注粉丝列表
+                                                    vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                                                    vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                                                    
                                                     if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
                                                        let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
@@ -78,6 +80,8 @@ struct HifyLiveApp: App {
                                                             }
                                                         }
                                                     }
+                                                    //数据获取完毕切换页面
+                                                    qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
                                                 }
                                             } else {
                                                 arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
