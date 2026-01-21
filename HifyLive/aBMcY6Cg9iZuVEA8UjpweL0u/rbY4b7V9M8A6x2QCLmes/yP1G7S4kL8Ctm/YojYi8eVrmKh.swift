@@ -24,6 +24,8 @@ class RecentSessionManager: ObservableObject {
             guard let s = r.session else { continue }
 
             let info = UserManager.shared.getCachedUserInfo(accid: s.sessionId)
+            
+            
 
             let cached = CachedRecentSession(
                 session: s,

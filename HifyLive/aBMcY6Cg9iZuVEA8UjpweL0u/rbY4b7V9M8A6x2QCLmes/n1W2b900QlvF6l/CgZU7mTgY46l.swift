@@ -10,7 +10,7 @@ struct CgZU7mTgY46l: View {
     let session: NIMSession
         @StateObject private var vm: ChatViewModel
         @FocusState private var isInputFocused: Bool
-        @StateObject private var keyboard = KeyboardResponder() // ✅ 声明键盘监听
+        @StateObject private var keyboard = KeyboardResponder()
         @Environment(\.router) var rM9Z8S7A1ql
         
 
@@ -22,6 +22,12 @@ struct CgZU7mTgY46l: View {
         var body: some View {
             ZStack {
                 Color(red: 13/255, green: 13/255, blue: 18/255)
+                    .ignoresSafeArea()
+                
+                ZJ7h766mz(tMmEWWlfgUag: "e6W4Zx7QYbEL")
+                    .scaledToFill()
+                    .frame(height: 462)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity,alignment:.top)
                     .ignoresSafeArea()
 
                 VStack(spacing: 0) {
@@ -57,36 +63,131 @@ struct CgZU7mTgY46l: View {
                     }
                     .padding(.horizontal,16)
                     .padding(.bottom,23)
-
+                    
+                    
+                    ZStack{
+                        ZJ7h766mz(tMmEWWlfgUag: "kY9WxQ2W4L")
+                                           .frame(height: 140)
+                                           .frame(maxWidth: .infinity)
+                        
+                        VStack{
+                            HStack{
+                                ZStack{
+                                    ZJ7h766mz(tMmEWWlfgUag: "jbZ38Z9M43").frame(width: 44, height: 44)
+                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+                                        .frame(width: 40,height: 40)
+                                        .clipShape(Circle())
+                                }.frame(width: 44, height: 44)
+                                VStack(alignment:.leading){
+                                    Text("MadrigalXX1 ")
+                                                    .g0LIIcoZQsOjyND9(
+                                                        size: 16,
+                                                        weight: .regular
+                                                    )
+                                    HStack{
+                                        ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy").frame(width: 24, height: 24)
+                                        Text("30")
+                                                        .g0LIIcoZQsOjyND9(
+                                                            size: 14,
+                                                            weight: .regular
+                                                        )
+                                        Text("|")
+                                                        .g0LIIcoZQsOjyND9(
+                                                            size: 14,
+                                                            weight: .regular,
+                                                            color: .white.opacity(0.4)
+                                                        )
+                                                        .padding(.horizontal,4)
+                                        //改成国家图标
+                                        ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy").frame(width: 16, height: 16)
+                                        
+                                    }
+                                }
+                                Spacer()
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "d2ax6W4EYC8L").frame(width: 48, height: 33)
+                            }
+                            HStack(spacing:5){
+                                ForEach(0..<4){index in
+                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+                                        .frame(width: 68,height: 52)
+                                        .cornerRadius(8)
+                                }
+                                Spacer()
+                            }
+                            
+                        }.padding(.horizontal,16)
+                        
+                    }.frame(height: 140)
+                     .frame(maxWidth: .infinity)
+                     .padding(.horizontal,16)
+                     .padding(.bottom,16)
                     // 消息列表
                     ChatTableView(vm: vm, keyboardHeight: keyboard.keyboardHeight)
+                       
                         .background(Color.clear)
                         .onTapGesture { isInputFocused = false }
-                }
-
-                // 底部输入框
-                VStack {
-                    Spacer()
-                    HStack {
-                        TextField("Type a message...", text: $vm.inputText)
-                            .focused($isInputFocused)
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
+                    
+                    // 底部输入框
+                        VStack {
+                            HStack {
+                                ZStack(alignment: .leading) {
+                                    if vm.inputText.isEmpty {
+                                        Text("Type a message...")
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16,
+                                                weight: .regular,
+                                                color: .white.opacity(0.4)
+                                            )
+                                    }
+                                    
+                                    TextField("", text: $vm.inputText)
+                                        .focused($isInputFocused)
+                                        .submitLabel(.send)
+                                        .onSubmit {
+                                            if !vm.inputText.isEmpty {
+                                                vm.sendText()
+                                            }
+                                        }
+                                        .font(
+                                            JqA1kMoFobuvplkZO5w4FWsenOf
+                                                .yVvo9b0xKtZE0(
+                                                    gpMpmhPhxS73zlFX24e2W5x8ZNX6q: 16,
+                                                    iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular
+                                                )
+                                        )
+                                        .foregroundColor(.white)
+                                }
+                                .frame(height: 40)
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "qS9A1C2tLse")
+                                    .frame(width: 36, height: 36)
+                                    .onTapGesture {
+                                        vm.sendText()
+                                    }
+                            }
+                            .padding(.leading, 16)
+                            .padding(.trailing, 4)
+                            .frame(height: 46)
                             .background(Color(red: 34/255, green: 34/255, blue: 38/255))
                             .cornerRadius(24)
-
-                        Button {
-                            vm.sendText()
-                        } label: {
-                            Image(systemName: "arrow.up.circle.fill")
-                                .font(.system(size: 36))
-                                .foregroundColor(.blue)
-                        }
+                            .padding(.bottom, 6)
+                            
+                            HStack(spacing: 40) {
+                                // 图片按钮
+                                ZJ7h766mz(tMmEWWlfgUag: "t9A8E2C6QZxY")
+                                    .frame(width: 32, height: 32)
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "jiCL7W4M0L")
+                                    .frame(width: 32, height: 32)
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
+                                    .frame(width: 32, height: 32)
+                            }
+                        }.padding(.horizontal,16)
+                        .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
                     }
-                    .padding(.horizontal)
-                    
-                    .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
-                }
+                // 底部输入框
             }
             .onAppear { vm.loadHistory() }
         }

@@ -33,6 +33,10 @@ final class UserManager {
 
             let nickname = user.userInfo?.nickName ?? ""
             let avatarUrl = user.userInfo?.avatarUrl ?? ""
+            
+           
+            
+            
 
             // 写入缓存
             self.cache[accid] = (nickname, avatarUrl)
@@ -51,6 +55,8 @@ final class UserManager {
             guard let users = users else { return }
 
             for user in users {
+                
+               
                 let accid = user.userId ?? "unknown"
                 let nickname = user.userInfo?.nickName ?? accid
                 let avatarUrl = user.userInfo?.avatarUrl ?? ""

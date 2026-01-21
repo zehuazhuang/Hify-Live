@@ -6,7 +6,7 @@ import Kingfisher
 //聊天list UIKit
 struct ChatTableView: UIViewRepresentable {
     @ObservedObject var vm: ChatViewModel
-    var keyboardHeight: CGFloat = 0 // ✅ 新增
+    var keyboardHeight: CGFloat = 0
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -43,7 +43,7 @@ struct ChatTableView: UIViewRepresentable {
     func updateUIView(_ uiView: UITableView, context: Context) {
         // ⚡ 只 reloadData，不滚动
         uiView.reloadData()
-        let inputHeight: CGFloat = 56
+        let inputHeight: CGFloat = 20
         uiView.contentInset.bottom = inputHeight
         uiView.verticalScrollIndicatorInsets.bottom = inputHeight
     }
@@ -103,134 +103,201 @@ struct ChatTableView: UIViewRepresentable {
 }
 
 
-
-
+// MARK: - ChatCell
 class ChatCell: UITableViewCell {
-    
+
+    // MARK: UI
+    private let avatarImageView = UIImageView()
     private let bubble = UIView()
     private let messageLabel = UILabel()
-    private let avatarImageView = UIImageView()
     private let timeLabel = UILabel()
-    
-    private var isOutgoing = false
-    
-    private var bubbleLeadingConstraint: NSLayoutConstraint!
-    private var bubbleTrailingConstraint: NSLayoutConstraint!
-    private var avatarLeadingConstraint: NSLayoutConstraint!
-    private var avatarTrailingConstraint: NSLayoutConstraint!
-    
+
+    // 渐变（仅 outgoing）
+    private let gradientLayer = CAGradientLayer()
+
+    // MARK: Constraints
+    private var avatarLeading: NSLayoutConstraint!
+    private var avatarTrailing: NSLayoutConstraint!
+    private var bubbleLeading: NSLayoutConstraint!
+    private var bubbleTrailing: NSLayoutConstraint!
+
+    // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         backgroundColor = .clear
-        
+
+        setupUI()
+        setupConstraints()
+        setupGradient()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: UI Setup
+    private func setupUI() {
+
         // Avatar
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
-        contentView.addSubview(avatarImageView)
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(avatarImageView)
         
+        // Time (系统提示)
+        timeLabel.font = JqA1kUIFont.font(size: 14, weight: .regular)
+        timeLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+        timeLabel.textAlignment = .center
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.isHidden = true
+        contentView.addSubview(timeLabel)
+        
+
         // Bubble
         bubble.layer.cornerRadius = 12
         bubble.clipsToBounds = true
-        contentView.addSubview(bubble)
         bubble.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(bubble)
         
-        // Message label
+        // Message
         messageLabel.numberOfLines = 0
-        messageLabel.font = .systemFont(ofSize: 14)
-        bubble.addSubview(messageLabel)
+        messageLabel.font = JqA1kUIFont.font(size: 14, weight: .regular)
+        messageLabel.textColor = .white
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Time label
-        timeLabel.font = .systemFont(ofSize: 12)
-        timeLabel.textColor = UIColor.white.withAlphaComponent(0.6)
-        timeLabel.textAlignment = .center
-        contentView.addSubview(timeLabel)
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        setupConstraints()
+        bubble.addSubview(messageLabel)
+
+
     }
-    
-    required init?(coder: NSCoder) { fatalError() }
-    
+
+    // MARK: Constraints
     private func setupConstraints() {
-        let padding: CGFloat = 16
-        
-        // Avatar constraints (width/height fixed)
+        let padding: CGFloat = 8
+
+        // Avatar
         NSLayoutConstraint.activate([
             avatarImageView.widthAnchor.constraint(equalToConstant: 32),
             avatarImageView.heightAnchor.constraint(equalToConstant: 32),
-            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding)
         ])
-        
-        avatarLeadingConstraint = avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding)
-        avatarTrailingConstraint = avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-        
-        // Bubble constraints
-        bubbleLeadingConstraint = bubble.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8)
-        bubbleTrailingConstraint = bubble.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: -8)
-        
+        avatarLeading = avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding)
+        avatarTrailing = avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
+        avatarLeading.isActive = true // 默认 incoming
+
+        // Time label（整屏居中，位于顶部）
         NSLayoutConstraint.activate([
-            bubble.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            bubble.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
-            bubbleLeadingConstraint,
-            bubbleTrailingConstraint
+            timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            timeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
-        
-        // MessageLabel inside bubble
+
+        // Bubble
+        bubbleLeading = bubble.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8)
+        bubbleTrailing = bubble.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: -8)
+
+        bubbleLeading.isActive = true // 默认 incoming
+
+        NSLayoutConstraint.activate([
+            bubble.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 6), // 气泡在时间下方
+            bubble.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.65),
+            bubble.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
+        ])
+
+        // Message inside bubble
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: bubble.topAnchor, constant: 8),
             messageLabel.bottomAnchor.constraint(equalTo: bubble.bottomAnchor, constant: -8),
             messageLabel.leadingAnchor.constraint(equalTo: bubble.leadingAnchor, constant: 12),
             messageLabel.trailingAnchor.constraint(equalTo: bubble.trailingAnchor, constant: -12)
         ])
-        
-        // Time label below bubble
+
+        // Avatar纵向对齐气泡顶部
         NSLayoutConstraint.activate([
-            timeLabel.topAnchor.constraint(equalTo: bubble.bottomAnchor, constant: 4),
-            timeLabel.centerXAnchor.constraint(equalTo: bubble.centerXAnchor),
-            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -4)
+            avatarImageView.topAnchor.constraint(equalTo: bubble.topAnchor)
         ])
     }
-    
-    func configure(message: ChatMessage, avatarURL: String?) {
-        isOutgoing = message.isOutgoingMsg
 
-        // 头像
+    // MARK: Gradient
+    private func setupGradient() {
+        gradientLayer.colors = [
+            UIColor(
+                red: 120/255,
+                green: 223/255,
+                blue: 255/255,
+                alpha: 0.32
+            ).cgColor,
+            UIColor(
+                red: 84/255,
+                green: 105/255,
+                blue: 199/255,
+                alpha: 0.25
+            ).cgColor
+        ]
+
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint   = CGPoint(x: 1, y: 0.5)
+        gradientLayer.cornerRadius = 12
+
+        bubble.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bubble.bounds
+    }
+
+    // MARK: Configure
+    func configure(message: ChatMessage, avatarURL: String?) {
+
+        messageLabel.text = message.text
+
+        // 时间（大于 5 分钟才显示）
+        timeLabel.isHidden = !message.showTime
+        timeLabel.text = message.showTime ? formatTime(message.timestamp) : nil
+
+        // Avatar
         if let urlString = avatarURL, let url = URL(string: urlString) {
-            avatarImageView.kf.setImage(with: url, placeholder: UIImage(named: "avatar_placeholder"))
+            avatarImageView.kf.setImage(with: url)
         } else {
             avatarImageView.image = UIImage(named: "avatar_placeholder")
         }
 
-        messageLabel.text = message.text
+        // Reset constraints
+        avatarLeading.isActive = false
+        avatarTrailing.isActive = false
+        bubbleLeading.isActive = false
+        bubbleTrailing.isActive = false
 
-        // 先全部 deactivate
-        avatarLeadingConstraint.isActive = false
-        avatarTrailingConstraint.isActive = false
-        bubbleLeadingConstraint.isActive = false
-        bubbleTrailingConstraint.isActive = false
+        if message.isOutgoingMsg {
+            avatarTrailing.isActive = true
+            bubbleTrailing.isActive = true
 
-        if isOutgoing {
-            avatarTrailingConstraint.isActive = true
-            bubbleTrailingConstraint.isActive = true
-            bubble.backgroundColor = UIColor.clear
-            // 可以加渐变
+            gradientLayer.isHidden = false
+            bubble.backgroundColor = .clear
+
         } else {
-            avatarLeadingConstraint.isActive = true
-            bubbleLeadingConstraint.isActive = true
+            avatarLeading.isActive = true
+            bubbleLeading.isActive = true
+
+            gradientLayer.isHidden = true
             bubble.backgroundColor = UIColor.white.withAlphaComponent(0.15)
         }
     }
+
+    // MARK: Time format
+    private func formatTime(_ timestamp: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: timestamp)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date)
+    }
 }
+
 
 class KeyboardObserver: NSObject {
     private weak var tableView: UITableView?
-    private var inputHeight: CGFloat = 56
+    private var inputHeight: CGFloat = 20
     private var lastKeyboardHeight: CGFloat = -1
 
-    func bind(tableView: UITableView, inputHeight: CGFloat = 56) {
+    func bind(tableView: UITableView, inputHeight: CGFloat = 20) {
         self.tableView = tableView
         self.inputHeight = inputHeight
 
@@ -270,5 +337,34 @@ class KeyboardObserver: NSObject {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+struct JqA1kUIFont {
+
+    static let regular = "Barlow-Regular"
+    static let medium  = "Barlow-Medium"
+    static let semibold = "Barlow-SemiBold"
+    static let black   = "Barlow-Black"
+
+    static func font(
+        size: CGFloat,
+        weight: UIFont.Weight = .regular
+    ) -> UIFont {
+
+        let name: String
+        switch weight {
+        case .black:
+            name = black
+        case .semibold:
+            name = semibold
+        case .medium:
+            name = medium
+        default:
+            name = regular
+        }
+
+        return UIFont(name: name, size: size)
+            ?? UIFont.systemFont(ofSize: size, weight: weight)
     }
 }
