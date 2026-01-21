@@ -51,7 +51,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                             .padding(.top,58)
                             .padding(.leading,16)
                             VStack(spacing:8) {
-                                HStack(spacing: 20) {
+                                HStack(spacing: 10) {
                                     Circle()
                                         .fill(Color.white.opacity(0.2))
                                         .frame(width: 88, height: 88)
@@ -62,34 +62,43 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         }
                                     Spacer()
                                     VStack(alignment: .trailing, spacing: 28){
-                                        ScrollView(.horizontal) {
-                                            VStack(alignment: .trailing) {
-                                                HStackLayout(spacing: 6){
-                                                    Spacer()
-                                                    RoundedRectangle(cornerRadius: 10)
-                                                        .fill(Color.white.opacity(0.32))
-                                                        .frame(width: 42,height: 32)
-                                                        .overlay(alignment: .center) {
-                                                            ZJ7h766mz(tMmEWWlfgUag: "yJv1l88NyCjeIR2yve6vkxIHscdO")
-                                                                .frame(width: 16,height: 16)
-                                                        }
-                                                    if let wqdTL6HFJhuW3psA: [String] =  htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
-                                                        ForEach(wqdTL6HFJhuW3psA, id: \.self) { zcPI03pbcA in
-                                                            Button {
-                                                                if let zvI1jA4wuQeGrx0krc0 = wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) {
-                                                                    fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
+                                        GeometryReader { j2ISkikaHFezqwHcZmm in
+                                            HStack(spacing: 0){
+                                                ScrollView(.horizontal, showsIndicators: false) {
+                                                    HStack(spacing: 6){
+                                                        Button{
+                                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                                    o95HINW4DpHIAT()
                                                                 }
-                                                            } label: {
-                                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
-                                                                    .frame(width: 42, height: 32)
-                                                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                                                    .overlay {
-                                                                        RoundedRectangle(cornerRadius: 4)
-                                                                            .stroke(Color.white.opacity(wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
+                                                            }
+                                                        } label: {
+                                                            RoundedRectangle(cornerRadius: 10)
+                                                                .fill(Color.white.opacity(0.32))
+                                                                .frame(width: 42,height: 32)
+                                                                .overlay(alignment: .center) {
+                                                                    ZJ7h766mz(tMmEWWlfgUag: "yJv1l88NyCjeIR2yve6vkxIHscdO")
+                                                                        .frame(width: 16,height: 16)
+                                                                }
+                                                        }
+                                                        if let wqdTL6HFJhuW3psA: [String] =  htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
+                                                            ForEach(wqdTL6HFJhuW3psA, id: \.self) { zcPI03pbcA in
+                                                                Button {
+                                                                    if let zvI1jA4wuQeGrx0krc0 = wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) {
+                                                                        fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
                                                                     }
+                                                                } label: {
+                                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
+                                                                        .frame(width: 42, height: 32)
+                                                                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                                                                        .overlay {
+                                                                            RoundedRectangle(cornerRadius: 4)
+                                                                                .stroke(Color.white.opacity(wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
+                                                                        }
+                                                                }
                                                             }
                                                         }
-                                                    }
+                                                    }.frame(minWidth: j2ISkikaHFezqwHcZmm.size.width, alignment: .trailing)
                                                 }
                                             }
                                         }
@@ -328,7 +337,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
 struct CustomCorners: Shape {
     var radius: CGFloat = 10
     var corners: UIRectCorner = []
-
+    
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(
             roundedRect: rect,
@@ -375,5 +384,44 @@ struct gSttvP6cNNp2pgg0Me5yfzJS76D1bBh: Codable {
                 "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()
             )
         )
+    }
+}
+
+//获取用户信息（userId、yxAccid）
+
+@MainActor
+class T0viKk: ObservableObject {
+    static let wSremNeLspPkPRHBJnlVCs5w = T0viKk()
+    
+    // 获取用户信息（userId、yxAccid）
+    func ngIp5pudxny8o0Mdsqv(iN9Qd7kjrHTAEXEIBDb2wKlGSv2dN: Int, wTEEJpZz0iGVK: String) async -> [String:Any]? {
+        do {
+            let bSn9YS: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
+                xH0OPzEYR4M5ewWkZQAveq6Vy7: "jd+Je9oaVKuQ4jHkoZazeiUeAljC8YlPdz+5tirNkKw=".bFHEatcgE4zzU9TCfDonsu(),
+                tD5tEJZTT0NlaIX7eMREG92BhO3n: gSttvP6cNNp2pgg0Me5yfzJS76D1bBh(loI4IlOpOGsYefZxuUrxIR6SA: iN9Qd7kjrHTAEXEIBDb2wKlGSv2dN, sGOM5LYyLVsTQ1mHEFJD1CJtq: wTEEJpZz0iGVK)
+            )
+            print(bSn9YS.code)
+            if bSn9YS.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+                // 成功
+                guard
+                    let wvhfld = bSn9YS.result,
+                    !wvhfld.isEmpty
+                else {
+                    return nil
+                }
+                let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
+                print(atXeZc0tWzWWpIN8DRa5DB)
+                if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
+                    return nQ4WzLmrneR1qX8c9nRwkH
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        } catch {
+            print("Sph7QjtQ9wyBx41H5XhztLHkavBN9bomvy8v5zW0vxk=".bFHEatcgE4zzU9TCfDonsu(), error)
+            return nil
+        }
     }
 }
