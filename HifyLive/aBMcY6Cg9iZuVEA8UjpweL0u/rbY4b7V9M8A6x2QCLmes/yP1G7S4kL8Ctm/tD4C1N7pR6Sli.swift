@@ -81,10 +81,6 @@ struct tD4C1N7pR6Sli: View {
             Button(role: .destructive) { onDelete(rN1Z8mR) } label: {
                 Label("Delete", systemImage: "trash")
             }
-        }.onAppear{
-            print(rN1Z8mR.id)
-            print(rN1Z8mR.sessionId)
-            
         }
         
     }

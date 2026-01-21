@@ -65,3 +65,15 @@ extension Dictionary where Key == String, Value == Any {
         self[key] as? Bool ?? def
     }
 }
+
+extension IyfdHMdY {
+    /// 获取关注用户的云信 ID
+    var gx0Y2M6W9: [String] {
+        n1G8RlzpcQK.compactMap { $0["yxAccid"] as? String }
+    }
+    
+    /// 获取粉丝的云信 ID
+    var fZ7W2C0YxML: [String] {
+        iF2ouR0gHFDSr3GJ.compactMap { $0["yxAccid"] as? String }
+    }
+}

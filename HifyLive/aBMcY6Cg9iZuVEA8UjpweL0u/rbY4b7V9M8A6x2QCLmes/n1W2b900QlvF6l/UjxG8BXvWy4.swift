@@ -88,4 +88,18 @@ extension RecentSessionStore {
         let session = cache[index].session
         NIMSDK.shared().conversationManager.markAllMessagesRead(in: session)
     }
+    
+  
+    /// 将所有会话标记为已读
+        func markAllSessionsRead() {
+            // 通知 SwiftUI 即将更新
+            objectWillChange.send()
+            
+            for session in cache {
+                // 先把本地缓存标记为已读
+                session.unreadCount = 0
+                // 同步给云信 SDK
+                NIMSDK.shared().conversationManager.markAllMessagesRead(in: session.session)
+            }
+        }
 }

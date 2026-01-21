@@ -6,8 +6,6 @@ import NIMSDK
 import SwiftfulRouting
 import Combine
 
-
-
 struct J9L2X1pF8D5ms: View {
     @ObservedObject var sessionStore = RecentSessionStore.shared
     @Environment(\.router) var rM9Z8S7A1ql

@@ -24,6 +24,11 @@ final class GlobalUnreadStore: ObservableObject {
     func clearUnread(for sessionId: String, count: Int) {
         totalUnread = max(0, totalUnread - count)
     }
+    
+    // ✅ 清空所有未读数
+        func clearAllUnread() {
+            totalUnread = 0
+        }
 }
 
 //监听消息数

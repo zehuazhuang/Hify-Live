@@ -9,13 +9,16 @@ class ChatMessage: Identifiable, ObservableObject {
     let text: String?
     let isOutgoingMsg: Bool
     let timestamp: TimeInterval
+    let avatarURL: String?
+    
     @Published var showTime: Bool = false
 
-    init(messageId: String, text: String?, isOutgoingMsg: Bool, timestamp: TimeInterval) {
+    init(messageId: String, text: String?, isOutgoingMsg: Bool, timestamp: TimeInterval, avatarURL: String? = nil) {
         self.messageId = messageId
         self.text = text
         self.isOutgoingMsg = isOutgoingMsg
         self.timestamp = timestamp
+        self.avatarURL = avatarURL
     }
 }
 //操作私聊
@@ -44,7 +47,7 @@ final class ChatViewModel: NSObject, ObservableObject {
                 messageId: msg.messageId,
                 text: msg.text,
                 isOutgoingMsg: msg.isOutgoingMsg,
-                timestamp: msg.timestamp
+                timestamp: msg.timestamp,
             )
             chatMsg.showTime = (msg.timestamp - lastTimestamp > 300)
             lastTimestamp = msg.timestamp
@@ -68,7 +71,7 @@ final class ChatViewModel: NSObject, ObservableObject {
                         messageId: message.messageId,
                         text: message.text,
                         isOutgoingMsg: true,
-                        timestamp: message.timestamp
+                        timestamp: message.timestamp,
                     )
                     chatMsg.showTime = (message.timestamp - lastTimestamp > 300)
                     self.messages.append(chatMsg)

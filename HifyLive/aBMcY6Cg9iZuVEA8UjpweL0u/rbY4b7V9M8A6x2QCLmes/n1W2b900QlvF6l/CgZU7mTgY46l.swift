@@ -187,7 +187,9 @@ struct CgZU7mTgY46l: View {
                         }.padding(.horizontal,16)
                         .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
                     }
-                // 底部输入框
+                //end 底部输入框
+                
+                
             }
             .onAppear { vm.loadHistory() }
         }

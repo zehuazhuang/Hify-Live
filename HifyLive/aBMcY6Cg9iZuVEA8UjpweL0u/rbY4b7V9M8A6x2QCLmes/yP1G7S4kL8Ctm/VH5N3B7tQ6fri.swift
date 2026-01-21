@@ -1,9 +1,36 @@
 // freiend 模块
 import SwiftUI
+import SwiftfulRouting
 
 struct VH5N3B7tQ6fri: View {
     @State private var seB51QK82J: Int = 0
     @State private var indices = Array(0..<4)
+    @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
+    @ObservedObject var sessionStore = RecentSessionStore.shared
+    @Environment(\.router) var rM9Z8S7A1ql
+    
+    var filteredAccids: [String] {
+        seB51QK82J == 0
+            ? qVi2QJ0SeDluhZ9xoQ8V7.gx0Y2M6W9 // Following
+            : qVi2QJ0SeDluhZ9xoQ8V7.fZ7W2C0YxML // Follower
+    }
+    
+
+    var filteredAccidSet: Set<String> {
+        Set(filteredAccids)
+    }
+
+    var filteredSessions: [CachedRecentSession] {
+        sessionStore.cache.filter {
+            filteredAccidSet.contains($0.sessionId)
+        }
+    }
+    
+    //是否空数据
+    var x2E7Y8Z: Bool {
+        filteredSessions.isEmpty
+    }
+    
     var body: some View {
         VStack(spacing:20) {
             HStack(spacing: 16) {
@@ -28,29 +55,59 @@ struct VH5N3B7tQ6fri: View {
                 Spacer()
             }
             .padding(.horizontal, 16)
-            ScrollView{
-//                LazyVStack(spacing:8){
-//                    ForEach(0..<4){index in
-//                        tD4C1N7pR6Sli(recent: [])
-//                            .swipeActions(edge: .trailing) {
-//                                Button(role: .destructive) {
-//                                    if let i = indices.firstIndex(of: index) {
-//                                        indices.remove(at: i)
-//                                    }
-//                                } label: {
-//                                    Label("Delete", systemImage: "trash")
-//                                }
-//                            }
-//                            .listRowInsets(EdgeInsets())
-//                            .listRowSeparator(.hidden)
-//                            .listRowBackground(Color.clear)
-//                    }
-//                }
+            
+            if x2E7Y8Z {
+                VStack{
+                    ZJ7h766mz(tMmEWWlfgUag: "npIyAxb6vfM073130T9MwCJY8")
+                                       .frame(width: 343, height: 248)
+                    Spacer()
+                }
+            }else{
+                List {
+                    ForEach(filteredSessions) { rZq7S8A9 in
+                        tD4C1N7pR6Sli(
+                            rN1Z8mR: rZq7S8A9,
+                            onTap: { r in
+                                
+                                    GlobalUnreadStore.shared.clearUnread(
+                                        for: r.sessionId,
+                                        count: r.unreadCount
+                                    )
+
+                                   
+                                sessionStore.markSessionRead(sessionId: r.sessionId)
+                                
+                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                    CgZU7mTgY46l(session: r.session)
+                                }
+                            },
+                            onDelete: { r in
+                                sessionStore.removeSession(withId: r.id)
+                            }
+                        )
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                    }
+                }
+                .listStyle(.plain)
+                .background(Color.clear)
             }
+
             
         }
+        .onAppear{
+//            if qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK.isEmpty {
+//                    Task {
+//                        await qVi2QJ0SeDluhZ9xoQ8V7.vf0AD3wYQxpfxxjs2pE7PuO66Wls(0) // 关注
+//                        await qVi2QJ0SeDluhZ9xoQ8V7.vf0AD3wYQxpfxxjs2pE7PuO66Wls(1) // 粉丝
+//                    }
+//                }
+           
+            }
     }
 }
+//
 struct QP8XkW3ZButton: View {
 
     let ti9QZ7xM4bV: String

@@ -20,7 +20,10 @@ struct ZV6K3W8qN5re: View {
                 VStack(spacing:20){
                     
                     xD6bLM9VWBut(tC4mJ1P6X: 0, L7sB2F9ac: {
-                        
+                        // 1️⃣ 标记所有会话已读
+                        RecentSessionStore.shared.markAllSessionsRead()
+                        GlobalUnreadStore.shared.clearAllUnread()
+                        sE92F3V9XA = false
                     }, st5T2kH9L1Y: "Mark all read")
                     xD6bLM9VWBut(tC4mJ1P6X: 0, L7sB2F9ac: {
                         isxM8ZxQb = false

@@ -394,7 +394,7 @@ class T0viKk: ObservableObject {
     static let wSremNeLspPkPRHBJnlVCs5w = T0viKk()
     
     // 获取用户信息（userId、yxAccid）
-    func ngIp5pudxny8o0Mdsqv(iN9Qd7kjrHTAEXEIBDb2wKlGSv2dN: Int, wTEEJpZz0iGVK: String) async -> [String:Any]? {
+    func ngI7Y2A8C4E0ZQ9W6xL(iN9Qd7kjrHTAEXEIBDb2wKlGSv2dN: Int, wTEEJpZz0iGVK: String) async -> [String:Any]? {
         do {
             let bSn9YS: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "jd+Je9oaVKuQ4jHkoZazeiUeAljC8YlPdz+5tirNkKw=".bFHEatcgE4zzU9TCfDonsu(),
