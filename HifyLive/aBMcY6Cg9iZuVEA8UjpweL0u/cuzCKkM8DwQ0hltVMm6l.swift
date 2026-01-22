@@ -16,6 +16,9 @@ final class IyfdHMdY: ObservableObject {
     /// 粉丝
     @Published var iF2ouR0gHFDSr3GJ: [[String: Any]] = []
     
+    /// 当前用户相册图片
+    @Published var uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi: [String] = []
+    
     /// 是否已加载完数据
     @Published var rzeKD010L4fVwfSUlarrt: Bool = false
     

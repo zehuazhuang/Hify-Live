@@ -1,151 +1,84 @@
 import SwiftUI
 
-struct DraggableGridWithFrameDemo: View {
-
-    struct ColorItem: Identifiable, Equatable {
-        let id = UUID()
-        let color: Color
-    }
-
-    @State private var items: [ColorItem] = [
-        .init(color: .red),
-        .init(color: .green),
-        .init(color: .blue),
-        .init(color: .orange),
-        .init(color: .purple),
-        .init(color: .pink),
-        .init(color: .yellow),
-        .init(color: .teal)
-    ]
-
-    @State private var draggingItem: ColorItem? = nil
-    @State private var dragOffset: CGSize = .zero
-    @State private var dragStartIndex: Int? = nil
-
-    @State private var itemFrames: [UUID: CGRect] = [:]
-
-    private let columns = [GridItem(.flexible(), spacing: 12),
-                           GridItem(.flexible(), spacing: 12)]
-    private let itemSize = CGSize(width: 100, height: 100)
-    private let swapThreshold: CGFloat = 50
-
+//相册未选择提示弹框
+struct rpc3EoOHg1hTPs6bBIVjTifMG0: View {
+    
+    var bL5igEhBkUU: (Int) -> Void
+    
     var body: some View {
-        ZStack {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(items) { item in
-                        ColorItemView(item: item)
-                            .frame(width: itemSize.width, height: itemSize.height)
-                            .opacity(draggingItem?.id == item.id ? 0.3 : 1)
-                            .background(
-                                GeometryReader { geo in
-                                    Color.clear
-                                        .preference(
-                                            key: ItemFrameKey.self,
-                                            value: [item.id: geo.frame(in: .named("grid"))]
+        VStack(spacing: 24) {
+            VStack(spacing: 10) {
+                HStack(spacing: 4) {
+                    ZJ7h766mz(tMmEWWlfgUag: "jtIX8vefgtZLPffo7uoIGDDyg3sfmpju")
+                        .frame(width: 24,height: 24)
+                    Text("02K2MYTY7xoKy3wwOm+ncQ==".bFHEatcgE4zzU9TCfDonsu())
+                        .g0LIIcoZQsOjyND9(
+                            size: 18,
+                            weight: .semibold
+                        )
+                }
+                VStack(spacing: 21) {
+                    Text("D+fE7lXRiFRCh17rCJeNH6NY9nLBGpHuf+4CWlAvZOPbVLm7qhZze6d3EH8wj6222O5YAIIJNbuQLio33qyqNA==".bFHEatcgE4zzU9TCfDonsu())
+                        .g0LIIcoZQsOjyND9(
+                            color: Color.white.opacity(0.6)
+                        )
+                        .multilineTextAlignment(.center)
+                    HStack(spacing: 12) {
+                        Button{
+                            bL5igEhBkUU(2)
+                        } label: {
+                            RoundedRectangle(cornerRadius: 325)
+                                .fill(Color.white.opacity(0.25))
+                                .frame(width: 90,height: 46)
+                                .overlay(alignment: .center) {
+                                    Text("FFouFqE8EjQJr32Cp3FxzA==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 18,
+                                            weight: .semibold
                                         )
                                 }
-                            )
-                            .gesture(dragGesture(for: item))
+                        }
+                        Button{
+                            bL5igEhBkUU(1)
+                        } label: {
+                            RoundedRectangle(cornerRadius: 325)
+                                .fill(Color.white.opacity(0.25))
+                                .frame(width: 136,height: 46)
+                                .overlay(alignment: .center) {
+                                    ZJ7h766mz(tMmEWWlfgUag: "ySceliLORzDY")
+                                    Text("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 18,
+                                            weight: .semibold
+                                        )
+                                }
+                        }
                     }
                 }
-                .padding(16)
             }
-            .coordinateSpace(name: "grid")
-            .onPreferenceChange(ItemFrameKey.self) { value in
-                itemFrames = value
-            }
-
-            // 顶层拖动格子
-            if let draggingItem = draggingItem,
-               let frame = itemFrames[draggingItem.id] {
-                ColorItemView(item: draggingItem)
-                    .frame(width: itemSize.width, height: itemSize.height)
-                    .cornerRadius(8)
-                    .position(
-                        x: frame.midX + dragOffset.width,
-                        y: frame.midY + dragOffset.height
-                    )
-                    .zIndex(100)
-            }
-        }
-    }
-
-    private func dragGesture(for item: ColorItem) -> some Gesture {
-        LongPressGesture(minimumDuration: 0.2)
-            .sequenced(before: DragGesture())
-            .onChanged { value in
-                switch value {
-                case .first(true):
-                    draggingItem = item
-                    dragStartIndex = items.firstIndex(of: item)
-                    dragOffset = .zero
-                case .second(true, let drag?):
-                    guard draggingItem?.id == item.id else { return }
-                    dragOffset = drag.translation
-                default: break
-                }
-            }
-            .onEnded { _ in
-                endDrag()
-            }
-    }
-
-    private func endDrag() {
-        guard let draggingItem = draggingItem,
-              let fromIndex = dragStartIndex else { return }
-
-        guard let frame = itemFrames[draggingItem.id] else { return }
-        let dragCenter = CGPoint(
-            x: frame.midX + dragOffset.width,
-            y: frame.midY + dragOffset.height
-        )
-
-        if let toIndex = nearestIndex(to: dragCenter, excluding: draggingItem) {
-            let fromCenter = CGPoint(x: frame.midX, y: frame.midY)
-            let distance = hypot(dragCenter.x - fromCenter.x, dragCenter.y - fromCenter.y)
-            if distance >= swapThreshold && toIndex != fromIndex {
-                withAnimation {
-                    items.move(fromOffsets: IndexSet(integer: fromIndex),
-                               toOffset: toIndex > fromIndex ? toIndex + 1 : toIndex)
-                }
+            .padding(.horizontal,24)
+            .padding(.top,40)
+            .padding(.bottom,24)
+            .frame(width: 287)
+            .background(
+                ZStack(alignment: .bottom, content: {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(
+                            Gradient(colors: [Color(red: 21/255, green: 12/255, blue: 38/255),Color(red: 17/255, green: 31/255, blue: 46/255)])
+                        )
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(
+                            Gradient(colors: [Color(red: 94/255, green: 148/255, blue: 1, opacity: 0),Color(red: 117/255, green: 237/255, blue: 1, opacity: 0.25)])
+                        )
+                        .frame(height: 72)
+                })
+            )
+            Button{
+                bL5igEhBkUU(0)
+            } label: {
+                ZJ7h766mz(tMmEWWlfgUag: "usatuZc4VJMZtenkP8vSbx1wVDb")
+                    .frame(width: 32,height: 32)
             }
         }
-
-        dragOffset = .zero
-        dragStartIndex = nil
-        self.draggingItem = nil
     }
-
-    private func nearestIndex(to point: CGPoint, excluding item: ColorItem) -> Int? {
-        return items.enumerated()
-            .filter { $0.element.id != item.id }
-            .map { idx, otherItem -> (Int, CGFloat) in
-                guard let frame = itemFrames[otherItem.id] else { return (idx, .infinity) }
-                let center = CGPoint(x: frame.midX, y: frame.midY)
-                let distance = hypot(point.x - center.x, point.y - center.y)
-                return (idx, distance)
-            }
-            .min(by: { $0.1 < $1.1 })?.0
-    }
-}
-
-struct ItemFrameKey: PreferenceKey {
-    static var defaultValue: [UUID: CGRect] = [:]
-    static func reduce(value: inout [UUID : CGRect], nextValue: () -> [UUID : CGRect]) {
-        value.merge(nextValue(), uniquingKeysWith: { $1 })
-    }
-}
-
-struct ColorItemView: View {
-    let item: DraggableGridWithFrameDemo.ColorItem
-    var body: some View {
-        Rectangle()
-            .fill(item.color)
-            .cornerRadius(8)
-    }
-}
-
-#Preview {
-    DraggableGridWithFrameDemo()
 }

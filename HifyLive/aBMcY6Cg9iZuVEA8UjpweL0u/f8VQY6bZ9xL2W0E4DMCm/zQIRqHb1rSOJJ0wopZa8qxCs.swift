@@ -1,12 +1,10 @@
 import SwiftUI
+import Photos
 import Combine
 import SwiftfulRouting
 
 //个人详情页面
 struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
-    @StateObject private var phgf6UsUvsZGOPvMrm4sKM8vxLZEGtTw = IyfdHMdY.bTa3L6BoprG
-    @StateObject private var htMDFXdMv3oS = QENQQv2IjxH1iAGP2CGqvtrE.ozXOqc5p9qIHuoxi8KS
-    
     //背景图index
     @State private var fQAcgipdIEvxLs5OpaG0: Int = 0
     
@@ -28,16 +26,16 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                             .frame(height: 282)
                             .overlay {
                                 ZStack(alignment: .bottom) {
-                                    if htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.isEmpty {
+                                    if m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.isEmpty {
                                         ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
                                     } else {
                                         TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
-                                            ForEach(htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.indices, id: \.self) { x56Wv in
-                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: htMDFXdMv3oS.fJS9oPHx4kejSIOYpG[x56Wv]) {
+                                            ForEach(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.indices, id: \.self) { x56Wv in
+                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]) {
                                                     ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
                                                 }
                                                 .onTapGesture {
-                                                    pVzCUaYBcF5CZ1 = htMDFXdMv3oS.fJS9oPHx4kejSIOYpG[x56Wv]
+                                                    pVzCUaYBcF5CZ1 = m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]
                                                 }
                                             }
                                         }
@@ -67,7 +65,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         .fill(Color.white.opacity(0.2))
                                         .frame(width: 88, height: 88)
                                         .overlay(alignment: .center) {
-                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
+                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
                                                 .frame(width: 80,height: 80)
                                                 .clipShape(Circle())
                                         }
@@ -92,9 +90,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                                         .frame(width: 16,height: 16)
                                                                 }
                                                         }
-                                                        ForEach(htMDFXdMv3oS.fJS9oPHx4kejSIOYpG, id: \.self) { zcPI03pbcA in
+                                                        ForEach(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi, id: \.self) { zcPI03pbcA in
                                                             Button {
-                                                                if let zvI1jA4wuQeGrx0krc0 = htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.firstIndex(of: zcPI03pbcA) {
+                                                                if let zvI1jA4wuQeGrx0krc0 = m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.firstIndex(of: zcPI03pbcA) {
                                                                     fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
                                                                 }
                                                             } label: {
@@ -103,10 +101,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                                     .clipShape(RoundedRectangle(cornerRadius: 4))
                                                                     .overlay(
                                                                         RoundedRectangle(cornerRadius: 4)
-                                                                            .stroke(Color.white.opacity(htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
+                                                                            .stroke(Color.white.opacity(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
                                                                     )
                                                             }
                                                         }
+                                                        .frame(height:36)
                                                     }.frame(minWidth: j2ISkikaHFezqwHcZmm.size.width, alignment: .trailing)
                                                 }
                                             }
@@ -137,7 +136,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .padding(.horizontal,16)
                                 VStack(spacing: 4){
                                     HStack(spacing: 0){
-                                        Text(htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
+                                        Text(m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .semibold
@@ -148,14 +147,14 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                     }
                                     HStack(spacing: 16){
                                         HStack(spacing: 4){
-                                            if let weCGKx4ftmOdrhQnvJeTrHKg = (htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int) {
+                                            if let weCGKx4ftmOdrhQnvJeTrHKg = (m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int) {
                                                 ZJ7h766mz(tMmEWWlfgUag: weCGKx4ftmOdrhQnvJeTrHKg == 0 ? "vK1PV3wuy5o4JGId" : weCGKx4ftmOdrhQnvJeTrHKg == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy")
                                                     .frame(width: 24,height: 24)
                                             } else {
                                                 ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
                                                     .frame(width: 24,height: 24)
                                             }
-                                            Text(String(htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
+                                            Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
                                                 .g0LIIcoZQsOjyND9()
                                         }
                                         RoundedRectangle(cornerRadius: 0)
@@ -166,11 +165,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             .fill(Color.white.opacity(0.4))
                                             .frame(width: 1, height: 13)
                                         HStack(spacing: 4) {
-                                            Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())))
+                                            Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())))
                                                 .g0LIIcoZQsOjyND9()
                                             Button{
                                                 let coaRRjVtVOXNbcGZNUa43 = String(
-                                                    htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU.int(
+                                                    m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.int(
                                                         "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
                                                     )
                                                 )
@@ -187,27 +186,43 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .padding(.horizontal,16)
                                 VStack(spacing: 16) {
                                     HStack(spacing: 83) {
-                                        VStack(spacing: 4) {
-                                            Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.n1G8RlzpcQK.count))
-                                                .g0LIIcoZQsOjyND9(
-                                                    size: 18,
-                                                    weight: .black
-                                                )
-                                            Text("j6N2OHmBLAbXPzqOtT0sAA==".bFHEatcgE4zzU9TCfDonsu())
-                                                .g0LIIcoZQsOjyND9(
-                                                    color: Color.white.opacity(0.4)
-                                                )
+                                        Button{
+                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    kaBpQbGjZ(c8WYppF6mHUmAV7PWfRx1p5rGFOwx46U: 0, )
+                                                }
+                                            }
+                                        } label: {
+                                            VStack(spacing: 4) {
+                                                Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.n1G8RlzpcQK.count))
+                                                    .g0LIIcoZQsOjyND9(
+                                                        size: 18,
+                                                        weight: .black
+                                                    )
+                                                Text("j6N2OHmBLAbXPzqOtT0sAA==".bFHEatcgE4zzU9TCfDonsu())
+                                                    .g0LIIcoZQsOjyND9(
+                                                        color: Color.white.opacity(0.4)
+                                                    )
+                                            }
                                         }
-                                        VStack(spacing: 4) {
-                                            Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.iF2ouR0gHFDSr3GJ.count))
-                                                .g0LIIcoZQsOjyND9(
-                                                    size: 18,
-                                                    weight: .black
-                                                )
-                                            Text("OKtvWktdeG2+akdspLRpzw==".bFHEatcgE4zzU9TCfDonsu())
-                                                .g0LIIcoZQsOjyND9(
-                                                    color: Color.white.opacity(0.4)
-                                                )
+                                        Button{
+                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    kaBpQbGjZ(c8WYppF6mHUmAV7PWfRx1p5rGFOwx46U: 1, )
+                                                }
+                                            }
+                                        } label: {
+                                            VStack(spacing: 4) {
+                                                Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.iF2ouR0gHFDSr3GJ.count))
+                                                    .g0LIIcoZQsOjyND9(
+                                                        size: 18,
+                                                        weight: .black
+                                                    )
+                                                Text("OKtvWktdeG2+akdspLRpzw==".bFHEatcgE4zzU9TCfDonsu())
+                                                    .g0LIIcoZQsOjyND9(
+                                                        color: Color.white.opacity(0.4)
+                                                    )
+                                            }
                                         }
                                         Spacer()
                                     }
@@ -310,90 +325,101 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             set: { if !$0 { pVzCUaYBcF5CZ1 = nil } }
         )) {
             if let nolocnCeMJw14L = pVzCUaYBcF5CZ1 {
-                emXzeYRfV9KTkoUY8VFfe(nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ: nolocnCeMJw14L) {
+                rfVAcKuWDyI1Ig3cm2bMxplImn70D(eOzSTDS: nolocnCeMJw14L) {
                     pVzCUaYBcF5CZ1 = nil
-                }
-            }
-        }
-        .onAppear {
-            //接口获取用户信息数据
-            let gAOkBAe5WL: Int = phgf6UsUvsZGOPvMrm4sKM8vxLZEGtTw.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())
-            let fHxlq1qV1LcIItYlZlTt0MchAo: String = phgf6UsUvsZGOPvMrm4sKM8vxLZEGtTw.iBmPfFGfxu5JV7Aii7.string("HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu())
-            let aXZwA7feC = gSttvP6cNNp2pgg0Me5yfzJS76D1bBh(loI4IlOpOGsYefZxuUrxIR6SA: gAOkBAe5WL, sGOM5LYyLVsTQ1mHEFJD1CJtq: fHxlq1qV1LcIItYlZlTt0MchAo)
-            WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "jd+Je9oaVKuQ4jHkoZazeiUeAljC8YlPdz+5tirNkKw=".bFHEatcgE4zzU9TCfDonsu(),b3q0LlCSk: aXZwA7feC,) { (wVwtwgD0zTgvccj8HnsvIWdJ0uEZG: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
-                switch wVwtwgD0zTgvccj8HnsvIWdJ0uEZG {
-                case .success(let q6P4wSArD5v9O):
-                    print(q6P4wSArD5v9O.code)
-                    if q6P4wSArD5v9O.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-                        guard
-                            let fOA5Egzi66i1WZkcie1c3 = q6P4wSArD5v9O.result,
-                            !fOA5Egzi66i1WZkcie1c3.isEmpty
-                        else {
-                            return
-                        }
-                        let jUhx049mJRyKiqSXL4TqTbadUiD2kf = fOA5Egzi66i1WZkcie1c3.hL9dV3bQ2fK6sJ8p()
-                        print(jUhx049mJRyKiqSXL4TqTbadUiD2kf)
-                        if let d3c0aAZhrIdCS = jUhx049mJRyKiqSXL4TqTbadUiD2kf.kPOR9FHwcEZJv9YDf4W01D() {
-                            htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU = d3c0aAZhrIdCS
-                            if let ov5FA166mGGy3hHU = d3c0aAZhrIdCS[
-                                "yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()
-                            ] as? [[String: Any]] {
-                                htMDFXdMv3oS.fJS9oPHx4kejSIOYpG = ov5FA166mGGy3hHU.compactMap {
-                                    $0.string("ttysucqiFVfAC6KE/VcrvA==".bFHEatcgE4zzU9TCfDonsu())
-                                }
-                            }
-                        }
-                    } else {
-                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(q6P4wSArD5v9O.message,z2E1geUN5miQ95SpoCG: false)
-                    }
-                case .failure(let u0lXlYLQiGrjGGOpB9Mp):
-                    var uArr57u4wCFEBiObMWHD5lidt7K:String = ""
-                    if let lceNSIyqcTobVEYEgAQrxBBYhBKmg5B = u0lXlYLQiGrjGGOpB9Mp as? UVvaHCnbKWNk4KQPzW5aJDt {
-                        uArr57u4wCFEBiObMWHD5lidt7K = lceNSIyqcTobVEYEgAQrxBBYhBKmg5B.eUJLh
-                    } else {
-                        uArr57u4wCFEBiObMWHD5lidt7K = u0lXlYLQiGrjGGOpB9Mp.localizedDescription
-                    }
-                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(uArr57u4wCFEBiObMWHD5lidt7K)
                 }
             }
         }
     }
 }
 
-/// 支持全屏缩放和长按保存
-struct emXzeYRfV9KTkoUY8VFfe: View {
-    let nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ: String
-    let onDismiss: () -> Void
-    @State private var scale: CGFloat = 1.0
+//点击放大图片、支持长按保存
+struct rfVAcKuWDyI1Ig3cm2bMxplImn70D: View {
+    let eOzSTDS: String
+    let vjzAERk78sLuW96: () -> Void
+    
+    @State private var gmmOONihfuH0vjheHiqm9Prv872HI: CGFloat = 1.0
+    @State private var pzxxrsR6esxySYadQAv2LlYlH5 = false
+    @State private var kznmaN03f3hYXK8LgB02R3 = false
+    @State private var xW19zC4gQsqvkXilNJmg = ""
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
-            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ)
+            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: eOzSTDS)
                 .scaledToFit()
-                .scaleEffect(scale)
-                .gesture(MagnificationGesture()
-                    .onChanged { value in
-                        scale = value
-                    }
+                .scaleEffect(gmmOONihfuH0vjheHiqm9Prv872HI)
+                // 同时支持缩放和长按
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged { phcCmKzVelvGgSHdmwexFw924qY in
+                            gmmOONihfuH0vjheHiqm9Prv872HI = phcCmKzVelvGgSHdmwexFw924qY
+                        }
+                        .simultaneously(
+                            with: LongPressGesture(minimumDuration: 0.2)
+                                .onEnded { _ in
+                                    // 长按达到阈值立即弹框
+                                    pzxxrsR6esxySYadQAv2LlYlH5 = true
+                                }
+                        )
                 )
-                .onTapGesture {
-                    onDismiss()
-                }
-                .onLongPressGesture {
-                    saveImage(urlString: nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ)
-                }
+        }
+        .onTapGesture {
+            vjzAERk78sLuW96()
+        }
+        .confirmationDialog("JC5qWNHChYw1hjsiBDLojIWxcbXx+TE9hGAq76AK+cqY4g2Yq9rE+vz3FUIjZMBLWfX7SxBFxgdvM7X7M5nbSw==".bFHEatcgE4zzU9TCfDonsu(), isPresented: $pzxxrsR6esxySYadQAv2LlYlH5, titleVisibility: .visible) {
+            Button("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu()) {
+                af2DH(i49bp3YNTEyesczfgOJii3zbqjeXApt: eOzSTDS)
+            }
+            Button("ughEnrHH8idFaI0NbZK2QA==".bFHEatcgE4zzU9TCfDonsu(), role: .cancel) {}
+        }
+        .alert(xW19zC4gQsqvkXilNJmg, isPresented: $kznmaN03f3hYXK8LgB02R3) {
+            Button("UXfiaTZmQdnv9gXzLOufzw==".bFHEatcgE4zzU9TCfDonsu(), role: .cancel) {}
         }
     }
     
-    private func saveImage(urlString: String) {
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            if let data, let uiImage = UIImage(data: data) {
-                UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+    private func af2DH(i49bp3YNTEyesczfgOJii3zbqjeXApt: String) {
+        let nFV03vDFM9If = PHPhotoLibrary.authorizationStatus(for: .addOnly)
+        switch nFV03vDFM9If {
+        case .authorized, .limited:
+            i2oZywRv3fhPcBlvM8ml4dz5(ni14a: i49bp3YNTEyesczfgOJii3zbqjeXApt)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization(for: .addOnly) { nYkd6xuUHzijDAdP in
+                if nYkd6xuUHzijDAdP == .authorized || nYkd6xuUHzijDAdP == .limited {
+                    i2oZywRv3fhPcBlvM8ml4dz5(ni14a: i49bp3YNTEyesczfgOJii3zbqjeXApt)
+                } else {
+                    vWus4E3fwNIVpJGZbcB()
+                }
+            }
+        default:
+            vWus4E3fwNIVpJGZbcB()
+        }
+    }
+    
+    private func i2oZywRv3fhPcBlvM8ml4dz5(ni14a: String) {
+        guard let c2oREmYI7DkXdnqfurb1U4 = URL(string: ni14a) else { return }
+        URLSession.shared.dataTask(with: c2oREmYI7DkXdnqfurb1U4) { oFTNH0CP7k, _, _ in
+            if let oFTNH0CP7k, let uHBvCQzy982wg9hSHzpBjY8lunavC = UIImage(data: oFTNH0CP7k) {
+                DispatchQueue.main.async {
+                    UIImageWriteToSavedPhotosAlbum(uHBvCQzy982wg9hSHzpBjY8lunavC, nil, nil, nil)
+                    xW19zC4gQsqvkXilNJmg = "EBn6aBwfE17pqlwkPFNQZaLxZLCQGt/XOqRSs3uEZPs=".bFHEatcgE4zzU9TCfDonsu()
+                    kznmaN03f3hYXK8LgB02R3 = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    xW19zC4gQsqvkXilNJmg = "v6rFdwNBJ9KWYSiBoV1IDg==".bFHEatcgE4zzU9TCfDonsu()
+                    kznmaN03f3hYXK8LgB02R3 = true
+                }
             }
         }.resume()
+    }
+    
+    private func vWus4E3fwNIVpJGZbcB() {
+        DispatchQueue.main.async {
+            xW19zC4gQsqvkXilNJmg = "C5uVA0twhOLqb5a0pzEegd38MZJvkWFLCAacQhAD3xt2/Vk4FvCNYgVcDE4n3e45YPI2u/TUVhewOrHJlyE/mw==".bFHEatcgE4zzU9TCfDonsu()
+            kznmaN03f3hYXK8LgB02R3 = true
+        }
     }
 }
 
@@ -416,53 +442,15 @@ struct CustomCorners: Shape {
     zQIRqHb1rSOJJ0wopZa8qxCs()
 }
 
-//个人信息变量
-final class QENQQv2IjxH1iAGP2CGqvtrE: ObservableObject {
-    
-    static let ozXOqc5p9qIHuoxi8KS = QENQQv2IjxH1iAGP2CGqvtrE()
-    private init() {}
-    
-    /// 个人信息
-    @Published var kShXkzdT0LdNQr7PMBLU: [String: Any] = [:]
-    
-    ///个人信息图片list【string】
-    @Published var fJS9oPHx4kejSIOYpG: [String] = []
-}
-
-//个人信息查询接口参数配置
-struct gSttvP6cNNp2pgg0Me5yfzJS76D1bBh: Codable {
-    
-    let loI4IlOpOGsYefZxuUrxIR6SA: Int //userId
-    let sGOM5LYyLVsTQ1mHEFJD1CJtq: String //yxAccid
-    
-    func encode(to encoder: Encoder) throws {
-        var iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1 = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
-        
-        try iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1.encode(
-            loI4IlOpOGsYefZxuUrxIR6SA,
-            forKey: bonDyqD2YnaVJW(
-                "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
-            )
-        )
-        
-        try iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1.encode(
-            sGOM5LYyLVsTQ1mHEFJD1CJtq,
-            forKey: bonDyqD2YnaVJW(
-                "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()
-            )
-        )
-    }
-}
-
 struct gStC2A9Z6Y8Qx0E7W4ML: Codable {
     
- 
+    
     let sGOM5LYyLVsTQ1mHEFJD1CJtq: String //yxAccid
     
     func encode(to encoder: Encoder) throws {
         var iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1 = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
         
-
+        
         
         try iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1.encode(
             sGOM5LYyLVsTQ1mHEFJD1CJtq,

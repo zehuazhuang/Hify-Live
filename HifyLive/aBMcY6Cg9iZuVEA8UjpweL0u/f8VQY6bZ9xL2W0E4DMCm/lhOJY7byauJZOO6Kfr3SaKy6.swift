@@ -30,6 +30,13 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
     
     @StateObject private var fFCUrf3NXxibojTjOBF2N = IyfdHMdY.bTa3L6BoprG
     
+    @State private var cGwoByGGy860Qj8Gwd1XFLwLkuX4Ygom: String = "" //头像
+    @State private var dYtaf6JUPaCMMjuFfq5DTi: String = "" //名字
+    @State private var d4cSuyvEpjLSv: Int = 0 //性别
+//    @State private var st8tFmDYghEYtqM1ZqCn6B61n0: Int = 0 //性别
+//    @State private var d4cSuyvEpjLSv: Int = 0 //性别
+//    @State private var d4cSuyvEpjLSv: Int = 0 //性别
+    
     @State private var qk4UVuR2yFy20wWW: Bool = false
     
     var body: some View {

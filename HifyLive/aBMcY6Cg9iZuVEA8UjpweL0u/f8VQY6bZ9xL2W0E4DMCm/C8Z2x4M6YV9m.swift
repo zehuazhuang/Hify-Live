@@ -313,9 +313,7 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
                                 Button{
-                                    withAnimation(.spring()) {
-                                        deZMvhJctiSoCj78YDk = true
-                                    }
+                                    deZMvhJctiSoCj78YDk = true
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {
@@ -354,14 +352,10 @@ struct C8Z2x4M6YV9m: View {
                 if deZMvhJctiSoCj78YDk {
                     Color.black.opacity(0.7)
                         .onTapGesture {
-                            withAnimation(.spring()) {
-                                deZMvhJctiSoCj78YDk = false
-                            }
-                        }
-                    edUaA4t78 { lXBkygXXlhgeh963y8DmW in
-                        withAnimation(.spring()) {
                             deZMvhJctiSoCj78YDk = false
                         }
+                    edUaA4t78 { lXBkygXXlhgeh963y8DmW in
+                        deZMvhJctiSoCj78YDk = false
                         if lXBkygXXlhgeh963y8DmW == 1 {
                             ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw()
                             f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
@@ -379,6 +373,9 @@ struct C8Z2x4M6YV9m: View {
             if eGPIJc7hlg9zdF == .active {
                 xycvz.s1UvUY5jDYFvHb3j0() // 再次检查权限状态
             }
+        }
+        .onAppear {
+            vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
         }
     }
     

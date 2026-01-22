@@ -1,5 +1,6 @@
 import SwiftUI
 
+//相册图片审核未通过显示
 struct zWVkvD8sPGifMiUqF0rmlh44Sq: View {
     
     let tGT3Nn2qNvR7GutBXylMRWmC: [String]

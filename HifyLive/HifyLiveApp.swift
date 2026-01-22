@@ -6,7 +6,7 @@ import SwiftfulRouting
 struct HifyLiveApp: App {
     
     // 关联 AppDelegate
-       @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
         //初始化Google clientID
@@ -34,64 +34,50 @@ struct HifyLiveApp: App {
                             //获取当前登录用户数据
                             h7xAdXMHidxlrtblkRACwZ8kTw6QO()
                                 .onAppear {
-                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "gwkJDSPvuIdbiSZMMSMa6nqC3rKE3+qsHYeGVuBnHPc=".bFHEatcgE4zzU9TCfDonsu(),b3q0LlCSk: [String: String](),) { (fyx2rOxV8T5fTGMyPa4: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
-                                        switch fyx2rOxV8T5fTGMyPa4 {
-                                        case .success(let cmBllstUOfe):
+                                    Task {
+                                        let gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5: [String:Any]? = await aYTO7iD()
+                                        if let kRWrAfSFZzA6re6E68Sfhxj: [String:Any] = gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5 {
+                                            qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = kRWrAfSFZzA6re6E68Sfhxj
                                             
-                                            print(cmBllstUOfe.code)
-                                            if cmBllstUOfe.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-                                                guard
-                                                    let fz22OtQBJxCc32wUpCIJle9BCDp3t = cmBllstUOfe.result,
-                                                    !fz22OtQBJxCc32wUpCIJle9BCDp3t.isEmpty
-                                                else {
-                                                    return
-                                                }
-                                                let uPukTwrgs = fz22OtQBJxCc32wUpCIJle9BCDp3t.hL9dV3bQ2fK6sJ8p()
-                                                
-                                                
-                                                print(uPukTwrgs)
-                                                if let l63QEV2C = uPukTwrgs.kPOR9FHwcEZJv9YDf4W01D() {
-                                                    qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = l63QEV2C
-                                                    
-                                                    //获取关注粉丝列表
-                                                    vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
-                                                    vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
-                                                   
-                                                    if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
-                                                       let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
-                                                        
-                                                        NIMManager.shared.login(account: yX5tB1x, token: ilgJ9kMFt) { success in
-                                                            if success {
-                                                                print("✔️ 云信 IM 登录成功")
-                                                                // 后续获取会话/发送消息等
-                                                                // ✅ 只初始化一次
-                                                                    _ = IMMessageListener.shared
-
-                                                                    // 初次拉会话
-                                                                    RecentSessionManager.shared.fetchRecentSessions {
-                                                                        DispatchQueue.main.async {
-                                                                            let sessions = RecentSessionManager.shared.cache
-                                                                            GlobalUnreadStore.shared.update(from: sessions)
-                                                                            RecentSessionStore.shared.cache = sessions
-                                                                        }
-                                                                    }
-                                                            } else {
-                                                                print("❌ 云信 IM 登录失败")
-                                                            }
-                                                        }
-                                                    }
-                                                    //数据获取完毕切换页面
-                                                    qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
-                                                }
-                                            } else {
-                                                arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        zkaqn9Jn()
-                                                    }
+                                            //筛选相册list
+                                            if let ov5FA166mGGy3hHU = kRWrAfSFZzA6re6E68Sfhxj[
+                                                "yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()
+                                            ] as? [[String: Any]] {
+                                                qHyGWbkl4J6y35.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi = ov5FA166mGGy3hHU.compactMap {
+                                                    $0.string("ttysucqiFVfAC6KE/VcrvA==".bFHEatcgE4zzU9TCfDonsu())
                                                 }
                                             }
                                             
-                                        case .failure(_):
+                                            //获取关注粉丝列表
+                                            vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                                            vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+                                            
+                                            if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
+                                               let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
+                                                
+                                                NIMManager.shared.login(account: yX5tB1x, token: ilgJ9kMFt) { success in
+                                                    if success {
+                                                        print("✔️ 云信 IM 登录成功")
+                                                        // 后续获取会话/发送消息等
+                                                        // ✅ 只初始化一次
+                                                        _ = IMMessageListener.shared
+                                                        
+                                                        // 初次拉会话
+                                                        RecentSessionManager.shared.fetchRecentSessions {
+                                                            DispatchQueue.main.async {
+                                                                let sessions = RecentSessionManager.shared.cache
+                                                                GlobalUnreadStore.shared.update(from: sessions)
+                                                                RecentSessionStore.shared.cache = sessions
+                                                            }
+                                                        }
+                                                    } else {
+                                                        print("❌ 云信 IM 登录失败")
+                                                    }
+                                                }
+                                            }
+                                            //数据获取完毕切换页面
+                                            qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
+                                        } else {
                                             arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
                                                 WUjfoptOKs8pZfhSAH0duplG {
                                                     zkaqn9Jn()
