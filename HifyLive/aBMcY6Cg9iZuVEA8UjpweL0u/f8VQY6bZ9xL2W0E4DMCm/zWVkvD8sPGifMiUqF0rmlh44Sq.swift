@@ -33,7 +33,8 @@ struct zWVkvD8sPGifMiUqF0rmlh44Sq: View {
                                 }
                             }
                             .tabViewStyle(.page(indexDisplayMode: .never))
-                            .frame(height: 198)
+                            .frame(width: 245,height: 198)
+                            .padding(.all,0)
                             HStack(spacing: 8) {
                                 ForEach(tGT3Nn2qNvR7GutBXylMRWmC.indices, id: \.self) { rK7vQqG89L7 in
                                     Circle()

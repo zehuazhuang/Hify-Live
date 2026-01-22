@@ -14,6 +14,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     
     @StateObject private var m1nKfP0PAkzYaDvH15D4fsshmC = IyfdHMdY.bTa3L6BoprG
     
+    //点击放大的图片
+    @State private var pVzCUaYBcF5CZ1: String? = nil
+    
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -25,20 +28,27 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                             .frame(height: 282)
                             .overlay {
                                 ZStack(alignment: .bottom) {
-                                    if let qlyR3Vp5sJIHsG6eP9fMCvi: [String] =  htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
-                                        if qlyR3Vp5sJIHsG6eP9fMCvi.isEmpty {
-                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                        } else {
-                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qlyR3Vp5sJIHsG6eP9fMCvi[fQAcgipdIEvxLs5OpaG0])
-                                        }
-                                    } else {
+                                    if htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.isEmpty {
                                         ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
+                                    } else {
+                                        TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
+                                            ForEach(htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.indices, id: \.self) { x56Wv in
+                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: htMDFXdMv3oS.fJS9oPHx4kejSIOYpG[x56Wv]) {
+                                                    ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
+                                                }
+                                                .onTapGesture {
+                                                    pVzCUaYBcF5CZ1 = htMDFXdMv3oS.fJS9oPHx4kejSIOYpG[x56Wv]
+                                                }
+                                            }
+                                        }
+                                        .tabViewStyle(.page(indexDisplayMode: .never))
                                     }
                                     ZJ7h766mz(tMmEWWlfgUag: "jlvIw3ryygxHNI")
                                         .frame(height: 119)
                                 }
                             }
-                        VStack(spacing: 156) {
+                            .clipped()
+                        VStack(spacing: 0) {
                             HStack(spacing: 0) {
                                 Button{
                                     ftgPSmzMVe.dismissScreen()
@@ -50,6 +60,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                             }
                             .padding(.top,58)
                             .padding(.leading,16)
+                            .padding(.bottom,156)
                             VStack(spacing:8) {
                                 HStack(spacing: 10) {
                                     Circle()
@@ -81,21 +92,19 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                                         .frame(width: 16,height: 16)
                                                                 }
                                                         }
-                                                        if let wqdTL6HFJhuW3psA: [String] =  htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
-                                                            ForEach(wqdTL6HFJhuW3psA, id: \.self) { zcPI03pbcA in
-                                                                Button {
-                                                                    if let zvI1jA4wuQeGrx0krc0 = wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) {
-                                                                        fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
-                                                                    }
-                                                                } label: {
-                                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
-                                                                        .frame(width: 42, height: 32)
-                                                                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                                                                        .overlay {
-                                                                            RoundedRectangle(cornerRadius: 4)
-                                                                                .stroke(Color.white.opacity(wqdTL6HFJhuW3psA.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
-                                                                        }
+                                                        ForEach(htMDFXdMv3oS.fJS9oPHx4kejSIOYpG, id: \.self) { zcPI03pbcA in
+                                                            Button {
+                                                                if let zvI1jA4wuQeGrx0krc0 = htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.firstIndex(of: zcPI03pbcA) {
+                                                                    fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
                                                                 }
+                                                            } label: {
+                                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
+                                                                    .frame(width: 42, height: 32)
+                                                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                                                    .overlay(
+                                                                        RoundedRectangle(cornerRadius: 4)
+                                                                            .stroke(Color.white.opacity(htMDFXdMv3oS.fJS9oPHx4kejSIOYpG.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
+                                                                    )
                                                             }
                                                         }
                                                     }.frame(minWidth: j2ISkikaHFezqwHcZmm.size.width, alignment: .trailing)
@@ -295,6 +304,17 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             }
         }
         .ignoresSafeArea()
+        // 全屏显示被点击的图片
+        .fullScreenCover(isPresented: Binding(
+            get: { pVzCUaYBcF5CZ1 != nil },
+            set: { if !$0 { pVzCUaYBcF5CZ1 = nil } }
+        )) {
+            if let nolocnCeMJw14L = pVzCUaYBcF5CZ1 {
+                emXzeYRfV9KTkoUY8VFfe(nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ: nolocnCeMJw14L) {
+                    pVzCUaYBcF5CZ1 = nil
+                }
+            }
+        }
         .onAppear {
             //接口获取用户信息数据
             let gAOkBAe5WL: Int = phgf6UsUvsZGOPvMrm4sKM8vxLZEGtTw.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())
@@ -315,6 +335,13 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         print(jUhx049mJRyKiqSXL4TqTbadUiD2kf)
                         if let d3c0aAZhrIdCS = jUhx049mJRyKiqSXL4TqTbadUiD2kf.kPOR9FHwcEZJv9YDf4W01D() {
                             htMDFXdMv3oS.kShXkzdT0LdNQr7PMBLU = d3c0aAZhrIdCS
+                            if let ov5FA166mGGy3hHU = d3c0aAZhrIdCS[
+                                "yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()
+                            ] as? [[String: Any]] {
+                                htMDFXdMv3oS.fJS9oPHx4kejSIOYpG = ov5FA166mGGy3hHU.compactMap {
+                                    $0.string("ttysucqiFVfAC6KE/VcrvA==".bFHEatcgE4zzU9TCfDonsu())
+                                }
+                            }
                         }
                     } else {
                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(q6P4wSArD5v9O.message,z2E1geUN5miQ95SpoCG: false)
@@ -330,6 +357,43 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                 }
             }
         }
+    }
+}
+
+/// 支持全屏缩放和长按保存
+struct emXzeYRfV9KTkoUY8VFfe: View {
+    let nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ: String
+    let onDismiss: () -> Void
+    @State private var scale: CGFloat = 1.0
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ)
+                .scaledToFit()
+                .scaleEffect(scale)
+                .gesture(MagnificationGesture()
+                    .onChanged { value in
+                        scale = value
+                    }
+                )
+                .onTapGesture {
+                    onDismiss()
+                }
+                .onLongPressGesture {
+                    saveImage(urlString: nLx3zO8LTJcIVM9PVI2Ocmj6USRM0uZ)
+                }
+        }
+    }
+    
+    private func saveImage(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            if let data, let uiImage = UIImage(data: data) {
+                UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+            }
+        }.resume()
     }
 }
 
@@ -360,6 +424,9 @@ final class QENQQv2IjxH1iAGP2CGqvtrE: ObservableObject {
     
     /// 个人信息
     @Published var kShXkzdT0LdNQr7PMBLU: [String: Any] = [:]
+    
+    ///个人信息图片list【string】
+    @Published var fJS9oPHx4kejSIOYpG: [String] = []
 }
 
 //个人信息查询接口参数配置

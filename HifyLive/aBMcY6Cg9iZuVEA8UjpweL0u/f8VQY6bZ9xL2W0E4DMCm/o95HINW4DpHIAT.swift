@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftfulRouting
 import PhotosUI
 
-struct Ek9tKrgkM0Mjp: Identifiable {
+struct Ek9tKrgkM0Mjp: Identifiable, Equatable {
     let id = UUID()
     var nVDMgVMWU: UIImage? = nil
     var g0HjS5Fukj: String?
@@ -23,8 +23,18 @@ struct o95HINW4DpHIAT: View {
     @StateObject private var cDiXG5 = QENQQv2IjxH1iAGP2CGqvtrE.ozXOqc5p9qIHuoxi8KS
     
     // 拖拽状态
-    @State private var draggingItem: Ek9tKrgkM0Mjp?
-    @State private var dragOffset: CGSize = .zero
+    @State private var cFCN9v7xy0xUis3K3Ss: Ek9tKrgkM0Mjp? = nil
+    @State private var pQFbkvCM: CGSize = .zero
+    @State private var poCajTQza0DvrQs1rz5Us8h6iY3mgF2: Int? = nil
+    
+    @State private var eetqrSRRm6atCHeh4bBxGa: [UUID: CGRect] = [:]
+    
+    private let jMquwmXIlo3YMECCULx = CGSize(width: 167, height: 126)
+    private let p9xZ4tP491jUM7ZJFDT1MwT9jK: CGFloat = 60
+    
+    //失败弹框
+    @State private var m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS: Bool = false
+    @State private var r7L9pCA: [String] = []
     
     var body: some View {
         ZStack {
@@ -45,24 +55,57 @@ struct o95HINW4DpHIAT: View {
                             )
                     }
                     Spacer()
-                    RoundedRectangle(cornerRadius: 325)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 16/255, green: 227/255, blue: 1),
-                                    Color(red: 217/255, green: 28/255, blue: 1)
-                                ]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(width: 78,height: 33)
-                        .overlay(alignment: .center) {
-                            Text("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu())
-                                .g0LIIcoZQsOjyND9(
-                                    weight: .medium
-                                )
+                    Button {
+                        Task {
+                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                            let uZ2AU6EKeqtS7lDkDwOojcj5k5nNS: [String] =
+                            idW6C0
+                                .compactMap { $0.g0HjS5Fukj }   // 去掉 nil
+                                .filter { !$0.isEmpty }        // 去掉 ""
+                            let jIeo5wbgvvsamVywfDiVXL: JUsmLn3i59tKLD7RL294I0nAG? = await a7wkluGHEiGGT3Zc1PbE7(uZ2AU6EKeqtS7lDkDwOojcj5k5nNS)
+                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                            if let w1C0d: JUsmLn3i59tKLD7RL294I0nAG = jIeo5wbgvvsamVywfDiVXL {
+                                guard
+                                    let oMKd7qebhMlgH3bk = w1C0d.result,
+                                    !oMKd7qebhMlgH3bk.isEmpty
+                                else {
+                                    cDiXG5.fJS9oPHx4kejSIOYpG = idW6C0.compactMap { $0.g0HjS5Fukj }
+                                    cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb.dismissScreen()
+                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("Gs7mu5e0GqYNjKG697HCaNySpH1/hAKRGl0hnEMHTPg=")
+                                    return
+                                }
+                                let brGWSlPTRFXRWS = oMKd7qebhMlgH3bk.hL9dV3bQ2fK6sJ8p()
+                                print(brGWSlPTRFXRWS) //直接返回未转json得字符串
+                                if let oGXNBeu7OiUpSgJwPvABlEY = brGWSlPTRFXRWS.kPOR9FHwcEZJv9YDf4W01D() {
+                                    if let l4T1eGb6NQQwzp8IS2S7zPa2 = oGXNBeu7OiUpSgJwPvABlEY["sRmN9z3L7rKPiPFgDt+DIg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
+                                        r7L9pCA = []
+                                        m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS = true
+                                    }
+                                }
+                            } else {
+                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("9fZeXzm2b8JDi9URhrOPCQ==")
+                            }
                         }
+                    } label: {
+                        RoundedRectangle(cornerRadius: 325)
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [
+                                        Color(red: 16/255, green: 227/255, blue: 1),
+                                        Color(red: 217/255, green: 28/255, blue: 1)
+                                    ]),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .frame(width: 78,height: 33)
+                            .overlay(alignment: .center) {
+                                Text("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu())
+                                    .g0LIIcoZQsOjyND9(
+                                        weight: .medium
+                                    )
+                            }
+                    }
                 })
                 .padding(.top,58)
                 .padding(.horizontal,16)
@@ -74,104 +117,94 @@ struct o95HINW4DpHIAT: View {
                     Spacer()
                 }
                 .padding(.horizontal,16)
-                ScrollView {
-                    let ekG0gcc6kk = [
-                        GridItem(.flexible(), spacing: 9),
-                        GridItem(.flexible(), spacing: 9)
-                    ]
-                    
-                    let qk0hcht9sZAQlbyhoX = idW6C0.count < 8
-                    let fA9HmQ = qk0hcht9sZAQlbyhoX ? idW6C0.count + 1 : idW6C0.count
-                    
-                    // LazyVGrid(columns: ekG0gcc6kk, spacing: 12) {
-                    //     ForEach(0..<fA9HmQ, id: \.self) { l1wrNqr1HhB in
-                            
-                    //         // ➕ 添加按钮
-                    //         if qk0hcht9sZAQlbyhoX && l1wrNqr1HhB == 0 {
-                    //             Button {
-                    //                 mjRYExqGqlfs5RlPB5FQ1oGd = true
-                    //             } label: {
-                    //                 tdBdcS7Dqc()
-                    //             }
-                    //         }
-                    //         // 📷 相册项
-                    //         else {
-                    //             let fPhLc3CChxKGm5YwPYribUxkEOvZA = qk0hcht9sZAQlbyhoX ? l1wrNqr1HhB - 1 : l1wrNqr1HhB
-                    //             let dRImlur = idW6C0[fPhLc3CChxKGm5YwPYribUxkEOvZA]
-                                
-                    //             wXWAaYKmLFbT1jAfqZ4KlTVAwpC(
-                    //                 nFBDXePJdd41Kp: dRImlur
-                    //             ) { ktpDsayc0tkak in
-                    //                 ib0Vb(ktpDsayc0tkak)
-                    //             }
-                    //             .opacity(draggingItem?.id == dRImlur.id ? 0.7 : 1)
-                    //             .position(draggingItem?.id == dRImlur.id ?
-                    //                       CGPoint(x: dragStartLocation.x + dragOffset.width,
-                    //                               y: dragStartLocation.y + dragOffset.height)
-                    //                       : nil)
-                    //             .gesture(
-                    //                 LongPressGesture(minimumDuration: 0.3)
-                    //                     .onEnded { _ in
-                    //                         draggingItem = dRImlur
-                    //                         if let idx = idW6C0.firstIndex(of: dRImlur) {
-                    //                             let row = idx / 2
-                    //                             let col = idx % 2
-                    //                             dragStartLocation = CGPoint(x: CGFloat(col) * 135 + 63,
-                    //                                                         y: CGFloat(row) * 138 + 63)
-                    //                         }
-                    //                     }
-                    //                     .simultaneously(with:
-                    //                         DragGesture()
-                    //                             .onChanged { value in
-                    //                                 guard draggingItem?.id == dRImlur.id else { return }
-                    //                                 dragOffset = value.translation
-                                                    
-                    //                                 // 判断是否需要交换
-                    //                                 if let fromIndex = idW6C0.firstIndex(of: dRImlur) {
-                    //                                     for (toIndex, otherItem) in idW6C0.enumerated() {
-                    //                                         guard otherItem.id != dRImlur.id else { continue }
-                    //                                         let otherRow = toIndex / 2
-                    //                                         let otherCol = toIndex % 2
-                    //                                         let otherCenter = CGPoint(x: CGFloat(otherCol) * 135 + 63,
-                    //                                                                   y: CGFloat(otherRow) * 138 + 63)
-                    //                                         let dragCenter = CGPoint(x: dragStartLocation.x + dragOffset.width,
-                    //                                                                  y: dragStartLocation.y + dragOffset.height)
-                                                            
-                    //                                         if hypot(dragCenter.x - otherCenter.x, dragCenter.y - otherCenter.y) < 63 {
-                    //                                             withAnimation {
-                    //                                                 idW6C0.move(fromOffsets: IndexSet(integer: fromIndex),
-                    //                                                                 toOffset: toIndex > fromIndex ? toIndex + 1 : toIndex)
-                    //                                                 dragStartLocation = otherCenter
-                    //                                             }
-                    //                                             break
-                    //                                         }
-                    //                                     }
-                    //                                 }
-                    //                             }
-                    //                             .onEnded { _ in
-                    //                                 draggingItem = nil
-                    //                                 dragOffset = .zero
-                    //                             }
-                    //                     )
-                    //             )
-                    //         }
-                    //     }
-                    // }
-//                    .padding(.top,14)
-//                    .padding(.horizontal,16)
-//                    .padding(.bottom,30)
+                ZStack{
+                    ScrollView {
+                        let mVPc1uy = [
+                            GridItem(.flexible(), spacing: 9),
+                            GridItem(.flexible(), spacing: 9)
+                        ]
+                        
+                        let jotfqg1KIVzylzH36S3Ua20DhRZ = idW6C0.count < 8
+                        let tOzFLuluJrJkt8RvB07AlCLn = jotfqg1KIVzylzH36S3Ua20DhRZ ? idW6C0.count + 1 : idW6C0.count
+                        
+                        LazyVGrid(columns: mVPc1uy, spacing: 12) {
+                            ForEach(0..<tOzFLuluJrJkt8RvB07AlCLn, id: \.self) { sQunBq9mddJhQKKwzQd7sXSGR6i0m in
+                                if jotfqg1KIVzylzH36S3Ua20DhRZ && sQunBq9mddJhQKKwzQd7sXSGR6i0m == 0 {
+                                    // ➕ 添加按钮
+                                    Button {
+                                        mjRYExqGqlfs5RlPB5FQ1oGd = true
+                                    } label: {
+                                        tdBdcS7Dqc()
+                                    }
+                                } else {
+                                    // 📷 相册项
+                                    let nJwvSr9XNV7s1L = jotfqg1KIVzylzH36S3Ua20DhRZ ? sQunBq9mddJhQKKwzQd7sXSGR6i0m - 1 : sQunBq9mddJhQKKwzQd7sXSGR6i0m
+                                    let u5CYcOIw9DpOR1v = idW6C0[nJwvSr9XNV7s1L]
+                                    
+                                    wXWAaYKmLFbT1jAfqZ4KlTVAwpC(nFBDXePJdd41Kp: u5CYcOIw9DpOR1v) { ukbVrABN in
+                                        ib0Vb(ukbVrABN)
+                                    }
+                                    .opacity(cFCN9v7xy0xUis3K3Ss?.id == u5CYcOIw9DpOR1v.id ? 0.3 : 1)
+                                    .background(
+                                        GeometryReader { ekaNZEE5dqyqVhxNFxZ8WRi in
+                                            Color.clear
+                                                .preference(
+                                                    key: ItemFrameKey.self,
+                                                    value: [u5CYcOIw9DpOR1v.id: ekaNZEE5dqyqVhxNFxZ8WRi.frame(in: .named("grid"))]
+                                                )
+                                        }
+                                    )
+                                    .gesture(y2iUFXsgcFp0svlttakasX6wr7xCNH(for: u5CYcOIw9DpOR1v))
+                                }
+                            }
+                        }
+                        .padding(.top,14)
+                        .padding(.horizontal,16)
+                        .padding(.bottom,30)
+                    }
+                    .coordinateSpace(name: "grid")
+                    .onPreferenceChange(ItemFrameKey.self) { pXm1wtSEG3oc5K6qKBD8TGkf7ehxIOY2 in
+                        eetqrSRRm6atCHeh4bBxGa = pXm1wtSEG3oc5K6qKBD8TGkf7ehxIOY2
+                    }
+                    // 顶层拖动格子
+                    if let m4tlWiEVaLi0qjHy = cFCN9v7xy0xUis3K3Ss,
+                       let prkSZhR3GWEnG = eetqrSRRm6atCHeh4bBxGa[m4tlWiEVaLi0qjHy.id] {
+                        wXWAaYKmLFbT1jAfqZ4KlTVAwpC(nFBDXePJdd41Kp: m4tlWiEVaLi0qjHy) { sEDvf77Ra in
+                            ib0Vb(sEDvf77Ra)
+                        }
+                        .frame(width: jMquwmXIlo3YMECCULx.width, height: jMquwmXIlo3YMECCULx.height)
+                        .cornerRadius(8)
+                        .position(
+                            x: prkSZhR3GWEnG.midX + pQFbkvCM.width,
+                            y: prkSZhR3GWEnG.midY + pQFbkvCM.height
+                        )
+                        .zIndex(100)
+                    }
+                }
+            }
+            ZStack(alignment: .bottom){
+                if m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS {
+                    Color.black.opacity(0.7)
+                        .onTapGesture {
+                            withAnimation (.spring()) {
+                                m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS = false
+                            }
+                        }
+                    zWVkvD8sPGifMiUqF0rmlh44Sq(tGT3Nn2qNvR7GutBXylMRWmC: r7L9pCA) {
+                        withAnimation (.spring()) {
+                            m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS = false
+                        }
+                        mjRYExqGqlfs5RlPB5FQ1oGd = true
+                    }
+                    .transition(.move(edge: .bottom))
                 }
             }
         }
         .ignoresSafeArea()
         .onAppear {
-            if let o7pNaLrxha = QENQQv2IjxH1iAGP2CGqvtrE.ozXOqc5p9qIHuoxi8KS.kShXkzdT0LdNQr7PMBLU["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String]  {
-                idW6C0 = o7pNaLrxha.map({ kbMdtvfyvlqgAeAVR6mMtBZSQp8279 in
-                    Ek9tKrgkM0Mjp(nVDMgVMWU: nil, g0HjS5Fukj: kbMdtvfyvlqgAeAVR6mMtBZSQp8279,xQdU5oYzMdsaZX: false)
-                })
-            } else {
-                idW6C0 = []
-            }
+            idW6C0 = QENQQv2IjxH1iAGP2CGqvtrE.ozXOqc5p9qIHuoxi8KS.fJS9oPHx4kejSIOYpG.map({ kbMdtvfyvlqgAeAVR6mMtBZSQp8279 in
+                Ek9tKrgkM0Mjp(nVDMgVMWU: nil, g0HjS5Fukj: kbMdtvfyvlqgAeAVR6mMtBZSQp8279,xQdU5oYzMdsaZX: false)
+            })
         }
         .photosPicker(isPresented: $mjRYExqGqlfs5RlPB5FQ1oGd, selection: $iCBiZ, matching: .images)
         .onChange(of: iCBiZ) { z0r6vccI in
@@ -251,6 +284,62 @@ struct o95HINW4DpHIAT: View {
                 }
             )
     }
+    
+    private func y2iUFXsgcFp0svlttakasX6wr7xCNH(for cMceP65BYWk: Ek9tKrgkM0Mjp) -> some Gesture {
+        LongPressGesture(minimumDuration: 0.2)
+            .sequenced(before: DragGesture())
+            .onChanged { y8iU6lZowU0Td01RTbqg in
+                switch y8iU6lZowU0Td01RTbqg {
+                case .first(true):
+                    cFCN9v7xy0xUis3K3Ss = cMceP65BYWk
+                    poCajTQza0DvrQs1rz5Us8h6iY3mgF2 = idW6C0.firstIndex(of: cMceP65BYWk)
+                    pQFbkvCM = .zero
+                case .second(true, let ogzU4EpB5rYmZ9vx?):
+                    guard cFCN9v7xy0xUis3K3Ss?.id == cMceP65BYWk.id else { return }
+                    pQFbkvCM = ogzU4EpB5rYmZ9vx.translation
+                default: break
+                }
+            }
+            .onEnded { _ in
+                zA8sGnmSqlWskHATHEkOK215O()
+            }
+    }
+    
+    private func zA8sGnmSqlWskHATHEkOK215O() {
+        guard let sbFyTTW8NBo4YPT1GYRLDHFHyDtAGUNZ = cFCN9v7xy0xUis3K3Ss,
+              let bYst9gAc9p9mVo2hVGHRv = poCajTQza0DvrQs1rz5Us8h6iY3mgF2 else { return }
+        
+        guard let lvjtJEhPJxUqLw4 = eetqrSRRm6atCHeh4bBxGa[sbFyTTW8NBo4YPT1GYRLDHFHyDtAGUNZ.id] else { return }
+        let jtOXDdjH4l = CGPoint(
+            x: lvjtJEhPJxUqLw4.midX + pQFbkvCM.width,
+            y: lvjtJEhPJxUqLw4.midY + pQFbkvCM.height
+        )
+        
+        if let cf0bAOPwQ = qpCccWFs9ZkklMdvUpJ5HZIyk(v7FqTjb71pxFqdz: jtOXDdjH4l, dAgCmVjuoPRNQ8HxUTY: sbFyTTW8NBo4YPT1GYRLDHFHyDtAGUNZ) {
+            let oNLDFO = CGPoint(x: lvjtJEhPJxUqLw4.midX, y: lvjtJEhPJxUqLw4.midY)
+            let oEtGdB55T2d = hypot(jtOXDdjH4l.x - oNLDFO.x, jtOXDdjH4l.y - oNLDFO.y)
+            if oEtGdB55T2d >= p9xZ4tP491jUM7ZJFDT1MwT9jK && cf0bAOPwQ != bYst9gAc9p9mVo2hVGHRv {
+                idW6C0.move(fromOffsets: IndexSet(integer: bYst9gAc9p9mVo2hVGHRv),
+                            toOffset: cf0bAOPwQ > bYst9gAc9p9mVo2hVGHRv ? cf0bAOPwQ + 1 : cf0bAOPwQ)
+            }
+        }
+        
+        self.pQFbkvCM = .zero
+        self.poCajTQza0DvrQs1rz5Us8h6iY3mgF2 = nil
+        self.cFCN9v7xy0xUis3K3Ss = nil
+    }
+    
+    private func qpCccWFs9ZkklMdvUpJ5HZIyk(v7FqTjb71pxFqdz hoo1an4XwqVDz54B657FeCmY: CGPoint, dAgCmVjuoPRNQ8HxUTY bYtti1ywHkYVe1DrFpTgPn4gg9qGAS: Ek9tKrgkM0Mjp) -> Int? {
+        return idW6C0.enumerated()
+            .filter { $0.element.id != bYtti1ywHkYVe1DrFpTgPn4gg9qGAS.id }
+            .map { a82BFN, uzR2strVQSahuqVRb -> (Int, CGFloat) in
+                guard let xSNCmrTLU2Zb3L1EKCqIZAqDaU6OWGH = eetqrSRRm6atCHeh4bBxGa[uzR2strVQSahuqVRb.id] else { return (a82BFN, .infinity) }
+                let rrHZMkm = CGPoint(x: xSNCmrTLU2Zb3L1EKCqIZAqDaU6OWGH.midX, y: xSNCmrTLU2Zb3L1EKCqIZAqDaU6OWGH.midY)
+                let toBr6QmuLe1h = hypot(hoo1an4XwqVDz54B657FeCmY.x - rrHZMkm.x, hoo1an4XwqVDz54B657FeCmY.y - rrHZMkm.y)
+                return (a82BFN, toBr6QmuLe1h)
+            }
+            .min(by: { $0.1 < $1.1 })?.0
+    }
 }
 
 //添加图标
@@ -258,7 +347,7 @@ struct tdBdcS7Dqc: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
-            .frame(height: 126)
+            .frame(width: 167,height: 126)
             .overlay(alignment: .center) {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 8)
@@ -303,7 +392,7 @@ struct wXWAaYKmLFbT1jAfqZ4KlTVAwpC: View {
             Group {
                 iJ7H9TAZRey3Jv(eV0n003pf6t9f4Mn6tOJU16PSiSTR51: nFBDXePJdd41Kp)
             }
-            .frame(height: 126)
+            .frame(width: 167,height: 126)
             .clipped()
             .cornerRadius(8)
             .overlay {
@@ -313,7 +402,7 @@ struct wXWAaYKmLFbT1jAfqZ4KlTVAwpC: View {
             }
             
             // 删除按钮，只对网络图片显示
-            if nFBDXePJdd41Kp.g0HjS5Fukj != nil {
+            if !nFBDXePJdd41Kp.xQdU5oYzMdsaZX {
                 Button {
                     yf0kruM5Ek5r8xR6zWPpgI(nFBDXePJdd41Kp)
                 } label: {
@@ -337,7 +426,10 @@ struct fnCBC: View {
             .overlay {
                 VStack(spacing: 8) {
                     Text("\(Int(rhONWXAZitFOFrwF * 100))%")
-                        .font(.system(size: 18, weight: .black))
+                        .g0LIIcoZQsOjyND9(
+                            size: 18,
+                            weight: .black
+                        )
                     awBXR5kXQAwoFHDM7TkRQiwc8w(qsswr1rQh3rcLGogNadPS: rhONWXAZitFOFrwF)
                 }
             }
