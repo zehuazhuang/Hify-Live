@@ -1,66 +1,112 @@
-import AgoraRtcKit
 import UIKit
+import AgoraRtcKit
 
-final class AgoraManager: NSObject {
-
-    static let shared = AgoraManager()
-    private override init() {}
-
-    var engine: AgoraRtcEngineKit?
+class LiveViewController: UIViewController {
     
-    /// 远端用户加入回调
-    var onRemoteVideoJoined: ((UInt) -> UIView?)?
-
-    // MARK: - Setup
-    func setup() {
-        guard engine == nil else { return }
-
+    var role: AgoraRtcKit.AgoraClientRole = .audience
+    var roomId: String = ""
+    var uid: UInt = 0
+    
+    private var agoraKit: AgoraRtcEngineKit!
+    private var localVideoView: UIView!
+    private var remoteVideoView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .black
+        
+        setupUI()
+        initAgoraEngine()
+        joinChannel()
+    }
+    
+    func setupUI() {
+        // 本地视频
+        localVideoView = UIView()
+        localVideoView.frame = CGRect(x: 20, y: 50, width: 120, height: 160)
+        localVideoView.backgroundColor = .gray
+        view.addSubview(localVideoView)
+        
+        // 远程视频
+        remoteVideoView = UIView()
+        remoteVideoView.frame = view.bounds
+        view.addSubview(remoteVideoView)
+        view.sendSubviewToBack(remoteVideoView)
+    }
+    
+    func initAgoraEngine() {
         let config = AgoraRtcEngineConfig()
         config.appId = "4af61c7a92f447d3a582308b5817dbd2"
         config.channelProfile = .liveBroadcasting
-
-        engine = AgoraRtcEngineKit.sharedEngine(with: config, delegate: self)
-        engine?.enableVideo()
+        agoraKit = AgoraRtcEngineKit.sharedEngine(with: config, delegate: self)
+        
+        // 设置角色
+        agoraKit.setClientRole(role)
+        
+        // 开启视频
+        agoraKit.enableVideo()
     }
-
-    // MARK: - Join
-    func joinChannel(channelId: String, token: String, uid: UInt) {
-        guard let engine = engine else { return }
-        engine.setClientRole(.audience)
-
-        engine.joinChannel(byToken: token, channelId: channelId, info: nil, uid: uid) { channel, uid, elapsed in
-            print("✅ joinChannel 回调: channel=\(channel) uid=\(uid) elapsed=\(elapsed)")
+    
+    func joinChannel() {
+        guard let token = UserDefaults.standard.string(forKey: "RTC_TOKEN"),
+              let channelId = UserDefaults.standard.string(forKey: "CHANNEL_ID") else {
+            print("RTC Token 或 ChannelID 不存在")
+            return
         }
+        
+        let options = AgoraRtcChannelMediaOptions()
+        options.publishMicrophoneTrack = (role == .broadcaster)
+        options.publishCameraTrack = (role == .broadcaster)
+        
+        agoraKit.joinChannel(
+            byToken: token,
+            channelId: channelId,
+            uid: uid,
+            mediaOptions: options,
+            joinSuccess: { [weak self] channel, uid, elapsed in
+                print("加入房间成功: \(channel), uid: \(uid)")
+                if self?.role == .broadcaster {
+                    self?.setupLocalVideo()
+                }
+            }
+        )
     }
-
+    
+    func setupLocalVideo() {
+        let videoCanvas = AgoraRtcVideoCanvas()
+        videoCanvas.uid = uid
+        videoCanvas.view = localVideoView
+        videoCanvas.renderMode = .hidden
+        agoraKit.setupLocalVideo(videoCanvas)
+        agoraKit.startPreview()
+    }
+    
+    func setupRemoteVideo(uid: UInt) {
+        let videoCanvas = AgoraRtcVideoCanvas()
+        videoCanvas.uid = uid
+        videoCanvas.view = remoteVideoView
+        videoCanvas.renderMode = .hidden
+        agoraKit.setupRemoteVideo(videoCanvas)
+    }
+    
     func leaveChannel() {
-        engine?.leaveChannel(nil)
-        engine = nil
+        agoraKit.leaveChannel(nil)
+        AgoraRtcEngineKit.destroy()
+    }
+    
+    deinit {
+        leaveChannel()
     }
 }
 
 // MARK: - AgoraRtcEngineDelegate
-extension AgoraManager: AgoraRtcEngineDelegate {
-
+extension LiveViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
-        print("远端用户加入 uid=\(uid)")
-
-        DispatchQueue.main.async {
-            guard let remoteView = self.onRemoteVideoJoined?(uid) else { return }
-
-            let canvas = AgoraRtcVideoCanvas()
-            canvas.uid = uid
-            canvas.view = remoteView
-            canvas.renderMode = .fit
-            engine.setupRemoteVideo(canvas)
-        }
+        print("远程用户加入: \(uid)")
+        setupRemoteVideo(uid: uid)
     }
-
+    
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
-        print("远端用户离开 uid=\(uid), reason=\(reason.rawValue)")
-    }
-
-    func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteVideoFrameOfUid uid: UInt, size: CGSize, elapsed: Int) {
-        print("首帧远端视频收到 uid=\(uid), size=\(size), elapsed=\(elapsed)ms")
+        print("远程用户离开: \(uid)")
     }
 }

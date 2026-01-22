@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftfulRouting
+import AgoraRtcKit
 
 struct E2VxD0iC4bYyh: View {
     let evntemporaeCol = [
@@ -93,14 +94,11 @@ struct E2VxD0iC4bYyh: View {
                                 rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
                                     .onTapGesture{
                                         
-                                        if let channelId = X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index]["agoraChannelId"] as? String {
-                                               print("点击的房间 channelId:", channelId)
-                                               rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                   LiveRoomPage(channelId: channelId)
-                                               }
-                                           } else {
-                                               print("agoraChannelId 获取失败")
-                                           }
+                                         let vc = LiveViewController()
+                                          vc.roomId = "live1000002756"
+                                          vc.uid = 12345
+                                          vc.role = .broadcaster
+                                          vc.joinChannel()
 
                                     }
                                 

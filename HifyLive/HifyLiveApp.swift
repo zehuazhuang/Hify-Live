@@ -5,8 +5,7 @@ import SwiftfulRouting
 @main
 struct HifyLiveApp: App {
     
-    // 关联 AppDelegate
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  
     
     init() {
         //初始化Google clientID
@@ -51,6 +50,24 @@ struct HifyLiveApp: App {
                                             //获取关注粉丝列表
                                             vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                                             vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+                                            
+                                            do {
+                                                                                                        let tokenResponse = try await fetchToken()
+                                                                                                        saveToken(tokenResponse)
+                                                                                                        
+                                                                                                        print("RTC Token:", tokenResponse.rtcToken)
+                                                                                                        print("RTM Token:", tokenResponse.rtmToken)
+                                                                                                        print("Channel ID:", tokenResponse.channelId)
+                                                                                                        
+                                                                                                        // 加入直播
+                                            //                                                            let vc = LiveViewController()
+                                            //                                                            vc.roomId = tokenResponse.channelId
+                                            //                                                            vc.uid = 12345
+                                            //                                                            vc.role = .broadcaster
+                                            //                                                            vc.joinChannel()  // joinChannel 内部会取 UserDefaults 里的 RTC Token
+                                                                                                    } catch {
+                                                                                                        print("获取 token 失败:", error)
+                                                                                                    }
                                             
                                             if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
                                                let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {

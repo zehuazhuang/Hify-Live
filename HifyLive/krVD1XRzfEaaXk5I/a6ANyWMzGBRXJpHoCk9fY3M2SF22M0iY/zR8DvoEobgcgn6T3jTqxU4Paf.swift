@@ -21,7 +21,7 @@ func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
     
     zF7nC3qL5pR2vT.setValue("11111111", forHTTPHeaderField: "appId")
     zF7nC3qL5pR2vT.setValue("1.0.1", forHTTPHeaderField: "appVersion")
-    zF7nC3qL5pR2vT.setValue("BC05CE5875414D248F2FCD158E6DFB31", forHTTPHeaderField: "loginToken")
+    zF7nC3qL5pR2vT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     zF7nC3qL5pR2vT.setValue("application/json", forHTTPHeaderField: "Content-Type")
     zF7nC3qL5pR2vT.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
 
@@ -81,7 +81,7 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
     request.httpMethod = "POST"
     request.setValue("11111111", forHTTPHeaderField: "appId")
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
-    request.setValue("19C827EE0F4D477FBD918ED7F5F7445C", forHTTPHeaderField: "loginToken")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
     
@@ -138,7 +138,6 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
 
 @MainActor
 func getRtctoken() async throws -> [String: Any] {
-    
     // 1️⃣ 构建 URL
     guard let url = URL(string: "https://testaes.cphub.link/api/index/getAgoraRtmToken") else {
         throw URLError(.badURL)
@@ -149,55 +148,44 @@ func getRtctoken() async throws -> [String: Any] {
     request.httpMethod = "POST"
     request.setValue("11111111", forHTTPHeaderField: "appId")
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
-    request.setValue("29B7219BB17045C188A6DA5EE214FFC1", forHTTPHeaderField: "loginToken")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
     
-//    let body: [String: Any] = [
-//        "anchorId": pmpresoZUid,
-//        "type": 1
-//    ]
-    
-//    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
-//    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
-//        throw NSError(domain: "LiveAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "JSON 转 String 失败"])
-//    }
-    
-//    // 3️⃣ 加密
-//    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
-//    request.httpBody = encryptedString.data(using: .utf8)
-    
-    // 4️⃣ 发送请求
+    // 3️⃣ 发送请求
     let (data, response) = try await URLSession.shared.data(for: request)
     
     if let httpResponse = response as? HTTPURLResponse {
         print("HTTP Status Code:", httpResponse.statusCode)
     }
     
-    // 5️⃣ 解析返回 JSON
+    // 4️⃣ 解析返回 JSON
     let json = try JSONSerialization.jsonObject(with: data, options: [])
     guard let dict = json as? [String: Any] else {
         throw NSError(domain: "LiveAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "返回数据不是字典"])
     }
     
-    // 6️⃣ 取出 result 并解密
+    // 5️⃣ 取出 result 并解密
     guard let result = dict["result"] as? String else {
         throw NSError(domain: "LiveAPI", code: -2, userInfo: [NSLocalizedDescriptionKey: "result 不存在或不是 String"])
     }
     
     let decryptedString = result.hL9dV3bQ2fK6sJ8p()
     
-    // 7️⃣ 将解密后的字符串转为 Data
+    // 6️⃣ 将解密后的字符串转为 Data
     guard let resultData = decryptedString.data(using: .utf8) else {
         throw NSError(domain: "LiveAPI", code: -3, userInfo: [NSLocalizedDescriptionKey: "解密字符串转 Data 失败"])
     }
     
-    // 8️⃣ 将 Data 转 JSON
+    // 7️⃣ 将 Data 转 JSON
     let resultJson = try JSONSerialization.jsonObject(with: resultData, options: [])
     
-    print(resultJson)
-
-    return ["result": resultJson]
+    guard let resultDict = resultJson as? [String: Any] else {
+        throw NSError(domain: "LiveAPI", code: -4, userInfo: [NSLocalizedDescriptionKey: "解密后的数据不是字典"])
+    }
+    
+    // ✅ 直接返回解密后的字典
+    return resultDict
 }
 
 @MainActor
@@ -213,7 +201,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
     request.httpMethod = "POST"
     request.setValue("11111111", forHTTPHeaderField: "appId")
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
-    request.setValue("19C827EE0F4D477FBD918ED7F5F7445C", forHTTPHeaderField: "loginToken")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
     

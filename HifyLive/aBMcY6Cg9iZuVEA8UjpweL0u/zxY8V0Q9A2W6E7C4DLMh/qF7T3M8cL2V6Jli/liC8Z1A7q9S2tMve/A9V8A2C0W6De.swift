@@ -1,20 +1,19 @@
+import SwiftUI
+import AgoraRtcKit
 
-//初始化云信
-import UIKit
-import NIMSDK
+// MARK: - SwiftUI 包装 UIViewController
+struct LiveView: UIViewControllerRepresentable {
+    var role: AgoraRtcKit.AgoraClientRole  // ✅ 使用 SDK 的类型
+    var roomId: String
+    var uid: UInt
 
-
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-
-        // 1️⃣ 初始化云信
-        // 如果暂时不需要推送证书，传空字符串 ""
-        NIMSDK.shared().register(withAppID: "124f689baed25c488e1330bc42e528af", cerName: "")
-
-        return true
+    func makeUIViewController(context: Context) -> LiveViewController {
+        let vc = LiveViewController()
+        vc.role = role
+        vc.roomId = roomId
+        vc.uid = uid
+        return vc
     }
+
+    func updateUIViewController(_ uiViewController: LiveViewController, context: Context) {}
 }
