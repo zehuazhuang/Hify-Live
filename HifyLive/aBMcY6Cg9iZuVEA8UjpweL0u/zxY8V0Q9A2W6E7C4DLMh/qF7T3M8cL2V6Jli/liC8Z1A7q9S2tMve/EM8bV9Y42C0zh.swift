@@ -15,10 +15,9 @@ struct LiveViewControllerWrapper: UIViewControllerRepresentable {
         return vc
     }
 
-    func updateUIViewController(
-        _ uiViewController: LiveViewController,
-        context: Context
-    ) {}
+    func updateUIViewController(_ uiViewController: LiveViewController, context: Context) {
+        // 可选：更新 token/channelId 时重新 join
+    }
 }
 
 

@@ -454,6 +454,25 @@ struct gSttvP6cNNp2pgg0Me5yfzJS76D1bBh: Codable {
     }
 }
 
+struct gStC2A9Z6Y8Qx0E7W4ML: Codable {
+    
+ 
+    let sGOM5LYyLVsTQ1mHEFJD1CJtq: String //yxAccid
+    
+    func encode(to encoder: Encoder) throws {
+        var iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1 = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
+        
+
+        
+        try iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1.encode(
+            sGOM5LYyLVsTQ1mHEFJD1CJtq,
+            forKey: bonDyqD2YnaVJW(
+                "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()
+            )
+        )
+    }
+}
+
 //获取用户信息（userId、yxAccid）
 
 @MainActor
@@ -461,11 +480,11 @@ class T0viKk: ObservableObject {
     static let wSremNeLspPkPRHBJnlVCs5w = T0viKk()
     
     // 获取用户信息（userId、yxAccid）
-    func ngI7Y2A8C4E0ZQ9W6xL(iN9Qd7kjrHTAEXEIBDb2wKlGSv2dN: Int, wTEEJpZz0iGVK: String) async -> [String:Any]? {
+    func ngI7Y2A8C4E0ZQ9W6xL( wTEEJpZz0iGVK: String) async -> [String:Any]? {
         do {
             let bSn9YS: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "jd+Je9oaVKuQ4jHkoZazeiUeAljC8YlPdz+5tirNkKw=".bFHEatcgE4zzU9TCfDonsu(),
-                tD5tEJZTT0NlaIX7eMREG92BhO3n: gSttvP6cNNp2pgg0Me5yfzJS76D1bBh(loI4IlOpOGsYefZxuUrxIR6SA: iN9Qd7kjrHTAEXEIBDb2wKlGSv2dN, sGOM5LYyLVsTQ1mHEFJD1CJtq: wTEEJpZz0iGVK)
+                tD5tEJZTT0NlaIX7eMREG92BhO3n: gStC2A9Z6Y8Qx0E7W4ML( sGOM5LYyLVsTQ1mHEFJD1CJtq: wTEEJpZz0iGVK)
             )
             print(bSn9YS.code)
             if bSn9YS.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
@@ -492,3 +511,4 @@ class T0viKk: ObservableObject {
         }
     }
 }
+

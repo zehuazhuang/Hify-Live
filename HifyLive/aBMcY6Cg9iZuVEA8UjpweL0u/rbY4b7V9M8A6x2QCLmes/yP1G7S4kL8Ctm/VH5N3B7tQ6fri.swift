@@ -68,17 +68,19 @@ struct VH5N3B7tQ6fri: View {
                         tD4C1N7pR6Sli(
                             rN1Z8mR: rZq7S8A9,
                             onTap: { r in
-                                
+                                // 1️⃣ 清当前会话未读（UI）
                                     GlobalUnreadStore.shared.clearUnread(
                                         for: r.sessionId,
                                         count: r.unreadCount
                                     )
 
-                                   
+                                    // 2️⃣ 本地缓存同步
                                 sessionStore.markSessionRead(sessionId: r.sessionId)
                                 
                                 rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                    CgZU7mTgY46l(session: r.session)
+                                    WUjfoptOKs8pZfhSAH0duplG {
+                                        CgZU7mTgY46l(session: r.session,opponentAvatarURL: r.avatarUrl)
+                                    }
                                 }
                             },
                             onDelete: { r in

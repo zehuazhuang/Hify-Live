@@ -263,3 +263,55 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 
     return ["result": resultJson]
 }
+
+
+//关注 (uid,1关注 2取消)
+@MainActor
+func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws {
+    
+    // 1️⃣ 构建 URL
+    guard let url = URL(string: "https://testaes.cphub.link/api/user/followUser") else {
+        throw URLError(.badURL)
+    }
+    
+    // 2️⃣ 构建请求
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("11111111", forHTTPHeaderField: "appId")
+    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    
+    let body: [String: Any] = [
+        "followUserId": uY2M8A4E7C0xL,
+        "followType": iA6M7W9EYL0
+    ]
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "JSON 转 String 失败"])
+    }
+    
+    // 3️⃣ 加密
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+    
+    // 4️⃣ 发送请求
+    let (data, response) = try await URLSession.shared.data(for: request)
+    
+    if let httpResponse = response as? HTTPURLResponse {
+        print("HTTP Status Code:", httpResponse.statusCode)
+    }
+    
+    // 5️⃣ 解析返回 JSON
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    print(json)
+    vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+    vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+    
+    // ✅ 不返回任何参数
+}

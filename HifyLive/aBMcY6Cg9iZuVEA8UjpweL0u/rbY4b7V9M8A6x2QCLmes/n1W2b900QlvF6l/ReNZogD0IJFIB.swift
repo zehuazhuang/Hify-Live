@@ -5,14 +5,17 @@ import Kingfisher
 
 //聊天list UIKit
 struct ChatTableView: UIViewRepresentable {
+    let opponentInfo: [String: Any]
+    
     @ObservedObject var vm: ChatViewModel
     var keyboardHeight: CGFloat = 0
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     func makeUIView(context: Context) -> UITableView {
+        
         let tableView = UITableView()
         tableView.delegate = context.coordinator
         tableView.dataSource = context.coordinator
@@ -21,14 +24,26 @@ struct ChatTableView: UIViewRepresentable {
         tableView.allowsSelection = false
         tableView.keyboardDismissMode = .interactive
         tableView.register(ChatCell.self, forCellReuseIdentifier: "ChatCell")
-        
-        // 绑定键盘监听
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+
+        // 键盘
         context.coordinator.keyboardObserver.bind(tableView: tableView)
-        
-        // ⚡ 保存 tableView 给 coordinator
         context.coordinator.parentTableView = tableView
-        
-        // 页面第一次加载滚到底部
+
+        // ✅ 创建 Header（只创建一次）
+        let header = ChatProfileHeaderView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: UIScreen.main.bounds.width,
+                height: 80
+            )
+        )
+        context.coordinator.headerView = header
+        tableView.tableHeaderView = header
+
+        // 首次滚动到底部
         DispatchQueue.main.async {
             let count = self.vm.messages.count
             if count > 0 {
@@ -36,67 +51,81 @@ struct ChatTableView: UIViewRepresentable {
                 tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             }
         }
-        
+
         return tableView
     }
 
-    func updateUIView(_ uiView: UITableView, context: Context) {
-        // ⚡ 只 reloadData，不滚动
-        uiView.reloadData()
+    func updateUIView(_ tableView: UITableView, context: Context) {
+
+        tableView.reloadData()
+
         let inputHeight: CGFloat = 20
-        uiView.contentInset.bottom = inputHeight
-        uiView.verticalScrollIndicatorInsets.bottom = inputHeight
+        tableView.contentInset.bottom = inputHeight
+        tableView.verticalScrollIndicatorInsets.bottom = inputHeight
+
+        // ✅ 更新 Header 数据
+        if let header = context.coordinator.headerView {
+            header.update(info: opponentInfo)
+
+            // ⚠️ 关键：高度变化后必须重新 set
+            tableView.tableHeaderView = header
+        }
     }
 
+    // MARK: - Coordinator
     class Coordinator: NSObject, UITableViewDelegate, UITableViewDataSource {
-        var parent: ChatTableView
-        var myAvatarURL: String
+
+        let parent: ChatTableView
         let keyboardObserver = KeyboardObserver()
+
         weak var parentTableView: UITableView?
+        weak var headerView: ChatProfileHeaderView?
+
         var cancellables = Set<AnyCancellable>()
 
         init(_ parent: ChatTableView) {
             self.parent = parent
-            self.myAvatarURL = IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7["icon"] as? String ?? ""
             super.init()
 
-            // 监听 messages 变化，自动滚到底部
+            // 消息变化 → 自动滚到底部
             parent.vm.$messages
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] _ in
-                    guard let self = self,
+                    guard let self,
                           let tableView = self.parentTableView else { return }
+
                     let count = self.parent.vm.messages.count
                     guard count > 0 else { return }
 
-                    DispatchQueue.main.async {
-                        let lastRow = count - 1
-                        // ✅ 确保不会越界
-                        if lastRow < tableView.numberOfRows(inSection: 0) {
-                            let indexPath = IndexPath(row: lastRow, section: 0)
-                            tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                        }
+                    let lastRow = count - 1
+                    if lastRow < tableView.numberOfRows(inSection: 0) {
+                        tableView.scrollToRow(
+                            at: IndexPath(row: lastRow, section: 0),
+                            at: .bottom,
+                            animated: true
+                        )
                     }
                 }
                 .store(in: &cancellables)
         }
 
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // MARK: TableView
+        func tableView(_ tableView: UITableView,
+                       numberOfRowsInSection section: Int) -> Int {
             parent.vm.messages.count
         }
 
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        func tableView(_ tableView: UITableView,
+                       cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "ChatCell",
+                for: indexPath
+            ) as! ChatCell
+
             let msg = parent.vm.messages[indexPath.row]
+            cell.configure(message: msg, avatarURL: msg.avatarURL)
 
-            let avatarURL: String?
-            if msg.isOutgoingMsg {
-                avatarURL = myAvatarURL
-            } else {
-                avatarURL = IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7["icon"] as? String ?? ""
-            }
-
-            cell.configure(message: msg, avatarURL: avatarURL)
             return cell
         }
     }
@@ -111,6 +140,8 @@ class ChatCell: UITableViewCell {
     private let bubble = UIView()
     private let messageLabel = UILabel()
     private let timeLabel = UILabel()
+    
+    private let contentImageView = UIImageView()//发送图片
 
     // 渐变（仅 outgoing）
     private let gradientLayer = CAGradientLayer()
@@ -144,6 +175,12 @@ class ChatCell: UITableViewCell {
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(avatarImageView)
+        
+        contentImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentImageView.layer.cornerRadius = 10
+        contentImageView.clipsToBounds = true
+        contentImageView.contentMode = .scaleAspectFill
+        bubble.addSubview(contentImageView)
         
         // Time (系统提示)
         timeLabel.font = JqA1kUIFont.font(size: 14, weight: .regular)
@@ -194,6 +231,14 @@ class ChatCell: UITableViewCell {
         bubbleTrailing = bubble.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: -8)
 
         bubbleLeading.isActive = true // 默认 incoming
+        
+        NSLayoutConstraint.activate([
+            contentImageView.topAnchor.constraint(equalTo: bubble.topAnchor),
+            contentImageView.bottomAnchor.constraint(equalTo: bubble.bottomAnchor),
+            contentImageView.leadingAnchor.constraint(equalTo: bubble.leadingAnchor),
+            contentImageView.trailingAnchor.constraint(equalTo: bubble.trailingAnchor),
+        ])
+
 
         NSLayoutConstraint.activate([
             bubble.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 6), // 气泡在时间下方
@@ -247,7 +292,20 @@ class ChatCell: UITableViewCell {
     // MARK: Configure
     func configure(message: ChatMessage, avatarURL: String?) {
 
-        messageLabel.text = message.text
+        messageLabel.isHidden = true
+           contentImageView.isHidden = true
+
+           switch message.content {
+           case .text(let text):
+               messageLabel.text = text
+               messageLabel.isHidden = false
+
+           case .image(let url, let size):
+               contentImageView.isHidden = false
+               if let url, let u = URL(string: url) {
+                   contentImageView.kf.setImage(with: u)
+               }
+           }
 
         // 时间（大于 5 分钟才显示）
         timeLabel.isHidden = !message.showTime

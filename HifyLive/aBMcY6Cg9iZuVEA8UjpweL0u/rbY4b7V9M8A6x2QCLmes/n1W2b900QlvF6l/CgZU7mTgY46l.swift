@@ -6,18 +6,32 @@ import Combine
 //CgZU7mTgY46l
 //私聊页
 struct CgZU7mTgY46l: View {
-
+    let opponentAvatarURL: String
     let session: NIMSession
         @StateObject private var vm: ChatViewModel
         @FocusState private var isInputFocused: Bool
         @StateObject private var keyboard = KeyboardResponder()
         @Environment(\.router) var rM9Z8S7A1ql
-        
+        @State private var opponentInfo: [String: Any] = [:]
+    
+        @State private var showImagePicker = false
+        @State private var selectedImage: UIImage?
+    
 
-        init(session: NIMSession) {
+            init(session: NIMSession, opponentAvatarURL: String) {
             self.session = session
-            _vm = StateObject(wrappedValue: ChatViewModel(session: session))
+            self.opponentAvatarURL = opponentAvatarURL
+
+
+            // 然后再用它初始化 StateObject
+            _vm = StateObject(wrappedValue: ChatViewModel(
+                session: session,
+                myAvatarURL: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7["icon"] as? String ?? "",
+                opponentAvatarURL: opponentAvatarURL
+            ))
         }
+    
+
 
         var body: some View {
             ZStack {
@@ -55,7 +69,8 @@ struct CgZU7mTgY46l: View {
                         
                         // 右侧按钮
                         Button {
-                            
+                         
+                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("wasdsadsadsadqwqwdsda")
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "sJ6642gr1JlL1jH")
                                 .frame(width: 24, height: 24)
@@ -65,66 +80,9 @@ struct CgZU7mTgY46l: View {
                     .padding(.bottom,23)
                     
                     
-                    ZStack{
-                        ZJ7h766mz(tMmEWWlfgUag: "kY9WxQ2W4L")
-                                           .frame(height: 140)
-                                           .frame(maxWidth: .infinity)
-                        
-                        VStack{
-                            HStack{
-                                ZStack{
-                                    ZJ7h766mz(tMmEWWlfgUag: "jbZ38Z9M43").frame(width: 44, height: 44)
-                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
-                                        .frame(width: 40,height: 40)
-                                        .clipShape(Circle())
-                                }.frame(width: 44, height: 44)
-                                VStack(alignment:.leading){
-                                    Text("MadrigalXX1 ")
-                                                    .g0LIIcoZQsOjyND9(
-                                                        size: 16,
-                                                        weight: .regular
-                                                    )
-                                    HStack{
-                                        ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy").frame(width: 24, height: 24)
-                                        Text("30")
-                                                        .g0LIIcoZQsOjyND9(
-                                                            size: 14,
-                                                            weight: .regular
-                                                        )
-                                        Text("|")
-                                                        .g0LIIcoZQsOjyND9(
-                                                            size: 14,
-                                                            weight: .regular,
-                                                            color: .white.opacity(0.4)
-                                                        )
-                                                        .padding(.horizontal,4)
-                                        //改成国家图标
-                                        ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy").frame(width: 16, height: 16)
-                                        
-                                    }
-                                }
-                                Spacer()
-                                
-                                ZJ7h766mz(tMmEWWlfgUag: "d2ax6W4EYC8L").frame(width: 48, height: 33)
-                            }
-                            HStack(spacing:5){
-                                ForEach(0..<4){index in
-                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
-                                        .frame(width: 68,height: 52)
-                                        .cornerRadius(8)
-                                }
-                                Spacer()
-                            }
-                            
-                        }.padding(.horizontal,16)
-                        
-                    }.frame(height: 140)
-                     .frame(maxWidth: .infinity)
-                     .padding(.horizontal,16)
-                     .padding(.bottom,16)
                     // 消息列表
-                    ChatTableView(vm: vm, keyboardHeight: keyboard.keyboardHeight)
-                       
+                    ChatTableView(opponentInfo: opponentInfo, vm: vm, keyboardHeight: keyboard.keyboardHeight)
+                        .padding(.horizontal,10)
                         .background(Color.clear)
                         .onTapGesture { isInputFocused = false }
                     
@@ -177,6 +135,17 @@ struct CgZU7mTgY46l: View {
                                 // 图片按钮
                                 ZJ7h766mz(tMmEWWlfgUag: "t9A8E2C6QZxY")
                                     .frame(width: 32, height: 32)
+                                    .onTapGesture {
+                                        showImagePicker = true
+                                    }
+                                    .sheet(isPresented: $showImagePicker) {
+                                        ImagePicker(image: $selectedImage)
+                                    }
+                                    .onChange(of: selectedImage) { img in
+                                        if let img {
+                                            vm.sendImage(img)
+                                        }
+                                    }
                                 
                                 ZJ7h766mz(tMmEWWlfgUag: "jiCL7W4M0L")
                                     .frame(width: 32, height: 32)
@@ -191,7 +160,21 @@ struct CgZU7mTgY46l: View {
                 
                 
             }
-            .onAppear { vm.loadHistory() }
+            .onAppear {
+                vm.loadHistory()
+                Task {
+                               if let info = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(
+                                   wTEEJpZz0iGVK: session.sessionId
+                               ) {
+                                   opponentInfo = info
+                                   
+                                   
+                               }
+                }
+                
+                
+                
+            }
         }
     }
 
@@ -225,4 +208,47 @@ class KeyboardResponder: ObservableObject {
     }
     
     private var cancellables = Set<AnyCancellable>()
+}
+
+
+struct ImagePicker: UIViewControllerRepresentable {
+
+    @Environment(\.dismiss) private var dismiss
+    @Binding var image: UIImage?
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+        ) {
+            if let img = info[.originalImage] as? UIImage {
+                parent.image = img
+            }
+            parent.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.dismiss()
+        }
+    }
 }
