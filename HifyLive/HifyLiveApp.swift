@@ -1,12 +1,12 @@
 import GoogleSignIn
 import SwiftUI
 import SwiftfulRouting
-
+import NIMSDK
 @main
 struct HifyLiveApp: App {
     
     // 关联 AppDelegate
-       @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+//       @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
         //初始化Google clientID
@@ -51,24 +51,44 @@ struct HifyLiveApp: App {
                                             //获取关注粉丝列表
                                             vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                                             vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+                                            NIMSDK.shared().register(withAppID: "124f689baed25c488e1330bc42e528af", cerName: "")
                                             
-//                                            do {
-//                                                                                                        let tokenResponse = try await fetchToken()
-//                                                                                                        saveToken(tokenResponse)
-//                                                                                                        
-//                                                                                                        print("RTC Token:", tokenResponse.rtcToken)
-//                                                                                                        print("RTM Token:", tokenResponse.rtmToken)
-//                                                                                                        print("Channel ID:", tokenResponse.channelId)
-//                                                                                                        
-//                                                                                                        // 加入直播
-//                                            //                                                            let vc = LiveViewController()
-//                                            //                                                            vc.roomId = tokenResponse.channelId
-//                                            //                                                            vc.uid = 12345
-//                                            //                                                            vc.role = .broadcaster
-//                                            //                                                            vc.joinChannel()  // joinChannel 内部会取 UserDefaults 里的 RTC Token
-//                                                                                                    } catch {
-//                                                                                                        print("获取 token 失败:", error)
-//                                                                                                    }
+                                            do {
+                                                let tokenResponse = try await fetchToken()
+                                                
+                                                
+                                                TokenManager.shared.save(tokenResponse: tokenResponse)
+                                                
+                                                
+                                                // 1️⃣ 设置代理（可选，如果你想监听 RTM 连接状态）
+                                                TokenManager.shared.setupRTM(delegate: self) // self 遵循 AgoraRtmDelegate
+
+                                                // 2️⃣ 登录 RTM
+                                                TokenManager.shared.loginRTM(userId: "1000007456") { success in
+                                                    if success {
+                                                        print("✅ RTM 登录成功")
+                                                        
+//                                                        // 3️⃣ 登录成功后可以加入频道
+//                                                        if let channelId = TokenManager.shared.channelId {
+//                                                            TokenManager.shared.joinRTMChannel(channelId: channelId, delegate: self) { joined in
+//                                                                if joined {
+//                                                                    print("✅ 已加入 RTM 频道")
+//                                                                } else {
+//                                                                    print("❌ 加入 RTM 频道失败")
+//                                                                }
+//                                                            }
+//                                                        }
+                                                    } else {
+                                                        print("❌ RTM 登录失败")
+                                                    }
+                                                }
+                                                
+                                              
+                                                
+                     
+                                            } catch {
+                                                print("获取 token 失败:", error)
+                                            }
                                             print("登录用户------")
                                             print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
                                             if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,

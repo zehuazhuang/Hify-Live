@@ -11,6 +11,7 @@ struct E2VxD0iC4bYyh: View {
     @State private var isLoading: Bool = false
     @Environment(\.router) var rM9Z8S7A1ql
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
+    @State private var liveVC: UIViewController?
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -82,9 +83,7 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
                         .onTapGesture {
-//                            print(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["yxAccid"])
-//                            print(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["imToken"])
-//                            print(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["token"])
+
                         }
                 }
                 ScrollView{
@@ -94,14 +93,10 @@ struct E2VxD0iC4bYyh: View {
                                 rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
                                     .onTapGesture{
                                         
-                                         let vc = LiveViewController()
-                                          vc.roomId = "live1000002756"
-                                          vc.uid = 12345
-                                          vc.role = .broadcaster
-                                          vc.joinChannel()
-
+                                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                            LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")))
+                                        }
                                     }
-                                
                             }
                         }
                     }
@@ -188,3 +183,14 @@ struct E2VxD0iC4bYyh: View {
         }
     }
 
+extension UIApplication {
+    var currentWindow: UIWindow? {
+        // 获取当前活动的 windowScene
+        connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .compactMap { $0 as? UIWindowScene }
+            .first?
+            .windows
+            .first { $0.isKeyWindow }
+    }
+}

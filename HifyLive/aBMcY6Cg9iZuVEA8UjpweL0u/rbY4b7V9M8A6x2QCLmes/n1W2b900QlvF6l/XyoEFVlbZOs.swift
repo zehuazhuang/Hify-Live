@@ -186,39 +186,41 @@ extension ChatViewModel: NIMChatManagerDelegate {
                       session.sessionId == self.session.sessionId else { continue }
 
                 let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
+                let timestamp = msg.timestamp
+
+                let chatMsg: ChatMessage?
 
                 if let text = msg.text {
-                    // 文本
-                    let chatMsg = ChatMessage(
+                    chatMsg = ChatMessage(
                         messageId: msg.messageId,
                         content: .text(text),
                         isOutgoingMsg: msg.isOutgoingMsg,
-                        timestamp: msg.timestamp,
+                        timestamp: timestamp,
                         avatarURL: avatar
                     )
-                    self.messages.append(chatMsg)
-
                 } else if let imageObject = msg.messageObject as? NIMImageObject {
-                    // 图片
                     let size = CGSize(
                         width: imageObject.size.width,
                         height: imageObject.size.height
                     )
-
-                    let chatMsg = ChatMessage(
+                    chatMsg = ChatMessage(
                         messageId: msg.messageId,
                         content: .image(
                             url: imageObject.url,
                             size: size
                         ),
                         isOutgoingMsg: msg.isOutgoingMsg,
-                        timestamp: msg.timestamp,
+                        timestamp: timestamp,
                         avatarURL: avatar
                     )
+                } else {
+                    chatMsg = nil
+                }
 
-                    chatMsg.showTime = (msg.timestamp - lastTimestamp > 300)
-                    lastTimestamp = msg.timestamp
-
+                if let chatMsg {
+                    // ✅ 统一时间判断
+                    chatMsg.showTime = (timestamp - lastTimestamp > 300)
+                    lastTimestamp = timestamp
                     self.messages.append(chatMsg)
                 }
             }

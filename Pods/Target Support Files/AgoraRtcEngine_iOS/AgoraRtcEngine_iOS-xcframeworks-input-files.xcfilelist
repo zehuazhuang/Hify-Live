@@ -14,12 +14,10 @@ ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraRtcKit.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/Agorafdkaac.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/Agoraffmpeg.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSoundTouch.xcframework
+${PODS_ROOT}/AgoraRtcEngine_iOS/video_dec.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSpatialAudioExtension.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoQualityAnalyzerExtension.xcframework
-${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoAv1DecoderExtension.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoAv1EncoderExtension.xcframework
-${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoDecoderExtension.xcframework
-${PODS_ROOT}/AgoraRtcEngine_iOS/video_dec.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoEncoderExtension.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/video_enc.xcframework
 ${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoSegmentationExtension.xcframework

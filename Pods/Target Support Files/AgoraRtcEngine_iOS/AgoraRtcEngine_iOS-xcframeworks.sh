@@ -17,145 +17,133 @@ RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
 variant_for_slice()
 {
   case "$1" in
-  "AgoraAiEchoCancellationExtension.xcframework/ios-arm64_armv7")
+  "AgoraAiEchoCancellationExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraAiEchoCancellationExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraAiEchoCancellationLLExtension.xcframework/ios-arm64_armv7")
+  "AgoraAiEchoCancellationLLExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraAiEchoCancellationLLExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraAiNoiseSuppressionExtension.xcframework/ios-arm64_armv7")
+  "AgoraAiNoiseSuppressionExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraAiNoiseSuppressionExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraAiNoiseSuppressionLLExtension.xcframework/ios-arm64_armv7")
+  "AgoraAiNoiseSuppressionLLExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraAiNoiseSuppressionLLExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraAudioBeautyExtension.xcframework/ios-arm64_armv7")
+  "AgoraAudioBeautyExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraAudioBeautyExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraClearVisionExtension.xcframework/ios-arm64_armv7")
+  "AgoraClearVisionExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraClearVisionExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraContentInspectExtension.xcframework/ios-arm64_armv7")
+  "AgoraContentInspectExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraContentInspectExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraFaceCaptureExtension.xcframework/ios-arm64_armv7")
+  "AgoraFaceCaptureExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraFaceCaptureExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraFaceDetectionExtension.xcframework/ios-arm64_armv7")
+  "AgoraFaceDetectionExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraFaceDetectionExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraLipSyncExtension.xcframework/ios-arm64_armv7")
+  "AgoraLipSyncExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraLipSyncExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraReplayKitExtension.xcframework/ios-arm64_armv7")
+  "AgoraReplayKitExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraReplayKitExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraRtcKit.xcframework/ios-arm64_armv7")
+  "AgoraRtcKit.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraRtcKit.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "Agorafdkaac.xcframework/ios-arm64_armv7")
+  "Agorafdkaac.xcframework/ios-arm64")
     echo ""
     ;;
   "Agorafdkaac.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "Agoraffmpeg.xcframework/ios-arm64_armv7")
+  "Agoraffmpeg.xcframework/ios-arm64")
     echo ""
     ;;
   "Agoraffmpeg.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraSoundTouch.xcframework/ios-arm64_armv7")
+  "AgoraSoundTouch.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraSoundTouch.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraSpatialAudioExtension.xcframework/ios-arm64_armv7")
-    echo ""
-    ;;
-  "AgoraSpatialAudioExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
-  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64_armv7")
-    echo ""
-    ;;
-  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
-  "AgoraVideoAv1DecoderExtension.xcframework/ios-arm64_armv7")
-    echo ""
-    ;;
-  "AgoraVideoAv1DecoderExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
-  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64_armv7")
-    echo ""
-    ;;
-  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
-  "AgoraVideoDecoderExtension.xcframework/ios-arm64_armv7")
-    echo ""
-    ;;
-  "AgoraVideoDecoderExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
-  "video_dec.xcframework/ios-arm64_armv7")
+  "video_dec.xcframework/ios-arm64")
     echo ""
     ;;
   "video_dec.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraVideoEncoderExtension.xcframework/ios-arm64_armv7")
+  "AgoraSpatialAudioExtension.xcframework/ios-arm64")
+    echo ""
+    ;;
+  "AgoraSpatialAudioExtension.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
+  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64")
+    echo ""
+    ;;
+  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
+  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64")
+    echo ""
+    ;;
+  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
+  "AgoraVideoEncoderExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraVideoEncoderExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "video_enc.xcframework/ios-arm64_armv7")
+  "video_enc.xcframework/ios-arm64")
     echo ""
     ;;
   "video_enc.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "AgoraVideoSegmentationExtension.xcframework/ios-arm64_armv7")
+  "AgoraVideoSegmentationExtension.xcframework/ios-arm64")
     echo ""
     ;;
   "AgoraVideoSegmentationExtension.xcframework/ios-arm64_x86_64-simulator")
@@ -167,146 +155,134 @@ variant_for_slice()
 archs_for_slice()
 {
   case "$1" in
-  "AgoraAiEchoCancellationExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraAiEchoCancellationExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraAiEchoCancellationExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraAiEchoCancellationLLExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraAiEchoCancellationLLExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraAiEchoCancellationLLExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraAiNoiseSuppressionExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraAiNoiseSuppressionExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraAiNoiseSuppressionExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraAiNoiseSuppressionLLExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraAiNoiseSuppressionLLExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraAiNoiseSuppressionLLExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraAudioBeautyExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraAudioBeautyExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraAudioBeautyExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraClearVisionExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraClearVisionExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraClearVisionExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraContentInspectExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraContentInspectExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraContentInspectExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraFaceCaptureExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraFaceCaptureExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraFaceCaptureExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraFaceDetectionExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraFaceDetectionExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraFaceDetectionExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraLipSyncExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraLipSyncExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraLipSyncExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraReplayKitExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraReplayKitExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraReplayKitExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraRtcKit.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraRtcKit.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraRtcKit.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "Agorafdkaac.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "Agorafdkaac.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "Agorafdkaac.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "Agoraffmpeg.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "Agoraffmpeg.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "Agoraffmpeg.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraSoundTouch.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraSoundTouch.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraSoundTouch.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraSpatialAudioExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
-    ;;
-  "AgoraSpatialAudioExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
-  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
-    ;;
-  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
-  "AgoraVideoAv1DecoderExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
-    ;;
-  "AgoraVideoAv1DecoderExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
-  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
-    ;;
-  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
-  "AgoraVideoDecoderExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
-    ;;
-  "AgoraVideoDecoderExtension.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
-  "video_dec.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "video_dec.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "video_dec.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraVideoEncoderExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraSpatialAudioExtension.xcframework/ios-arm64")
+    echo "arm64"
+    ;;
+  "AgoraSpatialAudioExtension.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
+    ;;
+  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64")
+    echo "arm64"
+    ;;
+  "AgoraVideoQualityAnalyzerExtension.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
+    ;;
+  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64")
+    echo "arm64"
+    ;;
+  "AgoraVideoAv1EncoderExtension.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
+    ;;
+  "AgoraVideoEncoderExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraVideoEncoderExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "video_enc.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "video_enc.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "video_enc.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "AgoraVideoSegmentationExtension.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
+  "AgoraVideoSegmentationExtension.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   "AgoraVideoSegmentationExtension.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
@@ -393,28 +369,26 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiEchoCancellationExtension.xcframework" "AgoraRtcEngine_iOS/AIAEC" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiEchoCancellationLLExtension.xcframework" "AgoraRtcEngine_iOS/AIAECLL" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiNoiseSuppressionExtension.xcframework" "AgoraRtcEngine_iOS/AINS" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiNoiseSuppressionLLExtension.xcframework" "AgoraRtcEngine_iOS/AINSLL" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAudioBeautyExtension.xcframework" "AgoraRtcEngine_iOS/AudioBeauty" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraClearVisionExtension.xcframework" "AgoraRtcEngine_iOS/ClearVision" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraContentInspectExtension.xcframework" "AgoraRtcEngine_iOS/ContentInspect" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraFaceCaptureExtension.xcframework" "AgoraRtcEngine_iOS/FaceCapture" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraFaceDetectionExtension.xcframework" "AgoraRtcEngine_iOS/FaceDetection" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraLipSyncExtension.xcframework" "AgoraRtcEngine_iOS/LipSync" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraReplayKitExtension.xcframework" "AgoraRtcEngine_iOS/ReplayKit" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraRtcKit.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/Agorafdkaac.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/Agoraffmpeg.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSoundTouch.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSpatialAudioExtension.xcframework" "AgoraRtcEngine_iOS/SpatialAudio" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoQualityAnalyzerExtension.xcframework" "AgoraRtcEngine_iOS/VQA" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoAv1DecoderExtension.xcframework" "AgoraRtcEngine_iOS/VideoAv1CodecDec" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoAv1EncoderExtension.xcframework" "AgoraRtcEngine_iOS/VideoAv1CodecEnc" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoDecoderExtension.xcframework" "AgoraRtcEngine_iOS/VideoCodecDec" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/video_dec.xcframework" "AgoraRtcEngine_iOS/VideoCodecDec" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoEncoderExtension.xcframework" "AgoraRtcEngine_iOS/VideoCodecEnc" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/video_enc.xcframework" "AgoraRtcEngine_iOS/VideoCodecEnc" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
-install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoSegmentationExtension.xcframework" "AgoraRtcEngine_iOS/VirtualBackground" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiEchoCancellationExtension.xcframework" "AgoraRtcEngine_iOS/AIAEC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiEchoCancellationLLExtension.xcframework" "AgoraRtcEngine_iOS/AIAECLL" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiNoiseSuppressionExtension.xcframework" "AgoraRtcEngine_iOS/AINS" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAiNoiseSuppressionLLExtension.xcframework" "AgoraRtcEngine_iOS/AINSLL" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraAudioBeautyExtension.xcframework" "AgoraRtcEngine_iOS/AudioBeauty" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraClearVisionExtension.xcframework" "AgoraRtcEngine_iOS/ClearVision" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraContentInspectExtension.xcframework" "AgoraRtcEngine_iOS/ContentInspect" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraFaceCaptureExtension.xcframework" "AgoraRtcEngine_iOS/FaceCapture" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraFaceDetectionExtension.xcframework" "AgoraRtcEngine_iOS/FaceDetection" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraLipSyncExtension.xcframework" "AgoraRtcEngine_iOS/LipSync" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraReplayKitExtension.xcframework" "AgoraRtcEngine_iOS/ReplayKit" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraRtcKit.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/Agorafdkaac.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/Agoraffmpeg.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSoundTouch.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/video_dec.xcframework" "AgoraRtcEngine_iOS/RtcBasic" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraSpatialAudioExtension.xcframework" "AgoraRtcEngine_iOS/SpatialAudio" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoQualityAnalyzerExtension.xcframework" "AgoraRtcEngine_iOS/VQA" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoAv1EncoderExtension.xcframework" "AgoraRtcEngine_iOS/VideoAv1CodecEnc" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoEncoderExtension.xcframework" "AgoraRtcEngine_iOS/VideoCodecEnc" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/video_enc.xcframework" "AgoraRtcEngine_iOS/VideoCodecEnc" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/AgoraRtcEngine_iOS/AgoraVideoSegmentationExtension.xcframework" "AgoraRtcEngine_iOS/VirtualBackground" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 

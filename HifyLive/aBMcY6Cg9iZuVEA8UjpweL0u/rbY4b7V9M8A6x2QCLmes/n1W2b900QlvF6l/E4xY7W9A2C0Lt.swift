@@ -156,6 +156,8 @@ final class ChatProfileHeaderView: UIView {
 
     // MARK: - Update
     func update(info: [String: Any]) {
+        print("----info------")
+        print(info)
         
         if let id = info["userId"] as? Int {
             userId = id
@@ -174,9 +176,17 @@ final class ChatProfileHeaderView: UIView {
             named: gender == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy"
         )
         
-        let followed = (info["followed"] as? Int ?? 0) == 1 ? 1 : 2
-                let followImage = followed == 1 ? "qQ8ZC7E0ZxQ" : "d2ax6W4EYC8L"
-                followBtn.setImage(UIImage(named: followImage), for: .normal)
+        let followed: Bool
+        if let f = info["followed"] as? Bool {
+            followed = f
+        } else if let f = info["followed"] as? Int {
+            followed = f == 1
+        } else {
+            followed = false
+        }
+
+        let followImage = followed ? "qQ8ZC7E0ZxQ" : "d2ax6W4EYC8L"
+        followBtn.setImage(UIImage(named: followImage), for: .normal)
 
         // 国家
         if let country = info["country"] as? String {

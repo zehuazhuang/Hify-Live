@@ -26,6 +26,10 @@ struct ChatTableView: UIViewRepresentable {
         tableView.register(ChatCell.self, forCellReuseIdentifier: "ChatCell")
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        
+        // ✅ 这里添加自动高度配置
+           tableView.rowHeight = UITableView.automaticDimension
+           tableView.estimatedRowHeight = 60
 
         // 键盘
         context.coordinator.keyboardObserver.bind(tableView: tableView)
@@ -68,6 +72,7 @@ struct ChatTableView: UIViewRepresentable {
 
         if let header = context.coordinator.headerView {
             header.update(info: opponentInfo)
+            header.frame.size.height = header.frame.size.height
             tableView.tableHeaderView = header
         }
     }
@@ -266,13 +271,15 @@ class ChatCell: UITableViewCell {
             imageBubble.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor),
             imageBubble.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor),
             imageBubble.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor),
-            imageBubble.widthAnchor.constraint(equalToConstant: 245),
-            imageBubble.heightAnchor.constraint(equalToConstant: 185),
 
             contentImageView.topAnchor.constraint(equalTo: imageBubble.topAnchor),
             contentImageView.bottomAnchor.constraint(equalTo: imageBubble.bottomAnchor),
             contentImageView.leadingAnchor.constraint(equalTo: imageBubble.leadingAnchor),
-            contentImageView.trailingAnchor.constraint(equalTo: imageBubble.trailingAnchor)
+            contentImageView.trailingAnchor.constraint(equalTo: imageBubble.trailingAnchor),
+
+            // 宽度不要固定，使用 bubbleContainer 宽度
+            contentImageView.widthAnchor.constraint(equalTo: bubbleContainer.widthAnchor),
+            contentImageView.heightAnchor.constraint(equalTo: contentImageView.widthAnchor, multiplier: 185/245)
         ]
     }
 
@@ -301,6 +308,7 @@ class ChatCell: UITableViewCell {
 
         timeLabel.isHidden = !message.showTime
         timeLabel.text = message.showTime ? formatTime(message.timestamp) : nil
+        bubbleContainer.isHidden = false
 
         switch message.content {
 

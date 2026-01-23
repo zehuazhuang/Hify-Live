@@ -82,6 +82,7 @@ struct CgZU7mTgY46l: View {
                     
                     // 消息列表
                     ChatTableView(opponentInfo: opponentInfo, vm: vm, keyboardHeight: keyboard.keyboardHeight)
+                        
                         .padding(.horizontal,10)
                         .background(Color.clear)
                         .onTapGesture { isInputFocused = false }
@@ -167,13 +168,8 @@ struct CgZU7mTgY46l: View {
                                    wTEEJpZz0iGVK: session.sessionId
                                ) {
                                    opponentInfo = info
-                                   
-                                   
                                }
                 }
-                
-                
-                
             }
         }
     }

@@ -294,9 +294,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws {
     
     // 5️⃣ 解析返回 JSON
     let json = try JSONSerialization.jsonObject(with: data, options: [])
-    guard let dict = json as? [String: Any] else {
-        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-    }
+    
     print(json)
     vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
     vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
