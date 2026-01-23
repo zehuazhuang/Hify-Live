@@ -21,31 +21,31 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ZStack(alignment: .top) {
-                        RoundedRectangle(cornerRadius: 0)
-                            .fill(Color.clear)
-                            .frame(height: 282)
-                            .overlay {
-                                ZStack(alignment: .bottom) {
-                                    if m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.isEmpty {
-                                        ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                    } else {
-                                        TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
-                                            ForEach(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.indices, id: \.self) { x56Wv in
-                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]) {
-                                                    ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                                }
-                                                .onTapGesture {
-                                                    pVzCUaYBcF5CZ1 = m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]
+                        ZStack(alignment: .bottomTrailing,){
+                            RoundedRectangle(cornerRadius: 0)
+                                .fill(Color.clear)
+                                .frame(height: 282)
+                                .overlay {
+                                        if m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.isEmpty {
+                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
+                                        } else {
+                                            TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
+                                                ForEach(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.indices, id: \.self) { x56Wv in
+                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]) {
+                                                        ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
+                                                    }
+                                                    .onTapGesture {
+                                                        pVzCUaYBcF5CZ1 = m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]
+                                                    }
                                                 }
                                             }
+                                            .tabViewStyle(.page(indexDisplayMode: .never))
                                         }
-                                        .tabViewStyle(.page(indexDisplayMode: .never))
-                                    }
-                                    ZJ7h766mz(tMmEWWlfgUag: "jlvIw3ryygxHNI")
-                                        .frame(height: 119)
                                 }
-                            }
-                            .clipped()
+                                .clipped()
+                            ZJ7h766mz(tMmEWWlfgUag: "jlvIw3ryygxHNI")
+                                .frame(height: 119)
+                        }
                         VStack(spacing: 0) {
                             HStack(spacing: 0) {
                                 Button{
@@ -365,9 +365,12 @@ struct rfVAcKuWDyI1Ig3cm2bMxplImn70D: View {
                         )
                 )
         }
-        .onTapGesture {
-            vjzAERk78sLuW96()
-        }
+        .highPriorityGesture(
+            TapGesture()
+                .onEnded {
+                    vjzAERk78sLuW96()
+                }
+        )
         .confirmationDialog("JC5qWNHChYw1hjsiBDLojIWxcbXx+TE9hGAq76AK+cqY4g2Yq9rE+vz3FUIjZMBLWfX7SxBFxgdvM7X7M5nbSw==".bFHEatcgE4zzU9TCfDonsu(), isPresented: $pzxxrsR6esxySYadQAv2LlYlH5, titleVisibility: .visible) {
             Button("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu()) {
                 af2DH(i49bp3YNTEyesczfgOJii3zbqjeXApt: eOzSTDS)

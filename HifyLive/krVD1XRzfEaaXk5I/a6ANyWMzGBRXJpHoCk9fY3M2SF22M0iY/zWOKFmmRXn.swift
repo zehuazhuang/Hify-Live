@@ -65,3 +65,43 @@ func a7wkluGHEiGGT3Zc1PbE7(_ teYPbSC: [String]) async -> JUsmLn3i59tKLD7RL294I0n
         return nil
     }
 }
+
+//修改个人信息接口（头像、名字、生日）
+struct p0vDQI0Dp0NwLzG4vFVG1avm: Codable {
+    let zsLObZP: String? // icon
+    let rApHcKdL9XnxIAcFk5Z8aah: String? // nickname
+    let ha3AaH63DwF0M0XyK1q8AREsVw: String? // birthday
+
+    func encode(to encoder: Encoder) throws {
+        var zpPv1taTv8nkfL1wEyu9VVP8JTGabKsy = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
+
+        // 只 encode 非 nil
+        if let zsLObZP {
+            try zpPv1taTv8nkfL1wEyu9VVP8JTGabKsy.encode(zsLObZP, forKey: bonDyqD2YnaVJW("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
+        }
+        if let rApHcKdL9XnxIAcFk5Z8aah {
+            try zpPv1taTv8nkfL1wEyu9VVP8JTGabKsy.encode(rApHcKdL9XnxIAcFk5Z8aah, forKey: bonDyqD2YnaVJW("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
+        }
+        if let ha3AaH63DwF0M0XyK1q8AREsVw {
+            try zpPv1taTv8nkfL1wEyu9VVP8JTGabKsy.encode(ha3AaH63DwF0M0XyK1q8AREsVw, forKey: bonDyqD2YnaVJW("r9m4DBfC1PJPAxrJqUKxjw==".bFHEatcgE4zzU9TCfDonsu()))
+        }
+    }
+}
+
+func zMfGchIhPuhjVeifVgq2pBi6XtmHd8(o5xi4gYSKKtKesOv4h6Qqmq5Gm7xaqV: String? = nil, fFJXbBAYX64Bd9TNTWYYIxykCGFjcDKb: String? = nil, jLCfyATGXvVMlhRsH3mEw: String? = nil) async -> Bool {
+    do {
+        let qKoRH8NX8Vj6SzCvR: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
+            xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6jbUK0pmSQjPW95tmyhBOCVPGjGjPyN/Y+033ze9jtAq".bFHEatcgE4zzU9TCfDonsu(),
+            tD5tEJZTT0NlaIX7eMREG92BhO3n: p0vDQI0Dp0NwLzG4vFVG1avm(zsLObZP: o5xi4gYSKKtKesOv4h6Qqmq5Gm7xaqV, rApHcKdL9XnxIAcFk5Z8aah: fFJXbBAYX64Bd9TNTWYYIxykCGFjcDKb, ha3AaH63DwF0M0XyK1q8AREsVw: jLCfyATGXvVMlhRsH3mEw)
+        )
+        print(qKoRH8NX8Vj6SzCvR.code)
+        if qKoRH8NX8Vj6SzCvR.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+            // 成功
+            return true
+        } else {
+            return false
+        }
+    } catch {
+        return false
+    }
+}

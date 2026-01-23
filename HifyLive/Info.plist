@@ -18,6 +18,8 @@
 	</dict>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>The app needs to save images to the photo album.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Used for taking portraits.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>gvJp6y4jIrAkHh.ttf</string>

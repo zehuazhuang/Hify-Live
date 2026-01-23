@@ -186,3 +186,23 @@ final class IsZTtO2FdO13EJk8A2xBPRHSqlJx {
         }
     }
 }
+
+//OSS 上传封装一个 async/await 版本
+extension IsZTtO2FdO13EJk8A2xBPRHSqlJx {
+    func lsPWcBctMdZKbZmayF(
+        mp5zcQyx: URL,
+        iQG9oHdO6VjSKvCvA6dikEBFjKYP: String,
+        zEegMv5lVmEjyxeTPLGSQPehTs: ((Double) -> Void)? = nil
+    ) async throws -> String {
+        return try await withCheckedThrowingContinuation { lhdKMbClm in
+            self.nsBipVAxQ5Hqjj8tsx(e8O8OyDACdOvgo: mp5zcQyx, u92JYYPz7kFgcQKDFB6: iQG9oHdO6VjSKvCvA6dikEBFjKYP, p2gBE3NSqIq7: zEegMv5lVmEjyxeTPLGSQPehTs) { xbSkXXgNwboW in
+                switch xbSkXXgNwboW {
+                case .success(let yVd2y4aKD3Idlfp7yuSxId09jwPJ5j):
+                    lhdKMbClm.resume(returning: yVd2y4aKD3Idlfp7yuSxId09jwPJ5j)
+                case .failure(let yoSZDzI5Z4JCWzKhOYy5cvS1J):
+                    lhdKMbClm.resume(throwing: yoSZDzI5Z4JCWzKhOYy5cvS1J)
+                }
+            }
+        }
+    }
+}
