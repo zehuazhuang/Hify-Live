@@ -28,7 +28,7 @@ struct TokenResponse: Codable {
 
 func fetchToken() async throws -> TokenResponse {
     let dict = try await getRtctoken() // 返回 [AnyHashable: Any]
-    print("token -------")
+
     
     
 
@@ -37,10 +37,7 @@ func fetchToken() async throws -> TokenResponse {
     let rtmToken = dict.string("rtmToken")
     let rtcTokenChannel = dict.string("rtcTokenChannel") // Optional
     
-    print(channelId)
-    print(rtcToken)
-    print(rtmToken)
-    print(rtcTokenChannel)
+
 
     return TokenResponse(channelId: channelId,
                          rtcToken: rtcToken,

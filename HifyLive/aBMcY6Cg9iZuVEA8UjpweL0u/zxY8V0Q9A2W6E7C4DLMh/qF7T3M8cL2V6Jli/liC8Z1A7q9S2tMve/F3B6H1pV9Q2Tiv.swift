@@ -1,38 +1,21 @@
-//import SwiftUI
-//import SwiftfulRouting
-//
-//struct LiveRoomPage: View {
-//    let uid: UInt
-//    let channelId: String
-//
-//    @Environment(\.router) var router
-//
-//    var body: some View {
-//        ZStack {
-//            // 直接用缓存的 token 和传入的 channelId
-//            if let token = AgoraManager.shared.currentToken {
-//                LiveViewControllerWrapper(
-//                    channelId: channelId,
-//                    rtcToken: token,
-//                    uid: uid
-//                )
-//                .edgesIgnoringSafeArea(.all)
-//
-//                VStack {
-//                    HStack {
-//                        Spacer()
-//                        Button(action: { router.dismissScreen() }) {
-//                            Image(systemName: "xmark.circle.fill")
-//                                .resizable()
-//                                .frame(width: 32, height: 32)
-//                        }
-//                    }
-//                    Spacer()
-//                }
-//                .padding(.horizontal, 16)
-//            } else {
-//                Text("直播信息未准备好")
-//            }
-//        }
-//    }
-//}
+//初始化云信
+import UIKit
+import NIMSDK
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        
+        // 1️⃣ 初始化云信
+        // 如果暂时不需要推送证书，传空字符串 ""
+        NIMSDK.shared().register(withAppID: "124f689baed25c488e1330bc42e528af", cerName: "")
+        
+        return true
+        
+        
+        
+    }
+}

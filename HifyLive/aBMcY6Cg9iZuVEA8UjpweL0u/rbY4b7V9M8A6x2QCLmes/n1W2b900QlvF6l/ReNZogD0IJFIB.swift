@@ -43,38 +43,41 @@ struct ChatTableView: UIViewRepresentable {
         context.coordinator.headerView = header
         tableView.tableHeaderView = header
 
-        // 首次滚动到底部
-        DispatchQueue.main.async {
-            let count = self.vm.messages.count
-            if count > 0 {
-                let indexPath = IndexPath(row: count - 1, section: 0)
-                tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
-            }
-        }
+
 
         return tableView
     }
 
     func updateUIView(_ tableView: UITableView, context: Context) {
 
+        let newCount = vm.messages.count
+        guard context.coordinator.lastCount != newCount else { return }
+
+        context.coordinator.lastCount = newCount
+
         tableView.reloadData()
 
-        let inputHeight: CGFloat = 20
+        DispatchQueue.main.async {
+            tableView.layoutIfNeeded()
+            context.coordinator.scrollToBottom(tableView)
+        }
+
+        let inputHeight: CGFloat = 10
         tableView.contentInset.bottom = inputHeight
         tableView.verticalScrollIndicatorInsets.bottom = inputHeight
 
-        // ✅ 更新 Header 数据
         if let header = context.coordinator.headerView {
             header.update(info: opponentInfo)
-
-            // ⚠️ 关键：高度变化后必须重新 set
             tableView.tableHeaderView = header
         }
     }
+    
+    
+    
 
     // MARK: - Coordinator
     class Coordinator: NSObject, UITableViewDelegate, UITableViewDataSource {
-
+        var lastCount: Int = 0
         let parent: ChatTableView
         let keyboardObserver = KeyboardObserver()
 
@@ -87,26 +90,20 @@ struct ChatTableView: UIViewRepresentable {
             self.parent = parent
             super.init()
 
-            // 消息变化 → 自动滚到底部
-            parent.vm.$messages
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] _ in
-                    guard let self,
-                          let tableView = self.parentTableView else { return }
 
-                    let count = self.parent.vm.messages.count
-                    guard count > 0 else { return }
+        }
+        func scrollToBottom(_ tableView: UITableView, animated: Bool = false) {
+            let count = parent.vm.messages.count
+            guard count > 0 else { return }
 
-                    let lastRow = count - 1
-                    if lastRow < tableView.numberOfRows(inSection: 0) {
-                        tableView.scrollToRow(
-                            at: IndexPath(row: lastRow, section: 0),
-                            at: .bottom,
-                            animated: true
-                        )
-                    }
-                }
-                .store(in: &cancellables)
+            let lastRow = count - 1
+            let indexPath = IndexPath(row: lastRow, section: 0)
+
+            tableView.scrollToRow(
+                at: indexPath,
+                at: .bottom,
+                animated: animated
+            )
         }
 
         // MARK: TableView
@@ -137,225 +134,217 @@ class ChatCell: UITableViewCell {
 
     // MARK: UI
     private let avatarImageView = UIImageView()
-    private let bubble = UIView()
-    private let messageLabel = UILabel()
     private let timeLabel = UILabel()
-    
-    private let contentImageView = UIImageView()//发送图片
 
-    // 渐变（仅 outgoing）
-    private let gradientLayer = CAGradientLayer()
+    private let bubbleContainer = UIView()
+
+    // TEXT
+    private let textBubble = UIView()
+    private let messageLabel = UILabel()
+    private var textGradient: CAGradientLayer?
+
+    // IMAGE
+    private let imageBubble = UIView()
+    private let contentImageView = UIImageView()
 
     // MARK: Constraints
     private var avatarLeading: NSLayoutConstraint!
     private var avatarTrailing: NSLayoutConstraint!
+
     private var bubbleLeading: NSLayoutConstraint!
     private var bubbleTrailing: NSLayoutConstraint!
+
+    private var textBubbleConstraints: [NSLayoutConstraint] = []
+    private var imageBubbleConstraints: [NSLayoutConstraint] = []
 
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         backgroundColor = .clear
-
         setupUI()
         setupConstraints()
         setupGradient()
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError() }
 
-    // MARK: UI Setup
+    // MARK: UI
     private func setupUI() {
 
-        // Avatar
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(avatarImageView)
-        
-        contentImageView.translatesAutoresizingMaskIntoConstraints = false
-        contentImageView.layer.cornerRadius = 10
-        contentImageView.clipsToBounds = true
-        contentImageView.contentMode = .scaleAspectFill
-        bubble.addSubview(contentImageView)
-        
-        // Time (系统提示)
+
         timeLabel.font = JqA1kUIFont.font(size: 14, weight: .regular)
         timeLabel.textColor = UIColor.white.withAlphaComponent(0.6)
-        timeLabel.textAlignment = .center
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.isHidden = true
         contentView.addSubview(timeLabel)
-        
 
-        // Bubble
-        bubble.layer.cornerRadius = 12
-        bubble.clipsToBounds = true
-        bubble.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(bubble)
-        
-        // Message
+        bubbleContainer.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(bubbleContainer)
+
+        // TEXT
+        textBubble.layer.cornerRadius = 12
+        textBubble.clipsToBounds = true
+        textBubble.translatesAutoresizingMaskIntoConstraints = false
+        bubbleContainer.addSubview(textBubble)
+
         messageLabel.numberOfLines = 0
-        messageLabel.font = JqA1kUIFont.font(size: 14, weight: .regular)
+        messageLabel.font = JqA1kUIFont.font(size: 14)
         messageLabel.textColor = .white
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        bubble.addSubview(messageLabel)
+        textBubble.addSubview(messageLabel)
 
+        // IMAGE
+        imageBubble.layer.cornerRadius = 12
+        imageBubble.clipsToBounds = true
+        imageBubble.translatesAutoresizingMaskIntoConstraints = false
+        bubbleContainer.addSubview(imageBubble)
 
+        contentImageView.contentMode = .scaleAspectFill
+        contentImageView.translatesAutoresizingMaskIntoConstraints = false
+        imageBubble.addSubview(contentImageView)
+        
+    }
+    private func setupGradient() {
+        let g = CAGradientLayer()
+        g.colors = [
+            UIColor(red: 120/255, green: 223/255, blue: 255/255, alpha: 0.32).cgColor,
+            UIColor(red: 84/255, green: 105/255, blue: 199/255, alpha: 0.25).cgColor
+        ]
+        g.startPoint = CGPoint(x: 0, y: 0.5)
+        g.endPoint = CGPoint(x: 1, y: 0.5)
+        g.cornerRadius = 12
+        g.isHidden = true          // 👈 默认隐藏
+        textBubble.layer.insertSublayer(g, at: 0)
+        textGradient = g
     }
 
     // MARK: Constraints
     private func setupConstraints() {
         let padding: CGFloat = 8
 
-        // Avatar
-        NSLayoutConstraint.activate([
-            avatarImageView.widthAnchor.constraint(equalToConstant: 32),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 32),
-        ])
         avatarLeading = avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding)
         avatarTrailing = avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-        avatarLeading.isActive = true // 默认 incoming
+        avatarLeading.isActive = true
 
-        // Time label（整屏居中，位于顶部）
+        bubbleLeading = bubbleContainer.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8)
+        bubbleTrailing = bubbleContainer.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: -8)
+        bubbleLeading.isActive = true
+
         NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 6),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 32),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 32),
+
             timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            timeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            timeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            bubbleContainer.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
+            bubbleContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
+            bubbleContainer.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.65)
         ])
 
-        // Bubble
-        bubbleLeading = bubble.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8)
-        bubbleTrailing = bubble.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: -8)
+        // TEXT constraints
+        textBubbleConstraints = [
+            textBubble.topAnchor.constraint(equalTo: bubbleContainer.topAnchor),
+            textBubble.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor),
+            textBubble.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor),
+            textBubble.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor),
 
-        bubbleLeading.isActive = true // 默认 incoming
-        
-        NSLayoutConstraint.activate([
-            contentImageView.topAnchor.constraint(equalTo: bubble.topAnchor),
-            contentImageView.bottomAnchor.constraint(equalTo: bubble.bottomAnchor),
-            contentImageView.leadingAnchor.constraint(equalTo: bubble.leadingAnchor),
-            contentImageView.trailingAnchor.constraint(equalTo: bubble.trailingAnchor),
-        ])
-
-
-        NSLayoutConstraint.activate([
-            bubble.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 6), // 气泡在时间下方
-            bubble.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.65),
-            bubble.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
-        ])
-
-        // Message inside bubble
-        NSLayoutConstraint.activate([
-            messageLabel.topAnchor.constraint(equalTo: bubble.topAnchor, constant: 8),
-            messageLabel.bottomAnchor.constraint(equalTo: bubble.bottomAnchor, constant: -8),
-            messageLabel.leadingAnchor.constraint(equalTo: bubble.leadingAnchor, constant: 12),
-            messageLabel.trailingAnchor.constraint(equalTo: bubble.trailingAnchor, constant: -12)
-        ])
-
-        // Avatar纵向对齐气泡顶部
-        NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: bubble.topAnchor)
-        ])
-    }
-
-    // MARK: Gradient
-    private func setupGradient() {
-        gradientLayer.colors = [
-            UIColor(
-                red: 120/255,
-                green: 223/255,
-                blue: 255/255,
-                alpha: 0.32
-            ).cgColor,
-            UIColor(
-                red: 84/255,
-                green: 105/255,
-                blue: 199/255,
-                alpha: 0.25
-            ).cgColor
+            messageLabel.topAnchor.constraint(equalTo: textBubble.topAnchor, constant: 8),
+            messageLabel.bottomAnchor.constraint(equalTo: textBubble.bottomAnchor, constant: -8),
+            messageLabel.leadingAnchor.constraint(equalTo: textBubble.leadingAnchor, constant: 12),
+            messageLabel.trailingAnchor.constraint(equalTo: textBubble.trailingAnchor, constant: -12)
         ]
 
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint   = CGPoint(x: 1, y: 0.5)
-        gradientLayer.cornerRadius = 12
+        // IMAGE constraints
+        imageBubbleConstraints = [
+            imageBubble.topAnchor.constraint(equalTo: bubbleContainer.topAnchor),
+            imageBubble.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor),
+            imageBubble.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor),
+            imageBubble.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor),
+            imageBubble.widthAnchor.constraint(equalToConstant: 245),
+            imageBubble.heightAnchor.constraint(equalToConstant: 185),
 
-        bubble.layer.insertSublayer(gradientLayer, at: 0)
+            contentImageView.topAnchor.constraint(equalTo: imageBubble.topAnchor),
+            contentImageView.bottomAnchor.constraint(equalTo: imageBubble.bottomAnchor),
+            contentImageView.leadingAnchor.constraint(equalTo: imageBubble.leadingAnchor),
+            contentImageView.trailingAnchor.constraint(equalTo: imageBubble.trailingAnchor)
+        ]
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        gradientLayer.frame = bubble.bounds
+        textGradient?.frame = textBubble.bounds
     }
 
     // MARK: Configure
     func configure(message: ChatMessage, avatarURL: String?) {
 
-        messageLabel.isHidden = true
-           contentImageView.isHidden = true
+        NSLayoutConstraint.deactivate(textBubbleConstraints)
+        NSLayoutConstraint.deactivate(imageBubbleConstraints)
 
-           switch message.content {
-           case .text(let text):
-               messageLabel.text = text
-               messageLabel.isHidden = false
+        textBubble.isHidden = true
+        imageBubble.isHidden = true
 
-           case .image(let url, let size):
-               contentImageView.isHidden = false
-               if let url, let u = URL(string: url) {
-                   contentImageView.kf.setImage(with: u)
-               }
-           }
+        avatarLeading.isActive = !message.isOutgoingMsg
+        avatarTrailing.isActive = message.isOutgoingMsg
+        bubbleLeading.isActive = !message.isOutgoingMsg
+        bubbleTrailing.isActive = message.isOutgoingMsg
 
-        // 时间（大于 5 分钟才显示）
+        if let url = avatarURL, let u = URL(string: url) {
+            avatarImageView.kf.setImage(with: u)
+        }
+
         timeLabel.isHidden = !message.showTime
         timeLabel.text = message.showTime ? formatTime(message.timestamp) : nil
 
-        // Avatar
-        if let urlString = avatarURL, let url = URL(string: urlString) {
-            avatarImageView.kf.setImage(with: url)
-        } else {
-            avatarImageView.image = UIImage(named: "avatar_placeholder")
-        }
+        switch message.content {
 
-        // Reset constraints
-        avatarLeading.isActive = false
-        avatarTrailing.isActive = false
-        bubbleLeading.isActive = false
-        bubbleTrailing.isActive = false
+        case .text(let text):
+            textBubble.isHidden = false
+            messageLabel.text = text
+            NSLayoutConstraint.activate(textBubbleConstraints)
 
-        if message.isOutgoingMsg {
-            avatarTrailing.isActive = true
-            bubbleTrailing.isActive = true
+            if message.isOutgoingMsg {
+                textGradient?.isHidden = false
+                textBubble.backgroundColor = .clear
+            } else {
+                textGradient?.isHidden = true
+                textBubble.backgroundColor = UIColor.white.withAlphaComponent(0.15)
+            }
 
-            gradientLayer.isHidden = false
-            bubble.backgroundColor = .clear
+            // 🔥 强制刷新 layout，保证 gradient frame 正确
+            setNeedsLayout()
+            layoutIfNeeded()
+            textGradient?.frame = textBubble.bounds
 
-        } else {
-            avatarLeading.isActive = true
-            bubbleLeading.isActive = true
-
-            gradientLayer.isHidden = true
-            bubble.backgroundColor = UIColor.white.withAlphaComponent(0.15)
+        case .image(let url, _):
+            imageBubble.isHidden = false
+            NSLayoutConstraint.activate(imageBubbleConstraints)
+            if let url, let u = URL(string: url) {
+                contentImageView.kf.setImage(with: u)
+            }
         }
     }
 
-    // MARK: Time format
-    private func formatTime(_ timestamp: TimeInterval) -> String {
-        let date = Date(timeIntervalSince1970: timestamp)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: date)
+    private func formatTime(_ t: TimeInterval) -> String {
+        let f = DateFormatter()
+        f.dateFormat = "HH:mm"
+        return f.string(from: Date(timeIntervalSince1970: t))
     }
 }
 
 
 class KeyboardObserver: NSObject {
     private weak var tableView: UITableView?
-    private var inputHeight: CGFloat = 20
+    private var inputHeight: CGFloat = 10
     private var lastKeyboardHeight: CGFloat = -1
 
-    func bind(tableView: UITableView, inputHeight: CGFloat = 20) {
+    func bind(tableView: UITableView, inputHeight: CGFloat = 10) {
         self.tableView = tableView
         self.inputHeight = inputHeight
 
@@ -388,7 +377,10 @@ class KeyboardObserver: NSObject {
             if tableView.numberOfRows(inSection: 0) > 0 {
                 let lastRow = tableView.numberOfRows(inSection: 0) - 1
                 let indexPath = IndexPath(row: lastRow, section: 0)
+                tableView.layoutIfNeeded()
                 tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                
+                
             }
         })
     }
