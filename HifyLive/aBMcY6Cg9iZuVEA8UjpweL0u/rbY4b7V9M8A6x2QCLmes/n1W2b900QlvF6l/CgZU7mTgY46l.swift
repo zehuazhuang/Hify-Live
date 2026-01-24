@@ -61,7 +61,7 @@ struct CgZU7mTgY46l: View {
                         HStack {
                             ZJ7h766mz(tMmEWWlfgUag: "zxM23M2tC38")
                                 .frame(width: 10, height: 10)
-                            Text("MadrigalXX1")
+                            Text(opponentInfo.string("nickname"))
                                 .g0LIIcoZQsOjyND9(size: 16, weight: .regular)
                         }
                         
@@ -168,6 +168,7 @@ struct CgZU7mTgY46l: View {
                                    wTEEJpZz0iGVK: session.sessionId
                                ) {
                                    opponentInfo = info
+                                  
                                }
                 }
             }

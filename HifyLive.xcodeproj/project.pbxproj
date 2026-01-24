@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		100861DDCA956958F40398AF /* Pods_HifyLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E747F9D45474936E42C8C40A /* Pods_HifyLive.framework */; };
+		B181B41FEECA678F667FC157 /* Pods_HifyLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E1BA1D387D35656E59D432 /* Pods_HifyLive.framework */; };
 		DD0E53D22F1749120060F729 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = DD0E53D12F1749120060F729 /* Gzip */; };
+		DD4BFCDE2F23A67B00748369 /* AgoraRtmKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD4BFCDD2F23A67B00748369 /* AgoraRtmKit */; };
 		DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */; };
 		DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */; };
 		DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C4362F15E61600365091 /* SwiftfulRouting */; };
@@ -16,10 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		539E2EC4AEE5D330D9E3AB17 /* Pods-HifyLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.debug.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.debug.xcconfig"; sourceTree = "<group>"; };
-		C8625CECF281DA455859A120 /* Pods-HifyLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.release.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.release.xcconfig"; sourceTree = "<group>"; };
+		689FEA438054F18836EAA47A /* Pods-HifyLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.release.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.release.xcconfig"; sourceTree = "<group>"; };
+		87E1BA1D387D35656E59D432 /* Pods_HifyLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0065C7624C956DB5E9A0FB4 /* Pods-HifyLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.debug.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.debug.xcconfig"; sourceTree = "<group>"; };
 		DDECD4CD2F148B820016E861 /* HifyLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HifyLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E747F9D45474936E42C8C40A /* Pods_HifyLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -53,28 +54,29 @@
 				DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */,
 				DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */,
 				DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */,
-				100861DDCA956958F40398AF /* Pods_HifyLive.framework in Frameworks */,
+				DD4BFCDE2F23A67B00748369 /* AgoraRtmKit in Frameworks */,
+				B181B41FEECA678F667FC157 /* Pods_HifyLive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92C45A2A82C3AC417B2462CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87E1BA1D387D35656E59D432 /* Pods_HifyLive.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9701E0D8E7A6EC5B10D993F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				539E2EC4AEE5D330D9E3AB17 /* Pods-HifyLive.debug.xcconfig */,
-				C8625CECF281DA455859A120 /* Pods-HifyLive.release.xcconfig */,
+				A0065C7624C956DB5E9A0FB4 /* Pods-HifyLive.debug.xcconfig */,
+				689FEA438054F18836EAA47A /* Pods-HifyLive.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		BA01BA56A86144FD37BC9372 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E747F9D45474936E42C8C40A /* Pods_HifyLive.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DDECD4C42F148B820016E861 = {
@@ -83,7 +85,7 @@
 				DDECD4CF2F148B820016E861 /* HifyLive */,
 				DDECD4CE2F148B820016E861 /* Products */,
 				9701E0D8E7A6EC5B10D993F3 /* Pods */,
-				BA01BA56A86144FD37BC9372 /* Frameworks */,
+				92C45A2A82C3AC417B2462CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,12 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDECD4D82F148B840016E861 /* Build configuration list for PBXNativeTarget "HifyLive" */;
 			buildPhases = (
-				4FFDFFC703F0C5FD48B86FF5 /* [CP] Check Pods Manifest.lock */,
+				19F2BACB05C51496D3DA1CB9 /* [CP] Check Pods Manifest.lock */,
 				DDECD4C92F148B820016E861 /* Sources */,
 				DDECD4CA2F148B820016E861 /* Frameworks */,
 				DDECD4CB2F148B820016E861 /* Resources */,
-				9AC305BC8EA9C5E78B4DD1A0 /* [CP] Embed Pods Frameworks */,
-				DC79C52C15613E9E571A76BC /* [CP] Copy Pods Resources */,
+				9F9FA8869E68C2F6EB750BC2 /* [CP] Embed Pods Frameworks */,
+				46D404E0A48BF7C1D840C424 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,6 +125,7 @@
 				DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */,
 				DDE0C5CA2F15F64A00365091 /* Kingfisher */,
 				DD0E53D12F1749120060F729 /* Gzip */,
+				DD4BFCDD2F23A67B00748369 /* AgoraRtmKit */,
 			);
 			productName = HifyLive;
 			productReference = DDECD4CD2F148B820016E861 /* HifyLive.app */;
@@ -158,6 +161,7 @@
 				DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */,
 				DD2931752F177E2D00A06CA0 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+				DD4BFCDC2F23A67B00748369 /* XCRemoteSwiftPackageReference "AgoraRTM_iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDECD4CE2F148B820016E861 /* Products */;
@@ -180,7 +184,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4FFDFFC703F0C5FD48B86FF5 /* [CP] Check Pods Manifest.lock */ = {
+		19F2BACB05C51496D3DA1CB9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -202,24 +206,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9AC305BC8EA9C5E78B4DD1A0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC79C52C15613E9E571A76BC /* [CP] Copy Pods Resources */ = {
+		46D404E0A48BF7C1D840C424 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -234,6 +221,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F9FA8869E68C2F6EB750BC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -372,7 +376,7 @@
 		};
 		DDECD4D92F148B840016E861 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 539E2EC4AEE5D330D9E3AB17 /* Pods-HifyLive.debug.xcconfig */;
+			baseConfigurationReference = A0065C7624C956DB5E9A0FB4 /* Pods-HifyLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -410,7 +414,7 @@
 		};
 		DDECD4DA2F148B840016E861 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8625CECF281DA455859A120 /* Pods-HifyLive.release.xcconfig */;
+			baseConfigurationReference = 689FEA438054F18836EAA47A /* Pods-HifyLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -486,6 +490,14 @@
 				minimumVersion = 4.6.0;
 			};
 		};
+		DD4BFCDC2F23A67B00748369 /* XCRemoteSwiftPackageReference "AgoraRTM_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRTM_iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -517,6 +529,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
+		};
+		DD4BFCDD2F23A67B00748369 /* AgoraRtmKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD4BFCDC2F23A67B00748369 /* XCRemoteSwiftPackageReference "AgoraRTM_iOS" */;
+			productName = AgoraRtmKit;
 		};
 		DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

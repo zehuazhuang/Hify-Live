@@ -12,12 +12,7 @@ target 'HifyLive' do
   # 即时通讯 / 聊天室（云信）
   pod 'NIMSDK'
 
-  # 网络请求
-  pod 'Alamofire'
 
-  # UI & 工具
-  pod 'SnapKit'
-  pod 'SVProgressHUD'
 
 end
 

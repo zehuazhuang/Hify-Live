@@ -44,8 +44,11 @@ struct ChatTableView: UIViewRepresentable {
                 height: 80
             )
         )
-        context.coordinator.headerView = header
+        header.update(info: opponentInfo)
+
+        // 🔥 只在这里设置一次
         tableView.tableHeaderView = header
+        context.coordinator.headerView = header
 
 
 
@@ -53,29 +56,51 @@ struct ChatTableView: UIViewRepresentable {
     }
 
     func updateUIView(_ tableView: UITableView, context: Context) {
+        let count = vm.messages.count
+        let lastCount = context.coordinator.lastCount
 
-        let newCount = vm.messages.count
-        guard context.coordinator.lastCount != newCount else { return }
-
-        context.coordinator.lastCount = newCount
-
-        tableView.reloadData()
-
-        DispatchQueue.main.async {
-            tableView.layoutIfNeeded()
-            context.coordinator.scrollToBottom(tableView)
+        // 数据被重置或者第一次加载，直接 reload
+        if lastCount > count || lastCount == 0 {
+            tableView.reloadData()
+            context.coordinator.lastCount = count
+            DispatchQueue.main.async {
+                context.coordinator.scrollToBottom(tableView, animated: !context.coordinator.firstLoad)
+                context.coordinator.firstLoad = false
+            }
+        } else if count > lastCount {
+            // 只有 append 新消息时才插入行
+            let newIndexPaths = (lastCount..<count).map { IndexPath(row: $0, section: 0) }
+            tableView.performBatchUpdates({
+                tableView.insertRows(at: newIndexPaths, with: .none)
+            }, completion: { _ in
+                context.coordinator.scrollToBottom(tableView, animated: !context.coordinator.firstLoad)
+                context.coordinator.firstLoad = false
+            })
+            context.coordinator.lastCount = count
         }
 
-        let inputHeight: CGFloat = 10
+        // 键盘底部 inset
+        let inputHeight: CGFloat = 20
         tableView.contentInset.bottom = inputHeight
         tableView.verticalScrollIndicatorInsets.bottom = inputHeight
 
+        // 更新 header 高度
         if let header = context.coordinator.headerView {
             header.update(info: opponentInfo)
-            header.frame.size.height = header.frame.size.height
-            tableView.tableHeaderView = header
+            header.setNeedsLayout()
+            header.layoutIfNeeded()
+
+            let height = header.systemLayoutSizeFitting(
+                UIView.layoutFittingCompressedSize
+            ).height
+
+            if header.frame.height != height {
+                header.frame.size.height = height
+                tableView.tableHeaderView = header
+            }
         }
     }
+
     
     
     
@@ -83,6 +108,7 @@ struct ChatTableView: UIViewRepresentable {
     // MARK: - Coordinator
     class Coordinator: NSObject, UITableViewDelegate, UITableViewDataSource {
         var lastCount: Int = 0
+        var firstLoad: Bool = true
         let parent: ChatTableView
         let keyboardObserver = KeyboardObserver()
 
@@ -95,21 +121,15 @@ struct ChatTableView: UIViewRepresentable {
             self.parent = parent
             super.init()
 
-
+      
         }
         func scrollToBottom(_ tableView: UITableView, animated: Bool = false) {
-            let count = parent.vm.messages.count
-            guard count > 0 else { return }
-
-            let lastRow = count - 1
-            let indexPath = IndexPath(row: lastRow, section: 0)
-
-            tableView.scrollToRow(
-                at: indexPath,
-                at: .bottom,
-                animated: animated
-            )
-        }
+               let count = parent.vm.messages.count
+               guard count > 0 else { return }
+               let lastRow = count - 1
+               let indexPath = IndexPath(row: lastRow, section: 0)
+               tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+           }
 
         // MARK: TableView
         func tableView(_ tableView: UITableView,
@@ -126,6 +146,7 @@ struct ChatTableView: UIViewRepresentable {
             ) as! ChatCell
 
             let msg = parent.vm.messages[indexPath.row]
+          
             cell.configure(message: msg, avatarURL: msg.avatarURL)
 
             return cell
@@ -144,7 +165,7 @@ class ChatCell: UITableViewCell {
     private let bubbleContainer = UIView()
 
     // TEXT
-    private let textBubble = UIView()
+    private let textBubble = GradientBubbleView()
     private let messageLabel = UILabel()
     private var textGradient: CAGradientLayer?
 
@@ -161,6 +182,15 @@ class ChatCell: UITableViewCell {
 
     private var textBubbleConstraints: [NSLayoutConstraint] = []
     private var imageBubbleConstraints: [NSLayoutConstraint] = []
+    
+    //状态
+    
+    
+    private let statusIcon = UIImageView()
+    
+
+    
+    
 
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -169,13 +199,22 @@ class ChatCell: UITableViewCell {
         backgroundColor = .clear
         setupUI()
         setupConstraints()
-        setupGradient()
+      //  setupGradient()
     }
 
     required init?(coder: NSCoder) { fatalError() }
 
     // MARK: UI
     private func setupUI() {
+        //发送状态
+        statusIcon.image = UIImage(systemName: "exclamationmark.circle.fill")
+        statusIcon.tintColor = .red
+        statusIcon.translatesAutoresizingMaskIntoConstraints = false
+        statusIcon.isHidden = true
+        bubbleContainer.addSubview(statusIcon)
+
+
+
 
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
@@ -213,19 +252,7 @@ class ChatCell: UITableViewCell {
         imageBubble.addSubview(contentImageView)
         
     }
-    private func setupGradient() {
-        let g = CAGradientLayer()
-        g.colors = [
-            UIColor(red: 120/255, green: 223/255, blue: 255/255, alpha: 0.32).cgColor,
-            UIColor(red: 84/255, green: 105/255, blue: 199/255, alpha: 0.25).cgColor
-        ]
-        g.startPoint = CGPoint(x: 0, y: 0.5)
-        g.endPoint = CGPoint(x: 1, y: 0.5)
-        g.cornerRadius = 12
-        g.isHidden = true          // 👈 默认隐藏
-        textBubble.layer.insertSublayer(g, at: 0)
-        textGradient = g
-    }
+
 
     // MARK: Constraints
     private func setupConstraints() {
@@ -238,6 +265,14 @@ class ChatCell: UITableViewCell {
         bubbleLeading = bubbleContainer.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 8)
         bubbleTrailing = bubbleContainer.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: -8)
         bubbleLeading.isActive = true
+        
+        // 放在气泡右下角
+        NSLayoutConstraint.activate([
+            statusIcon.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor, constant: -4),
+            statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -2),
+            statusIcon.widthAnchor.constraint(equalToConstant: 16),
+            statusIcon.heightAnchor.constraint(equalToConstant: 16)
+        ])
 
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 6),
@@ -283,10 +318,7 @@ class ChatCell: UITableViewCell {
         ]
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        textGradient?.frame = textBubble.bounds
-    }
+
 
     // MARK: Configure
     func configure(message: ChatMessage, avatarURL: String?) {
@@ -297,45 +329,88 @@ class ChatCell: UITableViewCell {
         textBubble.isHidden = true
         imageBubble.isHidden = true
 
+        // 布局方向
         avatarLeading.isActive = !message.isOutgoingMsg
         avatarTrailing.isActive = message.isOutgoingMsg
         bubbleLeading.isActive = !message.isOutgoingMsg
         bubbleTrailing.isActive = message.isOutgoingMsg
 
+        // 头像
         if let url = avatarURL, let u = URL(string: url) {
             avatarImageView.kf.setImage(with: u)
         }
 
+        // 时间显示
         timeLabel.isHidden = !message.showTime
         timeLabel.text = message.showTime ? formatTime(message.timestamp) : nil
         bubbleContainer.isHidden = false
 
         switch message.content {
-
         case .text(let text):
             textBubble.isHidden = false
             messageLabel.text = text
             NSLayoutConstraint.activate(textBubbleConstraints)
 
-            if message.isOutgoingMsg {
-                textGradient?.isHidden = false
-                textBubble.backgroundColor = .clear
-            } else {
-                textGradient?.isHidden = true
-                textBubble.backgroundColor = UIColor.white.withAlphaComponent(0.15)
-            }
-
-            // 🔥 强制刷新 layout，保证 gradient frame 正确
-            setNeedsLayout()
-            layoutIfNeeded()
-            textGradient?.frame = textBubble.bounds
+            textBubble.backgroundColor = message.isOutgoingMsg
+                ? .clear   // gradient 已经在 layer 上
+                : UIColor.white.withAlphaComponent(0.15)
 
         case .image(let url, _):
             imageBubble.isHidden = false
             NSLayoutConstraint.activate(imageBubbleConstraints)
-            if let url, let u = URL(string: url) {
-                contentImageView.kf.setImage(with: u)
+
+            // 先清空旧图片
+            contentImageView.image = nil
+
+            if let localImage = message.localImage {
+                contentImageView.image = localImage
+                // 布局刷新
+                bubbleContainer.setNeedsLayout()
+                bubbleContainer.layoutIfNeeded()
+                contentView.setNeedsLayout()
+                contentView.layoutIfNeeded()
+            } else if let url, let u = URL(string: url) {
+                contentImageView.kf.setImage(
+                    with: u,
+                    placeholder: UIImage(systemName: "photo"),
+                    options: [.transition(.fade(0.25))],
+                    progressBlock: nil
+                ) { [weak self] result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            // 图片下载成功后，强制刷新 cell
+                            self?.bubbleContainer.setNeedsLayout()
+                            self?.bubbleContainer.layoutIfNeeded()
+                            self?.contentView.setNeedsLayout()
+                            self?.contentView.layoutIfNeeded()
+                        case .failure(_):
+                            // 下载失败可显示占位图
+                            self?.contentImageView.image = UIImage(systemName: "photo")
+                        }
+                    }
+                }
+            } else {
+                contentImageView.image = UIImage(systemName: "photo")
             }
+        }
+
+        // ✅ 显示发送状态
+       
+        updateStatusIcon(for: message)
+        bubbleContainer.setNeedsLayout()
+        bubbleContainer.layoutIfNeeded()
+        contentView.setNeedsLayout()
+        contentView.layoutIfNeeded()
+    }
+
+    // MARK: - 状态显示
+    private func updateStatusIcon(for message: ChatMessage) {
+        // 只有发送失败才显示
+        if message.isOutgoingMsg, case .failed(_) = message.sendStatus {
+            statusIcon.isHidden = false
+        } else {
+            statusIcon.isHidden = true
         }
     }
 
@@ -349,10 +424,10 @@ class ChatCell: UITableViewCell {
 
 class KeyboardObserver: NSObject {
     private weak var tableView: UITableView?
-    private var inputHeight: CGFloat = 10
+    private var inputHeight: CGFloat = 20
     private var lastKeyboardHeight: CGFloat = -1
 
-    func bind(tableView: UITableView, inputHeight: CGFloat = 10) {
+    func bind(tableView: UITableView, inputHeight: CGFloat = 20) {
         self.tableView = tableView
         self.inputHeight = inputHeight
 
@@ -399,3 +474,35 @@ class KeyboardObserver: NSObject {
 }
 
 
+final class GradientBubbleView: UIView {
+
+    override class var layerClass: AnyClass {
+        CAGradientLayer.self
+    }
+
+    var gradientLayer: CAGradientLayer {
+        return layer as! CAGradientLayer
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func setup() {
+        layer.cornerRadius = 12
+        layer.masksToBounds = true
+
+        gradientLayer.colors = [
+            UIColor(red: 120/255, green: 223/255, blue: 255/255, alpha: 0.32).cgColor,
+            UIColor(red: 84/255, green: 105/255, blue: 199/255, alpha: 0.25).cgColor
+        ]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+    }
+}

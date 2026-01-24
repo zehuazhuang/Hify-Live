@@ -1,7 +1,7 @@
 import Foundation
 import AgoraRtmKit
 
-final class TokenManager: NSObject {
+final class TokenManager: NSObject, AgoraRtmDelegate {
     static let shared = TokenManager()
     private override init() {} // 防止外部初始化
     
@@ -16,6 +16,7 @@ final class TokenManager: NSObject {
     private var rtmChannel: AgoraRtmChannel?
     private var rtmDelegate: AgoraRtmDelegate?
     
+    
     // MARK: - 保存 Token
     func save(rtcToken: String, rtmToken: String, channelId: String) {
         UserDefaults.standard.set(rtcToken, forKey: rtcTokenKey)
@@ -27,6 +28,16 @@ final class TokenManager: NSObject {
         save(rtcToken: tokenResponse.rtcToken,
              rtmToken: tokenResponse.rtmToken,
              channelId: tokenResponse.channelId)
+    }
+    
+    func setupRTM() {
+            rtmKit = AgoraRtmKit(appId: TokenManager.appId, delegate: self) // self 现在可以
+        }
+    // MARK: - AgoraRtmDelegate
+    func rtmKit(_ kit: AgoraRtmKit,
+                connectionStateChanged state: AgoraRtmConnectionState,
+                reason: AgoraRtmConnectionChangeReason) {
+        print("RTM 连接状态: \(state.rawValue), reason: \(reason.rawValue)")
     }
     
     // MARK: - 获取 Token
@@ -67,23 +78,45 @@ final class TokenManager: NSObject {
     }
     
     // MARK: - 加入频道
-    func joinRTMChannel(channelId: String, delegate: AgoraRtmChannelDelegate, completion: @escaping (Bool) -> Void) {
+    func joinRTMChannel(
+        channelId: String,
+        delegate: AgoraRtmChannelDelegate,
+        completion: @escaping (Bool) -> Void
+    ) {
         guard let rtmKit = rtmKit else {
             completion(false)
             return
         }
-        let channel = rtmKit.createChannel(withId: channelId, delegate: delegate)
+
+        guard let channel = rtmKit.createChannel(withId: channelId, delegate: delegate) else {
+            completion(false)
+            return
+        }
+
         rtmChannel = channel
+
         channel.join { errorCode in
             completion(errorCode == .channelErrorOk)
         }
     }
     
+    func leaveRTMChannel(completion: @escaping (Bool) -> Void) {
+            guard let channel = rtmChannel else {
+                completion(true)
+                return
+            }
+            channel.leave { [weak self] error in
+                self?.rtmChannel = nil
+                completion(error == .ok)
+            }
+        }
+    
     // MARK: - 发送消息
     func sendRTMMessage(_ text: String) {
         let message = AgoraRtmMessage(text: text)
+
         rtmChannel?.send(message) { errorCode in
-            if errorCode != .ok {
+            if errorCode != .errorOk {
                 print("❌ RTM send error:", errorCode.rawValue)
             }
         }

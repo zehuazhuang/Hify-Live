@@ -36,48 +36,34 @@ PODS:
   - AgoraRtcEngine_iOS/VideoCodecEnc (4.6.2)
   - AgoraRtcEngine_iOS/VirtualBackground (4.6.2)
   - AgoraRtcEngine_iOS/VQA (4.6.2)
-  - Alamofire (5.11.0)
   - AliyunOSSiOS (2.11.2)
   - NIMSDK (10.9.71):
     - NIMSDK/NOS (= 10.9.71)
     - YXArtemis_XCFramework
   - NIMSDK/NOS (10.9.71):
     - YXArtemis_XCFramework
-  - SnapKit (5.7.1)
-  - SVProgressHUD (2.3.1):
-    - SVProgressHUD/Core (= 2.3.1)
-  - SVProgressHUD/Core (2.3.1)
   - YXArtemis_XCFramework (1.1.6)
 
 DEPENDENCIES:
   - AgoraRtcEngine_iOS
-  - Alamofire
   - AliyunOSSiOS (~> 2.11.2)
   - NIMSDK
-  - SnapKit
-  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - AgoraInfra_iOS
     - AgoraRtcEngine_iOS
-    - Alamofire
     - AliyunOSSiOS
     - NIMSDK
-    - SnapKit
-    - SVProgressHUD
     - YXArtemis_XCFramework
 
 SPEC CHECKSUMS:
   AgoraInfra_iOS: 0bf927aad4fc425b24ca5d094b333361960f5cb0
   AgoraRtcEngine_iOS: 11f37dd846d6194a5268b084b99102e5b6aff0de
-  Alamofire: bd5e7b23a1a750975288482c1831d71e74415f86
   AliyunOSSiOS: 6d6b668b82ac0c0ea2313412bcb5530b42ec97ab
   NIMSDK: f21e29aff709e248db0fecbc58b7ddd0b5df68cc
-  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
-  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   YXArtemis_XCFramework: d9a8b9439d7a6c757ed00ada53a6d2dd9b13f9c7
 
-PODFILE CHECKSUM: b45b94940bd1712f7d90e2593a0030da6fe9b6c5
+PODFILE CHECKSUM: c97020bb73ea0ec8e5d4abfe0e30e857f0ac8fda
 
 COCOAPODS: 1.16.2

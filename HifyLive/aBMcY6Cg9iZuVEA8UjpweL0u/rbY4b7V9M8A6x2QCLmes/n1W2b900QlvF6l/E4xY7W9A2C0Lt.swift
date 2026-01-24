@@ -29,6 +29,9 @@ final class ChatProfileHeaderView: UIView {
 
     private let heightWithPics: CGFloat = 140
     private let heightNoPics: CGFloat = 80
+    
+    private var currentAvatarURL: String = ""
+    private var currentNickname: String = ""
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -156,14 +159,16 @@ final class ChatProfileHeaderView: UIView {
 
     // MARK: - Update
     func update(info: [String: Any]) {
-        print("----info------")
-        print(info)
+        
+        
+        currentAvatarURL = info["icon"] as? String ?? ""
+        currentNickname = info["nickname"] as? String ?? ""
         
         if let id = info["userId"] as? Int {
             userId = id
         }
 
-        nickname.text = info["nickname"] as? String ?? ""
+        nickname.text = currentNickname
         ageLabel.text = "\(info["age"] as? Int ?? 0)"
 
         if let icon = info["icon"] as? String {
@@ -229,9 +234,11 @@ final class ChatProfileHeaderView: UIView {
                         
                        
                         var alertVC: UIHostingController<W9MZC6xA7Q8Y4L>? = nil
-                        
+                       
                         alertVC = UIHostingController(
                             rootView: W9MZC6xA7Q8Y4L(
+                                avatarURL: currentAvatarURL,
+                                nickname: currentNickname,
                                 onClose: {
                                     alertVC?.dismiss(animated: true)
                                 },
@@ -339,3 +346,4 @@ extension UIApplication {
         return base
     }
 }
+

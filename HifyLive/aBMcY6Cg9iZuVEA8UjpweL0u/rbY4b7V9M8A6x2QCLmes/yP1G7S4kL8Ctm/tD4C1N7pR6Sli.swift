@@ -82,8 +82,5 @@ struct tD4C1N7pR6Sli: View {
                 Label("Delete", systemImage: "trash")
             }
         }
-        
     }
-    
-
 }

@@ -2,6 +2,7 @@ import GoogleSignIn
 import SwiftUI
 import SwiftfulRouting
 import NIMSDK
+
 @main
 struct HifyLiveApp: App {
     
@@ -59,29 +60,7 @@ struct HifyLiveApp: App {
                                                 
                                                 TokenManager.shared.save(tokenResponse: tokenResponse)
                                                 
-                                                
-                                                // 1️⃣ 设置代理（可选，如果你想监听 RTM 连接状态）
-                                                TokenManager.shared.setupRTM(delegate: self) // self 遵循 AgoraRtmDelegate
-
-                                                // 2️⃣ 登录 RTM
-                                                TokenManager.shared.loginRTM(userId: "1000007456") { success in
-                                                    if success {
-                                                        print("✅ RTM 登录成功")
-                                                        
-//                                                        // 3️⃣ 登录成功后可以加入频道
-//                                                        if let channelId = TokenManager.shared.channelId {
-//                                                            TokenManager.shared.joinRTMChannel(channelId: channelId, delegate: self) { joined in
-//                                                                if joined {
-//                                                                    print("✅ 已加入 RTM 频道")
-//                                                                } else {
-//                                                                    print("❌ 加入 RTM 频道失败")
-//                                                                }
-//                                                            }
-//                                                        }
-                                                    } else {
-                                                        print("❌ RTM 登录失败")
-                                                    }
-                                                }
+                                         
                                                 
                                               
                                                 
@@ -91,6 +70,13 @@ struct HifyLiveApp: App {
                                             }
                                             print("登录用户------")
                                             print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
+                                            
+                                            print("rtmToken:", TokenManager.shared.rtmToken ?? "nil")
+                                            print("userId:", qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.int("userId"))
+                                            TokenManager.shared.setupRTM()
+                                            TokenManager.shared.loginRTM(userId: String(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.int("userId"))) { success in
+                                                print(success ? "rtm登录成功" : "rtm登录失败")
+                                            }
                                             if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
                                                let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
                                                 

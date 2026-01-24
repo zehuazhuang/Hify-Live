@@ -176,10 +176,7 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AliyunOSSiOS/AliyunOSSiOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/AgoraInfra_iOS/aosl.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/AgoraRtcEngine_iOS/AIAEC/AgoraAiEchoCancellationExtension.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/AgoraRtcEngine_iOS/AIAECLL/AgoraAiEchoCancellationLLExtension.framework"
@@ -214,10 +211,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/YXArtemis_XCFramework/YXArtemis.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AliyunOSSiOS/AliyunOSSiOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/AgoraInfra_iOS/aosl.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/AgoraRtcEngine_iOS/AIAEC/AgoraAiEchoCancellationExtension.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/AgoraRtcEngine_iOS/AIAECLL/AgoraAiEchoCancellationLLExtension.framework"

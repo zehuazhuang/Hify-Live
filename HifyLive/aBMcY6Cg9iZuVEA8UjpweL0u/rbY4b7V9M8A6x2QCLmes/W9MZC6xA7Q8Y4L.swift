@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct W9MZC6xA7Q8Y4L: View {
-   
+    let avatarURL: String
+    let nickname: String
     var onClose: (() -> Void)?
     var onUnfollow: (() -> Void)?
     var body: some View {
         ZStack{
             Color.black.opacity(0.3)
                 .onTapGesture {
-                   // heS7pC8R2J = false
+                    onClose?()
                 }
             VStack(spacing:26){
                 ZStack{
@@ -26,12 +27,12 @@ struct W9MZC6xA7Q8Y4L: View {
                             Circle()
                                 .fill(Color.white.opacity(0.2))
                                     .frame(width: 72, height: 72)
-                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: avatarURL)
                                 .frame(width: 62,height: 62)
                                 .clipShape(Circle())
                         }.frame(width: 72, height: 72)
                         Spacer().frame(height: 6)
-                        Text("@Kevin")
+                        Text("@\(nickname)")
                                         .g0LIIcoZQsOjyND9(
                                             size: 14,
                                             weight: .regular

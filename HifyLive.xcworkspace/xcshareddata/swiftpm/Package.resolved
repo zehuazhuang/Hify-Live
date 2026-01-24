@@ -1,5 +1,5 @@
 {
-  "originHash" : "07519bb055fccfcbdba7e6a1b8db035b2be086351684e22458338c26097af81f",
+  "originHash" : "18a8278e3f5a0df8afd2d8ff5e3323a74bc33c0b6570465860db3b7bc8f15082",
   "pins" : [
     {
       "identity" : "agorainfra_ios",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "c1224ad3e316db15a4ac48a6ff08208f7bcf5238",
         "version" : "4.6.0"
+      }
+    },
+    {
+      "identity" : "agorartm_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraRTM_iOS",
+      "state" : {
+        "revision" : "2e87ada22df8110cf85b9f18c2ac08083f4f63f4",
+        "version" : "1.5.1"
       }
     },
     {

@@ -24,14 +24,31 @@ class RecentSessionManager: ObservableObject {
             guard let s = r.session else { continue }
 
             let info = UserManager.shared.getCachedUserInfo(accid: s.sessionId)
-            
-            
+
+            // ✅ 判断消息类型，统一设置 lastMessageText
+            let lastMessageText: String
+            if let lastMsg = r.lastMessage {
+                switch lastMsg.messageType {
+                case .text: // 0
+                    lastMessageText = lastMsg.text ?? ""
+                case .image: // 1
+                    lastMessageText = "[Picture]"
+//                case .audio: // 2
+//                    lastMessageText = "[Voice]"
+//                case .video: // 3
+//                    lastMessageText = "[Video]"
+                default:
+                    lastMessageText = ""
+                }
+            } else {
+                lastMessageText = ""
+            }
 
             let cached = CachedRecentSession(
                 session: s,
                 sessionId: s.sessionId,
                 sessionType: s.sessionType,
-                lastMessageText: r.lastMessage?.text ?? "",
+                lastMessageText: lastMessageText,
                 timestamp: r.lastMessage?.timestamp ?? 0,
                 unreadCount: r.unreadCount,
                 nickname: info?.nickname ?? s.sessionId, // 先用ID占位
@@ -58,10 +75,29 @@ class RecentSessionManager: ObservableObject {
     func updateCache(with message: NIMMessage, session: NIMSession) {
         let accid = session.sessionId
         let type = session.sessionType
+        
+      
+
+        let lastMessageText: String
+
+            switch message.messageType {
+            case .text: // 0
+                lastMessageText = message.text ?? ""
+
+            case .image: // 1
+                lastMessageText = "[Picture]"
+
+
+
+            default:
+                lastMessageText = ""
+            }
+        
+     
 
         if let index = cache.firstIndex(where: { $0.sessionId == accid }) {
             // 更新已有缓存
-            cache[index].lastMessageText = message.text ?? ""
+            cache[index].lastMessageText = lastMessageText
             cache[index].timestamp = message.timestamp
             if !message.isOutgoingMsg {
                 cache[index].unreadCount += 1
@@ -76,7 +112,7 @@ class RecentSessionManager: ObservableObject {
                 session: session,
                 sessionId: accid,
                 sessionType: type,
-                lastMessageText: message.text ?? "",
+                lastMessageText: lastMessageText,
                 timestamp: message.timestamp,
                 unreadCount: message.isOutgoingMsg ? 0 : 1,
                 nickname: userInfo?.nickname ?? accid,
