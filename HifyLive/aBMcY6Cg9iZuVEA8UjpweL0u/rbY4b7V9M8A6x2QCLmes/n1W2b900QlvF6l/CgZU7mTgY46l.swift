@@ -16,6 +16,7 @@ struct CgZU7mTgY46l: View {
     
         @State private var showImagePicker = false
         @State private var selectedImage: UIImage?
+        @State private var showCameraPicker = false
     
 
             init(session: NIMSession, opponentAvatarURL: String) {
@@ -148,8 +149,16 @@ struct CgZU7mTgY46l: View {
                                         }
                                     }
                                 
+                                //调用摄像头拍照
                                 ZJ7h766mz(tMmEWWlfgUag: "jiCL7W4M0L")
                                     .frame(width: 32, height: 32)
+                                    .onTapGesture {
+                                            showCameraPicker = true
+                                        }
+                                        .sheet(isPresented: $showCameraPicker) {
+                                            CameraPicker(image: $selectedImage)
+                                        }
+                                        
                                 
                                 ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
                                     .frame(width: 32, height: 32)
@@ -231,6 +240,52 @@ struct ImagePicker: UIViewControllerRepresentable {
         let parent: ImagePicker
 
         init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+        ) {
+            if let img = info[.originalImage] as? UIImage {
+                parent.image = img
+            }
+            parent.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.dismiss()
+        }
+    }
+}
+struct CameraPicker: UIViewControllerRepresentable {
+
+    @Environment(\.dismiss) private var dismiss
+    @Binding var image: UIImage?
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        picker.allowsEditing = false
+        picker.sourceType = .camera
+        picker.cameraDevice = .rear
+
+        // 🔥 关键，覆盖安全区域
+        picker.modalPresentationStyle = .overFullScreen
+
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: CameraPicker
+
+        init(_ parent: CameraPicker) {
             self.parent = parent
         }
 

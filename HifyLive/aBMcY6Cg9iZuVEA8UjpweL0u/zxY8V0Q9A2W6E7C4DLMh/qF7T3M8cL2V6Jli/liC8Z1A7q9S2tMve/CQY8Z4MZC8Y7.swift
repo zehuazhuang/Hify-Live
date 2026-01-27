@@ -9,6 +9,11 @@ struct LE0xQZ6Y7WC8iv: View {
     let zA9Y4W6LUid: UInt
     @Environment(\.router) var rM9Z8S7A1ql
     @State private var liveRoomData: [String: Any]? = nil
+    
+    @State private var showEndView: Bool = false//主播关播显示
+    @State private var showY2E8Qsc: Bool = false//显示用户底部弹框
+    @State private var uY0E4QZ9MLId: Int = -1 //显示弹框用户id
+    @State private var showx8Z9Q2M: Bool = false//显示关闭直播间弹框
 
     var body: some View {
         ZStack {
@@ -18,6 +23,18 @@ struct LE0xQZ6Y7WC8iv: View {
             )
             .ignoresSafeArea()
 
+            VStack {
+                    Spacer()
+                ChatViewContainer(yxRoomId: (liveRoomData?["yxRoomId"] as? String) ?? "", userId: (liveRoomData?["userId"] as? Int) ?? 0,
+                                  onMuteTappedCallback: { uid, mute in
+                                        // 找到 LiveViewController 并调用静音
+                                        // 这里用 ChannelName + localUid 创建闭包绑定
+                                        print("Mute tapped for uid \(uid), mute=\(mute)")
+                                        // 你可以通过 NotificationCenter 或环境对象传 LiveViewController 的引用
+                                        NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
+                                    }
+                )
+                }.edgesIgnoringSafeArea(.bottom)
             VStack{
                 HStack(spacing:4){
                     
@@ -28,6 +45,12 @@ struct LE0xQZ6Y7WC8iv: View {
                                             .padding(.vertical,2)
                                             .padding(.leading,2)
                                             .padding(.trailing,4)
+                                            .onTapGesture {
+                                                withAnimation{
+                                                    showY2E8Qsc = true
+                                                    uY0E4QZ9MLId = (liveRoomData?["userId"] as? Int) ?? 0
+                                                }
+                                            }
                         VStack(alignment:.leading){
                             Text((liveRoomData?["nickname"] as? String) ?? "")
                                             .g0LIIcoZQsOjyND9(
@@ -68,9 +91,9 @@ struct LE0xQZ6Y7WC8iv: View {
 //                                    return [Color.black, Color.gray]
 //                                }
 //                            }()
-//                            
+//
 //                            ZStack {
-//                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+//                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: //"https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
 //                                    .frame(width: 32, height: 32)
 //                                    .clipShape(Circle())
 //                                    .padding(.bottom, 2)
@@ -85,7 +108,7 @@ struct LE0xQZ6Y7WC8iv: View {
 //                                            startPoint: .leading,
 //                                            endPoint: .trailing
 //                                        )
-//                                       
+//
 //                                    )
 //                                    .cornerRadius(12)
 //                                    .frame(maxHeight: .infinity,alignment: .bottom)
@@ -108,22 +131,46 @@ struct LE0xQZ6Y7WC8iv: View {
                     ZJ7h766mz(tMmEWWlfgUag: "pD8K1Q5tB6R9Lh")
                                        .frame(width: 32, height: 32)
                                        .onTapGesture {
-                                           rM9Z8S7A1ql.dismissScreen()
+                                           withAnimation{
+                                               showx8Z9Q2M = true
+                                           }
+                                           
+                                           
                                        }
                 }
                 Spacer()
             }.padding(.horizontal,16)
-            ChatViewContainer(yxRoomId: "11297788134", userId: "1000007479")
-                .edgesIgnoringSafeArea(.bottom)
+            
+            if showx8Z9Q2M {
+                Z8q7S9A1C2tLClo(hllonneC8R2J: $showx8Z9Q2M, caentClo: {
+                    rM9Z8S7A1ql.dismissScreen()
+                },ourreeName:(liveRoomData?["nickname"] as? String) ?? "",dimpaseAvatar:(liveRoomData?["icon"] as? String) ?? "")
+            }
+            
+            if showY2E8Qsc {
+                QZ4A0M84C7WL9(uZQx7MId: uY0E4QZ9MLId, isW9YQ6C8L: $showY2E8Qsc)
+            }
+            
+            if showEndView {
+                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
+            }
         }.task {
             do {
                 let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
-//                print("---------------------")
+                print(Int(zA9Y4W6LUid))
+                print("---------------------")
 //                print(result)
                 liveRoomData = result
             } catch {
                 print("joinlive failed:", error)
             }
+        }
+        .onAppear{
+            NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
+                   showEndView = true
+               }
+        }.onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }
@@ -136,6 +183,13 @@ struct LiveViewContainer: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> LiveViewController {
         let vc = LiveViewController(channelName: channelName, localUid: localUid)
         vc.view.backgroundColor = .black
+        //模拟关播
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                  vc.handleHostClosed()
+//              }
+        
+   
+        
         return vc
     }
 

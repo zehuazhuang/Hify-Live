@@ -16,6 +16,11 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
     private var rtmChannel: AgoraRtmChannel?
     private var rtmDelegate: AgoraRtmDelegate?
     
+    // ✅ 添加公开访问属性
+        var currentRtmChannel: AgoraRtmChannel? {
+            return rtmChannel
+        }
+    
     
     // MARK: - 保存 Token
     func save(rtcToken: String, rtmToken: String, channelId: String) {
@@ -96,7 +101,10 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
         rtmChannel = channel
 
         channel.join { errorCode in
-            completion(errorCode == .channelErrorOk)
+            DispatchQueue.main.async {
+                print("joinChannel errorCode:", errorCode.rawValue)
+                completion(errorCode == .channelErrorOk)
+            }
         }
     }
     

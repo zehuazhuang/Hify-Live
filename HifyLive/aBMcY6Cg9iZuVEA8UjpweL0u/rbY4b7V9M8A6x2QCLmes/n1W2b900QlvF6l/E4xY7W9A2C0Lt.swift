@@ -32,6 +32,7 @@ final class ChatProfileHeaderView: UIView {
     
     private var currentAvatarURL: String = ""
     private var currentNickname: String = ""
+    
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -246,10 +247,13 @@ final class ChatProfileHeaderView: UIView {
                                     guard let self = self else { return }
                                     Task {
                                         do {
-                                            try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: userId, iA6M7W9EYL0: 2)
-                                            self.followBtn.setImage(UIImage(named: "d2ax6W4EYC8L"), for: .normal)
-                                            alertVC?.dismiss(animated: true)
-                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("EMnULaLM6ZF45iH0cANSKQ==")
+                                          let is9MZC7A4 =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: userId, iA6M7W9EYL0: 2)
+                                            if(is9MZC7A4){
+                                                self.followBtn.setImage(UIImage(named: "d2ax6W4EYC8L"), for: .normal)
+                                                alertVC?.dismiss(animated: true)
+
+                                            }
+                                           
                                         } catch {
                                             print(error)
                                         }
@@ -265,9 +269,12 @@ final class ChatProfileHeaderView: UIView {
                     }
                 } else {
                     // 未关注 → 直接关注
-                    try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: userId, iA6M7W9EYL0: 1)
-                    followBtn.setImage(UIImage(named: "qQ8ZC7E0ZxQ"), for: .normal)
-                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("j6N2OHmBLAbXPzqOtT0sAA==")
+                    let is9MZC7A4 = try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: userId, iA6M7W9EYL0: 1)
+                    if(is9MZC7A4){
+                        followBtn.setImage(UIImage(named: "qQ8ZC7E0ZxQ"), for: .normal)
+
+                    }
+                   
                 }
             } catch {
                 print(error)

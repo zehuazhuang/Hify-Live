@@ -1,17 +1,20 @@
 import SwiftUI
 import SwiftfulRouting
 import AgoraRtcKit
-
+//首页
 struct E2VxD0iC4bYyh: View {
     let evntemporaeCol = [
         GridItem(.adaptive(minimum: 168), spacing: 7)
     ]
-    @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared
-    @State private var ecorjazyType: Bool = true
+    @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
+    @State private var ecorjazyType: Bool = true // true recommend false following
     @State private var isLoading: Bool = false
     @Environment(\.router) var rM9Z8S7A1ql
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     @State private var liveVC: UIViewController?
+    
+    @StateObject private var followingCache = FollowingCache.shared //关注数据
+   
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -89,22 +92,59 @@ struct E2VxD0iC4bYyh: View {
                 ScrollView{
                     VStack{
                         LazyVGrid(columns: evntemporaeCol, spacing: 7) {
-                            ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
-                                rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
-                                    .onTapGesture{
-                                        
-                                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                            LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                           zA9Y4W6LUid: UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId")))
+                            
+                            if ecorjazyType {
+                                ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
+                                    rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
+                                        .onTapGesture{
+                                            
+                                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                   zA9Y4W6LUid: UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId")))
+                                                }
+                                            }
                                         }
-                                    }
+                                }
+                            }else{
+                                ForEach(followingCache.items.indices, id: \.self) { index in
+                                    rL0X1V3LiveCell(bemindbeData: followingCache.items[index])
+                                        .onTapGesture{
+                                            
+                                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    LE0xQZ6Y7WC8iv(channelName: followingCache.items[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                   zA9Y4W6LUid: UInt(followingCache.items[index].int("userId")))
+                                                }
+                                            }
+                                        }
+                                }
                             }
+                     
+                            
+                            
                         }
                     }
                 }
                 }.padding(.horizontal,16)
+            
+            ZStack {
+                ZJ7h766mz(tMmEWWlfgUag: "L9ZqA8C7S2M1t34")
+                HStack(spacing: 2) {
+                    ZJ7h766mz(tMmEWWlfgUag: "C7M2Z8A1L9tqS34")
+                        .frame(width: 24, height: 24)
+                    Text("146UaT+ePLcQEToZue3EtQ==".bFHEatcgE4zzU9TCfDonsu())
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.white)
+                }
+            }
+            .frame(width: 79, height: 32)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            .padding(.bottom, 122)
+            .padding(.trailing,16)
             }.task {
                 await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT()
+                await followingCache.loadFollowing()
             }
         }
         
@@ -118,18 +158,18 @@ struct E2VxD0iC4bYyh: View {
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: bemindbeData["backgroundImgUrl"])
                     .frame(width: 168, height: 205)
                 HStack(alignment: .top) {
-                    HStack {
-                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
-                            .frame(width: 16, height: 16)
-                        Text("Make Friends")
-                                        .g0LIIcoZQsOjyND9(
-                                            size: 12,
-                                            weight: .regular
-                                        )
-                    }
-                    .padding(4)
-                    .background(Color.black.opacity(0.6))
-                    .clipShape(s7q2ZC1S9A4tM8L3(radius: 8, corners: [.bottomRight]))
+//                    HStack {
+//                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
+//                            .frame(width: 16, height: 16)
+//                        Text("Make Friends")
+//                                        .g0LIIcoZQsOjyND9(
+//                                            size: 12,
+//                                            weight: .regular
+//                                        )
+//                    }
+//                    .padding(4)
+//                    .background(Color.black.opacity(0.6))
+//                    .clipShape(s7q2ZC1S9A4tM8L3(radius: 8, corners: [.bottomRight]))
                     Spacer()
                     HStack(spacing: 1) {
                         ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
@@ -159,28 +199,13 @@ struct E2VxD0iC4bYyh: View {
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .padding(8)
-                ZStack {
-                    ZJ7h766mz(tMmEWWlfgUag: "L9ZqA8C7S2M1t34")
-                    HStack(spacing: 2) {
-                        ZJ7h766mz(tMmEWWlfgUag: "C7M2Z8A1L9tqS34")
-                            .frame(width: 24, height: 24)
-                        Text("146UaT+ePLcQEToZue3EtQ==".bFHEatcgE4zzU9TCfDonsu())
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundColor(.white)
-                    }
-                }
-                .frame(width: 79, height: 32)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                .padding(.bottom, 46)
+
             }
             .frame(width: 168, height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
-            .onAppear{
-                  print(bemindbeData)
-//                print(bemindbeData["yxRoomId"])
-//                print(bemindbeData["agoraChannelId"])
-            }
+            
+
         }
     }
 

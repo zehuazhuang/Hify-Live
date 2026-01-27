@@ -1,12 +1,16 @@
 import SwiftUI
 
 struct Z8q7S9A1C2tLClo: View {
-   // @Binding var heS7pC8R2J: Bool
+    @Binding var hllonneC8R2J: Bool
+    let caentClo :() -> Void
+    let ourreeName : String
+    let dimpaseAvatar : String
     var body: some View {
         ZStack{
             Color.black.opacity(0.3)
+                .ignoresSafeArea()
                 .onTapGesture {
-                 //   heS7pC8R2J = false
+                    hllonneC8R2J = false
                 }
             VStack(spacing:26){
                 ZStack{
@@ -19,7 +23,7 @@ struct Z8q7S9A1C2tLClo: View {
                                     .fill(Color.white.opacity(0.2))
                                     .frame(width: 72, height: 72)
                                     
-                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: dimpaseAvatar)
                                     .frame(width: 62,height: 62)
                                     .clipShape(Circle())
                                 ZStack {
@@ -38,7 +42,7 @@ struct Z8q7S9A1C2tLClo: View {
                             }.frame(width: 72, height: 72)
                             .padding(.bottom,8)
                                 
-                        Text("@Kevin").g0LIIcoZQsOjyND9(
+                        Text("@\(ourreeName)").g0LIIcoZQsOjyND9(
                                             size: 14,
                                             weight: .regular,
                                             color: .white.opacity(0.6))
@@ -59,7 +63,7 @@ struct Z8q7S9A1C2tLClo: View {
                                         
                         HStack(spacing:12){
                             Button(action: {
-                           //     heS7pC8R2J = false
+                                hllonneC8R2J = false
                             }) {
                                 Text("Stay in")
                                                 .g0LIIcoZQsOjyND9(
@@ -77,6 +81,9 @@ struct Z8q7S9A1C2tLClo: View {
                             
                             ZJ7h766mz(tMmEWWlfgUag: "lea7A2C1tLM43")
                                                .frame(width: 136, height: 46)
+                                               .onTapGesture {
+                                                   caentClo()
+                                               }
                             
                         }.padding(.top,18)
                     }

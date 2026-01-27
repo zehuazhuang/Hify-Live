@@ -2,11 +2,18 @@
 import SwiftUI
 
 struct QZ4A0M84C7WL9: View {
+    let uZQx7MId : Int //用户id
+    @Binding var isW9YQ6C8L: Bool
+    @State private var isZ7E4xA0M2 = false
+    @State private var info9M0Q2A6: [String: Any] = [:] //用户数据
+    @State private var is7A0Y4W6ECL: Int = -1 //是否关注
+    
     var body: some View {
         ZStack{
             Color.black.opacity(0.3)
+                .ignoresSafeArea()
                 .onTapGesture {
-                   
+                    isW9YQ6C8L = false
                 }
             VStack{
                 Spacer()
@@ -24,26 +31,27 @@ struct QZ4A0M84C7WL9: View {
                     .scaleEffect(1.01)
                                 
             }.ignoresSafeArea()
+                .offset(y: isZ7E4xA0M2 ? 0 : 300)
             VStack(spacing:0){
                 Spacer()
                 ZStack{
                     Circle()
                         .fill(Color.white.opacity(0.2))
                             .frame(width: 88, height: 88)
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: info9M0Q2A6.string("icon"))
                         .frame(width: 80,height: 80)
                         .clipShape(Circle())
                 }.frame(width: 88, height: 88)
                 Spacer().frame(height: 8)
-                Text("MadrigalXX1")
+                Text(info9M0Q2A6.string("nickname"))
                                 .g0LIIcoZQsOjyND9(
                                     size: 18,
                                     weight: .semibold
                                 )
                 Spacer().frame(height: 4)
                 HStack{
-                    ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy").frame(width: 24, height: 24)
-                    Text("30")
+                    ZJ7h766mz(tMmEWWlfgUag: info9M0Q2A6.int("gender") == 1 ? "h8bx8HHiJD1BodEG8Zfzl" :  "aSUqulEy").frame(width: 24, height: 24)
+                    Text("\(info9M0Q2A6.int("age"))")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
                                         weight: .regular
@@ -63,25 +71,31 @@ struct QZ4A0M84C7WL9: View {
                                         weight: .regular,
                                         color: .white.opacity(0.4)
                                     ).padding(.horizontal,4)
-                    Text("ID：10000079")
+                    Text("ID：\(String(info9M0Q2A6.int("userId")))")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
                                         weight: .regular,
                                     )
                     
                     ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX").frame(width: 16, height: 16)
+                        .onTapGesture{
+                            let turestompoPvX = String(info9M0Q2A6.int("userId"))
+                            UIPasteboard.general.string = turestompoPvX
+                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==")
+                        }
                 }
                 Spacer().frame(height: 12)
-                HStack{
-                    ZJ7h766mz(tMmEWWlfgUag: "Q9C2YbA8Lk").frame(width: 32, height: 16)
-                    ZJ7h766mz(tMmEWWlfgUag: "6E7C0Q8WxLv").frame(width: 44, height: 15)
-                }
+//                HStack{
+//                    ZJ7h766mz(tMmEWWlfgUag: "Q9C2YbA8Lk").frame(width: 32, height: 16)
+//                    ZJ7h766mz(tMmEWWlfgUag: "6E7C0Q8WxLv").frame(width: 44, height: 15)
+//                }
+                Spacer().frame(height: 16)
                 Spacer().frame(height: 16)
                 HStack{
                     Spacer()
                     HStack(spacing:83){
                         VStack(spacing:4){
-                            Text("78")
+                            Text("\(info9M0Q2A6.int("upsNum"))")
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .black
@@ -94,7 +108,7 @@ struct QZ4A0M84C7WL9: View {
                                             )
                         }
                         VStack(spacing:4){
-                            Text("78")
+                            Text("\(info9M0Q2A6.int("fansNum"))")
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .black
@@ -106,8 +120,6 @@ struct QZ4A0M84C7WL9: View {
                                                 color: .white.opacity(0.4)
                                             )
                         }
-                        
-                        
                     }
                     Spacer()
                 }
@@ -118,19 +130,47 @@ struct QZ4A0M84C7WL9: View {
                         
                         ZJ7h766mz(tMmEWWlfgUag: "li9QY0x2EWL")
                                            .frame(width: 46, height: 46)
-                        Button(action: {}) {
-                            Text("+ Follow").g0LIIcoZQsOjyND9(
-                                                size: 14,
-                                                weight: .medium,
-                                                color: .white.opacity(0.8)
-                                            )
+                        Button(action: {
+                            
+                            Task{
+                                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
+                                
+                                if(isA2C6WEL){
+                                    haptempLoad()
+                             
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                }
+                                
+                                
+                            }
+                        }) {
+                            HStack(spacing:4){
+                                if is7A0Y4W6ECL == 1 {
+                                    ZJ7h766mz(tMmEWWlfgUag: "q0M9xW2C7AL")
+                                        .frame(width: 16, height: 16)
+                                }
+                                
+                                Text(is7A0Y4W6ECL == 1 ? "Follow" : "Following").g0LIIcoZQsOjyND9(
+                                    size: 14,
+                                    weight: .medium,
+                                    color: .white.opacity(0.8)
+                                )
+                            
+                            
+                        }
                         }.frame(width: 227,height: 46)
                                         .background(
+                                            
                                             LinearGradient(
-                                                colors: [Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72
-                                            ), Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,
-            opacity: 0.1
-                                            )], startPoint: .leading, endPoint: .trailing)
+                                                colors: [
+                                                    is7A0Y4W6ECL == 1 ?
+                                                    Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72) :
+                                                        Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.32)
+                                                    ,is7A0Y4W6ECL == 1 ?
+                                                    Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,opacity: 0.1) :
+                                                        Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.1)
+                                                ], startPoint: .leading, endPoint: .trailing)
                                         )
                                         .cornerRadius(325)
                                         .overlay(
@@ -144,7 +184,7 @@ struct QZ4A0M84C7WL9: View {
                                                         startPoint: .leading,
                                                         endPoint: .trailing
                                                     ),
-                                                    lineWidth: 1
+                                                    lineWidth:is7A0Y4W6ECL == 1 ? 1 : 0
                                                 )
                                         )
                     }
@@ -152,7 +192,32 @@ struct QZ4A0M84C7WL9: View {
                 }
                 
                 Spacer().frame(height: 8)
+            }.offset(y: isZ7E4xA0M2 ? 0 : 300)
+        }
+        
+        .onAppear {
+            isZ7E4xA0M2 = false
+            DispatchQueue.main.async {
+                withAnimation(.easeOut(duration: 0.25)) {
+                    isZ7E4xA0M2 = true
+                }
             }
+            
+            haptempLoad()
+        }
+    }
+    //加载用户数据
+    func haptempLoad(){
+        Task {
+                       if let info = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7E4C9A0xWML6xL(
+                           wTEEJpZz0iGVK: uZQx7MId
+                       ) {
+                           info9M0Q2A6 = info
+                           withAnimation{
+                               is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
+                           }
+                        
+                       }
         }
     }
 }

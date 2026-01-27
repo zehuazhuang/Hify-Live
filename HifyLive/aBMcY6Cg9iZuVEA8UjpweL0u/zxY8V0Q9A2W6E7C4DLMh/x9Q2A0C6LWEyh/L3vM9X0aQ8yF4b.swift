@@ -1,7 +1,7 @@
 
 
 import Combine
-import SwiftUI
+
 
 //直播缓存数据
 class L3vM9X0aQ8yF4b: ObservableObject {

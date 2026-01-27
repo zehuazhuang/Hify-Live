@@ -15,6 +15,7 @@ struct ChatTableView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> UITableView {
+       
         
         let tableView = UITableView()
         tableView.delegate = context.coordinator
@@ -97,6 +98,7 @@ struct ChatTableView: UIViewRepresentable {
             if header.frame.height != height {
                 header.frame.size.height = height
                 tableView.tableHeaderView = header
+                
             }
         }
     }
@@ -313,8 +315,8 @@ class ChatCell: UITableViewCell {
             contentImageView.trailingAnchor.constraint(equalTo: imageBubble.trailingAnchor),
 
             // 宽度不要固定，使用 bubbleContainer 宽度
-            contentImageView.widthAnchor.constraint(equalTo: bubbleContainer.widthAnchor),
-            contentImageView.heightAnchor.constraint(equalTo: contentImageView.widthAnchor, multiplier: 185/245)
+            contentImageView.widthAnchor.constraint(equalToConstant: 245),
+            contentImageView.heightAnchor.constraint(equalToConstant: 185)
         ]
     }
 
@@ -364,30 +366,17 @@ class ChatCell: UITableViewCell {
 
             if let localImage = message.localImage {
                 contentImageView.image = localImage
-                // 布局刷新
-                bubbleContainer.setNeedsLayout()
-                bubbleContainer.layoutIfNeeded()
-                contentView.setNeedsLayout()
-                contentView.layoutIfNeeded()
             } else if let url, let u = URL(string: url) {
                 contentImageView.kf.setImage(
                     with: u,
                     placeholder: UIImage(systemName: "photo"),
-                    options: [.transition(.fade(0.25))],
-                    progressBlock: nil
+                    options: [.transition(.fade(0.25))]
                 ) { [weak self] result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(_):
-                            // 图片下载成功后，强制刷新 cell
-                            self?.bubbleContainer.setNeedsLayout()
-                            self?.bubbleContainer.layoutIfNeeded()
-                            self?.contentView.setNeedsLayout()
-                            self?.contentView.layoutIfNeeded()
-                        case .failure(_):
-                            // 下载失败可显示占位图
-                            self?.contentImageView.image = UIImage(systemName: "photo")
-                        }
+                    switch result {
+                    case .success(_):
+                        break  // 通常不需要额外刷新布局
+                    case .failure(_):
+                        self?.contentImageView.image = UIImage(systemName: "photo")
                     }
                 }
             } else {
