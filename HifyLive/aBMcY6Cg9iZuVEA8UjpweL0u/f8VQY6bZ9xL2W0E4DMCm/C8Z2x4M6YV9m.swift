@@ -14,7 +14,6 @@ struct AkKkhrVKXgV7pdSjWNgPrAjgIK: View {
         }
     }
     
-    
     var body: some View {
         Text(bzXRO5mSpuwI2eSGs)
             .g0LIIcoZQsOjyND9(size: 26)
@@ -45,7 +44,7 @@ struct C8Z2x4M6YV9m: View {
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
-                                            zQIRqHb1rSOJJ0wopZa8qxCs()
+                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"))
                                         }
                                     }
                                 } label: {

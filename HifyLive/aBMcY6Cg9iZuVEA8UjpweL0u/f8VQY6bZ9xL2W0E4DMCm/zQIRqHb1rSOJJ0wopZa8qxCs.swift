@@ -3,21 +3,27 @@ import Photos
 import Combine
 import SwiftfulRouting
 
-//个人详情页面
+//个人、他人详情页面
 struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     //背景图index
     @State private var fQAcgipdIEvxLs5OpaG0: Int = 0
     
     @Environment(\.router) var ftgPSmzMVe
-    
-    @StateObject private var m1nKfP0PAkzYaDvH15D4fsshmC = IyfdHMdY.bTa3L6BoprG
+    let areoloaUid : Int
+    @State private var usQ8Y7Z6Inf: [String: Any] = [:] //用户数据
+   // @StateObject private var m1nKfP0PAkzYaDvH15D4fsshmC = IyfdHMdY.bTa3L6BoprG
     
     //点击放大的图片
     @State private var pVzCUaYBcF5CZ1: String? = nil
     
+    //是否登录用户
+    @State private var istYGRYN4Q : Bool = false
+   
+    
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
+                .ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ZStack(alignment: .top) {
@@ -26,20 +32,29 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .fill(Color.clear)
                                 .frame(height: 282)
                                 .overlay {
-                                        if m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.isEmpty {
+                                        if usQ8Y7Z6Inf.isEmpty {
                                             ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
+                                                
                                         } else {
-                                            TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
-                                                ForEach(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.indices, id: \.self) { x56Wv in
-                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]) {
-                                                        ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                                    }
-                                                    .onTapGesture {
-                                                        pVzCUaYBcF5CZ1 = m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi[x56Wv]
+                                            if let picList = usQ8Y7Z6Inf["picList"] as? [[String: Any]] {
+                                                TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
+                                                    ForEach(picList.indices, id: \.self) { index in
+                                                        let pic = picList[index]
+                                                        let mediaUrl = pic["mediaUrl"] as? String ?? "" // 取出图片 URL
+
+                                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mediaUrl) {
+                                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv") // 你原来的内容
+                                                        }
+//                                                        .onTapGesture {
+//                                                            pVzCUaYBcF5CZ1 = mediaUrl // 绑定选中图片 URL
+//                                                        }
+                                                        .tag(index) // TabView 的 selection 绑定
                                                     }
                                                 }
+                                                .tabViewStyle(.page(indexDisplayMode: .never)) // 可选：隐藏分页指示器
+                                               
                                             }
-                                            .tabViewStyle(.page(indexDisplayMode: .never))
+                                            
                                         }
                                 }
                                 .clipped()
@@ -47,25 +62,14 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .frame(height: 119)
                         }
                         VStack(spacing: 0) {
-                            HStack(spacing: 0) {
-                                Button{
-                                    ftgPSmzMVe.dismissScreen()
-                                } label: {
-                                    ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
-                                        .frame(width: 24,height: 24)
-                                }
-                                Spacer()
-                            }
-                            .padding(.top,58)
-                            .padding(.leading,16)
-                            .padding(.bottom,156)
+                            Spacer().frame(height: 240)
                             VStack(spacing:8) {
                                 HStack(spacing: 10) {
                                     Circle()
                                         .fill(Color.white.opacity(0.2))
                                         .frame(width: 88, height: 88)
                                         .overlay(alignment: .center) {
-                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
+                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: usQ8Y7Z6Inf.string("icon"))
                                                 .frame(width: 80,height: 80)
                                                 .clipShape(Circle())
                                         }
@@ -75,68 +79,79 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             HStack(spacing: 0){
                                                 ScrollView(.horizontal, showsIndicators: false) {
                                                     HStack(spacing: 6){
-                                                        Button{
-                                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                                    o95HINW4DpHIAT()
-                                                                }
-                                                            }
-                                                        } label: {
-                                                            RoundedRectangle(cornerRadius: 10)
-                                                                .fill(Color.white.opacity(0.32))
-                                                                .frame(width: 42,height: 32)
-                                                                .overlay(alignment: .center) {
-                                                                    ZJ7h766mz(tMmEWWlfgUag: "yJv1l88NyCjeIR2yve6vkxIHscdO")
-                                                                        .frame(width: 16,height: 16)
-                                                                }
-                                                        }
-                                                        ForEach(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi, id: \.self) { zcPI03pbcA in
-                                                            Button {
-                                                                if let zvI1jA4wuQeGrx0krc0 = m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.firstIndex(of: zcPI03pbcA) {
-                                                                    fQAcgipdIEvxLs5OpaG0 = zvI1jA4wuQeGrx0krc0
+                                                        if !istYGRYN4Q {
+                                                            Button{
+                                                                ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                                        o95HINW4DpHIAT()
+                                                                    }
                                                                 }
                                                             } label: {
-                                                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zcPI03pbcA)
-                                                                    .frame(width: 42, height: 32)
-                                                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                                                    .overlay(
-                                                                        RoundedRectangle(cornerRadius: 4)
-                                                                            .stroke(Color.white.opacity(m1nKfP0PAkzYaDvH15D4fsshmC.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.firstIndex(of: zcPI03pbcA) == fQAcgipdIEvxLs5OpaG0 ? 0.4 : 0), lineWidth: 2)
-                                                                    )
+                                                                RoundedRectangle(cornerRadius: 10)
+                                                                    .fill(Color.white.opacity(0.32))
+                                                                    .frame(width: 42,height: 32)
+                                                                    .overlay(alignment: .center) {
+                                                                        ZJ7h766mz(tMmEWWlfgUag: "yJv1l88NyCjeIR2yve6vkxIHscdO")
+                                                                            .frame(width: 16,height: 16)
+                                                                    }
                                                             }
                                                         }
-                                                        .frame(height:36)
+                                                        
+                                                        
+                                                        if let picList = usQ8Y7Z6Inf["picList"] as? [[String: Any]] {
+                                                            ForEach(0..<picList.count, id: \.self) { index in
+                                                                let pic = picList[index]
+                                                                let mediaUrl = pic["mediaUrl"] as? String ?? ""
+                                                                
+                                                                Button {
+                                                                    fQAcgipdIEvxLs5OpaG0 = index // 绑定选中索引
+                                                                } label: {
+                                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mediaUrl)
+                                                                        .frame(width: 42, height: 32)
+                                                                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                                                                        .overlay(
+                                                                            RoundedRectangle(cornerRadius: 4)
+                                                                                .stroke(Color.white.opacity(fQAcgipdIEvxLs5OpaG0 == index ? 0.4 : 0), lineWidth: 2)
+                                                                        )
+                                                                }
+                                                            }.frame(height:36)
+                                                        }
+                                                        
                                                     }.frame(minWidth: j2ISkikaHFezqwHcZmm.size.width, alignment: .trailing)
                                                 }
                                             }
                                         }
-                                        Button{
-                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    lhOJY7byauJZOO6Kfr3SaKy6()
-                                                }
-                                            }
-                                        } label: {
-                                            RoundedRectangle(cornerRadius: 325)
-                                                .stroke(Color.white.opacity(0.4), lineWidth: 1)
-                                                .frame(width: 92,height: 33)
-                                                .overlay(alignment: .center) {
-                                                    HStack(spacing: 4) {
-                                                        ZJ7h766mz(tMmEWWlfgUag: "yzujDXmvOUTLyKz")
-                                                            .frame(width: 16,height: 16)
-                                                        Text("Ccvm8p3pd2vMGRI7eiMqPA==".bFHEatcgE4zzU9TCfDonsu())
-                                                            .g0LIIcoZQsOjyND9(
-                                                                weight: .medium
-                                                            )
+                                        if !istYGRYN4Q {
+                                            Button{
+                                                ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        lhOJY7byauJZOO6Kfr3SaKy6()
                                                     }
                                                 }
+                                            } label: {
+                                                RoundedRectangle(cornerRadius: 325)
+                                                    .stroke(Color.white.opacity(0.4), lineWidth: 1)
+                                                    .frame(width: 92,height: 33)
+                                                    .overlay(alignment: .center) {
+                                                        HStack(spacing: 4) {
+                                                            ZJ7h766mz(tMmEWWlfgUag: "yzujDXmvOUTLyKz")
+                                                                .frame(width: 16,height: 16)
+                                                            Text("Edit")
+                                                                .g0LIIcoZQsOjyND9(
+                                                                    weight: .medium
+                                                                )
+                                                        }
+                                                    }
+                                            }
                                         }
+                                      
                                     }
                                 }
                                 .padding(.horizontal,16)
+                                
                                 VStack(spacing: 4){
                                     HStack(spacing: 0){
-                                        Text(m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
+                                        Text(usQ8Y7Z6Inf.string("nickname"))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .semibold
@@ -147,14 +162,14 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                     }
                                     HStack(spacing: 16){
                                         HStack(spacing: 4){
-                                            if let weCGKx4ftmOdrhQnvJeTrHKg = (m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int) {
+                                            let weCGKx4ftmOdrhQnvJeTrHKg = usQ8Y7Z6Inf.int("gender")
                                                 ZJ7h766mz(tMmEWWlfgUag: weCGKx4ftmOdrhQnvJeTrHKg == 0 ? "vK1PV3wuy5o4JGId" : weCGKx4ftmOdrhQnvJeTrHKg == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy")
                                                     .frame(width: 24,height: 24)
-                                            } else {
-                                                ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
-                                                    .frame(width: 24,height: 24)
-                                            }
-                                            Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
+//                                            } else {
+//                                                ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
+//                                                    .frame(width: 24,height: 24)
+//                                            }
+                                            Text(String(usQ8Y7Z6Inf.int("age",default: 22)))
                                                 .g0LIIcoZQsOjyND9()
                                         }
                                         RoundedRectangle(cornerRadius: 0)
@@ -165,12 +180,12 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             .fill(Color.white.opacity(0.4))
                                             .frame(width: 1, height: 13)
                                         HStack(spacing: 4) {
-                                            Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())))
+                                            Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(usQ8Y7Z6Inf.int("userId")))
                                                 .g0LIIcoZQsOjyND9()
                                             Button{
                                                 let coaRRjVtVOXNbcGZNUa43 = String(
-                                                    m1nKfP0PAkzYaDvH15D4fsshmC.iBmPfFGfxu5JV7Aii7.int(
-                                                        "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
+                                                    usQ8Y7Z6Inf.int(
+                                                        "userId"
                                                     )
                                                 )
                                                 UIPasteboard.general.string = coaRRjVtVOXNbcGZNUa43
@@ -194,12 +209,12 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }
                                         } label: {
                                             VStack(spacing: 4) {
-                                                Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.n1G8RlzpcQK.count))
+                                                Text("\(usQ8Y7Z6Inf.int("upsNum"))")
                                                     .g0LIIcoZQsOjyND9(
                                                         size: 18,
                                                         weight: .black
                                                     )
-                                                Text("j6N2OHmBLAbXPzqOtT0sAA==".bFHEatcgE4zzU9TCfDonsu())
+                                                Text("Following")
                                                     .g0LIIcoZQsOjyND9(
                                                         color: Color.white.opacity(0.4)
                                                     )
@@ -213,12 +228,12 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }
                                         } label: {
                                             VStack(spacing: 4) {
-                                                Text(String(m1nKfP0PAkzYaDvH15D4fsshmC.iF2ouR0gHFDSr3GJ.count))
+                                                Text("\(usQ8Y7Z6Inf.int("fansNum"))")
                                                     .g0LIIcoZQsOjyND9(
                                                         size: 18,
                                                         weight: .black
                                                     )
-                                                Text("OKtvWktdeG2+akdspLRpzw==".bFHEatcgE4zzU9TCfDonsu())
+                                                Text("Followers")
                                                     .g0LIIcoZQsOjyND9(
                                                         color: Color.white.opacity(0.4)
                                                     )
@@ -232,6 +247,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             Gradient(colors: [Color(red: 34/255, green: 25/255, blue: 96/255),Color(red: 43/255, green: 38/255, blue: 29/255, opacity: 0.62)])
                                         )
                                         .frame(height: 2)
+                                    //Room 标题
                                     HStack(spacing: 0) {
                                         Text("C6fgnSMnCKhJZmWhV/8+GA==".bFHEatcgE4zzU9TCfDonsu())
                                             .g0LIIcoZQsOjyND9(
@@ -239,95 +255,136 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                 weight: .medium
                                             )
                                         Spacer()
-                                    }
-                                    .padding(.horizontal,16)
-                                    ZJ7h766mz(tMmEWWlfgUag: "fHQWK")
-                                        .frame(height: 95)
-                                        .frame(maxWidth: .infinity)
-                                        .overlay(content: {
-                                            ZStack(alignment: .bottomTrailing) {
-                                                Rectangle()
-                                                    .fill(Color.white.opacity(0.15))
-                                                    .frame(width: 69, height: 25)
-                                                    .clipShape(CustomCorners(radius: 12, corners: [.topLeft, .bottomRight]))
-                                                    .overlay {
-                                                        HStack(spacing: 0) {
-                                                            ZJ7h766mz(tMmEWWlfgUag: "owgxknGzqKWaH0DI3F5")
-                                                                .frame(width: 20,height: 20)
-                                                            Text("12")
-                                                                .g0LIIcoZQsOjyND9(
-                                                                    size: 16,
-                                                                    color: Color.white.opacity(0.6)
-                                                                )
-                                                            Spacer()
-                                                        }
-                                                        .padding(.horizontal,6)
-                                                    }
-                                                HStack(alignment: .top,spacing: 8) {
-                                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.js.design/assets/img/692d4e10b5e8b987e5416d49.png#5538bf5f6501f791c85a6172ab6af9f6")
-                                                        .frame(width: 148,height: 87)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                                                        .overlay(alignment: .topLeading) {
-                                                            Rectangle()
-                                                                .fill(Color.black.opacity(0.6))
-                                                                .frame(width: 74,height: 19)
-                                                                .clipShape(CustomCorners(radius: 7, corners: [.topLeft, .bottomRight]))
-                                                                .overlay {
-                                                                    HStack(spacing: 2) {
-                                                                        ZJ7h766mz(tMmEWWlfgUag: "hJnx7spPyFWB8ebrE8P11QImyLKy")
-                                                                            .frame(width: 16,height: 16)
-                                                                        Text("Make Friends")
-                                                                            .g0LIIcoZQsOjyND9(
-                                                                                size: 12
-                                                                            )
-                                                                            .lineLimit(1)
-                                                                            .truncationMode(.tail)
-                                                                    }
-                                                                    .padding(.horizontal,4)
-                                                                }
-                                                        }
-                                                    VStack(alignment: .leading,spacing: 8) {
-                                                        HStack(spacing: 0) {
-                                                            Text("Let's all sing.")
-                                                                .g0LIIcoZQsOjyND9(
-                                                                    size: 16,
-                                                                    weight: .semibold
-                                                                )
-                                                                .lineLimit(1)
-                                                                .truncationMode(.tail)
-                                                            Spacer()
-                                                        }
-                                                        Text("Introduction to the live...")
-                                                            .g0LIIcoZQsOjyND9(
-                                                                color: Color.white.opacity(0.6)
-                                                            )
-                                                            .lineLimit(1)
-                                                            .truncationMode(.tail)
-                                                    }
-                                                    .padding(.top,7)
-                                                    .padding(.trailing,20)
-                                                }
-                                                .padding(.horizontal,4)
-                                            }
-                                        })
-                                        .padding(.horizontal,16)
+                                    }.padding(.horizontal,16)
+                                    //lisr room 布局
+                                    
+                                    //lisr room 布局 end
                                 }
+                                //folling vstack end
                             }
                         }
                     }
                 }
-            }
-        }
-        .ignoresSafeArea()
-        // 全屏显示被点击的图片
-        .fullScreenCover(isPresented: Binding(
-            get: { pVzCUaYBcF5CZ1 != nil },
-            set: { if !$0 { pVzCUaYBcF5CZ1 = nil } }
-        )) {
-            if let nolocnCeMJw14L = pVzCUaYBcF5CZ1 {
-                rfVAcKuWDyI1Ig3cm2bMxplImn70D(eOzSTDS: nolocnCeMJw14L) {
-                    pVzCUaYBcF5CZ1 = nil
+            }.ignoresSafeArea()
+            VStack{
+                HStack(spacing: 0) {
+                    Button{
+                        print("点击返回")
+                        ftgPSmzMVe.dismissScreen()
+                    } label: {
+                        ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
+                            .frame(width: 24,height: 24)
+                            .padding(10)
+                    }
+                    .contentShape(Rectangle())
+                        .padding(.leading,6)
+                        
+                                .zIndex(1)
+                    Spacer()
                 }
+                Spacer()
+            }
+            //vstack 关注、聊天
+            if istYGRYN4Q {
+                VStack{
+                    Spacer()
+                    HStack(spacing:9){
+                        let isFvNNQZQ = usQ8Y7Z6Inf.bool("followed")
+                        Button(action: {
+    //                        Task{
+    //                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+    //                            let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
+    //                            if(isA2C6WEL){
+    //                                haptempLoad()
+    //
+    //                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+    //                            }
+    //                        }
+                        }) {
+                            HStack(spacing:4){
+                                if !isFvNNQZQ {
+                                    ZJ7h766mz(tMmEWWlfgUag: "q0M9xW2C7AL")
+                                        .frame(width: 16, height: 16)
+                                }
+                                
+                                Text(isFvNNQZQ ? "Following" : "Follow").g0LIIcoZQsOjyND9(
+                                    size: 14,
+                                    weight: .medium,
+                                    color: .white.opacity(0.8)
+                                )
+                        }
+                        }.frame(maxWidth: .infinity, minHeight: 46)
+                                        .background(
+                                            LinearGradient(
+                                                colors: [
+                                                    !isFvNNQZQ ?
+                                                    Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72) :
+                                                        Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.32)
+                                                    ,!isFvNNQZQ ?
+                                                    Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,opacity: 0.1) :
+                                                        Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.1)
+                                                ], startPoint: .leading, endPoint: .trailing)
+                                        )
+                                        .cornerRadius(325)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 325)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        colors: [
+                                                            Color(red: 187 / 255, green: 68 / 255, blue: 219 / 255),
+                                                            Color(red: 43 / 255, green: 93 / 255, blue: 117 / 255)
+                                                        ],
+                                                        startPoint: .leading,
+                                                        endPoint: .trailing
+                                                    ),
+                                                    lineWidth:!isFvNNQZQ ? 1 : 0
+                                                )
+                                        )
+                        
+                        ZStack{
+                            ZJ7h766mz(tMmEWWlfgUag: "op2sjDLkevlIcN")
+                                               .frame(width: 242, height: 46)
+                            HStack(spacing:8){
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "gdYHiAuKo6l")
+                                                   .frame(width: 16, height: 16)
+                                Text("Chat")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 18,
+                                                    weight: .semibold
+                                                )
+                            }
+                            ZJ7h766mz(tMmEWWlfgUag: "xfn63IIKmIhi")
+                                               .frame(width: 50, height: 26)
+                                               .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
+                                               .offset(y: -28)
+                            
+                        }.frame(width: 242, height: 46)
+                    }.padding(.horizontal,16)
+                }
+            }
+            //vstack 关注、聊天 end
+        }
+        
+        // 全屏显示被点击的图片
+//        .fullScreenCover(isPresented: Binding(
+//            get: { pVzCUaYBcF5CZ1 != nil },
+//            set: { if !$0 { pVzCUaYBcF5CZ1 = nil } }
+//        )) {
+//            if let nolocnCeMJw14L = pVzCUaYBcF5CZ1 {
+//                rfVAcKuWDyI1Ig3cm2bMxplImn70D(eOzSTDS: nolocnCeMJw14L) {
+//                    pVzCUaYBcF5CZ1 = nil
+//                }
+//            }
+//        }
+        .onAppear{
+            Task {
+                           if let info = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7E4C9A0xWML6xL(
+                               wTEEJpZz0iGVK: areoloaUid
+                           ) {
+                               usQ8Y7Z6Inf = info
+                               istYGRYN4Q =  usQ8Y7Z6Inf.int("userId") != areoloaUid
+                           }
             }
         }
     }
@@ -371,15 +428,7 @@ struct rfVAcKuWDyI1Ig3cm2bMxplImn70D: View {
                     vjzAERk78sLuW96()
                 }
         )
-        .confirmationDialog("JC5qWNHChYw1hjsiBDLojIWxcbXx+TE9hGAq76AK+cqY4g2Yq9rE+vz3FUIjZMBLWfX7SxBFxgdvM7X7M5nbSw==".bFHEatcgE4zzU9TCfDonsu(), isPresented: $pzxxrsR6esxySYadQAv2LlYlH5, titleVisibility: .visible) {
-            Button("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu()) {
-                af2DH(i49bp3YNTEyesczfgOJii3zbqjeXApt: eOzSTDS)
-            }
-            Button("ughEnrHH8idFaI0NbZK2QA==".bFHEatcgE4zzU9TCfDonsu(), role: .cancel) {}
-        }
-        .alert(xW19zC4gQsqvkXilNJmg, isPresented: $kznmaN03f3hYXK8LgB02R3) {
-            Button("UXfiaTZmQdnv9gXzLOufzw==".bFHEatcgE4zzU9TCfDonsu(), role: .cancel) {}
-        }
+       
     }
     
     private func af2DH(i49bp3YNTEyesczfgOJii3zbqjeXApt: String) {
@@ -441,9 +490,7 @@ struct CustomCorners: Shape {
     }
 }
 
-#Preview {
-    zQIRqHb1rSOJJ0wopZa8qxCs()
-}
+
 
 //yxAccid
 struct gStC2A9Z6Y8Qx0E7W4ML: Codable {

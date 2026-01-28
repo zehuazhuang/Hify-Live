@@ -147,7 +147,7 @@ class LiveViewController: UIViewController {
         waitHostTimer = task
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: task)
     }
-
+    
     deinit {
         AgoraRtcEngineKit.destroy()
     }
