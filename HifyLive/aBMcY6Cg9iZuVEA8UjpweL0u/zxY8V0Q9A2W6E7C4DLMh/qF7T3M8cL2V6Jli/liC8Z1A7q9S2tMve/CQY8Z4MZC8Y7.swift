@@ -4,7 +4,7 @@ import UIKit
 import SwiftfulRouting
 // 2️⃣ SwiftUI 页面返回封装后的 UIKit
 struct LE0xQZ6Y7WC8iv: View {
-    let channelName: String
+    @State private var channelName: String
     let localUid: UInt
     let zA9Y4W6LUid: UInt
     @Environment(\.router) var rM9Z8S7A1ql
@@ -14,6 +14,12 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var showY2E8Qsc: Bool = false//显示用户底部弹框
     @State private var uY0E4QZ9MLId: Int = -1 //显示弹框用户id
     @State private var showx8Z9Q2M: Bool = false//显示关闭直播间弹框
+    
+    init(channelName: String, localUid: UInt, zA9Y4W6LUid: UInt) {
+        _channelName = State(initialValue: channelName)
+        self.localUid = localUid
+        self.zA9Y4W6LUid = zA9Y4W6LUid
+    }
 
     var body: some View {
         ZStack {
@@ -63,12 +69,29 @@ struct LE0xQZ6Y7WC8iv: View {
                                                 size: 12,
                                                 weight: .regular
                                             )
-                        }.padding(.trailing,1)
-                        
-                        ZJ7h766mz(tMmEWWlfgUag: "d7daxM4M9A2")
-                                           .frame(width: 28, height: 20)
-                        
-                    }.frame(width: 150,height: 36)
+                        }.padding(.trailing,6)
+                        if liveRoomData?["followFlag"] as? Int == 0 {
+                            ZJ7h766mz(tMmEWWlfgUag: "d7daxM4M9A2")
+                                               .frame(width: 28, height: 20)
+                                               .onTapGesture {
+                                                   Task {
+                                                       do {
+                                                         let is9MZC7A4 =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: (liveRoomData?["userId"] as? Int) ?? 0, iA6M7W9EYL0: 1)
+                                                           if(is9MZC7A4){
+                                                               
+                                                               mpatentLoad()
+
+                                                           }
+                                                          
+                                                       } catch {
+                                                           print(error)
+                                                       }
+                                                   }
+                                               }
+                        }
+                    }
+                    .padding(.horizontal,2)
+                    .frame(height: 36)
                         .background(.white.opacity(0.3))
                         .cornerRadius(325)
                     
@@ -154,24 +177,33 @@ struct LE0xQZ6Y7WC8iv: View {
             if showEndView {
                 MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
             }
-        }.task {
-            do {
-                let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
-                print(Int(zA9Y4W6LUid))
-                print("---------------------")
-//                print(result)
-                liveRoomData = result
-            } catch {
-                print("joinlive failed:", error)
-            }
         }
         .onAppear{
+            mpatentLoad()
             NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
                    showEndView = true
                }
         }.onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
+    }
+    
+    func mpatentLoad(){
+        Task{
+            do {
+                let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
+                liveRoomData = result
+              
+                if(channelName == ""){
+                    channelName = (liveRoomData?["agoraChannelId"] as? String) ?? ""
+                    print("直播房间改变了")
+                }
+                
+            } catch {
+                print(error)
+            }
+        }
+     
     }
 }
 
@@ -181,17 +213,13 @@ struct LiveViewContainer: UIViewControllerRepresentable {
     let localUid: UInt
 
     func makeUIViewController(context: Context) -> LiveViewController {
-        let vc = LiveViewController(channelName: channelName, localUid: localUid)
-        vc.view.backgroundColor = .black
-        //模拟关播
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                  vc.handleHostClosed()
-//              }
-        
-   
-        
-        return vc
+        LiveViewController(channelName: channelName, localUid: localUid)
     }
 
-    func updateUIViewController(_ uiViewController: LiveViewController, context: Context) {}
+    func updateUIViewController(
+        _ uiViewController: LiveViewController,
+        context: Context
+    ) {
+        uiViewController.updateChannelIfNeeded(channelName)
+    }
 }

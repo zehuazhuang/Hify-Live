@@ -46,7 +46,9 @@ struct ChatTableView: UIViewRepresentable {
             )
         )
         header.update(info: opponentInfo)
+        
 
+        
         // 🔥 只在这里设置一次
         tableView.tableHeaderView = header
         context.coordinator.headerView = header
@@ -87,20 +89,34 @@ struct ChatTableView: UIViewRepresentable {
 
         // 更新 header 高度
         if let header = context.coordinator.headerView {
-            header.update(info: opponentInfo)
-            header.setNeedsLayout()
-            header.layoutIfNeeded()
 
-            let height = header.systemLayoutSizeFitting(
-                UIView.layoutFittingCompressedSize
-            ).height
-
-            if header.frame.height != height {
-                header.frame.size.height = height
-                tableView.tableHeaderView = header
                 
+            let newPicURLs: [String] = (opponentInfo["picList"] as? [[String: Any]])?
+                   .compactMap { $0["mediaUrl"] as? String }
+                   ?? []
+            print("-----")
+        
+            print(newPicURLs)
+
+            if newPicURLs != context.coordinator.lastPicURLs {
+                context.coordinator.lastPicURLs = newPicURLs
+                header.update(info: opponentInfo)
             }
-        }
+
+                let newHeight = header.frame.height
+                let oldHeight = context.coordinator.lastHeaderHeight
+
+                // ✅ 只有高度真的变了，才动 tableHeaderView
+                if newHeight != oldHeight {
+                    context.coordinator.lastHeaderHeight = newHeight
+
+                    DispatchQueue.main.async {
+                        UIView.performWithoutAnimation {
+                            tableView.tableHeaderView = header
+                        }
+                    }
+                }
+            }
     }
 
     
@@ -113,6 +129,9 @@ struct ChatTableView: UIViewRepresentable {
         var firstLoad: Bool = true
         let parent: ChatTableView
         let keyboardObserver = KeyboardObserver()
+        
+        var lastHeaderHeight: CGFloat = 0
+        var lastPicURLs: [String] = []
 
         weak var parentTableView: UITableView?
         weak var headerView: ChatProfileHeaderView?
@@ -344,7 +363,7 @@ class ChatCell: UITableViewCell {
 
         // 时间显示
         timeLabel.isHidden = !message.showTime
-        timeLabel.text = message.showTime ? formatTime(message.timestamp) : nil
+        timeLabel.text = message.showTime ? Date(timeIntervalSince1970: message.timestamp).Jq9K2pW7Lr() : nil
         bubbleContainer.isHidden = false
 
         switch message.content {

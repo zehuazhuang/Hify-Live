@@ -349,8 +349,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.hasJoinedChannel = true
 
             // 注册消息监听
-            NIMSDK.shared().chatroomManager.add(self) // 监听聊天室事件
-           
+            
+            Task { @MainActor in
+                NIMSDK.shared().chatManager.add(self)
+                NIMSDK.shared().chatroomManager.add(self) // 监听聊天室事件
+            }
         }
     }
     
@@ -360,20 +363,32 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("✅ 离开聊天室:", error == nil ? "成功" : "失败")
         }
         hasJoinedChannel = false
-        NIMSDK.shared().chatManager.remove(self) // 取消消息监听
+        
+        Task { @MainActor in
+            NIMSDK.shared().chatManager.remove(self)
+            NIMSDK.shared().chatroomManager.remove(self)
+        }
     }
+    
     private func sendMessage(_ text: String) {
+       
         guard let roomId = yxRoomId else { return }
-
+        
         let message = NIMMessage()
         message.text = text
+        message.remoteExt = [
+            "userId": "\(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"))"  // 必须加 userId
+        ]
+
         let session = NIMSession(roomId, type: .chatroom)
 
         NIMSDK.shared().chatManager.send(message, to: session) { error in
-            if let error = error {
-                print("❌ 发送聊天室消息失败:", error)
-            } else {
-                print("✅ 发送聊天室消息成功")
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("❌ 发送聊天室消息失败:", error)
+                } else {
+                    print("✅ 发送聊天室消息成功")
+                }
             }
         }
     }
@@ -385,23 +400,49 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillDisappear(animated)
         leaveChatroomIfNeeded()
     }
+    
+  
+
+    
 }
 extension ChatViewController {
+ 
     func onRecvMessages(_ messages: [NIMMessage]) {
         for msg in messages {
-            // 安全解包 session
             guard let session = msg.session, session.sessionType == .chatroom else { continue }
 
-            let publicMsg = PublicMessage(
-                avatarURL: nil,
-                nickname: msg.from ?? "Unknown",
-                text: msg.text ?? "",
-                isMine: msg.from == "\(userId ?? 0)"
-            )
+            // 1️⃣ 过滤自己之前离开前发的消息
+          
+            if msg.from == "\(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid"))" {
+                continue
+            }
 
-            DispatchQueue.main.async {
-                self.appendMessage(publicMsg)
+            let accid = msg.from ?? ""
+
+            // 2️⃣ 去 SDK 拿头像和昵称（可加缓存优化）
+            NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
+                let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
+                let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
+
+                let publicMsg = PublicMessage(
+                    avatarURL: avatarURL,
+                    nickname: nickname,
+                    text: msg.text ?? "",
+                    isMine: msg.from == "\(self.userId ?? 0)"
+                )
+
+                DispatchQueue.main.async {
+                    self.appendMessage(publicMsg)
+                }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == messageTextField {
+            onSendTapped()
+            return false
+        }
+        return true
     }
 }

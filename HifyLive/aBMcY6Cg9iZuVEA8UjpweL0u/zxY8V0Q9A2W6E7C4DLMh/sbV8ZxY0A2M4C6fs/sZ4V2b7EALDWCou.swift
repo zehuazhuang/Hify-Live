@@ -43,7 +43,10 @@ struct sZ4V2b7EALDWCou: View {
             ZJ7h766mz(tMmEWWlfgUag: "Zq7S9M2C18L4A3t")
                 .frame(width: 36, height: 36)
                 .onTapGesture {
+                    
                     oiserformeSear()
+                    
+                    
                 }
         }
         .padding(.horizontal, 4)

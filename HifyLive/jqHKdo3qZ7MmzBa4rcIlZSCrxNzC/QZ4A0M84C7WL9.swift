@@ -1,5 +1,7 @@
 //下方弹出用户信息
 import SwiftUI
+import SwiftfulRouting
+import NIMSDK
 
 struct QZ4A0M84C7WL9: View {
     let uZQx7MId : Int //用户id
@@ -7,6 +9,7 @@ struct QZ4A0M84C7WL9: View {
     @State private var isZ7E4xA0M2 = false
     @State private var info9M0Q2A6: [String: Any] = [:] //用户数据
     @State private var is7A0Y4W6ECL: Int = -1 //是否关注
+    @Environment(\.router) var rM9Z8S7A1ql
     
     var body: some View {
         ZStack{
@@ -130,6 +133,27 @@ struct QZ4A0M84C7WL9: View {
                         
                         ZJ7h766mz(tMmEWWlfgUag: "li9QY0x2EWL")
                                            .frame(width: 46, height: 46)
+                                           .onTapGesture {
+                                               let targetUserId = info9M0Q2A6.string("yxAccid")
+                                                      let session = NIMSession(targetUserId, type: .P2P)
+
+                                                      // 1️⃣ 检查缓存
+                                                      if let cached = RecentSessionStore.shared.cache.first(where: { $0.sessionId == targetUserId }) {
+                                                          openChat(session: cached.session, avatarUrl: cached.avatarUrl)
+                                                      }
+                                                      // 2️⃣ 检查 SDK 本地是否已有会话
+                                                      else if let _ = NIMSDK.shared().conversationManager.recentSession(by: session) {
+                                                          RecentSessionStore.shared.fetchRecentSessions()
+                                                          openChat(session: session, avatarUrl: info9M0Q2A6.string("icon"))
+                                                      }
+                                                      // 3️⃣ 没有会话就创建
+                                                      else {
+                                                          NIMSDK.shared().conversationManager.addEmptyRecentSession(by: session)
+                                                          RecentSessionStore.shared.fetchRecentSessions()
+                                                          openChat(session: session, avatarUrl: info9M0Q2A6.string("icon"))
+                                                      }
+                                           }
+                        
                         Button(action: {
                             
                             Task{
@@ -218,6 +242,14 @@ struct QZ4A0M84C7WL9: View {
                            }
                         
                        }
+        }
+    }
+    //跳转聊天
+    func openChat(session: NIMSession, avatarUrl: String) {
+        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+            WUjfoptOKs8pZfhSAH0duplG {
+                CgZU7mTgY46l(session: session, opponentAvatarURL: avatarUrl)
+            }
         }
     }
 }

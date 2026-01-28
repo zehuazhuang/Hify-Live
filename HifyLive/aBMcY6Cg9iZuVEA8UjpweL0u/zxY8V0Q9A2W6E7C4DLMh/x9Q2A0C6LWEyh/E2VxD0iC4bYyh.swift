@@ -3,8 +3,11 @@ import SwiftfulRouting
 import AgoraRtcKit
 //首页
 struct E2VxD0iC4bYyh: View {
-    let evntemporaeCol = [
-        GridItem(.adaptive(minimum: 168), spacing: 7)
+ 
+    
+    let evntemporaeCol: [GridItem] = [
+        GridItem(.flexible(), spacing: 7),
+        GridItem(.flexible(), spacing: 7)
     ]
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @State private var ecorjazyType: Bool = true // true recommend false following
@@ -74,55 +77,73 @@ struct E2VxD0iC4bYyh: View {
                     
                     
                     
+                    
                     Spacer()
                     ZJ7h766mz(tMmEWWlfgUag: "Zq7S9M2C18L4A3t")
                         .frame(width: 36, height: 36)
                         .onTapGesture {
                             rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                QsS1CqA9M8tL2fs()
+                                WUjfoptOKs8pZfhSAH0duplG {
+                                    QsS1CqA9M8tL2fs()
+                                }
                             }
                         }
                     Spacer().frame(width: 16)
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
                         .onTapGesture {
-
+                            
                         }
                 }
+                
                 ScrollView{
                     VStack{
-                        LazyVGrid(columns: evntemporaeCol, spacing: 7) {
+                        
                             
                             if ecorjazyType {
-                                ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
-                                    rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
-                                        .onTapGesture{
-                                            
-                                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                   zA9Y4W6LUid: UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId")))
+                                if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
+                                    LQ0Z4A6C9emp()
+                                    
+                                }else{
+                                    LazyVGrid(columns: evntemporaeCol, spacing: 7) {
+                                        ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
+                                            rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
+                                                .onTapGesture{
+                                                    
+                                                    rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                        WUjfoptOKs8pZfhSAH0duplG {
+                                                            LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                           zA9Y4W6LUid: UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId")))
+                                                        }
+                                                    }
                                                 }
-                                            }
                                         }
+                                    }
                                 }
+                                   
+                                
+                                
                             }else{
-                                ForEach(followingCache.items.indices, id: \.self) { index in
-                                    rL0X1V3LiveCell(bemindbeData: followingCache.items[index])
-                                        .onTapGesture{
-                                            
-                                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    LE0xQZ6Y7WC8iv(channelName: followingCache.items[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                   zA9Y4W6LUid: UInt(followingCache.items[index].int("userId")))
+                                if followingCache.items.isEmpty {
+                                    LQ0Z4A6C9emp()
+                                    
+                                }else{
+                                    LazyVGrid(columns: evntemporaeCol, spacing: 7) {
+                                    ForEach(followingCache.items.indices, id: \.self) { index in
+                                        rL0X1V3LiveCell(bemindbeData: followingCache.items[index])
+                                            .onTapGesture{
+                                                
+                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        LE0xQZ6Y7WC8iv(channelName: followingCache.items[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                       zA9Y4W6LUid: UInt(followingCache.items[index].int("userId")))
+                                                    }
                                                 }
                                             }
-                                        }
+                                    }
                                 }
-                            }
+                                }
                      
-                            
-                            
                         }
                     }
                 }
@@ -145,9 +166,11 @@ struct E2VxD0iC4bYyh: View {
             }.task {
                 await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT()
                 await followingCache.loadFollowing()
+                
+                print("---直播数据-----")
+                print(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH)
             }
         }
-        
     }
     
     // 单个直播组件
@@ -174,7 +197,7 @@ struct E2VxD0iC4bYyh: View {
                     HStack(spacing: 1) {
                         ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
                             .frame(width: 16, height: 16)
-                        Text("12")
+                        Text("\(bemindbeData.int("joinNum"))")
                                         .g0LIIcoZQsOjyND9(
                                             size: 14,
                                             weight: .regular
@@ -201,7 +224,7 @@ struct E2VxD0iC4bYyh: View {
                 .padding(8)
 
             }
-            .frame(width: 168, height: 205)
+            .frame(height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
             

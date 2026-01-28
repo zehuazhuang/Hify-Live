@@ -57,40 +57,8 @@ struct ijeWMJnw0: View {
     @State private var tP74PY69MMmqBz0UYBxC: PhotosPickerItem? = nil
     @State private var eVfd5ZmOSZbemBIh: UIImage?
     
-    func pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(_ uaM4hZ0L: UIImage) {
-        guard let a4zgU3KJWLttOxWidw3aFR = uaM4hZ0L.jpegData(compressionQuality: 0.8) else {
-            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-            return
-        }
-        
-        let uAiXyBsYgr = FileManager.default.temporaryDirectory.appendingPathComponent("\(UUID().uuidString).png")
-        do {
-            try a4zgU3KJWLttOxWidw3aFR.write(to: uAiXyBsYgr)
-        } catch {
-            //            print("写入临时文件失败:", error)
-            
-            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-            return
-        }
-        
-        let eLb39vNYvTk7dbIbdbw = "\(UUID().uuidString).png"
-        IsZTtO2FdO13EJk8A2xBPRHSqlJx.f6fKqLNtg0zFmWoa2M1VFlHkb42.nsBipVAxQ5Hqjj8tsx(e8O8OyDACdOvgo: uAiXyBsYgr, u92JYYPz7kFgcQKDFB6: eLb39vNYvTk7dbIbdbw) { ghmWXgkLThXCb1RdLYSKEHLmj in
-            defer {
-                // 上传完成后删除临时文件
-                try? FileManager.default.removeItem(at: uAiXyBsYgr)
-            }
-            
-            switch ghmWXgkLThXCb1RdLYSKEHLmj {
-            case .success(let eNJnvhnesWpbts6oeoF8QFMWcQ96Q):
-//                print("上传成功:", eNJnvhnesWpbts6oeoF8QFMWcQ96Q)
-                print(eNJnvhnesWpbts6oeoF8QFMWcQ96Q)
-                zeEMuRE5FhYabIqhuh = eNJnvhnesWpbts6oeoF8QFMWcQ96Q
-                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-            case .failure(_):
-                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("xI0ZIhbhVyHclrMTc2etOZ34kehVcER4puC7wXCAfDc=")
-            }
-        }
-    }
+    
+
     
     @StateObject private var b311AqIo0GvW8L8UXU3M1y = EfqJ9.hlLgQUr6MegOX6Bv
     
@@ -160,7 +128,12 @@ struct ijeWMJnw0: View {
                                         if let xd69OWx2Frrlwb9Zr5j = UIImage(data: fsdD48IWIBTymO0gQDpAdOLVR) {
                                             DispatchQueue.main.async {
                                                 self.eVfd5ZmOSZbemBIh = xd69OWx2Frrlwb9Zr5j
-                                                self.pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j) // 上传图片
+                                                pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j){ url in
+                                                    if let url = url {
+                                                        zeEMuRE5FhYabIqhuh = url
+                                                        // 可以直接发送消息或者存数据库
+                                                    }
+                                                } // 上传图片
                                             }
                                         }
                                     case .success(nil):

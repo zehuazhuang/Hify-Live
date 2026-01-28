@@ -30,6 +30,18 @@ func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
         "pageSize": 6,
         "ids": NSNull()
     ]
+//    print("----URL----")
+//    print(vD9sL2mK4tQ1bH)
+//   
+//    if let headers = zF7nC3qL5pR2vT.allHTTPHeaderFields {
+//        print("---请求头---")
+//        for (key, value) in headers {
+//            print("\(key): \(value)")
+//        }
+//    }
+    
+
+    
 
     let xN8vK2pB5rL4dC = try JSONSerialization.data(withJSONObject: tYwP1zF6sM8vR2kq, options: [])
     guard let hL9dV3bQ2fK6sJ8p = String(data: xN8vK2pB5rL4dC, encoding: .utf8) else {
@@ -62,6 +74,7 @@ func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
           let mK4tQ1bHVd9sL2 = rL2vT1bSQwZ5rP8["rows"] as? [[String: Any]] else {
         return []
     }
+
     return mK4tQ1bHVd9sL2
 }
 
@@ -81,22 +94,14 @@ func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
     xN6vR2pB5lC4dT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     xN6vR2pB5lC4dT.setValue("application/json", forHTTPHeaderField: "Content-Type")
     xN6vR2pB5lC4dT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
-    
-   
-    if let headers = xN6vR2pB5lC4dT.allHTTPHeaderFields {
-        print("---请求头---")
-        for (key, value) in headers {
-            print("\(key): \(value)")
-        }
-    }
+
 
     let tYwP1zF6sM8vR2kq: [String: Any] = [
         "currentPage": 1,
         "pageSize": 6,
         "ids": NSNull()
     ]
-    print("---body----")
-    print(tYwP1zF6sM8vR2kq)
+
 
     let bV3mL5wScNf7kQ = try JSONSerialization.data(withJSONObject: tYwP1zF6sM8vR2kq, options: [])
     guard let cD9vT4pB2qL6rX = String(data: bV3mL5wScNf7kQ, encoding: .utf8) else {
@@ -117,8 +122,7 @@ func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
           let jM4kL8pD3tN1bC = iL7dV4oP9qK2rF["result"] as? String else {
         return []
     }
-    print("------关注result------")
-    print(jM4kL8pD3tN1bC)
+
     if(iL7dV4oP9qK2rF.int("code") != 0000){
         return []
     }
@@ -131,10 +135,6 @@ func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
         return []
     }
     
-    
-    
-    print("------关注------")
-    print(oR4tQ1bHVd9sL2)
     return oR4tQ1bHVd9sL2
 }
 
@@ -201,14 +201,14 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
     guard let array = resultArray as? [[String: Any]] else {
         return []
     }
-
+    
     // 按 joinNum 从大到小排序
     let sortedArray = array.sorted { dict1, dict2 in
         let joinNum1 = dict1["joinNum"] as? Int ?? 0
         let joinNum2 = dict2["joinNum"] as? Int ?? 0
         return joinNum1 > joinNum2
     }
-
+    
     
     
     return sortedArray
@@ -389,6 +389,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
         if(iA6M7W9EYL0 == 1){
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("K5WuoRBCSxi+hTLxteToML8HCLwetEmS+BtoY1tjyJY=")
         }else{
+            await FollowingCache.shared.loadFollowing(forceRefresh: true)
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("EMnULaLM6ZF45iH0cANSKQ==")
         }
     }

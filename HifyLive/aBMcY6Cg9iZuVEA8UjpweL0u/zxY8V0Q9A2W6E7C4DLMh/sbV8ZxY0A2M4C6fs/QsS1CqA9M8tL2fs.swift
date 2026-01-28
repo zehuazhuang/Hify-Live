@@ -31,10 +31,12 @@ struct QsS1CqA9M8tL2fs: View {
                            
                             
                             Task { @MainActor in
+                                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                 do {
                                     let results = try await hifySearch(type: piaoncapType, searchValue: q2C4Mtl3iNa)
                                        searchResults = results
-                                    
+                                    print("------搜索---")
+                                    print(results)
                                     if(searchResults.isEmpty){
                                         isZ8Q7x4bV9Y0A2 = false
                                     }else{
@@ -42,8 +44,10 @@ struct QsS1CqA9M8tL2fs: View {
                                     }
                                     
                                    } catch {
+                                       EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                        print(error)
                                    }
+                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                 
                                
                                 }
@@ -122,8 +126,7 @@ struct QsS1CqA9M8tL2fs: View {
                         }else{
                             
                             if !isZ8Q7x4bV9Y0A2 {
-                                ZJ7h766mz(tMmEWWlfgUag: "npIyAxb6vfM073130T9MwCJY8")
-                                                   .frame(width: 343, height: 248)
+                                LQ0Z4A6C9emp()
                                                   
                             }else{
                                 ForEach(searchResults.indices, id: \.self) { index in
@@ -131,6 +134,14 @@ struct QsS1CqA9M8tL2fs: View {
                                     if piaoncapType == 1 {
                                         re7x2Y4QZ9bV8Mom(room: item, gpiemeSele: q2C4Mtl3iNa)
                                             .id(UUID())
+                                            .onTapGesture {
+                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        LE0xQZ6Y7WC8iv(channelName: "", localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                       zA9Y4W6LUid: UInt(item.int("userId")))
+                                                    }
+                                                }
+                                            }
                                     } else {
                                         huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa)
                                             .id(UUID())

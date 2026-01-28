@@ -32,7 +32,6 @@ final class ChatProfileHeaderView: UIView {
     
     private var currentAvatarURL: String = ""
     private var currentNickname: String = ""
-    
 
     // MARK: - Init
     override init(frame: CGRect) {

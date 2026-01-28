@@ -5,19 +5,23 @@ import AgoraRtcKit
 
 class LiveViewController: UIViewController {
     private var appId = TokenManager.appId
-    private var token: String?
-    private var channelName: String
-    private var localUid: UInt  //主播id
+    private var token: String?//当前登录用户的rtctoken
+    private var channelName: String  //agoraChannelId
+    private var localUid: UInt  //登录用户uid
 
     private var agoraKit: AgoraRtcEngineKit?
     private let remoteVideoView = UIView()
     
-    
+    private var hasJoinedChannel = false //用来更新channelName
+    private var hostHasStarted = false //是否开播
+    private var waitHostTimer: DispatchWorkItem? //等待开播
 
     init(channelName: String, localUid: UInt) {
         self.channelName = channelName
         self.localUid = localUid
         super.init(nibName: nil, bundle: nil)
+        
+       
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -28,9 +32,31 @@ class LiveViewController: UIViewController {
         indicator.hidesWhenStopped = true
         return indicator
     }()
+    
+    func updateChannelIfNeeded(_ newChannel: String) {
+        guard !newChannel.isEmpty else { return }
+        guard newChannel != channelName else { return }
+        guard let engine = agoraKit else {
+            // SDK 还没初始化，先存值
+            channelName = newChannel
+            return
+        }
 
+        print("🔄 channelName 更新:", newChannel)
+
+        channelName = newChannel
+
+        if hasJoinedChannel {
+            engine.leaveChannel(nil)
+            hasJoinedChannel = false
+        }
+
+        joinChannel()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         NotificationCenter.default.addObserver(self, selector: #selector(handleMuteNotification(_:)), name: .muteRemoteAudio, object: nil)
         remoteVideoView.frame = view.bounds
         remoteVideoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -84,10 +110,42 @@ class LiveViewController: UIViewController {
     }
 
     private func joinChannel() {
-        guard let token = self.token, let engine = self.agoraKit else { return }
-        engine.joinChannel(byToken: token, channelId: channelName, info: nil, uid: localUid) { channel, uid, elapsed in
-            print("🎉 Join success", channel, uid)
+        guard !channelName.isEmpty else {
+            print("⚠️ channelName 为空，暂不 join")
+            return
         }
+        guard let token = token, let engine = agoraKit else { return }
+
+        print("🚀 Join channel:", channelName)
+
+        engine.joinChannel(
+            byToken: token,
+            channelId: channelName,
+            info: nil,
+            uid: localUid
+        ) { [weak self] channel, uid, elapsed in
+            print("🎉 Join success:", channel)
+            self?.hasJoinedChannel = true
+            
+            //是否开播
+            self?.startWaitHostTimer()
+        }
+    }
+    
+    private func startWaitHostTimer() {
+        waitHostTimer?.cancel()
+
+        let task = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+
+            if self.hostHasStarted == false {
+                print("⏰ 主播未开播 / 已关播")
+                self.handleHostClosed()
+            }
+        }
+
+        waitHostTimer = task
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: task)
     }
 
     deinit {
@@ -97,6 +155,9 @@ class LiveViewController: UIViewController {
 
 extension LiveViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
+        
+       
+        
         let canvas = AgoraRtcVideoCanvas()
         canvas.uid = uid
         canvas.view = remoteVideoView
@@ -108,6 +169,18 @@ extension LiveViewController: AgoraRtcEngineDelegate {
                 self.loadingView.stopAnimating()
                 self.loadingView.removeFromSuperview()
             }
+    }
+    func rtcEngine(
+        _ engine: AgoraRtcEngineKit,
+        firstRemoteVideoFrameOfUid uid: UInt,
+        size: CGSize,
+        elapsed: Int
+    ) {
+        hostHasStarted = true
+            waitHostTimer?.cancel()
+            waitHostTimer = nil
+
+            print("🎬 主播开始推视频（首帧到达）")
     }
 
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
