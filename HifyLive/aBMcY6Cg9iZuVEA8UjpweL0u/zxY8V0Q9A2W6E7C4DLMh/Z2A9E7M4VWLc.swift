@@ -57,10 +57,18 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
     @MainActor
     private static func handleIncomingOnMain(_ messages: [NIMMessage]) {
 
-        for message in messages {
-            guard let session = message.session else { continue }
+        let myAccount = NIMSDK.shared().loginManager.currentAccount()
 
-            // 1️⃣ 更新最近会话缓存
+        for message in messages {
+
+            guard
+                let session = message.session,
+                session.sessionType == .P2P,
+                message.from != myAccount             
+            else {
+                continue
+            }
+
             RecentSessionManager.shared.updateCache(
                 with: message,
                 session: session
@@ -69,10 +77,7 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
 
         let sessions = RecentSessionManager.shared.cache
 
-        // 2️⃣ 更新 Navbar 未读数
         GlobalUnreadStore.shared.update(from: sessions)
-
-        // 3️⃣ 刷新聊天列表
         RecentSessionStore.shared.cache = sessions
     }
 }

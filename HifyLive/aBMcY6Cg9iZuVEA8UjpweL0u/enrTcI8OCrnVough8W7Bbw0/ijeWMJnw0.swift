@@ -70,6 +70,7 @@ struct ijeWMJnw0: View {
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
+                .ignoresSafeArea()
             VStack(spacing: 24) {
                 HStack(spacing: 12) {
                     Button{
@@ -78,14 +79,14 @@ struct ijeWMJnw0: View {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
                     }
-                    Text("yg+DSKvFibu+vtTkhp8RpQ==".bFHEatcgE4zzU9TCfDonsu())
+                    Text("Profile")
                         .g0LIIcoZQsOjyND9(
                             size: 18,
                             weight: .semibold
                         )
                     Spacer()
                 }
-                .padding(.top,58)
+               
                 .padding(.leading,16)
                 ScrollView {
                     VStack(spacing: 166) {
@@ -128,17 +129,22 @@ struct ijeWMJnw0: View {
                                         if let xd69OWx2Frrlwb9Zr5j = UIImage(data: fsdD48IWIBTymO0gQDpAdOLVR) {
                                             DispatchQueue.main.async {
                                                 self.eVfd5ZmOSZbemBIh = xd69OWx2Frrlwb9Zr5j
-                                                pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j){ url in
-                                                    if let url = url {
+
+                                                Task { @MainActor in
+                                                    if let url = try? await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j) {
                                                         zeEMuRE5FhYabIqhuh = url
-                                                        // 可以直接发送消息或者存数据库
+                                                        
+                                                    } else {
+                                                        print("上传失败或图片不合规")
+                                                        zeEMuRE5FhYabIqhuh = ""
+                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                     }
-                                                } // 上传图片
+                                                }
                                             }
                                         }
                                     case .success(nil):
                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                        //                                        print("没有选择图片")
+                                        
                                     case .failure(_):
                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("HosRUsoIn45Za1nd+a3akWsPLh/BCLdk23yW8VvS/i8=")
@@ -424,6 +430,9 @@ struct ijeWMJnw0: View {
                             .padding(.horizontal,22)
                         }
                         Button{
+                            
+                           
+                            
                             if mIAT9zbKJKGtarbSPX1QSZm.isEmpty {
                                 jFQJdj = true
                             }
@@ -438,15 +447,29 @@ struct ijeWMJnw0: View {
                                 if mIAT9zbKJKGtarbSPX1QSZm.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil {
                                     return
                                 }
+                                
+                              
+                               
+                                
                                 EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                 
                                 let bjAHgwVvI = kUe9UtFYAvsMtAN1.string(from: mQFLX0m0nVIAxht9uUGhln5su8 ?? Date())
                                 
-                                let bkhF1OQYtQmw1KM5SJL = cpEtaR(wKrCAroUqTbC2rd9pcKfELDDQ: oWICU3h.c5O9meXEy5dOelOBZ3QpElqG, hVH5DxQ7Q558SdJWLt: fMCOyiKl2, cImAJ4BdZYF9hJ4x: "", hmNWPkT: oWICU3h.sI9ab2lfhqbpaKAkkJ18gYAi ?? "", fRKTOb3: mIAT9zbKJKGtarbSPX1QSZm, oT9WD2aupYPQUmLUQMwvo: zeEMuRE5FhYabIqhuh, wLsFSPTENSsbKoQTDC: uj8O1bVbC9SQl6E469ySfpfYW678G ?? 0, spnXcOm: xYA8KcMnJ8l8HJAC2xuNCCW0["sAocvCi8BLuHyjCjoxpviQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", ptxrDJchMpilBtm: bjAHgwVvI, vOPrjVF8S5VO8uXporotTUlUO: [])
+                                let bkhF1OQYtQmw1KM5SJL = cpEtaR(
+                                    wKrCAroUqTbC2rd9pcKfELDDQ: oWICU3h.c5O9meXEy5dOelOBZ3QpElqG,
+                                    hVH5DxQ7Q558SdJWLt: fMCOyiKl2,
+                                    cImAJ4BdZYF9hJ4x: "",
+                                    hmNWPkT: oWICU3h.sI9ab2lfhqbpaKAkkJ18gYAi ?? "",
+                                    fRKTOb3: mIAT9zbKJKGtarbSPX1QSZm,
+                                    oT9WD2aupYPQUmLUQMwvo: zeEMuRE5FhYabIqhuh,
+                                    wLsFSPTENSsbKoQTDC: uj8O1bVbC9SQl6E469ySfpfYW678G ?? 0,
+                                    spnXcOm: xYA8KcMnJ8l8HJAC2xuNCCW0["sAocvCi8BLuHyjCjoxpviQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "",
+                                    ptxrDJchMpilBtm: bjAHgwVvI, vOPrjVF8S5VO8uXporotTUlUO: [])
                                 
                                 WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: bkhF1OQYtQmw1KM5SJL) { (sXIeOTyEns40bGamIK: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                     switch sXIeOTyEns40bGamIK {
                                     case .success(let eIOmCWgre0wHbWNAw3):
+                                        print("-----code-----")
                                         print(eIOmCWgre0wHbWNAw3.code)
                                         if eIOmCWgre0wHbWNAw3.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -457,6 +480,7 @@ struct ijeWMJnw0: View {
                                                 return
                                             }
                                             let uJhRiF1RMG0DzobBJyZB5Futbg44f = ydaPriTQLmWBbh.hL9dV3bQ2fK6sJ8p()
+                                            print("---解密数据---")
                                             print(uJhRiF1RMG0DzobBJyZB5Futbg44f)
                                             if let oeUbLj7s7zB6 = uJhRiF1RMG0DzobBJyZB5Futbg44f.kPOR9FHwcEZJv9YDf4W01D() {
                                                 ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.xPI2sSbHAr7u1jAZisVjgs8JXZCRZ07t(tEkU2eDdLMlnNOn: oeUbLj7s7zB6["km2wMXC6wIJi3UcUM7XhmA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
@@ -492,7 +516,7 @@ struct ijeWMJnw0: View {
                             ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
                                 .frame(width: 262,height: 46)
                                 .overlay(alignment: .center) {
-                                    Text("K3Jej3bXBBnErqFt0XpE6w==".bFHEatcgE4zzU9TCfDonsu())
+                                    Text("Resign in")
                                         .g0LIIcoZQsOjyND9(
                                             size: 18,
                                             weight: .semibold
@@ -503,41 +527,32 @@ struct ijeWMJnw0: View {
                     .padding(.bottom, 41)
                 }
             }
-            ZStack(alignment: .bottom){
-                if q4L7RemZyJv1BuPIAmKMZ3vaTsg {
-                    Color.black.opacity(0.7)
-                        .onTapGesture {
-                            withAnimation (.spring()) {
-                                q4L7RemZyJv1BuPIAmKMZ3vaTsg = false
-                            }
-                        }
-                    bviVhbptEhW0H38XWrfeY(bfm778: mQFLX0m0nVIAxht9uUGhln5su8 ?? hQC0aa2) { fWUWiClgiJNo3Fx7k8rZzR8U in
-                        mQFLX0m0nVIAxht9uUGhln5su8 = fWUWiClgiJNo3Fx7k8rZzR8U
-                        withAnimation (.spring()) {
-                            q4L7RemZyJv1BuPIAmKMZ3vaTsg = false
-                        }
+            //生日弹框
+            if q4L7RemZyJv1BuPIAmKMZ3vaTsg {
+                BirthdayBottomSheet(
+                    isPresented: $q4L7RemZyJv1BuPIAmKMZ3vaTsg,
+                    initialDate: mQFLX0m0nVIAxht9uUGhln5su8 ?? hQC0aa2
+                ) { selected in
+                    mQFLX0m0nVIAxht9uUGhln5su8 = selected
+                    withAnimation(.spring()) {
+                        q4L7RemZyJv1BuPIAmKMZ3vaTsg = false
                     }
-                    .transition(.move(edge: .bottom))
                 }
             }
-            ZStack(alignment: .bottom){
+            
+            
                 if v5FogKAlSXvg {
-                    Color.black.opacity(0.7)
-                        .onTapGesture {
-                            withAnimation (.spring()) {
-                                v5FogKAlSXvg = false
-                            }
-                        }
-                    kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq(qiizd0IijFdcEjzdYt: { oYJUaq89qJ3hnJ0Yer4 in
+                    
+                    kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq(cTFLifqvZW: $v5FogKAlSXvg, qiizd0IijFdcEjzdYt: { oYJUaq89qJ3hnJ0Yer4 in
                         withAnimation (.spring()) {
                             v5FogKAlSXvg = false
                         }
                         uj8O1bVbC9SQl6E469ySfpfYW678G = oYJUaq89qJ3hnJ0Yer4
                     })
-                    .transition(.move(edge: .bottom))
+                    
                 }
-            }
-        }.ignoresSafeArea()
+           
+        }
             .onTapGesture {
                 eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
             }
@@ -567,70 +582,70 @@ struct cpEtaR: Codable {
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             wKrCAroUqTbC2rd9pcKfELDDQ,
             forKey: bonDyqD2YnaVJW(
-                "zCoZqFac9ocmBnz8DaqLtQ==".bFHEatcgE4zzU9TCfDonsu()
+                "platform"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             hVH5DxQ7Q558SdJWLt,
             forKey: bonDyqD2YnaVJW(
-                "V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()
+                "openId"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             cImAJ4BdZYF9hJ4x,
             forKey: bonDyqD2YnaVJW(
-                "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
+                "userId"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             hmNWPkT,
             forKey: bonDyqD2YnaVJW(
-                "iV6U6DU+0RxAUXZn6aKvHA==".bFHEatcgE4zzU9TCfDonsu()
+                "email"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             fRKTOb3,
             forKey: bonDyqD2YnaVJW(
-                "BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()
+                "nickname"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             oT9WD2aupYPQUmLUQMwvo,
             forKey: bonDyqD2YnaVJW(
-                "epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()
+                "icon"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             wLsFSPTENSsbKoQTDC,
             forKey: bonDyqD2YnaVJW(
-                "L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()
+                "gender"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             spnXcOm,
             forKey: bonDyqD2YnaVJW(
-                "n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu()
+                "countryId"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             ptxrDJchMpilBtm,
             forKey: bonDyqD2YnaVJW(
-                "r9m4DBfC1PJPAxrJqUKxjw==".bFHEatcgE4zzU9TCfDonsu()
+                "birthday"
             )
         )
         
         try qMjAGEdDWoKqhcJlW1x4K2CM8x.encode(
             vOPrjVF8S5VO8uXporotTUlUO,
             forKey: bonDyqD2YnaVJW(
-                "yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()
+                "picList"
             )
         )
     }

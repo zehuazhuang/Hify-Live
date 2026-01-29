@@ -13,6 +13,8 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var showEndView: Bool = false//主播关播显示
     @State private var showY2E8Qsc: Bool = false//显示用户底部弹框
     @State private var uY0E4QZ9MLId: Int = -1 //显示弹框用户id
+    @State private var gGs5OpWId: String = "" //显示弹框用户yxAccid
+    @State private var rlUlyPhType: Int = 0 //userId 还是 yxAccid
     @State private var showx8Z9Q2M: Bool = false//显示关闭直播间弹框
     
     init(channelName: String, localUid: UInt, zA9Y4W6LUid: UInt) {
@@ -33,17 +35,21 @@ struct LE0xQZ6Y7WC8iv: View {
                     Spacer()
                 ChatViewContainer(yxRoomId: (liveRoomData?["yxRoomId"] as? String) ?? "", userId: (liveRoomData?["userId"] as? Int) ?? 0,
                                   onMuteTappedCallback: { uid, mute in
-                                        // 找到 LiveViewController 并调用静音
-                                        // 这里用 ChannelName + localUid 创建闭包绑定
-                                        print("Mute tapped for uid \(uid), mute=\(mute)")
-                                        // 你可以通过 NotificationCenter 或环境对象传 LiveViewController 的引用
+                                      
                                         NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
-                                    }
+                                    },
+                                  onUserAvatarTapped: { yxAccid in
+                                       
+                    withAnimation{
+                        rlUlyPhType = 1
+                        showY2E8Qsc = true
+                        gGs5OpWId = yxAccid
+                    }
+                                     }
                 )
                 }.edgesIgnoringSafeArea(.bottom)
             VStack{
                 HStack(spacing:4){
-                    
                     HStack(spacing:0){
                         rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: ((liveRoomData?["icon"] as? String) ?? ""))
                                             .frame(width: 32,height: 32)
@@ -53,6 +59,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                             .padding(.trailing,4)
                                             .onTapGesture {
                                                 withAnimation{
+                                                    rlUlyPhType = 0
                                                     showY2E8Qsc = true
                                                     uY0E4QZ9MLId = (liveRoomData?["userId"] as? Int) ?? 0
                                                 }
@@ -171,7 +178,7 @@ struct LE0xQZ6Y7WC8iv: View {
             }
             
             if showY2E8Qsc {
-                QZ4A0M84C7WL9(uZQx7MId: uY0E4QZ9MLId, isW9YQ6C8L: $showY2E8Qsc)
+                QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, isW9YQ6C8L: $showY2E8Qsc)
             }
             
             if showEndView {
@@ -196,7 +203,7 @@ struct LE0xQZ6Y7WC8iv: View {
               
                 if(channelName == ""){
                     channelName = (liveRoomData?["agoraChannelId"] as? String) ?? ""
-                    print("直播房间改变了")
+                    
                 }
                 
             } catch {

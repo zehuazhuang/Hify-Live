@@ -32,6 +32,8 @@ final class ChatProfileHeaderView: UIView {
     
     private var currentAvatarURL: String = ""
     private var currentNickname: String = ""
+    
+    var onAvatarTap: ((Int) -> Void)?
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -43,6 +45,9 @@ final class ChatProfileHeaderView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    @objc private func avatarTapped() {
+        onAvatarTap?(userId)
     }
 
     // MARK: - UI
@@ -70,6 +75,9 @@ final class ChatProfileHeaderView: UIView {
         // 头像
         avatar.contentMode = .scaleAspectFill
         avatar.clipsToBounds = true
+        avatarContainer.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarTapped))
+        avatarContainer.addGestureRecognizer(tap)
         avatarContainer.addSubview(avatar)
 
         // 昵称

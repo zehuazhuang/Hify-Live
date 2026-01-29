@@ -167,8 +167,7 @@ struct E2VxD0iC4bYyh: View {
                 await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT()
                 await followingCache.loadFollowing()
                 
-                print("---直播数据-----")
-                print(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH)
+             
             }
         }
     }

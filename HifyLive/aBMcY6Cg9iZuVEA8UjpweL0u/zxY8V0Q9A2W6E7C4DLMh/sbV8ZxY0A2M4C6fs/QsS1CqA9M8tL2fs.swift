@@ -35,8 +35,7 @@ struct QsS1CqA9M8tL2fs: View {
                                 do {
                                     let results = try await hifySearch(type: piaoncapType, searchValue: q2C4Mtl3iNa)
                                        searchResults = results
-                                    print("------搜索---")
-                                    print(results)
+                                 
                                     if(searchResults.isEmpty){
                                         isZ8Q7x4bV9Y0A2 = false
                                     }else{
@@ -145,6 +144,13 @@ struct QsS1CqA9M8tL2fs: View {
                                     } else {
                                         huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa)
                                             .id(UUID())
+                                            .onTapGesture {
+                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"))
+                                                    }
+                                                }
+                                            }
                                     }
                                 }
                             }

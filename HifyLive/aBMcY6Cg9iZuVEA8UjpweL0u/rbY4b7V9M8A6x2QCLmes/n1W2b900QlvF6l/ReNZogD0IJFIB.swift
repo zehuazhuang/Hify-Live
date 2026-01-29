@@ -13,6 +13,7 @@ struct ChatTableView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
+    let onAvatarTap: (Int) -> Void
     
     func makeUIView(context: Context) -> UITableView {
        
@@ -46,6 +47,10 @@ struct ChatTableView: UIViewRepresentable {
             )
         )
         header.update(info: opponentInfo)
+        
+        header.onAvatarTap = { uid in
+            context.coordinator.parent.onAvatarTap(uid)
+        }
         
 
         
@@ -89,15 +94,9 @@ struct ChatTableView: UIViewRepresentable {
 
         // 更新 header 高度
         if let header = context.coordinator.headerView {
-
-                
             let newPicURLs: [String] = (opponentInfo["picList"] as? [[String: Any]])?
                    .compactMap { $0["mediaUrl"] as? String }
                    ?? []
-            print("-----")
-        
-            print(newPicURLs)
-
             if newPicURLs != context.coordinator.lastPicURLs {
                 context.coordinator.lastPicURLs = newPicURLs
                 header.update(info: opponentInfo)
@@ -114,6 +113,7 @@ struct ChatTableView: UIViewRepresentable {
                         UIView.performWithoutAnimation {
                             tableView.tableHeaderView = header
                         }
+                        context.coordinator.scrollToBottom(tableView, animated: false)
                     }
                 }
             }

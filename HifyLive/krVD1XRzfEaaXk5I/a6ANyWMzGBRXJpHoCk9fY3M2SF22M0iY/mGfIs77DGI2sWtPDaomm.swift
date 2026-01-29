@@ -77,7 +77,7 @@ final class WOKmjUjM {
         var biHmuVi1B21WPGO = URLRequest(url: tmXsNyLk9jl)
         biHmuVi1B21WPGO.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu() //POST
         biHmuVi1B21WPGO.allHTTPHeaderFields = mUKxiOp6eoowXkAujNLiR()
-        print("请求头: \(biHmuVi1B21WPGO.allHTTPHeaderFields ?? [:])")
+        
         
         do {
             let d7hTYfwIR = try JSONEncoder().encode(lCPuY6S9Ov185igRRdGb8fQizbjuqw)
@@ -87,8 +87,7 @@ final class WOKmjUjM {
             }
             
             let o2HZU0mJ = nEa4KCzHwxluWISVzOXqVwukQ9.tYwP1zF6sM8vR2kq() // 你的加密方法
-            print("加密数据")
-            print(o2HZU0mJ)
+          
             biHmuVi1B21WPGO.httpBody = o2HZU0mJ.data(using: .utf8)
             
         } catch {

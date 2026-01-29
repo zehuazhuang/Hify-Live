@@ -18,6 +18,12 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     
     //是否登录用户
     @State private var istYGRYN4Q : Bool = false
+    
+    @State private var ncpingeRoom: [String: Any] = [:] //房间数据
+    
+    var  isFvNNQZQ : Bool {
+        return  usQ8Y7Z6Inf.bool("followed")
+    }
    
     
     var body: some View {
@@ -175,7 +181,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         RoundedRectangle(cornerRadius: 0)
                                             .fill(Color.white.opacity(0.4))
                                             .frame(width: 1, height: 13)
-                                        AkKkhrVKXgV7pdSjWNgPrAjgIK()
+                                        CountryFlagView(countryCode: usQ8Y7Z6Inf.string("countryId"))
+                                       
                                         RoundedRectangle(cornerRadius: 0)
                                             .fill(Color.white.opacity(0.4))
                                             .frame(width: 1, height: 13)
@@ -248,16 +255,84 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         )
                                         .frame(height: 2)
                                     //Room 标题
-                                    HStack(spacing: 0) {
-                                        Text("C6fgnSMnCKhJZmWhV/8+GA==".bFHEatcgE4zzU9TCfDonsu())
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 16,
-                                                weight: .medium
-                                            )
-                                        Spacer()
-                                    }.padding(.horizontal,16)
+                                   
                                     //lisr room 布局
-                                    
+                                    if ncpingeRoom.int("privateCallOpen") == 1  {
+                                        VStack(spacing:16){
+                                            HStack(spacing: 0) {
+                                                Text("C6fgnSMnCKhJZmWhV/8+GA==".bFHEatcgE4zzU9TCfDonsu())
+                                                    .g0LIIcoZQsOjyND9(
+                                                        size: 16,
+                                                        weight: .medium
+                                                    )
+                                                Spacer()
+                                            }
+                                            ZStack{
+                                                ZJ7h766mz(tMmEWWlfgUag: "qs8Qx4YV7Z9brb")
+                                                                   .frame(height: 95)
+                                                                   .frame(maxWidth: .infinity)
+                                                HStack(spacing:8){
+                                                    ZStack{
+                                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: ncpingeRoom["icon"])
+                                                                           .frame(width: 148, height: 87)
+                                                                           .cornerRadius(8)
+                  
+                                                    }.frame(width: 148, height: 87)
+                                                    VStack(alignment:.leading,spacing: 0){
+                                                        Spacer().frame(height: 11)
+                                                        Text(ncpingeRoom.string("nickname"))
+                                                                        .g0LIIcoZQsOjyND9(
+                                                                            size: 16,
+                                                                            weight: .semibold
+                                                                        )
+                                                        
+                                                        Spacer().frame(height: 8)
+                                                            Text(ncpingeRoom.string("liveDescribe"))
+                                                                            .g0LIIcoZQsOjyND9(
+                                                                                size: 14,
+                                                                                weight: .regular,
+                                                                                color: .white.opacity(0.6)
+                                                                            )
+                                                        
+                                                       Spacer()
+                                                        HStack{
+                                                            Spacer()
+                                                            HStack(spacing:0){
+                                                                
+                                                                ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
+                                                                    .frame(width: 20, height: 20)
+                                                                Text("\(ncpingeRoom["joinNum"] as? Int ?? 0)")
+                                                                                .g0LIIcoZQsOjyND9(
+                                                                                    size: 16,
+                                                                                    weight: .regular,
+                                                                                    color: .white.opacity(0.6)
+                                                                                )
+                                                            }.frame(width: 69,height: 25)
+                                                            
+                                                            .background(Color.white.opacity(0.15))
+                                                            .clipShape(s7q2ZC1S9A4tM8L3(radius: 12, corners: [.topLeft,.bottomRight]))
+                                                            .padding(.trailing,3)
+                                                            .padding(.bottom,3)
+                                                        }
+                                                    }
+                                                }.padding(.leading,4)
+                                            }.frame(height: 95)
+                                                .frame(maxWidth: .infinity)
+                                                .onTapGesture {
+                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
+                                                        ftgPSmzMVe.dismissScreen()
+                                                        return
+                                                    }
+                                                    
+                                                    ftgPSmzMVe.showScreen(.fullScreenCover) { _ in
+                                                        WUjfoptOKs8pZfhSAH0duplG {
+                                                            LE0xQZ6Y7WC8iv(channelName: "", localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                           zA9Y4W6LUid: UInt(areoloaUid))
+                                                        }
+                                                    }
+                                                }
+                                        }.padding(.horizontal,16)
+                                    }
                                     //lisr room 布局 end
                                 }
                                 //folling vstack end
@@ -269,19 +344,31 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             VStack{
                 HStack(spacing: 0) {
                     Button{
-                        print("点击返回")
+                     
                         ftgPSmzMVe.dismissScreen()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
-                            .padding(10)
+                            .padding(.horizontal,10)
+                            .padding(.bottom,10)
                     }
                     .contentShape(Rectangle())
                         .padding(.leading,6)
                         
                                 .zIndex(1)
                     Spacer()
-                }
+                    // 右侧按钮
+                    if istYGRYN4Q {
+                        Button {
+                         
+                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("wasdsadsadsadqwqwdsda")
+                        } label: {
+                            ZJ7h766mz(tMmEWWlfgUag: "sJ6642gr1JlL1jH")
+                                .frame(width: 24, height: 24)
+                        }
+                    }
+             
+                }.padding(.trailing,16)
                 Spacer()
             }
             //vstack 关注、聊天
@@ -289,17 +376,19 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                 VStack{
                     Spacer()
                     HStack(spacing:9){
-                        let isFvNNQZQ = usQ8Y7Z6Inf.bool("followed")
+                        
+                        
                         Button(action: {
-    //                        Task{
-    //                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-    //                            let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
-    //                            if(isA2C6WEL){
-    //                                haptempLoad()
-    //
-    //                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-    //                            }
-    //                        }
+                            print(isFvNNQZQ)
+                            Task{
+                                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: areoloaUid, iA6M7W9EYL0: isFvNNQZQ ? 2 : 1)
+                                if(isA2C6WEL){
+                                    pstjumLoad()
+    
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                }
+                            }
                         }) {
                             HStack(spacing:4){
                                 if !isFvNNQZQ {
@@ -345,21 +434,18 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                             ZJ7h766mz(tMmEWWlfgUag: "op2sjDLkevlIcN")
                                                .frame(width: 242, height: 46)
                             HStack(spacing:8){
-                                
                                 ZJ7h766mz(tMmEWWlfgUag: "gdYHiAuKo6l")
                                                    .frame(width: 16, height: 16)
-                                Text("Chat")
-                                                .g0LIIcoZQsOjyND9(
-                                                    size: 18,
-                                                    weight: .semibold
-                                                )
+                                Text("Chat").g0LIIcoZQsOjyND9(size: 18,weight: .semibold)
                             }
                             ZJ7h766mz(tMmEWWlfgUag: "xfn63IIKmIhi")
                                                .frame(width: 50, height: 26)
                                                .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
                                                .offset(y: -28)
-                            
                         }.frame(width: 242, height: 46)
+                            .onTapGesture {
+                                openP2PChatScreen(userId: usQ8Y7Z6Inf.string("yxAccid"), avatarUrl: usQ8Y7Z6Inf.string("icon"), using: ftgPSmzMVe)
+                            }
                     }.padding(.horizontal,16)
                 }
             }
@@ -378,15 +464,37 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
 //            }
 //        }
         .onAppear{
+            
             Task {
-                           if let info = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7E4C9A0xWML6xL(
-                               wTEEJpZz0iGVK: areoloaUid
-                           ) {
-                               usQ8Y7Z6Inf = info
-                               istYGRYN4Q =  usQ8Y7Z6Inf.int("userId") != areoloaUid
-                           }
+                istYGRYN4Q =  areoloaUid != IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")
+                async let room = lyrijivecSearch(surlibateUid: areoloaUid)
+                    
+
+                    do {
+                        ncpingeRoom = try await room
+                        
+                        pstjumLoad()
+                    } catch {
+                        print(error)
+                    }
+
+                   
             }
+            
+          
         }
+    }
+    func pstjumLoad(){
+        Task{
+            async let info = T0viKk.wSremNeLspPkPRHBJnlVCs5w
+                .ngI7E4C9A0xWML6xL(wTEEJpZz0iGVK: areoloaUid)
+            usQ8Y7Z6Inf = await info
+               
+              
+                print(usQ8Y7Z6Inf)
+           
+        }
+     
     }
 }
 
@@ -539,66 +647,66 @@ class T0viKk: ObservableObject {
     static let wSremNeLspPkPRHBJnlVCs5w = T0viKk()
     
     // 获取用户信息（yxAccid）
-    func ngI7Y2A8C4E0ZQ9W6xL( wTEEJpZz0iGVK: String) async -> [String:Any]? {
+    func ngI7Y2A8C4E0ZQ9W6xL( wTEEJpZz0iGVK: String) async -> [String:Any] {
         do {
             let bSn9YS: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6pl/MNKQk2tbd1jWycWL1eQ=".bFHEatcgE4zzU9TCfDonsu(),
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: gStC2A9Z6Y8Qx0E7W4ML( sGOM5LYyLVsTQ1mHEFJD1CJtq: wTEEJpZz0iGVK)
             )
-            print(bSn9YS.code)
+           
             if bSn9YS.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 // 成功
                 guard
                     let wvhfld = bSn9YS.result,
                     !wvhfld.isEmpty
                 else {
-                    return nil
+                    return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
-                print(atXeZc0tWzWWpIN8DRa5DB)
+             
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH
                 } else {
-                    return nil
+                    return [:]
                 }
             } else {
-                return nil
+                return [:]
             }
         } catch {
             print("Sph7QjtQ9wyBx41H5XhztLHkavBN9bomvy8v5zW0vxk=".bFHEatcgE4zzU9TCfDonsu(), error)
-            return nil
+            return [:]
         }
     }
     
     // 获取用户信息（userId）
-    func ngI7E4C9A0xWML6xL( wTEEJpZz0iGVK: Int) async -> [String:Any]? {
+    func ngI7E4C9A0xWML6xL( wTEEJpZz0iGVK: Int) async -> [String:Any] {
         do {
             let bSn9YS: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6pl/MNKQk2tbd1jWycWL1eQ=".bFHEatcgE4zzU9TCfDonsu(),
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: g8C6xW7A2userId( uC8Z4Y7WxELId: wTEEJpZz0iGVK)
             )
-            print(bSn9YS.code)
+          
             if bSn9YS.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 // 成功
                 guard
                     let wvhfld = bSn9YS.result,
                     !wvhfld.isEmpty
                 else {
-                    return nil
+                    return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
-                print(atXeZc0tWzWWpIN8DRa5DB)
+               
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH
                 } else {
-                    return nil
+                    return [:]
                 }
             } else {
-                return nil
+                return [:]
             }
         } catch {
             print("Sph7QjtQ9wyBx41H5XhztLHkavBN9bomvy8v5zW0vxk=".bFHEatcgE4zzU9TCfDonsu(), error)
-            return nil
+            return [:]
         }
     }
 }

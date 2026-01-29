@@ -209,43 +209,64 @@ class ChatMessage: Identifiable, ObservableObject {
         func sendImage(_ image: UIImage) {
             guard let data = image.jpegData(compressionQuality: 0.8) else { return }
 
-            let imageObject = NIMImageObject(data: data, extension: "jpg")
-            let message = NIMMessage()
-            message.messageObject = imageObject
-
-            // 占位消息，保存本地 image
+            // 占位消息对象
             let placeholderMsg = ChatMessage(
-                messageId: message.messageId,
+                messageId: UUID().uuidString, // 可以用 UUID
                 content: .image(url: nil, size: image.size),
                 isOutgoingMsg: true,
-                timestamp: message.timestamp,
+                timestamp: Date().timeIntervalSince1970,
                 avatarURL: myAvatarURL,
                 sendStatus: .sending,
-                localImage: image // 🔥 本地显示
+                localImage: image
             )
 
+            // 先显示占位消息
             Task { @MainActor in
                 self.messages.append(placeholderMsg)
                 self.updateRecentSession(placeholderMsg)
             }
 
-            NIMSDK.shared().chatManager.send(message, to: session) { error in
-                Task { @MainActor in
-                    let status: SendStatus
-                    if let err = error as NSError? {
-                        switch err.code {
-                        case 801: status = .failed(reason: .sensitive)
-                        case NSURLErrorNotConnectedToInternet: status = .failed(reason: .network)
-                        default: status = .failed(reason: .unknown)
+            // 上传 + 鉴黄 + 发送消息
+            Task {
+                do {
+                    // 1️⃣ 上传并鉴黄
+                    guard let url = try await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(image) else {
+                        print("❌ 上传失败或图片不合规")
+                        Task { @MainActor in
+                            placeholderMsg.sendStatus = .failed(reason: .sensitive)
+                            placeholderMsg.objectWillChange.send()
                         }
-                    } else {
-                        status = .success
+                        return
                     }
 
-                    placeholderMsg.sendStatus = status
+                    print("✅ 图片通过鉴黄，URL:", url)
 
-                    // 🔥 成功时刷新 cell
-                    placeholderMsg.objectWillChange.send()
+                    // 2️⃣ 构建 NIMMessage
+                    let imageObject = NIMImageObject(data: data, extension: "jpg")
+                    let message = NIMMessage()
+                    message.messageObject = imageObject
+
+                    // 3️⃣ 异步发送消息
+                    do {
+                        try await NIMSDK.shared().chatManager.send(message, to: session)
+                        Task { @MainActor in
+                            placeholderMsg.sendStatus = .success
+                            placeholderMsg.objectWillChange.send()
+                        }
+                    } catch {
+                        Task { @MainActor in
+                            placeholderMsg.sendStatus = .failed(reason: .unknown)
+                            placeholderMsg.objectWillChange.send()
+                        }
+                        print("❌ 消息发送失败:", error)
+                    }
+
+                } catch {
+                    Task { @MainActor in
+                        placeholderMsg.sendStatus = .failed(reason: .unknown)
+                        placeholderMsg.objectWillChange.send()
+                    }
+                    print("❌ 上传或鉴黄失败:", error)
                 }
             }
         }

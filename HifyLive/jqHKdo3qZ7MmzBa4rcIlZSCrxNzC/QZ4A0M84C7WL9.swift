@@ -4,12 +4,22 @@ import SwiftfulRouting
 import NIMSDK
 
 struct QZ4A0M84C7WL9: View {
-    let uZQx7MId : Int //用户id
+    let sBb3SaType : Int //0 userId 1 yxAccid
+    let uZQx7MId : Int //用户userId
+    let hN9EY2BId : String //用户yxAccid
     @Binding var isW9YQ6C8L: Bool
     @State private var isZ7E4xA0M2 = false
     @State private var info9M0Q2A6: [String: Any] = [:] //用户数据
     @State private var is7A0Y4W6ECL: Int = -1 //是否关注
     @Environment(\.router) var rM9Z8S7A1ql
+    
+    var exFkPlIB : Bool { //是否当前用户
+        if (sBb3SaType == 0){
+            return uZQx7MId == IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")
+        }else{
+            return hN9EY2BId == IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid")
+        }
+    }
     
     var body: some View {
         ZStack{
@@ -20,18 +30,24 @@ struct QZ4A0M84C7WL9: View {
                 }
             VStack{
                 Spacer()
-                ZStack{
-                    ZJ7h766mz(tMmEWWlfgUag: "TW9o1s4228")
-                                    .frame(height: 305)
-                                    .frame(maxWidth: .infinity)
-                    ZJ7h766mz(tMmEWWlfgUag: "jyC6M4Z0A8Q7E2")
-                                    .frame(width: 57, height: 33)
-                                    .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
-                                    .padding(.top,10)
-                                    .padding(.trailing,16)
-                }.frame(height: 305)
-                    .frame(maxWidth: .infinity)
-                    .scaleEffect(1.01)
+                
+                    ZStack{
+                        ZJ7h766mz(tMmEWWlfgUag: "TW9o1s4228")
+                                        .frame(height: 305)
+                                        .frame(maxWidth: .infinity)
+                        if  !exFkPlIB  {
+                            ZJ7h766mz(tMmEWWlfgUag: "jyC6M4Z0A8Q7E2")
+                                            .frame(width: 57, height: 33)
+                                            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
+                                            .padding(.top,10)
+                                            .padding(.trailing,16)
+                        }
+                        
+                    }.frame(height: 305)
+                        .frame(maxWidth: .infinity)
+                        .scaleEffect(1.01)
+                
+                
                                 
             }.ignoresSafeArea()
                 .offset(y: isZ7E4xA0M2 ? 0 : 300)
@@ -44,6 +60,16 @@ struct QZ4A0M84C7WL9: View {
                     rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: info9M0Q2A6.string("icon"))
                         .frame(width: 80,height: 80)
                         .clipShape(Circle())
+                        .onTapGesture {
+                            isW9YQ6C8L = false
+                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                WUjfoptOKs8pZfhSAH0duplG {
+                                    zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: info9M0Q2A6.int("userId"))
+                                }
+                            }
+                        }
+                    
+                    
                 }.frame(width: 88, height: 88)
                 Spacer().frame(height: 8)
                 Text(info9M0Q2A6.string("nickname"))
@@ -67,7 +93,7 @@ struct QZ4A0M84C7WL9: View {
                                     )
                                     .padding(.horizontal,4)
                     //改成国家图标
-                    ZJ7h766mz(tMmEWWlfgUag: "aSUqulEy").frame(width: 16, height: 16)
+                    CountryFlagView(countryCode: info9M0Q2A6.string("countryId"))
                     Text("|")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
@@ -127,87 +153,75 @@ struct QZ4A0M84C7WL9: View {
                     Spacer()
                 }
                 Spacer().frame(height: 28)
-                HStack{
-                    Spacer()
-                    HStack(spacing:16){
-                        
-                        ZJ7h766mz(tMmEWWlfgUag: "li9QY0x2EWL")
-                                           .frame(width: 46, height: 46)
-                                           .onTapGesture {
-                                               let targetUserId = info9M0Q2A6.string("yxAccid")
-                                                      let session = NIMSession(targetUserId, type: .P2P)
-
-                                                      // 1️⃣ 检查缓存
-                                                      if let cached = RecentSessionStore.shared.cache.first(where: { $0.sessionId == targetUserId }) {
-                                                          openChat(session: cached.session, avatarUrl: cached.avatarUrl)
-                                                      }
-                                                      // 2️⃣ 检查 SDK 本地是否已有会话
-                                                      else if let _ = NIMSDK.shared().conversationManager.recentSession(by: session) {
-                                                          RecentSessionStore.shared.fetchRecentSessions()
-                                                          openChat(session: session, avatarUrl: info9M0Q2A6.string("icon"))
-                                                      }
-                                                      // 3️⃣ 没有会话就创建
-                                                      else {
-                                                          NIMSDK.shared().conversationManager.addEmptyRecentSession(by: session)
-                                                          RecentSessionStore.shared.fetchRecentSessions()
-                                                          openChat(session: session, avatarUrl: info9M0Q2A6.string("icon"))
-                                                      }
-                                           }
-                        
-                        Button(action: {
-                            Task{
-                                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                                let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
-                                if(isA2C6WEL){
-                                    haptempLoad()
-                             
-                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                if  !exFkPlIB  {
+                    HStack{
+                        Spacer()
+                        HStack(spacing:16){
+                            
+                            ZJ7h766mz(tMmEWWlfgUag: "li9QY0x2EWL")
+                                               .frame(width: 46, height: 46)
+                                               .onTapGesture {
+                                                   openP2PChatScreen(userId: info9M0Q2A6.string("yxAccid"), avatarUrl: info9M0Q2A6.string("icon"), using: rM9Z8S7A1ql)
+                                               }
+                            
+                            Button(action: {
+                                Task{
+                                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
+                                    if(isA2C6WEL){
+                                        haptempLoad()
+                                 
+                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    }
                                 }
+                            }) {
+                                HStack(spacing:4){
+                                    if is7A0Y4W6ECL == 1 {
+                                        ZJ7h766mz(tMmEWWlfgUag: "q0M9xW2C7AL")
+                                            .frame(width: 16, height: 16)
+                                    }
+                                    
+                                    Text(is7A0Y4W6ECL == 1 ? "Follow" : "Following").g0LIIcoZQsOjyND9(
+                                        size: 14,
+                                        weight: .medium,
+                                        color: .white.opacity(0.8)
+                                    )
                             }
-                        }) {
-                            HStack(spacing:4){
-                                if is7A0Y4W6ECL == 1 {
-                                    ZJ7h766mz(tMmEWWlfgUag: "q0M9xW2C7AL")
-                                        .frame(width: 16, height: 16)
-                                }
-                                
-                                Text(is7A0Y4W6ECL == 1 ? "Follow" : "Following").g0LIIcoZQsOjyND9(
-                                    size: 14,
-                                    weight: .medium,
-                                    color: .white.opacity(0.8)
-                                )
+                            }.frame(width: 227,height: 46)
+                                            .background(
+                                                
+                                                LinearGradient(
+                                                    colors: [
+                                                        is7A0Y4W6ECL == 1 ?
+                                                        Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72) :
+                                                            Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.32)
+                                                        ,is7A0Y4W6ECL == 1 ?
+                                                        Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,opacity: 0.1) :
+                                                            Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.1)
+                                                    ], startPoint: .leading, endPoint: .trailing)
+                                            )
+                                            .cornerRadius(325)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 325)
+                                                    .stroke(
+                                                        LinearGradient(
+                                                            colors: [
+                                                                Color(red: 187 / 255, green: 68 / 255, blue: 219 / 255),
+                                                                Color(red: 43 / 255, green: 93 / 255, blue: 117 / 255)
+                                                            ],
+                                                            startPoint: .leading,
+                                                            endPoint: .trailing
+                                                        ),
+                                                        lineWidth:is7A0Y4W6ECL == 1 ? 1 : 0
+                                                    )
+                                            )
                         }
-                        }.frame(width: 227,height: 46)
-                                        .background(
-                                            
-                                            LinearGradient(
-                                                colors: [
-                                                    is7A0Y4W6ECL == 1 ?
-                                                    Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72) :
-                                                        Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.32)
-                                                    ,is7A0Y4W6ECL == 1 ?
-                                                    Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,opacity: 0.1) :
-                                                        Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.1)
-                                                ], startPoint: .leading, endPoint: .trailing)
-                                        )
-                                        .cornerRadius(325)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 325)
-                                                .stroke(
-                                                    LinearGradient(
-                                                        colors: [
-                                                            Color(red: 187 / 255, green: 68 / 255, blue: 219 / 255),
-                                                            Color(red: 43 / 255, green: 93 / 255, blue: 117 / 255)
-                                                        ],
-                                                        startPoint: .leading,
-                                                        endPoint: .trailing
-                                                    ),
-                                                    lineWidth:is7A0Y4W6ECL == 1 ? 1 : 0
-                                                )
-                                        )
+                        Spacer()
                     }
-                    Spacer()
+                }else{
+                    Spacer().frame(height: 46)
                 }
+                
                 
                 Spacer().frame(height: 8)
             }.offset(y: isZ7E4xA0M2 ? 0 : 300)
@@ -227,23 +241,20 @@ struct QZ4A0M84C7WL9: View {
     //加载用户数据
     func haptempLoad(){
         Task {
-                       if let info = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7E4C9A0xWML6xL(
-                           wTEEJpZz0iGVK: uZQx7MId
-                       ) {
-                           info9M0Q2A6 = info
+            
+            if (sBb3SaType == 0){
+                info9M0Q2A6 = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7E4C9A0xWML6xL(wTEEJpZz0iGVK: uZQx7MId)
+            }else{
+                info9M0Q2A6 = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(wTEEJpZz0iGVK: hN9EY2BId)
+            }
+                     
+                         
                            withAnimation{
                                is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
                            }
                         
-                       }
+                       
         }
     }
-    //跳转聊天
-    func openChat(session: NIMSession, avatarUrl: String) {
-        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-            WUjfoptOKs8pZfhSAH0duplG {
-                CgZU7mTgY46l(session: session, opponentAvatarURL: avatarUrl)
-            }
-        }
-    }
+ 
 }

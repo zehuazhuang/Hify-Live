@@ -15,6 +15,10 @@ class LiveViewController: UIViewController {
     private var hasJoinedChannel = false //用来更新channelName
     private var hostHasStarted = false //是否开播
     private var waitHostTimer: DispatchWorkItem? //等待开播
+    
+    var currentChannelId: String {
+        return channelName
+    }
 
     init(channelName: String, localUid: UInt) {
         self.channelName = channelName
@@ -22,6 +26,21 @@ class LiveViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
        
+    }
+    
+    private func leaveChannelIfNeeded() {
+        waitHostTimer?.cancel()
+        waitHostTimer = nil
+
+        if hasJoinedChannel {
+            agoraKit?.leaveChannel(nil)
+            hasJoinedChannel = false
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        leaveChannelIfNeeded()
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -36,7 +55,7 @@ class LiveViewController: UIViewController {
     func updateChannelIfNeeded(_ newChannel: String) {
         guard !newChannel.isEmpty else { return }
         guard newChannel != channelName else { return }
-        guard let engine = agoraKit else {
+        guard let _ = agoraKit else {
             // SDK 还没初始化，先存值
             channelName = newChannel
             return
@@ -44,14 +63,27 @@ class LiveViewController: UIViewController {
 
         print("🔄 channelName 更新:", newChannel)
 
+        // 先更新 channelName
         channelName = newChannel
 
-        if hasJoinedChannel {
-            engine.leaveChannel(nil)
-            hasJoinedChannel = false
-        }
+        // 异步离开旧频道，再 join 新频道
+        leaveChannelAndJoinAgainIfNeeded()
+    }
+    
+    private func leaveChannelAndJoinAgainIfNeeded() {
+        guard let engine = agoraKit else { return }
 
-        joinChannel()
+        waitHostTimer?.cancel()
+        waitHostTimer = nil
+
+        if hasJoinedChannel {
+            engine.leaveChannel { [weak self] _ in
+                self?.hasJoinedChannel = false
+                self?.joinChannel()
+            }
+        } else {
+            joinChannel()
+        }
     }
     
     override func viewDidLoad() {
@@ -108,13 +140,15 @@ class LiveViewController: UIViewController {
         // 加入频道
         joinChannel()
     }
-
+    
     private func joinChannel() {
         guard !channelName.isEmpty else {
             print("⚠️ channelName 为空，暂不 join")
             return
         }
         guard let token = token, let engine = agoraKit else { return }
+        
+        remoteVideoView.subviews.forEach { $0.removeFromSuperview() }
 
         print("🚀 Join channel:", channelName)
 
@@ -125,6 +159,7 @@ class LiveViewController: UIViewController {
             uid: localUid
         ) { [weak self] channel, uid, elapsed in
             print("🎉 Join success:", channel)
+            print(uid)
             self?.hasJoinedChannel = true
             
             //是否开播
@@ -145,11 +180,11 @@ class LiveViewController: UIViewController {
         }
 
         waitHostTimer = task
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: task)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: task)
     }
     
     deinit {
-        AgoraRtcEngineKit.destroy()
+        
     }
 }
 
@@ -169,6 +204,8 @@ extension LiveViewController: AgoraRtcEngineDelegate {
                 self.loadingView.stopAnimating()
                 self.loadingView.removeFromSuperview()
             }
+        
+        LiveSessionManager.shared.currentChannelUserId = UInt(uid)
     }
     func rtcEngine(
         _ engine: AgoraRtcEngineKit,
@@ -214,4 +251,5 @@ extension Notification.Name {
     //主播离开、关播
     static let liveEnded = Notification.Name("liveEndedNotification")
 }
+
 

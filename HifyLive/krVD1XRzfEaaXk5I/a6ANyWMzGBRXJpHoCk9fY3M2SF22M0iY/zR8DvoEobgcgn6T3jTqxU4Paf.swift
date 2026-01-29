@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import NIMSDK
 
 
 //直播数据接口
@@ -161,7 +161,7 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
     
     
     
@@ -228,7 +228,7 @@ func getRtctoken() async throws -> [String: Any] {
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
     
     // 3️⃣ 发送请求
     let (data, response) = try await URLSession.shared.data(for: request)
@@ -284,7 +284,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
         forHTTPHeaderField: "loginToken"
     )
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("1231243252523", forHTTPHeaderField: "deviceNo")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
 
     let body: [String: Any] = [
         "anchorId": pmpresoZUid,
@@ -355,8 +355,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
         "followUserId": uY2M8A4E7C0xL,
         "followType": iA6M7W9EYL0
     ]
-    print("------body------")
-    print(body)
+    
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
@@ -413,15 +412,14 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
     request.httpMethod = "POST"
     request.setValue("11111111", forHTTPHeaderField: "appId")
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
-    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    request.setValue("", forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    request.setValue("", forHTTPHeaderField: "deviceNo")
     
     let body: [String: Any] = [
         "searchValue": mosh4E7CxL,
     ]
-    print("------body------")
-    print(body)
+    
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
@@ -447,8 +445,168 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
         return false
     }
     print(jsonObject)
+    
+    if (code != "0000"){
+        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("p406yIqFNP66yyym3aest2AnEw1t8jrp/TIHdHnoGUYmdgvqL5OeFo9H2bo20ZiU")
+    }
   
     
     // ✅ 返回 true 如果 code 等于 "0000"
     return code == "0000"
+}
+
+
+//根据Uid搜索对应room
+@MainActor
+func lyrijivecSearch(surlibateUid: Int) async throws -> [String: Any] {
+    guard let url = URL(string: "https://testaes.cphub.link/api/agora/live/newLive/getRoomByUserId") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("11111111", forHTTPHeaderField: "appId")
+    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    
+    
+    let body: [String: Any] = [
+        "userId": surlibateUid,
+    ]
+
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+    
+    let (data, response) = try await URLSession.shared.data(for: request)
+    
+    if let httpResponse = response as? HTTPURLResponse {
+        print("HTTP Status Code:", httpResponse.statusCode)
+    }
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+  
+    // 解密 result
+    guard let resultStr = dict["result"] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return [:]
+    }
+    
+
+    if let code = dict["code"] as? String, code == "0000" {
+        // 将 JSON 数据转换为数组
+        let resultJson = try JSONSerialization.jsonObject(with: resultData, options: [])
+       
+
+        guard let resultDict = resultJson as? [String: Any] else {
+            throw NSError(
+                domain: "SearchAPI",
+                code: -2,
+                userInfo: [NSLocalizedDescriptionKey: "result 不是 Dictionary"]
+            )
+        }
+     
+        return resultDict
+    } else {
+        return [:]
+    }
+}
+
+
+//可改
+@MainActor
+func Search() async throws -> [String: Any] {
+    guard let url = URL(string: "https://api.cphub.link/api/index/v2/getDf") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("d280996788cc091911111111", forHTTPHeaderField: "deviceId")
+    request.setValue("1.7.4", forHTTPHeaderField: "appVersion")
+    request.setValue("11111111", forHTTPHeaderField: "appId")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    
+    
+    let body: [String: Any] = [
+        "deviceId": "d280996788cc091911111111",
+        "version": "1.7.4",
+        "keyboards": ["en_US"],
+        "osType": "AOS",
+        "channel": "GOOGLE",
+        "ajResult": #"{ "tracker_token": "1ny4hb6f", "tracker_name": "Organic1", "network": "Organic", "engagement_time": "]" }"#
+    ]
+    
+        print("----URL----")
+        print(url)
+    
+        if let headers = request.allHTTPHeaderFields {
+            print("---请求头---")
+            for (key, value) in headers {
+                print("\(key): \(value)")
+            }
+        }
+    print("----body----")
+    print(body)
+    
+
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+    
+    let (data, response) = try await URLSession.shared.data(for: request)
+    
+    if let httpResponse = response as? HTTPURLResponse {
+        print("HTTP Status Code:", httpResponse.statusCode)
+    }
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    print("----dict----")
+   print(dict)
+  
+    // 解密 result
+    guard let resultStr = dict["result"] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return [:]
+    }
+    
+
+    if let code = dict["code"] as? String, code == "0000" {
+        // 将 JSON 数据转换为数组
+        let resultJson = try JSONSerialization.jsonObject(with: resultData, options: [])
+        print("----返回数据----")
+       print(resultJson)
+
+        guard let resultDict = resultJson as? [String: Any] else {
+            throw NSError(
+                domain: "SearchAPI",
+                code: -2,
+                userInfo: [NSLocalizedDescriptionKey: "result 不是 Dictionary"]
+            )
+        }
+     
+        return resultDict
+    } else {
+        return [:]
+    }
 }

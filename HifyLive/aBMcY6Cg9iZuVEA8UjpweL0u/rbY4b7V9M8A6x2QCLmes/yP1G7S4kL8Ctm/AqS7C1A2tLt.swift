@@ -2,11 +2,12 @@
 
 import SwiftUI
 struct AqS7C1A2tLt: View {
+    let mdFf7YData: [String: Any]
     var body: some View {
         VStack(spacing:4){
             ZStack{
                 aW6MZ4xQ7L0Ez().frame(width: 56, height: 56)
-                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: "https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
+                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mdFf7YData.string("icon"))
                     .frame(width: 52,height: 52)
                     .clipShape(Circle())
                 ZStack {
@@ -23,7 +24,7 @@ struct AqS7C1A2tLt: View {
                                 .cornerRadius(4)
                                 .frame(maxHeight: .infinity,alignment:.bottom)
             }.frame(width: 56, height: 56)
-            Text("Madrigaasdasd").g0LIIcoZQsOjyND9(
+            Text(mdFf7YData.string("nickname")).g0LIIcoZQsOjyND9(
                                 size: 14,
                                 weight: .regular,
                                 color: .white.opacity(0.6))

@@ -198,7 +198,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             }
                                             Spacer()
                                             HStack(spacing: 8) {
-                                                AkKkhrVKXgV7pdSjWNgPrAjgIK()
+                                                CountryFlagView(countryCode: fFCUrf3NXxibojTjOBF2N.iBmPfFGfxu5JV7Aii7.string("countryId"))
                                                 fjCgSDoOldKaA()
                                             }
                                             .padding(.trailing, 28)
@@ -331,7 +331,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                         .onTapGesture {
                             rJkszCycI4OgT2AtFSxiecEBil = false
                         }
-                    bviVhbptEhW0H38XWrfeY(bfm778: tWao3BI) { sfMSOkfzN6H8TzIbAbM8VI4 in
+                    BirthdayBottomSheet(isPresented: $rJkszCycI4OgT2AtFSxiecEBil, initialDate: tWao3BI) { sfMSOkfzN6H8TzIbAbM8VI4 in
                         rJkszCycI4OgT2AtFSxiecEBil = false
                         print(sfMSOkfzN6H8TzIbAbM8VI4)
                         Task {

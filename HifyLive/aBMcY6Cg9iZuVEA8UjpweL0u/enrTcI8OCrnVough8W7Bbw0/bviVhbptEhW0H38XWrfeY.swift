@@ -1,224 +1,276 @@
 import SwiftUI
 import UIKit
-
+import Combine
 //生日选择底部弹框
-struct bviVhbptEhW0H38XWrfeY: View {
+struct BirthdayBottomSheet: View {
+    @Binding var isPresented: Bool
+    var onDateSelected: (Date) -> Void
+    @State private var isShown = false
     
-    var ceWa39zGt: (Date) -> Void
+    // ⚡ 预加载 PickerWrapper
+    @StateObject private var pickerWrapper = PickerWrapperHolder()
     
-    @State private var h00RqGIatisYGH8aaaKHpjbkg143FTlr: Date = Date()
-    
-    init(bfm778: Date, xf0KcA1MrO5QockCp0rQVXhvMjYlb2: @escaping (Date) -> Void) {
-        self.ceWa39zGt = xf0KcA1MrO5QockCp0rQVXhvMjYlb2
-        _h00RqGIatisYGH8aaaKHpjbkg143FTlr = State(initialValue: bfm778)
+    init(isPresented: Binding<Bool>, initialDate: Date, onDateSelected: @escaping (Date) -> Void) {
+        self._isPresented = isPresented
+        self.onDateSelected = onDateSelected
+        // 预初始化 PickerWrapper
+        _pickerWrapper = StateObject(wrappedValue: PickerWrapperHolder(initialDate: initialDate))
     }
     
     var body: some View {
-        ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
-            .frame(maxWidth: .infinity)
-            .frame(height: 371)
-            .overlay {
-                VStack(spacing: 0) {
-                    HStack(spacing: 4) {
-                        ZJ7h766mz(tMmEWWlfgUag: "j1GtPWGpGXrkZWpZEifKWjZWaz2")
-                            .frame(width: 24,height: 24)
-                        Text("vySCbBGonoa5qd8IaXr4Iw==".bFHEatcgE4zzU9TCfDonsu())
-                            .g0LIIcoZQsOjyND9(
-                                size: 18,
-                                weight: .semibold
-                            )
-                        Spacer()
-                    }
-                    .padding(.top,24)
-                    .padding(.leading,16)
-                    Zla06e0o3TBel4XGGVvR3W(cgg7YTFDONqBktWGl2: $h00RqGIatisYGH8aaaKHpjbkg143FTlr)
-                        .frame(height: 238)
-                    Button{
-                        ceWa39zGt(h00RqGIatisYGH8aaaKHpjbkg143FTlr)
-                    } label: {
-                        ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
-                            .frame(width: 262,height: 46)
-                            .overlay(alignment: .center) {
-                                Text("OsfHVPPKKXIHMyiwPxWJ2g==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 18,
-                                        weight: .semibold
-                                    )
+        ZStack {
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
+                .onTapGesture { isPresented = false }
+            
+           
+            VStack {
+                Spacer()
+                ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
+                        .frame(height: 371)
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                            VStack(spacing: 0) {
+                                // 顶部标题
+                                HStack {
+                                    ZJ7h766mz(tMmEWWlfgUag: "j1GtPWGpGXrkZWpZEifKWjZWaz2")
+                                        .frame(width: 24, height: 24)
+                                    Text("vySCbBGonoa5qd8IaXr4Iw==".bFHEatcgE4zzU9TCfDonsu())
+                                        .g0LIIcoZQsOjyND9(size: 18, weight: .semibold)
+                                    Spacer()
+                                }
+                                .padding(.top,24)
+                                .padding(.leading,16)
+                                
+                                // ⚡ Picker
+                                pickerWrapper.wrapper
+                                    .frame(height: 238)
+                                
+                                // 确定按钮
+                                Button {
+                                    onDateSelected(pickerWrapper.selectedDate)
+                                    isPresented = false
+                                } label: {
+                                    ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
+                                        .frame(width: 262,height: 46)
+                                        .overlay {
+                                            Text("OsfHVPPKKXIHMyiwPxWJ2g==".bFHEatcgE4zzU9TCfDonsu())
+                                                .g0LIIcoZQsOjyND9(size: 18, weight: .semibold)
+                                        }
+                                }
+                                .padding(.bottom,37)
                             }
-                    }
-                }
-                .padding(.bottom,37)
+                        )
+                        .clipped() // 避免布局干扰 Picker
+                        .offset(y: isShown ? 0 : 371)
+                        .animation(.easeOut(duration: 0.25), value: isShown)
             }
+        }
+        .onAppear {
+            isShown = true
+        }
+    }
+}
+
+// MARK: - PickerWrapper Holder
+// ⚡ 预加载 UIPickerView VC，避免每次弹框初始化时卡顿
+class PickerWrapperHolder: ObservableObject {
+    @Published var selectedDate: Date
+    
+    // 绑定给 UIPickerView
+    lazy var wrapper: DatePickerWrapper = {
+        DatePickerWrapper(selectedDate: Binding(
+            get: { [weak self] in
+                self?.selectedDate ?? Date()
+            },
+            set: { [weak self] newDate in
+                self?.selectedDate = newDate
+            }
+        ))
+    }()
+    
+    init(initialDate: Date = Date()) {
+        self.selectedDate = initialDate
     }
 }
 
 //选择器封装
-struct Zla06e0o3TBel4XGGVvR3W: UIViewControllerRepresentable {
-    
-    @Binding var cgg7YTFDONqBktWGl2: Date
+// MARK: - UIViewControllerRepresentable
+struct DatePickerWrapper: UIViewControllerRepresentable {
+    @Binding var selectedDate: Date
     
     func makeUIViewController(context: Context) -> AC3yCJzQl8F {
-        let lTsqms = AC3yCJzQl8F()
-        lTsqms.lrmFzWU1E5bNWoZsNJ = cgg7YTFDONqBktWGl2
-        lTsqms.fhCH1a5FKGUuFxRAnEicRFz8u = { lT1GITkl in
+        let pickerVC = AC3yCJzQl8F()
+        pickerVC.initialDate = selectedDate
+        pickerVC.onDateChanged = { newDate in
             DispatchQueue.main.async {
-                cgg7YTFDONqBktWGl2 = lT1GITkl
+                self.selectedDate = newDate
             }
         }
-        return lTsqms
+        return pickerVC
     }
     
-    func updateUIViewController(_ oDg1fBN1H7: AC3yCJzQl8F, context: Context) {
-        // 延迟设置初始日期，避免在 SwiftUI 渲染阶段直接修改状态
-        DispatchQueue.main.async {
-            oDg1fBN1H7.xZPhqS6PdVxIWKPRBbEC9fbNqJnGD(cgg7YTFDONqBktWGl2)
+    func updateUIViewController(_ uiViewController: AC3yCJzQl8F, context: Context) {
+        if uiViewController.initialDate != selectedDate {
+            uiViewController.setDate(selectedDate)
         }
     }
 }
 
 class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var fhCH1a5FKGUuFxRAnEicRFz8u: ((Date) -> Void)?
-    var lrmFzWU1E5bNWoZsNJ: Date = Date()
+    var onDateChanged: ((Date) -> Void)?
+    var initialDate: Date = Date()
     
-    private let ocGsEIjN = UIPickerView()
-    private var uicjQvlJCL7blIt76Bb0Quc: [Int] = []
-    private let xTPuE1HZZgp756: [Int] = Array(1...12)
-    private var zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX: [Int] = []
+    private let picker = UIPickerView()
     
-    private var nGonwL9js3jMdjOItZW: Int = 2004
-    private var ugXlCBp4PNPkGzhwDfqZ: Int = 1
-    private var fYRveOkNm28Yer: Int = 1
+    // 数据源
+    private var years: [Int] = []
+    private let months: [Int] = Array(1...12)
+    private var days: [Int] = []
     
-    private let qzfw5iWZ: CGFloat = 40
-    private let jkL5Nwqw: CGFloat = 22
+    // 当前选中
+    private var selectedYear: Int = 2004
+    private var selectedMonth: Int = 1
+    private var selectedDay: Int = 1
+    
+    private let rowHeight: CGFloat = 40
+    private let fontSize: CGFloat = 22
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-
-        let go5hAFYvsPL5PbYHuRp5car6doup = Calendar.current
-        let iJoEA5uwt02oF7J1383Sz = go5hAFYvsPL5PbYHuRp5car6doup.component(.year, from: Date())
-        let okplg1t6xLJ6L10AS0ru01miV6KmQ = iJoEA5uwt02oF7J1383Sz - 18
-        let jkYLVIZKy0xn9zrAiRmVfYLv6IW = iJoEA5uwt02oF7J1383Sz - 100
-        uicjQvlJCL7blIt76Bb0Quc = Array(jkYLVIZKy0xn9zrAiRmVfYLv6IW...okplg1t6xLJ6L10AS0ru01miV6KmQ)
-
-        let f4Pylo = lrmFzWU1E5bNWoZsNJ
-        nGonwL9js3jMdjOItZW = go5hAFYvsPL5PbYHuRp5car6doup.component(.year, from: f4Pylo)
-        ugXlCBp4PNPkGzhwDfqZ = go5hAFYvsPL5PbYHuRp5car6doup.component(.month, from: f4Pylo)
-        fYRveOkNm28Yer = go5hAFYvsPL5PbYHuRp5car6doup.component(.day, from: f4Pylo)
-        aW9xQvtoesfi235gz()
-
-        ocGsEIjN.dataSource = self
-        ocGsEIjN.delegate = self
-        ocGsEIjN.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(ocGsEIjN)
-
+        
+        setupYearRange()
+        setupInitialDate()
+        setupPicker()
+        updateDays()
+        selectRows(animated: false)
+        notifyDateChange()
+    }
+    
+    // MARK: - 初始化年份范围
+    private func setupYearRange() {
+        let currentYear = Calendar.current.component(.year, from: Date())
+        let maxYear = currentYear - 18
+        let minYear = currentYear - 100
+        years = Array(minYear...maxYear)
+    }
+    
+    private func setupInitialDate() {
+        let calendar = Calendar.current
+        selectedYear = calendar.component(.year, from: initialDate)
+        selectedMonth = calendar.component(.month, from: initialDate)
+        selectedDay = calendar.component(.day, from: initialDate)
+    }
+    
+    // MARK: - UIPickerView
+    private func setupPicker() {
+        picker.dataSource = self
+        picker.delegate = self
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(picker)
+        
         NSLayoutConstraint.activate([
-            ocGsEIjN.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            ocGsEIjN.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            ocGsEIjN.widthAnchor.constraint(equalToConstant: 344),
-            ocGsEIjN.heightAnchor.constraint(equalToConstant: 200)
+            picker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            picker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            picker.widthAnchor.constraint(equalToConstant: 344),
+            picker.heightAnchor.constraint(equalToConstant: 200)
         ])
-
-        // 设置选中行
-        if let n9Uu4NosYdh1MclvgdCu8rjv = uicjQvlJCL7blIt76Bb0Quc.firstIndex(of: nGonwL9js3jMdjOItZW) {
-            ocGsEIjN.selectRow(n9Uu4NosYdh1MclvgdCu8rjv, inComponent: 0, animated: false)
+    }
+    
+    private func updateDays() {
+        var comps = DateComponents()
+        comps.year = selectedYear
+        comps.month = selectedMonth
+        let calendar = Calendar.current
+        if let date = calendar.date(from: comps),
+           let range = calendar.range(of: .day, in: .month, for: date) {
+            days = Array(range)
+        } else {
+            days = Array(1...31)
         }
-        ocGsEIjN.selectRow(ugXlCBp4PNPkGzhwDfqZ - 1, inComponent: 1, animated: false)
-        ocGsEIjN.selectRow(fYRveOkNm28Yer - 1, inComponent: 2, animated: false)
-
-        gGSpHGgSSZkkohJ8qsR()
+        // 确保 day 不超过最大天数
+        selectedDay = min(selectedDay, days.count)
     }
     
-    func xZPhqS6PdVxIWKPRBbEC9fbNqJnGD(_ b5AL3Y7wSS: Date) {
-        let fNjwmk4uBWViWYcCwIK8 = Calendar.current
-        nGonwL9js3jMdjOItZW = fNjwmk4uBWViWYcCwIK8.component(.year, from: b5AL3Y7wSS)
-        ugXlCBp4PNPkGzhwDfqZ = fNjwmk4uBWViWYcCwIK8.component(.month, from: b5AL3Y7wSS)
-        fYRveOkNm28Yer = fNjwmk4uBWViWYcCwIK8.component(.day, from: b5AL3Y7wSS)
-        aW9xQvtoesfi235gz()
-        ocGsEIjN.reloadAllComponents()
-        ocGsEIjN.selectRow(uicjQvlJCL7blIt76Bb0Quc.firstIndex(of: nGonwL9js3jMdjOItZW) ?? 0, inComponent: 0, animated: false)
-        ocGsEIjN.selectRow(ugXlCBp4PNPkGzhwDfqZ - 1, inComponent: 1, animated: false)
-        ocGsEIjN.selectRow(fYRveOkNm28Yer - 1, inComponent: 2, animated: false)
-        gGSpHGgSSZkkohJ8qsR()
+    private func selectRows(animated: Bool) {
+        if let yearIndex = years.firstIndex(of: selectedYear) {
+            picker.selectRow(yearIndex, inComponent: 0, animated: animated)
+        }
+        picker.selectRow(selectedMonth - 1, inComponent: 1, animated: animated)
+        picker.selectRow(selectedDay - 1, inComponent: 2, animated: animated)
     }
     
-    private func gGSpHGgSSZkkohJ8qsR() {
-        var vS3gWtZGzOxyGwpFH9ajbhcL = DateComponents()
-        vS3gWtZGzOxyGwpFH9ajbhcL.year = nGonwL9js3jMdjOItZW
-        vS3gWtZGzOxyGwpFH9ajbhcL.month = ugXlCBp4PNPkGzhwDfqZ
-        vS3gWtZGzOxyGwpFH9ajbhcL.day = fYRveOkNm28Yer
-        if let shWnorkKJmGy53jJW = Calendar.current.date(from: vS3gWtZGzOxyGwpFH9ajbhcL) {
-            fhCH1a5FKGUuFxRAnEicRFz8u?(shWnorkKJmGy53jJW)
+    private func notifyDateChange() {
+        var comps = DateComponents()
+        comps.year = selectedYear
+        comps.month = selectedMonth
+        comps.day = selectedDay
+        if let date = Calendar.current.date(from: comps) {
+            onDateChanged?(date)
         }
     }
     
-    private func aW9xQvtoesfi235gz() {
-        var majJbyAOh0c = DateComponents()
-        majJbyAOh0c.year = nGonwL9js3jMdjOItZW
-        majJbyAOh0c.month = ugXlCBp4PNPkGzhwDfqZ
-        let djz8WzTCHwN02UoGaSU = Calendar.current
-        let ewx4jVG47 = djz8WzTCHwN02UoGaSU.date(from: majJbyAOh0c) ?? Date()
-        let kX2c30BUAIk0BdlET3grvWHHrh7Fch3 = djz8WzTCHwN02UoGaSU.range(of: .day, in: .month, for: ewx4jVG47) ?? 1..<32
-        zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX = Array(kX2c30BUAIk0BdlET3grvWHHrh7Fch3)
+    // MARK: - 外部更新日期
+    func setDate(_ date: Date) {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        if year != selectedYear || month != selectedMonth || day != selectedDay {
+            selectedYear = year
+            selectedMonth = month
+            selectedDay = day
+            updateDays()
+            picker.reloadAllComponents()
+            selectRows(animated: false)
+            notifyDateChange()
+        }
     }
     
     // MARK: - UIPickerViewDataSource
-    func numberOfComponents(in qJwMEHVN5xtYoUlFl4m1: UIPickerView) -> Int { 3 }
-    func pickerView(_ tGmJ4VjedMEBDGnvzLq58Agy6URUkH0G: UIPickerView, numberOfRowsInComponent ewdBuL6YBKUb3YK9KXmGnu8: Int) -> Int {
-        switch ewdBuL6YBKUb3YK9KXmGnu8 {
-        case 0: return uicjQvlJCL7blIt76Bb0Quc.count
-        case 1: return xTPuE1HZZgp756.count
-        case 2: return zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX.count
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 3 }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch component {
+        case 0: return years.count
+        case 1: return months.count
+        case 2: return days.count
         default: return 0
         }
     }
     
-    func pickerView(_ d3AC57TAp56zRqbaBf: UIPickerView, widthForComponent pj8Cl8RKTMsfaR8yUAXXYK: Int) -> CGFloat { 80 }
-    func pickerView(_ h7hdfmkj2z8zJWNi: UIPickerView, rowHeightForComponent e870JvS: Int) -> CGFloat { qzfw5iWZ }
+    // MARK: - UIPickerViewDelegate
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { rowHeight }
     
-    // MARK: - 自定义行视图
-    func pickerView(_ xbO8q3o1vLrJu8KZFl7i: UIPickerView, viewForRow vgVgHRijaLWpgJfuyM: Int, forComponent vYgZfzVudNYJmHAbDaBolc52Ai0: Int, reusing kWr9B2embN8v3QHFw: UIView?) -> UIView {
-        let w58RNgfKoD: UILabel
-        if let c4bOufJ78vGg6 = view as? UILabel {
-            w58RNgfKoD = c4bOufJ78vGg6
-        } else {
-            w58RNgfKoD = UILabel()
-            w58RNgfKoD.textAlignment = .center
-        }
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 80 }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+        label.textColor = .white
         
-        // 设置文本
-        switch vYgZfzVudNYJmHAbDaBolc52Ai0 {
-        case 0: w58RNgfKoD.text = "\(uicjQvlJCL7blIt76Bb0Quc[vgVgHRijaLWpgJfuyM])"
-        case 1: w58RNgfKoD.text = "\(xTPuE1HZZgp756[vgVgHRijaLWpgJfuyM])"
-        case 2: w58RNgfKoD.text = "\(zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX[vgVgHRijaLWpgJfuyM])"
+        switch component {
+        case 0: label.text = "\(years[row])"
+        case 1: label.text = "\(months[row])"
+        case 2: label.text = "\(days[row])"
         default: break
         }
-        
-        w58RNgfKoD.textColor = .white
-        w58RNgfKoD.font = UIFont.systemFont(ofSize: jkL5Nwqw, weight: .semibold)
-        return w58RNgfKoD
+        return label
     }
     
-    func pickerView(_ ldY9ZUEj0yyI1OcpfhZJhCqKKCp: UIPickerView, didSelectRow nPXP9jGaFEHIZnVG2qnkJiyr: Int, inComponent cKIOqse6uqXbuOUtUd1lmE: Int) {
-        switch cKIOqse6uqXbuOUtUd1lmE {
-        case 0: nGonwL9js3jMdjOItZW = uicjQvlJCL7blIt76Bb0Quc[nPXP9jGaFEHIZnVG2qnkJiyr]
-        case 1: ugXlCBp4PNPkGzhwDfqZ = xTPuE1HZZgp756[nPXP9jGaFEHIZnVG2qnkJiyr]
-        case 2: fYRveOkNm28Yer = zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX[nPXP9jGaFEHIZnVG2qnkJiyr]
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch component {
+        case 0: selectedYear = years[row]; updateDays(); picker.reloadComponent(2)
+        case 1: selectedMonth = months[row]; updateDays(); picker.reloadComponent(2)
+        case 2: selectedDay = days[row]
         default: break
         }
-        
-        if cKIOqse6uqXbuOUtUd1lmE == 0 || cKIOqse6uqXbuOUtUd1lmE == 1 {
-            let xHHOi22yV7KsAfQHPDKDnMp = fYRveOkNm28Yer
-            aW9xQvtoesfi235gz()
-            ocGsEIjN.reloadComponent(2)
-            let loHp1l2W = min(xHHOi22yV7KsAfQHPDKDnMp - 1, zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX.count - 1)
-            fYRveOkNm28Yer = zUS1kDPS4EkpEcgDlgvSBxFy6L20o7iX[loHp1l2W]
-            ocGsEIjN.selectRow(loHp1l2W, inComponent: 2, animated: true)
-        }
-        
-        ocGsEIjN.reloadAllComponents() // 刷新字体样式
-        gGSpHGgSSZkkohJ8qsR()
+        // 确保选中天数不超过最大天数
+        if selectedDay > days.count { selectedDay = days.count }
+        selectRows(animated: false)
+        notifyDateChange()
     }
 }

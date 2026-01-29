@@ -7,6 +7,12 @@ struct ChatViewContainer: UIViewControllerRepresentable {
     let userId: Int
     let onMuteTappedCallback: ((UInt, Bool) -> Void)?
     
+    var onUserAvatarTapped: ((String) -> Void)?
+    
+    func didTapAvatar(userId: String) {
+            onUserAvatarTapped?(userId)
+        }
+    
     
     func makeUIViewController(context: Context) -> ChatViewController {
         let vc = ChatViewController()
@@ -16,6 +22,9 @@ struct ChatViewContainer: UIViewControllerRepresentable {
         vc.userId = userId
         vc.onMuteTappedCallback = onMuteTappedCallback
         vc.preferredContentSize = CGSize(width: 0, height: 400)
+        vc.onUserAvatarTapped = { uid in
+                onUserAvatarTapped?(uid)
+            }
         return vc
     }
 
@@ -31,6 +40,7 @@ struct ChatViewContainer: UIViewControllerRepresentable {
 }
 // MARK: - PublicMessage Model
 struct PublicMessage {
+    let userId: String
     let avatarURL: String?
     let nickname: String
     let text: String
@@ -44,17 +54,25 @@ class PublicMessageCell: UITableViewCell {
     private let bubbleView = UIView()
     private let messageLabel = UILabel()
     
+    var onAvatarTapped: (() -> Void)?
+    
     override func layoutSubviews() {
         super.layoutSubviews()
 
         let maxBubbleWidth = contentView.bounds.width - 32 - 8 - 8 - 8
         messageLabel.preferredMaxLayoutWidth = maxBubbleWidth
         super.layoutSubviews()
+        
+        
+    }
+    @objc private func avatarTapped() {
+        onAvatarTapped?()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         messageLabel.attributedText = nil
+        onAvatarTapped = nil
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -66,6 +84,9 @@ class PublicMessageCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(avatarTapped))
+            avatarImageView.addGestureRecognizer(tap)
 
         // 气泡
         bubbleView.layer.cornerRadius = 8

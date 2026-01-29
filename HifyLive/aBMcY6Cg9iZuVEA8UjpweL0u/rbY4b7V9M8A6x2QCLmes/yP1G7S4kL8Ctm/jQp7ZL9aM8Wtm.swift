@@ -78,6 +78,12 @@ struct jQp7ZL9aM8Wtm: View {
                 }
             }
            
+        }.onAppear{
+            Task{
+             let result =   try await Search()
+                print("返回-----")
+                print(result)
+            }
         }
     }
 }

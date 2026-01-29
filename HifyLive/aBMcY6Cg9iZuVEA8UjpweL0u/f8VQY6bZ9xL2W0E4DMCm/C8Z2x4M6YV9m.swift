@@ -2,21 +2,24 @@ import SwiftUI
 import SwiftfulRouting
 
 //国旗UI
-struct AkKkhrVKXgV7pdSjWNgPrAjgIK: View {
+struct CountryFlagView: View {
+    var countryCode: String = ""
+
     
-    var bzXRO5mSpuwI2eSGs: String = ""
-    
-    init() {
-        if let h4YQfCFpFLXxKPTWuGWvRUeHFog = UfmQhHA1doHKs.bHNA2Amheuq0.o6Ex5Lgp7q46dDOd3db {
-            if let pZ8l80wo4vJh7AE = h4YQfCFpFLXxKPTWuGWvRUeHFog.first(where: { ($0.string("sAocvCi8BLuHyjCjoxpviQ==".bFHEatcgE4zzU9TCfDonsu()) == IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu())) }) {
-                self.bzXRO5mSpuwI2eSGs = pZ8l80wo4vJh7AE.string("sJ+fChO1rg/NVE75PZP9PA==".bFHEatcgE4zzU9TCfDonsu())
+    var flagEmoji: String {
+        let base: UInt32 = 127397 // Regional Indicator Symbol Letter A 的 Unicode
+        var scalarView = String.UnicodeScalarView()
+        for scalar in countryCode.uppercased().unicodeScalars {
+            if let uni = UnicodeScalar(base + scalar.value) {
+                scalarView.append(uni)
             }
         }
+        return String(scalarView)
     }
-    
+
     var body: some View {
-        Text(bzXRO5mSpuwI2eSGs)
-            .g0LIIcoZQsOjyND9(size: 26)
+        Text(flagEmoji)
+            .font(.system(size: 16))
     }
 }
 
@@ -66,7 +69,7 @@ struct C8Z2x4M6YV9m: View {
                                             )
                                             .lineLimit(1)
                                             .truncationMode(.tail)
-                                        AkKkhrVKXgV7pdSjWNgPrAjgIK()
+                                        CountryFlagView(countryCode: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("countryId"))
                                     }
                                     HStack(spacing: 16) {
                                         HStack(spacing: 4) {
@@ -145,51 +148,53 @@ struct C8Z2x4M6YV9m: View {
                             }
                         }
                         VStack(spacing: 16) {
-                            HStack(spacing: 8) {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(
-                                        Color.white.opacity(0.1),
-                                        lineWidth: 1
-                                    )
-                                    .frame(height: 78)
-                                    .overlay {
-                                        ZJ7h766mz(tMmEWWlfgUag: "ewkwdg82JnajVffQKKJvEzzGNHepKO")
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
-                                                .g0LIIcoZQsOjyND9(
-                                                    color: Color.white.opacity(0.6)
-                                                )
-                                            HStack(spacing: 8) {
-                                                Text("9999")
-                                                    .g0LIIcoZQsOjyND9(
-                                                        size: 18,
-                                                        weight: .black
-                                                    )
-                                                ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-                                                    .frame(width: 24,height: 24)
-                                                Spacer()
-                                            }
-                                        }
-                                        .padding(.leading,16)
-                                    }
-                                RoundedRectangle(cornerRadius: 12)
-                                    .frame(width: 127,height: 78)
-                                    .overlay {
-                                        ZJ7h766mz(tMmEWWlfgUag: "dNYdnd")
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            Text("Vip")
-                                                .g0LIIcoZQsOjyND9(
-                                                    color: Color.white.opacity(0.6)
-                                                )
-                                            HStack(spacing: 8) {
-                                                ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-                                                    .frame(width: 24,height: 24)
-                                                Spacer()
-                                            }
-                                        }
-                                        .padding(.leading,16)
-                                    }
-                            }
+                            //vip
+//                            HStack(spacing: 8) {
+//                                RoundedRectangle(cornerRadius: 12)
+//                                    .stroke(
+//                                        Color.white.opacity(0.1),
+//                                        lineWidth: 1
+//                                    )
+//                                    .frame(height: 78)
+//                                    .overlay {
+//                                        ZJ7h766mz(tMmEWWlfgUag: "ewkwdg82JnajVffQKKJvEzzGNHepKO")
+//                                        VStack(alignment: .leading, spacing: 5) {
+//                                            Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
+//                                                .g0LIIcoZQsOjyND9(
+//                                                    color: Color.white.opacity(0.6)
+//                                                )
+//                                            HStack(spacing: 8) {
+//                                                Text("9999")
+//                                                    .g0LIIcoZQsOjyND9(
+//                                                        size: 18,
+//                                                        weight: .black
+//                                                    )
+//                                                ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+//                                                    .frame(width: 24,height: 24)
+//                                                Spacer()
+//                                            }
+//                                        }
+//                                        .padding(.leading,16)
+//                                    }
+//                                RoundedRectangle(cornerRadius: 12)
+//                                    .frame(width: 127,height: 78)
+//                                    .overlay {
+//                                        ZJ7h766mz(tMmEWWlfgUag: "dNYdnd")
+//                                        VStack(alignment: .leading, spacing: 5) {
+//                                            Text("Vip")
+//                                                .g0LIIcoZQsOjyND9(
+//                                                    color: Color.white.opacity(0.6)
+//                                                )
+//                                            HStack(spacing: 8) {
+//                                                ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+//                                                    .frame(width: 24,height: 24)
+//                                                Spacer()
+//                                            }
+//                                        }
+//                                        .padding(.leading,16)
+//                                    }
+//                            }
+                            //vip  end
                             VStack(spacing: 0) {
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
@@ -273,7 +278,7 @@ struct C8Z2x4M6YV9m: View {
                                     HStack(spacing: 8) {
                                         ZJ7h766mz(tMmEWWlfgUag: "rcwkty")
                                             .frame(width: 26,height: 26)
-                                        Text("8oTJRZo4BczbG5KICEFzWg==".bFHEatcgE4zzU9TCfDonsu())
+                                        Text("Language")
                                             .g0LIIcoZQsOjyND9(
                                                 size: 16
                                             )

@@ -9,27 +9,44 @@ import Combine
 struct J9L2X1pF8D5ms: View {
     @ObservedObject var sessionStore = RecentSessionStore.shared
     @Environment(\.router) var rM9Z8S7A1ql
-   
+    @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     var body: some View {
         
             ScrollView{
                 VStack(spacing: 4) {
                 // 顶部水平快捷消息栏
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 16) {
-                        ForEach(0..<4, id: \.self) { index in
-                            AqS7C1A2tLt()
-                        }
-                        Spacer()
-                        VStack {
-                            ZJ7h766mz(tMmEWWlfgUag: "mM3S8q9A2Co")
-                                .frame(width: 56, height: 56)
-                            Text("More")
-                                .g0LIIcoZQsOjyND9(size: 14, weight: .regular, color: .white.opacity(0.6))
-                        }
+                    
+                    if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.count>0{
+                        let items = X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH
+                        ScrollView(.horizontal, showsIndicators: false) {
+                               HStack(spacing: 16) {
+                                   // 只循环最多 4 个元素
+                                   ForEach(Array(items.prefix(4)).indices, id: \.self) { index in
+                                       AqS7C1A2tLt(mdFf7YData: items[index])
+                                           .onTapGesture {
+                                               rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                   WUjfoptOKs8pZfhSAH0duplG {
+                                                       LE0xQZ6Y7WC8iv(channelName: items[index].string("agoraChannelId"), localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                      zA9Y4W6LUid: UInt(items[index].int("userId")))
+                                                   }
+                                               }
+                                           }
+                                   }
+                                   Spacer()
+                                   if items.count > 4 {
+                                       VStack {
+                                           ZJ7h766mz(tMmEWWlfgUag: "mM3S8q9A2Co")
+                                               .frame(width: 56, height: 56)
+                                           Text("More")
+                                               .g0LIIcoZQsOjyND9(size: 14, weight: .regular, color: .white.opacity(0.6))
+                                       }
+                                   }
+                                 
+                               }
+                               .padding(.horizontal, 16)
+                           }
                     }
-                    .padding(.horizontal, 16)
-                }
+      
                 
                 // 系统消息示例
                 VStack {

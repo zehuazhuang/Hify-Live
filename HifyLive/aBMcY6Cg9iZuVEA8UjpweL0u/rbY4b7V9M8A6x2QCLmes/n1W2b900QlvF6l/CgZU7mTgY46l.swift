@@ -82,7 +82,13 @@ struct CgZU7mTgY46l: View {
                     
                     
                     // 消息列表
-                    ChatTableView(opponentInfo: opponentInfo, vm: vm, keyboardHeight: keyboard.keyboardHeight)
+                    ChatTableView(opponentInfo: opponentInfo, vm: vm, keyboardHeight: keyboard.keyboardHeight, onAvatarTap: { uid in
+                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: uid)
+                            }
+                        }
+                    })
                         
                         .padding(.horizontal,10)
                         .background(Color.clear)
@@ -173,12 +179,9 @@ struct CgZU7mTgY46l: View {
             .onAppear {
                 vm.loadHistory()
                 Task {
-                               if let info = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(
+                    opponentInfo = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(
                                    wTEEJpZz0iGVK: session.sessionId
-                               ) {
-                                   opponentInfo = info
-                                  
-                               }
+                               )
                 }
             }
         }

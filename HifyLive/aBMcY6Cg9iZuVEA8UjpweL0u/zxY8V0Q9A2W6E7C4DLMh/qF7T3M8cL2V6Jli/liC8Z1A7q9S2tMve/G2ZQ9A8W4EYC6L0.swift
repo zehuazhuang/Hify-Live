@@ -21,6 +21,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var onMuteTappedCallback: ((UInt, Bool) -> Void)?
     
+    var onUserAvatarTapped: ((String) -> Void)?//公屏点击头像回调
+    
     private var didInitialJoin = false
     
     //private var didApplyMask = false
@@ -255,6 +257,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let user = IyfdHMdY.bTa3L6BoprG
         let msg = PublicMessage(
+            userId: user.iBmPfFGfxu5JV7Aii7.string("yxAccid"),
             avatarURL: user.iBmPfFGfxu5JV7Aii7.string("icon"),
             nickname: user.iBmPfFGfxu5JV7Aii7.string("nickname"),
             text: text,
@@ -301,7 +304,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cellId = "PublicMessageCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? PublicMessageCell ??
                    PublicMessageCell(style: .default, reuseIdentifier: cellId)
-        cell.configure(with: messages[indexPath.row])
+        let message = messages[indexPath.row]
+        cell.configure(with: message)
+        // 头像点击
+        cell.onAvatarTapped = { [weak self] in
+            self?.onUserAvatarTapped?(message.userId)
+           }
+        
         return cell
     }
 
@@ -423,8 +432,12 @@ extension ChatViewController {
             NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
                 let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
                 let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
+                
+                print(avatarURL)
+                print(nickname)
 
                 let publicMsg = PublicMessage(
+                    userId: accid,
                     avatarURL: avatarURL,
                     nickname: nickname,
                     text: msg.text ?? "",
