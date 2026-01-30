@@ -9,7 +9,7 @@ import UIKit
 
 //上传oss图片
 @MainActor
-func pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(_ image: UIImage) async throws -> String? {
+func pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(_ image: UIImage,isIA8MTA: Bool) async throws -> String? {
     // 1️⃣ 图片转 Data
     guard let data = image.jpegData(compressionQuality: 0.8) else {
         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -47,19 +47,25 @@ func pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(_ image: UIImage) async throws -> String? {
     }
 
     print("上传成功:", uploadedUrl)
-
-    // 4️⃣ 调用鉴黄接口
-    do {
-        let isSafe = try await jhM2W7E8YxL(mosh4E7CxL: uploadedUrl)
-        if isSafe {
-            print("✅ 图片通过鉴黄")
-            return uploadedUrl
-        } else {
-            print("⚠️ 图片未通过鉴黄")
+    
+    if (isIA8MTA){
+        // 4️⃣ 调用鉴黄接口
+        do {
+            let isSafe = try await jhM2W7E8YxL(mosh4E7CxL: uploadedUrl)
+            if isSafe {
+                print("✅ 图片通过鉴黄")
+                return uploadedUrl
+            } else {
+                print("⚠️ 图片未通过鉴黄")
+                return nil
+            }
+        } catch {
+            print("❌ 鉴黄接口调用失败:", error)
             return nil
         }
-    } catch {
-        print("❌ 鉴黄接口调用失败:", error)
-        return nil
+    }else{
+        return uploadedUrl
     }
+
+ 
 }

@@ -8,7 +8,7 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
     
     var body: some View {
         ZStack {
-            Color(red: 13/255, green: 13/255, blue: 18/255)
+            Color(red: 13/255, green: 13/255, blue: 18/255).ignoresSafeArea()
             VStack(spacing: 24) {
                 HStack(spacing: 12) {
                     ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
@@ -23,11 +23,11 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                         )
                     Spacer()
                 }
-                .padding(.top,58)
+                
                 .padding(.leading,16)
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
-                        Text("BMU2rOSZsGzV15V9gs8+mA==".bFHEatcgE4zzU9TCfDonsu())
+                        Text("Privacy Policy")
                             .g0LIIcoZQsOjyND9(
                                 size: 16
                             )
@@ -36,15 +36,16 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                             .frame(width: 24,height: 24)
                     }
                     .padding(.all,12)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
+                           
                                 R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
-                            }
+                            
                         }
                     }
                     HStack(spacing: 0) {
-                        Text("LthRlqGNyy1pLGzLW6oPFbY75tezSGSixeV2YIfjVYc=".bFHEatcgE4zzU9TCfDonsu())
+                        Text("Terms of Service")
                             .g0LIIcoZQsOjyND9(
                                 size: 16
                             )
@@ -53,15 +54,16 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                             .frame(width: 24,height: 24)
                     }
                     .padding(.all,12)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
+                            
                                 R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
-                            }
+                           
                         }
                     }
                     HStack(spacing: 0) {
-                        Text("0fn6n0bNyLTizK0uVt2PEQ==".bFHEatcgE4zzU9TCfDonsu())
+                        Text("Delete Account")
                             .g0LIIcoZQsOjyND9(
                                 size: 16
                             )
@@ -70,6 +72,7 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                             .frame(width: 24,height: 24)
                     }
                     .padding(.all,12)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
                             WUjfoptOKs8pZfhSAH0duplG {
@@ -87,10 +90,8 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                 Spacer()
             }
         }
-        .ignoresSafeArea()
+        
     }
 }
 
-#Preview {
-    yDO7bVocx9JH0msGgIyRUs6e()
-}
+

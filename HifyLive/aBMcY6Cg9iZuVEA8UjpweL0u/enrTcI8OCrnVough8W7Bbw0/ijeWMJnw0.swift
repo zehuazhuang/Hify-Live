@@ -86,9 +86,9 @@ struct ijeWMJnw0: View {
                         )
                     Spacer()
                 }
-               
+                
                 .padding(.leading,16)
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(spacing: 166) {
                         VStack(spacing: 8) {
                             PhotosPicker(
@@ -131,14 +131,15 @@ struct ijeWMJnw0: View {
                                                 self.eVfd5ZmOSZbemBIh = xd69OWx2Frrlwb9Zr5j
 
                                                 Task { @MainActor in
-                                                    if let url = try? await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j) {
+                                                    if let url = try? await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j, isIA8MTA: false) {
                                                         zeEMuRE5FhYabIqhuh = url
                                                         
                                                     } else {
                                                         print("上传失败或图片不合规")
                                                         zeEMuRE5FhYabIqhuh = ""
-                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                                        
                                                     }
+                                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 }
                                             }
                                         }

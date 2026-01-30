@@ -8,9 +8,11 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color(red: 13/255, green: 13/255, blue: 18/255)
+            Color(red: 13/255, green: 13/255, blue: 18/255).ignoresSafeArea()
+            
             ZJ7h766mz(tMmEWWlfgUag: "pcwNSr8VP")
                 .frame(height: 396)
+                .ignoresSafeArea()
             VStack(spacing: 0) {
                 VStack(spacing: 48) {
                     HStack(spacing: 12) {
@@ -26,7 +28,7 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                             )
                         Spacer()
                     }
-                    .padding(.top,58)
+                    
                     .padding(.leading,16)
                     VStack(spacing: 24) {
                         ZJ7h766mz(tMmEWWlfgUag: "jtIX8vefgtZLPffo7uoIGDDyg3sfmpju")
@@ -44,17 +46,27 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                     Button{
                         lVyNB84lDy1ypiV3.dismissScreen()
                     } label: {
-                        RoundedRectangle(cornerRadius: 325)
-                            .fill(Color.white.opacity(0.15))
-                            .frame(width: 92,height: 46)
-                            .overlay(alignment: .center) {
-                                Text("ughEnrHH8idFaI0NbZK2QA==".bFHEatcgE4zzU9TCfDonsu())
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 18,
-                                        weight: .medium
-                                    )
-                            }
-                    }
+                        Text("Cancel")
+                            .g0LIIcoZQsOjyND9(
+                                size: 18,
+                                weight: .medium
+                            )
+                    }.frame(height: 46)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            LinearGradient(colors: [Color(
+                                                          red: 120 / 255,
+                                                          green: 233 / 255,
+                                                          blue: 255 / 255,
+                                                          opacity: 0.32
+                                                      ), Color(
+                                                          red: 84 / 255,
+                                                          green: 105 / 255,
+                                                          blue: 199 / 255,
+                                                          opacity: 0.25
+                                                      )], startPoint: .leading, endPoint: .trailing)
+                        ).cornerRadius(325)
+                    
                     ZJ7h766mz(tMmEWWlfgUag: "nsRycpXI4C0cPPFuVP3o7FF1CjO")
                         .frame(width: 242,height: 46)
                         .overlay(alignment: .center) {
@@ -63,16 +75,23 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                                     size: 18,
                                     weight: .semibold
                                 )
+                        }.onTapGesture{
+                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                            ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw()
+                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                            lVyNB84lDy1ypiV3.showScreen(.fullScreenCover){ _ in
+                                WUjfoptOKs8pZfhSAH0duplG {
+                                    zkaqn9Jn()
+                                }
+                            }
                         }
                 }
                 .padding(.horizontal,16)
                 .padding(.bottom,41)
             }
         }
-        .ignoresSafeArea()
+       
     }
 }
 
-#Preview {
-    js9GbCBiFR825bdWb7p7kVVWaBoE()
-}
+

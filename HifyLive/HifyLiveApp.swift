@@ -13,6 +13,8 @@ struct HifyLiveApp: App {
         //初始化Google clientID
         let o6MRo8D6tOTcnXAAolXpRTXtHXKTg = "499091235682-4efa6ed193di5agivikcad3vj1e0eq9u.apps.googleusercontent.com"
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: o6MRo8D6tOTcnXAAolXpRTXtHXKTg)
+        
+        WebKitWarmUp.shared.warm()
     }
     
     @StateObject private var qHyGWbkl4J6y35 = IyfdHMdY.bTa3L6BoprG

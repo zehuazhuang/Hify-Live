@@ -66,20 +66,23 @@ struct dqUmaY6jE7tRWpendJ: View {
         if dHT3rub0walrhS9CG7ptAWm2Yk7.d9nu5sLlCAn0YOr {
             ZStack {
                 Text(dHT3rub0walrhS9CG7ptAWm2Yk7.h7HoFjF9r0)
+                    
                     .g0LIIcoZQsOjyND9(
-                        size: 16
+                        size: 16,
+                        weight: .semibold,
+                        color: .black
                     )
+                    
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
-                    .background(Color.black.opacity(0.8))
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-                    .shadow(radius: 5)
+                    .background(Color.white) // 白色背景
+                    .cornerRadius(12) // 圆角
+                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2) // 阴影
                     .transition(.move(edge: .bottom).combined(with: .opacity))
-                    .zIndex(10)
             }
-            .padding(.horizontal,30)
+            .padding(.horizontal, 30)
+            .zIndex(10)
         }
     }
 }

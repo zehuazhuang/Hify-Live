@@ -88,18 +88,17 @@ struct E2VxD0iC4bYyh: View {
                                 }
                             }
                         }
-                    Spacer().frame(width: 16)
-                    ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
-                        .frame(width: 54, height: 36)
-                        .onTapGesture {
-                            
-                        }
+                    //排名
+//                    Spacer().frame(width: 16)
+//                    ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
+//                        .frame(width: 54, height: 36)
+//                        .onTapGesture {
+//                            
+//                        }
                 }
                 
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     VStack{
-                        
-                            
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
                                     LQ0Z4A6C9emp()

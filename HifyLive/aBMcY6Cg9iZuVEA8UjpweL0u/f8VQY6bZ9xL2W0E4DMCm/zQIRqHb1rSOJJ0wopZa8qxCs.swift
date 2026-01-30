@@ -30,7 +30,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
                 .ignoresSafeArea()
-            ScrollView {
+            ScrollView (showsIndicators: false){
                 LazyVStack(spacing: 0) {
                     ZStack(alignment: .top) {
                         ZStack(alignment: .bottomTrailing,){
@@ -211,7 +211,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         Button{
                                             ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
                                                 WUjfoptOKs8pZfhSAH0duplG {
-                                                    kaBpQbGjZ(c8WYppF6mHUmAV7PWfRx1p5rGFOwx46U: 0, )
+                                                    kaBpQbGjZ(c8WYppF6mHU: 3, )
                                                 }
                                             }
                                         } label: {
@@ -230,7 +230,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         Button{
                                             ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
                                                 WUjfoptOKs8pZfhSAH0duplG {
-                                                    kaBpQbGjZ(c8WYppF6mHUmAV7PWfRx1p5rGFOwx46U: 1, )
+                                                    kaBpQbGjZ(c8WYppF6mHU: 2, )
                                                 }
                                             }
                                         } label: {

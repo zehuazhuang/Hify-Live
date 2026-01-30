@@ -77,7 +77,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                 }
                 .padding(.top,58)
                 .padding(.leading,16)
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         VStack(spacing: 24) {
                             Button{
@@ -100,7 +100,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                             }
                             VStack(spacing: 12) {
                                 VStack(alignment: .leading, spacing: 14) {
-                                    Text("8EEMmZ4wgFW7RsAbbuSnIw==".bFHEatcgE4zzU9TCfDonsu())
+                                    Text("Basic info")
                                         .g0LIIcoZQsOjyND9(
                                             size: 16,
                                             weight: .medium
@@ -116,7 +116,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                                     ZJ7h766mz(tMmEWWlfgUag: "sKP34phYCj0iQ5XvfUcjm")
                                                         .frame(width: 24,height: 24)
                                                         .opacity(0.6)
-                                                    Text("Y+zNepqKJX2tQTdArnrbbQ==".bFHEatcgE4zzU9TCfDonsu())
+                                                    Text("Nickname:")
                                                         .g0LIIcoZQsOjyND9(
                                                             color: Color.white.opacity(0.6)
                                                         )
@@ -136,27 +136,33 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             }
                                             .padding(.vertical,12)
                                         }
-                                        HStack(spacing: 0) {
-                                            HStack(spacing: 4) {
-                                                ZJ7h766mz(tMmEWWlfgUag: "qGv3QVCHp5")
-                                                    .frame(width: 24,height: 24)
-                                                    .opacity(0.6)
-                                                Text("agBz7zQKYO0Zf/OLEhYvOA==".bFHEatcgE4zzU9TCfDonsu())
-                                                    .g0LIIcoZQsOjyND9(
-                                                        color: Color.white.opacity(0.6)
-                                                    )
-                                            }
-                                            Spacer()
+                                        Button {
+                                         
+                                           
+                                        } label: {
                                             HStack(spacing: 0) {
-                                                Text((d4cSuyvEpjLSv == 0 ? "9oqUCKDdH7g2d1tzqh3Kjw==" : d4cSuyvEpjLSv == 1 ? "LmkN2QmpsDt/RNDYrWqCww==" : "xhrWYspSsmKPD+0ke6yevQ==").bFHEatcgE4zzU9TCfDonsu())
-                                                    .g0LIIcoZQsOjyND9(
-                                                        size: 16,
-                                                        weight: .semibold
-                                                    )
+                                                HStack(spacing: 4) {
+                                                    ZJ7h766mz(tMmEWWlfgUag: "qGv3QVCHp5")
+                                                        .frame(width: 24,height: 24)
+                                                        .opacity(0.6)
+                                                    Text("Gender:")
+                                                        .g0LIIcoZQsOjyND9(
+                                                            color: Color.white.opacity(0.6)
+                                                        )
+                                                }
+                                                Spacer()
+                                                HStack(spacing: 0) {
+                                                    Text((d4cSuyvEpjLSv == 0 ? "9oqUCKDdH7g2d1tzqh3Kjw==" : d4cSuyvEpjLSv == 1 ? "LmkN2QmpsDt/RNDYrWqCww==" : "xhrWYspSsmKPD+0ke6yevQ==").bFHEatcgE4zzU9TCfDonsu())
+                                                        .g0LIIcoZQsOjyND9(
+                                                            size: 16,
+                                                            weight: .semibold
+                                                        )
+                                                }
+                                                .padding(.trailing, 28)
                                             }
-                                            .padding(.trailing, 28)
+                                            .padding(.vertical,12)
                                         }
-                                        .padding(.vertical,12)
+                                        
                                         Button {
                                             tWao3BI = st8tFmDYghEYtqM1ZqCn6B61n0.a5JBR() ?? Date()
                                             withAnimation (.spring()) {
@@ -186,24 +192,29 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             }
                                             .padding(.vertical,12)
                                         }
-                                        HStack(spacing: 0) {
-                                            HStack(spacing: 4) {
-                                                ZJ7h766mz(tMmEWWlfgUag: "zppAkkGNNw2NqWyov3l1PcB")
-                                                    .frame(width: 24,height: 24)
-                                                    .opacity(0.6)
-                                                Text("FpGNja1grpFBN6WC6tp+8A==".bFHEatcgE4zzU9TCfDonsu())
-                                                    .g0LIIcoZQsOjyND9(
-                                                        color: Color.white.opacity(0.6)
-                                                    )
+                                        Button {
+                                        
+                                        } label: {
+                                            HStack(spacing: 0) {
+                                                HStack(spacing: 4) {
+                                                    ZJ7h766mz(tMmEWWlfgUag: "zppAkkGNNw2NqWyov3l1PcB")
+                                                        .frame(width: 24,height: 24)
+                                                        .opacity(0.6)
+                                                    Text("Country:")
+                                                        .g0LIIcoZQsOjyND9(
+                                                            color: Color.white.opacity(0.6)
+                                                        )
+                                                }
+                                                Spacer()
+                                                HStack(spacing: 8) {
+                                                    CountryFlagView(countryCode: fFCUrf3NXxibojTjOBF2N.iBmPfFGfxu5JV7Aii7.string("countryId"))
+                                                    fjCgSDoOldKaA()
+                                                }
+                                                .padding(.trailing, 28)
                                             }
-                                            Spacer()
-                                            HStack(spacing: 8) {
-                                                CountryFlagView(countryCode: fFCUrf3NXxibojTjOBF2N.iBmPfFGfxu5JV7Aii7.string("countryId"))
-                                                fjCgSDoOldKaA()
-                                            }
-                                            .padding(.trailing, 28)
+                                            .padding(.vertical,12)
                                         }
-                                        .padding(.vertical,12)
+                                     
                                     }
                                 }
                                 VStack(alignment: .leading, spacing: 12) {
@@ -255,15 +266,10 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                 }
             }
             //头像修改选择
-            ZStack(alignment: .bottom) {
+            
                 if qk4UVuR2yFy20wWW {
-                    Color.black.opacity(0.7)
-                        .onTapGesture {
-                            withAnimation (.spring()) {
-                                qk4UVuR2yFy20wWW = false
-                            }
-                        }
-                    f52Zxoy0vfJtZQ8pdH9SQ(p6JuwoLebzf2SwHZu: { vZgIb in
+                   
+                    f52Zxoy0vfJtZQ8pdH9SQ(eQLvijjIGA: $qk4UVuR2yFy20wWW, p6JuwoLebzf2SwHZu: { vZgIb in
                         withAnimation (.spring()) {
                             qk4UVuR2yFy20wWW = false
                         }
@@ -283,18 +289,14 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                             }
                         }
                     })
-                    .transition(.move(edge: .bottom))
+                    
                 }
-            }
+            
             //昵称修改
             ZStack(alignment: .bottom) {
                 if w7bdExan00WxzXNw1ApKTkPF {
-                    Color.black.opacity(0.7)
-                        .onTapGesture {
-                            UIApplication.shared.tYy4aaFBbAAkhfUEYIoF()
-                            w7bdExan00WxzXNw1ApKTkPF = false
-                        }
-                    gLbtyYG0Wv7sCLCBw4clY50L52A(iL0NKgp4pke7ysRjBfAm2JfaRY4gSmr: dYtaf6JUPaCMMjuFfq5DTi, lCxJiMKZtg1hoPRLD0YDp9: { am3oNoXm981ANUpo3hE2ot1felWYufP0 in
+                   
+                    gLbtyYG0Wv7sCLCBw4clY50L52A(eVulY4gOzp0: $w7bdExan00WxzXNw1ApKTkPF, iL0NKgp4pke7ysRjBfAm2JfaRY4gSmr: dYtaf6JUPaCMMjuFfq5DTi, lCxJiMKZtg1hoPRLD0YDp9: { am3oNoXm981ANUpo3hE2ot1felWYufP0 in
                         UIApplication.shared.tYy4aaFBbAAkhfUEYIoF()
                         w7bdExan00WxzXNw1ApKTkPF = false
                         Task {
@@ -319,11 +321,16 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                             }
                         }
                     })
-                    .transition(.move(edge: .bottom))
                     .padding(.bottom, gld9V.d1TG3Bk0SweLa)
-                    .animation(.easeOut(duration: 0.25), value: gld9V.d1TG3Bk0SweLa)
+                    
                 }
             }
+           
+           
+            
+            
+            
+            
             //生日修改
             ZStack(alignment: .bottom) {
                 if rJkszCycI4OgT2AtFSxiecEBil {

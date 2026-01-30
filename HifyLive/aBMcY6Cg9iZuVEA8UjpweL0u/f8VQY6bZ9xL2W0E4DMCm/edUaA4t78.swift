@@ -46,7 +46,7 @@ struct edUaA4t78: View {
                                 .frame(width: 136,height: 46)
                                 .overlay(alignment: .center) {
                                     ZJ7h766mz(tMmEWWlfgUag: "kYSIeo")
-                                    Text("hbRPSikZjt3gcfaAIKa5Rw==".bFHEatcgE4zzU9TCfDonsu())
+                                    Text("Continue")
                                         .g0LIIcoZQsOjyND9(
                                             size: 18,
                                             weight: .semibold
@@ -78,6 +78,8 @@ struct edUaA4t78: View {
             } label: {
                 ZJ7h766mz(tMmEWWlfgUag: "usatuZc4VJMZtenkP8vSbx1wVDb")
                     .frame(width: 32,height: 32)
+                    .padding(10)
+                    .contentShape(Rectangle())
             }
         }
     }

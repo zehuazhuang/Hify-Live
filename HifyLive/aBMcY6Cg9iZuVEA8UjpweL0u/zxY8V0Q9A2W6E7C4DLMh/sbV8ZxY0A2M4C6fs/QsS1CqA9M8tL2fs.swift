@@ -13,7 +13,7 @@ struct QsS1CqA9M8tL2fs: View {
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
-                            .ignoresSafeArea()
+                .ignoresSafeArea()
             VStack{
                 HStack(spacing:0){
                     Button {
@@ -24,45 +24,26 @@ struct QsS1CqA9M8tL2fs: View {
                     }
                     .padding(.trailing,12)
                     .contentShape(Rectangle())
-                   
+                    
                     sZ4V2b7EALDWCou(
                         q2C4Mtl3iNa: $q2C4Mtl3iNa,
                         i6L2M4Yai0s: $iZQ7xV4bM8Ys, on8M9xY6Q0: {velogranText in
-                           
                             
-                            Task { @MainActor in
-                                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                                do {
-                                    let results = try await hifySearch(type: piaoncapType, searchValue: q2C4Mtl3iNa)
-                                       searchResults = results
-                                 
-                                    if(searchResults.isEmpty){
-                                        isZ8Q7x4bV9Y0A2 = false
-                                    }else{
-                                        isZ8Q7x4bV9Y0A2 = true
-                                    }
-                                    
-                                   } catch {
-                                       EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                       print(error)
-                                   }
-                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                
-                               
-                                }
+                            
+                            oA0T1rQLoad()
                             
                         }
                     )
-                  
+                    
                 }
                 HStack(){
                     ZStack{
                         Text("H0mDYXXNCqE/eka4W9EdDg==".bFHEatcgE4zzU9TCfDonsu())
-                                        .g0LIIcoZQsOjyND9(
-                                            size: 18,
-                                            weight: tsteadySelect ? .black : .semibold,
-                                            color: tsteadySelect ?  .white : .white.opacity(0.4)
-                                        ).frame(maxHeight: .infinity,alignment:.top)
+                            .g0LIIcoZQsOjyND9(
+                                size: 18,
+                                weight: tsteadySelect ? .black : .semibold,
+                                color: tsteadySelect ?  .white : .white.opacity(0.4)
+                            ).frame(maxHeight: .infinity,alignment:.top)
                         if tsteadySelect {
                             ZJ7h766mz(tMmEWWlfgUag: "qZ1S7A9C8tL4M23")
                                 .frame(width: 28, height: 12)
@@ -84,11 +65,11 @@ struct QsS1CqA9M8tL2fs: View {
                     Spacer()
                     ZStack{
                         Text("WWLXeMc2FstL2loM2FhSVg==".bFHEatcgE4zzU9TCfDonsu())
-                                        .g0LIIcoZQsOjyND9(
-                                            size: 18,
-                                            weight: !tsteadySelect ? .black : .semibold,
-                                            color: !tsteadySelect ?  .white : .white.opacity(0.4)
-                                        ).frame(maxHeight: .infinity,alignment:.top)
+                            .g0LIIcoZQsOjyND9(
+                                size: 18,
+                                weight: !tsteadySelect ? .black : .semibold,
+                                color: !tsteadySelect ?  .white : .white.opacity(0.4)
+                            ).frame(maxHeight: .infinity,alignment:.top)
                         
                         if !tsteadySelect {
                             ZJ7h766mz(tMmEWWlfgUag: "qZ1S7A9C8tL4M23")
@@ -108,17 +89,17 @@ struct QsS1CqA9M8tL2fs: View {
                         }
                     }
                 }.padding(.top,15)
-                 .padding(.horizontal,47)
+                    .padding(.horizontal,47)
                 
                 HStack{
                     Text(piaoncapType == 0 ? "Search History" : "Search Results")
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 16,
-                                        weight: .medium
-                                    )
+                        .g0LIIcoZQsOjyND9(
+                            size: 16,
+                            weight: .medium
+                        )
                     Spacer()
                 }.padding(.bottom,8)
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     LazyVStack(spacing:12){
                         if(piaoncapType == 0){
                             
@@ -126,7 +107,7 @@ struct QsS1CqA9M8tL2fs: View {
                             
                             if !isZ8Q7x4bV9Y0A2 {
                                 LQ0Z4A6C9emp()
-                                                  
+                                
                             }else{
                                 ForEach(searchResults.indices, id: \.self) { index in
                                     let item = searchResults[index]
@@ -142,20 +123,22 @@ struct QsS1CqA9M8tL2fs: View {
                                                 }
                                             }
                                     } else {
-                                        huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa)
-                                            .id(UUID())
-                                            .onTapGesture {
-                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"))
-                                                    }
+                                        huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa,cF8eDIYj: {
+                                            oA0T1rQLoad()
+                                        })
+                                        .id(UUID())
+                                        .onTapGesture {
+                                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"))
                                                 }
                                             }
+                                        }
                                     }
                                 }
                             }
                             
-                           
+                            
                             
                         }
                     }
@@ -164,6 +147,28 @@ struct QsS1CqA9M8tL2fs: View {
         }.onTapGesture {
             iZQ7xV4bM8Ys = false
         }
+    }
+    func oA0T1rQLoad(){
+        Task { @MainActor in
+            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+            do {
+                let results = try await hifySearch(type: piaoncapType, searchValue: q2C4Mtl3iNa)
+                   searchResults = results
+             
+                if(searchResults.isEmpty){
+                    isZ8Q7x4bV9Y0A2 = false
+                }else{
+                    isZ8Q7x4bV9Y0A2 = true
+                }
+                
+               } catch {
+                   EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                   print(error)
+               }
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+            
+           
+            }
     }
 }
 

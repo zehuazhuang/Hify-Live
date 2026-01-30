@@ -230,7 +230,7 @@ class ChatMessage: Identifiable, ObservableObject {
             Task {
                 do {
                     // 1️⃣ 上传并鉴黄
-                    guard let url = try await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(image) else {
+                    guard let url = try await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(image, isIA8MTA: true) else {
                         print("❌ 上传失败或图片不合规")
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .failed(reason: .sensitive)

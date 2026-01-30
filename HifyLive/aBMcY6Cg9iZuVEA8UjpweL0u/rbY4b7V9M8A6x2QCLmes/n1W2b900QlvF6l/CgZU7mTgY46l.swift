@@ -12,11 +12,13 @@ struct CgZU7mTgY46l: View {
         @FocusState private var isInputFocused: Bool
         @StateObject private var keyboard = KeyboardResponder()
         @Environment(\.router) var rM9Z8S7A1ql
-        @State private var opponentInfo: [String: Any] = [:]
+        @State private var opponentInfo: [String: Any] = [:] //对方信息
     
         @State private var showImagePicker = false
         @State private var selectedImage: UIImage?
         @State private var showCameraPicker = false
+    
+        @State private var isw8UhB9Gj8t = false //显示举报
     
 
             init(session: NIMSession, opponentAvatarURL: String) {
@@ -71,7 +73,9 @@ struct CgZU7mTgY46l: View {
                         // 右侧按钮
                         Button {
                          
-                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("wasdsadsadsadqwqwdsda")
+                            withAnimation{
+                                isw8UhB9Gj8t = true
+                            }
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "sJ6642gr1JlL1jH")
                                 .frame(width: 24, height: 24)
@@ -161,8 +165,9 @@ struct CgZU7mTgY46l: View {
                                     .onTapGesture {
                                             showCameraPicker = true
                                         }
-                                        .sheet(isPresented: $showCameraPicker) {
+                                    .fullScreenCover(isPresented: $showCameraPicker) {
                                             CameraPicker(image: $selectedImage)
+                                            .ignoresSafeArea()
                                         }
                                         
                                 
@@ -174,7 +179,9 @@ struct CgZU7mTgY46l: View {
                     }
                 //end 底部输入框
                 
-                
+                if isw8UhB9Gj8t {
+                    QiRKOWGBnovrlh(ish1z8TllyFvb: $isw8UhB9Gj8t, ihQ5ReMsh3Uid: opponentInfo.int("userId"))
+                }
             }
             .onAppear {
                 vm.loadHistory()

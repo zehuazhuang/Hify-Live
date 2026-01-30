@@ -120,7 +120,7 @@ struct o95HINW4DpHIAT: View {
                 }
                 .padding(.horizontal,16)
                 ZStack{
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         let mVPc1uy = [
                             GridItem(.flexible(), spacing: 9),
                             GridItem(.flexible(), spacing: 9)

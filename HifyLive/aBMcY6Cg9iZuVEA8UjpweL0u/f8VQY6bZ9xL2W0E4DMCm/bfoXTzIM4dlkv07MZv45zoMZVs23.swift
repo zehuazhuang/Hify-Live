@@ -44,7 +44,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                         Spacer()
                     }
                 } else {
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         VStackLayout(spacing: 12) {
                             ForEach(nd55l6NRwWuVUnbReUhjS3d1Ivg.lLPppWtfV5O6YMV5wl9nsA4nt.indices, id: \.self) { opa5o0dODUVnIW2kkdf in
                                 let mnnVXxRXFee1ZJ8ehOc9UwA = nd55l6NRwWuVUnbReUhjS3d1Ivg.lLPppWtfV5O6YMV5wl9nsA4nt[opa5o0dODUVnIW2kkdf]
@@ -134,11 +134,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
         .task {
             await nd55l6NRwWuVUnbReUhjS3d1Ivg.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
         }
-        .overlay(alignment: .center) {
-            if nmSJFpU7zyBM2yr {
-                qEWpZaKRaGAzucuOroFb5prh9i6OCaLO()
-            }
-        }
+       
     }
 }
 
@@ -165,34 +161,9 @@ struct sEzi1icPpNqqO: View {
     }
 }
 
-//取消拉黑toast
-struct qEWpZaKRaGAzucuOroFb5prh9i6OCaLO: View {
-    var body: some View {
-        HStack(spacing: 5) {
-            ZJ7h766mz(tMmEWWlfgUag: "kwhbZcFz")
-                .frame(width: 24,height: 24)
-            Text("my2w4ZPVAqkDqk/c0SRL2/0ZhScwwl91RJWtgeeNumE=".bFHEatcgE4zzU9TCfDonsu())
-                .g0LIIcoZQsOjyND9(
-                    size: 16
-                )
-        }
-        .padding(.vertical,12)
-        .padding(.horizontal,16)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color(red: 34/255, green: 34/255, blue: 38/255, opacity: 0.8))
-        )
-        .scaleEffect(1.0)
-        .transition(
-            .scale(scale: 0.6)
-            .combined(with: .opacity)
-        )
-    }
-}
 
-#Preview {
-    bfoXTzIM4dlkv07MZv45zoMZVs23()
-}
+
+
 
 @MainActor
 class TPb21z0U: ObservableObject {
@@ -253,6 +224,7 @@ class TPb21z0U: ObservableObject {
             if otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 self.lLPppWtfV5O6YMV5wl9nsA4nt.removeAll { ($0.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) == String(iN2NID) }
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("FaFTLnTp1tdlPRCzlGcI/fkaPzVw5Ij1p83AcEH0yWM=")
                 return true
             } else {
                 lT3KlfvYcav5 = otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.message
@@ -273,10 +245,17 @@ class TPb21z0U: ObservableObject {
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "CfhquXmyZHp3DW0wpE2+Fr38IYBhI3i+2pTnmmC0zfk=".bFHEatcgE4zzU9TCfDonsu(),
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: wZA6oIowbVae5FtrdTTFAaiz3WYirkvI(sjNradeQwuW02y7kiF6ozTd: 1, qRdFOAhW7ayZvfxQCha: fnLUzabLaul9Cx, eTf1z86aGoFMNQJUV7Tx: mwNKAPngt)
             )
+            print("---拉黑code")
             print(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code)
+            
+            if(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code == "1058"){
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("sHU7XvWi3/2BAN2shTWkmWMZsyGLRi2k9YVRJFVSeKQQJJYrBpdX/ZslHBKNj2H0")
+            }
+           
             if qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 // 成功加入黑名单
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("oLFPFtMsjDiB7wz3eZeWhQ==")
                 return true
             } else {
                 lT3KlfvYcav5 = qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.message

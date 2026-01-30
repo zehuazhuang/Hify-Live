@@ -15,15 +15,20 @@ struct ME9B8ZCwVQxn: View {
     var body: some View {
         ZStack {
             Group {
-                switch crformanchSelect {
-                case .lonaranpeH:
+                ZStack {
                     E2VxD0iC4bYyh()
-                case .rongrandtM:
+                        .opacity(crformanchSelect == .lonaranpeH ? 1 : 0)
+                        .allowsHitTesting(crformanchSelect == .lonaranpeH)
+
                     jQp7ZL9aM8Wtm(mo0LQ7DAi: {
-                            s4V9Y0A2C6WEL = true
+                        s4V9Y0A2C6WEL = true
                     })
-                case .eormakgnaM:
+                    .opacity(crformanchSelect == .rongrandtM ? 1 : 0)
+                    .allowsHitTesting(crformanchSelect == .rongrandtM)
+
                     C8Z2x4M6YV9m()
+                        .opacity(crformanchSelect == .eormakgnaM ? 1 : 0)
+                        .allowsHitTesting(crformanchSelect == .eormakgnaM)
                 }
             }
              .frame(maxWidth: .infinity, maxHeight: .infinity)

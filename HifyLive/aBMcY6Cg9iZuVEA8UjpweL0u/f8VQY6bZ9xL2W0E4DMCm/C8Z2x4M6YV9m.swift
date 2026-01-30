@@ -39,7 +39,7 @@ struct C8Z2x4M6YV9m: View {
     var body: some View {
         ZStack {
             ZJ7h766mz(tMmEWWlfgUag: "ziFHlaHt9TDT8JNoUekRk7yFke")
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(spacing: 72) {
                     VStack(spacing: 20) {
                         VStack(spacing: 12) {
@@ -110,7 +110,7 @@ struct C8Z2x4M6YV9m: View {
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
-                                            kaBpQbGjZ(c8WYppF6mHUmAV7PWfRx1p5rGFOwx46U: 0, )
+                                            kaBpQbGjZ(c8WYppF6mHU: 3)
                                         }
                                     }
                                 } label: {
@@ -129,7 +129,7 @@ struct C8Z2x4M6YV9m: View {
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
-                                            kaBpQbGjZ(c8WYppF6mHUmAV7PWfRx1p5rGFOwx46U: 1, )
+                                            kaBpQbGjZ(c8WYppF6mHU: 2, )
                                         }
                                     }
                                 } label: {
@@ -218,55 +218,56 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                     .padding(.all,12)
                                 }
-                                HStack(spacing: 0) {
-                                    HStack(spacing: 8) {
-                                        ZJ7h766mz(tMmEWWlfgUag: "dRXAyI")
-                                            .frame(width: 26,height: 26)
-                                        Text("u6ofXMGtiahsJ31KIcRvuw==".bFHEatcgE4zzU9TCfDonsu())
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 16
-                                            )
-                                    }
-                                    Spacer()
-                                    Button {
-                                        xycvz.mYSDCpljHEidX6JhjetF()
-                                    } label: {
-                                        RoundedRectangle(cornerRadius: 325)
-                                            .fill(Color(red: 13/255, green: 13/255, blue: 18/255))
-                                            .frame(width: 49,height: 27)
-                                            .overlay {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 325)
-                                                        .stroke(Color.white.opacity(0.35), lineWidth: 1)
-                                                    HStack {
-                                                        if xycvz.wgQztju2ChP5 { Spacer() }
-                                                        Circle()
-                                                            .fill(
-                                                                xycvz.wgQztju2ChP5
-                                                                ? LinearGradient(
-                                                                    colors: [
-                                                                        Color(red: 16/255, green: 227/255, blue: 1),
-                                                                        Color(red: 217/255, green: 28/255, blue: 1)
-                                                                    ],
-                                                                    startPoint: .topLeading,
-                                                                    endPoint: .bottomTrailing
-                                                                )
-                                                                : LinearGradient(
-                                                                    colors: [Color.white.opacity(0.4), Color.white.opacity(0.4)],
-                                                                    startPoint: .leading,
-                                                                    endPoint: .trailing
-                                                                )
-                                                            )
-                                                            .frame(width: 20, height: 20)
-                                                            .animation(.easeInOut(duration: 0.25), value: xycvz.wgQztju2ChP5)
-                                                        if !xycvz.wgQztju2ChP5 { Spacer() }
-                                                    }
-                                                    .padding(.horizontal, 4)
-                                                }
-                                            }
-                                    }
-                                }
-                                .padding(.all,12)
+                                //通知
+//                                HStack(spacing: 0) {
+//                                    HStack(spacing: 8) {
+//                                        ZJ7h766mz(tMmEWWlfgUag: "dRXAyI")
+//                                            .frame(width: 26,height: 26)
+//                                        Text("u6ofXMGtiahsJ31KIcRvuw==".bFHEatcgE4zzU9TCfDonsu())
+//                                            .g0LIIcoZQsOjyND9(
+//                                                size: 16
+//                                            )
+//                                    }
+//                                    Spacer()
+//                                    Button {
+//                                        xycvz.mYSDCpljHEidX6JhjetF()
+//                                    } label: {
+//                                        RoundedRectangle(cornerRadius: 325)
+//                                            .fill(Color(red: 13/255, green: 13/255, blue: 18/255))
+//                                            .frame(width: 49,height: 27)
+//                                            .overlay {
+//                                                ZStack {
+//                                                    RoundedRectangle(cornerRadius: 325)
+//                                                        .stroke(Color.white.opacity(0.35), lineWidth: 1)
+//                                                    HStack {
+//                                                        if xycvz.wgQztju2ChP5 { Spacer() }
+//                                                        Circle()
+//                                                            .fill(
+//                                                                xycvz.wgQztju2ChP5
+//                                                                ? LinearGradient(
+//                                                                    colors: [
+//                                                                        Color(red: 16/255, green: 227/255, blue: 1),
+//                                                                        Color(red: 217/255, green: 28/255, blue: 1)
+//                                                                    ],
+//                                                                    startPoint: .topLeading,
+//                                                                    endPoint: .bottomTrailing
+//                                                                )
+//                                                                : LinearGradient(
+//                                                                    colors: [Color.white.opacity(0.4), Color.white.opacity(0.4)],
+//                                                                    startPoint: .leading,
+//                                                                    endPoint: .trailing
+//                                                                )
+//                                                            )
+//                                                            .frame(width: 20, height: 20)
+//                                                            .animation(.easeInOut(duration: 0.25), value: xycvz.wgQztju2ChP5)
+//                                                        if !xycvz.wgQztju2ChP5 { Spacer() }
+//                                                    }
+//                                                    .padding(.horizontal, 4)
+//                                                }
+//                                            }
+//                                    }
+//                                }
+//                                .padding(.all,12)
                             }
                             .padding(.vertical,4)
                             .background(
@@ -274,26 +275,27 @@ struct C8Z2x4M6YV9m: View {
                                     .fill(Color(red: 24/255, green: 22/255, blue: 33/255))
                             )
                             VStack(spacing: 0) {
-                                HStack(spacing: 0) {
-                                    HStack(spacing: 8) {
-                                        ZJ7h766mz(tMmEWWlfgUag: "rcwkty")
-                                            .frame(width: 26,height: 26)
-                                        Text("Language")
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 16
-                                            )
-                                    }
-                                    Spacer()
-                                    HStack(spacing: 8) {
-                                        Text("LmTqf817hoDCuEQqeDFtXw==".bFHEatcgE4zzU9TCfDonsu())
-                                            .g0LIIcoZQsOjyND9(
-                                                color: Color.white.opacity(0.6)
-                                            )
-                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-                                            .frame(width: 24,height: 24)
-                                    }
-                                }
-                                .padding(.all,12)
+                                //Language
+//                                HStack(spacing: 0) {
+//                                    HStack(spacing: 8) {
+//                                        ZJ7h766mz(tMmEWWlfgUag: "rcwkty")
+//                                            .frame(width: 26,height: 26)
+//                                        Text("Language")
+//                                            .g0LIIcoZQsOjyND9(
+//                                                size: 16
+//                                            )
+//                                    }
+//                                    Spacer()
+//                                    HStack(spacing: 8) {
+//                                        Text("LmTqf817hoDCuEQqeDFtXw==".bFHEatcgE4zzU9TCfDonsu())
+//                                            .g0LIIcoZQsOjyND9(
+//                                                color: Color.white.opacity(0.6)
+//                                            )
+//                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+//                                            .frame(width: 24,height: 24)
+//                                    }
+//                                }
+//                                .padding(.all,12)
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
@@ -317,13 +319,16 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
                                 Button{
-                                    deZMvhJctiSoCj78YDk = true
+                                    withAnimation{
+                                        deZMvhJctiSoCj78YDk = true
+                                    }
+                                    
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {
                                             ZJ7h766mz(tMmEWWlfgUag: "uLpQEr9hLtV3BavMXPgLNJJrPiTF")
                                                 .frame(width: 26,height: 26)
-                                            Text("jJZuRCz65qh1LFbiFGPnOA==".bFHEatcgE4zzU9TCfDonsu())
+                                            Text("Log out")
                                                 .g0LIIcoZQsOjyND9(
                                                     size: 16
                                                 )
@@ -387,7 +392,7 @@ struct C8Z2x4M6YV9m: View {
 
 func vf0AD3wYQxpfxxjs2pE7PuO66Wls(_ tfKmqT:Int) -> Void {
     let hsiIAmjydsN5mMcG9 = hQ3WIqHVGH7oTmiDkGXDUO5HL9GjhFQ4(daFmc3QiCLth5mq3q1: tfKmqT, iQZrp8Zk6afD: ZoJOsS30O6aFGB936Oc0s.ahhr4vY6c0BLPJuChjgiYlBUhZHI())
-    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "gwkJDSPvuIdbiSZMMSMa6kOJyXJzNPfmTnk8iPCNnFY=".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: hsiIAmjydsN5mMcG9) { (wF5G6xKQo: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "/api/user/newLive/userFriend", b3q0LlCSk: hsiIAmjydsN5mMcG9) { (wF5G6xKQo: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
         switch wF5G6xKQo {
         case .success(let s5TNBPiUhvB0j2sNDBUXeqj0SxJ):
             print(s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code)
@@ -459,14 +464,14 @@ struct hQ3WIqHVGH7oTmiDkGXDUO5HL9GjhFQ4: Codable {
         try lDTriJymDAyxAIgR8AKHUnVmeo.encode(
             daFmc3QiCLth5mq3q1,
             forKey: bonDyqD2YnaVJW(
-                "LwIiTP4Kb0lJgLdJnsi2xQ==".bFHEatcgE4zzU9TCfDonsu()
+                "type"
             )
         )
         
         try lDTriJymDAyxAIgR8AKHUnVmeo.encode(
             iQZrp8Zk6afD,
             forKey: bonDyqD2YnaVJW(
-                "U5TIn0ZZBRLXWp1MbKWpTg==".bFHEatcgE4zzU9TCfDonsu()
+                "searchTime"
             )
         )
     }

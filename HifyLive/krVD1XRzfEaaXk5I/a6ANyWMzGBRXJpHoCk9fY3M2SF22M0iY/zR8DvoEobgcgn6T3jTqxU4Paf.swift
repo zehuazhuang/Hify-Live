@@ -209,9 +209,11 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
         return joinNum1 > joinNum2
     }
     
-    
-    
-    return sortedArray
+    if let code = dict["code"] as? String, code == "0000" {
+        return sortedArray
+    } else {
+        return []
+    }
 }
 //获取rtctoken、rtmtoken
 @MainActor
@@ -412,9 +414,9 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
     request.httpMethod = "POST"
     request.setValue("11111111", forHTTPHeaderField: "appId")
     request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
-    request.setValue("", forHTTPHeaderField: "loginToken")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("", forHTTPHeaderField: "deviceNo")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
     
     let body: [String: Any] = [
         "searchValue": mosh4E7CxL,
@@ -608,5 +610,64 @@ func Search() async throws -> [String: Any] {
         return resultDict
     } else {
         return [:]
+    }
+}
+
+
+//查关注、粉丝
+@MainActor
+func rEh36ZSearch(ovlkoBKType: Int) async throws -> [[String: Any]] {
+    guard let url = URL(string: "https://testaes.cphub.link/api/user/newLive/userFriend") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("11111111", forHTTPHeaderField: "appId")
+    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    
+    let body: [String: Any] = [
+        "type": ovlkoBKType,
+        "searchTime":xQY2CLEDWefw()
+    ]
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: request)
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+
+    
+    // 解密 result
+    guard let resultStr = dict["result"] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return []
+    }
+    
+    // 将 JSON 数据转换为数组
+    let resultArray = try JSONSerialization.jsonObject(with: resultData, options: [])
+    
+    guard let array = resultArray as? [[String: Any]] else {
+        return []
+    }
+    
+    
+    if let code = dict["code"] as? String, code == "0000" {
+        return array
+    } else {
+        return []
     }
 }

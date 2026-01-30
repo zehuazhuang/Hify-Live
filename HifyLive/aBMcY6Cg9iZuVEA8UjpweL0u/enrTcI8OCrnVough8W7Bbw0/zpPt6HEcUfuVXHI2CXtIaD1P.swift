@@ -77,7 +77,7 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                     .padding(.horizontal, 16)
                 
                 // 国家列表
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 0) {
                         if filteredCountries.isEmpty {
                             ZJ7h766mz(tMmEWWlfgUag: "npIyAxb6vfM073130T9MwCJY8")

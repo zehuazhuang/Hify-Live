@@ -1,23 +1,38 @@
-//用户组件
+//
+//  UDGjeLeI2bL7H.swift
+//  HifyLive
+//
+//  Created by yangyang on 2026/1/30.
+//
 
+//关注粉丝 用户组件
 import SwiftUI
-struct huV9C6xA8M4us: View {
-    let lsegaUs: [String: Any]
-    let gpiemeSele : String
-    let cF8eDIYj : () -> Void
+struct UDGjeLeI2bL7H: View {
+    let hXDX98TXUs: [String: Any]
+    let iCHzYzK6 : String
+    @State private var v6Er31I62R: Bool
+    
+    init(
+            hXDX98TXUs: [String: Any],
+            iCHzYzK6: String,
+           
+        ) {
+            self.hXDX98TXUs = hXDX98TXUs
+            self.iCHzYzK6 = iCHzYzK6
+            _v6Er31I62R = State(initialValue: hXDX98TXUs.int("followed") == 0)
+        }
     var body: some View {
-        let v6Er31I62R = lsegaUs.int("isFollow") == 0
+        
         HStack{
-            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: lsegaUs["icon"])
+            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: hXDX98TXUs["icon"])
                 .frame(width: 44, height: 44)
                 .clipShape(Circle())
             VStack{
                 HStack(spacing:0){
-                    A6WsC0Ww6ELqEL(l4K9bX2q: (lsegaUs["nickname"] as? String) ?? "", k7NmFz1p: gpiemeSele, t3QvD8j: "1")
+                    A6WsC0Ww6ELqEL(l4K9bX2q: (hXDX98TXUs["nickname"] as? String) ?? "", k7NmFz1p: iCHzYzK6, t3QvD8j: "1")
 
-                    Spacer().frame(width: 4)
-                    ZJ7h766mz(tMmEWWlfgUag: lsegaUs.int("gender") == 2 ? "bM4Z7ZVY8M4gr" : "h8bx8HHiJD1BodEG8Zfzl")
-                                       .frame(width: 24, height: 24)
+                    
+                
                     Spacer()
                 }
                 HStack(spacing:2){
@@ -25,7 +40,7 @@ struct huV9C6xA8M4us: View {
                                         size: 14,
                                         weight: .regular,
                                         color: .white.opacity(0.6))
-                    A6WsC0Ww6ELqEL(l4K9bX2q: String((lsegaUs["userId"] as? Int) ?? 0), k7NmFz1p: gpiemeSele, t3QvD8j: "2")
+                    A6WsC0Ww6ELqEL(l4K9bX2q: String((hXDX98TXUs["userId"] as? Int) ?? 0), k7NmFz1p: iCHzYzK6, t3QvD8j: "2")
                     Spacer()
                 }
             }
@@ -33,13 +48,11 @@ struct huV9C6xA8M4us: View {
             Button(action: {
                 Task{
                     EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: lsegaUs.int("userId"), iA6M7W9EYL0: v6Er31I62R ? 1 : 2)
-                    
+                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: hXDX98TXUs.int("userId"), iA6M7W9EYL0: v6Er31I62R ? 1 : 2)
                     if(isA2C6WEL){
-                        cF8eDIYj()
-                    }else{
-                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                        v6Er31I62R = !v6Er31I62R
                     }
+                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                 }
                 
                 
