@@ -10,6 +10,7 @@ struct J9L2X1pF8D5ms: View {
     @ObservedObject var sessionStore = RecentSessionStore.shared
     @Environment(\.router) var rM9Z8S7A1ql
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
+    @State private var openRowId: UUID? = nil
     var body: some View {
         
             ScrollView(showsIndicators: false){
@@ -87,41 +88,53 @@ struct J9L2X1pF8D5ms: View {
                         LQ0Z4A6C9emp()
                     } else {
                         LazyVStack {
-                        ForEach(sessionStore.cache) { rZq7S8A9 in
-                            tD4C1N7pR6Sli(
-                                rN1Z8mR: rZq7S8A9,
-                                onTap: { r in
-                                    // 1️⃣ 清当前会话未读（UI）
-                                    GlobalUnreadStore.shared.clearUnread(
-                                        for: r.sessionId,
-                                        count: r.unreadCount
-                                    )
-                                    
-                                    // 2️⃣ 本地缓存同步
-                                    sessionStore.markSessionRead(sessionId: r.sessionId)
-                                    
-                                    rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            CgZU7mTgY46l(session: r.session,opponentAvatarURL: r.avatarUrl)
+                            ForEach(sessionStore.cache) { rZq7S8A9 in
+                                SwipeRow(id: rZq7S8A9.id, openRowId: $openRowId) {
+                                        tD4C1N7pR6Sli(
+                                            rN1Z8mR: rZq7S8A9,
+                                            onTap: { r in
+                                                // 1️⃣ 清当前会话未读（UI）
+                                                GlobalUnreadStore.shared.clearUnread(
+                                                    for: r.sessionId,
+                                                    count: r.unreadCount
+                                                )
+
+                                                // 2️⃣ 本地缓存同步
+                                                sessionStore.markSessionRead(sessionId: r.sessionId)
+
+                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                    WUjfoptOKs8pZfhSAH0duplG {
+                                                        CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl)
+                                                    }
+                                                }
+                                            },
+                                         
+                                        )
+                                    } onDelete: {
+                                        withAnimation {
+                                            sessionStore.removeSession(withId: rZq7S8A9.id)
                                         }
                                     }
-                                },
-                                onDelete: { r in
-                                    sessionStore.removeSession(withId: r.id)
+                                   
                                 }
-                            )
-                            .listRowInsets(EdgeInsets())
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                    }
+                    }
+            }
+        }.simultaneousGesture(
+            DragGesture(minimumDistance: 5)
+                .onChanged { value in
+                    // 🔥 只要是明显纵向滚动
+                    if abs(value.translation.height) > abs(value.translation.width) {
+                        if openRowId != nil {
+                            openRowId = nil
                         }
                     }
-                    .listStyle(.plain)
-                    .background(Color.clear)
-                    }
-               
-                  
+                }
+        ).simultaneousGesture(
+            TapGesture().onEnded {
+                openRowId = nil
             }
-        }.onAppear {
+        ) .onAppear {
             sessionStore.fetchRecentSessions()
             
         }

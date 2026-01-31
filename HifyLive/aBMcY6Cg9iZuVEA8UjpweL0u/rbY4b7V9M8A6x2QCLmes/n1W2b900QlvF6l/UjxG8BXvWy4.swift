@@ -71,6 +71,22 @@ class RecentSessionStore: ObservableObject {
 
     // 删除某个会话
     func removeSession(withId id: UUID) {
+        guard let index = cache.firstIndex(where: { $0.id == id }) else { return }
+        let cached = cache[index]
+
+        // 从 SDK 删除最近会话
+        if let recent = NIMSDK.shared().conversationManager.recentSession(by: cached.session) {
+            let option = NIMDeleteRecentSessionOption()
+            NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
+                if let error = error {
+                    print("删除最近会话失败：", error.localizedDescription)
+                } else {
+                    print("删除最近会话成功")
+                }
+            }
+        }
+
+        // 删除本地缓存
         RecentSessionManager.shared.removeSession(withId: id)
         self.cache = RecentSessionManager.shared.cache
     }

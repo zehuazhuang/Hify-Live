@@ -24,6 +24,9 @@ struct ZV6K3W8qN5re: View {
                         RecentSessionStore.shared.markAllSessionsRead()
                         GlobalUnreadStore.shared.clearAllUnread()
                         sE92F3V9XA = false
+                        
+                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("qYjfs2pmw3ddn1aXQzTkaI2lO7S5If9ZeOGsX4Fo+JU=")
+                        
                     }, st5T2kH9L1Y: "Mark all read")
                     xD6bLM9VWBut(tC4mJ1P6X: 0, L7sB2F9ac: {
                         isxM8ZxQb = false

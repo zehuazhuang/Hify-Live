@@ -1,6 +1,6 @@
 //清空消息二次弹窗
 import SwiftUI
-
+import NIMSDK
 struct CQ7E8ZC2A4Y0le: View {
     @Binding var heS7pC8R2J: Bool
     var body: some View {
@@ -44,6 +44,11 @@ struct CQ7E8ZC2A4Y0le: View {
                             
                             ZJ7h766mz(tMmEWWlfgUag: "cofD9tL5X4F")
                                                .frame(width: 136, height: 46)
+                                               .onTapGesture{
+                                                   RecentSessionManager.shared.clearAllSessions()
+                                                   heS7pC8R2J = false
+                                                   QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("+pbctOXhsAk5VyWVYe/fX0vqdZEA/9/1IMmxhVOFRVA=")
+                                               }
                             
                         }.padding(.top,18)
                     }

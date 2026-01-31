@@ -33,10 +33,6 @@ class RecentSessionManager: ObservableObject {
                     lastMessageText = lastMsg.text ?? ""
                 case .image: // 1
                     lastMessageText = "[Picture]"
-//                case .audio: // 2
-//                    lastMessageText = "[Voice]"
-//                case .video: // 3
-//                    lastMessageText = "[Video]"
                 default:
                     lastMessageText = ""
                 }
@@ -130,5 +126,23 @@ class RecentSessionManager: ObservableObject {
     /// 清空缓存
     func clearCache() {
         cache.removeAll()
+    }
+    
+    func clearAllSessions() {
+        let option = NIMDeleteRecentSessionOption()
+        
+        // 1️⃣ 删除 SDK 中的所有最近会话
+        for cached in cache {
+            if let recent = NIMSDK.shared().conversationManager.recentSession(by: cached.session) {
+                NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
+                    if let error = error {
+                        print("删除最近会话失败：", error.localizedDescription)
+                    }
+                }
+            }
+        }
+        
+        // 2️⃣ 只清空 store 的缓存
+        self.cache.removeAll() // ⚡不要改 RecentSessionManager.shared.cache
     }
 }

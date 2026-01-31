@@ -388,7 +388,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
         vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
         
         if(iA6M7W9EYL0 == 1){
-            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("K5WuoRBCSxi+hTLxteToML8HCLwetEmS+BtoY1tjyJY=")
+            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("QFJcutXym5Ujoe4qASpA0w==")
         }else{
             await FollowingCache.shared.loadFollowing(forceRefresh: true)
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("EMnULaLM6ZF45iH0cANSKQ==")

@@ -2,13 +2,13 @@ import Combine
 import Foundation
 import NIMSDK
 //状态
-enum SendStatus {
+enum SendStatus: Equatable {
     case sending
     case success
     case failed(reason: FailReason)
 }
 
-enum FailReason {
+enum FailReason: Equatable {
     case sensitive
     case network
     case unknown
@@ -70,6 +70,7 @@ class ChatMessage: Identifiable, ObservableObject {
         @Published var messages: [ChatMessage] = []
         @Published var inputText: String = ""
         
+        
         // ✅ 自己头像和对方头像
         let myAvatarURL: String
         let opponentAvatarURL: String
@@ -82,6 +83,8 @@ class ChatMessage: Identifiable, ObservableObject {
             NIMSDK.shared().chatManager.add(self)
             
         }
+        
+        
         
         deinit {
             NIMSDK.shared().chatManager.remove(self)
@@ -162,53 +165,56 @@ class ChatMessage: Identifiable, ObservableObject {
             let message = NIMMessage()
             message.text = inputText
             
+            // 先创建本地 ChatMessage，状态为 sending
+            let chatMsg = ChatMessage(
+                messageId: message.messageId,
+                content: .text(inputText),
+                isOutgoingMsg: true,
+                timestamp: message.timestamp,
+                avatarURL: self.myAvatarURL,
+                sendStatus: .sending
+            )
+            
+            let lastTimestamp = self.messages.last?.timestamp ?? 0
+            chatMsg.showTime = (message.timestamp - lastTimestamp > 300)
+            
+            self.messages.append(chatMsg) // ✅ 先 append，显示转圈
+            self.updateRecentSession(chatMsg)
+            
+            // 发送消息
             NIMSDK.shared().chatManager.send(message, to: session) { [weak self] error in
                 guard let self = self else { return }
 
                 Task { @MainActor in
-                    let lastTimestamp = self.messages.last?.timestamp ?? 0
-
                     let status: SendStatus
                     if let err = error as NSError? {
                         switch err.code {
                         case 801:
-                            status = .failed(reason: FailReason.sensitive)
+                            status = .failed(reason: .sensitive)
                         case NSURLErrorNotConnectedToInternet:
-                            status = .failed(reason: FailReason.network)
+                            status = .failed(reason: .network)
                         default:
-                            status = .failed(reason: FailReason.unknown)
+                            status = .failed(reason: .unknown)
                         }
                     } else {
                         status = .success
                     }
 
-                    let chatMsg = ChatMessage(
-                        messageId: message.messageId,
-                        content: .text(self.inputText),
-                        isOutgoingMsg: true,
-                        timestamp: message.timestamp,
-                        avatarURL: self.myAvatarURL,
-                        sendStatus: status
-                    )
-
-                    chatMsg.showTime = (message.timestamp - lastTimestamp > 300)
-                    self.messages.append(chatMsg)
-                    self.updateRecentSession(chatMsg)
-                    
-                    switch status {
-                    case .success:
-                        self.inputText = ""
-                    case .failed, .sending:
-                        break
+                    // ✅ 更新发送状态
+                    if let index = self.messages.firstIndex(where: { $0.messageId == message.messageId }) {
+                        self.messages[index].sendStatus = status
                     }
 
+                    if status == .success {
+                        self.inputText = ""
+                    }
                 }
             }
         }
         
         func sendImage(_ image: UIImage) {
             guard let data = image.jpegData(compressionQuality: 0.8) else { return }
-
+            let message = NIMMessage()
             // 占位消息对象
             let placeholderMsg = ChatMessage(
                 messageId: UUID().uuidString, // 可以用 UUID
@@ -219,6 +225,9 @@ class ChatMessage: Identifiable, ObservableObject {
                 sendStatus: .sending,
                 localImage: image
             )
+            
+            let lastTimestamp = self.messages.last?.timestamp ?? 0
+            placeholderMsg.showTime = (message.timestamp - lastTimestamp > 300)
 
             // 先显示占位消息
             Task { @MainActor in
@@ -234,7 +243,6 @@ class ChatMessage: Identifiable, ObservableObject {
                         print("❌ 上传失败或图片不合规")
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .failed(reason: .sensitive)
-                            placeholderMsg.objectWillChange.send()
                         }
                         return
                     }
@@ -251,12 +259,10 @@ class ChatMessage: Identifiable, ObservableObject {
                         try await NIMSDK.shared().chatManager.send(message, to: session)
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .success
-                            placeholderMsg.objectWillChange.send()
                         }
                     } catch {
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .failed(reason: .unknown)
-                            placeholderMsg.objectWillChange.send()
                         }
                         print("❌ 消息发送失败:", error)
                     }
@@ -264,7 +270,6 @@ class ChatMessage: Identifiable, ObservableObject {
                 } catch {
                     Task { @MainActor in
                         placeholderMsg.sendStatus = .failed(reason: .unknown)
-                        placeholderMsg.objectWillChange.send()
                     }
                     print("❌ 上传或鉴黄失败:", error)
                 }

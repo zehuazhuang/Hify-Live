@@ -40,6 +40,8 @@ struct CgZU7mTgY46l: View {
             ZStack {
                 Color(red: 13/255, green: 13/255, blue: 18/255)
                     .ignoresSafeArea()
+                    
+                            
                 
                 ZJ7h766mz(tMmEWWlfgUag: "e6W4Zx7QYbEL")
                     .scaledToFill()
@@ -62,8 +64,9 @@ struct CgZU7mTgY46l: View {
                         
                         // 中间标题
                         HStack {
-                            ZJ7h766mz(tMmEWWlfgUag: "zxM23M2tC38")
-                                .frame(width: 10, height: 10)
+                            //在线状态
+//                            ZJ7h766mz(tMmEWWlfgUag: "zxM23M2tC38")
+//                                .frame(width: 10, height: 10)
                             Text(opponentInfo.string("nickname"))
                                 .g0LIIcoZQsOjyND9(size: 16, weight: .regular)
                         }
@@ -96,7 +99,7 @@ struct CgZU7mTgY46l: View {
                         
                         .padding(.horizontal,10)
                         .background(Color.clear)
-                        .onTapGesture { isInputFocused = false }
+                        
                     
                     // 底部输入框
                         VStack {
@@ -111,24 +114,23 @@ struct CgZU7mTgY46l: View {
                                             )
                                     }
                                     
-                                    TextField("", text: $vm.inputText)
-                                        .focused($isInputFocused)
-                                        .submitLabel(.send)
-                                        .onSubmit {
-                                            if !vm.inputText.isEmpty {
-                                                vm.sendText()
+                                    NoResignTextField(text: $vm.inputText, isFocused: $isInputFocused,
+                                                      onSend: {
+                                                              if !vm.inputText.isEmpty {
+                                                                  vm.sendText()
+                                                              }
+                                                          }
+                                    )
+                                                    .font(
+                                                        JqA1kMoFobuvplkZO5w4FWsenOf
+                                                            .yVvo9b0xKtZE0(
+                                                                gpMpmhPhxS73zlFX24e2W5x8ZNX6q: 16,
+                                                                iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular
+                                                            )
+                                                    )
+                                                    .foregroundColor(.white)
                                             }
-                                        }
-                                        .font(
-                                            JqA1kMoFobuvplkZO5w4FWsenOf
-                                                .yVvo9b0xKtZE0(
-                                                    gpMpmhPhxS73zlFX24e2W5x8ZNX6q: 16,
-                                                    iAYoV6kRMI2dAT8yrwHd0S47GmuZB6: .regular
-                                                )
-                                        )
-                                        .foregroundColor(.white)
-                                }
-                                .frame(height: 40)
+                                            .frame(height: 40)
                                 
                                 ZJ7h766mz(tMmEWWlfgUag: "qS9A1C2tLse")
                                     .frame(width: 36, height: 36)
@@ -190,6 +192,8 @@ struct CgZU7mTgY46l: View {
                                    wTEEJpZz0iGVK: session.sessionId
                                )
                 }
+            }.onTapGesture {
+                UIApplication.shared.endEditing()
             }
         }
     }
@@ -312,5 +316,13 @@ struct CameraPicker: UIViewControllerRepresentable {
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.dismiss()
         }
+    }
+}
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder),
+                   to: nil,
+                   from: nil,
+                   for: nil)
     }
 }

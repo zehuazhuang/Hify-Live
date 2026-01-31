@@ -8,6 +8,7 @@ struct VH5N3B7tQ6fri: View {
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     @ObservedObject var sessionStore = RecentSessionStore.shared
     @Environment(\.router) var rM9Z8S7A1ql
+    @State private var openRowId: UUID? = nil
     
     var filteredAccids: [String] {
         seB51QK82J == 0
@@ -63,53 +64,61 @@ struct VH5N3B7tQ6fri: View {
                     Spacer()
                 }
             }else{
-                List {
-                    ForEach(filteredSessions) { rZq7S8A9 in
-                        tD4C1N7pR6Sli(
-                            rN1Z8mR: rZq7S8A9,
-                            onTap: { r in
-                                // 1️⃣ 清当前会话未读（UI）
-                                    GlobalUnreadStore.shared.clearUnread(
-                                        for: r.sessionId,
-                                        count: r.unreadCount
-                                    )
+                ScrollView {
+                    LazyVStack(spacing: 8) {
+                        ForEach(filteredSessions, id: \.id) { session in
+                            SwipeRow(id: session.id, openRowId: $openRowId) {
+                                tD4C1N7pR6Sli(
+                                    rN1Z8mR: session,
+                                    onTap: { r in
+                                        // 1️⃣ 清当前会话未读（UI）
+                                            GlobalUnreadStore.shared.clearUnread(
+                                                for: r.sessionId,
+                                                count: r.unreadCount
+                                            )
 
-                                    // 2️⃣ 本地缓存同步
-                                sessionStore.markSessionRead(sessionId: r.sessionId)
-                                
-                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                    WUjfoptOKs8pZfhSAH0duplG {
-                                        CgZU7mTgY46l(session: r.session,opponentAvatarURL: r.avatarUrl)
+                                            // 2️⃣ 本地缓存同步
+                                        sessionStore.markSessionRead(sessionId: r.sessionId)
+                                        
+                                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                            WUjfoptOKs8pZfhSAH0duplG {
+                                                CgZU7mTgY46l(session: r.session,opponentAvatarURL: r.avatarUrl)
+                                            }
+                                        }
                                     }
+                                    
+                                )
+                            } onDelete: {
+                                withAnimation {
+                                    sessionStore.removeSession(withId: session.id)
                                 }
-                            },
-                            onDelete: { r in
-                                sessionStore.removeSession(withId: r.id)
                             }
-                        )
-                        .listRowInsets(EdgeInsets())
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
+                        }
                     }
-                }
-                .listStyle(.plain)
-                .background(Color.clear)
+                }.simultaneousGesture(
+                    DragGesture(minimumDistance: 5)
+                        .onChanged { value in
+                            // 🔥 只要是明显纵向滚动
+                            if abs(value.translation.height) > abs(value.translation.width) {
+                                if openRowId != nil {
+                                    openRowId = nil
+                                }
+                            }
+                        }
+                )
             }
 
             
-        }
-        .onAppear{
-//            if qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK.isEmpty {
-//                    Task {
-//                        await qVi2QJ0SeDluhZ9xoQ8V7.vf0AD3wYQxpfxxjs2pE7PuO66Wls(0) // 关注
-//                        await qVi2QJ0SeDluhZ9xoQ8V7.vf0AD3wYQxpfxxjs2pE7PuO66Wls(1) // 粉丝
-//                    }
-//                }
-           
+        }.simultaneousGesture(
+            TapGesture().onEnded {
+                openRowId = nil
             }
+        )
     }
 }
 //
+
+
 struct QP8XkW3ZButton: View {
 
     let ti9QZ7xM4bV: String
@@ -174,3 +183,4 @@ extension View {
         }
     }
 }
+

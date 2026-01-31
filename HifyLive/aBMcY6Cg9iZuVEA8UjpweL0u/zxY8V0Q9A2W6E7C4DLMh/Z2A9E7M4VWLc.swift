@@ -49,6 +49,7 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
     // ✅ Obj-C delegate：必须 nonisolated
     nonisolated func onRecvMessages(_ messages: [NIMMessage]) {
         Task { @MainActor in
+          
             Self.handleIncomingOnMain(messages)
         }
     }

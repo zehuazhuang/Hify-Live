@@ -204,13 +204,47 @@ class ChatCell: UITableViewCell {
     private var textBubbleConstraints: [NSLayoutConstraint] = []
     private var imageBubbleConstraints: [NSLayoutConstraint] = []
     
-    //状态
     
-    
+    //发送状态
     private let statusIcon = UIImageView()
+    private let sendingIndicator = UIActivityIndicatorView(style: .medium)
+    private var cancellables = Set<AnyCancellable>()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellables.removeAll()
+        sendingIndicator.stopAnimating()
+        statusIcon.isHidden = true
+    }
+    
+    // 🔑 写在这里
+    private func updateSendStatus(_ status: SendStatus, isOutgoing: Bool) {
+        statusIcon.isHidden = true
+        sendingIndicator.stopAnimating()
 
-    
+        guard isOutgoing else { return }
+
+        switch status {
+        case .sending:
+            sendingIndicator.startAnimating()
+
+        case .success:
+            break
+
+            case .failed(let reason):
+                statusIcon.isHidden = false
+                statusIcon.tintColor = .red
+
+                switch reason {
+                case .network:
+                    statusIcon.image = UIImage(systemName: "exclamationmark.circle.fill")
+                case .sensitive:
+                    statusIcon.image = UIImage(systemName: "exclamationmark.triangle.fill")
+                case .unknown:
+                    statusIcon.image = UIImage(systemName: "exclamationmark.circle")
+                }
+            }
+        }
     
 
     // MARK: Init
@@ -272,6 +306,12 @@ class ChatCell: UITableViewCell {
         contentImageView.translatesAutoresizingMaskIntoConstraints = false
         imageBubble.addSubview(contentImageView)
         
+        //发送状态
+        sendingIndicator.color = .white
+        sendingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        sendingIndicator.hidesWhenStopped = true
+        bubbleContainer.addSubview(sendingIndicator)
+        
     }
 
 
@@ -289,23 +329,29 @@ class ChatCell: UITableViewCell {
         
         // 放在气泡右下角
         NSLayoutConstraint.activate([
-            statusIcon.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor, constant: -4),
-            statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -2),
-            statusIcon.widthAnchor.constraint(equalToConstant: 16),
-            statusIcon.heightAnchor.constraint(equalToConstant: 16)
+         
+            statusIcon.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor, constant: -26),
+                statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -4)
         ])
 
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 6),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 32),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 32),
-
+            // 时间标签
             timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
             timeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
+            // 头像
+            avatarImageView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 12),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 32),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 32),
+
+            // 气泡
             bubbleContainer.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
             bubbleContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
-            bubbleContainer.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.65)
+            bubbleContainer.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.65),
+            //发送状态
+          
+            sendingIndicator.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor, constant: -26), // 左边距离
+                sendingIndicator.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -4)   // 底部距离
         ])
 
         // TEXT constraints
@@ -343,6 +389,21 @@ class ChatCell: UITableViewCell {
 
     // MARK: Configure
     func configure(message: ChatMessage, avatarURL: String?) {
+        
+        // ⚠️ 先清掉旧订阅
+          cancellables.removeAll()
+
+          // 👉 先按当前状态画一遍
+          updateSendStatus(message.sendStatus, isOutgoing: message.isOutgoingMsg)
+
+          // ✅ 监听后续状态变化（只改 icon）
+          message.$sendStatus
+              .receive(on: DispatchQueue.main)
+              .sink { [weak self] status in
+                  guard let self else { return }
+                  self.updateSendStatus(status, isOutgoing: message.isOutgoingMsg)
+              }
+              .store(in: &cancellables)
 
         NSLayoutConstraint.deactivate(textBubbleConstraints)
         NSLayoutConstraint.deactivate(imageBubbleConstraints)
@@ -375,6 +436,9 @@ class ChatCell: UITableViewCell {
             textBubble.backgroundColor = message.isOutgoingMsg
                 ? .clear   // gradient 已经在 layer 上
                 : UIColor.white.withAlphaComponent(0.15)
+            
+            // 设置气泡直角
+                textBubble.cornerStyle = message.isOutgoingMsg ? .rightTopStraight : .leftTopStraight
 
         case .image(let url, _):
             imageBubble.isHidden = false
@@ -405,22 +469,11 @@ class ChatCell: UITableViewCell {
 
         // ✅ 显示发送状态
        
-        updateStatusIcon(for: message)
-        bubbleContainer.setNeedsLayout()
-        bubbleContainer.layoutIfNeeded()
-        contentView.setNeedsLayout()
-        contentView.layoutIfNeeded()
+
+        updateSendStatus(message.sendStatus, isOutgoing: message.isOutgoingMsg)
     }
 
-    // MARK: - 状态显示
-    private func updateStatusIcon(for message: ChatMessage) {
-        // 只有发送失败才显示
-        if message.isOutgoingMsg, case .failed(_) = message.sendStatus {
-            statusIcon.isHidden = false
-        } else {
-            statusIcon.isHidden = true
-        }
-    }
+
 
     private func formatTime(_ t: TimeInterval) -> String {
         let f = DateFormatter()
@@ -492,6 +545,17 @@ final class GradientBubbleView: UIView {
         return layer as! CAGradientLayer
     }
 
+    // 新增属性：设置哪个角是直角
+    enum BubbleCornerStyle {
+        case leftTopStraight
+        case rightTopStraight
+        case allRounded
+    }
+
+    var cornerStyle: BubbleCornerStyle = .allRounded {
+        didSet { updateCorners() }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -503,8 +567,8 @@ final class GradientBubbleView: UIView {
     }
 
     private func setup() {
-        layer.cornerRadius = 12
         layer.masksToBounds = true
+        layer.cornerRadius = 12
 
         gradientLayer.colors = [
             UIColor(red: 120/255, green: 223/255, blue: 255/255, alpha: 0.32).cgColor,
@@ -512,5 +576,20 @@ final class GradientBubbleView: UIView {
         ]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+    }
+
+    private func updateCorners() {
+        layer.cornerRadius = 12
+        layer.maskedCorners = []
+
+        switch cornerStyle {
+        case .allRounded:
+            layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
+                                   .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        case .leftTopStraight:
+            layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        case .rightTopStraight:
+            layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        }
     }
 }

@@ -20,6 +20,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     @State private var istYGRYN4Q : Bool = false
     
     @State private var ncpingeRoom: [String: Any] = [:] //房间数据
+    //显示举报
+    @State private var isvk1OJMmL : Bool = false
     
     var  isFvNNQZQ : Bool {
         return  usQ8Y7Z6Inf.bool("followed")
@@ -361,7 +363,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                     if istYGRYN4Q {
                         Button {
                          
-                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("wasdsadsadsadqwqwdsda")
+                            withAnimation{
+                                isvk1OJMmL = true
+                            }
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "sJ6642gr1JlL1jH")
                                 .frame(width: 24, height: 24)
@@ -450,6 +454,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                 }
             }
             //vstack 关注、聊天 end
+            
+            if isvk1OJMmL {
+                QiRKOWGBnovrlh(ish1z8TllyFvb: $isvk1OJMmL, ihQ5ReMsh3Uid: areoloaUid)
+            }
+            
         }
         
         // 全屏显示被点击的图片
