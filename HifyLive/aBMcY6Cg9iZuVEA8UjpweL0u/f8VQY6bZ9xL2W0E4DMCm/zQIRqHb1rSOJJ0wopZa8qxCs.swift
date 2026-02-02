@@ -50,19 +50,18 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                         let pic = picList[index]
                                                         let mediaUrl = pic["mediaUrl"] as? String ?? "" // 取出图片 URL
 
-                                                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mediaUrl) {
-                                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv") // 你原来的内容
+                                                        rP6kV1bS8qX3nT7(
+                                                            pR9wQ2mL6hY5dF1: mediaUrl,
+                                                            allPics: picList.compactMap { $0["mediaUrl"] as? String }, // 传整个数组
+                                                            V0QmF7P9ZL: true
+                                                        ) {
+                                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
                                                         }
-//                                                        .onTapGesture {
-//                                                            pVzCUaYBcF5CZ1 = mediaUrl // 绑定选中图片 URL
-//                                                        }
-                                                        .tag(index) // TabView 的 selection 绑定
+                                                        .tag(index)// TabView 的 selection 绑定
                                                     }
                                                 }
                                                 .tabViewStyle(.page(indexDisplayMode: .never)) // 可选：隐藏分页指示器
-                                               
                                             }
-                                            
                                         }
                                 }
                                 .clipped()
@@ -77,7 +76,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         .fill(Color.white.opacity(0.2))
                                         .frame(width: 88, height: 88)
                                         .overlay(alignment: .center) {
-                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: usQ8Y7Z6Inf.string("icon"))
+                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: usQ8Y7Z6Inf.string("icon"),V0QmF7P9ZL: true)
                                                 .frame(width: 80,height: 80)
                                                 .clipShape(Circle())
                                         }
@@ -121,6 +120,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                                             RoundedRectangle(cornerRadius: 4)
                                                                                 .stroke(Color.white.opacity(fQAcgipdIEvxLs5OpaG0 == index ? 0.4 : 0), lineWidth: 2)
                                                                         )
+                                                                        .allowsHitTesting(false)
                                                                 }
                                                             }.frame(height:36)
                                                         }
@@ -278,6 +278,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                         rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: ncpingeRoom["icon"])
                                                                            .frame(width: 148, height: 87)
                                                                            .cornerRadius(8)
+                                                                           .allowsHitTesting(false)
                   
                                                     }.frame(width: 148, height: 87)
                                                     VStack(alignment:.leading,spacing: 0){
@@ -369,10 +370,14 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "sJ6642gr1JlL1jH")
                                 .frame(width: 24, height: 24)
-                        }
+                                .padding(.horizontal,10)
+                                .padding(.bottom,10)
+                        }.contentShape(Rectangle())
+                            .padding(.trailing,6)
+                            .zIndex(1)
                     }
              
-                }.padding(.trailing,16)
+                }
                 Spacer()
             }
             //vstack 关注、聊天
@@ -456,7 +461,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             //vstack 关注、聊天 end
             
             if isvk1OJMmL {
-                QiRKOWGBnovrlh(ish1z8TllyFvb: $isvk1OJMmL, ihQ5ReMsh3Uid: areoloaUid)
+                QiRKOWGBnovrlh(ish1z8TllyFvb: $isvk1OJMmL, ihQ5ReMsh3Uid: areoloaUid,
+                               szHHWP8Name:usQ8Y7Z6Inf.string("nickname"), wksgt0dUrl: usQ8Y7Z6Inf.string("icon"),
+                )
             }
             
         }

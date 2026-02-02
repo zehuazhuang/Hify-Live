@@ -27,6 +27,7 @@ struct UDGjeLeI2bL7H: View {
             rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: hXDX98TXUs["icon"])
                 .frame(width: 44, height: 44)
                 .clipShape(Circle())
+                .allowsHitTesting(false)
             VStack{
                 HStack(spacing:0){
                     A6WsC0Ww6ELqEL(l4K9bX2q: (hXDX98TXUs["nickname"] as? String) ?? "", k7NmFz1p: iCHzYzK6, t3QvD8j: "1")

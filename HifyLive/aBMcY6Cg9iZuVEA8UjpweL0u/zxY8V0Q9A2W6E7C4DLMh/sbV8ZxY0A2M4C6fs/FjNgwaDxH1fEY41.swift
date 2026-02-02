@@ -15,6 +15,7 @@ struct FjNgwaDxH1fEY41: View {
                     rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: room["icon"])
                                        .frame(width: 148, height: 87)
                                        .cornerRadius(8)
+                                       .allowsHitTesting(false)
                     //房间标签
 //                    HStack {
 //                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")

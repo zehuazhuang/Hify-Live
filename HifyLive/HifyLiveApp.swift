@@ -38,8 +38,29 @@ struct HifyLiveApp: App {
                             h7xAdXMHidxlrtblkRACwZ8kTw6QO()
                                 .onAppear {
                                     Task {
-                                        let gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5: [String:Any]? = await aYTO7iD()
-                                        if let kRWrAfSFZzA6re6E68Sfhxj: [String:Any] = gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5 {
+                                       // let gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5: [String:Any]? = await aYTO7iD()
+                                        var responseData: [String: Any]? = nil
+                                        let maxRetries = 3   // 最多尝试次数，避免死循环
+                                        var attempt = 0
+
+                                        while responseData == nil && attempt < maxRetries {
+                                            attempt += 1
+                                            responseData = await aYTO7iD()
+                                            
+                                            if responseData == nil {
+                                                print("第 \(attempt) 次请求返回空，重试...")
+                                                try? await Task.sleep(nanoseconds: 1_000_000_000) // 等 1 秒再重试
+                                            }
+                                        }
+
+                                        if let data = responseData {
+                                            print("成功获取数据:", data)
+                                        } else {
+                                            print("请求多次仍为空，放弃处理")
+                                        }
+                                        if let kRWrAfSFZzA6re6E68Sfhxj: [String:Any] = responseData {
+                                            print("返回数据")
+                                            print(kRWrAfSFZzA6re6E68Sfhxj)
                                             qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = kRWrAfSFZzA6re6E68Sfhxj
                                             
                                             //筛选相册list

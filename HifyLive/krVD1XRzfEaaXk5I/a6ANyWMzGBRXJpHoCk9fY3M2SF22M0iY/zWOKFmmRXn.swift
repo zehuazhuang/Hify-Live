@@ -2,7 +2,7 @@
 func aYTO7iD() async -> [String:Any]? {
     do {
         let xsq1a9QJATbk: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
-            xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6nqC3rKE3+qsHYeGVuBnHPc=".bFHEatcgE4zzU9TCfDonsu(),
+            xH0OPzEYR4M5ewWkZQAveq6Vy7: "/api/user/newLive/getUserInfo",
             tD5tEJZTT0NlaIX7eMREG92BhO3n: [String: String](),
         )
         print(xsq1a9QJATbk.code)

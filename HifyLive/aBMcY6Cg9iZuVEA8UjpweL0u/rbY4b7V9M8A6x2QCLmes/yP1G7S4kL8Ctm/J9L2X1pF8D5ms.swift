@@ -11,13 +11,14 @@ struct J9L2X1pF8D5ms: View {
     @Environment(\.router) var rM9Z8S7A1ql
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @State private var openRowId: UUID? = nil
+    let wzJqE7XWO : ()-> Void //回到home
     var body: some View {
         
             ScrollView(showsIndicators: false){
                 VStack(spacing: 4) {
                 // 顶部水平快捷消息栏
                     
-                    if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.count>0{
+                    if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.count > 0{
                         let items = X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH
                         ScrollView(.horizontal, showsIndicators: false) {
                                HStack(spacing: 16) {
@@ -40,6 +41,8 @@ struct J9L2X1pF8D5ms: View {
                                                .frame(width: 56, height: 56)
                                            Text("More")
                                                .g0LIIcoZQsOjyND9(size: 14, weight: .regular, color: .white.opacity(0.6))
+                                       }.onTapGesture {
+                                           wzJqE7XWO()
                                        }
                                    }
                                  

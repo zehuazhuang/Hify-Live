@@ -24,7 +24,7 @@ struct kaBpQbGjZ: View {
                     }
                     .padding(.trailing,12)
                     .contentShape(Rectangle())
-                    Text(c8WYppF6mHU == 0 ? "Following" : "Followers")
+                    Text(c8WYppF6mHU == 3 ? "Following" : "Followers")
                                     .g0LIIcoZQsOjyND9(
                                         size: 16,
                                         weight: .semibold

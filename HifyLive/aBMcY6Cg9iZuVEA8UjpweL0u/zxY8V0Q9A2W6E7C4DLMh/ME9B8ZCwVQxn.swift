@@ -12,16 +12,21 @@ struct ME9B8ZCwVQxn: View {
     @State private var s4V9Y0A2C6WEL = false //聊天页more底部弹框
     @State private var shR2D3nR8Q = false //清空消息二次弹窗
     @StateObject private var unreadStore = GlobalUnreadStore.shared //消息未读
+    @State private var ecorjazyTypeInHome: Bool = true
     var body: some View {
         ZStack {
             Group {
                 ZStack {
-                    E2VxD0iC4bYyh()
+                    E2VxD0iC4bYyh(ecorjazyType: $ecorjazyTypeInHome)
                         .opacity(crformanchSelect == .lonaranpeH ? 1 : 0)
                         .allowsHitTesting(crformanchSelect == .lonaranpeH)
 
                     jQp7ZL9aM8Wtm(mo0LQ7DAi: {
                         s4V9Y0A2C6WEL = true
+                    }, hGSH6kR: {
+                        crformanchSelect = .lonaranpeH
+                        ecorjazyTypeInHome = true
+                        
                     })
                     .opacity(crformanchSelect == .rongrandtM ? 1 : 0)
                     .allowsHitTesting(crformanchSelect == .rongrandtM)

@@ -4,7 +4,7 @@
 //
 //  Created by yangyang on 2026/1/31.
 //
-
+//左滑出现删除
 import SwiftUI
 
 enum DragDirection {

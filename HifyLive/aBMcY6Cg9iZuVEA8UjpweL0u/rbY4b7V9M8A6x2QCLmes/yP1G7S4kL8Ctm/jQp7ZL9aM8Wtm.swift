@@ -7,6 +7,7 @@ struct jQp7ZL9aM8Wtm: View {
     @State private var echjeteaType: Int = 0
     let mo0LQ7DAi : () -> Void
     @ObservedObject var sessionStore = RecentSessionStore.shared
+    let hGSH6kR : () -> Void //回到home
     
     var body: some View {
         ZStack{
@@ -72,7 +73,9 @@ struct jQp7ZL9aM8Wtm: View {
                     
                 }.padding(.horizontal,16)
                 if (echjeteaType == 0) {
-                    J9L2X1pF8D5ms()
+                    J9L2X1pF8D5ms(wzJqE7XWO: {
+                        hGSH6kR()
+                    })
                 }else{
                     VH5N3B7tQ6fri()
                 }

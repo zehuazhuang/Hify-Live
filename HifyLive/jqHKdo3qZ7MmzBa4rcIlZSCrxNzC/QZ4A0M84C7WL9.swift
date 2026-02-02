@@ -60,17 +60,18 @@ struct QZ4A0M84C7WL9: View {
                     rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: info9M0Q2A6.string("icon"))
                         .frame(width: 80,height: 80)
                         .clipShape(Circle())
-                        .onTapGesture {
-                            isW9YQ6C8L = false
-                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                WUjfoptOKs8pZfhSAH0duplG {
-                                    zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: info9M0Q2A6.int("userId"))
-                                }
-                            }
-                        }
+                        .allowsHitTesting(false)
                     
                     
                 }.frame(width: 88, height: 88)
+                    .onTapGesture {
+                        isW9YQ6C8L = false
+                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: info9M0Q2A6.int("userId"))
+                            }
+                        }
+                    }
                 Spacer().frame(height: 8)
                 Text(info9M0Q2A6.string("nickname"))
                                 .g0LIIcoZQsOjyND9(

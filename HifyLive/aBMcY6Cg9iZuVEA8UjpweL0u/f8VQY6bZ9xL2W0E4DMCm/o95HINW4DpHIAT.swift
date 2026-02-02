@@ -51,6 +51,7 @@ struct o95HINW4DpHIAT: View {
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
+                .ignoresSafeArea()
             VStack(spacing: 5) {
                 HStack(spacing: 0, content: {
                     HStack(spacing: 12) {
@@ -64,7 +65,7 @@ struct o95HINW4DpHIAT: View {
                             ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                                 .frame(width: 24,height: 24)
                         }
-                        Text("U97zV4ZU8kHR5otCSWwn0o0g6sGI4EYL0c15j3pbF2A=".bFHEatcgE4zzU9TCfDonsu())
+                        Text("Your profile photo")
                             .g0LIIcoZQsOjyND9(
                                 size: 18,
                                 weight: .semibold
@@ -109,7 +110,7 @@ struct o95HINW4DpHIAT: View {
                             }
                     }
                 })
-                .padding(.top,58)
+                
                 .padding(.horizontal,16)
                 HStack(spacing: 0) {
                     Text("FEAR8GvovJA5jcxMaK0lDplVMLzQ45sxPiU8eV7b2UuUbebYKDoGeS348FA7zHc6".bFHEatcgE4zzU9TCfDonsu())
@@ -221,7 +222,7 @@ struct o95HINW4DpHIAT: View {
                 }
             }
         }
-        .ignoresSafeArea()
+        
         .onAppear {
             idW6C0 = cDiXG5.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi.map({ kbMdtvfyvlqgAeAVR6mMtBZSQp8279 in
                 Ek9tKrgkM0Mjp(nVDMgVMWU: nil, g0HjS5Fukj: kbMdtvfyvlqgAeAVR6mMtBZSQp8279,xQdU5oYzMdsaZX: false)

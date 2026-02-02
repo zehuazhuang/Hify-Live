@@ -111,6 +111,7 @@ struct ijeWMJnw0: View {
                                                         rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: zeEMuRE5FhYabIqhuh)
                                                             .frame(width: 80,height: 80)
                                                             .clipShape(Circle())
+                                                            .allowsHitTesting(false)
                                                     }
                                                 }
                                             }

@@ -10,7 +10,7 @@ struct E2VxD0iC4bYyh: View {
         GridItem(.flexible(), spacing: 7)
     ]
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
-    @State private var ecorjazyType: Bool = true // true recommend false following
+    @Binding var ecorjazyType: Bool // true recommend false following
     @State private var isLoading: Bool = false
     @Environment(\.router) var rM9Z8S7A1ql
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
@@ -178,6 +178,7 @@ struct E2VxD0iC4bYyh: View {
             ZStack {
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: bemindbeData["backgroundImgUrl"])
                     .frame(width: 168, height: 205)
+                    .allowsHitTesting(false)
                 HStack(alignment: .top) {
 //                    HStack {
 //                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")

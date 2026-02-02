@@ -17,6 +17,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
+                .ignoresSafeArea()
             VStack(spacing: 24) {
                 HStack(spacing: 12) {
                     Button{
@@ -32,7 +33,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                         )
                     Spacer()
                 }
-                .padding(.top,58)
+              
                 .padding(.leading,16)
                 if nd55l6NRwWuVUnbReUhjS3d1Ivg.er9cv27P1Ndd {
                     BMTU5LVVTQYLXCZaN()
@@ -57,7 +58,9 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                                                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mnnVXxRXFee1ZJ8ehOc9UwA.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
                                                     .frame(width: 44,height: 44)
                                                     .clipShape(Circle())
+                                                    .allowsHitTesting(false)
                                             }
+                                           
                                         VStack(alignment: .leading, spacing: 7) {
                                             Text(mnnVXxRXFee1ZJ8ehOc9UwA.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
                                                 .g0LIIcoZQsOjyND9(
@@ -130,11 +133,9 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                 }
             }
         }
-        .ignoresSafeArea()
         .task {
             await nd55l6NRwWuVUnbReUhjS3d1Ivg.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
         }
-       
     }
 }
 

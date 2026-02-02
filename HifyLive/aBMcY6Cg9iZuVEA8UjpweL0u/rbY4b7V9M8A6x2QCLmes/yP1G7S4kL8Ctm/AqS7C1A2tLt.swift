@@ -10,6 +10,7 @@ struct AqS7C1A2tLt: View {
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mdFf7YData.string("icon"))
                     .frame(width: 52,height: 52)
                     .clipShape(Circle())
+                    .allowsHitTesting(false)
                 ZStack {
                     Text("Live").g0LIIcoZQsOjyND9(
                                         size: 12,

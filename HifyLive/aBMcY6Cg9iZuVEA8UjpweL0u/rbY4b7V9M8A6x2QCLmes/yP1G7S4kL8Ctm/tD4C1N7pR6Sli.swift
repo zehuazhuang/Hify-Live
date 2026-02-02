@@ -15,6 +15,8 @@ struct tD4C1N7pR6Sli: View {
                     rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: rN1Z8mR.avatarUrl)
                                        .frame(width: 44, height: 44)
                                        .clipShape(Circle())
+                                       .allowsHitTesting(false)
+                    
                 }.frame(width: 48, height: 48)
                     .background(.white.opacity(0.1))
                     .clipShape(Circle())

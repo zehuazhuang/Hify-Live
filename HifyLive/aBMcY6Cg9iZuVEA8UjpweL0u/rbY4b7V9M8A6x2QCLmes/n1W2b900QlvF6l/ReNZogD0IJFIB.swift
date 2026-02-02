@@ -205,6 +205,10 @@ class ChatCell: UITableViewCell {
     private var imageBubbleConstraints: [NSLayoutConstraint] = []
     
     
+    //放大图片url
+    private var currentImageURL: String?
+    
+    
     //发送状态
     private let statusIcon = UIImageView()
     private let sendingIndicator = UIActivityIndicatorView(style: .medium)
@@ -245,7 +249,18 @@ class ChatCell: UITableViewCell {
                 }
             }
         }
-    
+    //图片点击放大
+    @objc private func handleImageTap() {
+        guard let imageURL = currentImageURL else { return }
+        guard let vc = contentImageView.parentViewController else { return }
+
+        // 单图也用数组传进去
+        let pics = [imageURL]
+
+        let previewVC = ImagePreviewScrollViewController(pics: pics, startIndex: 0)
+        previewVC.modalPresentationStyle = .fullScreen
+        vc.present(previewVC, animated: true)
+    }
 
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -301,9 +316,13 @@ class ChatCell: UITableViewCell {
         imageBubble.clipsToBounds = true
         imageBubble.translatesAutoresizingMaskIntoConstraints = false
         bubbleContainer.addSubview(imageBubble)
-
+        
+        
         contentImageView.contentMode = .scaleAspectFill
         contentImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
+        contentImageView.addGestureRecognizer(tap)
         imageBubble.addSubview(contentImageView)
         
         //发送状态
@@ -443,6 +462,8 @@ class ChatCell: UITableViewCell {
         case .image(let url, _):
             imageBubble.isHidden = false
             NSLayoutConstraint.activate(imageBubbleConstraints)
+            
+            currentImageURL = url
 
             // 先清空旧图片
             contentImageView.image = nil
@@ -591,5 +612,19 @@ final class GradientBubbleView: UIView {
         case .rightTopStraight:
             layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
+    }
+}
+
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var responder: UIResponder? = self
+        while let r = responder {
+            if let vc = r as? UIViewController {
+                return vc
+            }
+            responder = r.next
+        }
+        return nil
     }
 }

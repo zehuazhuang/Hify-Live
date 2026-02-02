@@ -153,7 +153,7 @@ final class ChatProfileHeaderView: UIView {
         genderIcon.frame = CGRect(x: 64, y: 40, width: 24, height: 24)
         ageLabel.frame = CGRect(x: 90, y: 43, width: 30, height: 18)
         dividerLabel.frame = CGRect(x: 120, y: 43, width: 8, height: 18)
-        countryIcon.frame = CGRect(x: 132, y: 43, width: 16, height: 16)
+        countryIcon.frame = CGRect(x: 132, y: 45, width: 16, height: 16)
 
         followBtn.frame = CGRect(x: bounds.width - 64, y: 24, width: 48, height: 32)
 
@@ -163,6 +163,23 @@ final class ChatProfileHeaderView: UIView {
             width: bounds.width - 32,
             height: 60
         )
+    }
+    //显示国家
+    func makeCountryFlagLabel(countryCode: String, fontSize: CGFloat = 16) -> UILabel {
+        let base: UInt32 = 127397
+        var flagString = ""
+        
+        for scalar in countryCode.uppercased().unicodeScalars {
+            if let uni = UnicodeScalar(base + scalar.value) {
+                flagString.append(String(uni))
+            }
+        }
+        
+        let label = UILabel()
+        label.text = flagString
+        label.font = UIFont.systemFont(ofSize: fontSize)
+        label.textAlignment = .center
+        return label
     }
 
     // MARK: - Update
@@ -202,8 +219,11 @@ final class ChatProfileHeaderView: UIView {
         followBtn.setImage(UIImage(named: followImage), for: .normal)
 
         // 国家
-        if let country = info["country"] as? String {
-            countryIcon.image = UIImage(named: country)
+        if let countryCode = info["countryId"] as? String {
+            let label = makeCountryFlagLabel(countryCode: countryCode, fontSize: 16)
+            countryIcon.isHidden = true
+            addSubview(label)
+            label.frame = countryIcon.frame
         }
 
         // 相册
@@ -294,13 +314,34 @@ final class ChatProfileHeaderView: UIView {
 final class PhotoCell: UICollectionViewCell {
 
     private let imageView = UIImageView()
+    
+    
+        private var imageURL: String?
+
+        var onTap: ((String) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
+        imageView.isUserInteractionEnabled = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(tap)
+
         contentView.addSubview(imageView)
+    }
+    
+    func update(url: String) {
+        imageURL = url
+        imageView.kf.setImage(with: URL(string: url))
+    }
+    
+    @objc private func imageTapped() {
+        guard let url = imageURL else { return }
+        onTap?(url)
     }
 
     required init?(coder: NSCoder) {
@@ -317,9 +358,6 @@ final class PhotoCell: UICollectionViewCell {
         imageView.image = nil
     }
 
-    func update(url: String) {
-        imageView.kf.setImage(with: URL(string: url))
-    }
 }
 
 extension ChatProfileHeaderView: UICollectionViewDataSource {
@@ -338,10 +376,22 @@ extension ChatProfileHeaderView: UICollectionViewDataSource {
             for: indexPath
         ) as! PhotoCell
 
-        cell.update(url: pics[indexPath.item])
+        let url = pics[indexPath.item]
+        cell.update(url: url)
+
+        cell.onTap = { [weak self] imageURL in
+            guard let self = self,
+                  let topVC = UIApplication.topViewController(),
+                  let startIndex = self.pics.firstIndex(of: imageURL) else { return }
+
+            let previewVC = ImagePreviewScrollViewController(pics: self.pics, startIndex: startIndex)
+            topVC.present(previewVC, animated: true)
+        }
+
         return cell
     }
 }
+
 extension UIApplication {
     static func topViewController(
         _ base: UIViewController? = UIApplication.shared.connectedScenes

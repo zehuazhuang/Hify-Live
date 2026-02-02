@@ -10,10 +10,18 @@ struct QsS1CqA9M8tL2fs: View {
     @State private var piaoncapType: Int = 1 //0历史 1房间 2用户
     @State private var searchResults: [[String: Any]] = []
     @State private var isZ8Q7x4bV9Y0A2: Bool = true
+    @State private var searchHistory: [String] = [] //搜索框输入历史
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
                 .ignoresSafeArea()
+            
+            ZJ7h766mz(tMmEWWlfgUag: "ka3h49PRef1i0")
+                               .frame(height: 288)
+                               .frame(maxWidth: .infinity)
+                               .frame(maxHeight: .infinity,alignment: .bottom)
+                               .ignoresSafeArea()
+                               
             VStack{
                 HStack(spacing:0){
                     Button {
@@ -28,7 +36,9 @@ struct QsS1CqA9M8tL2fs: View {
                     sZ4V2b7EALDWCou(
                         q2C4Mtl3iNa: $q2C4Mtl3iNa,
                         i6L2M4Yai0s: $iZQ7xV4bM8Ys, on8M9xY6Q0: {velogranText in
-                            
+                            // ✅ 写入搜索历史
+                                   SearchHistoryManager.shared.add(velogranText)
+                                   searchHistory = SearchHistoryManager.shared.load()
                             
                             oA0T1rQLoad()
                             
@@ -91,14 +101,42 @@ struct QsS1CqA9M8tL2fs: View {
                 }.padding(.top,15)
                     .padding(.horizontal,47)
                 
-                HStack{
-                    Text(piaoncapType == 0 ? "Search History" : "Search Results")
-                        .g0LIIcoZQsOjyND9(
-                            size: 16,
-                            weight: .medium
-                        )
-                    Spacer()
-                }.padding(.bottom,8)
+                VStack{
+                    HStack{
+                        Text(piaoncapType == 0 ? "Search History" : "Search Results")
+                            .g0LIIcoZQsOjyND9(
+                                size: 16,
+                                weight: .medium
+                            )
+                        Spacer()
+                    }.padding(.bottom,12)
+                    if searchResults.isEmpty{
+                        FlowLayout(spacing: 8) {
+
+                            // 搜索历史
+                            ForEach(searchHistory, id: \.self) { item in
+                                SearchHistoryTag(text: item)
+                                    .onTapGesture {
+                                        q2C4Mtl3iNa = item
+                                        oA0T1rQLoad()
+                                    }
+                            }
+
+                            // 清空按钮（作为最后一个 item）
+                            if !searchHistory.isEmpty {
+                                Button {
+                                    SearchHistoryManager.shared.clear()
+                                    searchHistory.removeAll()
+                                } label: {
+                                    ZJ7h766mz(tMmEWWlfgUag: "cVTpp6zUMJxU1")
+                                        .frame(width: 33, height: 33)
+                                }
+                            }
+                        }
+                        .padding(.top, 8)
+                    }
+                 
+                }.padding(.bottom,16)
                 ScrollView(showsIndicators: false){
                     LazyVStack(spacing:12){
                         if(piaoncapType == 0){
@@ -144,7 +182,11 @@ struct QsS1CqA9M8tL2fs: View {
                     }
                 }
             }.padding(.horizontal,16)
-        }.onTapGesture {
+        }
+        .onAppear {
+            searchHistory = SearchHistoryManager.shared.load()
+        }
+        .onTapGesture {
             iZQ7xV4bM8Ys = false
         }
     }

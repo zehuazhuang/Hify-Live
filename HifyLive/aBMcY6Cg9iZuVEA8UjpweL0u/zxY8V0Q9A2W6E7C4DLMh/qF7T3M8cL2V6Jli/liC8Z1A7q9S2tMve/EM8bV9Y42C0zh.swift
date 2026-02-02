@@ -38,12 +38,7 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
     func setupRTM() {
             rtmKit = AgoraRtmKit(appId: TokenManager.appId, delegate: self) // self 现在可以
         }
-    // MARK: - AgoraRtmDelegate
-    func rtmKit(_ kit: AgoraRtmKit,
-                connectionStateChanged state: AgoraRtmConnectionState,
-                reason: AgoraRtmConnectionChangeReason) {
-        print("RTM 连接状态: \(state.rawValue), reason: \(reason.rawValue)")
-    }
+
     
     // MARK: - 获取 Token
     var rtcToken: String? {
@@ -82,64 +77,27 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
         }
     }
     
-    // MARK: - 加入频道
-    func joinRTMChannel(
-        channelId: String,
-        delegate: AgoraRtmChannelDelegate,
-        completion: @escaping (Bool) -> Void
-    ) {
-        guard let rtmKit = rtmKit else {
-            completion(false)
-            return
-        }
 
-        guard let channel = rtmKit.createChannel(withId: channelId, delegate: delegate) else {
-            completion(false)
-            return
-        }
-
-        rtmChannel = channel
-
-        channel.join { errorCode in
-            DispatchQueue.main.async {
-                print("joinChannel errorCode:", errorCode.rawValue)
-                completion(errorCode == .channelErrorOk)
+    // MARK: - AgoraRtmDelegate: token 过期自动刷新
+    func rtmKitTokenDidExpire(_ kit: AgoraRtmKit) {
+        print("⚠️ RTM token 即将过期，开始刷新 Token")
+        
+        Task {
+            let newTokenResponse = try await fetchToken()
+            save(tokenResponse: newTokenResponse)
+            
+            // 异步 renewToken
+            let (_, errorCode) = await rtmKit!.renewToken(newTokenResponse.rtmToken)
+            
+            if errorCode == .ok {
+                print("✅ RTM token 已成功刷新")
+            } else {
+                print("❌ RTM token 刷新失败，errorCode:", errorCode.rawValue)
             }
         }
     }
     
-    func leaveRTMChannel(completion: @escaping (Bool) -> Void) {
-            guard let channel = rtmChannel else {
-                completion(true)
-                return
-            }
-            channel.leave { [weak self] error in
-                self?.rtmChannel = nil
-                completion(error == .ok)
-            }
-        }
-    
-    // MARK: - 发送消息
-    func sendRTMMessage(_ text: String) {
-        let message = AgoraRtmMessage(text: text)
 
-        rtmChannel?.send(message) { errorCode in
-            if errorCode != .errorOk {
-                print("❌ RTM send error:", errorCode.rawValue)
-            }
-        }
-    }
-    
-    // MARK: - 退出 RTM
-    func leaveRTMChannel() {
-        rtmChannel?.leave { _ in }
-        rtmChannel = nil
-    }
-    
-    func logoutRTM() {
-        rtmKit?.logout { _ in }
-        rtmKit = nil
-    }
 }
 
 // MARK: - TokenResponse 结构体

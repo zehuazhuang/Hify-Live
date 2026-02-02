@@ -55,9 +55,10 @@ struct C8Z2x4M6YV9m: View {
                                         .fill(Color.white.opacity(0.2))
                                         .frame(width: 76)
                                         .overlay(alignment: .center) {
-                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()))
+                                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("icon"))
                                                 .frame(width: 68,height: 68)
                                                 .clipShape(Circle())
+                                                .allowsHitTesting(false)
                                         }
                                 }
                                 VStack(alignment: .leading,spacing: 4) {
@@ -338,6 +339,7 @@ struct C8Z2x4M6YV9m: View {
                                             .frame(width: 24,height: 24)
                                     }
                                     .padding(.all,12)
+                                    .contentShape(Rectangle())
                                 }
                             }
                             .padding(.vertical,4)

@@ -5,11 +5,15 @@ import SwiftfulRouting
 struct QiRKOWGBnovrlh: View {
     @Binding var ish1z8TllyFvb: Bool
     @State private var isZ7E4xA0M2 = false
-    let ihQ5ReMsh3Uid : Int
+    let ihQ5ReMsh3Uid: Int
+    let szHHWP8Name: String
+    let wksgt0dUrl: String
     @Environment(\.router) var rM9Z8S7A1ql
+    @State private var isy9YH69iABl = false //二次确认拉黑
     var body: some View {
         ZStack{
             Color.black.opacity(0.3)
+                .ignoresSafeArea()
                 .onTapGesture {
                     ish1z8TllyFvb = false
                 }
@@ -51,13 +55,11 @@ struct QiRKOWGBnovrlh: View {
                     .cornerRadius(325)
                     
                     Button(action: {
-                        Task{
-                            let ishlfBPM1m =   await TPb21z0U.eDNcFBMyyi.ngIp5pudxny8o0Mdsqv(fnLUzabLaul9Cx: ihQ5ReMsh3Uid, mwNKAPngt: "")
-                            
-                            if(ishlfBPM1m){
-                                ish1z8TllyFvb = false
-                            }
+                        
+                        withAnimation{
+                            isy9YH69iABl = true
                         }
+
                     }) {
                         Text("Block")
                             .g0LIIcoZQsOjyND9(
@@ -131,6 +133,18 @@ struct QiRKOWGBnovrlh: View {
                     }
                 }
             }
+            if isy9YH69iABl {
+                E7c8MeV4vdeZfD(d9CzURL: wksgt0dUrl, fmlh3nname: szHHWP8Name, ishtTvNH4y: $isy9YH69iABl, onBlock: {
+                    Task{
+                        let ishlfBPM1m =   await TPb21z0U.eDNcFBMyyi.ngIp5pudxny8o0Mdsqv(fnLUzabLaul9Cx: ihQ5ReMsh3Uid, mwNKAPngt: "")
+                        
+                        if(ishlfBPM1m){
+                            ish1z8TllyFvb = false
+                        }
+                    }
+                })
+            }
+            
         }
     }
 }

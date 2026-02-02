@@ -11,6 +11,7 @@ struct huV9C6xA8M4us: View {
             rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: lsegaUs["icon"])
                 .frame(width: 44, height: 44)
                 .clipShape(Circle())
+                .allowsHitTesting(false)
             VStack{
                 HStack(spacing:0){
                     A6WsC0Ww6ELqEL(l4K9bX2q: (lsegaUs["nickname"] as? String) ?? "", k7NmFz1p: gpiemeSele, t3QvD8j: "1")

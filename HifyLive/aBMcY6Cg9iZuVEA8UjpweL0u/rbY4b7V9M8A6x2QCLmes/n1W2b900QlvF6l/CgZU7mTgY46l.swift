@@ -172,9 +172,9 @@ struct CgZU7mTgY46l: View {
                                             .ignoresSafeArea()
                                         }
                                         
-                                
-                                ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
-                                    .frame(width: 32, height: 32)
+                                //礼物
+//                                ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
+//                                    .frame(width: 32, height: 32)
                             }
                         }.padding(.horizontal,16)
                         .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
@@ -182,7 +182,9 @@ struct CgZU7mTgY46l: View {
                 //end 底部输入框
                 
                 if isw8UhB9Gj8t {
-                    QiRKOWGBnovrlh(ish1z8TllyFvb: $isw8UhB9Gj8t, ihQ5ReMsh3Uid: opponentInfo.int("userId"))
+                    QiRKOWGBnovrlh(ish1z8TllyFvb: $isw8UhB9Gj8t, ihQ5ReMsh3Uid: opponentInfo.int("userId"),
+                                   szHHWP8Name:opponentInfo.string("nickname"), wksgt0dUrl: opponentInfo.string("icon"),
+                    )
                 }
             }
             .onAppear {
@@ -191,6 +193,9 @@ struct CgZU7mTgY46l: View {
                     opponentInfo = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(
                                    wTEEJpZz0iGVK: session.sessionId
                                )
+                    
+                    print("用户数据")
+                    print(opponentInfo)
                 }
             }.onTapGesture {
                 UIApplication.shared.endEditing()

@@ -57,13 +57,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                             .padding(.vertical,2)
                                             .padding(.leading,2)
                                             .padding(.trailing,4)
-                                            .onTapGesture {
-                                                withAnimation{
-                                                    rlUlyPhType = 0
-                                                    showY2E8Qsc = true
-                                                    uY0E4QZ9MLId = (liveRoomData?["userId"] as? Int) ?? 0
-                                                }
-                                            }
+                                            .allowsHitTesting(false)
                         VStack(alignment:.leading){
                             Text((liveRoomData?["nickname"] as? String) ?? "")
                                             .g0LIIcoZQsOjyND9(
@@ -77,6 +71,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                                 weight: .regular
                                             )
                         }.padding(.trailing,6)
+                            
                         if liveRoomData?["followFlag"] as? Int == 0 {
                             ZJ7h766mz(tMmEWWlfgUag: "d7daxM4M9A2")
                                                .frame(width: 28, height: 20)
@@ -101,7 +96,13 @@ struct LE0xQZ6Y7WC8iv: View {
                     .frame(height: 36)
                         .background(.white.opacity(0.3))
                         .cornerRadius(325)
-                    
+                        .onTapGesture {
+                            withAnimation{
+                                rlUlyPhType = 0
+                                showY2E8Qsc = true
+                                uY0E4QZ9MLId = (liveRoomData?["userId"] as? Int) ?? 0
+                            }
+                        }
                   
                     
 //                    HStack(spacing:4){

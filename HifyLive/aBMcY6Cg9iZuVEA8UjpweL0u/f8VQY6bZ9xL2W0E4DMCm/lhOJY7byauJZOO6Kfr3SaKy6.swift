@@ -60,6 +60,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
+                .ignoresSafeArea()
             VStack(spacing: 10) {
                 HStack(spacing: 12) {
                     Button{
@@ -75,7 +76,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                         )
                     Spacer()
                 }
-                .padding(.top,58)
+               
                 .padding(.leading,16)
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
@@ -96,7 +97,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                         }
                                     ZJ7h766mz(tMmEWWlfgUag: "f4Z7BwqXpqnf2Tep")
                                         .frame(width: 24,height: 24)
-                                }
+                                }.allowsHitTesting(false)
                             }
                             VStack(spacing: 12) {
                                 VStack(alignment: .leading, spacing: 14) {
@@ -369,7 +370,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                 }
             }
         }
-        .ignoresSafeArea()
+        
         .onAppear {
             cGwoByGGy860Qj8Gwd1XFLwLkuX4Ygom = fFCUrf3NXxibojTjOBF2N.iBmPfFGfxu5JV7Aii7.string("epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu())
             dYtaf6JUPaCMMjuFfq5DTi = fFCUrf3NXxibojTjOBF2N.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu())
