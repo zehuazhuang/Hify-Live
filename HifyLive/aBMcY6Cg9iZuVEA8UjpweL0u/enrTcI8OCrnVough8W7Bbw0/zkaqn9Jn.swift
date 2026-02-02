@@ -102,10 +102,10 @@ struct zkaqn9Jn: View {
                                         bOdVsCGgJMcQHEtiZDG: on98qnn55lS6bK68e.ocl2SJadHjn67BFo7Gd9deM2Mc4hF ?? ""
                                     )
                                     
-                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "eYD8YW6vlAe/1ZzO7FmQNMqhZywgtvS/TinJ1Y0VgVc=".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: syVAw8opyyC18fy2P11) { (hEFVdnk1mBu9OXgq2wYAWzeztE0gqr: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "/api/auth/isOldAccount", b3q0LlCSk: syVAw8opyyC18fy2P11) { (hEFVdnk1mBu9OXgq2wYAWzeztE0gqr: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                         switch hEFVdnk1mBu9OXgq2wYAWzeztE0gqr {
                                         case .success(let cmBllstUOfe):
-                                            print(cmBllstUOfe.code)
+                                           
                                             if cmBllstUOfe.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                                                 guard
                                                     let j9NQ5xqz3ZL = cmBllstUOfe.result,
@@ -114,19 +114,22 @@ struct zkaqn9Jn: View {
                                                     return
                                                 }
                                                 let c55guwIGLg4RHRJey8dk9m3jln8NMOo = j9NQ5xqz3ZL.hL9dV3bQ2fK6sJ8p()
-                                                print(c55guwIGLg4RHRJey8dk9m3jln8NMOo)
+                                                
+                                               
+                                                
+                                                
                                                 if let nAT4VBfqN62FOc8x6XFADpNqJ = c55guwIGLg4RHRJey8dk9m3jln8NMOo.kPOR9FHwcEZJv9YDf4W01D() {
-                                                    let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]
+                                                    let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]//userInfo
                                                     if let qb9c6NkMMK5 = hOQva7h2 as? [String: Any] {
-                                                        // 老用户
-                                                        print(qb9c6NkMMK5)
+                                                     
+                                                       
                                                         let z6DrSn7Ai = Calendar.current
                                                         let dateMinus22Years = z6DrSn7Ai.date(byAdding: .year, value: -22, to: Date()) ?? Date()
                                                         let lPzflCklCBlTkurInYG0Owe = Int64(dateMinus22Years.timeIntervalSince1970 * 1000)
                                                         let tF60d: Int64
-                                                        if let lSb3zx5YG4IGFUt1CV9lI9Js = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int64 {
+                                                        if let lSb3zx5YG4IGFUt1CV9lI9Js = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int64 {//birthday
                                                             tF60d = lSb3zx5YG4IGFUt1CV9lI9Js
-                                                        } else if let wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int {
+                                                        } else if let wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int {//birthday
                                                             // 如果字典里是 Int 类型
                                                             tF60d = Int64(wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S)
                                                         } else {
@@ -141,12 +144,16 @@ struct zkaqn9Jn: View {
                                                         
                                                         let jZU3hAIkF1Q2ZT61Lpo7W2 = nrTgHasms.string(from: zX6HlaP)
                                                         
-                                                        let tjo7FSBXRqDGtC42gybnBERwh = cpEtaR(wKrCAroUqTbC2rd9pcKfELDDQ: on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG, hVH5DxQ7Q558SdJWLt: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", cImAJ4BdZYF9hJ4x: String(nAT4VBfqN62FOc8x6XFADpNqJ["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0), hmNWPkT: on98qnn55lS6bK68e.sI9ab2lfhqbpaKAkkJ18gYAi ?? "", fRKTOb3: qb9c6NkMMK5["BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", oT9WD2aupYPQUmLUQMwvo: qb9c6NkMMK5["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", wLsFSPTENSsbKoQTDC:qb9c6NkMMK5["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0, spnXcOm: qb9c6NkMMK5["n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", ptxrDJchMpilBtm: jZU3hAIkF1Q2ZT61Lpo7W2, vOPrjVF8S5VO8uXporotTUlUO: qb9c6NkMMK5["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] ?? [],)
                                                         
+                                                        
+                                                        
+                                                        let tjo7FSBXRqDGtC42gybnBERwh = cpEtaR(wKrCAroUqTbC2rd9pcKfELDDQ: on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG, hVH5DxQ7Q558SdJWLt: nAT4VBfqN62FOc8x6XFADpNqJ["gJFgAqy/EDYR9MmYgpNFnQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", cImAJ4BdZYF9hJ4x: qb9c6NkMMK5.int("userId"), hmNWPkT: on98qnn55lS6bK68e.sI9ab2lfhqbpaKAkkJ18gYAi ?? "", fRKTOb3: qb9c6NkMMK5["BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", oT9WD2aupYPQUmLUQMwvo: qb9c6NkMMK5["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", wLsFSPTENSsbKoQTDC:qb9c6NkMMK5["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0, spnXcOm: qb9c6NkMMK5["n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", ptxrDJchMpilBtm: jZU3hAIkF1Q2ZT61Lpo7W2, vOPrjVF8S5VO8uXporotTUlUO: qb9c6NkMMK5["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] ?? [],)
+                                                        
+                                                        ///api/auth/login
                                                         WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: tjo7FSBXRqDGtC42gybnBERwh) { (b3zxt9oFNSK8MBwN1W43: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                                             switch b3zxt9oFNSK8MBwN1W43 {
                                                             case .success(let gqjUVaiuMpMg9Tt):
-                                                                print(gqjUVaiuMpMg9Tt.code)
+                                                              
                                                                 if gqjUVaiuMpMg9Tt.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                                                                     guard
                                                                         let eAC6HoUudAyh = gqjUVaiuMpMg9Tt.result,
@@ -155,7 +162,7 @@ struct zkaqn9Jn: View {
                                                                         return
                                                                     }
                                                                     let xPQrkVrZihZJl1fsnnMP = eAC6HoUudAyh.hL9dV3bQ2fK6sJ8p()
-                                                                    print(xPQrkVrZihZJl1fsnnMP)
+                                                                   
                                                                     if let u5vLFlYL5m6LMIVVh08Uj5D = xPQrkVrZihZJl1fsnnMP.kPOR9FHwcEZJv9YDf4W01D() {
                                                                         ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.xPI2sSbHAr7u1jAZisVjgs8JXZCRZ07t(tEkU2eDdLMlnNOn: u5vLFlYL5m6LMIVVh08Uj5D["km2wMXC6wIJi3UcUM7XhmA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
                                                                         ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC = u5vLFlYL5m6LMIVVh08Uj5D["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0

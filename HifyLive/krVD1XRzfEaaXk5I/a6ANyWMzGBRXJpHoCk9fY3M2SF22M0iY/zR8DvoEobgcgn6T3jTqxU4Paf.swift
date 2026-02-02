@@ -292,6 +292,19 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
         "anchorId": pmpresoZUid,
         "type": 1
     ]
+    
+        print("----URL----")
+        print(url)
+    
+        if let headers = request.allHTTPHeaderFields {
+            print("---请求头---")
+            for (key, value) in headers {
+                print("\(key): \(value)")
+            }
+        }
+    
+    print("----body---")
+    print(body)
 
     let jsonData = try JSONSerialization.data(withJSONObject: body)
     let jsonString = String(decoding: jsonData, as: UTF8.self)
@@ -309,6 +322,8 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 
     // 解析外层 JSON
     let json = try JSONSerialization.jsonObject(with: data)
+    print("----json----")
+    print(json)
     guard let dict = json as? [String: Any],
           let encryptedResult = dict["result"] as? String
     else {
@@ -538,7 +553,7 @@ func Search() async throws -> [String: Any] {
     request.setValue("1.7.4", forHTTPHeaderField: "appVersion")
     request.setValue("11111111", forHTTPHeaderField: "appId")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+    
     
     
     let body: [String: Any] = [

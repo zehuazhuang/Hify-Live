@@ -102,6 +102,7 @@ struct E2VxD0iC4bYyh: View {
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
                                     LQ0Z4A6C9emp()
+                                        .padding(.top,6)
                                     
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {
@@ -147,21 +148,24 @@ struct E2VxD0iC4bYyh: View {
                     }
                 }
                 }.padding(.horizontal,16)
+                
             
-            ZStack {
-                ZJ7h766mz(tMmEWWlfgUag: "L9ZqA8C7S2M1t34")
-                HStack(spacing: 2) {
-                    ZJ7h766mz(tMmEWWlfgUag: "C7M2Z8A1L9tqS34")
-                        .frame(width: 24, height: 24)
-                    Text("146UaT+ePLcQEToZue3EtQ==".bFHEatcgE4zzU9TCfDonsu())
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.white)
-                }
-            }
-            .frame(width: 79, height: 32)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-            .padding(.bottom, 122)
-            .padding(.trailing,16)
+            //悬浮live
+//            ZStack {
+//                ZJ7h766mz(tMmEWWlfgUag: "L9ZqA8C7S2M1t34")
+//                HStack(spacing: 2) {
+//                    ZJ7h766mz(tMmEWWlfgUag: "C7M2Z8A1L9tqS34")
+//                        .frame(width: 24, height: 24)
+//                    Text("LIVE")
+//                        .font(.system(size: 14, weight: .semibold))
+//                        .foregroundColor(.white)
+//                }
+//            }
+//            .frame(width: 79, height: 32)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+//            .padding(.bottom, 122)
+//            .padding(.trailing,16)
+            
             }.task {
                 await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT()
                 await followingCache.loadFollowing()

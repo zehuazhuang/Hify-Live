@@ -6,6 +6,7 @@ struct CQ7E8ZC2A4Y0le: View {
     var body: some View {
         ZStack{
             Color.black.opacity(0.3)
+                .ignoresSafeArea()
                 .onTapGesture {
                     heS7pC8R2J = false
                 }

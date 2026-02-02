@@ -460,7 +460,7 @@ struct ijeWMJnw0: View {
                                 let bkhF1OQYtQmw1KM5SJL = cpEtaR(
                                     wKrCAroUqTbC2rd9pcKfELDDQ: oWICU3h.c5O9meXEy5dOelOBZ3QpElqG,
                                     hVH5DxQ7Q558SdJWLt: fMCOyiKl2,
-                                    cImAJ4BdZYF9hJ4x: "",
+                                    cImAJ4BdZYF9hJ4x: 0,
                                     hmNWPkT: oWICU3h.sI9ab2lfhqbpaKAkkJ18gYAi ?? "",
                                     fRKTOb3: mIAT9zbKJKGtarbSPX1QSZm,
                                     oT9WD2aupYPQUmLUQMwvo: zeEMuRE5FhYabIqhuh,
@@ -569,7 +569,7 @@ struct cpEtaR: Codable {
     
     let wKrCAroUqTbC2rd9pcKfELDDQ: String //platform
     let hVH5DxQ7Q558SdJWLt: String //openId
-    let cImAJ4BdZYF9hJ4x: String //userId
+    let cImAJ4BdZYF9hJ4x: Int //userId
     let hmNWPkT: String //email
     let fRKTOb3: String //nickname
     let oT9WD2aupYPQUmLUQMwvo: String //icon
