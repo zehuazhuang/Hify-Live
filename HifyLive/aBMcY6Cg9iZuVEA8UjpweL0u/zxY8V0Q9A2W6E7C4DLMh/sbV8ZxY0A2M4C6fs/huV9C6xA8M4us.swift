@@ -33,13 +33,11 @@ struct huV9C6xA8M4us: View {
             Spacer()
             Button(action: {
                 Task{
-                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                    
                     let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: lsegaUs.int("userId"), iA6M7W9EYL0: v6Er31I62R ? 1 : 2)
                     
                     if(isA2C6WEL){
                         cF8eDIYj()
-                    }else{
-                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                     }
                 }
                 

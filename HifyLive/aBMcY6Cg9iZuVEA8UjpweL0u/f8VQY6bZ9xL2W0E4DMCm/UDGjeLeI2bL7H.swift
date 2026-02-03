@@ -11,15 +11,17 @@ struct UDGjeLeI2bL7H: View {
     let hXDX98TXUs: [String: Any]
     let iCHzYzK6 : String
     @State private var v6Er31I62R: Bool
+    let ondZKTQ307nh : () -> Void //取关弹框
     
     init(
             hXDX98TXUs: [String: Any],
             iCHzYzK6: String,
-           
+            ondZKTQ307nh: @escaping () -> Void
         ) {
             self.hXDX98TXUs = hXDX98TXUs
             self.iCHzYzK6 = iCHzYzK6
             _v6Er31I62R = State(initialValue: hXDX98TXUs.int("followed") == 0)
+            self.ondZKTQ307nh = ondZKTQ307nh
         }
     var body: some View {
         
@@ -48,12 +50,17 @@ struct UDGjeLeI2bL7H: View {
             Spacer()
             Button(action: {
                 Task{
-                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: hXDX98TXUs.int("userId"), iA6M7W9EYL0: v6Er31I62R ? 1 : 2)
+                    
+                    if(!v6Er31I62R){
+                        ondZKTQ307nh()
+                        return
+                    }
+                   
+                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: hXDX98TXUs.int("userId"), iA6M7W9EYL0: 1)
                     if(isA2C6WEL){
                         v6Er31I62R = !v6Er31I62R
                     }
-                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                    
                 }
                 
                 

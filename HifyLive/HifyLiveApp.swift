@@ -55,12 +55,9 @@ struct HifyLiveApp: App {
 
                                         if let data = responseData {
                                             print("成功获取数据:", data)
-                                        } else {
-                                            print("请求多次仍为空，放弃处理")
                                         }
                                         if let kRWrAfSFZzA6re6E68Sfhxj: [String:Any] = responseData {
-                                            print("返回数据")
-                                            print(kRWrAfSFZzA6re6E68Sfhxj)
+                                           
                                             qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = kRWrAfSFZzA6re6E68Sfhxj
                                             
                                             //筛选相册list

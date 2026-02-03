@@ -297,13 +297,13 @@ final class ChatProfileHeaderView: UIView {
                     }
                 } else {
                     // 未关注 → 直接关注
-                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                   
                     let is9MZC7A4 = try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: userId, iA6M7W9EYL0: 1)
                     if(is9MZC7A4){
                         followBtn.setImage(UIImage(named: "qQ8ZC7E0ZxQ"), for: .normal)
 
                     }
-                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                   
                 }
             } catch {
                 print(error)

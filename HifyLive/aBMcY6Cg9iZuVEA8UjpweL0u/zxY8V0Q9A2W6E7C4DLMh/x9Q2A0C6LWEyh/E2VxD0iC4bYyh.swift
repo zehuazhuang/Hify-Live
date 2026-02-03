@@ -103,13 +103,11 @@ struct E2VxD0iC4bYyh: View {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
                                     LQ0Z4A6C9emp()
                                         .padding(.top,6)
-                                    
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {
                                         ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
                                             rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
                                                 .onTapGesture{
-                                                    
                                                     rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                                                         WUjfoptOKs8pZfhSAH0duplG {
                                                             LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
@@ -120,12 +118,10 @@ struct E2VxD0iC4bYyh: View {
                                         }
                                     }
                                 }
-                                   
-                                
-                                
                             }else{
                                 if followingCache.items.isEmpty {
                                     LQ0Z4A6C9emp()
+                                        .padding(.top,6)
                                     
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {

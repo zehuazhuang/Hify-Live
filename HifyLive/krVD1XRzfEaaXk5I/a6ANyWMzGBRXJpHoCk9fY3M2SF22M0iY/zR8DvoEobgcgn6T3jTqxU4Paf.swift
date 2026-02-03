@@ -353,7 +353,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 //关注 (uid,1关注 2取消)
 @MainActor
 func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
-    
+    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
     // 1️⃣ 构建 URL
     guard let url = URL(string: "https://testaes.cphub.link/api/user/followUser") else {
         throw URLError(.badURL)
@@ -395,10 +395,12 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
         let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
         let code = jsonObject["code"] as? String
     else {
+        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         return false
     }
     
     if(code == "0000"){
+        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
         vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
         

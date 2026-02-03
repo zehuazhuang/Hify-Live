@@ -44,11 +44,22 @@ struct MZ7S8q9A1C2tL43x: View {
                         .fill(Color.white.opacity(0.2))
                         .frame(width: 80, height: 80)
                         
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: x0W6LivDate?["icon"])
-                        .frame(width: 72,height: 72)
-                        .clipShape(Circle())
+                   
+                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: x0W6LivDate?["icon"])
+                            .frame(width: 72,height: 72)
+                            .clipShape(Circle())
+                            .allowsHitTesting(false)
+                    
+                        
               
                 }.frame(width: 80, height: 80)
+                    .onTapGesture {
+                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: (x0W6LivDate?["userId"] as? Int) ?? 0)
+                            }
+                        }
+                    }
                 Spacer().frame(height: 12)
                 Text(x0W6LivDate?["nickname"] as? String ?? "")
                                 .g0LIIcoZQsOjyND9(

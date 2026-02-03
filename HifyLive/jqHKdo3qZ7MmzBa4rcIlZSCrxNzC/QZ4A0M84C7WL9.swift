@@ -167,12 +167,12 @@ struct QZ4A0M84C7WL9: View {
                             
                             Button(action: {
                                 Task{
-                                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                   
                                     let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
                                     if(isA2C6WEL){
                                         haptempLoad()
                                  
-                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                        
                                     }
                                 }
                             }) {

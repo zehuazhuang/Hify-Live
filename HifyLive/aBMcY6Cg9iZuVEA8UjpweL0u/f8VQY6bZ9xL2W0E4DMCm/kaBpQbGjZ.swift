@@ -10,6 +10,8 @@ struct kaBpQbGjZ: View {
     @State private var iZQ7xV4bM8Ys: Bool = false
     @State private var wX6DaMQPResults: [[String: Any]] = []
     @State private var filteredResults: [[String: Any]] = []
+    @State private var xI87npb7lB: Bool = false //弹取关
+    @State private var xH4Gfw7C: Int = -1 //弹框坐标用户
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -50,7 +52,12 @@ struct kaBpQbGjZ: View {
                         LazyVStack(spacing:12){
                             ForEach(filteredResults.indices, id: \.self) { index in
                                 let item = filteredResults[index]
-                                UDGjeLeI2bL7H(hXDX98TXUs: item, iCHzYzK6: IwxP0B12Text,)
+                                UDGjeLeI2bL7H(hXDX98TXUs: item, iCHzYzK6: IwxP0B12Text,ondZKTQ307nh:{
+                                    withAnimation{
+                                        xI87npb7lB = true
+                                        xH4Gfw7C = index
+                                    }
+                                })
                                 .id(UUID())
                                 .onTapGesture {
                                     rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
@@ -65,6 +72,33 @@ struct kaBpQbGjZ: View {
                 }
                 
             }.padding(.horizontal,16)
+            
+            
+            if xI87npb7lB {
+                W9MZC6xA7Q8Y4L(avatarURL: filteredResults[xH4Gfw7C].string("icon"), nickname: filteredResults[xH4Gfw7C].string("nickname"),onClose:{
+                    xI87npb7lB = false
+                },
+                onUnfollow:{
+                    xI87npb7lB = false
+                    Task {
+                                do {
+                                    let isA2C6WEL = try await fol6W9ZQ4xC2(
+                                        uY2M8A4E7C0xL: filteredResults[xH4Gfw7C].int("userId"),
+                                        iA6M7W9EYL0: 2
+                                    )
+                                    
+                                    if(isA2C6WEL){
+                                        
+                                        filteredResults[xH4Gfw7C]["followed"] = 0
+                                    }
+                                    
+                                } catch {
+                                    print( error)
+                                }
+                            }
+                }
+                )
+            }
         }.onTapGesture {
             iZQ7xV4bM8Ys = false
         }
