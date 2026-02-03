@@ -190,9 +190,12 @@ struct CgZU7mTgY46l: View {
             .onAppear {
                 vm.loadHistory()
                 Task {
-                    opponentInfo = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(
+                   let info  = await T0viKk.wSremNeLspPkPRHBJnlVCs5w.ngI7Y2A8C4E0ZQ9W6xL(
                                    wTEEJpZz0iGVK: session.sessionId
                                )
+                    
+                    opponentInfo = info
+                    
                     
                     print("用户数据")
                     print(opponentInfo)

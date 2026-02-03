@@ -47,15 +47,15 @@ final class WOKmjUjM {
     private init() {}
     
     /// 基础地址
-    private let sqvbWkPN = URL(string: "OqNCDtx/JP4F79AwSU+rDse//L3+v56XegqODMcGDG8=".bFHEatcgE4zzU9TCfDonsu())! //https://testaes.cphub.link
+    private let sqvbWkPN = URL(string: "\(JOGtDnYupP.loaattrdbUrl)")! //
     
     /// 获取最新请求头
     private func mUKxiOp6eoowXkAujNLiR() -> [String: String] {
         let nmZuLwUv = ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1
         
         return [
-            "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu(): "11111111",//appId
-            "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu(): "1.0.1",//appVersion
+            "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu(): "\(JOGtDnYupP.raslidepApId)",//appId
+            "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu(): "\(JOGtDnYupP.versLErqSu)",//appVersion
             "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu(): nmZuLwUv.fiaiU4sbcNXzTzXA ?? "",//loginToken
             "xGWm0Zhs5rl1HzU63Yd4hA==".bFHEatcgE4zzU9TCfDonsu(): "f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(),//content-type --- application/json
             "Accept": "f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(),//Accept --- application/json

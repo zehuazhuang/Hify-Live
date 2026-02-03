@@ -18,6 +18,7 @@ struct f52Zxoy0vfJtZQ8pdH9SQ: View {
                 Spacer()
                 ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
                     .frame(height: 271)
+                    
                     .overlay {
                         VStack(spacing: 32) {
                             Text("I7I78sCmM9O0q41HOv6fSA==".bFHEatcgE4zzU9TCfDonsu())
@@ -77,7 +78,9 @@ struct f52Zxoy0vfJtZQ8pdH9SQ: View {
                         }
                     }
             }.offset(y: isZ7E4xA0M2 ? 0 : 300)
-        }.onAppear{
+        }
+        .ignoresSafeArea()
+        .onAppear{
             isZ7E4xA0M2 = false
             DispatchQueue.main.async {
                 withAnimation(.easeOut(duration: 0.25)) {

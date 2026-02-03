@@ -56,6 +56,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
     @State private var fLHDoyZnVjNfsF6: JLHug8N7xnb123ngKc8C = .t42WkstAqbIacYIvoRlzE4YEpY6JiwPx
     @State private var pQ76tb1f1h7CVdkYFz6zZiZOShvPg: UIImage?
     @State private var sJ7lIFbdf = false
+    let updeUsttncmI: ()-> Void
     
     var body: some View {
         ZStack {
@@ -65,19 +66,18 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                 HStack(spacing: 12) {
                     Button{
                         qciToKO5nZO70.dismissScreen()
+                        updeUsttncmI()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
                     }
-                    Text("3GR3j9jY8XzFamP1jDsBUw==".bFHEatcgE4zzU9TCfDonsu())
+                    Text("Edit Profile")
                         .g0LIIcoZQsOjyND9(
                             size: 18,
                             weight: .semibold
                         )
                     Spacer()
-                }
-               
-                .padding(.leading,16)
+                }.padding(.leading,16)
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         VStack(spacing: 24) {
@@ -137,10 +137,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             }
                                             .padding(.vertical,12)
                                         }
-                                        Button {
-                                         
-                                           
-                                        } label: {
+                                       
                                             HStack(spacing: 0) {
                                                 HStack(spacing: 4) {
                                                     ZJ7h766mz(tMmEWWlfgUag: "qGv3QVCHp5")
@@ -162,7 +159,10 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                                 .padding(.trailing, 28)
                                             }
                                             .padding(.vertical,12)
-                                        }
+                                            .onTapGesture {
+                                                
+                                            }
+                                        
                                         
                                         Button {
                                             tWao3BI = st8tFmDYghEYtqM1ZqCn6B61n0.a5JBR() ?? Date()
@@ -193,9 +193,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             }
                                             .padding(.vertical,12)
                                         }
-                                        Button {
-                                        
-                                        } label: {
+                                      
                                             HStack(spacing: 0) {
                                                 HStack(spacing: 4) {
                                                     ZJ7h766mz(tMmEWWlfgUag: "zppAkkGNNw2NqWyov3l1PcB")
@@ -214,7 +212,10 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                                 .padding(.trailing, 28)
                                             }
                                             .padding(.vertical,12)
-                                        }
+                                            .onTapGesture {
+                                                
+                                            }
+                                        
                                      
                                     }
                                 }
@@ -229,7 +230,9 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             Button {
                                                 qciToKO5nZO70.showScreen(.fullScreenCover){ _ in
                                                     WUjfoptOKs8pZfhSAH0duplG {
-                                                        o95HINW4DpHIAT()
+                                                        o95HINW4DpHIAT(updplVCKiB4I: {
+                                                           // asd
+                                                        })
                                                     }
                                                 }
                                             } label: {
@@ -294,7 +297,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                 }
             
             //昵称修改
-            ZStack(alignment: .bottom) {
+            
                 if w7bdExan00WxzXNw1ApKTkPF {
                    
                     gLbtyYG0Wv7sCLCBw4clY50L52A(eVulY4gOzp0: $w7bdExan00WxzXNw1ApKTkPF, iL0NKgp4pke7ysRjBfAm2JfaRY4gSmr: dYtaf6JUPaCMMjuFfq5DTi, lCxJiMKZtg1hoPRLD0YDp9: { am3oNoXm981ANUpo3hE2ot1felWYufP0 in
@@ -322,10 +325,10 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                             }
                         }
                     })
-                    .padding(.bottom, gld9V.d1TG3Bk0SweLa)
+                   
                     
                 }
-            }
+            
            
            
             
@@ -333,12 +336,9 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
             
             
             //生日修改
-            ZStack(alignment: .bottom) {
+           
                 if rJkszCycI4OgT2AtFSxiecEBil {
-                    Color.black.opacity(0.7)
-                        .onTapGesture {
-                            rJkszCycI4OgT2AtFSxiecEBil = false
-                        }
+               
                     BirthdayBottomSheet(isPresented: $rJkszCycI4OgT2AtFSxiecEBil, initialDate: tWao3BI) { sfMSOkfzN6H8TzIbAbM8VI4 in
                         rJkszCycI4OgT2AtFSxiecEBil = false
                         print(sfMSOkfzN6H8TzIbAbM8VI4)
@@ -366,9 +366,9 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                             }
                         }
                     }
-                    .transition(.move(edge: .bottom))
+                   
                 }
-            }
+           
         }
         
         .onAppear {
@@ -470,9 +470,6 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
     }
 }
 
-#Preview {
-    lhOJY7byauJZOO6Kfr3SaKy6()
-}
 
 struct YWO0RAXDrkfnaEsqm6Hl: View {
 

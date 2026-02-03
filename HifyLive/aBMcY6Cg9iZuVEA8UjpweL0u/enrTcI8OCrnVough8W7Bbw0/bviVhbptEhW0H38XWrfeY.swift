@@ -63,11 +63,18 @@ struct BirthdayBottomSheet: View {
                         )
                         .clipped() // 避免布局干扰 Picker
                         .offset(y: isShown ? 0 : 371)
-                        .animation(.easeOut(duration: 0.25), value: isShown)
+                        
             }.ignoresSafeArea()
         }
         .onAppear {
-            isShown = true
+           
+            
+            isShown = false
+            DispatchQueue.main.async {
+                withAnimation(.easeOut(duration: 0.25)) {
+                    isShown = true
+                }
+            }
         }
     }
 }

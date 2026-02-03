@@ -47,6 +47,7 @@ struct o95HINW4DpHIAT: View {
     //相册是否更新
     @State private var cGEKtoCPXDlpstFSxU9vX1eerl8AGL: [Ek9tKrgkM0Mjp] = []
     @State private var efGGYeTiHzlZ9rnXAlq62oUAgD9hLG: Bool = false
+    let updplVCKiB4I :() -> Void //上传相册成功回调更新用户数据
     
     var body: some View {
         ZStack {
@@ -58,6 +59,7 @@ struct o95HINW4DpHIAT: View {
                         Button{
                             if cGEKtoCPXDlpstFSxU9vX1eerl8AGL != idW6C0 {
                                 efGGYeTiHzlZ9rnXAlq62oUAgD9hLG = true
+                                
                             } else {
                                 cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb.dismissScreen()
                             }
@@ -76,6 +78,7 @@ struct o95HINW4DpHIAT: View {
                         Button {
                             Task {
                                 await by8Gte1b3p2Yc6K3qoK7hl0Egxd()
+                                updplVCKiB4I()
                             }
                         } label: {
                             RoundedRectangle(cornerRadius: 325)
@@ -91,7 +94,7 @@ struct o95HINW4DpHIAT: View {
                                 )
                                 .frame(width: 78,height: 33)
                                 .overlay(alignment: .center) {
-                                    Text("hZ5+j3VKZ8mtaGSA5ogSvw==".bFHEatcgE4zzU9TCfDonsu())
+                                    Text("Save")
                                         .g0LIIcoZQsOjyND9(
                                             weight: .medium
                                         )
@@ -216,6 +219,7 @@ struct o95HINW4DpHIAT: View {
                             }
                         }
                         if zH2z17nr7J1Ry1UvflocgInToQd == 2 {
+                            updplVCKiB4I()
                             cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb.dismissScreen()
                         }
                     }

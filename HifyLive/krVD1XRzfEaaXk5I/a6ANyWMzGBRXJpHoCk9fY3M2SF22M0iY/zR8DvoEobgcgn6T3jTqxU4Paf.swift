@@ -8,19 +8,27 @@
 import Foundation
 import NIMSDK
 
+struct JOGtDnYupP {
+    static let loaattrdbUrl = "https://pre.hily.link" //环境地址
+    static let raslidepApId = "21448469" //id
+    static let versLErqSu = "1.0.0" //版本
+    static let zMVMMyTmNK = "ac85c4b27907b332450d8b964df087f3" //云信id
+
+}
+
 
 //直播数据接口
 @MainActor
 func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
-    guard let vD9sL2mK4tQ1bH = URL(string: "https://testaes.cphub.link/api/agora/live/newLive/queryLiveList") else {
+    guard let vD9sL2mK4tQ1bH = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/newLive/queryLiveList") else {
         throw URLError(.badURL)
     }
     
     var zF7nC3qL5pR2vT = URLRequest(url: vD9sL2mK4tQ1bH)
     zF7nC3qL5pR2vT.httpMethod = "POST"
     
-    zF7nC3qL5pR2vT.setValue("11111111", forHTTPHeaderField: "appId")
-    zF7nC3qL5pR2vT.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    zF7nC3qL5pR2vT.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    zF7nC3qL5pR2vT.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     zF7nC3qL5pR2vT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     zF7nC3qL5pR2vT.setValue("application/json", forHTTPHeaderField: "Content-Type")
     zF7nC3qL5pR2vT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -82,15 +90,15 @@ func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
 //关注主播直播数据接口
 @MainActor
 func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
-    guard let rP8vT2kQwZ5bN = URL(string: "https://testaes.cphub.link/api/agora/live/newLive/follow/queryLiveList") else {
+    guard let rP8vT2kQwZ5bN = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/newLive/follow/queryLiveList") else {
         throw URLError(.badURL)
     }
     
     var xN6vR2pB5lC4dT = URLRequest(url: rP8vT2kQwZ5bN)
     xN6vR2pB5lC4dT.httpMethod = "POST"
     
-    xN6vR2pB5lC4dT.setValue("11111111", forHTTPHeaderField: "appId")
-    xN6vR2pB5lC4dT.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    xN6vR2pB5lC4dT.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    xN6vR2pB5lC4dT.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     xN6vR2pB5lC4dT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     xN6vR2pB5lC4dT.setValue("application/json", forHTTPHeaderField: "Content-Type")
     xN6vR2pB5lC4dT.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -151,14 +159,14 @@ func xQY2CLEDWefw() -> String {
 //搜索接口
 @MainActor
 func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] {
-    guard let url = URL(string: "https://testaes.cphub.link/api/search/newLive/query") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/search/newLive/query") else {
         throw URLError(.badURL)
     }
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -219,15 +227,15 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
 @MainActor
 func getRtctoken() async throws -> [String: Any] {
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "https://testaes.cphub.link/api/index/getAgoraRtmToken") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/index/getAgoraRtmToken") else {
         throw URLError(.badURL)
     }
     
     // 2️⃣ 构建请求
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -273,14 +281,14 @@ func getRtctoken() async throws -> [String: Any] {
 @MainActor
 func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 
-    guard let url = URL(string: "https://testaes.cphub.link/api/agora/live/getRoomAndJoinRoomV2") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/getRoomAndJoinRoomV2") else {
         throw URLError(.badURL)
     }
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(
         ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA,
         forHTTPHeaderField: "loginToken"
@@ -355,15 +363,15 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
     EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "https://testaes.cphub.link/api/user/followUser") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/user/followUser") else {
         throw URLError(.badURL)
     }
     
     // 2️⃣ 构建请求
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -422,15 +430,15 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
 func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
     
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "https://testaes.cphub.link/api/anchor/checkCoverImg") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/anchor/checkCoverImg") else {
         throw URLError(.badURL)
     }
     
     // 2️⃣ 构建请求
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -478,14 +486,14 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
 //根据Uid搜索对应room
 @MainActor
 func lyrijivecSearch(surlibateUid: Int) async throws -> [String: Any] {
-    guard let url = URL(string: "https://testaes.cphub.link/api/agora/live/newLive/getRoomByUserId") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/newLive/getRoomByUserId") else {
         throw URLError(.badURL)
     }
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
@@ -542,106 +550,19 @@ func lyrijivecSearch(surlibateUid: Int) async throws -> [String: Any] {
 }
 
 
-//可改
-@MainActor
-func Search() async throws -> [String: Any] {
-    guard let url = URL(string: "https://api.cphub.link/api/index/v2/getDf") else {
-        throw URLError(.badURL)
-    }
-
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("d280996788cc091911111111", forHTTPHeaderField: "deviceId")
-    request.setValue("1.7.4", forHTTPHeaderField: "appVersion")
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    
-    
-    let body: [String: Any] = [
-        "deviceId": "d280996788cc091911111111",
-        "version": "1.7.4",
-        "keyboards": ["en_US"],
-        "osType": "AOS",
-        "channel": "GOOGLE",
-        "ajResult": #"{ "tracker_token": "1ny4hb6f", "tracker_name": "Organic1", "network": "Organic", "engagement_time": "]" }"#
-    ]
-    
-        print("----URL----")
-        print(url)
-    
-        if let headers = request.allHTTPHeaderFields {
-            print("---请求头---")
-            for (key, value) in headers {
-                print("\(key): \(value)")
-            }
-        }
-    print("----body----")
-    print(body)
-    
-
-    
-    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
-    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
-        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-    }
-    
-    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
-    request.httpBody = encryptedString.data(using: .utf8)
-    
-    let (data, response) = try await URLSession.shared.data(for: request)
-    
-    if let httpResponse = response as? HTTPURLResponse {
-        print("HTTP Status Code:", httpResponse.statusCode)
-    }
-    
-    let json = try JSONSerialization.jsonObject(with: data, options: [])
-    guard let dict = json as? [String: Any] else {
-        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-    }
-    
-    print("----dict----")
-   print(dict)
-  
-    // 解密 result
-    guard let resultStr = dict["result"] as? String,
-          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
-        return [:]
-    }
-    
-
-    if let code = dict["code"] as? String, code == "0000" {
-        // 将 JSON 数据转换为数组
-        let resultJson = try JSONSerialization.jsonObject(with: resultData, options: [])
-        print("----返回数据----")
-       print(resultJson)
-
-        guard let resultDict = resultJson as? [String: Any] else {
-            throw NSError(
-                domain: "SearchAPI",
-                code: -2,
-                userInfo: [NSLocalizedDescriptionKey: "result 不是 Dictionary"]
-            )
-        }
-     
-        return resultDict
-    } else {
-        return [:]
-    }
-}
 
 
 //查关注、粉丝
 @MainActor
 func rEh36ZSearch(ovlkoBKType: Int) async throws -> [[String: Any]] {
-    guard let url = URL(string: "https://testaes.cphub.link/api/user/newLive/userFriend") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/user/newLive/userFriend") else {
         throw URLError(.badURL)
     }
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.setValue("11111111", forHTTPHeaderField: "appId")
-    request.setValue("1.0.1", forHTTPHeaderField: "appVersion")
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")

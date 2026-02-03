@@ -39,8 +39,12 @@ struct QsS1CqA9M8tL2fs: View {
                             // ✅ 写入搜索历史
                                    SearchHistoryManager.shared.add(velogranText)
                                    searchHistory = SearchHistoryManager.shared.load()
-                            
-                            oA0T1rQLoad()
+                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                            Task {
+                                await oA0T1rQLoad()
+                                
+                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                            }
                             
                         }
                     )
@@ -118,7 +122,12 @@ struct QsS1CqA9M8tL2fs: View {
                                 SearchHistoryTag(text: item)
                                     .onTapGesture {
                                         q2C4Mtl3iNa = item
-                                        oA0T1rQLoad()
+                                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                        Task {
+                                            await oA0T1rQLoad()
+                                            
+                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                        }
                                     }
                             }
 
@@ -162,7 +171,9 @@ struct QsS1CqA9M8tL2fs: View {
                                             }
                                     } else {
                                         huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa,cF8eDIYj: {
-                                            oA0T1rQLoad()
+                                            Task {
+                                                await oA0T1rQLoad()
+                                            }
                                         })
                                         .id(UUID())
                                         .onTapGesture {
@@ -190,9 +201,9 @@ struct QsS1CqA9M8tL2fs: View {
             iZQ7xV4bM8Ys = false
         }
     }
-    func oA0T1rQLoad(){
+    func oA0T1rQLoad() async  {
         Task { @MainActor in
-            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+         
             do {
                 let results = try await hifySearch(type: piaoncapType, searchValue: q2C4Mtl3iNa)
                    searchResults = results
@@ -207,7 +218,7 @@ struct QsS1CqA9M8tL2fs: View {
                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                    print(error)
                }
-            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+         
             
            
             }

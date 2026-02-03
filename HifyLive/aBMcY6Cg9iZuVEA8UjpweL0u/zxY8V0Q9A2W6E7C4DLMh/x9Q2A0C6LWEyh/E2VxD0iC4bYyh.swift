@@ -106,7 +106,7 @@ struct E2VxD0iC4bYyh: View {
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {
                                         ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
-                                            rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index])
+                                            rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index], is7Nqdlvk: index == 0)
                                                 .onTapGesture{
                                                     rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                                                         WUjfoptOKs8pZfhSAH0duplG {
@@ -126,7 +126,7 @@ struct E2VxD0iC4bYyh: View {
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {
                                     ForEach(followingCache.items.indices, id: \.self) { index in
-                                        rL0X1V3LiveCell(bemindbeData: followingCache.items[index])
+                                        rL0X1V3LiveCell(bemindbeData: followingCache.items[index], is7Nqdlvk: index == 0)
                                             .onTapGesture{
                                                 
                                                 rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
@@ -170,16 +170,7 @@ struct E2VxD0iC4bYyh: View {
             }
         }
     }
-    
-    // 单个直播组件
-    struct rL0X1V3LiveCell: View {
-        let bemindbeData: [String: Any]
-        var body: some View {
-            ZStack {
-                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: bemindbeData["backgroundImgUrl"])
-                    .frame(width: 168, height: 205)
-                    .allowsHitTesting(false)
-                HStack(alignment: .top) {
+
 //                    HStack {
 //                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
 //                            .frame(width: 16, height: 16)
@@ -192,6 +183,18 @@ struct E2VxD0iC4bYyh: View {
 //                    .padding(4)
 //                    .background(Color.black.opacity(0.6))
 //                    .clipShape(s7q2ZC1S9A4tM8L3(radius: 8, corners: [.bottomRight]))
+
+    // 单个直播组件
+    struct rL0X1V3LiveCell: View {
+        let bemindbeData: [String: Any]
+        let is7Nqdlvk : Bool //是否第一个
+        var body: some View {
+            ZStack {
+                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: bemindbeData["backgroundImgUrl"])
+                    .frame(width: 168, height: 205)
+                    .allowsHitTesting(false)
+                HStack(alignment: .top) {
+
                     Spacer()
                     HStack(spacing: 1) {
                         ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
@@ -226,8 +229,45 @@ struct E2VxD0iC4bYyh: View {
             .frame(height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
-            
-
+//            .overlay {
+//                if is7Nqdlvk {
+//                    ZStack {
+////                        // 🌈 外层光晕
+////                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+////                            .stroke(
+////                                LinearGradient(
+////                                    colors: [
+////                                        Color(red: 217/255, green: 28/255, blue: 255/255),
+////                                        Color(red: 0/255, green: 242/255, blue: 255/255)
+////                                    ],
+////                                    startPoint: .topLeading,
+////                                    endPoint: .bottomTrailing
+////                                ),
+////                                lineWidth: 4
+////                            )
+////
+////                            .opacity(0.7)
+////                            .padding(-2)
+//
+//                        // 内层弱边
+//                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+//                            .stroke(
+//                                LinearGradient(
+//                                    colors: [
+//                                        Color(red: 217/255, green: 28/255, blue: 255/255),
+//                                        Color(red: 0/255, green: 242/255, blue: 255/255)
+//                                    ],
+//                                    startPoint: .topLeading,
+//                                    endPoint: .bottomTrailing
+//                                ),
+//                                lineWidth: 4
+//                            )
+//                           
+//                            
+//                    }
+//                    .compositingGroup()
+//                }
+//            }
         }
     }
 

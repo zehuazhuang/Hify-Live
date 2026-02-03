@@ -94,12 +94,18 @@ struct ChatTableView: UIViewRepresentable {
 
         // 更新 header 高度
         if let header = context.coordinator.headerView {
-            let newPicURLs: [String] = (opponentInfo["picList"] as? [[String: Any]])?
-                   .compactMap { $0["mediaUrl"] as? String }
-                   ?? []
-            if newPicURLs != context.coordinator.lastPicURLs {
-                context.coordinator.lastPicURLs = newPicURLs
-                header.update(info: opponentInfo)
+            let last = context.coordinator.lastOpponentInfo
+            let current = opponentInfo
+
+            // 比较关键字段，避免每次都刷新
+            let lastId = last?["userId"] as? Int
+            let currentId = current["userId"] as? Int
+
+
+
+            if lastId != currentId  {
+                context.coordinator.lastOpponentInfo = current
+                header.update(info: current)
             }
 
                 let newHeight = header.frame.height
@@ -131,7 +137,7 @@ struct ChatTableView: UIViewRepresentable {
         let keyboardObserver = KeyboardObserver()
         
         var lastHeaderHeight: CGFloat = 0
-        var lastPicURLs: [String] = []
+        var lastOpponentInfo: [String: Any]? = nil
 
         weak var parentTableView: UITableView?
         weak var headerView: ChatProfileHeaderView?

@@ -43,6 +43,7 @@ struct ME9B8ZCwVQxn: View {
                         ZJ7h766mz(tMmEWWlfgUag: "gZ8A2C9S1MqtLnav")
                                            .frame(height: 90)
                                            .frame(maxWidth: .infinity)
+                                           .scaleEffect(1.01)
                         HStack {
                             Spacer()
                             nS9Zq7L4A1(aenteckTab: .lonaranpeH, haiecenseImg: "a8ZC7S9M1Aq4tLh",battemeneSeleImg:"q1qC9Z7S2t8LMsh", semblrmdanTi: "HlSMLF3CyqbA10eJ++BMNw==".bFHEatcgE4zzU9TCfDonsu())

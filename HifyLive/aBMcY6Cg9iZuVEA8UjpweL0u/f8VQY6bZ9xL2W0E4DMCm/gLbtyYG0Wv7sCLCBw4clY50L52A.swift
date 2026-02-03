@@ -15,18 +15,27 @@ struct gLbtyYG0Wv7sCLCBw4clY50L52A: View {
             Color.black.opacity(0.3)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    eVulY4gOzp0 = false
+                    if(o8CfJNzcNNz){
+                        o8CfJNzcNNz = false
+                    }else{
+                        eVulY4gOzp0 = false
+                    }
+                    
                 }
             VStack{
                 Spacer()
+            ZStack{
+                ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
+                    .frame(maxWidth: .infinity,maxHeight: .infinity)
+                    .ignoresSafeArea()
                 VStack(spacing: 24) {
                     VStack(spacing: 20) {
-                        Text("VOtKGpZBlCH3EC4QBRk4LA==".bFHEatcgE4zzU9TCfDonsu())
+                        Text("Charge nickname")
                             .g0LIIcoZQsOjyND9(
                                 size: 18,
                                 weight: .semibold
                             )
-                        ZStack(alignment: .bottomTrailing) {
+                        ZStack {
                             // 背景
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(Color.white.opacity(0.15))
@@ -35,7 +44,7 @@ struct gLbtyYG0Wv7sCLCBw4clY50L52A: View {
                             // 多行输入框
                             TextEditor(text: $hBI7bFivrdmASi).tint(.white)
                                 .focused($o8CfJNzcNNz)
-                                .scrollContentBackground(.hidden) // ✅ 隐藏白色背景
+                                .scrollContentBackground(.hidden)
                                 .background(Color.clear)
                                 .foregroundColor(.white)
                                 .padding(.horizontal,16)
@@ -55,7 +64,10 @@ struct gLbtyYG0Wv7sCLCBw4clY50L52A: View {
                                 )
                                 .padding(.bottom,8)
                                 .padding(.horizontal,16)
+                                .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottomTrailing)
                         }
+                        .frame(height:76)
+                        .frame(maxWidth: .infinity)
                         .onTapGesture {
                             o8CfJNzcNNz = true
                         }
@@ -77,26 +89,27 @@ struct gLbtyYG0Wv7sCLCBw4clY50L52A: View {
                                     )
                             }
                     }
-                }
-                .padding(.top,24)
-                .padding(.bottom,37)
-                .background(
-                    ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
-                )
-                .onTapGesture {
-                    o8CfJNzcNNz = false
-                }.offset(y: isZ7E4xA0M2 ? 0 : 253)
-                .onAppear {
-                    hBI7bFivrdmASi = iL0NKgp4pke7ysRjBfAm2JfaRY4gSmr
                     
-                    isZ7E4xA0M2 = false
-                    DispatchQueue.main.async {
-                        withAnimation(.easeOut(duration: 0.25)) {
-                            isZ7E4xA0M2 = true
-                        }
+                }
+            }
+                    .frame(height: 253)
+                    .frame(maxWidth: .infinity)
+                    .offset(y: isZ7E4xA0M2 ? 0 : 253)
+                    .onTapGesture {
+                        o8CfJNzcNNz = false
                     }
+                    
+        }
+        }.onAppear {
+            hBI7bFivrdmASi = iL0NKgp4pke7ysRjBfAm2JfaRY4gSmr
+            
+            isZ7E4xA0M2 = false
+            DispatchQueue.main.async {
+                withAnimation(.easeOut(duration: 0.25)) {
+                    isZ7E4xA0M2 = true
                 }
             }
         }
+        
     }
 }

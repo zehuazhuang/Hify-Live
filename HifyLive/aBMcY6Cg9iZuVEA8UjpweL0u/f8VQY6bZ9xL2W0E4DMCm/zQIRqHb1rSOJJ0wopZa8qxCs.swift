@@ -90,7 +90,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                             Button{
                                                                 ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
                                                                     WUjfoptOKs8pZfhSAH0duplG {
-                                                                        o95HINW4DpHIAT()
+                                                                        o95HINW4DpHIAT(updplVCKiB4I: {
+                                                                            pstjumLoad()
+                                                                        })
                                                                     }
                                                                 }
                                                             } label: {
@@ -133,7 +135,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             Button{
                                                 ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
                                                     WUjfoptOKs8pZfhSAH0duplG {
-                                                        lhOJY7byauJZOO6Kfr3SaKy6()
+                                                        lhOJY7byauJZOO6Kfr3SaKy6(updeUsttncmI: {
+                                                            pstjumLoad()
+                                                        })
                                                     }
                                                 }
                                             } label: {
@@ -210,13 +214,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .padding(.horizontal,16)
                                 VStack(spacing: 16) {
                                     HStack(spacing: 83) {
-                                        Button{
-                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    kaBpQbGjZ(c8WYppF6mHU: 3, )
-                                                }
-                                            }
-                                        } label: {
+                                      
                                             VStack(spacing: 4) {
                                                 Text("\(usQ8Y7Z6Inf.int("upsNum"))")
                                                     .g0LIIcoZQsOjyND9(
@@ -227,15 +225,17 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     .g0LIIcoZQsOjyND9(
                                                         color: Color.white.opacity(0.4)
                                                     )
-                                            }
-                                        }
-                                        Button{
-                                            ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    kaBpQbGjZ(c8WYppF6mHU: 2, )
+                                            }.onTapGesture{
+                                                if !istYGRYN4Q{
+                                                    ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                        WUjfoptOKs8pZfhSAH0duplG {
+                                                            kaBpQbGjZ(c8WYppF6mHU: 3, )
+                                                        }
+                                                    }
                                                 }
                                             }
-                                        } label: {
+                                        
+                                      
                                             VStack(spacing: 4) {
                                                 Text("\(usQ8Y7Z6Inf.int("fansNum"))")
                                                     .g0LIIcoZQsOjyND9(
@@ -246,8 +246,17 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     .g0LIIcoZQsOjyND9(
                                                         color: Color.white.opacity(0.4)
                                                     )
+                                            }.onTapGesture {
+                                                if !istYGRYN4Q{
+                                                    ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
+                                                        WUjfoptOKs8pZfhSAH0duplG {
+                                                            kaBpQbGjZ(c8WYppF6mHU: 2, )
+                                                        }
+                                                    }
+                                                }
+                                           
                                             }
-                                        }
+                                       
                                         Spacer()
                                     }
                                     .padding(.horizontal,16)
@@ -388,7 +397,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         
                         
                         Button(action: {
-                            print(isFvNNQZQ)
+                           
                             Task{
                                 
                                 let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: areoloaUid, iA6M7W9EYL0: isFvNNQZQ ? 2 : 1)
@@ -669,6 +678,7 @@ class T0viKk: ObservableObject {
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6pl/MNKQk2tbd1jWycWL1eQ=".bFHEatcgE4zzU9TCfDonsu(),
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: gStC2A9Z6Y8Qx0E7W4ML( sGOM5LYyLVsTQ1mHEFJD1CJtq: wTEEJpZz0iGVK)
             )
+           
            
             if bSn9YS.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 // 成功
