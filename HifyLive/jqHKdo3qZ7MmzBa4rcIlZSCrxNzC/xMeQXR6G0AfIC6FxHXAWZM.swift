@@ -26,36 +26,32 @@ final class EfqJ9: ObservableObject {
 }
 
 struct BMTU5LVVTQYLXCZaN: View {
-    
-    @State private var oSPIksfAo9ODLE49BHA1QUcXNFrX = false
+    @State private var angle: Double = 0
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.7)
-                .edgesIgnoringSafeArea(.all)
+            Color.black.opacity(0.7).edgesIgnoringSafeArea(.all)
             
-            ZStack {
-                Circle()
-                    .stroke(Color.white.opacity(0.4), style: StrokeStyle(lineWidth: 4, lineCap: .round))
-                    .frame(width: 50, height: 50)
-                Circle()
-                    .trim(from: 0.0, to: 0.25)
-                    .stroke(AngularGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0, green: 242/255, blue: 1),
-                            Color(red: 217/255, green: 28/255, blue: 1),
-                        ]),
-                        center: .center,
-                        startAngle: .degrees(0),
-                        endAngle: .degrees(90)
-                    ),style: StrokeStyle(lineWidth: 4, lineCap: .round))
-                    .frame(width: 50, height: 50)
-                    .rotationEffect(.degrees(oSPIksfAo9ODLE49BHA1QUcXNFrX ? 360 : 0))
-                    .animation(.linear(duration: 1).repeatForever(autoreverses: false), value: oSPIksfAo9ODLE49BHA1QUcXNFrX)
-                    .onAppear {
-                        oSPIksfAo9ODLE49BHA1QUcXNFrX = true
+            Circle()
+                .stroke(Color.white.opacity(0.4), lineWidth: 4)
+                .frame(width: 50, height: 50)
+            
+            Circle()
+                .trim(from: 0.0, to: 0.25)
+                .stroke(
+                    AngularGradient(
+                        gradient: Gradient(colors: [Color.cyan, Color.purple]),
+                        center: .center
+                    ),
+                    style: StrokeStyle(lineWidth: 4, lineCap: .round)
+                )
+                .frame(width: 50, height: 50)
+                .rotationEffect(.degrees(angle))
+                .onAppear {
+                    withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
+                        angle = 360
                     }
-            }
+                }
         }
     }
 }

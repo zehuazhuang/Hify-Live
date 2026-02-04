@@ -79,7 +79,7 @@ struct kaBpQbGjZ: View {
                     xI87npb7lB = false
                 },
                 onUnfollow:{
-                    xI87npb7lB = false
+                    
                     Task {
                                 do {
                                     let isA2C6WEL = try await fol6W9ZQ4xC2(
@@ -104,12 +104,21 @@ struct kaBpQbGjZ: View {
         }
         
         .onAppear() {
-            Task{
-                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                let data = try await rEh36ZSearch(ovlkoBKType: c8WYppF6mHU)
-                        wX6DaMQPResults = data
-                        filteredResults = data
-                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+            Task {
+                
+                defer {
+                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                }
+
+                do {
+                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt() // 开启加载
+                    let data = try await rEh36ZSearch(ovlkoBKType: c8WYppF6mHU)
+                    wX6DaMQPResults = data
+                    filteredResults = data
+                } catch {
+                    print(error)
+                    
+                }
             }
         }
     }

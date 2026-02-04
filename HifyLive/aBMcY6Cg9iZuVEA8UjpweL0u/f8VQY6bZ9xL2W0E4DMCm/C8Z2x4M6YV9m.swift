@@ -34,7 +34,6 @@ struct C8Z2x4M6YV9m: View {
     @Environment(\.scenePhase) private var cOVPp3
     //退出登录提示
     @State private var deZMvhJctiSoCj78YDk: Bool = false
-    @StateObject private var ya2qGx4aTjgtmozGqLHfII3MkYDBCnJ1 = IyfdHMdY.bTa3L6BoprG
     
     var body: some View {
         ZStack {
@@ -116,12 +115,12 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                 } label: {
                                     VStack(spacing: 4) {
-                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK.count))
+                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("upsNum")))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .black
                                             )
-                                        Text("j6N2OHmBLAbXPzqOtT0sAA==".bFHEatcgE4zzU9TCfDonsu())
+                                        Text("Following")
                                             .g0LIIcoZQsOjyND9(
                                                 color: Color.white.opacity(0.4)
                                             )
@@ -135,12 +134,12 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                 } label: {
                                     VStack(spacing: 4) {
-                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iF2ouR0gHFDSr3GJ.count))
+                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("fansNum")))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .black
                                             )
-                                        Text("OKtvWktdeG2+akdspLRpzw==".bFHEatcgE4zzU9TCfDonsu())
+                                        Text("Followers")
                                             .g0LIIcoZQsOjyND9(
                                                 color: Color.white.opacity(0.4)
                                             )

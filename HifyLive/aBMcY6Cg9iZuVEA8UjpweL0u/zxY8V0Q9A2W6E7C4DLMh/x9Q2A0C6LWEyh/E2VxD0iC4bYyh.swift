@@ -142,9 +142,11 @@ struct E2VxD0iC4bYyh: View {
                         }
                     }
                 }.refreshable {
-                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                    //显示加载
+                 //   EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                     await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
-                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                    print("刷新数据")
+                 //   EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                    
                 }
                 }.padding(.horizontal,16)
@@ -195,10 +197,11 @@ struct E2VxD0iC4bYyh: View {
         var body: some View {
             ZStack {
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: bemindbeData["backgroundImgUrl"])
-                    .frame(width: 168, height: 205)
+                    .frame(height: 205)
+                    .frame(maxWidth: .infinity)
                     .allowsHitTesting(false)
                 HStack(alignment: .top) {
-
+                    
                     Spacer()
                     HStack(spacing: 1) {
                         ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
@@ -218,12 +221,23 @@ struct E2VxD0iC4bYyh: View {
                     .padding(8)
                 }
                 .frame(maxHeight: .infinity, alignment: .topLeading)
+                //加渐变蒙版
+                LinearGradient(
+                    colors: [Color(red: 27/255, green: 31/255, blue: 52/255).opacity(0),
+                        Color(red: 13/255, green: 16/255, blue: 21/255).opacity(0.6),
+                             ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .frame(height: 65)
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .allowsHitTesting(false)
                 HStack(spacing: 8) {
                     Text((bemindbeData["nickname"] as? String) ?? "")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.white)
-                    ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
-                        .frame(width: 16, height: 16)
+                
+                    CountryFlagView(countryCode: bemindbeData.string("countryId"))
                     Spacer()
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
@@ -233,6 +247,10 @@ struct E2VxD0iC4bYyh: View {
             .frame(height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
+            .onAppear{
+                print("国家")
+                print(bemindbeData)
+            }
 //            .overlay {
 //                if is7Nqdlvk {
 //                    ZStack {

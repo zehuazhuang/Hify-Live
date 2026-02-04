@@ -301,18 +301,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
         "type": 1
     ]
     
-        print("----URL----")
-        print(url)
-    
-        if let headers = request.allHTTPHeaderFields {
-            print("---请求头---")
-            for (key, value) in headers {
-                print("\(key): \(value)")
-            }
-        }
-    
-    print("----body---")
-    print(body)
+
 
     let jsonData = try JSONSerialization.data(withJSONObject: body)
     let jsonString = String(decoding: jsonData, as: UTF8.self)
@@ -321,7 +310,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
     request.httpBody = jsonString
         .tYwP1zF6sM8vR2kq()
         .data(using: .utf8)
-
+    
     let (data, response) = try await URLSession.shared.data(for: request)
 
     if let httpResponse = response as? HTTPURLResponse {
@@ -330,8 +319,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 
     // 解析外层 JSON
     let json = try JSONSerialization.jsonObject(with: data)
-    print("----json----")
-    print(json)
+  
     guard let dict = json as? [String: Any],
           let encryptedResult = dict["result"] as? String
     else {

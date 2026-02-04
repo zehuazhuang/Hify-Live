@@ -421,10 +421,15 @@ extension ChatViewController {
             guard let session = msg.session, session.sessionType == .chatroom else { continue }
 
             // 1️⃣ 过滤自己之前离开前发的消息
+            
+            // 👇 在这里加一行
+              guard msg.messageType == .text else {
+                  continue
+              }
           
-            if msg.from == "\(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid"))" {
-                continue
-            }
+//            if msg.from == "\(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid"))" {
+//                continue
+//            }
 
             let accid = msg.from ?? ""
 
@@ -433,8 +438,7 @@ extension ChatViewController {
                 let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
                 let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
                 
-                print(avatarURL)
-                print(nickname)
+               
 
                 let publicMsg = PublicMessage(
                     userId: accid,

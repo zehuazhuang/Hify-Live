@@ -64,6 +64,7 @@ struct W9MZC6xA7Q8Y4L: View {
                             ZJ7h766mz(tMmEWWlfgUag: "unfMZ80E2Q6")
                                                .frame(width: 116, height: 46)
                                                .onTapGesture {
+                                                   onClose?()
                                                    onUnfollow?()
                                                }
                             

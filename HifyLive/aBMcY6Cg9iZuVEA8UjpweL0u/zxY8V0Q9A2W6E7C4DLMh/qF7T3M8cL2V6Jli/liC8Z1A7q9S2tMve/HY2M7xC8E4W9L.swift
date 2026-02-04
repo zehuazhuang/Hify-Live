@@ -122,15 +122,16 @@ class PublicMessageCell: UITableViewCell {
     required init?(coder: NSCoder) { fatalError() }
 
     func configure(with message: PublicMessage) {
+    
         // 显示头像
         if let urlString = message.avatarURL, let url = URL(string: urlString) {
             avatarImageView.kf.setImage(
                 with: url,
-                placeholder: UIImage(named: "d7daxM4M9A2"),
+                placeholder: UIImage(named: "gCZGrlvVVn1D"),
                 options: [.transition(.fade(0.2)), .cacheOriginalImage]
             )
         } else {
-            avatarImageView.image = UIImage(named: "d7daxM4M9A2")
+            avatarImageView.image = UIImage(named: "gCZGrlvVVn1D")
         }
 
         // 拼接昵称 + 消息
