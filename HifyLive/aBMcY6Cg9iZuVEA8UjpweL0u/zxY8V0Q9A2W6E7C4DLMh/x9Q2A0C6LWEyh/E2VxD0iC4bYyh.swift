@@ -11,12 +11,12 @@ struct E2VxD0iC4bYyh: View {
     ]
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @Binding var ecorjazyType: Bool // true recommend false following
-    @State private var isLoading: Bool = false
     @Environment(\.router) var rM9Z8S7A1ql
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     @State private var liveVC: UIViewController?
     
     @StateObject private var followingCache = FollowingCache.shared //关注数据
+    
    
     var body: some View {
         ZStack{
@@ -138,10 +138,14 @@ struct E2VxD0iC4bYyh: View {
                                             }
                                     }
                                 }
-                                }
-                     
+                            }
                         }
                     }
+                }.refreshable {
+                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                    await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
+                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                   
                 }
                 }.padding(.horizontal,16)
                 

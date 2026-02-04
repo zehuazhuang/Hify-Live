@@ -94,16 +94,21 @@ class RecentSessionStore: ObservableObject {
 
 extension RecentSessionStore {
     func markSessionRead(sessionId: String) {
-        guard let index = cache.firstIndex(where: { $0.sessionId == sessionId }) else {
-            return
-        }
+           guard let index = cache.firstIndex(where: { $0.sessionId == sessionId }) else {
+               return
+           }
+        objectWillChange.send()
+           // 本地缓存标记已读
+           let unreadCount = cache[index].unreadCount
+           cache[index].unreadCount = 0
 
-        cache[index].unreadCount = 0
+           // 同步全局未读
+           GlobalUnreadStore.shared.clearUnread(for: cache[index].sessionId, count: unreadCount)
 
-        // 可选：同步给云信 SDK
-        let session = cache[index].session
-        NIMSDK.shared().conversationManager.markAllMessagesRead(in: session)
-    }
+           // 同步给云信 SDK
+           let session = cache[index].session
+           NIMSDK.shared().conversationManager.markAllMessagesRead(in: session)
+       }
     
   
     /// 将所有会话标记为已读

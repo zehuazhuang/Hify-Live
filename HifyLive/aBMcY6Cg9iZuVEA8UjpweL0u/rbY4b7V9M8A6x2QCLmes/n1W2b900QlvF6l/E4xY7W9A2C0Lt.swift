@@ -185,8 +185,7 @@ final class ChatProfileHeaderView: UIView {
     // MARK: - Update
     func update(info: [String: Any]) {
         
-        print("------info")
-        print(info)
+     
         
         
         currentAvatarURL = info["icon"] as? String ?? ""

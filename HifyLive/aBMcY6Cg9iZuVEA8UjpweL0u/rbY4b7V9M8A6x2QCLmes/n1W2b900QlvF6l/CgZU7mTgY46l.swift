@@ -54,6 +54,7 @@ struct CgZU7mTgY46l: View {
                     HStack {
                         // 左侧关闭按钮
                         Button {
+                            RecentSessionStore.shared.markSessionRead(sessionId: session.sessionId)
                             rM9Z8S7A1ql.dismissScreen()
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
@@ -197,8 +198,7 @@ struct CgZU7mTgY46l: View {
                     opponentInfo = info
                     
                     
-                    print("用户数据")
-                    print(opponentInfo)
+                 
                 }
             }.onTapGesture {
                 UIApplication.shared.endEditing()
