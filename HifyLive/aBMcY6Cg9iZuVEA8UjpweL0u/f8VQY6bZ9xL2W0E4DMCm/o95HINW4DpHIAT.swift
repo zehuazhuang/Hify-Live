@@ -278,11 +278,11 @@ struct o95HINW4DpHIAT: View {
             }
             let brGWSlPTRFXRWS = oMKd7qebhMlgH3bk.hL9dV3bQ2fK6sJ8p()
             print(brGWSlPTRFXRWS) //直接返回未转json得字符串
-            if let oGXNBeu7OiUpSgJwPvABlEY = brGWSlPTRFXRWS.kPOR9FHwcEZJv9YDf4W01D() {
-                if let l4T1eGb6NQQwzp8IS2S7zPa2 = oGXNBeu7OiUpSgJwPvABlEY["sRmN9z3L7rKPiPFgDt+DIg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
-                    r7L9pCA = []
-                    m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS = true
-                }
+            if let dict = brGWSlPTRFXRWS.kPOR9FHwcEZJv9YDf4W01D(),
+               let _ = dict["sRmN9z3L7rKPiPFgDt+DIg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] {
+
+                r7L9pCA = []
+                m4L0puD8tjRnlYgpCJgN0PyGZ6BJhS = true
             }
         } else {
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("9fZeXzm2b8JDi9URhrOPCQ==")
@@ -465,7 +465,7 @@ struct wXWAaYKmLFbT1jAfqZ4KlTVAwpC: View {
                 Button {
                     yf0kruM5Ek5r8xR6zWPpgI(nFBDXePJdd41Kp)
                 } label: {
-                    ZJ7h766mz(tMmEWWlfgUag: "x7mVKdhqttJqvt5UTZbsvzaHN4vsAO")
+                    ZJ7h766mz(tMmEWWlfgUag: "pD8K1Q5tB6R9Lh")
                         .frame(width: 24,height: 24)
                         .padding(.all,4)
                 }

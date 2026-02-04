@@ -1,6 +1,6 @@
 platform :ios, '16.0'
 
-use_frameworks!
+use_frameworks! :linkage => :static
 
 target 'HifyLive' do
   # 阿里云 OSS iOS SDK 最新版本

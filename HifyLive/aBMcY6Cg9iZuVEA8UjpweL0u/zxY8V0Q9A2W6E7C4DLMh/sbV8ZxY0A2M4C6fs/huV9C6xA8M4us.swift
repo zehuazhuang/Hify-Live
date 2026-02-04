@@ -17,7 +17,7 @@ struct huV9C6xA8M4us: View {
                     A6WsC0Ww6ELqEL(l4K9bX2q: (lsegaUs["nickname"] as? String) ?? "", k7NmFz1p: gpiemeSele, t3QvD8j: "1")
 
                     Spacer().frame(width: 4)
-                    ZJ7h766mz(tMmEWWlfgUag: lsegaUs.int("gender") == 2 ? "bM4Z7ZVY8M4gr" : "h8bx8HHiJD1BodEG8Zfzl")
+                    ZJ7h766mz(tMmEWWlfgUag: lsegaUs.int("gender") == 2 ? "aSUqulEy" : "h8bx8HHiJD1BodEG8Zfzl")
                                        .frame(width: 24, height: 24)
                     Spacer()
                 }
