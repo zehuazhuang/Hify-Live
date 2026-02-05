@@ -115,7 +115,7 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                 } label: {
                                     VStack(spacing: 4) {
-                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("upsNum")))
+                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK.count))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .black
@@ -134,7 +134,7 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                 } label: {
                                     VStack(spacing: 4) {
-                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("fansNum")))
+                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iF2ouR0gHFDSr3GJ.count))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 18,
                                                 weight: .black

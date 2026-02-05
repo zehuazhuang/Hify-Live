@@ -121,7 +121,8 @@ struct zkaqn9Jn: View {
                                                 if let nAT4VBfqN62FOc8x6XFADpNqJ = c55guwIGLg4RHRJey8dk9m3jln8NMOo.kPOR9FHwcEZJv9YDf4W01D() {
                                                     let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]//userInfo
                                                     if let qb9c6NkMMK5 = hOQva7h2 as? [String: Any] {
-                                                     
+                                                        print("userinfo---------")
+                                                     print(hOQva7h2)
                                                        
                                                         let z6DrSn7Ai = Calendar.current
                                                         let dateMinus22Years = z6DrSn7Ai.date(byAdding: .year, value: -22, to: Date()) ?? Date()

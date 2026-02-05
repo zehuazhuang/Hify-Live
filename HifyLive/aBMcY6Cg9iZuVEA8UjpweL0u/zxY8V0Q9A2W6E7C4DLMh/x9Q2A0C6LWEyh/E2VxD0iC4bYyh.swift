@@ -17,6 +17,10 @@ struct E2VxD0iC4bYyh: View {
     
     @StateObject private var followingCache = FollowingCache.shared //关注数据
     
+    @State private var pullOffset: CGFloat = 0
+    @State private var isRefreshing = false
+    private let triggerHeight: CGFloat = 80
+    
    
     var body: some View {
         ZStack{
@@ -98,6 +102,10 @@ struct E2VxD0iC4bYyh: View {
                 }
                 
                 ScrollView(showsIndicators: false){
+                    SmoothPullToRefresh(
+                           pullOffset: $pullOffset,
+                           isRefreshing: $isRefreshing
+                       )
                     VStack{
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
@@ -141,14 +149,21 @@ struct E2VxD0iC4bYyh: View {
                             }
                         }
                     }
-                }.refreshable {
-                    //显示加载
-                 //   EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                    await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
-                    print("刷新数据")
-                 //   EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                   
-                }
+                }.simultaneousGesture(
+                    DragGesture()
+                        .onEnded { _ in
+                            guard pullOffset > triggerHeight, !isRefreshing else { return }
+
+                            isRefreshing = true
+                            Task {
+                                await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
+                                print("刷新")
+                                withAnimation {
+                                    isRefreshing = false
+                                }
+                            }
+                        }
+                )
                 }.padding(.horizontal,16)
                 
             
@@ -247,10 +262,7 @@ struct E2VxD0iC4bYyh: View {
             .frame(height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
-            .onAppear{
-                print("国家")
-                print(bemindbeData)
-            }
+           
 //            .overlay {
 //                if is7Nqdlvk {
 //                    ZStack {
@@ -302,5 +314,31 @@ extension UIApplication {
             .first?
             .windows
             .first { $0.isKeyWindow }
+    }
+}
+
+//下拉刷新组件
+struct SmoothPullToRefresh: View {
+    @Binding var pullOffset: CGFloat
+    @Binding var isRefreshing: Bool
+
+    var body: some View {
+        GeometryReader { geo in
+            let offset = geo.frame(in: .global).minY
+
+            if offset > 0 {
+                VStack {
+                    if isRefreshing {
+                        ProgressView()
+                            .tint(.white)
+                            .scaleEffect(1.4)
+                    }
+                }
+                .frame(height: offset)
+                .offset(x: 10, y: -30)
+                .onChange(of: offset) { pullOffset = $0 }
+            }
+        }
+        .frame(height: 0)
     }
 }
