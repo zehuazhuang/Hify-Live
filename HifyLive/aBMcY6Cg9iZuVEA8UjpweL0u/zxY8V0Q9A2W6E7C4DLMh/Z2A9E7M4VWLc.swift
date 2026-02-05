@@ -1,9 +1,4 @@
-//
-//  Z2A9E7M4VWLc.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/20.
-//
+
 
 import Combine
 import NIMSDK

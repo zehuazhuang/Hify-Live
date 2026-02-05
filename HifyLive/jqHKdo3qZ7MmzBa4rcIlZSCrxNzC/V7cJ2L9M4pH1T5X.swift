@@ -1,9 +1,4 @@
-//
-//  V7cJ2L9M4pH1T5X.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/19.
-//
+
 //拓展方法
 import Foundation
 

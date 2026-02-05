@@ -12,6 +12,9 @@ struct QZ4A0M84C7WL9: View {
     @State private var info9M0Q2A6: [String: Any] = [:] //用户数据
     @State private var is7A0Y4W6ECL: Int = -1 //是否关注
     @Environment(\.router) var rM9Z8S7A1ql
+    @State private var r20e4mWkY = false //弹取关
+    @State private var qQLT5JKPC = false //弹拉黑
+    
     
     var exFkPlIB : Bool { //是否当前用户
         if (sBb3SaType == 0){
@@ -41,6 +44,11 @@ struct QZ4A0M84C7WL9: View {
                                             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
                                             .padding(.top,10)
                                             .padding(.trailing,16)
+                                            .onTapGesture {
+                                                withAnimation{
+                                                    qQLT5JKPC = true
+                                                }
+                                            }
                         }
                         
                     }.frame(height: 305)
@@ -166,15 +174,15 @@ struct QZ4A0M84C7WL9: View {
                                                }
                             
                             Button(action: {
-                                Task{
-                                   
-                                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
-                                    if(isA2C6WEL){
-                                        haptempLoad()
-                                 
-                                        
+                                
+                                if(is7A0Y4W6ECL == 2){
+                                    withAnimation{
+                                        r20e4mWkY = true
                                     }
+                                    return
                                 }
+                                    folRqXnBaB4()
+                                
                             }) {
                                 HStack(spacing:4){
                                     if is7A0Y4W6ECL == 1 {
@@ -226,6 +234,21 @@ struct QZ4A0M84C7WL9: View {
                 
                 Spacer().frame(height: 8)
             }.offset(y: isZ7E4xA0M2 ? 0 : 300)
+            
+            //取关弹框
+            if r20e4mWkY {
+                W9MZC6xA7Q8Y4L(avatarURL: info9M0Q2A6.string("icon"), nickname: info9M0Q2A6.string("nickname"),onClose:{
+                    r20e4mWkY = false
+                },
+                onUnfollow:{
+                    folRqXnBaB4()
+                }
+              )
+            }
+            //拉黑弹框
+            if qQLT5JKPC {
+                QiRKOWGBnovrlh(ish1z8TllyFvb: $qQLT5JKPC, ihQ5ReMsh3Uid: info9M0Q2A6.int("userId"), szHHWP8Name: info9M0Q2A6.string("nickname"), wksgt0dUrl: info9M0Q2A6.string("icon"))
+            }
         }
         
         .onAppear {
@@ -239,6 +262,16 @@ struct QZ4A0M84C7WL9: View {
             haptempLoad()
         }
     }
+    //关注|取关
+    func folRqXnBaB4(){
+        Task{
+           
+            let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: info9M0Q2A6.int("userId"), iA6M7W9EYL0: is7A0Y4W6ECL)
+            if(isA2C6WEL){
+                haptempLoad()
+            }
+        }
+    }
     //加载用户数据
     func haptempLoad(){
         Task {
@@ -250,11 +283,11 @@ struct QZ4A0M84C7WL9: View {
             }
                      
                          
-                           withAnimation{
-                               is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
-                           }
-                        
-                       
+            withAnimation{
+                is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
+            }
+            print("是否关注")
+            print(is7A0Y4W6ECL)
         }
     }
  

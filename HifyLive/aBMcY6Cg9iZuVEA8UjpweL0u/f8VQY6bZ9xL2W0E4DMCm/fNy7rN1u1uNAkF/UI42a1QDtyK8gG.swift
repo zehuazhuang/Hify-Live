@@ -11,13 +11,16 @@ struct UI42a1QDtyK8gG: View {
         GridItem(.flexible(), spacing: 17)
     ]
     @State private var uTTt3GAWH = ["Nudity","Harassment","Content including \nminors","Illegal content"]
-    @State private var zl2SSqI7hK = -1 //当前选中
+    @State private var zl2SSqI7hK = 0 //当前选中
     @State private var descriptionText: String = ""
     let maxLength: Int = 200 // 最大字符数限制
     @FocusState private var iseUA9AeUS: Bool
     @State private var selectedPhotos: [PhotosPickerItem] = [] // 原生 PickerItem
     @State private var images: [UIImage] = [] // 转成 UIImage
     @State private var showPicker = false
+    @State private var showCamera = false
+    @State private var cameraImage: UIImage? = nil
+    @State private var oiqJtAPU = false //显示上传相册弹框
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -94,24 +97,37 @@ struct UI42a1QDtyK8gG: View {
                                     }
                                 }
 
-                                TextEditor(text: $descriptionText)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14))
-                                    .frame(height: 112, alignment: .top)
-                                    .multilineTextAlignment(.leading)
-                                    .padding(.horizontal, 4)
-                                    .padding(.vertical, 5)
-                                    .scrollContentBackground(.hidden)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                    )
-                                    .focused($iseUA9AeUS)
-                                    .onChange(of: descriptionText) { newValue in
-                                        if newValue.count > maxLength {
-                                            descriptionText = String(newValue.prefix(maxLength))
+                                ZStack(alignment: .bottomTrailing) {
+                                    TextEditor(text: $descriptionText)
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 14))
+                                        .frame(height: 112)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(.horizontal, 4)
+                                        .padding(.vertical, 5)
+                                        .scrollContentBackground(.hidden)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                                        )
+                                        .focused($iseUA9AeUS)
+                                        .onChange(of: descriptionText) { newValue in
+                                            if newValue.count > maxLength {
+                                                descriptionText = String(newValue.prefix(maxLength))
+                                            }
                                         }
-                                    }
+
+                                    // 👇 右下角字数提示
+                                    Text("\(descriptionText.count)/\(maxLength)")
+                                        .font(.system(size: 11))
+                                        .foregroundColor(
+                                            descriptionText.count >= maxLength
+                                            ? .red
+                                            : .gray
+                                        )
+                                        .padding(.trailing, 10)
+                                        .padding(.bottom, 12)
+                                }
                             }
                         }
                         VStack(alignment:.leading,spacing:12){
@@ -123,11 +139,16 @@ struct UI42a1QDtyK8gG: View {
                             
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack{
-                                    ZJ7h766mz(tMmEWWlfgUag: "aXo1EDsWsqHJ")
-                                                       .frame(width: 96, height: 96)
-                                                       .onTapGesture {
-                                                           showPicker = true
-                                                       }
+                                    if images.count < 6 {
+                                        ZJ7h766mz(tMmEWWlfgUag: "aXo1EDsWsqHJ")
+                                                           .frame(width: 96, height: 96)
+                                                           .onTapGesture {
+                                                               withAnimation{
+                                                                   oiqJtAPU = true
+                                                               }
+                                                           }
+                                    }
+                                    
                                     // 展示已选图片
                                                 ForEach(images.indices, id: \.self) { index in
                                                     ZStack(alignment: .topTrailing) {
@@ -148,8 +169,9 @@ struct UI42a1QDtyK8gG: View {
                                                                 .frame(width: 24, height: 24)
                                                                 .background(Color.black.opacity(0.5))
                                                                 .clipShape(Circle())
-                                                        }
-                                                        .offset(x: 4, y: -4) // 调整到右上角
+                                                        }.padding(.top,4)
+                                                            .padding(.trailing,4)
+                                                        
                                                     }
                                                     .frame(width: 96, height: 96)
                                                 }
@@ -177,30 +199,51 @@ struct UI42a1QDtyK8gG: View {
                     }
                 }
             }.padding(.horizontal,16)
+            
+            if oiqJtAPU {
+                JD5bDC8yFXT7UL(bDAxsMgfM: $oiqJtAPU, tfYmBPP: {wS93HoType in
+                    if wS93HoType == 0 {
+                             // 相册
+                             showPicker = true
+                         } else if wS93HoType == 1 {
+                             // 拍照
+                             showCamera = true
+                         }
+                })
+            }
         }.onTapGesture {
           
             iseUA9AeUS = false
         }.photosPicker(
             isPresented: $showPicker,
             selection: $selectedPhotos,
-            maxSelectionCount: 3,
+            maxSelectionCount: 6,
             matching: .images
-        )
+        ).fullScreenCover(isPresented: $showCamera) {
+            CameraPicker(image: $cameraImage)
+                .ignoresSafeArea()
+        }
         .onChange(of: selectedPhotos) { newItems in
-            
-            images.removeAll()
-            
             for item in newItems {
-                // 异步加载 UIImage
                 Task {
                     if let data = try? await item.loadTransferable(type: Data.self),
                        let uiImage = UIImage(data: data) {
                         await MainActor.run {
-                            images.append(uiImage)
+                            if images.count < 6 {
+                                images.append(uiImage)
+                            }
                         }
                     }
                 }
             }
+        }.onChange(of: cameraImage) { img in
+            guard let img else { return }
+
+            if images.count < 6 {
+                images.append(img)
+            }
+
+            cameraImage = nil
         }
     }
 }

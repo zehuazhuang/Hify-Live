@@ -1,9 +1,4 @@
-//
-//  C7G2rS6N3.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/19.
-//
+
 //对话用户缓存
 import NIMSDK
 import Foundation

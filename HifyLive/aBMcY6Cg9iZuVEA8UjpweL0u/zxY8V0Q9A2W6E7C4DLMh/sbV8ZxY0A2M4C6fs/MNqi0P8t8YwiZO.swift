@@ -1,9 +1,4 @@
-//
-//  MNqi0P8t8YwiZO.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/2/2.
-//
+
 //搜索历史持久化
 import Foundation
 import SwiftUI

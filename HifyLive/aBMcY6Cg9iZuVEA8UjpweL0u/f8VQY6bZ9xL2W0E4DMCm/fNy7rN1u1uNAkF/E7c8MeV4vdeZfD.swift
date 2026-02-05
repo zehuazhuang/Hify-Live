@@ -1,9 +1,4 @@
-//
-//  E7c8MeV4vdeZfD.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/2/2.
-//
+
 //拉黑二次确认
 import SwiftUI
 

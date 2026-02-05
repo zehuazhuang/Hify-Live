@@ -1,9 +1,4 @@
-//
-//  YojYi8eVrmKh.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/19.
-//
+
 //缓存聊天对话
 import NIMSDK
 import Combine

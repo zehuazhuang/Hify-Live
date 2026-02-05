@@ -1,9 +1,4 @@
-//
-//  UjxG8BXvWy4.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/20.
-//
+
 
 import Combine
 import SwiftUI

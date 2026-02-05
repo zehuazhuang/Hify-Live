@@ -76,7 +76,7 @@ struct CgZU7mTgY46l: View {
                         
                         // 右侧按钮
                         Button {
-                         
+                            UIApplication.shared.endEditing()
                             withAnimation{
                                 isw8UhB9Gj8t = true
                             }
@@ -196,7 +196,8 @@ struct CgZU7mTgY46l: View {
                                )
                     
                     opponentInfo = info
-                    
+                    print("用户信息")
+                    print(opponentInfo)
                     
                  
                 }

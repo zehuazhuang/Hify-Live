@@ -396,7 +396,7 @@ func vf0AD3wYQxpfxxjs2pE7PuO66Wls(_ tfKmqT:Int) -> Void {
     WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "/api/user/newLive/userFriend", b3q0LlCSk: hsiIAmjydsN5mMcG9) { (wF5G6xKQo: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
         switch wF5G6xKQo {
         case .success(let s5TNBPiUhvB0j2sNDBUXeqj0SxJ):
-            print(s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code)
+           
             if s5TNBPiUhvB0j2sNDBUXeqj0SxJ.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 guard
                     let mT0s4u = s5TNBPiUhvB0j2sNDBUXeqj0SxJ.result,
@@ -405,7 +405,7 @@ func vf0AD3wYQxpfxxjs2pE7PuO66Wls(_ tfKmqT:Int) -> Void {
                     return
                 }
                 let dcGZKkYUKbJNZZgk2 = mT0s4u.hL9dV3bQ2fK6sJ8p()
-                print(dcGZKkYUKbJNZZgk2)
+            
                 if let f76DZRisVsTFhewp7jgbppPvZJ4p7cIq = dcGZKkYUKbJNZZgk2.niBylJAjsTHPDww() {
                     if tfKmqT == 3 {
                         IyfdHMdY.bTa3L6BoprG.n1G8RlzpcQK = f76DZRisVsTFhewp7jgbppPvZJ4p7cIq

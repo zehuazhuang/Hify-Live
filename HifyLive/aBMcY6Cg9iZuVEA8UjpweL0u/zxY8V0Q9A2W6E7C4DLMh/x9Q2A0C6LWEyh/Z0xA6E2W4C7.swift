@@ -1,9 +1,4 @@
-//
-//  Z0xA6E2W4C7.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/27.
-//
+
 //关注用户的直播
 import Combine
 class FollowingCache: ObservableObject {

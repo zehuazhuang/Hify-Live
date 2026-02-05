@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		183AEC9284EB7F5587D8867E /* Pods-HifyLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.debug.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.debug.xcconfig"; sourceTree = "<group>"; };
 		BBC7BEFA699CF2C284BE7647 /* Pods-HifyLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.release.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.release.xcconfig"; sourceTree = "<group>"; };
-		DDECD4CD2F148B820016E861 /* HifyLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HifyLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDECD4CD2F148B820016E861 /* Eivo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eivo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC313510D382A2ACBC1DF4B /* Pods_HifyLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,7 +92,7 @@
 		DDECD4CE2F148B820016E861 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DDECD4CD2F148B820016E861 /* HifyLive.app */,
+				DDECD4CD2F148B820016E861 /* Eivo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 				DD4BFCDD2F23A67B00748369 /* AgoraRtmKit */,
 			);
 			productName = HifyLive;
-			productReference = DDECD4CD2F148B820016E861 /* HifyLive.app */;
+			productReference = DDECD4CD2F148B820016E861 /* Eivo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -412,7 +412,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thoinot.arbeau;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Eivo;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -453,7 +453,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thoinot.arbeau;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Eivo;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;

@@ -165,7 +165,7 @@ struct o95HINW4DpHIAT: View {
                             }
                         }
                         .padding(.top,14)
-                        .padding(.horizontal,16)
+                        
                         .padding(.bottom,30)
                     }
                     .coordinateSpace(name: "grid")

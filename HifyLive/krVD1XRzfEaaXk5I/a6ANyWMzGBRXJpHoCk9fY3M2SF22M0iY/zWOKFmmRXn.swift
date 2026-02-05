@@ -5,7 +5,7 @@ func aYTO7iD() async -> [String:Any]? {
             xH0OPzEYR4M5ewWkZQAveq6Vy7: "/api/user/newLive/getUserInfo",
             tD5tEJZTT0NlaIX7eMREG92BhO3n: [String: String](),
         )
-        print(xsq1a9QJATbk.code)
+       
         if xsq1a9QJATbk.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
             // 成功
             guard
@@ -54,7 +54,7 @@ func a7wkluGHEiGGT3Zc1PbE7(_ teYPbSC: [String]) async -> JUsmLn3i59tKLD7RL294I0n
             xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6v1xnpzOjxqkUO8KCshjk3hJrhGE00LH/qyyxjhK9RRY".bFHEatcgE4zzU9TCfDonsu(),
             tD5tEJZTT0NlaIX7eMREG92BhO3n: tazwp4rwTC8IFhOgzVHmbHgL(y0FrQuXTLZ3I8uHlXeaBP2x: teYPbSC)
         )
-        print(qKoRH8NX8Vj6SzCvR.code)
+       
         if qKoRH8NX8Vj6SzCvR.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
             // 成功
             return qKoRH8NX8Vj6SzCvR //直接返回接口返回数据，防止成功返回结果为null误导失败结果
@@ -94,7 +94,7 @@ func zMfGchIhPuhjVeifVgq2pBi6XtmHd8(o5xi4gYSKKtKesOv4h6Qqmq5Gm7xaqV: String? = n
             xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6jbUK0pmSQjPW95tmyhBOCVPGjGjPyN/Y+033ze9jtAq".bFHEatcgE4zzU9TCfDonsu(),
             tD5tEJZTT0NlaIX7eMREG92BhO3n: p0vDQI0Dp0NwLzG4vFVG1avm(zsLObZP: o5xi4gYSKKtKesOv4h6Qqmq5Gm7xaqV, rApHcKdL9XnxIAcFk5Z8aah: fFJXbBAYX64Bd9TNTWYYIxykCGFjcDKb, ha3AaH63DwF0M0XyK1q8AREsVw: jLCfyATGXvVMlhRsH3mEw)
         )
-        print(qKoRH8NX8Vj6SzCvR.code)
+       
         if qKoRH8NX8Vj6SzCvR.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
             // 成功
             return true

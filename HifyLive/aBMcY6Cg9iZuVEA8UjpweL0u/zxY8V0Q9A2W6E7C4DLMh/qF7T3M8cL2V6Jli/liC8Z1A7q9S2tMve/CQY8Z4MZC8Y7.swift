@@ -70,7 +70,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                                 size: 12,
                                                 weight: .regular
                                             )
-                        }.padding(.trailing,6)
+                        }
                             
                         if liveRoomData?["followFlag"] as? Int == 0 {
                             ZJ7h766mz(tMmEWWlfgUag: "d7daxM4M9A2")
@@ -90,6 +90,8 @@ struct LE0xQZ6Y7WC8iv: View {
                                                        }
                                                    }
                                                }
+                        }else{
+                            Spacer().frame(width: 6)
                         }
                     }
                     .padding(.horizontal,2)
@@ -147,17 +149,17 @@ struct LE0xQZ6Y7WC8iv: View {
 //                            .frame(width: 32, height: 34)
 //                        }
 //                    }
-                    
+                    Spacer()
                     Text("\((liveRoomData?["joinNum"] as? Int) ?? 0)")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
                                         weight: .regular
                                     )
-                                    .padding(.horizontal,12)
+                                    .padding(.horizontal,5)
                                     .padding(.vertical,7)
                                     .background(.black.opacity(0.2))
                                     .cornerRadius(36)
-                    Spacer()
+                    
                     
                     ZJ7h766mz(tMmEWWlfgUag: "pD8K1Q5tB6R9Lh")
                                        .frame(width: 32, height: 32)
@@ -182,7 +184,7 @@ struct LE0xQZ6Y7WC8iv: View {
                 QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, isW9YQ6C8L: $showY2E8Qsc)
             }
             
-            if showEndView {
+            if showEndView || (liveRoomData?["liveRoomState"] as? Int) ?? -1 == 1 {
                 MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
             }
         }
@@ -201,6 +203,7 @@ struct LE0xQZ6Y7WC8iv: View {
             do {
                 let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
                 liveRoomData = result
+               
               
                 if(channelName == ""){
                     channelName = (liveRoomData?["agoraChannelId"] as? String) ?? ""

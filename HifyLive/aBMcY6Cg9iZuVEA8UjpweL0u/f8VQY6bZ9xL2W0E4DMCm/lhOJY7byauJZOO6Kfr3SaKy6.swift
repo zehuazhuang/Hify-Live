@@ -341,13 +341,13 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                
                     BirthdayBottomSheet(isPresented: $rJkszCycI4OgT2AtFSxiecEBil, initialDate: tWao3BI) { sfMSOkfzN6H8TzIbAbM8VI4 in
                         rJkszCycI4OgT2AtFSxiecEBil = false
-                        print(sfMSOkfzN6H8TzIbAbM8VI4)
+                       
                         Task {
                             await MainActor.run {
                                 EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                             }
                             let h8uHxuKc: String = sfMSOkfzN6H8TzIbAbM8VI4.micBHIsg()
-                            print(h8uHxuKc)
+                         
                             do {
                                 defer { // 相当于 finally
                                     Task { @MainActor in
@@ -403,7 +403,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                         let oc1PyB2liolVzIyLxWaHyNMlhLN8GKF = "\(UUID().uuidString).jpg" // 你的 OSS objectKey
                         let wHOB6yEV = try await IsZTtO2FdO13EJk8A2xBPRHSqlJx.f6fKqLNtg0zFmWoa2M1VFlHkb42.lsPWcBctMdZKbZmayF(mp5zcQyx: mTOcjYsH, iQG9oHdO6VjSKvCvA6dikEBFjKYP: oc1PyB2liolVzIyLxWaHyNMlhLN8GKF)
                         
-                        //                        print("上传完成，HTTPS 地址: \(uploadedURL)")
+                      
                         // TODO: 上传完成后处理，比如插入列表
                         let bczB8aR7ig: Bool = await zMfGchIhPuhjVeifVgq2pBi6XtmHd8(o5xi4gYSKKtKesOv4h6Qqmq5Gm7xaqV: wHOB6yEV)
                         if bczB8aR7ig {
@@ -450,7 +450,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                 let oc1PyB2liolVzIyLxWaHyNMlhLN8GKF = "\(UUID().uuidString).jpg" // 你的 OSS objectKey
                                 let wHOB6yEV = try await IsZTtO2FdO13EJk8A2xBPRHSqlJx.f6fKqLNtg0zFmWoa2M1VFlHkb42.lsPWcBctMdZKbZmayF(mp5zcQyx: mTOcjYsH, iQG9oHdO6VjSKvCvA6dikEBFjKYP: oc1PyB2liolVzIyLxWaHyNMlhLN8GKF)
                                 
-                                //                        print("上传完成，HTTPS 地址: \(uploadedURL)")
+                                //
                                 // TODO: 上传完成后处理，比如插入列表
                                 let bczB8aR7ig: Bool = await zMfGchIhPuhjVeifVgq2pBi6XtmHd8(o5xi4gYSKKtKesOv4h6Qqmq5Gm7xaqV: wHOB6yEV)
                                 if bczB8aR7ig {
@@ -494,7 +494,7 @@ struct YWO0RAXDrkfnaEsqm6Hl: View {
                         t07GGVQzMuWF7l3nXqXwgDxZpL8()
                     },
                     wzMbhm9JrwdWtpn5S7: { fbU3Y in
-//                        print("🔥 确认使用头像")
+
                         aEFs3iKOWjdoKmxFqdC(fbU3Y)
                         pNlJ8LBBlPdz6gOlKi8FFZN4qh = .t42WkstAqbIacYIvoRlzE4YEpY6JiwPx
                     }

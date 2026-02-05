@@ -121,8 +121,7 @@ struct zkaqn9Jn: View {
                                                 if let nAT4VBfqN62FOc8x6XFADpNqJ = c55guwIGLg4RHRJey8dk9m3jln8NMOo.kPOR9FHwcEZJv9YDf4W01D() {
                                                     let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]//userInfo
                                                     if let qb9c6NkMMK5 = hOQva7h2 as? [String: Any] {
-                                                        print("userinfo---------")
-                                                     print(hOQva7h2)
+                                                      
                                                        
                                                         let z6DrSn7Ai = Calendar.current
                                                         let dateMinus22Years = z6DrSn7Ai.date(byAdding: .year, value: -22, to: Date()) ?? Date()
@@ -220,9 +219,9 @@ struct zkaqn9Jn: View {
                                     }
                                 case .failure(let u0lXlYLQiGrjGGOpB9Mp as NSError):
                                     if u0lXlYLQiGrjGGOpB9Mp.code == GIDSignInError.canceled.rawValue {
-                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")//Cancel login
                                     } else {
-                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=")
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=")//Google login failed.
                                     }
                                     EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                 }

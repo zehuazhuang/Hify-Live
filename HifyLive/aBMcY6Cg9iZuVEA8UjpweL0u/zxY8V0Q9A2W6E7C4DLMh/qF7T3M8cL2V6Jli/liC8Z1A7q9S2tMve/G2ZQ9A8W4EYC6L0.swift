@@ -17,7 +17,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var hasJoinedChannel = false
     private var isMuted = false // 保存静音状态
     
+    //静音按钮
     let extraButton1 = UIButton(type: .custom)
+    //发送按钮
+    let sendButton = UIButton(type: .custom)
     
     var onMuteTappedCallback: ((UInt, Bool) -> Void)?
     
@@ -42,9 +45,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         setupViews()
         setupKeyboardObservers()
-        setupTapGesture()
+     
        
     }
+    
+    
     
     deinit {
    
@@ -156,11 +161,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         )
         messageTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 46))
         messageTextField.leftViewMode = .always
-        messageTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 46))
+        // 右侧留给发送按钮
+        messageTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 46))
         messageTextField.rightViewMode = .always
         messageTextField.returnKeyType = .send
         messageTextField.delegate = self
         messageTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 发送按钮
+        
+        sendButton.setImage(UIImage(named: "qS9A1C2tLse"), for: .normal)
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.imageView?.contentMode = .scaleAspectFit
+        sendButton.addTarget(self, action: #selector(onSendTapped), for: .touchUpInside)
+      
         
         // 静音按钮
         extraButton1.setImage(UIImage(named: "ahdiqwYuj"), for: .normal)
@@ -168,8 +182,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         extraButton1.imageView?.contentMode = .scaleAspectFit
         extraButton1.addTarget(self, action: #selector(onMuteTapped), for: .touchUpInside)
         
+        // ZStack 包裹 TextField + 发送按钮
+        let textFieldStack = UIView()
+        textFieldStack.translatesAutoresizingMaskIntoConstraints = false
+        textFieldStack.addSubview(messageTextField)
+        textFieldStack.addSubview(sendButton)
+        
         // 水平堆叠
-        let stack = UIStackView(arrangedSubviews: [messageTextField, extraButton1])
+        let stack = UIStackView(arrangedSubviews: [textFieldStack, extraButton1])
         stack.axis = .horizontal
         stack.spacing = 8
         stack.alignment = .fill
@@ -198,6 +218,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             stack.leadingAnchor.constraint(equalTo: inputContainer.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: inputContainer.trailingAnchor),
             
+            messageTextField.topAnchor.constraint(equalTo: textFieldStack.topAnchor),
+            messageTextField.bottomAnchor.constraint(equalTo: textFieldStack.bottomAnchor),
+            messageTextField.leadingAnchor.constraint(equalTo: textFieldStack.leadingAnchor),
+            messageTextField.trailingAnchor.constraint(
+                equalTo: textFieldStack.trailingAnchor,
+            ),
+
+            sendButton.centerYAnchor.constraint(equalTo: textFieldStack.centerYAnchor),
+            sendButton.trailingAnchor.constraint(equalTo: textFieldStack.trailingAnchor, constant: -6),
+           
+            
+            sendButton.widthAnchor.constraint(equalToConstant: 36),
+            sendButton.heightAnchor.constraint(equalToConstant: 36),
+            
             // 按钮固定宽高
             extraButton1.widthAnchor.constraint(equalToConstant: 46),
             extraButton1.heightAnchor.constraint(equalToConstant: 46)
@@ -212,11 +246,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private func setupTapGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
+ 
+
     
     @objc private func dismissKeyboard() {
         view.endEditing(true)
@@ -250,11 +281,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    
     // MARK: - Send Message
     @objc private func onSendTapped() {
+        print("123")
         guard let text = messageTextField.text, !text.isEmpty else { return }
         dismissKeyboard()
-        
+        print("555")
         let user = IyfdHMdY.bTa3L6BoprG
         let msg = PublicMessage(
             userId: user.iBmPfFGfxu5JV7Aii7.string("yxAccid"),
@@ -462,4 +495,6 @@ extension ChatViewController {
         }
         return true
     }
+    
+   
 }

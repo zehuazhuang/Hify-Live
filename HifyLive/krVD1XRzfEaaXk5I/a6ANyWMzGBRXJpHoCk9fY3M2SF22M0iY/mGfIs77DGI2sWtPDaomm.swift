@@ -78,6 +78,11 @@ final class WOKmjUjM {
         biHmuVi1B21WPGO.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu() //POST
         biHmuVi1B21WPGO.allHTTPHeaderFields = mUKxiOp6eoowXkAujNLiR()
         
+        print("------请求头")
+        print(mUKxiOp6eoowXkAujNLiR())
+        print("-----body")
+        print(lCPuY6S9Ov185igRRdGb8fQizbjuqw)
+        
         
         do {
             let d7hTYfwIR = try JSONEncoder().encode(lCPuY6S9Ov185igRRdGb8fQizbjuqw)

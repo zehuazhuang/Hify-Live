@@ -210,7 +210,7 @@ class TPb21z0U: ObservableObject {
             }
         } catch {
             lT3KlfvYcav5 = "AkBi9mf2H0oNTOICk4iuDDyAmGWR32czZneAuRha104bvmslSFK3z4L4FCdIAGe/psAR4UwiKicB7m+0XtU+3A==".bFHEatcgE4zzU9TCfDonsu()
-            //            print("请求失败:", error)
+          
         }
     }
     
@@ -221,11 +221,13 @@ class TPb21z0U: ObservableObject {
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "Z53mkVKRc+/3aEy88R1ziVjUXb5ZXXyoGLM0HtCaN3g=".bFHEatcgE4zzU9TCfDonsu(),
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: wZA6oIowbVae5FtrdTTFAaiz3WYirkvI(sjNradeQwuW02y7kiF6ozTd: 1, qRdFOAhW7ayZvfxQCha: iN2NID, eTf1z86aGoFMNQJUV7Tx: lCOFD)
             )
-            print(otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code)
+          
             if otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 self.lLPppWtfV5O6YMV5wl9nsA4nt.removeAll { ($0.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) == String(iN2NID) }
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("FaFTLnTp1tdlPRCzlGcI/fkaPzVw5Ij1p83AcEH0yWM=")
+                vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                 return true
             } else {
                 lT3KlfvYcav5 = otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.message
@@ -233,7 +235,7 @@ class TPb21z0U: ObservableObject {
             }
         } catch {
             lT3KlfvYcav5 = "tZ+pN8lVE564npmaryD+plnzzxOXEOnSnAB7fGVLwWNrGStWJ9VPXPLKvw8zP1inJgUgB4tE2/87lVtr5/j7Ag==".bFHEatcgE4zzU9TCfDonsu()
-            //            print("取消拉黑失败:", error)
+            
             return false
         }
     }
@@ -257,6 +259,8 @@ class TPb21z0U: ObservableObject {
                 // 成功加入黑名单
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("oLFPFtMsjDiB7wz3eZeWhQ==")
+                vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                 return true
             } else {
                 lT3KlfvYcav5 = qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.message
@@ -264,7 +268,7 @@ class TPb21z0U: ObservableObject {
             }
         } catch {
             lT3KlfvYcav5 = "6NkpnYcqvjb4rXfuY8EFdyZVtBNeb7SdDQlnwdfK4PWhOI7kFcE25u+V+BCiqgE8/j4tTA7Jk8yvWuUsxIscgw==".bFHEatcgE4zzU9TCfDonsu()
-            print("Sph7QjtQ9wyBx41H5XhztLHkavBN9bomvy8v5zW0vxk=".bFHEatcgE4zzU9TCfDonsu(), error)
+           
             return false
         }
     }

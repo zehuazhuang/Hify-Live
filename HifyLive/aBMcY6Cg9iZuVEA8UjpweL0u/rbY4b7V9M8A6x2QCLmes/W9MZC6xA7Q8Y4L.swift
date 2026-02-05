@@ -1,9 +1,4 @@
-//
-//  W9MZC6xA7Q8Y4L.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/22.
-//
+
 //私聊取关弹框
 import SwiftUI
 

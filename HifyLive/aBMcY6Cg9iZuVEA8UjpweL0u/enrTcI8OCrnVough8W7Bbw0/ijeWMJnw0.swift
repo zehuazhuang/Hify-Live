@@ -460,7 +460,7 @@ struct ijeWMJnw0: View {
                                 let bkhF1OQYtQmw1KM5SJL = cpEtaR(
                                     wKrCAroUqTbC2rd9pcKfELDDQ: oWICU3h.c5O9meXEy5dOelOBZ3QpElqG,
                                     hVH5DxQ7Q558SdJWLt: fMCOyiKl2,
-                                    cImAJ4BdZYF9hJ4x: 0,
+                                    cImAJ4BdZYF9hJ4x: nil,
                                     hmNWPkT: oWICU3h.sI9ab2lfhqbpaKAkkJ18gYAi ?? "",
                                     fRKTOb3: mIAT9zbKJKGtarbSPX1QSZm,
                                     oT9WD2aupYPQUmLUQMwvo: zeEMuRE5FhYabIqhuh,
@@ -471,8 +471,7 @@ struct ijeWMJnw0: View {
                                 WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: bkhF1OQYtQmw1KM5SJL) { (sXIeOTyEns40bGamIK: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                                     switch sXIeOTyEns40bGamIK {
                                     case .success(let eIOmCWgre0wHbWNAw3):
-                                        print("-----code-----")
-                                        print(eIOmCWgre0wHbWNAw3.code)
+                                      
                                         if eIOmCWgre0wHbWNAw3.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                             guard
@@ -482,8 +481,7 @@ struct ijeWMJnw0: View {
                                                 return
                                             }
                                             let uJhRiF1RMG0DzobBJyZB5Futbg44f = ydaPriTQLmWBbh.hL9dV3bQ2fK6sJ8p()
-                                            print("---解密数据---")
-                                            print(uJhRiF1RMG0DzobBJyZB5Futbg44f)
+                                       
                                             if let oeUbLj7s7zB6 = uJhRiF1RMG0DzobBJyZB5Futbg44f.kPOR9FHwcEZJv9YDf4W01D() {
                                                 ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.xPI2sSbHAr7u1jAZisVjgs8JXZCRZ07t(tEkU2eDdLMlnNOn: oeUbLj7s7zB6["km2wMXC6wIJi3UcUM7XhmA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
                                                 ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC = oeUbLj7s7zB6["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0
@@ -569,7 +567,7 @@ struct cpEtaR: Codable {
     
     let wKrCAroUqTbC2rd9pcKfELDDQ: String //platform
     let hVH5DxQ7Q558SdJWLt: String //openId
-    let cImAJ4BdZYF9hJ4x: Int //userId
+    let cImAJ4BdZYF9hJ4x: Int? //userId
     let hmNWPkT: String //email
     let fRKTOb3: String //nickname
     let oT9WD2aupYPQUmLUQMwvo: String //icon

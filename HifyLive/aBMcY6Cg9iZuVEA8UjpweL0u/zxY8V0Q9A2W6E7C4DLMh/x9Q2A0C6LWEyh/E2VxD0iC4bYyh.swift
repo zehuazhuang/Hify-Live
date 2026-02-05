@@ -102,11 +102,8 @@ struct E2VxD0iC4bYyh: View {
                 }
                 
                 ScrollView(showsIndicators: false){
-                    SmoothPullToRefresh(
-                           pullOffset: $pullOffset,
-                           isRefreshing: $isRefreshing
-                       )
-                    VStack{
+                    ZStack{
+                        VStack{
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
                                     LQ0Z4A6C9emp()
@@ -133,21 +130,26 @@ struct E2VxD0iC4bYyh: View {
                                     
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {
-                                    ForEach(followingCache.items.indices, id: \.self) { index in
-                                        rL0X1V3LiveCell(bemindbeData: followingCache.items[index], is7Nqdlvk: index == 0)
-                                            .onTapGesture{
-                                                
-                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        LE0xQZ6Y7WC8iv(channelName: followingCache.items[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                       zA9Y4W6LUid: UInt(followingCache.items[index].int("userId")))
+                                        ForEach(followingCache.items.indices, id: \.self) { index in
+                                            rL0X1V3LiveCell(bemindbeData: followingCache.items[index], is7Nqdlvk: index == 0)
+                                                .onTapGesture{
+                                                    
+                                                    rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                                                        WUjfoptOKs8pZfhSAH0duplG {
+                                                            LE0xQZ6Y7WC8iv(channelName: followingCache.items[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                                           zA9Y4W6LUid: UInt(followingCache.items[index].int("userId")))
+                                                        }
                                                     }
                                                 }
-                                            }
+                                        }
                                     }
                                 }
                             }
                         }
+                        SmoothPullToRefresh(
+                               pullOffset: $pullOffset,
+                               isRefreshing: $isRefreshing
+                        ).frame(maxHeight: .infinity,alignment: .top)
                     }
                 }.simultaneousGesture(
                     DragGesture()

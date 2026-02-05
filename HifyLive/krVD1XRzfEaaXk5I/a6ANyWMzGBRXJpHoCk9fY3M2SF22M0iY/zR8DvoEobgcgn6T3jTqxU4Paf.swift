@@ -1,19 +1,11 @@
-//
-//  zR8DvoEobgcgn6T3jTqxU4Paf.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/11.
-//
-
 import Foundation
 import NIMSDK
 
 struct JOGtDnYupP {
-    static let loaattrdbUrl = "https://pre.hily.link" //环境地址
-    static let raslidepApId = "21448469" //id
+    static let loaattrdbUrl = "https://testaes.cphub.link" //环境地址
+    static let raslidepApId = "11111111" //id
     static let versLErqSu = "1.0.0" //版本
-    static let zMVMMyTmNK = "ac85c4b27907b332450d8b964df087f3" //云信id
-
+    static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
 }
 
 

@@ -52,7 +52,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
 
                                                         rP6kV1bS8qX3nT7(
                                                             pR9wQ2mL6hY5dF1: mediaUrl,
-                                                            allPics: picList.compactMap { $0["mediaUrl"] as? String }, // 传整个数组
+                                                            allPics: picList.compactMap { $0["mediaUrl"] as? String }
+                                                                .filter { !$0.lowercased().hasSuffix(".mp4") }, // 传整个数组
                                                             V0QmF7P9ZL: true
                                                         ) {
                                                             ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
@@ -108,7 +109,12 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                         
                                                         
                                                         if let picList = usQ8Y7Z6Inf["picList"] as? [[String: Any]] {
-                                                            ForEach(0..<picList.count, id: \.self) { index in
+
+                                                            let imageList = picList.filter {
+                                                                guard let url = $0["mediaUrl"] as? String else { return false }
+                                                                return !url.lowercased().hasSuffix(".mp4")
+                                                            }
+                                                            ForEach(0..<imageList.count, id: \.self) { index in
                                                                 let pic = picList[index]
                                                                 let mediaUrl = pic["mediaUrl"] as? String ?? ""
                                                                 
@@ -516,7 +522,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             usQ8Y7Z6Inf = await info
                
               
-                print(usQ8Y7Z6Inf)
+              
            
         }
      
@@ -639,7 +645,7 @@ struct gStC2A9Z6Y8Qx0E7W4ML: Codable {
         try iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1.encode(
             sGOM5LYyLVsTQ1mHEFJD1CJtq,
             forKey: bonDyqD2YnaVJW(
-                "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()
+                "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()//yxAccid
             )
         )
     }
@@ -649,7 +655,7 @@ struct gStC2A9Z6Y8Qx0E7W4ML: Codable {
 struct g8C6xW7A2userId: Codable {
     
     
-    let uC8Z4Y7WxELId: Int //yxAccid
+    let uC8Z4Y7WxELId: Int
     
     func encode(to encoder: Encoder) throws {
         var iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1 = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
@@ -659,7 +665,7 @@ struct g8C6xW7A2userId: Codable {
         try iwwnkLDNwkRL7SOZJNcNJf1VdVoUL1.encode(
             uC8Z4Y7WxELId,
             forKey: bonDyqD2YnaVJW(
-                "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
+                "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()//userId
             )
         )
     }
@@ -675,9 +681,11 @@ class T0viKk: ObservableObject {
     func ngI7Y2A8C4E0ZQ9W6xL( wTEEJpZz0iGVK: String) async -> [String:Any] {
         do {
             let bSn9YS: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
-                xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6pl/MNKQk2tbd1jWycWL1eQ=".bFHEatcgE4zzU9TCfDonsu(),
+                xH0OPzEYR4M5ewWkZQAveq6Vy7: "gwkJDSPvuIdbiSZMMSMa6pl/MNKQk2tbd1jWycWL1eQ=".bFHEatcgE4zzU9TCfDonsu(), ///api/user/newLive/getUserDetail
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: gStC2A9Z6Y8Qx0E7W4ML( sGOM5LYyLVsTQ1mHEFJD1CJtq: wTEEJpZz0iGVK)
             )
+            
+            
            
            
             if bSn9YS.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
@@ -689,6 +697,8 @@ class T0viKk: ObservableObject {
                     return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
+                print("----json")
+                print(atXeZc0tWzWWpIN8DRa5DB)
              
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH
@@ -721,6 +731,8 @@ class T0viKk: ObservableObject {
                     return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
+                print("-----------数据")
+                print(atXeZc0tWzWWpIN8DRa5DB)
                
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH

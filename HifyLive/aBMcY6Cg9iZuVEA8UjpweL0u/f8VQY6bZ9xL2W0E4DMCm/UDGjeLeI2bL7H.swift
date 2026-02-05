@@ -1,9 +1,4 @@
-//
-//  UDGjeLeI2bL7H.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/1/30.
-//
+
 
 //关注粉丝 用户组件
 import SwiftUI

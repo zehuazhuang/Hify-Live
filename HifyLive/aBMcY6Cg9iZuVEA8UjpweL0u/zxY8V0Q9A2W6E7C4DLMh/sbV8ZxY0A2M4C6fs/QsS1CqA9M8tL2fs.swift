@@ -5,12 +5,13 @@ import SwiftfulRouting
 struct QsS1CqA9M8tL2fs: View {
     @State private var q2C4Mtl3iNa: String = ""
     @State private var iZQ7xV4bM8Ys: Bool = false
-    @State private var tsteadySelect: Bool = true
+    @State private var tsteadySelect: Bool = true //
     @Environment(\.router) var rM9Z8S7A1ql
-    @State private var piaoncapType: Int = 1 //0历史 1房间 2用户
+    @State private var piaoncapType: Int = 0 //0历史 1房间 2用户
     @State private var searchResults: [[String: Any]] = []
     @State private var isZ8Q7x4bV9Y0A2: Bool = true
     @State private var searchHistory: [String] = [] //搜索框输入历史
+    
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -39,11 +40,9 @@ struct QsS1CqA9M8tL2fs: View {
                             // ✅ 写入搜索历史
                                    SearchHistoryManager.shared.add(velogranText)
                                    searchHistory = SearchHistoryManager.shared.load()
-                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                            
                             Task {
                                 await oA0T1rQLoad()
-                                
-                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                             }
                             
                         }
@@ -52,7 +51,7 @@ struct QsS1CqA9M8tL2fs: View {
                 }
                 HStack(){
                     ZStack{
-                        Text("H0mDYXXNCqE/eka4W9EdDg==".bFHEatcgE4zzU9TCfDonsu())
+                        Text("dw65f4oHFXwqqr9n4fm/Eg==".bFHEatcgE4zzU9TCfDonsu()) //Rooms
                             .g0LIIcoZQsOjyND9(
                                 size: 18,
                                 weight: tsteadySelect ? .black : .semibold,
@@ -68,17 +67,14 @@ struct QsS1CqA9M8tL2fs: View {
                     .frame(width: 102,height: 34)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        
                         withAnimation{
-                            piaoncapType = 1
-                            searchResults = []
                             tsteadySelect = true
-                            
                         }
+                            
                     }
                     Spacer()
                     ZStack{
-                        Text("WWLXeMc2FstL2loM2FhSVg==".bFHEatcgE4zzU9TCfDonsu())
+                        Text("WWLXeMc2FstL2loM2FhSVg==".bFHEatcgE4zzU9TCfDonsu()) //Users
                             .g0LIIcoZQsOjyND9(
                                 size: 18,
                                 weight: !tsteadySelect ? .black : .semibold,
@@ -94,12 +90,9 @@ struct QsS1CqA9M8tL2fs: View {
                     .frame(width: 102,height: 34)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        
-                        withAnimation{
-                            searchResults = []
-                            piaoncapType = 2
-                            tsteadySelect = false
                             
+                        withAnimation{
+                            tsteadySelect = false
                         }
                     }
                 }.padding(.top,15)
@@ -122,11 +115,8 @@ struct QsS1CqA9M8tL2fs: View {
                                 SearchHistoryTag(text: item)
                                     .onTapGesture {
                                         q2C4Mtl3iNa = item
-                                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                         Task {
                                             await oA0T1rQLoad()
-                                            
-                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                         }
                                     }
                             }
@@ -160,7 +150,6 @@ struct QsS1CqA9M8tL2fs: View {
                                     let item = searchResults[index]
                                     if piaoncapType == 1 {
                                         FjNgwaDxH1fEY41(room: item, gpiemeSele: q2C4Mtl3iNa)
-                                            .id(UUID())
                                             .onTapGesture {
                                                 rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                                                     WUjfoptOKs8pZfhSAH0duplG {
@@ -175,7 +164,6 @@ struct QsS1CqA9M8tL2fs: View {
                                                 await oA0T1rQLoad()
                                             }
                                         })
-                                        .id(UUID())
                                         .onTapGesture {
                                             rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                                                 WUjfoptOKs8pZfhSAH0duplG {
@@ -202,25 +190,28 @@ struct QsS1CqA9M8tL2fs: View {
         }
     }
     func oA0T1rQLoad() async  {
+        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+       
         Task { @MainActor in
          
             do {
-                let results = try await hifySearch(type: piaoncapType, searchValue: q2C4Mtl3iNa)
+                let results = try await hifySearch(type: tsteadySelect ? 1 : 2, searchValue: q2C4Mtl3iNa)
                    searchResults = results
-             
+                if(tsteadySelect){
+                        piaoncapType = 1
+                }else{
+                        piaoncapType = 2
+                }
                 if(searchResults.isEmpty){
                     isZ8Q7x4bV9Y0A2 = false
                 }else{
                     isZ8Q7x4bV9Y0A2 = true
                 }
-                
+                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                } catch {
                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                    print(error)
                }
-         
-            
-           
             }
     }
 }

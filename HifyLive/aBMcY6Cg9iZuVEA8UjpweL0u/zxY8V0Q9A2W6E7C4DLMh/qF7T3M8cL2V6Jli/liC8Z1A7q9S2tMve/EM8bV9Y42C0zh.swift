@@ -5,7 +5,7 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
     static let shared = TokenManager()
     private override init() {} // 防止外部初始化
     
-    static let appId = JOGtDnYupP.zMVMMyTmNK
+    static let appId = "124f689baed25c488e1330bc42e528af"//JOGtDnYupP.zMVMMyTmNK
     
     private let rtcTokenKey = "RTC_TOKEN_KEY"
     private let rtmTokenKey = "RTM_TOKEN_KEY"

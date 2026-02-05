@@ -1,9 +1,4 @@
-//
-//  YDnHLgGmHVfnqK.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/2/2.
-//
+
 
 import UIKit
 import SwiftUI

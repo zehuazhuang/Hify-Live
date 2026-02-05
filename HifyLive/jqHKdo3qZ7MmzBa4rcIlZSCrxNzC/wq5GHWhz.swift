@@ -13,12 +13,12 @@ final class UfmQhHA1doHKs: ObservableObject {
     // MARK: - 拉取接口数据
     func e3lm29iotZr1P6CsH() {
         WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(
-            tk5afnKIwTiQL5Ai79O0AnK3f5G: "yTF9srxO9iM6Xra0cN27rq5WFVXh1cXklvTGwnsgpzI=".bFHEatcgE4zzU9TCfDonsu(),
+            tk5afnKIwTiQL5Ai79O0AnK3f5G: "yTF9srxO9iM6Xra0cN27rq5WFVXh1cXklvTGwnsgpzI=".bFHEatcgE4zzU9TCfDonsu(),// /api/auth/getCountry
             b3q0LlCSk: [String: String](),
             vz8mIZ: { (tXxufOd2WBoomP: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
                 switch tXxufOd2WBoomP {
                 case .success(let dCFe3z7l6L):
-                    print(dCFe3z7l6L.code)
+                  
                     if dCFe3z7l6L.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                         guard let wCIWg0zdgKOcPtHLH5kFxK5uaHu = dCFe3z7l6L.result, !wCIWg0zdgKOcPtHLH5kFxK5uaHu.isEmpty else { return }
                         
@@ -50,7 +50,7 @@ final class UfmQhHA1doHKs: ObservableObject {
                             if let bMHS63lL9v67ma5HGA = try JSONSerialization.jsonObject(with: moxtx0d1FWIrh1iobpilfqdgXp7A3YX, options: []) as? [[String: Any]] {
                                 DispatchQueue.main.async {
                                     self.o6Ex5Lgp7q46dDOd3db = bMHS63lL9v67ma5HGA // 数组，每个元素是字典
-                                    print(bMHS63lL9v67ma5HGA)
+                                   
                                 }
                             } else {
 //                                print("解析 JSON 失败: 不是数组")
