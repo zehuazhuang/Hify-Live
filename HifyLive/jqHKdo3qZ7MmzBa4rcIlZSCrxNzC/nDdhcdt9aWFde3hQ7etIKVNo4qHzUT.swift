@@ -35,19 +35,28 @@ final class QlzJ4yJcxJXY2paN: ObservableObject {
     
     @Published var h7HoFjF9r0: String = ""
     @Published var d9nu5sLlCAn0YOr: Bool = false
-    
+    @Published var wY5viSSYx9Type: Int = 0 //0是成功
     private var pgz2RxLTW: AnyCancellable?
     
     private init() {}
     
     //z2E1geUN5miQ95SpoCG 是否加密，默认加密
-    func m3nArFwdHhI82cPUmiqW8PtaaHz(_ wwsFXh: String, z2E1geUN5miQ95SpoCG: Bool = true, fburcG0vW9jxwKT8FbQ58Cuznc: TimeInterval = 2.0) {
-        self.h7HoFjF9r0 = z2E1geUN5miQ95SpoCG ? wwsFXh.bFHEatcgE4zzU9TCfDonsu() : wwsFXh
+    func m3nArFwdHhI82cPUmiqW8PtaaHz(
+        _ wwsFXh: String,
+        type wY5viSSYx9Type: Int = 0,
+        z2E1geUN5miQ95SpoCG: Bool = true,
+        fburcG0vW9jxwKT8FbQ58Cuznc: TimeInterval = 2.0
+    ) {
+        self.h7HoFjF9r0 = z2E1geUN5miQ95SpoCG
+            ? wwsFXh.bFHEatcgE4zzU9TCfDonsu()
+            : wwsFXh
+
+        self.wY5viSSYx9Type = wY5viSSYx9Type
+
         withAnimation(.easeInOut) {
             self.d9nu5sLlCAn0YOr = true
         }
-        
-        // 自动隐藏
+
         pgz2RxLTW?.cancel()
         pgz2RxLTW = Just(())
             .delay(for: .seconds(fburcG0vW9jxwKT8FbQ58Cuznc), scheduler: RunLoop.main)
@@ -60,29 +69,26 @@ final class QlzJ4yJcxJXY2paN: ObservableObject {
 }
 
 struct dqUmaY6jE7tRWpendJ: View {
-    @ObservedObject var dHT3rub0walrhS9CG7ptAWm2Yk7 = QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-    
+
+    @ObservedObject var dHT3rub0walrhS9CG7ptAWm2Yk7 =
+        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+
     var body: some View {
         if dHT3rub0walrhS9CG7ptAWm2Yk7.d9nu5sLlCAn0YOr {
-            ZStack {
+            HStack(spacing: 5) {
+                if dHT3rub0walrhS9CG7ptAWm2Yk7.wY5viSSYx9Type == 0 {
+                    ZJ7h766mz(tMmEWWlfgUag: "ukbFhDkgKDZhiG")
+                        .frame(width: 24, height: 24)
+                }
+
                 Text(dHT3rub0walrhS9CG7ptAWm2Yk7.h7HoFjF9r0)
-                    
-                    .g0LIIcoZQsOjyND9(
-                        size: 16,
-                        weight: .semibold,
-                        color: .black
-                    )
-                    
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(Color.white) // 白色背景
-                    .cornerRadius(12) // 圆角
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2) // 阴影
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .g0LIIcoZQsOjyND9(size: 16, weight: .semibold)
             }
-            .padding(.horizontal, 30)
-            .zIndex(10)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(Color(red: 34/255, green: 34/255, blue: 38/255).opacity(0.8))
+            .cornerRadius(8)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
         }
     }
 }

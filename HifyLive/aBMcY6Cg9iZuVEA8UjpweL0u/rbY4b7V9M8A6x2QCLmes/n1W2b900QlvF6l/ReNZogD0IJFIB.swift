@@ -210,6 +210,21 @@ class ChatCell: UITableViewCell {
     private var textBubbleConstraints: [NSLayoutConstraint] = []
     private var imageBubbleConstraints: [NSLayoutConstraint] = []
     
+    //拉黑label
+    private let blockHintLabel: UILabel = {
+        let label = UILabel()
+        label.font = JqA1kUIFont.font(size: 14, weight: .regular)              // 关键：同样式
+        label.textColor = UIColor.white.withAlphaComponent(0.6)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    private var bubbleBottomConstraint: NSLayoutConstraint!
+    private var blockHintBottomConstraint: NSLayoutConstraint!
+    
+   
     
     //放大图片url
     private var currentImageURL: String?
@@ -252,6 +267,8 @@ class ChatCell: UITableViewCell {
                     statusIcon.image = UIImage(systemName: "exclamationmark.triangle.fill")
                 case .unknown:
                     statusIcon.image = UIImage(systemName: "exclamationmark.circle")
+                case .wTiahblock:
+                    statusIcon.image = UIImage(named: "jtIX8vefgtZLPffo7uoIGDDyg3sfmpju")
                 }
             }
         }
@@ -285,6 +302,7 @@ class ChatCell: UITableViewCell {
         //发送状态
         statusIcon.image = UIImage(systemName: "exclamationmark.circle.fill")
         statusIcon.tintColor = .red
+        statusIcon.contentMode = .scaleAspectFit
         statusIcon.translatesAutoresizingMaskIntoConstraints = false
         statusIcon.isHidden = true
         bubbleContainer.addSubview(statusIcon)
@@ -337,6 +355,8 @@ class ChatCell: UITableViewCell {
         sendingIndicator.hidesWhenStopped = true
         bubbleContainer.addSubview(sendingIndicator)
         
+        contentView.addSubview(blockHintLabel)
+        
     }
 
 
@@ -354,9 +374,10 @@ class ChatCell: UITableViewCell {
         
         // 放在气泡右下角
         NSLayoutConstraint.activate([
-         
+            statusIcon.widthAnchor.constraint(equalToConstant: 16),
+            statusIcon.heightAnchor.constraint(equalToConstant: 16),
             statusIcon.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor, constant: -26),
-                statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -4)
+                statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
@@ -371,12 +392,14 @@ class ChatCell: UITableViewCell {
 
             // 气泡
             bubbleContainer.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
-            bubbleContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
+         //   bubbleContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
             bubbleContainer.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.65),
             //发送状态
           
             sendingIndicator.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor, constant: -26), // 左边距离
-                sendingIndicator.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -4)   // 底部距离
+                sendingIndicator.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor, constant: -4),   // 底部距离
+            
+     
         ])
 
         // TEXT constraints
@@ -408,6 +431,40 @@ class ChatCell: UITableViewCell {
             contentImageView.widthAnchor.constraint(equalToConstant: 245),
             contentImageView.heightAnchor.constraint(equalToConstant: 185)
         ]
+        
+        //拉黑
+        NSLayoutConstraint.activate([
+            blockHintLabel.topAnchor.constraint(
+                equalTo: bubbleContainer.bottomAnchor,
+                constant: 6
+            ),
+            blockHintLabel.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: 40
+            ),
+            blockHintLabel.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: -40
+            ),
+            blockHintLabel.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: -6
+            )
+        ])
+        
+        bubbleBottomConstraint = bubbleContainer.bottomAnchor.constraint(
+            equalTo: contentView.bottomAnchor,
+            constant: -padding
+        )
+
+        blockHintBottomConstraint = blockHintLabel.bottomAnchor.constraint(
+            equalTo: contentView.bottomAnchor,
+            constant: -6
+        )
+
+        // 默认：没拉黑 → bubble 贴底
+        bubbleBottomConstraint.isActive = true
+        blockHintBottomConstraint.isActive = false
     }
 
 
@@ -451,6 +508,21 @@ class ChatCell: UITableViewCell {
         timeLabel.isHidden = !message.showTime
         timeLabel.text = message.showTime ? Date(timeIntervalSince1970: message.timestamp).Jq9K2pW7Lr() : nil
         bubbleContainer.isHidden = false
+        
+        //拉黑
+        let isBlocked: Bool = {
+            if case .failed(reason: .wTiahblock) = message.sendStatus {
+                return true
+            }
+            return false
+        }()
+
+        blockHintLabel.isHidden = !isBlocked
+        blockHintLabel.text = isBlocked ? "The message has been sent, but was \nrejected by the recipient." : nil
+
+        // 🔥 核心：谁显示，谁当底
+        bubbleBottomConstraint.isActive = !isBlocked
+        blockHintBottomConstraint.isActive = isBlocked
 
         switch message.content {
         case .text(let text):

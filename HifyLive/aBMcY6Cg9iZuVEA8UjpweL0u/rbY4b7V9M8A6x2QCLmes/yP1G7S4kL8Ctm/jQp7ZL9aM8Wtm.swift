@@ -19,7 +19,7 @@ struct jQp7ZL9aM8Wtm: View {
                 .frame(height: 462)
                 .frame(maxWidth: .infinity, maxHeight: .infinity,alignment:.top)
                 .ignoresSafeArea()
-            VStack(spacing:20){
+            VStack(spacing:0){
                 HStack{
                     HStack(spacing:10){
                         ZStack{
@@ -78,6 +78,7 @@ struct jQp7ZL9aM8Wtm: View {
                     })
                 }else{
                     VH5N3B7tQ6fri()
+                        .padding(.top,20)
                 }
             }
            

@@ -18,7 +18,7 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                 Spacer()
                 ZJ7h766mz(tMmEWWlfgUag: "xPW24mCd1SORVR56nr4UXuY")
                     .frame(maxWidth: .infinity)
-                    .frame(height: 321)
+                    .frame(height: 263)
                     .overlay {
                         VStack(spacing: 32) {
                             HStack(spacing: 4) {
@@ -68,29 +68,13 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                                             }
                                         }
                                 }
-                                Button{
-                                    qiizd0IijFdcEjzdYt(0)
-                                } label: {
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .fill(Color.white.opacity(0.15))
-                                        .frame(height: 46)
-                                        .overlay {
-                                            HStack(spacing: 8) {
-                                                ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
-                                                    .frame(width: 24,height: 24)
-                                                Text("9oqUCKDdH7g2d1tzqh3Kjw==".bFHEatcgE4zzU9TCfDonsu())
-                                                    .g0LIIcoZQsOjyND9(
-                                                        size: 16
-                                                    )
-                                            }
-                                        }
-                                }
+             
                             }
                             .padding(.horizontal,36)
                             Spacer()
                         }
                     }
-            }.offset(y: isZ7E4xA0M2 ? 0 : 300)
+            }.offset(y: isZ7E4xA0M2 ? 0 : 263)
         }.ignoresSafeArea()
             .onAppear {
                 isZ7E4xA0M2 = false

@@ -31,10 +31,14 @@ struct ChatViewContainer: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: ChatViewController, context: Context) {
             uiViewController.yxRoomId = yxRoomId
             uiViewController.userId = userId
+      
             
+        if(yxRoomId != ""){
             // ⚡ 这里触发 VC 内的 joinRTMChannel
                 uiViewController.joinChatroom()
-        
+
+        }
+                    
        
         }
 }

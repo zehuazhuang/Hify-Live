@@ -69,6 +69,11 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                 with: message,
                 session: session
             )
+            
+            // 立即同步本地缓存和全局未读
+                 if let local = RecentSessionStore.shared.cache.first(where: { $0.sessionId == session.sessionId }) {
+                     local.unreadCount += 1
+                 }
         }
 
         let sessions = RecentSessionManager.shared.cache

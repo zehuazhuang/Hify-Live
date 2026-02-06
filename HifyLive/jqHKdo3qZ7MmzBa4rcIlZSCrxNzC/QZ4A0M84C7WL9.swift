@@ -14,7 +14,7 @@ struct QZ4A0M84C7WL9: View {
     @Environment(\.router) var rM9Z8S7A1ql
     @State private var r20e4mWkY = false //弹取关
     @State private var qQLT5JKPC = false //弹拉黑
-    
+    @State private var nJECQo7O4rE = -1 //0 未拉黑 1已拉黑
     
     var exFkPlIB : Bool { //是否当前用户
         if (sBb3SaType == 0){
@@ -23,6 +23,7 @@ struct QZ4A0M84C7WL9: View {
             return hN9EY2BId == IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid")
         }
     }
+   
     
     var body: some View {
         ZStack{
@@ -247,7 +248,7 @@ struct QZ4A0M84C7WL9: View {
             }
             //拉黑弹框
             if qQLT5JKPC {
-                QiRKOWGBnovrlh(ish1z8TllyFvb: $qQLT5JKPC, ihQ5ReMsh3Uid: info9M0Q2A6.int("userId"), szHHWP8Name: info9M0Q2A6.string("nickname"), wksgt0dUrl: info9M0Q2A6.string("icon"))
+                QiRKOWGBnovrlh(ish1z8TllyFvb: $qQLT5JKPC, ihQ5ReMsh3Uid: info9M0Q2A6.int("userId"), szHHWP8Name: info9M0Q2A6.string("nickname"), wksgt0dUrl: info9M0Q2A6.string("icon"), ihysbsdRVA: info9M0Q2A6.string("yxAccid"), uZIHcG0Vju0: $nJECQo7O4rE)
             }
         }
         
@@ -285,6 +286,7 @@ struct QZ4A0M84C7WL9: View {
                          
             withAnimation{
                 is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
+                nJECQo7O4rE = info9M0Q2A6.int("blocked")
             }
             print("是否关注")
             print(is7A0Y4W6ECL)

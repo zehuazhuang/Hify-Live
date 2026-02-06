@@ -96,7 +96,7 @@ struct C8Z2x4M6YV9m: View {
                                                     )
                                                 )
                                                 UIPasteboard.general.string = gjikAoPvX
-                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==")
+                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==",type: 0)
                                             } label: {
                                                 ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX")
                                                     .frame(width: 16,height: 16)

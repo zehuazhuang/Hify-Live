@@ -8,8 +8,8 @@ struct kaBpQbGjZ: View {
     @State private var q2C4Mtl3iNa: String = "" //搜索文本
     @State private var IwxP0B12Text: String = ""
     @State private var iZQ7xV4bM8Ys: Bool = false
-    @State private var wX6DaMQPResults: [[String: Any]] = []
-    @State private var filteredResults: [[String: Any]] = []
+    @State private var wX6DaMQPResults: [[String: Any]] = [] //搜索数据
+    @State private var filteredResults: [[String: Any]] = [] //过滤数据
     @State private var xI87npb7lB: Bool = false //弹取关
     @State private var xH4Gfw7C: Int = -1 //弹框坐标用户
     var body: some View {
@@ -40,6 +40,9 @@ struct kaBpQbGjZ: View {
                     i6L2M4Yai0s: $iZQ7xV4bM8Ys, on8M9xY6Q0: {velogranText in
                         IwxP0B12Text = velogranText
                         filterData(keyword: velogranText)
+                    },
+                    hQqgApVK1Qn:{
+                        filteredResults = wX6DaMQPResults
                     }
                 )
                 Spacer().frame(height: 20)

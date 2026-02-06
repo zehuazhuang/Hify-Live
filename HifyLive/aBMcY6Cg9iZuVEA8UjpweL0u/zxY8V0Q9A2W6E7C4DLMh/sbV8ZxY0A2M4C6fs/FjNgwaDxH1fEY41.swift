@@ -34,8 +34,10 @@ struct FjNgwaDxH1fEY41: View {
 //                    .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
                 }.frame(width: 148, height: 87)
                 
-                VStack(alignment:.leading,spacing: 8){
+                VStack(alignment:.leading,spacing: 0){
                     A6WsC0Ww6ELqEL(l4K9bX2q: (room["nickname"] as? String) ?? "", k7NmFz1p: gpiemeSele, t3QvD8j: "1")
+                        .padding(.top,11)
+                    
                   
                     HStack(spacing:0){
                         Text("RoomID：")
@@ -47,20 +49,22 @@ struct FjNgwaDxH1fEY41: View {
                        
                         
                         A6WsC0Ww6ELqEL(l4K9bX2q: String((room["roomId"] as? Int ?? 0)), k7NmFz1p: gpiemeSele, t3QvD8j: "2")
-                    }.padding(.bottom,5)
-                   
+                    }.padding(.top,8)
+                    Spacer()
                     HStack{
                         Spacer()
-                        HStack{
+                        HStack(spacing:0){
                             
-                            ZJ7h766mz(tMmEWWlfgUag: "vd8A2C6WELYpe")
-                                               .frame(width: 20, height: 20)
+                            ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
+                                .frame(width: 20, height: 20)
+                                .padding(.leading,4)
                             Text("\(room["joinNum"] as? Int ?? 0)")
                                             .g0LIIcoZQsOjyND9(
                                                 size: 16,
                                                 weight: .regular,
                                                 color: .white.opacity(0.6)
                                             )
+                            Spacer()
                         }.frame(width: 69,height: 25)
                         
                         .background(Color.white.opacity(0.15))

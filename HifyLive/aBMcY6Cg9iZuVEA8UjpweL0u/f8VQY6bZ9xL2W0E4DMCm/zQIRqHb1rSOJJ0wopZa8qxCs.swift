@@ -22,7 +22,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     @State private var ncpingeRoom: [String: Any] = [:] //房间数据
     //显示举报
     @State private var isvk1OJMmL : Bool = false
-    
+    //0未拉黑 1已拉黑
+    @State private var wJPbA3THnzX : Int = -1
     var  isFvNNQZQ : Bool {
         return  usQ8Y7Z6Inf.bool("followed")
     }
@@ -38,7 +39,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         ZStack(alignment: .bottomTrailing,){
                             RoundedRectangle(cornerRadius: 0)
                                 .fill(Color.clear)
-                                .frame(height: 282)
+                                .frame(height: 362)
                                 .overlay {
                                         if usQ8Y7Z6Inf.isEmpty {
                                             ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
@@ -68,7 +69,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .clipped()
                             ZJ7h766mz(tMmEWWlfgUag: "jlvIw3ryygxHNI")
                                 .frame(height: 119)
-                        }
+                        }.offset(y: -80)
                         VStack(spacing: 0) {
                             Spacer().frame(height: 240)
                             VStack(spacing:8) {
@@ -477,7 +478,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             
             if isvk1OJMmL {
                 QiRKOWGBnovrlh(ish1z8TllyFvb: $isvk1OJMmL, ihQ5ReMsh3Uid: areoloaUid,
-                               szHHWP8Name:usQ8Y7Z6Inf.string("nickname"), wksgt0dUrl: usQ8Y7Z6Inf.string("icon"),
+                               szHHWP8Name:usQ8Y7Z6Inf.string("nickname"), wksgt0dUrl: usQ8Y7Z6Inf.string("icon"), ihysbsdRVA: usQ8Y7Z6Inf.string("yxAccid"), uZIHcG0Vju0: $wJPbA3THnzX,
                 )
             }
             
@@ -497,6 +498,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
         .onAppear{
             
             Task {
+                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                 istYGRYN4Q =  areoloaUid != IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")
                 async let room = lyrijivecSearch(surlibateUid: areoloaUid)
                     
@@ -506,10 +508,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         
                         pstjumLoad()
                     } catch {
+                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                         print(error)
                     }
 
-                   
+                
             }
             
           
@@ -520,12 +523,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             async let info = T0viKk.wSremNeLspPkPRHBJnlVCs5w
                 .ngI7E4C9A0xWML6xL(wTEEJpZz0iGVK: areoloaUid)
             usQ8Y7Z6Inf = await info
-               
-              
-              
-           
+            wJPbA3THnzX = usQ8Y7Z6Inf.int("blocked")
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         }
-     
     }
 }
 
@@ -697,8 +697,8 @@ class T0viKk: ObservableObject {
                     return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
-                print("----json")
-                print(atXeZc0tWzWWpIN8DRa5DB)
+//                print("----json")
+//                print(atXeZc0tWzWWpIN8DRa5DB)
              
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH

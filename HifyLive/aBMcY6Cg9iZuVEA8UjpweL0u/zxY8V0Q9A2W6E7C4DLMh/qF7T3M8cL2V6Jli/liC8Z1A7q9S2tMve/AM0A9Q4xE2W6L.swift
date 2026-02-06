@@ -94,3 +94,27 @@ extension ViewController: AgoraRtcEngineDelegate {
         print("❌ Remote user left:", uid)
     }
 }
+
+
+final class AgoraEngineManager {
+    static let shared = AgoraEngineManager()
+
+    private(set) var engine: AgoraRtcEngineKit?
+
+    private init() {}
+
+    @MainActor
+    func preloadEngine() {
+        guard engine == nil else { return }
+
+        let engine = AgoraRtcEngineKit.sharedEngine(
+            withAppId: TokenManager.appId,
+            delegate: nil
+        )
+        engine.setChannelProfile(.liveBroadcasting)
+        engine.enableVideo()
+
+        self.engine = engine
+        print("✅ Agora Engine 预初始化完成")
+    }
+}

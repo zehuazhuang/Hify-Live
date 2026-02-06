@@ -49,6 +49,11 @@ struct o95HINW4DpHIAT: View {
     @State private var efGGYeTiHzlZ9rnXAlq62oUAgD9hLG: Bool = false
     let updplVCKiB4I :() -> Void //上传相册成功回调更新用户数据
     
+    let mVPc1uy = [
+        GridItem(.flexible(), spacing: 9),
+        GridItem(.flexible(), spacing: 9)
+    ]
+    
     var body: some View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -125,10 +130,7 @@ struct o95HINW4DpHIAT: View {
                 .padding(.horizontal,16)
                 ZStack{
                     ScrollView(showsIndicators: false) {
-                        let mVPc1uy = [
-                            GridItem(.flexible(), spacing: 9),
-                            GridItem(.flexible(), spacing: 9)
-                        ]
+                       
                         
                         let jotfqg1KIVzylzH36S3Ua20DhRZ = idW6C0.count < 8
                         let tOzFLuluJrJkt8RvB07AlCLn = jotfqg1KIVzylzH36S3Ua20DhRZ ? idW6C0.count + 1 : idW6C0.count
@@ -138,10 +140,17 @@ struct o95HINW4DpHIAT: View {
                                 if jotfqg1KIVzylzH36S3Ua20DhRZ && sQunBq9mddJhQKKwzQd7sXSGR6i0m == 0 {
                                     // ➕ 添加按钮
                                     Button {
+                                        print("aaaaa")
                                         mjRYExqGqlfs5RlPB5FQ1oGd = true
                                     } label: {
                                         tdBdcS7Dqc()
+                                            .zIndex(10)
                                     }
+//                                    .contentShape(Rectangle())
+//                                    .highPriorityGesture(
+//                                        TapGesture()
+//                                            .onEnded { }
+//                                    )
                                 } else {
                                     // 📷 相册项
                                     let nJwvSr9XNV7s1L = jotfqg1KIVzylzH36S3Ua20DhRZ ? sQunBq9mddJhQKKwzQd7sXSGR6i0m - 1 : sQunBq9mddJhQKKwzQd7sXSGR6i0m
@@ -150,6 +159,7 @@ struct o95HINW4DpHIAT: View {
                                     wXWAaYKmLFbT1jAfqZ4KlTVAwpC(nFBDXePJdd41Kp: u5CYcOIw9DpOR1v) { ukbVrABN in
                                         ib0Vb(ukbVrABN)
                                     }
+                                    .contentShape(Rectangle())
                                     .opacity(cFCN9v7xy0xUis3K3Ss?.id == u5CYcOIw9DpOR1v.id ? 0.3 : 1)
                                     .background(
                                         GeometryReader { ekaNZEE5dqyqVhxNFxZ8WRi in
@@ -165,7 +175,7 @@ struct o95HINW4DpHIAT: View {
                             }
                         }
                         .padding(.top,14)
-                        
+                        .padding(.horizontal,16)
                         .padding(.bottom,30)
                     }
                     .coordinateSpace(name: "grid")
@@ -406,7 +416,8 @@ struct tdBdcS7Dqc: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
-            .frame(width: 167,height: 126)
+            .frame(height: 126)
+            .frame(maxWidth: .infinity)
             .overlay(alignment: .center) {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 8)
@@ -451,8 +462,9 @@ struct wXWAaYKmLFbT1jAfqZ4KlTVAwpC: View {
             Group {
                 iJ7H9TAZRey3Jv(eV0n003pf6t9f4Mn6tOJU16PSiSTR51: nFBDXePJdd41Kp)
             }
-            .frame(width: 167,height: 126)
-            .clipped()
+            .frame(height: 126)
+            .frame(maxWidth: .infinity)
+            
             .cornerRadius(8)
             .overlay {
                 if nFBDXePJdd41Kp.xQdU5oYzMdsaZX {

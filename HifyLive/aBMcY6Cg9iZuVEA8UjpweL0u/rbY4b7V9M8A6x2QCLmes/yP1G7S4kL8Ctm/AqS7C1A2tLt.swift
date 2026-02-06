@@ -42,20 +42,22 @@ struct aW6MZ4xQ7L0Ez: View {
     var body: some View {
         Circle()
             .stroke(
-                AngularGradient(
+                LinearGradient(
                     colors: [
-                        Color(red: 217/255, green: 28/255, blue: 255/255).opacity(0.72),
-                        Color(red: 49/255, green: 198/255, blue: 232/255).opacity(0.1)
+                        Color(red: 217/255, green: 28/255, blue: 255/255),
+                        Color(red: 49/255, green: 198/255, blue: 232/255)
                     ],
-                    center: .center
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
                 ),
                 lineWidth: 1
             )
-            .rotationEffect(.degrees(pR9dV2sF1kUo ? 360 : 0))
+            .scaleEffect(pR9dV2sF1kUo ? 1.15 : 0.9)
+            .opacity(pR9dV2sF1kUo ? 0.2 : 0.8)
             .onAppear {
                 withAnimation(
-                    .linear(duration: 1.6)
-                        .repeatForever(autoreverses: false)
+                    .easeInOut(duration: 1.4)
+                        .repeatForever(autoreverses: true)
                 ) {
                     pR9dV2sF1kUo = true
                 }

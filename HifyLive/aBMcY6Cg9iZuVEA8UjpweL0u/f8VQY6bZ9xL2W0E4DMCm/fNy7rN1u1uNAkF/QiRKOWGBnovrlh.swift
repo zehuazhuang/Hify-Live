@@ -8,6 +8,8 @@ struct QiRKOWGBnovrlh: View {
     let ihQ5ReMsh3Uid: Int
     let szHHWP8Name: String
     let wksgt0dUrl: String
+    let ihysbsdRVA:String //yxid
+    @Binding var uZIHcG0Vju0: Int //0未被拉黑 1 已拉黑
     @Environment(\.router) var rM9Z8S7A1ql
     @State private var isy9YH69iABl = false //二次确认拉黑
     var body: some View {
@@ -55,13 +57,25 @@ struct QiRKOWGBnovrlh: View {
                     .cornerRadius(325)
                     
                     Button(action: {
-                        
-                        withAnimation{
-                            isy9YH69iABl = true
+                        if(uZIHcG0Vju0 == 0){
+                            withAnimation{
+                                isy9YH69iABl = true
+                            }
+                        }else{
+                            Task{
+                                let kQcXuK4siS =  await TPb21z0U.eDNcFBMyyi.hxEXXV2aWMNka7HM2qhr1Qccen3rB(iN2NID: ihQ5ReMsh3Uid, lCOFD: ihysbsdRVA)
+                               
+                                
+                                if(kQcXuK4siS){
+                                    ish1z8TllyFvb = false
+                                    uZIHcG0Vju0 = 0
+                                }
+                            }
                         }
+                       
 
                     }) {
-                        Text("Block")
+                        Text(uZIHcG0Vju0 == 0 ? "Block" : "Unblock")
                             .g0LIIcoZQsOjyND9(
                                 size: 16,
                                 weight: .regular,
@@ -139,6 +153,7 @@ struct QiRKOWGBnovrlh: View {
                         let ishlfBPM1m =   await TPb21z0U.eDNcFBMyyi.ngIp5pudxny8o0Mdsqv(fnLUzabLaul9Cx: ihQ5ReMsh3Uid, mwNKAPngt: "")
                         
                         if(ishlfBPM1m){
+                            uZIHcG0Vju0 = 1
                             ish1z8TllyFvb = false
                         }
                     }

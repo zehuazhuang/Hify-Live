@@ -33,14 +33,17 @@ struct SwipeRow<Content: View, ID: Hashable>: View {
 
     var body: some View {
         ZStack(alignment: .trailing) {
-
+            
             // 底层删除按钮（始终存在）
             Button(action: onDelete) {
                 ZJ7h766mz(tMmEWWlfgUag: "zJNmgI4BkuG6ca")
                     .frame(width: 24, height: 24)
                     .frame(width: 60, height: 76)
                     .background(Color.red)
-            }
+            }.simultaneousGesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { _ in }
+            )
 
             // 前景内容
             content

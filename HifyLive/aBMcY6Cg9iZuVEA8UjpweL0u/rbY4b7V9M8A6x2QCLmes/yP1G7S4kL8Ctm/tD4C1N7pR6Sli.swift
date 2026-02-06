@@ -80,6 +80,13 @@ struct tD4C1N7pR6Sli: View {
                               ), Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.05)], startPoint: .leading, endPoint: .trailing)
         )
         .onTapGesture { onTap(rN1Z8mR) }
+        .onAppear{
+            print("聊天数据")
+            print(rN1Z8mR.nickname)
+            print(rN1Z8mR.avatarUrl)
+            print(rN1Z8mR.unreadCount)
+        }
+       
         
     }
 }

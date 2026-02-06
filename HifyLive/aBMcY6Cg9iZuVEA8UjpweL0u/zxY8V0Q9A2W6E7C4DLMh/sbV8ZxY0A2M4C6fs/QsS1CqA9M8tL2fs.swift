@@ -45,6 +45,7 @@ struct QsS1CqA9M8tL2fs: View {
                                 await oA0T1rQLoad()
                             }
                             
+                        }, hQqgApVK1Qn: {
                         }
                     )
                     
@@ -97,45 +98,48 @@ struct QsS1CqA9M8tL2fs: View {
                     }
                 }.padding(.top,15)
                     .padding(.horizontal,47)
-                
-                VStack{
-                    HStack{
-                        Text(piaoncapType == 0 ? "Search History" : "Search Results")
-                            .g0LIIcoZQsOjyND9(
-                                size: 16,
-                                weight: .medium
-                            )
-                        Spacer()
-                    }.padding(.bottom,12)
-                    if searchResults.isEmpty{
-                        FlowLayout(spacing: 8) {
-
-                            // 搜索历史
-                            ForEach(searchHistory, id: \.self) { item in
-                                SearchHistoryTag(text: item)
-                                    .onTapGesture {
-                                        q2C4Mtl3iNa = item
-                                        Task {
-                                            await oA0T1rQLoad()
+                if piaoncapType == 0  {
+                VStack(spacing:0){
+                   
+                        HStack{
+                            Text("Search History")
+                                .g0LIIcoZQsOjyND9(
+                                    size: 16,
+                                    weight: .medium
+                                )
+                            Spacer()
+                        }.padding(.bottom,12)
+                            .padding(.top,8)
+                        
+                        
+                        if searchResults.isEmpty{
+                            FlowLayout(spacing: 8) {
+                                
+                                // 搜索历史
+                                ForEach(searchHistory, id: \.self) { item in
+                                    SearchHistoryTag(text: item)
+                                        .onTapGesture {
+                                            q2C4Mtl3iNa = item
+                                            Task {
+                                                await oA0T1rQLoad()
+                                            }
                                         }
+                                }
+                                
+                                // 清空按钮（作为最后一个 item）
+                                if !searchHistory.isEmpty {
+                                    Button {
+                                        SearchHistoryManager.shared.clear()
+                                        searchHistory.removeAll()
+                                    } label: {
+                                        ZJ7h766mz(tMmEWWlfgUag: "cVTpp6zUMJxU1")
+                                            .frame(width: 33, height: 33)
                                     }
-                            }
-
-                            // 清空按钮（作为最后一个 item）
-                            if !searchHistory.isEmpty {
-                                Button {
-                                    SearchHistoryManager.shared.clear()
-                                    searchHistory.removeAll()
-                                } label: {
-                                    ZJ7h766mz(tMmEWWlfgUag: "cVTpp6zUMJxU1")
-                                        .frame(width: 33, height: 33)
                                 }
                             }
                         }
-                        .padding(.top, 8)
                     }
-                 
-                }.padding(.bottom,16)
+                }
                 ScrollView(showsIndicators: false){
                     LazyVStack(spacing:12){
                         if(piaoncapType == 0){
@@ -174,12 +178,9 @@ struct QsS1CqA9M8tL2fs: View {
                                     }
                                 }
                             }
-                            
-                            
-                            
                         }
                     }
-                }
+                }.padding(.top,8)
             }.padding(.horizontal,16)
         }
         .onAppear {

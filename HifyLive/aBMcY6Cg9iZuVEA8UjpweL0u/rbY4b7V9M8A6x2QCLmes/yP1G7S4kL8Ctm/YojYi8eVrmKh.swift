@@ -14,9 +14,13 @@ class RecentSessionManager: ObservableObject {
     func fetchRecentSessions(forceRefresh: Bool = false, completion: (() -> Void)? = nil) {
         let sessions = NIMManager.shared.fetchRecentSessions()
         var tempCache: [CachedRecentSession] = []
+        
+       
+        
 
         for r in sessions {
-            guard let s = r.session else { continue }
+            guard let s = r.session,
+                  !s.sessionId.isEmpty else { continue }
 
             let info = UserManager.shared.getCachedUserInfo(accid: s.sessionId)
 
@@ -34,6 +38,8 @@ class RecentSessionManager: ObservableObject {
             } else {
                 lastMessageText = ""
             }
+
+           
 
             let cached = CachedRecentSession(
                 session: s,

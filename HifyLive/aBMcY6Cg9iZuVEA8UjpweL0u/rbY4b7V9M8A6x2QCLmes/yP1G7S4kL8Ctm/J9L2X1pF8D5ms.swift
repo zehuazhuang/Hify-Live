@@ -46,7 +46,7 @@ struct J9L2X1pF8D5ms: View {
                                        }
                                    }
                                  
-                               }
+                               }.padding(.top,20)
                                .padding(.horizontal, 16)
                            }
                     }
@@ -87,6 +87,7 @@ struct J9L2X1pF8D5ms: View {
 //                        )
 //                    )
 //                }
+                    Spacer().frame(height: 16)
                     if sessionStore.cache.isEmpty {
                         LQ0Z4A6C9emp()
                     } else {
@@ -108,6 +109,7 @@ struct J9L2X1pF8D5ms: View {
                                                 rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                                                     WUjfoptOKs8pZfhSAH0duplG {
                                                         CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl)
+
                                                     }
                                                 }
                                             },

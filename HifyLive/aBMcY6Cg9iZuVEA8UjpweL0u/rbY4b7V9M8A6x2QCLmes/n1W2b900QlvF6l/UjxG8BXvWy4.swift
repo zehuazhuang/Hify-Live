@@ -39,7 +39,12 @@ class CachedRecentSession: Identifiable, ObservableObject {
 class RecentSessionStore: ObservableObject {
     static let shared = RecentSessionStore()
     // 统一使用 cache 作为数据源
-    @Published var cache: [CachedRecentSession] = []
+    @Published var cache: [CachedRecentSession] = [] {
+           didSet {
+               // cache 变化时自动同步全局未读
+               GlobalUnreadStore.shared.update(from: cache)
+           }
+       }
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -85,6 +90,24 @@ class RecentSessionStore: ObservableObject {
         RecentSessionManager.shared.removeSession(withId: id)
         self.cache = RecentSessionManager.shared.cache
     }
+    
+    // SDK delegate
+       func onRecentSessionChanged(_ recentSession: NIMRecentSession) {
+           guard let session = recentSession.session else { return }
+           if let index = cache.firstIndex(where: { $0.sessionId == session.sessionId }) {
+               let local = cache[index]
+               local.unreadCount = recentSession.unreadCount
+               local.lastMessageText = recentSession.lastMessage?.text ?? ""
+               local.timestamp = recentSession.lastMessage?.timestamp ?? 0
+
+               objectWillChange.send()
+               // ✅ 全局未读同步
+               GlobalUnreadStore.shared.update(from: cache)
+           }
+       }
+    
+    
+    
 }
 
 extension RecentSessionStore {
@@ -118,4 +141,6 @@ extension RecentSessionStore {
                 NIMSDK.shared().conversationManager.markAllMessagesRead(in: session.session)
             }
         }
+    
+    
 }

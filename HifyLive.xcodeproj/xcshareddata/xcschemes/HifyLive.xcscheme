@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DDECD4CC2F148B820016E861"
-               BuildableName = "HifyLive.app"
+               BuildableName = "Eivo.app"
                BlueprintName = "HifyLive"
                ReferencedContainer = "container:HifyLive.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
       shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DDECD4CC2F148B820016E861"
-            BuildableName = "HifyLive.app"
+            BuildableName = "Eivo.app"
             BlueprintName = "HifyLive"
             ReferencedContainer = "container:HifyLive.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DDECD4CC2F148B820016E861"
-            BuildableName = "HifyLive.app"
+            BuildableName = "Eivo.app"
             BlueprintName = "HifyLive"
             ReferencedContainer = "container:HifyLive.xcodeproj">
          </BuildableReference>

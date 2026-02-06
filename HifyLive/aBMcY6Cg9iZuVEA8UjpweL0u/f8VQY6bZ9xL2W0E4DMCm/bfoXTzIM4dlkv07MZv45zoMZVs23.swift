@@ -78,7 +78,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                                     Spacer()
                                     Button{
                                         Task {
-                                            let ehiJO3: Int = Int(mnnVXxRXFee1ZJ8ehOc9UwA.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) ?? 0
+                                            let ehiJO3: Int = Int(mnnVXxRXFee1ZJ8ehOc9UwA.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) ?? 0//userId
                                             auGm8teVpyXJCC2rxfZsMECz = ehiJO3
                                             uT6eHPE0Of05afFQdv9n = true
                                             let vutSbVgrqVlU9: String = mnnVXxRXFee1ZJ8ehOc9UwA.string("HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu())
@@ -218,14 +218,18 @@ class TPb21z0U: ObservableObject {
     func hxEXXV2aWMNka7HM2qhr1Qccen3rB(iN2NID: Int, lCOFD: String) async -> Bool {
         do {
             let otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV: JUsmLn3i59tKLD7RL294I0nAG = try await WOKmjUjM.dq0JZ94RcmDb3.j36UQlXa0(
-                xH0OPzEYR4M5ewWkZQAveq6Vy7: "Z53mkVKRc+/3aEy88R1ziVjUXb5ZXXyoGLM0HtCaN3g=".bFHEatcgE4zzU9TCfDonsu(),
+                xH0OPzEYR4M5ewWkZQAveq6Vy7: "Z53mkVKRc+/3aEy88R1ziVjUXb5ZXXyoGLM0HtCaN3g=".bFHEatcgE4zzU9TCfDonsu(),///api/user/removeBlockUser
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: wZA6oIowbVae5FtrdTTFAaiz3WYirkvI(sjNradeQwuW02y7kiF6ozTd: 1, qRdFOAhW7ayZvfxQCha: iN2NID, eTf1z86aGoFMNQJUV7Tx: lCOFD)
             )
+            print("取消拉黑")
+           
+            print(otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code)
           
             if otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XOUIapGeSTiQJrB6FVylYg==",type: 0)
                 self.lLPppWtfV5O6YMV5wl9nsA4nt.removeAll { ($0.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) == String(iN2NID) }
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
-                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("FaFTLnTp1tdlPRCzlGcI/fkaPzVw5Ij1p83AcEH0yWM=")
+                
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                 return true
@@ -249,16 +253,15 @@ class TPb21z0U: ObservableObject {
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: wZA6oIowbVae5FtrdTTFAaiz3WYirkvI(sjNradeQwuW02y7kiF6ozTd: 1, qRdFOAhW7ayZvfxQCha: fnLUzabLaul9Cx, eTf1z86aGoFMNQJUV7Tx: mwNKAPngt)
             )
             print("---拉黑code")
+          //  print(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj)
             print(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code)
             
-            if(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code == "1058"){
-                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("sHU7XvWi3/2BAN2shTWkmWMZsyGLRi2k9YVRJFVSeKQQJJYrBpdX/ZslHBKNj2H0")
-            }
+     
            
             if qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                 // 成功加入黑名单
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
-                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("oLFPFtMsjDiB7wz3eZeWhQ==")
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("oLFPFtMsjDiB7wz3eZeWhQ==",type: 0)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                 return true

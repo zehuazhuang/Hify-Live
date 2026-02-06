@@ -21,8 +21,11 @@ struct E2VxD0iC4bYyh: View {
     @State private var isRefreshing = false
     private let triggerHeight: CGFloat = 80
     
+    
+    
    
     var body: some View {
+       
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
                 .ignoresSafeArea()
@@ -75,6 +78,9 @@ struct E2VxD0iC4bYyh: View {
                         .onTapGesture {
                             withAnimation{
                                 ecorjazyType = false
+                            }
+                            Task{
+                                await followingCache.loadFollowing()
                             }
                         }
                     }.padding(.top,8)
@@ -211,11 +217,14 @@ struct E2VxD0iC4bYyh: View {
     struct rL0X1V3LiveCell: View {
         let bemindbeData: [String: Any]
         let is7Nqdlvk : Bool //是否第一个
+        let spacing: CGFloat = 7
+           let horizontalPadding: CGFloat = 16 * 2
         var body: some View {
+            let screenWidth = UIScreen.main.bounds.width
+                    let columnWidth = (screenWidth - horizontalPadding - spacing) / 2
             ZStack {
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: bemindbeData["backgroundImgUrl"])
-                    .frame(height: 205)
-                    .frame(maxWidth: .infinity)
+                    .frame(width: columnWidth, height: 205)
                     .allowsHitTesting(false)
                 HStack(alignment: .top) {
                     

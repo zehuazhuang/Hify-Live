@@ -8,7 +8,7 @@ struct LE0xQZ6Y7WC8iv: View {
     let localUid: UInt
     let zA9Y4W6LUid: UInt
     @Environment(\.router) var rM9Z8S7A1ql
-    @State private var liveRoomData: [String: Any]? = nil
+    @State private var liveRoomData: [String: Any] = [:] //数据
     
     @State private var showEndView: Bool = false//主播关播显示
     @State private var showY2E8Qsc: Bool = false//显示用户底部弹框
@@ -22,18 +22,18 @@ struct LE0xQZ6Y7WC8iv: View {
         self.localUid = localUid
         self.zA9Y4W6LUid = zA9Y4W6LUid
     }
-
+    
     var body: some View {
         ZStack {
             LiveViewContainer(
-                channelName: channelName,
+                liveRoomData: liveRoomData,
                 localUid: localUid
             )
             .ignoresSafeArea()
 
             VStack {
                     Spacer()
-                ChatViewContainer(yxRoomId: (liveRoomData?["yxRoomId"] as? String) ?? "", userId: (liveRoomData?["userId"] as? Int) ?? 0,
+                ChatViewContainer(yxRoomId:liveRoomData.string("yxRoomId") , userId:liveRoomData.int("userId") ,
                                   onMuteTappedCallback: { uid, mute in
                                       
                                         NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
@@ -51,7 +51,7 @@ struct LE0xQZ6Y7WC8iv: View {
             VStack{
                 HStack(spacing:4){
                     HStack(spacing:0){
-                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: ((liveRoomData?["icon"] as? String) ?? ""))
+                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: liveRoomData.string("icon") )
                                             .frame(width: 32,height: 32)
                                             .clipShape(Circle())
                                             .padding(.vertical,2)
@@ -59,12 +59,12 @@ struct LE0xQZ6Y7WC8iv: View {
                                             .padding(.trailing,4)
                                             .allowsHitTesting(false)
                         VStack(alignment:.leading){
-                            Text((liveRoomData?["nickname"] as? String) ?? "")
+                            Text(liveRoomData.string("nickname"))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 14,
                                                 weight: .medium
                                             )
-                            let us8b4V9Y0d = (liveRoomData?["userId"] as? Int) ?? 0
+                            let us8b4V9Y0d = liveRoomData.int("userId")
                             Text("ID:" + String(us8b4V9Y0d))
                                             .g0LIIcoZQsOjyND9(
                                                 size: 12,
@@ -72,13 +72,13 @@ struct LE0xQZ6Y7WC8iv: View {
                                             )
                         }
                             
-                        if liveRoomData?["followFlag"] as? Int == 0 {
+                        if liveRoomData.int("followFlag") == 0 {
                             ZJ7h766mz(tMmEWWlfgUag: "d7daxM4M9A2")
                                                .frame(width: 28, height: 20)
                                                .onTapGesture {
                                                    Task {
                                                        do {
-                                                         let is9MZC7A4 =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: (liveRoomData?["userId"] as? Int) ?? 0, iA6M7W9EYL0: 1)
+                                                           let is9MZC7A4 =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL:liveRoomData.int("userId") , iA6M7W9EYL0: 1)
                                                            if(is9MZC7A4){
                                                                
                                                                mpatentLoad()
@@ -102,7 +102,7 @@ struct LE0xQZ6Y7WC8iv: View {
                             withAnimation{
                                 rlUlyPhType = 0
                                 showY2E8Qsc = true
-                                uY0E4QZ9MLId = (liveRoomData?["userId"] as? Int) ?? 0
+                                uY0E4QZ9MLId = liveRoomData.int("userId")
                             }
                         }
                   
@@ -150,7 +150,7 @@ struct LE0xQZ6Y7WC8iv: View {
 //                        }
 //                    }
                     Spacer()
-                    Text("\((liveRoomData?["joinNum"] as? Int) ?? 0)")
+                    Text("\(liveRoomData.int("joinNum") )")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
                                         weight: .regular
@@ -177,14 +177,14 @@ struct LE0xQZ6Y7WC8iv: View {
             if showx8Z9Q2M {
                 Z8q7S9A1C2tLClo(hllonneC8R2J: $showx8Z9Q2M, caentClo: {
                     rM9Z8S7A1ql.dismissScreen()
-                },ourreeName:(liveRoomData?["nickname"] as? String) ?? "",dimpaseAvatar:(liveRoomData?["icon"] as? String) ?? "")
+                },ourreeName: liveRoomData.string("nickname") ,dimpaseAvatar: liveRoomData.string("icon") )
             }
             
             if showY2E8Qsc {
                 QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, isW9YQ6C8L: $showY2E8Qsc)
             }
             
-            if showEndView || (liveRoomData?["liveRoomState"] as? Int) ?? -1 == 1 {
+            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
                 MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
             }
         }
@@ -206,7 +206,7 @@ struct LE0xQZ6Y7WC8iv: View {
                
               
                 if(channelName == ""){
-                    channelName = (liveRoomData?["agoraChannelId"] as? String) ?? ""
+                    channelName = liveRoomData.string("agoraChannelId")
                     
                 }
                 
@@ -214,23 +214,25 @@ struct LE0xQZ6Y7WC8iv: View {
                 print(error)
             }
         }
-     
     }
 }
 
 
 struct LiveViewContainer: UIViewControllerRepresentable {
-    let channelName: String
+    let liveRoomData: [String: Any]
     let localUid: UInt
 
     func makeUIViewController(context: Context) -> LiveViewController {
-        LiveViewController(channelName: channelName, localUid: localUid)
+        LiveViewController(
+            liveRoomData: liveRoomData,
+            localUid: localUid
+        )
     }
 
     func updateUIViewController(
         _ uiViewController: LiveViewController,
         context: Context
     ) {
-        uiViewController.updateChannelIfNeeded(channelName)
+        uiViewController.updateIfNeeded(liveRoomData: liveRoomData)
     }
 }

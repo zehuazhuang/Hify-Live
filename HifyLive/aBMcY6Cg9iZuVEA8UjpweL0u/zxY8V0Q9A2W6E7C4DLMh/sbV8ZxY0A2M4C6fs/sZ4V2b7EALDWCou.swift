@@ -6,7 +6,7 @@ struct sZ4V2b7EALDWCou: View {
     @Binding var i6L2M4Yai0s: Bool
     @FocusState private var arquilbreFocu: Bool
     var on8M9xY6Q0: (String) -> Void
-
+    let hQqgApVK1Qn:() -> Void //用于关注、粉丝 点击x恢复数据
     var body: some View {
         HStack {
             ZStack(alignment: .leading) {
@@ -37,6 +37,7 @@ struct sZ4V2b7EALDWCou: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         q2C4Mtl3iNa = ""
+                        hQqgApVK1Qn()
                     }.padding(.trailing,8)
             }
             

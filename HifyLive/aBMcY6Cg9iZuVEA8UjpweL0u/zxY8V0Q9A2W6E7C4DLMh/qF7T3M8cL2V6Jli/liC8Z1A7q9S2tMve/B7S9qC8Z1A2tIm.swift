@@ -6,7 +6,8 @@ import AgoraRtcKit
 class LiveViewController: UIViewController {
     private var appId = TokenManager.appId
     private var token: String?//当前登录用户的rtctoken
-    private var channelName: String  //agoraChannelId
+    private var liveRoomData: [String: Any] //加入直播接口数据
+    private var channelName: String //agoraChannelId
     private var localUid: UInt  //登录用户uid
 
     private var agoraKit: AgoraRtcEngineKit?
@@ -16,16 +17,12 @@ class LiveViewController: UIViewController {
     private var hostHasStarted = false //是否开播
     private var waitHostTimer: DispatchWorkItem? //等待开播
     
-    var currentChannelId: String {
-        return channelName
-    }
 
-    init(channelName: String, localUid: UInt) {
-        self.channelName = channelName
+    init(liveRoomData: [String: Any], localUid: UInt) {
+        self.liveRoomData = liveRoomData
         self.localUid = localUid
+        self.channelName = liveRoomData["agoraChannelId"] as? String ?? ""
         super.init(nibName: nil, bundle: nil)
-        
-       
     }
     
     private func leaveChannelIfNeeded() {
@@ -52,21 +49,18 @@ class LiveViewController: UIViewController {
         return indicator
     }()
     
-    func updateChannelIfNeeded(_ newChannel: String) {
+    func updateIfNeeded(liveRoomData newData: [String: Any]) {
+        let newChannel = newData["agoraChannelId"] as? String ?? ""
+
+        // 更新缓存
+        self.liveRoomData = newData
+
         guard !newChannel.isEmpty else { return }
         guard newChannel != channelName else { return }
-        guard let _ = agoraKit else {
-            // SDK 还没初始化，先存值
-            channelName = newChannel
-            return
-        }
 
-        print("🔄 channelName 更新:", newChannel)
+        print("🔄 channel 更新:", newChannel)
 
-        // 先更新 channelName
         channelName = newChannel
-
-        // 异步离开旧频道，再 join 新频道
         leaveChannelAndJoinAgainIfNeeded()
     }
     
@@ -123,21 +117,23 @@ class LiveViewController: UIViewController {
 
     @MainActor
     private func initializeAgora() async {
-        // 获取 token
         guard let token = TokenManager.shared.rtcToken else {
             print("❌ token 不存在")
             return
         }
         self.token = token
 
-        // 初始化 SDK（必须在主线程）
-        let engine = AgoraRtcEngineKit.sharedEngine(withAppId: appId, delegate: self)
-        engine.setChannelProfile(.liveBroadcasting)
+        let engine = AgoraEngineManager.shared.engine
+            ?? AgoraRtcEngineKit.sharedEngine(
+                withAppId: appId,
+                delegate: self
+            )
+
+        engine.delegate = self
         engine.setClientRole(.audience)
-        engine.enableVideo()
+
         self.agoraKit = engine
 
-        // 加入频道
         joinChannel()
     }
     

@@ -19,7 +19,7 @@ struct CgZU7mTgY46l: View {
         @State private var showCameraPicker = false
     
         @State private var isw8UhB9Gj8t = false //显示举报
-    
+        @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
 
             init(session: NIMSession, opponentAvatarURL: String) {
             self.session = session
@@ -118,7 +118,7 @@ struct CgZU7mTgY46l: View {
                                     NoResignTextField(text: $vm.inputText, isFocused: $isInputFocused,
                                                       onSend: {
                                                               if !vm.inputText.isEmpty {
-                                                                  vm.sendText()
+                                                                  vm.sendText(qAiRzAlJType: iLIIszM4zwx)
                                                               }
                                                           }
                                     )
@@ -136,7 +136,7 @@ struct CgZU7mTgY46l: View {
                                 ZJ7h766mz(tMmEWWlfgUag: "qS9A1C2tLse")
                                     .frame(width: 36, height: 36)
                                     .onTapGesture {
-                                        vm.sendText()
+                                        vm.sendText(qAiRzAlJType: iLIIszM4zwx)
                                     }
                             }
                             .padding(.leading, 16)
@@ -158,7 +158,7 @@ struct CgZU7mTgY46l: View {
                                     }
                                     .onChange(of: selectedImage) { img in
                                         if let img {
-                                            vm.sendImage(img)
+                                            vm.sendImage(img, qAiRzAlJType: iLIIszM4zwx)
                                         }
                                     }
                                 
@@ -184,7 +184,7 @@ struct CgZU7mTgY46l: View {
                 
                 if isw8UhB9Gj8t {
                     QiRKOWGBnovrlh(ish1z8TllyFvb: $isw8UhB9Gj8t, ihQ5ReMsh3Uid: opponentInfo.int("userId"),
-                                   szHHWP8Name:opponentInfo.string("nickname"), wksgt0dUrl: opponentInfo.string("icon"),
+                                   szHHWP8Name:opponentInfo.string("nickname"), wksgt0dUrl: opponentInfo.string("icon"), ihysbsdRVA: opponentInfo.string("yxAccid"), uZIHcG0Vju0: $iLIIszM4zwx,
                     )
                 }
             }
@@ -199,7 +199,14 @@ struct CgZU7mTgY46l: View {
                     print("用户信息")
                     print(opponentInfo)
                     
-                 
+                    iLIIszM4zwx = opponentInfo.int("blocked")
+                    
+                    if(iLIIszM4zwx == 0){
+                        iLIIszM4zwx = opponentInfo.int("beBlocked")
+                    }
+                    print("是否")
+                    print(iLIIszM4zwx)
+                    
                 }
             }.onTapGesture {
                 UIApplication.shared.endEditing()

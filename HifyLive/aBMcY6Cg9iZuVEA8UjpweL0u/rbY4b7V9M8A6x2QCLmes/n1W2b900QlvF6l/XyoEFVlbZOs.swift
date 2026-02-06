@@ -12,6 +12,7 @@ enum FailReason: Equatable {
     case sensitive
     case network
     case unknown
+    case wTiahblock
     
     var message: String {
         switch self {
@@ -21,6 +22,8 @@ enum FailReason: Equatable {
             return "发送失败：网络异常"
         case .unknown:
             return "发送失败"
+        case .wTiahblock:
+            return "被拉黑发不出"
         }
     }
 }
@@ -159,7 +162,7 @@ class ChatMessage: Identifiable, ObservableObject {
             self.messages = result
         }
         
-        func sendText() {
+        func sendText(qAiRzAlJType: Int) {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
             guard !inputText.isEmpty else { return }
             
             let message = NIMMessage()
@@ -172,7 +175,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 isOutgoingMsg: true,
                 timestamp: message.timestamp,
                 avatarURL: self.myAvatarURL,
-                sendStatus: .sending
+                sendStatus:qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock)
             )
             
             let lastTimestamp = self.messages.last?.timestamp ?? 0
@@ -180,6 +183,12 @@ class ChatMessage: Identifiable, ObservableObject {
             
             self.messages.append(chatMsg) // ✅ 先 append，显示转圈
             self.updateRecentSession(chatMsg)
+            
+            // 🚫 被拉黑：只记录本地，不发云信
+              if qAiRzAlJType == 1 {
+                  self.inputText = ""
+                  return
+              }
             
             // 发送消息
             NIMSDK.shared().chatManager.send(message, to: session) { [weak self] error in
@@ -212,7 +221,7 @@ class ChatMessage: Identifiable, ObservableObject {
             }
         }
         
-        func sendImage(_ image: UIImage) {
+        func sendImage(_ image: UIImage,qAiRzAlJType: Int) {
             guard let data = image.jpegData(compressionQuality: 0.8) else { return }
             let message = NIMMessage()
             // 占位消息对象
@@ -222,7 +231,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 isOutgoingMsg: true,
                 timestamp: Date().timeIntervalSince1970,
                 avatarURL: myAvatarURL,
-                sendStatus: .sending,
+                sendStatus: qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock),
                 localImage: image
             )
             
@@ -234,6 +243,12 @@ class ChatMessage: Identifiable, ObservableObject {
                 self.messages.append(placeholderMsg)
                 self.updateRecentSession(placeholderMsg)
             }
+            
+            // 🚫 被拉黑：只记录本地，不发云信
+              if qAiRzAlJType == 1 {
+                  
+                  return
+              }
 
             // 上传 + 鉴黄 + 发送消息
             Task {

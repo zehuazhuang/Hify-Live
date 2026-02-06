@@ -2,10 +2,10 @@ import Foundation
 import NIMSDK
 
 struct JOGtDnYupP {
-    static let loaattrdbUrl = "https://testaes.cphub.link" //环境地址
-    static let raslidepApId = "11111111" //id
+    static let loaattrdbUrl = "https://pre.hily.link" //环境地址
+    static let raslidepApId = "21448469" //id
     static let versLErqSu = "1.0.0" //版本
-    static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
+    static let zMVMMyTmNK = "ac85c4b27907b332450d8b964df087f3" //云信id
 }
 
 
@@ -128,6 +128,17 @@ func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
     }
     
     let kN3yM6vD9sL1hP = jM4kL8pD3tN1bC.hL9dV3bQ2fK6sJ8p()
+        print("----URL----")
+        print(rP8vT2kQwZ5bN)
+    
+        if let headers = xN6vR2pB5lC4dT.allHTTPHeaderFields {
+            print("---请求头---")
+            for (key, value) in headers {
+                print("\(key): \(value)")
+            }
+        }
+          print("-----json")
+          print(kN3yM6vD9sL1hP)
     guard let lO2mL5wScNf7kV = kN3yM6vD9sL1hP.data(using: .utf8),
           let mP2vT4nC3qL5xN = try? JSONSerialization.jsonObject(with: lO2mL5wScNf7kV, options: []),
           let nQ2vT1bSRlZ5rP = mP2vT4nC3qL5xN as? [String: Any],
@@ -393,10 +404,10 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
         vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
         
         if(iA6M7W9EYL0 == 1){
-            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("QFJcutXym5Ujoe4qASpA0w==")
+            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("QFJcutXym5Ujoe4qASpA0w==",type: 0)
         }else{
             await FollowingCache.shared.loadFollowing(forceRefresh: true)
-            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("EMnULaLM6ZF45iH0cANSKQ==")
+            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("EMnULaLM6ZF45iH0cANSKQ==",type: 0)
         }
     }
     
