@@ -199,11 +199,9 @@ struct CgZU7mTgY46l: View {
                     print("用户信息")
                     print(opponentInfo)
                     
-                    iLIIszM4zwx = opponentInfo.int("blocked")
+                    iLIIszM4zwx = opponentInfo.int("beBlocked")
                     
-                    if(iLIIszM4zwx == 0){
-                        iLIIszM4zwx = opponentInfo.int("beBlocked")
-                    }
+                   
                     print("是否")
                     print(iLIIszM4zwx)
                     

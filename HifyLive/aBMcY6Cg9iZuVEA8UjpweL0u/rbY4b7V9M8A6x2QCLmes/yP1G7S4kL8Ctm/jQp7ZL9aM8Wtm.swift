@@ -8,7 +8,7 @@ struct jQp7ZL9aM8Wtm: View {
     let mo0LQ7DAi : () -> Void
     @ObservedObject var sessionStore = RecentSessionStore.shared
     let hGSH6kR : () -> Void //回到home
-    
+
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)

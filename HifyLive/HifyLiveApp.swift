@@ -123,6 +123,8 @@ struct HifyLiveApp: App {
                                     let sessions = RecentSessionManager.shared.cache
                                     GlobalUnreadStore.shared.update(from: sessions)
                                     RecentSessionStore.shared.cache = sessions
+                                    
+                                    
                                 }
                             }
                         } else {
