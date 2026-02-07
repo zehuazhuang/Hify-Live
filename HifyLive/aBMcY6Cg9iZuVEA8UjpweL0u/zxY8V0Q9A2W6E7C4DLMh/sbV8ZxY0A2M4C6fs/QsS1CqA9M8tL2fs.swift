@@ -69,6 +69,7 @@ struct QsS1CqA9M8tL2fs: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation{
+                            piaoncapType = 1
                             tsteadySelect = true
                         }
                             
@@ -93,6 +94,7 @@ struct QsS1CqA9M8tL2fs: View {
                     .onTapGesture {
                             
                         withAnimation{
+                            piaoncapType = 2
                             tsteadySelect = false
                         }
                     }
@@ -198,11 +200,11 @@ struct QsS1CqA9M8tL2fs: View {
             do {
                 let results = try await hifySearch(type: tsteadySelect ? 1 : 2, searchValue: q2C4Mtl3iNa)
                    searchResults = results
-                if(tsteadySelect){
-                        piaoncapType = 1
-                }else{
-                        piaoncapType = 2
-                }
+//                if(tsteadySelect){
+//                        piaoncapType = 1
+//                }else{
+//                        piaoncapType = 2
+//                }
                 if(searchResults.isEmpty){
                     isZ8Q7x4bV9Y0A2 = false
                 }else{

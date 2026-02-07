@@ -147,3 +147,42 @@ class RecentSessionManager: ObservableObject {
         self.cache.removeAll() // ⚡不要改 RecentSessionManager.shared.cache
     }
 }
+//extension RecentSessionManager {
+//
+//    /// ⚡ 本地消息更新最近会话（不依赖云信）
+//    func updateCacheLocal(
+//        session: NIMSession,
+//        lastMessageText: String,
+//        timestamp: TimeInterval,
+//        isOutgoing: Bool
+//    ) {
+//        let accid = session.sessionId
+//        let type = session.sessionType
+//
+//        if let index = cache.firstIndex(where: { $0.sessionId == accid }) {
+//            cache[index].lastMessageText = lastMessageText
+//            cache[index].timestamp = timestamp
+//
+//            // ⚠️ 本地消息：绝不增加未读
+//            // unreadCount 不变
+//        } else {
+//            let userInfo = UserManager.shared.getCachedUserInfo(accid: accid)
+//
+//            let newCache = CachedRecentSession(
+//                session: session,
+//                sessionId: accid,
+//                sessionType: type,
+//                lastMessageText: lastMessageText,
+//                timestamp: timestamp,
+//                unreadCount: 0, // ⚡ 本地消息默认 0
+//                nickname: userInfo?.nickname ?? accid,
+//                avatarUrl: userInfo?.avatarUrl ?? ""
+//            )
+//
+//            cache.append(newCache)
+//        }
+//
+//        // 排序
+//        cache.sort { $0.timestamp > $1.timestamp }
+//    }
+//}

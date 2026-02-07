@@ -273,9 +273,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         )
                                         .frame(height: 2)
                                     //Room 标题
-                                   
+                                    
                                     //lisr room 布局
-                                    if ncpingeRoom.int("privateCallOpen") == 1  {
+                                    if ncpingeRoom.int("liveRoomState") == 2  {
                                         VStack(spacing:16){
                                             HStack(spacing: 0) {
                                                 Text("C6fgnSMnCKhJZmWhV/8+GA==".bFHEatcgE4zzU9TCfDonsu())
@@ -327,7 +327,6 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                                                     color: .white.opacity(0.6)
                                                                                 )
                                                             }.frame(width: 69,height: 25)
-                                                            
                                                             .background(Color.white.opacity(0.15))
                                                             .clipShape(s7q2ZC1S9A4tM8L3(radius: 12, corners: [.topLeft,.bottomRight]))
                                                             .padding(.trailing,3)
@@ -338,10 +337,10 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }.frame(height: 95)
                                                 .frame(maxWidth: .infinity)
                                                 .onTapGesture {
-                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
-                                                        ftgPSmzMVe.dismissScreen()
-                                                        return
-                                                    }
+//                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
+//                                                        ftgPSmzMVe.dismissScreen()
+//                                                        return
+//                                                    }
                                                     
                                                     ftgPSmzMVe.showScreen(.fullScreenCover) { _ in
                                                         WUjfoptOKs8pZfhSAH0duplG {
@@ -505,6 +504,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
 
                     do {
                         ncpingeRoom = try await room
+                        print("房间数据")
+                        print(ncpingeRoom)
                         
                         pstjumLoad()
                     } catch {

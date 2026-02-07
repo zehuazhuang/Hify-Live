@@ -7,6 +7,8 @@ final class NIMManager {
 
     static let shared = NIMManager()
     private init() {}
+    
+    
 
     func login(account: String, token: String, completion: @escaping (Bool) -> Void) {
         // 新版 SDK 登录

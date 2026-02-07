@@ -456,14 +456,18 @@ struct iJ7H9TAZRey3Jv: View {
 struct wXWAaYKmLFbT1jAfqZ4KlTVAwpC: View {
     let nFBDXePJdd41Kp: Ek9tKrgkM0Mjp
     let yf0kruM5Ek5r8xR6zWPpgI: (Ek9tKrgkM0Mjp) -> Void
+    let spacing: CGFloat = 7
+    let horizontalPadding: CGFloat = 16 * 2
     
     var body: some View {
+        let screenWidth = UIScreen.main.bounds.width
+                let columnWidth = (screenWidth - horizontalPadding - spacing) / 2
         ZStack(alignment: .topTrailing) {
             Group {
                 iJ7H9TAZRey3Jv(eV0n003pf6t9f4Mn6tOJU16PSiSTR51: nFBDXePJdd41Kp)
             }
-            .frame(height: 126)
-            .frame(maxWidth: .infinity)
+            .frame(width: columnWidth, height: 126)
+          
             
             .cornerRadius(8)
             .overlay {

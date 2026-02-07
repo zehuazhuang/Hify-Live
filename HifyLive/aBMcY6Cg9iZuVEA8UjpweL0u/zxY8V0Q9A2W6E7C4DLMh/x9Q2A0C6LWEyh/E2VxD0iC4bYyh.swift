@@ -218,7 +218,7 @@ struct E2VxD0iC4bYyh: View {
         let bemindbeData: [String: Any]
         let is7Nqdlvk : Bool //是否第一个
         let spacing: CGFloat = 7
-           let horizontalPadding: CGFloat = 16 * 2
+        let horizontalPadding: CGFloat = 16 * 2
         var body: some View {
             let screenWidth = UIScreen.main.bounds.width
                     let columnWidth = (screenWidth - horizontalPadding - spacing) / 2

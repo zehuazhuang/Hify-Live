@@ -39,12 +39,7 @@ class CachedRecentSession: Identifiable, ObservableObject {
 class RecentSessionStore: ObservableObject {
     static let shared = RecentSessionStore()
     // 统一使用 cache 作为数据源
-    @Published var cache: [CachedRecentSession] = [] {
-           didSet {
-               // cache 变化时自动同步全局未读
-               GlobalUnreadStore.shared.update(from: cache)
-           }
-       }
+    @Published var cache: [CachedRecentSession] = []
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -66,6 +61,13 @@ class RecentSessionStore: ObservableObject {
     func fetchRecentSessions() {
         RecentSessionManager.shared.fetchRecentSessions {
             self.cache = RecentSessionManager.shared.cache
+            self.syncGlobalUnread()
+        }
+    }
+    
+    func syncGlobalUnread() {
+        Task { @MainActor in
+            GlobalUnreadStore.shared.update(from: cache)
         }
     }
 

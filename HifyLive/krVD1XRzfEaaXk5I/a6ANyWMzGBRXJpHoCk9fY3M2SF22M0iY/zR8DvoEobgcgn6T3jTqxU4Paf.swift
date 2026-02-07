@@ -128,17 +128,17 @@ func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
     }
     
     let kN3yM6vD9sL1hP = jM4kL8pD3tN1bC.hL9dV3bQ2fK6sJ8p()
-        print("----URL----")
-        print(rP8vT2kQwZ5bN)
-    
-        if let headers = xN6vR2pB5lC4dT.allHTTPHeaderFields {
-            print("---请求头---")
-            for (key, value) in headers {
-                print("\(key): \(value)")
-            }
-        }
-          print("-----json")
-          print(kN3yM6vD9sL1hP)
+//        print("----URL----")
+//        print(rP8vT2kQwZ5bN)
+//    
+//        if let headers = xN6vR2pB5lC4dT.allHTTPHeaderFields {
+//            print("---请求头---")
+//            for (key, value) in headers {
+//                print("\(key): \(value)")
+//            }
+//        }
+//          print("-----json")
+//          print(kN3yM6vD9sL1hP)
     guard let lO2mL5wScNf7kV = kN3yM6vD9sL1hP.data(using: .utf8),
           let mP2vT4nC3qL5xN = try? JSONSerialization.jsonObject(with: lO2mL5wScNf7kV, options: []),
           let nQ2vT1bSRlZ5rP = mP2vT4nC3qL5xN as? [String: Any],
