@@ -2,6 +2,7 @@
 //缓存聊天对话
 import NIMSDK
 import Combine
+import RealmSwift
 
 class RecentSessionManager: ObservableObject {
     static let shared = RecentSessionManager()
@@ -116,6 +117,9 @@ class RecentSessionManager: ObservableObject {
                 avatarUrl: userInfo?.avatarUrl ?? ""
             )
             cache.append(newCache)
+            
+            //我在这里去同步缓存呢
+            cacheHistoryToRealm(session: session)
         }
     }
 
@@ -146,43 +150,114 @@ class RecentSessionManager: ObservableObject {
         // 2️⃣ 只清空 store 的缓存
         self.cache.removeAll() // ⚡不要改 RecentSessionManager.shared.cache
     }
+    
+    
+    private func cacheHistoryToRealm(session: NIMSession) {
+        guard let msgs = NIMSDK.shared().conversationManager.messages(in: session, message: nil, limit: 100) else { return }
+
+        let realm = try! Realm()
+        try! realm.write {
+            for msg in msgs {
+                // 避免重复存储
+                if realm.object(ofType: DBChatMessage.self, forPrimaryKey: msg.messageId) != nil {
+                    continue
+                }
+
+                let dbMsg = DBChatMessage()
+                dbMsg.messageId = msg.messageId
+                dbMsg.sessionId = session.sessionId
+                dbMsg.isOutgoingMsg = msg.isOutgoingMsg
+                dbMsg.timestamp = msg.timestamp
+                
+                // ✅ 头像逻辑和 CachedRecentSession 保持一致
+                dbMsg.avatarURL = msg.isOutgoingMsg
+                ? IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("icon")  // 自己头像
+                    : UserManager.shared.getCachedUserInfo(accid: session.sessionId)?.avatarUrl  // 对方头像
+
+                // 消息内容
+                switch msg.messageType {
+                case .text:
+                    dbMsg.type = "text"
+                    dbMsg.text = msg.text ?? ""
+                case .image:
+                    dbMsg.type = "image"
+                    if let imageObj = msg.messageObject as? NIMImageObject {
+                        dbMsg.imageURL = imageObj.url
+                        dbMsg.imageWidth = imageObj.size.width
+                        dbMsg.imageHeight = imageObj.size.height
+                    }
+                default:
+                    continue
+                }
+
+                // 发送状态
+                dbMsg.sendStatus = msg.isOutgoingMsg ? "success" : "unknown"
+                dbMsg.failReason = nil
+                dbMsg.localImagePath = nil
+
+                realm.add(dbMsg, update: .all)
+            }
+        }
+    }
+    
+    
+    
+    
+    
 }
-//extension RecentSessionManager {
-//
-//    /// ⚡ 本地消息更新最近会话（不依赖云信）
-//    func updateCacheLocal(
-//        session: NIMSession,
-//        lastMessageText: String,
-//        timestamp: TimeInterval,
-//        isOutgoing: Bool
-//    ) {
-//        let accid = session.sessionId
-//        let type = session.sessionType
-//
-//        if let index = cache.firstIndex(where: { $0.sessionId == accid }) {
-//            cache[index].lastMessageText = lastMessageText
-//            cache[index].timestamp = timestamp
-//
-//            // ⚠️ 本地消息：绝不增加未读
-//            // unreadCount 不变
-//        } else {
-//            let userInfo = UserManager.shared.getCachedUserInfo(accid: accid)
-//
-//            let newCache = CachedRecentSession(
-//                session: session,
-//                sessionId: accid,
-//                sessionType: type,
-//                lastMessageText: lastMessageText,
-//                timestamp: timestamp,
-//                unreadCount: 0, // ⚡ 本地消息默认 0
-//                nickname: userInfo?.nickname ?? accid,
-//                avatarUrl: userInfo?.avatarUrl ?? ""
-//            )
-//
-//            cache.append(newCache)
-//        }
-//
-//        // 排序
-//        cache.sort { $0.timestamp > $1.timestamp }
-//    }
-//}
+
+
+extension RecentSessionManager {
+
+    /// 从 Realm 获取指定会话的历史消息
+    func fetchHistoryMessages(for sessionId: String) -> [ChatMessage] {
+        let realm = try! Realm()
+
+        // 查询 DBChatMessage
+        let dbMessages = realm.objects(DBChatMessage.self)
+            .filter("sessionId == %@", sessionId)
+            .sorted(byKeyPath: "timestamp", ascending: true)
+
+        var lastTimestamp: TimeInterval = 0
+        var result: [ChatMessage] = []
+
+        for dbMsg in dbMessages {
+            let content: ChatMessageContent
+            switch dbMsg.type {
+            case "text":
+                content = .text(dbMsg.text ?? "")
+            case "image":
+                content = .image(
+                    url: dbMsg.imageURL,
+                    size: CGSize(width: dbMsg.imageWidth, height: dbMsg.imageHeight)
+                )
+            default:
+                continue
+            }
+
+            let status: SendStatus
+            switch dbMsg.sendStatus {
+            case "sending": status = .sending
+            case "success": status = .success
+            case "failed": status = .failed(reason: .unknown)
+            default: status = .failed(reason: .unknown)
+            }
+
+            let chatMsg = ChatMessage(
+                messageId: dbMsg.messageId,
+                content: content,
+                isOutgoingMsg: dbMsg.isOutgoingMsg,
+                timestamp: dbMsg.timestamp,
+                avatarURL: dbMsg.avatarURL,
+                sendStatus: status
+            )
+
+            chatMsg.showTime = (dbMsg.timestamp - lastTimestamp > 300)
+            lastTimestamp = dbMsg.timestamp
+
+            result.append(chatMsg)
+        }
+
+        return result
+    }
+}

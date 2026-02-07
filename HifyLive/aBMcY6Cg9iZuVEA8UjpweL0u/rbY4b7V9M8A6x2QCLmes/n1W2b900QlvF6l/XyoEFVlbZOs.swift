@@ -165,9 +165,7 @@ class ChatMessage: Identifiable, ObservableObject {
         func sendText(qAiRzAlJType: Int) {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
             guard !inputText.isEmpty else { return }
             
-//            let result = V2NIMClientAntispamUtil.checkTextAntispam(inputText, replace: nil)
-//            print("敏感词汇")
-//            print(result)
+
             
             let message = NIMMessage()
             message.text = inputText
@@ -186,7 +184,7 @@ class ChatMessage: Identifiable, ObservableObject {
             chatMsg.showTime = (message.timestamp - lastTimestamp > 300)
             
             self.messages.append(chatMsg) // ✅ 先 append，显示转圈
-          //  self.updateRecentSession(chatMsg)
+            self.updateRecentSession(chatMsg)
             
             // 🚫 被拉黑：只记录本地，不发云信
               if qAiRzAlJType == 1 {
@@ -226,6 +224,8 @@ class ChatMessage: Identifiable, ObservableObject {
                     }
                 }
             }
+            
+      
         }
         
         func sendImage(_ image: UIImage,qAiRzAlJType: Int) {
@@ -307,10 +307,15 @@ class ChatMessage: Identifiable, ObservableObject {
 // MARK: - 接收消息
     extension ChatViewModel {
         nonisolated func onRecvMessages(_ messages: [NIMMessage]) {
+            
+            
             Task { @MainActor in
                 var lastTimestamp = self.messages.last?.timestamp ?? 0
+                
+              
 
                 for msg in messages {
+                   
                     guard let session = msg.session,
                           session.sessionId == self.session.sessionId else { continue }
 
