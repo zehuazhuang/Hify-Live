@@ -108,7 +108,7 @@ final class AgoraEngineManager {
         guard engine == nil else { return }
 
         let engine = AgoraRtcEngineKit.sharedEngine(
-            withAppId: TokenManager.appId,
+            withAppId: JOGtDnYupP.zMVMMyTmNK,
             delegate: nil
         )
         engine.setChannelProfile(.liveBroadcasting)

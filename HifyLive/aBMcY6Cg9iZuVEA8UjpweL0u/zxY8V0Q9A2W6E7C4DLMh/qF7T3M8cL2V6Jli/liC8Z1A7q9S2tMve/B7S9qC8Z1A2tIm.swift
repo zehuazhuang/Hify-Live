@@ -4,7 +4,7 @@ import UIKit
 import AgoraRtcKit
 
 class LiveViewController: UIViewController {
-    private var appId = TokenManager.appId
+    private var appId = JOGtDnYupP.zMVMMyTmNK
     private var token: String?//当前登录用户的rtctoken
     private var liveRoomData: [String: Any] //加入直播接口数据
     private var channelName: String //agoraChannelId

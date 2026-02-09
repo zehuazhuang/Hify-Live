@@ -62,7 +62,8 @@ struct HifyLiveApp: App {
                 //判断token是否过期，到登录页面
                 .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
                     QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("CF/pQfyETmTqnvPASaLzZqpNGUPBRIo9Z7z0oPoNL/elWQYGLZRU+1kaFCnxQ07D")
-                    router.showScreen(.fullScreenCover) { _ in
+                    
+                    arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
                         WUjfoptOKs8pZfhSAH0duplG {zkaqn9Jn()} // 你的登录页
                     }
                 }
@@ -112,10 +113,10 @@ struct HifyLiveApp: App {
                 }
                 print("登录用户------")
                 print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
-                TokenManager.shared.setupRTM()
-                TokenManager.shared.loginRTM(userId: String(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.int("userId"))) { success in
-                    print(success ? "rtm登录成功" : "rtm登录失败")
-                }
+          //      TokenManager.shared.setupRTM()
+//                TokenManager.shared.loginRTM(userId: String(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.int("userId"))) { success in
+//                    print(success ? "rtm登录成功" : "rtm登录失败")
+//                }
                 if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
                    let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
                     NIMManager.shared.login(account: yX5tB1x, token: ilgJ9kMFt) { success in

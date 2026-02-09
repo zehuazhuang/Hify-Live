@@ -3,7 +3,7 @@ import SwiftfulRouting
 import NIMSDK
 //通用方法
 
-
+@MainActor
 func openP2PChatScreen(
     userId: String,
     avatarUrl: String,

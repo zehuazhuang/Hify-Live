@@ -1,7 +1,6 @@
 import Foundation
-import AgoraRtmKit
 
-final class TokenManager: NSObject, AgoraRtmDelegate {
+final class TokenManager: NSObject {
     static let shared = TokenManager()
     private override init() {} // 防止外部初始化
     
@@ -11,15 +10,9 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
     private let rtmTokenKey = "RTM_TOKEN_KEY"
     private let channelIdKey = "CHANNEL_ID"
     
-    // MARK: - RTM 相关
-    private var rtmKit: AgoraRtmKit?
-    private var rtmChannel: AgoraRtmChannel?
-    private var rtmDelegate: AgoraRtmDelegate?
+
     
-    // ✅ 添加公开访问属性
-        var currentRtmChannel: AgoraRtmChannel? {
-            return rtmChannel
-        }
+
     
     
     // MARK: - 保存 Token
@@ -35,9 +28,7 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
              channelId: tokenResponse.channelId)
     }
     
-    func setupRTM() {
-            rtmKit = AgoraRtmKit(appId: TokenManager.appId, delegate: self) // self 现在可以
-        }
+
 
     
     // MARK: - 获取 Token
@@ -59,43 +50,10 @@ final class TokenManager: NSObject, AgoraRtmDelegate {
         UserDefaults.standard.removeObject(forKey: rtmTokenKey)
         UserDefaults.standard.removeObject(forKey: channelIdKey)
     }
-    
-    // MARK: - RTM 初始化
-    func setupRTM(delegate: AgoraRtmDelegate) {
-        self.rtmDelegate = delegate
-        rtmKit = AgoraRtmKit(appId: TokenManager.appId, delegate: delegate)
-    }
-    
-    // MARK: - 登录 RTM
-    func loginRTM(userId: String, completion: @escaping (Bool) -> Void) {
-        guard let token = rtmToken else {
-            completion(false)
-            return
-        }
-        rtmKit?.login(byToken: token, user: userId) { errorCode in
-            completion(errorCode == .ok)
-        }
-    }
+
     
 
-    // MARK: - AgoraRtmDelegate: token 过期自动刷新
-    func rtmKitTokenDidExpire(_ kit: AgoraRtmKit) {
-        print("⚠️ RTM token 即将过期，开始刷新 Token")
-        
-        Task {
-            let newTokenResponse = try await fetchToken()
-            save(tokenResponse: newTokenResponse)
-            
-            // 异步 renewToken
-            let (_, errorCode) = await rtmKit!.renewToken(newTokenResponse.rtmToken)
-            
-            if errorCode == .ok {
-                print("✅ RTM token 已成功刷新")
-            } else {
-                print("❌ RTM token 刷新失败，errorCode:", errorCode.rawValue)
-            }
-        }
-    }
+
     
 
 }
