@@ -70,9 +70,7 @@ platform :ios do
       run_precheck_before_submit: false,
       submit_for_review: false
     ) if export_method == "app-store"
-     precheck(
-      skip_in_app_purchases: true
-    )
+ 
     pgyer(api_key: pgy_api_key) if export_method == "ad-hoc"
   end
 
