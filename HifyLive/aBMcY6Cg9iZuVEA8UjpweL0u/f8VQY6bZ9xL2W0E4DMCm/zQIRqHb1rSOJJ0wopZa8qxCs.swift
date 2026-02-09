@@ -27,6 +27,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     var  isFvNNQZQ : Bool {
         return  usQ8Y7Z6Inf.bool("followed")
     }
+    let bMy5EIRIIback :()-> Void
    
     
     var body: some View {
@@ -337,10 +338,19 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }.frame(height: 95)
                                                 .frame(maxWidth: .infinity)
                                                 .onTapGesture {
-//                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
-//                                                        ftgPSmzMVe.dismissScreen()
-//                                                        return
-//                                                    }
+                                                    print("类型")
+                                                   print(LiveSessionManager.shared.znWne5LXPType)
+                                                   
+                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
+                                                        ftgPSmzMVe.dismissScreen()
+                                                        if(LiveSessionManager.shared.znWne5LXPType == 2){
+                                                            //上一层也返回
+                                                            bMy5EIRIIback()
+                                                        }
+                                                        return
+                                                    }
+                                                    
+                                      
                                                     
                                                     ftgPSmzMVe.showScreen(.fullScreenCover) { _ in
                                                         WUjfoptOKs8pZfhSAH0duplG {
@@ -468,6 +478,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                .offset(y: -28)
                         }.frame(width: 242, height: 46)
                             .onTapGesture {
+                                if LiveSessionManager.shared.znWne5LXPType == 2 {
+                                    ftgPSmzMVe.dismissScreen()
+                                    LiveSessionManager.shared.znWne5LXPType = 1
+                                    return
+                                }
                                 openP2PChatScreen(userId: usQ8Y7Z6Inf.string("yxAccid"), avatarUrl: usQ8Y7Z6Inf.string("icon"), using: ftgPSmzMVe)
                             }
                     }.padding(.horizontal,16)
@@ -504,8 +519,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
 
                     do {
                         ncpingeRoom = try await room
-                        print("房间数据")
-                        print(ncpingeRoom)
+                       
                         
                         pstjumLoad()
                     } catch {
@@ -732,8 +746,7 @@ class T0viKk: ObservableObject {
                     return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
-                print("-----------数据")
-                print(atXeZc0tWzWWpIN8DRa5DB)
+              
                
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH

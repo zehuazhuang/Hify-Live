@@ -17,6 +17,8 @@ final class NIMManager {
         }
     }
     
+    
+    
     // MARK: - 获取最近会话列表
       func fetchRecentSessions() -> [NIMRecentSession] {
           let sessions = NIMSDK.shared().conversationManager.allRecentSessions() ?? []

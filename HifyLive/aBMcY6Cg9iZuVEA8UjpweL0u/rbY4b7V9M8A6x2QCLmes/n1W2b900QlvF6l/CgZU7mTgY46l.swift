@@ -55,6 +55,7 @@ struct CgZU7mTgY46l: View {
                         // 左侧关闭按钮
                         Button {
                             RecentSessionStore.shared.markSessionRead(sessionId: session.sessionId)
+                            LiveSessionManager.shared.znWne5LXPType = 0
                             rM9Z8S7A1ql.dismissScreen()
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
@@ -91,9 +92,16 @@ struct CgZU7mTgY46l: View {
                     
                     // 消息列表
                     ChatTableView(opponentInfo: opponentInfo, vm: vm, keyboardHeight: keyboard.keyboardHeight, onAvatarTap: { uid in
+                        
+                        LiveSessionManager.shared.znWne5LXPType = 2
+                     
+                        
+                        
                         rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                             WUjfoptOKs8pZfhSAH0duplG {
-                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: uid)
+                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: uid, bMy5EIRIIback: {
+                                    rM9Z8S7A1ql.dismissScreen()
+                                })
                             }
                         }
                     })

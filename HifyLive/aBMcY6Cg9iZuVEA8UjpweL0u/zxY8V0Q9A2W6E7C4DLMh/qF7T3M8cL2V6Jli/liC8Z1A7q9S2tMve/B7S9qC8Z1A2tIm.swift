@@ -14,8 +14,6 @@ class LiveViewController: UIViewController {
     private let remoteVideoView = UIView()
     
     private var hasJoinedChannel = false //用来更新channelName
-    private var hostHasStarted = false //是否开播
-    private var waitHostTimer: DispatchWorkItem? //等待开播
     
 
     init(liveRoomData: [String: Any], localUid: UInt) {
@@ -26,8 +24,7 @@ class LiveViewController: UIViewController {
     }
     
     private func leaveChannelIfNeeded() {
-        waitHostTimer?.cancel()
-        waitHostTimer = nil
+     
 
         if hasJoinedChannel {
             agoraKit?.leaveChannel(nil)
@@ -67,8 +64,7 @@ class LiveViewController: UIViewController {
     private func leaveChannelAndJoinAgainIfNeeded() {
         guard let engine = agoraKit else { return }
 
-        waitHostTimer?.cancel()
-        waitHostTimer = nil
+    
 
         if hasJoinedChannel {
             engine.leaveChannel { [weak self] _ in
@@ -82,6 +78,7 @@ class LiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .black
         NotificationCenter.default.addObserver(self, selector: #selector(handleMuteNotification(_:)), name: .muteRemoteAudio, object: nil)
         remoteVideoView.frame = view.bounds
@@ -158,30 +155,14 @@ class LiveViewController: UIViewController {
             print(uid)
             self?.hasJoinedChannel = true
             
-            //是否开播
-            self?.startWaitHostTimer()
         }
-    }
-    
-    private func startWaitHostTimer() {
-        waitHostTimer?.cancel()
-
-        let task = DispatchWorkItem { [weak self] in
-            guard let self = self else { return }
-
-            if self.hostHasStarted == false {
-                print("⏰ 主播未开播 / 已关播")
-                self.handleHostClosed()
-            }
-        }
-
-        waitHostTimer = task
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: task)
     }
     
     deinit {
-        
+        LiveSessionManager.shared.currentChannelUserId = 0
+        LiveSessionManager.shared.znWne5LXPType = 0
     }
+
 }
 
 extension LiveViewController: AgoraRtcEngineDelegate {
@@ -209,9 +190,7 @@ extension LiveViewController: AgoraRtcEngineDelegate {
         size: CGSize,
         elapsed: Int
     ) {
-        hostHasStarted = true
-            waitHostTimer?.cancel()
-            waitHostTimer = nil
+    
 
             print("🎬 主播开始推视频（首帧到达）")
     }

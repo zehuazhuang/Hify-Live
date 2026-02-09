@@ -65,7 +65,7 @@ struct kaBpQbGjZ: View {
                                 .onTapGesture {
                                     rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
-                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"))
+                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"),bMy5EIRIIback:{})
                                         }
                                     }
                                 }

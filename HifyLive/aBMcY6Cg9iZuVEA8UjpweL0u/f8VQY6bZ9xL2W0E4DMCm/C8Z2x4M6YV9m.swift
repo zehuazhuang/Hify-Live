@@ -46,7 +46,7 @@ struct C8Z2x4M6YV9m: View {
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
-                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"))
+                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"), bMy5EIRIIback: {})
                                         }
                                     }
                                 } label: {

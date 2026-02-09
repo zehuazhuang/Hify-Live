@@ -161,11 +161,47 @@ class ChatMessage: Identifiable, ObservableObject {
             
             self.messages = result
         }
+      
+        func canSendMessage(_ text: String) -> Bool {
+            let result = V2NIMClientAntispamUtil.checkTextAntispam(text, replace: nil)
+
+            // 1️⃣ 严重违规（拦截）
+            if result.operateType.rawValue == 1 {
+                return false
+            }
+
+            // 2️⃣ 命中敏感 / 灌水（被替换）
+            if result.replacedText != text {
+                return false
+            }
+
+            return true
+        }
         
         func sendText(qAiRzAlJType: Int) {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
             guard !inputText.isEmpty else { return }
             
+            let result = V2NIMClientAntispamUtil.checkTextAntispam(inputText, replace: "***")
+            
+            print("Antispam result:", result)
 
+            if result.operateType.rawValue == 1 {
+                print("违规内容，禁止发送")
+                return
+            }
+
+            
+            let finalText = result.replacedText
+
+            if finalText != inputText {
+                print("命中敏感词，被替换为: \(finalText)")
+            } else {
+                print("内容正常，可以发送")
+            }
+
+            print("发送内容:", finalText)
+           
+            
             
             let message = NIMMessage()
             message.text = inputText

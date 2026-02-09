@@ -73,14 +73,15 @@ struct QZ4A0M84C7WL9: View {
                     
                     
                 }.frame(width: 88, height: 88)
-                    .onTapGesture {
-                        isW9YQ6C8L = false
-                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: info9M0Q2A6.int("userId"))
-                            }
-                        }
-                    }
+//                    .onTapGesture {
+//                        
+//                        isW9YQ6C8L = false
+//                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+//                            WUjfoptOKs8pZfhSAH0duplG {
+//                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: info9M0Q2A6.int("userId"), bMy5EIRIIback: {})
+//                            }
+//                        }
+//                    }
                 Spacer().frame(height: 8)
                 Text(info9M0Q2A6.string("nickname"))
                                 .g0LIIcoZQsOjyND9(
@@ -118,6 +119,7 @@ struct QZ4A0M84C7WL9: View {
                     
                     ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX").frame(width: 16, height: 16)
                         .onTapGesture{
+                            
                             let turestompoPvX = String(info9M0Q2A6.int("userId"))
                             UIPasteboard.general.string = turestompoPvX
                             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==")
@@ -171,6 +173,8 @@ struct QZ4A0M84C7WL9: View {
                             ZJ7h766mz(tMmEWWlfgUag: "li9QY0x2EWL")
                                                .frame(width: 46, height: 46)
                                                .onTapGesture {
+                                                   LiveSessionManager.shared.znWne5LXPType = 1
+                                                   isW9YQ6C8L = false
                                                    openP2PChatScreen(userId: info9M0Q2A6.string("yxAccid"), avatarUrl: info9M0Q2A6.string("icon"), using: rM9Z8S7A1ql)
                                                }
                             
@@ -288,8 +292,7 @@ struct QZ4A0M84C7WL9: View {
                 is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
                 nJECQo7O4rE = info9M0Q2A6.int("blocked")
             }
-            print("是否关注")
-            print(is7A0Y4W6ECL)
+           
         }
     }
  
