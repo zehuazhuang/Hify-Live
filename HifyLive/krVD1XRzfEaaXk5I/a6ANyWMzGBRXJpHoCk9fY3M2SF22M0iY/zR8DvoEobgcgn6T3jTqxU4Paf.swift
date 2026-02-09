@@ -2,17 +2,17 @@ import Foundation
 import NIMSDK
 
 struct JOGtDnYupP {
-    static let loaattrdbUrl = "https://testaes.cphub.link" //环境地址
-    static let raslidepApId = "11111111" //id
-    static let versLErqSu = "1.0.0" //版本
-    static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
+    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
+    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
+    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
+    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
 }
 
 
 //直播数据接口
 @MainActor
 func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
-    guard let vD9sL2mK4tQ1bH = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/newLive/queryLiveList") else {
+    guard let vD9sL2mK4tQ1bH = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("E573kwZWm8b86Uv3xS3ayqIWMexb6mzWo2W6lOX3BkfPzXC84QKrTcP67WBS9ahq".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
     
@@ -82,7 +82,7 @@ func rP6kV1bS8qX3nT7() async throws -> [[String: Any]] {
 //关注主播直播数据接口
 @MainActor
 func mK4tQ1bHVd9sL2() async throws -> [[String: Any]] {
-    guard let rP8vT2kQwZ5bN = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/newLive/follow/queryLiveList") else {
+    guard let rP8vT2kQwZ5bN = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("E573kwZWm8b86Uv3xS3ayhvtX/kEYVGT//bEQ0TQ4EjTqy7O3eVpk6DI7NSYOrD9".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
     
@@ -162,7 +162,7 @@ func xQY2CLEDWefw() -> String {
 //搜索接口
 @MainActor
 func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] {
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/search/newLive/query") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("HDx5VUblGbM4SrafLLYl9I3qNaapwxM3EXoPXjvndrE=".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 
@@ -230,7 +230,7 @@ func hifySearch(type: Int, searchValue: String) async throws -> [[String: Any]] 
 @MainActor
 func getRtctoken() async throws -> [String: Any] {
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/index/getAgoraRtmToken") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("WbA4U4WPG9mAkp7gzaIGhhhgE1kTZfe2GdTNxwU/ST8=".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
     
@@ -284,7 +284,7 @@ func getRtctoken() async throws -> [String: Any] {
 @MainActor
 func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/getRoomAndJoinRoomV2") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("E573kwZWm8b86Uv3xS3aylxQO1dZvMTdtmdwJLUi28cPsBTD+ZpPatgrsOz2FFC6".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 
@@ -354,7 +354,7 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
     EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/user/followUser") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("Ax+One5OZLxypA3n9ZqrTHJJ1ZEzLjrxPPGLBCuA4W4=".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
     
@@ -421,7 +421,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
 func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
     
     // 1️⃣ 构建 URL
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/anchor/checkCoverImg") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("zVx581n5cqfkXzvFlW2TTxVKpN3sQerlRVpg1F0Q9xk=".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
     
@@ -477,7 +477,7 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
 //根据Uid搜索对应room
 @MainActor
 func lyrijivecSearch(surlibateUid: Int) async throws -> [String: Any] {
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/agora/live/newLive/getRoomByUserId") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("E573kwZWm8b86Uv3xS3aypdEAOdVv6D3L/Hz/Porn9lO/i2XP4L0W8yIvZKt73ZZ".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 
@@ -546,7 +546,7 @@ func lyrijivecSearch(surlibateUid: Int) async throws -> [String: Any] {
 //查关注、粉丝
 @MainActor
 func rEh36ZSearch(ovlkoBKType: Int) async throws -> [[String: Any]] {
-    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)/api/user/newLive/userFriend") else {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("gwkJDSPvuIdbiSZMMSMa6kOJyXJzNPfmTnk8iPCNnFY=".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 

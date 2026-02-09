@@ -59,6 +59,11 @@ struct zkaqn9Jn: View {
     var body: some View {
         ZStack{
             ZJ7h766mz(tMmEWWlfgUag: "qS7I9tZ871czCL32")
+            
+            
+            ZJ7h766mz(tMmEWWlfgUag: "qWh5wv2m76")
+                .frame(height: 261)
+                .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
             VStack(spacing: 0){
                 ZJ7h766mz(tMmEWWlfgUag: "logo")
                     .frame(width: 95,height: 95)

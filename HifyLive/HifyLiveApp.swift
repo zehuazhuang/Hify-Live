@@ -3,12 +3,18 @@ import SwiftUI
 import SwiftfulRouting
 import NIMSDK
 
+class N0lU9akMbRab: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return .portrait
+    }
+}
+
 @main
 struct HifyLiveApp: App {
     
-    // 关联 AppDelegate
-//       @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
+    @UIApplicationDelegateAdaptor(N0lU9akMbRab.self) var n0lU9akMbRab
     init() {
         //初始化Google clientID
         Task { @MainActor in
