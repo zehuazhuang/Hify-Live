@@ -2,10 +2,15 @@ import Foundation
 import NIMSDK
 
 struct JOGtDnYupP {
-    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
-    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
-    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
-    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
+//    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
+//    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
+//    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
+//    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
+    
+    static let loaattrdbUrl = "https://testaes.cphub.link" //测试地址
+    static let raslidepApId = "11111111" //id
+    static let versLErqSu = "1.0.0" //版本
+    static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
 }
 
 
@@ -598,5 +603,164 @@ func rEh36ZSearch(ovlkoBKType: Int) async throws -> [[String: Any]] {
         return array
     } else {
         return []
+    }
+}
+
+
+//操作diamondNum
+@MainActor
+func k8VJeG1rEJh4(ovlkoBKType: Int) async throws -> Bool {
+    guard let qp7bKcVf = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/auth/cacheDiamondNum")") else {
+        throw URLError(.badURL)
+    }
+
+    var sx4vHtQw = URLRequest(url: qp7bKcVf)
+    sx4vHtQw.httpMethod = "POST"
+    sx4vHtQw.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    sx4vHtQw.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
+    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    sx4vHtQw.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    
+    let df9kPl3w: [String: Any] = [
+        "userId": IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"),
+        "diamondNum":ovlkoBKType
+    ]
+    
+    let xn2fQp8d = try JSONSerialization.data(withJSONObject: df9kPl3w, options: [])
+    guard let zk5vRt1y = String(data: xn2fQp8d, encoding: .utf8) else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let mv3wLp8c = zk5vRt1y.tYwP1zF6sM8vR2kq()
+    sx4vHtQw.httpBody = mv3wLp8c.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: sx4vHtQw)
+    
+    let hx1nVz6s = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let bk4pWr9f = hx1nVz6s as? [String: Any] else {
+        throw NSError(domain: "SearchAPI", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    print("充值接口")
+    print(bk4pWr9f)
+
+    
+    if let code = bk4pWr9f["code"] as? String, code == "0000" {
+        return true
+    } else {
+        return false
+    }
+}
+
+//查对应diamondNum   https://api.ewgrwg.link/api/dash/scope/textIssues
+@MainActor
+func s9EAe7DPKU() async throws -> Int {
+    guard let qp7bKcVf = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/auth/getCachedDiamondNum")") else {
+        throw URLError(.badURL)
+    }
+
+    var sx4vHtQw = URLRequest(url: qp7bKcVf)
+    sx4vHtQw.httpMethod = "POST"
+    sx4vHtQw.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    sx4vHtQw.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
+    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    sx4vHtQw.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    
+    let df9kPl3w: [String: Any] = [
+        "userId": IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")
+    ]
+    
+    let xn2fQp8d = try JSONSerialization.data(withJSONObject: df9kPl3w, options: [])
+    guard let zk5vRt1y = String(data: xn2fQp8d, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let mv3wLp8c = zk5vRt1y.tYwP1zF6sM8vR2kq()
+    sx4vHtQw.httpBody = mv3wLp8c.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: sx4vHtQw)
+    
+    let hx1nVz6s = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let bk4pWr9f = hx1nVz6s as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    guard let resultStr = bk4pWr9f["result"] as? String else {
+        return 0
+    }
+    let decryptedStr = resultStr.hL9dV3bQ2fK6sJ8p()
+  
+   
+    
+    
+    if let code = bk4pWr9f["code"] as? String, code == "0000" {
+        return Int(decryptedStr) ?? 0
+    } else {
+        return 0
+    }
+}
+
+//ai接口   /api/dash/scope/textIssues
+@MainActor
+func wUxKwoiMSH(a8rLStnIHfC:String) async throws -> String {
+    guard let aKizfGAB = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/dash/scope/textIssues")") else {
+        throw URLError(.badURL)
+    }
+
+    var q8HYFTfoEX = URLRequest(url: aKizfGAB)
+    q8HYFTfoEX.httpMethod = "POST"
+    q8HYFTfoEX.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "appId")
+    q8HYFTfoEX.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "appVersion")
+    q8HYFTfoEX.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "loginToken")
+    q8HYFTfoEX.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    q8HYFTfoEX.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "deviceNo")
+    
+    let mgtlJjJSofF: [String: Any] = [
+        "dashScopeMessageDTOList": [
+            [
+                "role": "user",
+                "content": "\(a8rLStnIHfC),Help me write a copy."
+            ]
+        ]
+    ]
+    
+    let nl9URJeD = try JSONSerialization.data(withJSONObject: mgtlJjJSofF, options: [])
+    guard let rJUtlIfFAN = String(data: nl9URJeD, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let yZyWJII7f = rJUtlIfFAN.tYwP1zF6sM8vR2kq()
+    q8HYFTfoEX.httpBody = yZyWJII7f.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: q8HYFTfoEX)
+    
+    let bkIbzQNjMHU = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let b69TDVhU0 = bkIbzQNjMHU as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+   
+    
+    guard let eNquEsbDi6 = b69TDVhU0["result"] as? String else {
+        return "Please try again later."
+    }
+    let decryptedStr = eNquEsbDi6.hL9dV3bQ2fK6sJ8p()
+    
+    
+ 
+    
+    if let mO4ZvxOwa = b69TDVhU0["code"] as? String, mO4ZvxOwa == "0000" {
+        if let tyid8UPwr = decryptedStr.data(using: .utf8),
+           let fwJQ2HDJ = try? JSONSerialization.jsonObject(with: tyid8UPwr) as? [String: Any],
+           let s8lP3rvX29O: String = fwJQ2HDJ.value(forKeyPath: ["output", "choices", "0", "message", "content"]) {
+            return s8lP3rvX29O
+        }else{
+            return "Please try again later."
+        }
+    } else {
+        return "Please try again later."
     }
 }

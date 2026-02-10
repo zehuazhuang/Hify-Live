@@ -149,30 +149,30 @@ struct C8Z2x4M6YV9m: View {
                         }
                         VStack(spacing: 16) {
                             //vip
-                            HStack(spacing: 8) {
-                                    ZStack{
-                                        ZJ7h766mz(tMmEWWlfgUag: "jKbg9DLfbZpDr")
-                                                           .frame(height: 97)
-                                                           .frame(maxWidth: .infinity)
-                                                                                VStack(alignment: .leading, spacing: 5) {
-                                                                                    Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
-                                                                                        .g0LIIcoZQsOjyND9(
-                                                                                            color: Color.white.opacity(0.6)
-                                                                                        )
-                                                                                    HStack(spacing: 8) {
-                                                                                        Text("9999")
-                                                                                            .g0LIIcoZQsOjyND9(
-                                                                                                size: 18,
-                                                                                                weight: .black
-                                                                                            )
-                                                                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-                                                                                                                                            .frame(width: 24,height: 24)
-                                                                                        Spacer()
-                                                                                    }
-                                                                                }
-                                                                                .padding(.leading,16)
-                                    }.frame(height: 97)
-                                        .frame(maxWidth: .infinity)
+ //                           HStack(spacing: 8) {
+//                                    ZStack{
+//                                        ZJ7h766mz(tMmEWWlfgUag: "jKbg9DLfbZpDr")
+//                                                           .frame(height: 97)
+//                                                           .frame(maxWidth: .infinity)
+//                                                                                VStack(alignment: .leading, spacing: 5) {
+//                                                                                    Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
+//                                                                                        .g0LIIcoZQsOjyND9(
+//                                                                                            color: Color.white.opacity(0.6)
+//                                                                                        )
+//                                                                                    HStack(spacing: 8) {
+//                                                                                        Text("9999")
+//                                                                                            .g0LIIcoZQsOjyND9(
+//                                                                                                size: 18,
+//                                                                                                weight: .black
+//                                                                                            )
+//                                                                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+//                                                                                                                                            .frame(width: 24,height: 24)
+//                                                                                        Spacer()
+//                                                                                    }
+//                                                                                }
+//                                                                                .padding(.leading,16)
+//                                    }.frame(height: 97)
+//                                        .frame(maxWidth: .infinity)
 
 //                                RoundedRectangle(cornerRadius: 12)
 //                                    .frame(width: 127,height: 78)
@@ -191,7 +191,7 @@ struct C8Z2x4M6YV9m: View {
 //                                        }
 //                                        .padding(.leading,16)
 //                                    }
-                            }
+//                            }
                             //vip  end
                             VStack(spacing: 0) {
                                 Button{
@@ -294,6 +294,29 @@ struct C8Z2x4M6YV9m: View {
 //                                    }
 //                                }
 //                                .padding(.all,12)
+  
+                                Button{
+                                    withAnimation{
+                                        deZMvhJctiSoCj78YDk = true
+                                    }
+                                    
+                                } label: {
+                                    HStack(spacing: 0) {
+                                        HStack(spacing: 8) {
+                                            ZJ7h766mz(tMmEWWlfgUag: "uLpQEr9hLtV3BavMXPgLNJJrPiTF")
+                                                .frame(width: 26,height: 26)
+                                            Text("Log out")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 16
+                                                )
+                                        }
+                                        Spacer()
+                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                            .frame(width: 24,height: 24)
+                                    }
+                                    .padding(.all,12)
+                                    .contentShape(Rectangle())
+                                }
                                 Button{
                                     f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
                                         WUjfoptOKs8pZfhSAH0duplG {
@@ -317,16 +340,17 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
                                 Button{
-                                    withAnimation{
-                                        deZMvhJctiSoCj78YDk = true
+                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
+                                        WUjfoptOKs8pZfhSAH0duplG {
+                                            ASkYEgFvkJ3xKj()
+                                        }
                                     }
-                                    
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {
-                                            ZJ7h766mz(tMmEWWlfgUag: "uLpQEr9hLtV3BavMXPgLNJJrPiTF")
+                                            ZJ7h766mz(tMmEWWlfgUag: "pdneI2Ds4r3BUS")
                                                 .frame(width: 26,height: 26)
-                                            Text("Log out")
+                                            Text("AI Consulting")
                                                 .g0LIIcoZQsOjyND9(
                                                     size: 16
                                                 )
@@ -336,7 +360,6 @@ struct C8Z2x4M6YV9m: View {
                                             .frame(width: 24,height: 24)
                                     }
                                     .padding(.all,12)
-                                    .contentShape(Rectangle())
                                 }
                             }
                             .padding(.vertical,4)

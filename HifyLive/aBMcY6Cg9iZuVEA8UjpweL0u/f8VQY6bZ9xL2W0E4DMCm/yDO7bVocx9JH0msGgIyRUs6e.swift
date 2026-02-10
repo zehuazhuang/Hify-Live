@@ -80,6 +80,27 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                             }
                         }
                     }
+                    HStack(spacing: 0) {
+                        Text("Wallet")
+                            .g0LIIcoZQsOjyND9(
+                                size: 16
+                            )
+                        Spacer()
+                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                            .frame(width: 24,height: 24)
+                    }
+                    .padding(.all,12)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                      
+                        aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
+                            WUjfoptOKs8pZfhSAH0duplG {
+                                Afmox09Q1UKVfE()
+                            }
+                        }
+                    }
+
+                   
                 }
                 .padding(.vertical,4)
                 .background(

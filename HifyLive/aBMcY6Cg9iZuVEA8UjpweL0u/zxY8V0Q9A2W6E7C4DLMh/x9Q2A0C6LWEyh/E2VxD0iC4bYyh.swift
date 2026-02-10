@@ -110,6 +110,7 @@ struct E2VxD0iC4bYyh: View {
                 ScrollView(showsIndicators: false){
                     ZStack{
                         VStack{
+                            
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
                                     LQ0Z4A6C9emp()

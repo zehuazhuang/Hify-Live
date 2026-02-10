@@ -22,3 +22,23 @@ extension Date {
         return mBqzyLFhbMWNzgLYVNonQZdNjc.string(from: self)
     }
 }
+
+
+//解析aijson
+extension Dictionary where Key == String {
+    func value<T>(forKeyPath path: [String]) -> T? {
+        var current: Any? = self
+        for key in path {
+            if let dict = current as? [String: Any] {
+                current = dict[key]
+            } else if let array = current as? [[String: Any]], let index = Int(key) {
+                current = array[index]
+            } else {
+                return nil
+            }
+        }
+        return current as? T
+    }
+}
+
+
