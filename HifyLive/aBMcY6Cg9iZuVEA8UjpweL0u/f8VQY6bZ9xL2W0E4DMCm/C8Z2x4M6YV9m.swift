@@ -149,33 +149,31 @@ struct C8Z2x4M6YV9m: View {
                         }
                         VStack(spacing: 16) {
                             //vip
-//                            HStack(spacing: 8) {
-//                                RoundedRectangle(cornerRadius: 12)
-//                                    .stroke(
-//                                        Color.white.opacity(0.1),
-//                                        lineWidth: 1
-//                                    )
-//                                    .frame(height: 78)
-//                                    .overlay {
-//                                        ZJ7h766mz(tMmEWWlfgUag: "ewkwdg82JnajVffQKKJvEzzGNHepKO")
-//                                        VStack(alignment: .leading, spacing: 5) {
-//                                            Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
-//                                                .g0LIIcoZQsOjyND9(
-//                                                    color: Color.white.opacity(0.6)
-//                                                )
-//                                            HStack(spacing: 8) {
-//                                                Text("9999")
-//                                                    .g0LIIcoZQsOjyND9(
-//                                                        size: 18,
-//                                                        weight: .black
-//                                                    )
-//                                                ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-//                                                    .frame(width: 24,height: 24)
-//                                                Spacer()
-//                                            }
-//                                        }
-//                                        .padding(.leading,16)
-//                                    }
+                            HStack(spacing: 8) {
+                                    ZStack{
+                                        ZJ7h766mz(tMmEWWlfgUag: "jKbg9DLfbZpDr")
+                                                           .frame(height: 97)
+                                                           .frame(maxWidth: .infinity)
+                                                                                VStack(alignment: .leading, spacing: 5) {
+                                                                                    Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
+                                                                                        .g0LIIcoZQsOjyND9(
+                                                                                            color: Color.white.opacity(0.6)
+                                                                                        )
+                                                                                    HStack(spacing: 8) {
+                                                                                        Text("9999")
+                                                                                            .g0LIIcoZQsOjyND9(
+                                                                                                size: 18,
+                                                                                                weight: .black
+                                                                                            )
+                                                                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                                                                                                                            .frame(width: 24,height: 24)
+                                                                                        Spacer()
+                                                                                    }
+                                                                                }
+                                                                                .padding(.leading,16)
+                                    }.frame(height: 97)
+                                        .frame(maxWidth: .infinity)
+
 //                                RoundedRectangle(cornerRadius: 12)
 //                                    .frame(width: 127,height: 78)
 //                                    .overlay {
@@ -193,7 +191,7 @@ struct C8Z2x4M6YV9m: View {
 //                                        }
 //                                        .padding(.leading,16)
 //                                    }
-//                            }
+                            }
                             //vip  end
                             VStack(spacing: 0) {
                                 Button{
