@@ -4,7 +4,7 @@ final class TokenManager: NSObject {
     static let shared = TokenManager()
     private override init() {} // 防止外部初始化
     
-    static let appId = "4af61c7a92f447d3a582308b5817dbd2" //JOGtDnYupP.zMVMMyTmNK
+    static let appId = JOGtDnYupP.zMVMMyTmNK
     
     private let rtcTokenKey = "RTC_TOKEN_KEY"
     private let rtmTokenKey = "RTM_TOKEN_KEY"

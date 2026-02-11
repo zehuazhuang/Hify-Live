@@ -12,7 +12,7 @@ struct Afmox09Q1UKVfE: View {
         GridItem(.flexible(), spacing: 8),
     ]
     @Environment(\.router) var yjuUSUolzAjZ
-    @StateObject private var paymentManager = PaymentManager.shared
+    @StateObject private var pkeDEXpbkc4RXu = PkeDEXpbkc4RXu.shared
     let tSh7kxFecD: [GAg6zvKCMA] = PUiSN9Hnxm9ZJ.tSh7kxFecD
     @State private var sQYNvOjd5vNum: Int = 0 //金币数量
     
@@ -107,7 +107,7 @@ struct Afmox09Q1UKVfE: View {
                                     .onTapGesture {
                                         let productId = tSh7kxFecD[index].k0SBAq4pgTjj8
                                         Task {
-                                            await paymentManager.purchase(productId: productId)
+                                            await pkeDEXpbkc4RXu.mZ6DqgRigNqO(productId: productId)
                                         }
                                     }
                             }
@@ -121,7 +121,7 @@ struct Afmox09Q1UKVfE: View {
                 sQYNvOjd5vNum = try await s9EAe7DPKU()
              
                 // 设置回调
-                paymentManager.onCoinsGranted = {
+                pkeDEXpbkc4RXu.i03CT778BY = {
                     do {
                         sQYNvOjd5vNum = try await s9EAe7DPKU()
                     } catch {
@@ -131,7 +131,7 @@ struct Afmox09Q1UKVfE: View {
                 
                 
                 
-                await paymentManager.loadProducts(
+                await pkeDEXpbkc4RXu.r1roySzHMIN(
                     ids: tSh7kxFecD.map { $0.k0SBAq4pgTjj8 }
                 )
                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()

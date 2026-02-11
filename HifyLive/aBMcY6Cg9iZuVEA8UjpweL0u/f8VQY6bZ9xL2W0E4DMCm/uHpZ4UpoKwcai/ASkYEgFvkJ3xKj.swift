@@ -110,28 +110,35 @@ struct ASkYEgFvkJ3xKj: View {
                 }
                 Spacer()
                 Button {
-                    
-                    if(cFwtsghtldfBL6 >= 100){
+                    Task{
+                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                        cFwtsghtldfBL6 = try await s9EAe7DPKU()
                         
-                        Task{
-                            let xS2bi4lIs = try await k8VJeG1rEJh4(ovlkoBKType: -100)
-                            if(xS2bi4lIs){
-                                print("扣款成功")
+                        if(cFwtsghtldfBL6 >= 100){
+                            
+                            Task{
+                                let xS2bi4lIs = try await k8VJeG1rEJh4(ovlkoBKType: -100)
+                                if(xS2bi4lIs){
+                                    cFwtsghtldfBL6 -= 100
+                                }
+                                
                             }
                             
-                        }
-                        
-                        
-                        w6S64Kback.showScreen(.fullScreenCover) { _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                UZ8hTFSeCcwrAy(yffmn1UtOF: zJ12Kw9wzlText)
+                            
+                            w6S64Kback.showScreen(.fullScreenCover) { _ in
+                                WUjfoptOKs8pZfhSAH0duplG {
+                                    UZ8hTFSeCcwrAy(yffmn1UtOF: zJ12Kw9wzlText)
+                                }
+                            }
+                            zJ12Kw9wzlText = ""
+                        }else{
+                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                            withAnimation{
+                                qO5zSP720XNL = true
                             }
                         }
-                    }else{
-                        withAnimation{
-                            qO5zSP720XNL = true
-                        }
                     }
+                
                     
                     
                 } label: {
