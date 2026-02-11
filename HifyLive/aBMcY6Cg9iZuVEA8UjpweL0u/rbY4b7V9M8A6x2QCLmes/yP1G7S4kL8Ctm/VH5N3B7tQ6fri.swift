@@ -1,13 +1,13 @@
 // freiend 模块
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 struct VH5N3B7tQ6fri: View {
     @State private var seB51QK82J: Int = 0
     @State private var indices = Array(0..<4)
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     @ObservedObject var sessionStore = RecentSessionStore.shared
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var openRowId: UUID? = nil
     
     var filteredAccids: [String] {
@@ -80,11 +80,9 @@ struct VH5N3B7tQ6fri: View {
                                             // 2️⃣ 本地缓存同步
                                         sessionStore.markSessionRead(sessionId: r.sessionId)
                                         
-                                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                            WUjfoptOKs8pZfhSAH0duplG {
-                                                CgZU7mTgY46l(session: r.session,opponentAvatarURL: r.avatarUrl)
-                                            }
-                                        }
+                                     
+                                        pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl))
+                                        
                                     }
                                     
                                 )

@@ -1,7 +1,7 @@
 //金币页面
 
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 
 
@@ -11,7 +11,7 @@ struct Afmox09Q1UKVfE: View {
         GridItem(.flexible(), spacing: 8),
         GridItem(.flexible(), spacing: 8),
     ]
-    @Environment(\.router) var yjuUSUolzAjZ
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @StateObject private var pkeDEXpbkc4RXu = PkeDEXpbkc4RXu.shared
     let tSh7kxFecD: [GAg6zvKCMA] = PUiSN9Hnxm9ZJ.tSh7kxFecD
     @State private var sQYNvOjd5vNum: Int = 0 //金币数量
@@ -30,7 +30,7 @@ struct Afmox09Q1UKVfE: View {
                     ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                         .frame(width: 24,height: 24)
                         .onTapGesture {
-                            yjuUSUolzAjZ.dismissScreen()
+                            pilot.pop()
                         }
                     Text("Wallet")
                         .g0LIIcoZQsOjyND9(

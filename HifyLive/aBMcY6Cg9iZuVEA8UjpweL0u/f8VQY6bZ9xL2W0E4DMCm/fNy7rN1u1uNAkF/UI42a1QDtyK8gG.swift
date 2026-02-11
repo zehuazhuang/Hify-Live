@@ -1,11 +1,11 @@
 
 //反馈页
 import SwiftUI
-import SwiftfulRouting
 import _PhotosUI_SwiftUI
+import UIPilot
 
 struct UI42a1QDtyK8gG: View {
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     let pqeKSo0y1Col: [GridItem] = [
         GridItem(.flexible(), spacing: 17),
         GridItem(.flexible(), spacing: 17)
@@ -34,7 +34,7 @@ struct UI42a1QDtyK8gG: View {
             VStack{
                 HStack{
                     Button {
-                        rM9Z8S7A1ql.dismissScreen()
+                        pilot.pop()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24, height: 24)
@@ -190,7 +190,7 @@ struct UI42a1QDtyK8gG: View {
                                                        
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("lJjLBJiZZo0QtTGrUm7tagx9NHD5bjuEKsfuukH+JMQ=")
                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                       rM9Z8S7A1ql.dismissScreen()
+                                                       pilot.pop()
                                                    }
                                                }else{
                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("xnyswHR1AgUmKQ2sYl5pA50bRnPpa5dqnovKeoJzXv3wlikYkM/cxmVc5911mWjp")

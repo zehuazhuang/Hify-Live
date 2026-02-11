@@ -277,6 +277,8 @@ final class ImagePreviewScrollViewController: UIViewController, UIScrollViewDele
             imageView.addGestureRecognizer(longPress)
 
             scrollView.addSubview(imageScrollView)
+            
+            self.scrollToStartIndex(animated: false)
         }
 
         scrollView.contentSize = CGSize(

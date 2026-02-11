@@ -1,6 +1,7 @@
 import GoogleSignIn
+import UIPilot
 import SwiftUI
-import SwiftfulRouting
+
 import NIMSDK
 
 class N0lU9akMbRab: NSObject, UIApplicationDelegate {
@@ -15,7 +16,9 @@ struct HifyLiveApp: App {
     
 
     @UIApplicationDelegateAdaptor(N0lU9akMbRab.self) var n0lU9akMbRab
+    @StateObject var pilot = UIPilot<APPTJuHVkDYORXa>(initial: .cjMFVE23ZhInit)
     init() {
+      
         //初始化Google clientID
         Task { @MainActor in
                    AgoraEngineManager.shared.preloadEngine()
@@ -28,50 +31,104 @@ struct HifyLiveApp: App {
     
     @StateObject private var qHyGWbkl4J6y35 = IyfdHMdY.bTa3L6BoprG
     
-    @Environment(\.router) var arUac4mWLUCiC20zQa4D1lVuz4vWW
+   
     //通知
     @StateObject private var uZzJSmXjKpb1nJ49 = NOHpxY.j9lChKVFzjtP37aeBd
     
-    var body: some Scene {
-        WindowGroup {
-            RouterView { router in
-                ZStack {
-                    //判断是否存在token，存在进首页，不存在去登录
-                    if ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.wFwG2LK27RYmRSty {
-                        if qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt {
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                ME9B8ZCwVQxn()
-                            }
-                        } else {
-                            //获取当前登录用户数据
-                           
-                            h7xAdXMHidxlrtblkRACwZ8kTw6QO().task {
-                                lidstateLoad()
-                            }
-                            
-                        }
-                    } else {
-                        WUjfoptOKs8pZfhSAH0duplG {
-                            zkaqn9Jn()
-                        }
-                    }
-                }
-                .onAppear {
-                    UfmQhHA1doHKs.bHNA2Amheuq0.e3lm29iotZr1P6CsH()
-                }
-                //判断token是否过期，到登录页面
-                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
-                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("CF/pQfyETmTqnvPASaLzZqpNGUPBRIo9Z7z0oPoNL/elWQYGLZRU+1kaFCnxQ07D")
-                    
-                    arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
-                        WUjfoptOKs8pZfhSAH0duplG {zkaqn9Jn()} // 你的登录页
-                    }
+    //检查是否登录
+    func utufpxtrNowtjF() {
+        if ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.wFwG2LK27RYmRSty {
+            if qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt {
+                pilot.push(.lsoFZyn41MiKHome)
+            } else {
+                Task {
+                    await lidstateLoad()
                 }
             }
+        } else {
+            pilot.push(.ms90KqZqLog)
         }
     }
     
-    func lidstateLoad(){
+    var body: some Scene {
+        WindowGroup {
+                   UIPilotHost(pilot) { route in
+                       switch route {
+                       case .cjMFVE23ZhInit:
+                           h7xAdXMHidxlrtblkRACwZ8kTw6QO()
+                       case .ms90KqZqLog:
+                           zkaqn9Jn().navigationBarHidden(true)
+
+                       case .lsoFZyn41MiKHome:
+                           ME9B8ZCwVQxn().navigationBarHidden(true)
+
+                       
+                       case let .zhwyzs0gELive(localUid, zA9Y4W6LUid):
+                               LE0xQZ6Y7WC8iv(
+                                   localUid: localUid,
+                                   zA9Y4W6LUid: zA9Y4W6LUid
+                               ).navigationBarHidden(true)
+                       case let .fDsxyWVT7Chat(sessionId, avatarUrl):
+                               let session = NIMSession(sessionId, type: .P2P)
+
+                               WUjfoptOKs8pZfhSAH0duplG {
+                                   CgZU7mTgY46l(
+                                       session: session,
+                                       opponentAvatarURL: avatarUrl
+                                   )
+                               }.navigationBarHidden(true)
+                       case let .itHCfaKsRUser(areoloaUid):
+                              zQIRqHb1rSOJJ0wopZa8qxCs(
+                                  areoloaUid: areoloaUid
+                              ).navigationBarHidden(true)
+                          
+                       case let .ijeWMJnw0(hIUsWqIEhUq3,nw1qv):
+                           ijeWMJnw0(hIUsWqIEhUq3: hIUsWqIEhUq3, nw1qv: nw1qv)
+                       case let .R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg):
+                           R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: irJBAop3c1cEIKUf3jOsmjxJfVg)
+                       case .zpPt6HEcUfuVXHI2CXtIaD1P:
+                           zpPt6HEcUfuVXHI2CXtIaD1P()
+                       case .UI42a1QDtyK8gG:
+                           UI42a1QDtyK8gG()
+                       case let .UZ8hTFSeCcwrAy(yffmn1UtOF):
+                           UZ8hTFSeCcwrAy(yffmn1UtOF: yffmn1UtOF)
+                       case .Afmox09Q1UKVfE:
+                           Afmox09Q1UKVfE()
+                       case let .kaBpQbGjZ(c8WYppF6mHU):
+                           kaBpQbGjZ(c8WYppF6mHU: c8WYppF6mHU)
+                       case .bfoXTzIM4dlkv07MZv45zoMZVs23:
+                           bfoXTzIM4dlkv07MZv45zoMZVs23()
+                       case .yDO7bVocx9JH0msGgIyRUs6e:
+                           yDO7bVocx9JH0msGgIyRUs6e()
+                       case .ASkYEgFvkJ3xKj:
+                           ASkYEgFvkJ3xKj()
+                       case .o95HINW4DpHIAT:
+                           o95HINW4DpHIAT()
+                       case .js9GbCBiFR825bdWb7p7kVVWaBoE:
+                           js9GbCBiFR825bdWb7p7kVVWaBoE()
+                       case .lhOJY7byauJZOO6Kfr3SaKy6:
+                           lhOJY7byauJZOO6Kfr3SaKy6()
+                       case let .CgZU7mTgY46l(session,opponentAvatarURL):
+                           CgZU7mTgY46l(session: session, opponentAvatarURL: opponentAvatarURL)
+                       case .QsS1CqA9M8tL2fs:
+                           QsS1CqA9M8tL2fs()
+                       }
+                   }
+                .ignoresSafeArea()
+            
+                    .onAppear {
+                        utufpxtrNowtjF()
+                    }//判断token是否过期，到登录页面
+                    .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
+                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("CF/pQfyETmTqnvPASaLzZqpNGUPBRIo9Z7z0oPoNL/elWQYGLZRU+1kaFCnxQ07D")
+                        
+                        pilot.push(.ms90KqZqLog)
+                    }
+                    
+               }
+    }
+    
+    func lidstateLoad() async{
        
         Task {
            // let gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5: [String:Any]? = await aYTO7iD()
@@ -113,13 +170,9 @@ struct HifyLiveApp: App {
                 }
                 print("登录用户------")
                 print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
-          //      TokenManager.shared.setupRTM()
-//                TokenManager.shared.loginRTM(userId: String(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.int("userId"))) { success in
-//                    print(success ? "rtm登录成功" : "rtm登录失败")
-//                }
-                if let yX5tB1x = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["yxAccid"] as? String,
-                   let ilgJ9kMFt = qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7["imToken"] as? String {
-                    NIMManager.shared.login(account: yX5tB1x, token: ilgJ9kMFt) { success in
+
+              
+                    NIMManager.shared.login(account: qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.string("yxAccid"), token: qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7.string("imToken")) { success in
                         if success {
                             print("云信 IM 登录成功")
                             // 只初始化一次后续获取会话/发送消息等
@@ -138,15 +191,10 @@ struct HifyLiveApp: App {
                             print("云信 IM 登录失败")
                         }
                     }
-                }
+                
                 //数据获取完毕切换页面
                 qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
-            } else {
-                arUac4mWLUCiC20zQa4D1lVuz4vWW.showScreen(.fullScreenCover){ _ in
-                    WUjfoptOKs8pZfhSAH0duplG {
-                        zkaqn9Jn()
-                    }
-                }
+                pilot.push(.lsoFZyn41MiKHome)
             }
         }
     }

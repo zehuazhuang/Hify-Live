@@ -17,6 +17,26 @@ final class NIMManager {
         }
     }
     
+    //退出云信
+    func y59Dm7CdcqOut() {
+        
+        NIMSDK.shared().loginManager.logout { error in
+            
+            if let error = error {
+                print("云信退出失败:", error.localizedDescription)
+               
+                return
+            }
+            
+            print("云信退出成功")
+            
+           
+            RecentSessionManager.shared.logoutAndClearAll()
+            
+           
+        }
+    }
+    
     
     
     // MARK: - 获取最近会话列表
@@ -25,28 +45,5 @@ final class NIMManager {
           return sessions
       }
 
-    // MARK: - 获取聊天记录
-    func fetchMessages(sessionId: String, type: NIMSessionType = .P2P, limit: Int = 20) -> [NIMMessage] {
-        let session = NIMSession(sessionId, type: type)
-        let messages = NIMSDK.shared().conversationManager.messages(in: session, message: nil, limit: limit) ?? []
-        return messages
-    }
-
-        // MARK: - 发送文本消息
-    func sendTextMessage(to sessionId: String, text: String, type: NIMSessionType = .P2P, completion: ((Error?) -> Void)? = nil) {
-        let session = NIMSession(sessionId, type: type)
-        let message = NIMMessage()
-        message.text = text
-        NIMSDK.shared().chatManager.send(message, to: session) { error in
-            completion?(error)
-        }
-    }
-    
-    // MARK: - 创建对话
-    func createP2PSession(with accid: String) -> NIMSession {
-        // type: .P2P 表示单聊
-        let session = NIMSession(accid, type: .P2P)
-        return session
-    }
 }
 

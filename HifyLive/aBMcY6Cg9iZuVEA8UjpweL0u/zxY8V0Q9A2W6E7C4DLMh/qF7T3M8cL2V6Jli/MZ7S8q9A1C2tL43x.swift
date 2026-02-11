@@ -1,9 +1,10 @@
 //主播关播页面显示
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
+
 
 struct MZ7S8q9A1C2tL43x: View {
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     let x0W6LivDate : [String: Any]?  //主播信息
     @State private var isFollowing: Bool = false
     init(x0W6LivDate: [String: Any]?) {
@@ -36,7 +37,7 @@ struct MZ7S8q9A1C2tL43x: View {
                     ZJ7h766mz(tMmEWWlfgUag: "pD8K1Q5tB6R9Lh")
                         .frame(width: 32, height: 32)
                         .onTapGesture {
-                            rM9Z8S7A1ql.dismissScreen()
+                            pilot.pop()
                         }
                 }
                 ZStack{
@@ -54,11 +55,9 @@ struct MZ7S8q9A1C2tL43x: View {
               
                 }.frame(width: 80, height: 80)
                     .onTapGesture {
-                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: (x0W6LivDate?["userId"] as? Int) ?? 0, bMy5EIRIIback: {})
-                            }
-                        }
+                    
+                        
+                        pilot.push(.itHCfaKsRUser(areoloaUid: (x0W6LivDate?["userId"] as? Int) ?? 0))
                     }
                 Spacer().frame(height: 12)
                 Text(x0W6LivDate?["nickname"] as? String ?? "")
@@ -105,6 +104,7 @@ struct MZ7S8q9A1C2tL43x: View {
             
                 Spacer()
             }.padding(.horizontal,16)
+                .padding(.top,55)
         }.onAppear {
             if let uid = x0W6LivDate?["userId"] as? Int {
                 L3vM9X0aQ8yF4b.shared.removeLive(by: uid)

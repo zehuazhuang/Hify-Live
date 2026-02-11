@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 import Combine
 
 //黑名单
@@ -7,7 +7,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
     
     @StateObject private var nd55l6NRwWuVUnbReUhjS3d1Ivg = TPb21z0U.eDNcFBMyyi
     
-    @Environment(\.router) var ivHIH8tMIw2gJg4o
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     @State private var uT6eHPE0Of05afFQdv9n: Bool = false
     @State private var auGm8teVpyXJCC2rxfZsMECz: Int = 0
@@ -21,7 +21,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
             VStack(spacing: 24) {
                 HStack(spacing: 12) {
                     Button{
-                        ivHIH8tMIw2gJg4o.dismissScreen()
+                        pilot.pop()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)

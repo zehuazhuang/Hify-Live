@@ -1,8 +1,9 @@
 
 import SwiftUI
 import NIMSDK
-import SwiftfulRouting
+
 import Combine
+import UIPilot
 //CgZU7mTgY46l
 //私聊页
 struct CgZU7mTgY46l: View {
@@ -11,9 +12,9 @@ struct CgZU7mTgY46l: View {
         @StateObject private var vm: ChatViewModel
         @FocusState private var isInputFocused: Bool
         @StateObject private var keyboard = KeyboardResponder()
-        @Environment(\.router) var rM9Z8S7A1ql
+       
         @State private var opponentInfo: [String: Any] = [:] //对方信息
-    
+        @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
         @State private var showImagePicker = false
         @State private var selectedImage: UIImage?
         @State private var showCameraPicker = false
@@ -56,7 +57,8 @@ struct CgZU7mTgY46l: View {
                         Button {
                             RecentSessionStore.shared.markSessionRead(sessionId: session.sessionId)
                             LiveSessionManager.shared.znWne5LXPType = 0
-                            rM9Z8S7A1ql.dismissScreen()
+                        
+                            pilot.pop()
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                                 .frame(width: 24, height: 24)
@@ -97,13 +99,7 @@ struct CgZU7mTgY46l: View {
                      
                         
                         
-                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: uid, bMy5EIRIIback: {
-                                    rM9Z8S7A1ql.dismissScreen()
-                                })
-                            }
-                        }
+                        pilot.push(.itHCfaKsRUser(areoloaUid: uid))
                     })
                         
                         .padding(.horizontal,10)

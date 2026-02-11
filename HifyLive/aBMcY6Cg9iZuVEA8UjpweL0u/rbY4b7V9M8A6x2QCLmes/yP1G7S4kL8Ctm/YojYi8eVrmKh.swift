@@ -200,7 +200,35 @@ class RecentSessionManager: ObservableObject {
         }
     }
     
+    private func clearRealmChatHistory() {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            let allMessages = realm.objects(DBChatMessage.self)
+            realm.delete(allMessages)
+        }
+    }
     
+    func logoutAndClearAll() {
+        
+        // 1️⃣ 清空内存缓存
+        cache.removeAll()
+        
+        // 2️⃣ 删除 SDK 所有最近会话
+        let option = NIMDeleteRecentSessionOption()
+        if let recents = NIMSDK.shared().conversationManager.allRecentSessions() {
+            for recent in recents {
+                NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
+                    if let error = error {
+                        print("删除 SDK 最近会话失败:", error.localizedDescription)
+                    }
+                }
+            }
+        }
+        
+        // 3️⃣ 清空 Realm 聊天记录
+        clearRealmChatHistory()
+    }
     
     
     

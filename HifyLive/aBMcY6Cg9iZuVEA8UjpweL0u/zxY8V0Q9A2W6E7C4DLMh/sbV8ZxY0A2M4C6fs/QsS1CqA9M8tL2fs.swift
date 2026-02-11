@@ -1,12 +1,13 @@
 //搜索页面
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
+
 
 struct QsS1CqA9M8tL2fs: View {
     @State private var q2C4Mtl3iNa: String = ""
     @State private var iZQ7xV4bM8Ys: Bool = false
     @State private var tsteadySelect: Bool = true //
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var piaoncapType: Int = 0 //0历史 1房间 2用户
     @State private var searchResults: [[String: Any]] = []
     @State private var isZ8Q7x4bV9Y0A2: Bool = true
@@ -26,7 +27,7 @@ struct QsS1CqA9M8tL2fs: View {
             VStack{
                 HStack(spacing:0){
                     Button {
-                        rM9Z8S7A1ql.dismissScreen()
+                        pilot.pop()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
@@ -157,12 +158,9 @@ struct QsS1CqA9M8tL2fs: View {
                                     if piaoncapType == 1 {
                                         FjNgwaDxH1fEY41(room: item, gpiemeSele: q2C4Mtl3iNa)
                                             .onTapGesture {
-                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        LE0xQZ6Y7WC8iv(channelName: "", localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                       zA9Y4W6LUid: UInt(item.int("userId")))
-                                                    }
-                                                }
+
+                                                
+                                                pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(item.int("userId"))))
                                             }
                                     } else {
                                         huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa,cF8eDIYj: {
@@ -171,11 +169,9 @@ struct QsS1CqA9M8tL2fs: View {
                                             }
                                         })
                                         .onTapGesture {
-                                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                WUjfoptOKs8pZfhSAH0duplG {
-                                                    zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"),bMy5EIRIIback:{})
-                                                }
-                                            }
+                                          
+                                            
+                                            pilot.push(.itHCfaKsRUser(areoloaUid: item.int("userId")))
                                         }
                                     }
                                 }

@@ -1,10 +1,11 @@
 //ai页面
 
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
+
 
 struct ASkYEgFvkJ3xKj: View {
-    @Environment(\.router) var w6S64Kback
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var zJ12Kw9wzlText: String = ""
     @FocusState private var p44OpPgyKfoc: Bool
     @State private var qO5zSP720XNL: Bool = false //弹余额不足
@@ -23,7 +24,7 @@ struct ASkYEgFvkJ3xKj: View {
                     ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                         .frame(width: 24,height: 24)
                         .onTapGesture {
-                            w6S64Kback.dismissScreen()
+                            pilot.pop()
                         }
                     Spacer()
                 }
@@ -125,11 +126,9 @@ struct ASkYEgFvkJ3xKj: View {
                             }
                             
                             
-                            w6S64Kback.showScreen(.fullScreenCover) { _ in
-                                WUjfoptOKs8pZfhSAH0duplG {
-                                    UZ8hTFSeCcwrAy(yffmn1UtOF: zJ12Kw9wzlText)
-                                }
-                            }
+                            
+                            
+                            pilot.push(.UZ8hTFSeCcwrAy(yffmn1UtOF: zJ12Kw9wzlText))
                             zJ12Kw9wzlText = ""
                         }else{
                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -156,11 +155,8 @@ struct ASkYEgFvkJ3xKj: View {
             //余额不足弹框
             if qO5zSP720XNL {
                 ZsQF3kwG2Bygwo(ishtTvNH4y: $qO5zSP720XNL, qZFGLpr8D4s: {
-                    w6S64Kback.showScreen(.fullScreenCover) { _ in
-                        WUjfoptOKs8pZfhSAH0duplG {
-                            Afmox09Q1UKVfE()
-                        }
-                    }
+                
+                    pilot.push(.Afmox09Q1UKVfE)
                 })
             }
         }.onAppear{

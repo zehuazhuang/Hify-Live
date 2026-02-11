@@ -1,7 +1,8 @@
 //下方弹出用户信息
 import SwiftUI
-import SwiftfulRouting
+
 import NIMSDK
+import UIPilot
 
 struct QZ4A0M84C7WL9: View {
     let sBb3SaType : Int //0 userId 1 yxAccid
@@ -11,7 +12,7 @@ struct QZ4A0M84C7WL9: View {
     @State private var isZ7E4xA0M2 = false
     @State private var info9M0Q2A6: [String: Any] = [:] //用户数据
     @State private var is7A0Y4W6ECL: Int = -1 //是否关注
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var r20e4mWkY = false //弹取关
     @State private var qQLT5JKPC = false //弹拉黑
     @State private var nJECQo7O4rE = -1 //0 未拉黑 1已拉黑
@@ -175,7 +176,11 @@ struct QZ4A0M84C7WL9: View {
                                                .onTapGesture {
                                                    LiveSessionManager.shared.znWne5LXPType = 1
                                                    isW9YQ6C8L = false
-                                                   openP2PChatScreen(userId: info9M0Q2A6.string("yxAccid"), avatarUrl: info9M0Q2A6.string("icon"), using: rM9Z8S7A1ql)
+                                                   openP2PChatScreen(
+                                                              userId: info9M0Q2A6.string("yxAccid"),
+                                                              avatarUrl: info9M0Q2A6.string("icon"),
+                                                              pilot: pilot        // ✅ 注意：不是 $pilot
+                                                          )
                                                }
                             
                             Button(action: {

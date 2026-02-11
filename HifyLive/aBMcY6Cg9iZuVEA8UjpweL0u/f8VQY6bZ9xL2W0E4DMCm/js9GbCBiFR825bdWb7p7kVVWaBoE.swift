@@ -1,10 +1,10 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 //删除账号页面
 struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
     
-    @Environment(\.router) var lVyNB84lDy1ypiV3
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -19,7 +19,7 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
                             .onTapGesture {
-                                lVyNB84lDy1ypiV3.dismissScreen()
+                                pilot.pop()
                             }
                         Text("7h+ZqCEsT6knrOz31RPeHA==".bFHEatcgE4zzU9TCfDonsu())
                             .g0LIIcoZQsOjyND9(
@@ -44,7 +44,7 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                 Spacer()
                 HStack(spacing: 9) {
                     Button{
-                        lVyNB84lDy1ypiV3.dismissScreen()
+                        pilot.pop()
                     } label: {
                         Text("Cancel")
                             .g0LIIcoZQsOjyND9(
@@ -78,12 +78,10 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                         }.onTapGesture{
                             EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                             ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw()
+                            NIMManager.shared.y59Dm7CdcqOut()
                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                            lVyNB84lDy1ypiV3.showScreen(.fullScreenCover){ _ in
-                                WUjfoptOKs8pZfhSAH0duplG {
-                                    zkaqn9Jn()
-                                }
-                            }
+                        
+                            pilot.push(.ms90KqZqLog)
                         }
                 }
                 .padding(.horizontal,16)

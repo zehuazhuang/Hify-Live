@@ -1,6 +1,6 @@
 //举报弹框
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 struct QiRKOWGBnovrlh: View {
     @Binding var ish1z8TllyFvb: Bool
@@ -10,7 +10,7 @@ struct QiRKOWGBnovrlh: View {
     let wksgt0dUrl: String
     let ihysbsdRVA:String //yxid
     @Binding var uZIHcG0Vju0: Int //0未被拉黑 1 已拉黑
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var isy9YH69iABl = false //二次确认拉黑
     var body: some View {
         ZStack{
@@ -29,11 +29,8 @@ struct QiRKOWGBnovrlh: View {
                     
                     Button(action: {
                         ish1z8TllyFvb = false
-                        rM9Z8S7A1ql.showScreen(.fullScreenCover){ _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                UI42a1QDtyK8gG()
-                            }
-                        }
+          
+                        pilot.push(.UI42a1QDtyK8gG)
                     }) {
                         Text("Report")
                             .g0LIIcoZQsOjyND9(

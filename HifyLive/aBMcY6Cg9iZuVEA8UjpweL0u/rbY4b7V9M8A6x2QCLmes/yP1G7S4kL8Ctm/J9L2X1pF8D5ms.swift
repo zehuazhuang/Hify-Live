@@ -3,12 +3,12 @@
 //message模块
 import SwiftUI
 import NIMSDK
-import SwiftfulRouting
 import Combine
+import UIPilot
 
 struct J9L2X1pF8D5ms: View {
     @ObservedObject var sessionStore = RecentSessionStore.shared
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @State private var openRowId: UUID? = nil
     let wzJqE7XWO : ()-> Void //回到home
@@ -26,12 +26,9 @@ struct J9L2X1pF8D5ms: View {
                                    ForEach(Array(items.prefix(4)).indices, id: \.self) { index in
                                        AqS7C1A2tLt(mdFf7YData: items[index])
                                            .onTapGesture {
-                                               rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                   WUjfoptOKs8pZfhSAH0duplG {
-                                                       LE0xQZ6Y7WC8iv(channelName: items[index].string("agoraChannelId"), localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                      zA9Y4W6LUid: UInt(items[index].int("userId")))
-                                                   }
-                                               }
+
+                                               
+                                               pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(items[index].int("userId"))))
                                            }
                                    }
                                    Spacer()
@@ -106,12 +103,9 @@ struct J9L2X1pF8D5ms: View {
                                                 // 2️⃣ 本地缓存同步
                                                 sessionStore.markSessionRead(sessionId: r.sessionId)
 
-                                                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl)
-
-                                                    }
-                                                }
+                                           
+                                                
+                                                pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl))
                                             },
                                          
                                         )

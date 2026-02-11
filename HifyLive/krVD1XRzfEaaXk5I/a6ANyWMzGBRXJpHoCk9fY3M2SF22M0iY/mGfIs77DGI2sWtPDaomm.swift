@@ -116,6 +116,7 @@ final class WOKmjUjM {
                 if bWtqmD7lucTVd.statusCode == 401 {
 //                    print("⚠️ Token 已过期，请重新登录")
                     ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw() // 清除 token
+                    NIMManager.shared.y59Dm7CdcqOut()
                     NotificationCenter.default.post(name: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"), object: nil)
                     return
                 }

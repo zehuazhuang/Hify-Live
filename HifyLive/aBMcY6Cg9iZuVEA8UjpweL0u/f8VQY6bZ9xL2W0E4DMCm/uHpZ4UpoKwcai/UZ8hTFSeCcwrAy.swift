@@ -3,10 +3,10 @@
 //ai结果
 
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 struct UZ8hTFSeCcwrAy: View {
-    @Environment(\.router) var aaKvAGNLDeE
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     let yffmn1UtOF: String //故事
     @State private var nFWxHFoeMiXPMR = "" //ai接口返回文字
     var body: some View {
@@ -23,7 +23,7 @@ struct UZ8hTFSeCcwrAy: View {
                     ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                         .frame(width: 24,height: 24)
                         .onTapGesture {
-                            aaKvAGNLDeE.dismissScreen()
+                            pilot.pop()
                         }
                     Text("AI Consulting")
                                     .g0LIIcoZQsOjyND9(

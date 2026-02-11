@@ -1,5 +1,6 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
+
 import AgoraRtcKit
 //首页
 struct E2VxD0iC4bYyh: View {
@@ -11,7 +12,7 @@ struct E2VxD0iC4bYyh: View {
     ]
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @Binding var ecorjazyType: Bool // true recommend false following
-    @Environment(\.router) var rM9Z8S7A1ql
+    
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     @State private var liveVC: UIViewController?
     
@@ -20,7 +21,7 @@ struct E2VxD0iC4bYyh: View {
     @State private var pullOffset: CGFloat = 0
     @State private var isRefreshing = false
     private let triggerHeight: CGFloat = 80
-    
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     
    
@@ -92,11 +93,8 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "Zq7S9M2C18L4A3t")
                         .frame(width: 36, height: 36)
                         .onTapGesture {
-                            rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                WUjfoptOKs8pZfhSAH0duplG {
-                                    QsS1CqA9M8tL2fs()
-                                }
-                            }
+
+                            pilot.push(.QsS1CqA9M8tL2fs)
                         }
                     //排名
 //                    Spacer().frame(width: 16)
@@ -120,12 +118,13 @@ struct E2VxD0iC4bYyh: View {
                                         ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
                                             rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index], is7Nqdlvk: index == 0)
                                                 .onTapGesture{
-                                                    rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                        WUjfoptOKs8pZfhSAH0duplG {
-                                                            LE0xQZ6Y7WC8iv(channelName: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                           zA9Y4W6LUid: UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId")))
-                                                        }
-                                                    }
+                                                    pilot.push(
+                                                        .zhwyzs0gELive(
+                                                          
+                                                            localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
+                                                            zA9Y4W6LUid: UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId"))
+                                                        )
+                                                    )
                                                 }
                                         }
                                     }
@@ -141,12 +140,9 @@ struct E2VxD0iC4bYyh: View {
                                             rL0X1V3LiveCell(bemindbeData: followingCache.items[index], is7Nqdlvk: index == 0)
                                                 .onTapGesture{
                                                     
-                                                    rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                                        WUjfoptOKs8pZfhSAH0duplG {
-                                                            LE0xQZ6Y7WC8iv(channelName: followingCache.items[index].string("agoraChannelId"), localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                           zA9Y4W6LUid: UInt(followingCache.items[index].int("userId")))
-                                                        }
-                                                    }
+
+                                                    
+                                                    pilot.push(.zhwyzs0gELive(localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(followingCache.items[index].int("userId"))))
                                                 }
                                         }
                                     }
@@ -175,7 +171,8 @@ struct E2VxD0iC4bYyh: View {
                 )
                 }.padding(.horizontal,16)
                 
-            
+                
+                
             //悬浮live
 //            ZStack {
 //                ZJ7h766mz(tMmEWWlfgUag: "L9ZqA8C7S2M1t34")
@@ -192,7 +189,10 @@ struct E2VxD0iC4bYyh: View {
 //            .padding(.bottom, 122)
 //            .padding(.trailing,16)
             
-            }.task {
+            }
+        
+        
+        .task {
                 await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT()
                 await followingCache.loadFollowing()
                 
@@ -274,46 +274,7 @@ struct E2VxD0iC4bYyh: View {
             .frame(height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
-           
-//            .overlay {
-//                if is7Nqdlvk {
-//                    ZStack {
-////                        // 🌈 外层光晕
-////                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-////                            .stroke(
-////                                LinearGradient(
-////                                    colors: [
-////                                        Color(red: 217/255, green: 28/255, blue: 255/255),
-////                                        Color(red: 0/255, green: 242/255, blue: 255/255)
-////                                    ],
-////                                    startPoint: .topLeading,
-////                                    endPoint: .bottomTrailing
-////                                ),
-////                                lineWidth: 4
-////                            )
-////
-////                            .opacity(0.7)
-////                            .padding(-2)
-//
-//                        // 内层弱边
-//                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-//                            .stroke(
-//                                LinearGradient(
-//                                    colors: [
-//                                        Color(red: 217/255, green: 28/255, blue: 255/255),
-//                                        Color(red: 0/255, green: 242/255, blue: 255/255)
-//                                    ],
-//                                    startPoint: .topLeading,
-//                                    endPoint: .bottomTrailing
-//                                ),
-//                                lineWidth: 4
-//                            )
-//                           
-//                            
-//                    }
-//                    .compositingGroup()
-//                }
-//            }
+
         }
     }
 

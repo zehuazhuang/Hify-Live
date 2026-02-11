@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 import PhotosUI
 
 struct Ek9tKrgkM0Mjp: Identifiable, Equatable {
@@ -21,7 +21,7 @@ struct vXnYs42e0Iwbxgobql0WWYEE2BWxBm: PreferenceKey {
 //个人相册修改
 struct o95HINW4DpHIAT: View {
     
-    @Environment(\.router) var cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     @State private var idW6C0: [Ek9tKrgkM0Mjp] = []
     
@@ -47,7 +47,7 @@ struct o95HINW4DpHIAT: View {
     //相册是否更新
     @State private var cGEKtoCPXDlpstFSxU9vX1eerl8AGL: [Ek9tKrgkM0Mjp] = []
     @State private var efGGYeTiHzlZ9rnXAlq62oUAgD9hLG: Bool = false
-    let updplVCKiB4I :() -> Void //上传相册成功回调更新用户数据
+    //let updplVCKiB4I :() -> Void //上传相册成功回调更新用户数据
     
     let mVPc1uy = [
         GridItem(.flexible(), spacing: 9),
@@ -66,7 +66,7 @@ struct o95HINW4DpHIAT: View {
                                 efGGYeTiHzlZ9rnXAlq62oUAgD9hLG = true
                                 
                             } else {
-                                cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb.dismissScreen()
+                                pilot.pop()
                             }
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
@@ -83,7 +83,7 @@ struct o95HINW4DpHIAT: View {
                         Button {
                             Task {
                                 await by8Gte1b3p2Yc6K3qoK7hl0Egxd()
-                                updplVCKiB4I()
+                              
                             }
                         } label: {
                             RoundedRectangle(cornerRadius: 325)
@@ -229,8 +229,8 @@ struct o95HINW4DpHIAT: View {
                             }
                         }
                         if zH2z17nr7J1Ry1UvflocgInToQd == 2 {
-                            updplVCKiB4I()
-                            cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb.dismissScreen()
+                          
+                            pilot.pop()
                         }
                     }
                 }
@@ -282,7 +282,7 @@ struct o95HINW4DpHIAT: View {
                 !oMKd7qebhMlgH3bk.isEmpty
             else {
                 cDiXG5.uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi = idW6C0.compactMap { $0.g0HjS5Fukj }
-                cqlCsCXaHVqzSjXckqfrt0b0m2rxcIb.dismissScreen()
+                pilot.pop()
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("Gs7mu5e0GqYNjKG697HCaNySpH1/hAKRGl0hnEMHTPg=")
                 return
             }

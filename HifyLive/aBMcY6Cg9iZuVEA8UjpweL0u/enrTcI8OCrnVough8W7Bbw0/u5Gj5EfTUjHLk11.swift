@@ -1,13 +1,13 @@
 import SwiftUI
+import UIPilot
 import WebKit
-import SwiftfulRouting
 
 //协议网页
 struct R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3: View {
     
     let irJBAop3c1cEIKUf3jOsmjxJfVg:String
     
-    @Environment(\.router) var uROx9OAsQCkQ
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     var body: some View {
         ZStack {
@@ -17,7 +17,7 @@ struct R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3: View {
                     ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                         .frame(width: 24,height: 24)
                         .onTapGesture {
-                            uROx9OAsQCkQ.dismissScreen()
+                            pilot.pop()
                         }
                     Spacer()
                 }

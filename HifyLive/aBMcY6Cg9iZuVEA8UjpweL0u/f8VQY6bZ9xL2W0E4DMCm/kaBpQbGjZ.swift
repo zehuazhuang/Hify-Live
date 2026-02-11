@@ -1,10 +1,10 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 //关注/粉丝列表
 struct kaBpQbGjZ: View {
     let c8WYppF6mHU : Int // 3 关注 2 粉丝
-    @Environment(\.router) var rM9Z8S7A1ql
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var q2C4Mtl3iNa: String = "" //搜索文本
     @State private var IwxP0B12Text: String = ""
     @State private var iZQ7xV4bM8Ys: Bool = false
@@ -19,7 +19,7 @@ struct kaBpQbGjZ: View {
             VStack{
                 HStack(spacing:0){
                     Button {
-                        rM9Z8S7A1ql.dismissScreen()
+                        pilot.pop()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
@@ -63,11 +63,9 @@ struct kaBpQbGjZ: View {
                                 })
                                 .id(UUID())
                                 .onTapGesture {
-                                    rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: item.int("userId"),bMy5EIRIIback:{})
-                                        }
-                                    }
+                                 
+                                    pilot.push(.itHCfaKsRUser(areoloaUid: item.int("userId")))
+                                    
                                 }
                             }
                         }

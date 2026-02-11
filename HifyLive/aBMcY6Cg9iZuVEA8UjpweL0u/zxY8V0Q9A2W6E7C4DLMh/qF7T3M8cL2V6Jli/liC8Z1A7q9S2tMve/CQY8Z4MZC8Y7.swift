@@ -1,13 +1,12 @@
 
 import SwiftUI
 import UIKit
-import SwiftfulRouting
+import UIPilot
 // 2️⃣ SwiftUI 页面返回封装后的 UIKit
 struct LE0xQZ6Y7WC8iv: View {
-    @State private var channelName: String
+   
     let localUid: UInt
     let zA9Y4W6LUid: UInt
-    @Environment(\.router) var rM9Z8S7A1ql
     @State private var liveRoomData: [String: Any] = [:] //数据
     
     @State private var showEndView: Bool = false//主播关播显示
@@ -16,9 +15,9 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var gGs5OpWId: String = "" //显示弹框用户yxAccid
     @State private var rlUlyPhType: Int = 0 //userId 还是 yxAccid
     @State private var showx8Z9Q2M: Bool = false//显示关闭直播间弹框
-    
-    init(channelName: String, localUid: UInt, zA9Y4W6LUid: UInt) {
-        _channelName = State(initialValue: channelName)
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
+    init(localUid: UInt, zA9Y4W6LUid: UInt) {
+       
         self.localUid = localUid
         self.zA9Y4W6LUid = zA9Y4W6LUid
     }
@@ -95,6 +94,7 @@ struct LE0xQZ6Y7WC8iv: View {
                         }
                     }
                     .padding(.horizontal,2)
+                   
                     .frame(height: 36)
                         .background(.white.opacity(0.3))
                         .cornerRadius(325)
@@ -167,16 +167,15 @@ struct LE0xQZ6Y7WC8iv: View {
                                            withAnimation{
                                                showx8Z9Q2M = true
                                            }
-                                           
-                                           
                                        }
                 }
                 Spacer()
             }.padding(.horizontal,16)
+               
             
             if showx8Z9Q2M {
                 Z8q7S9A1C2tLClo(hllonneC8R2J: $showx8Z9Q2M, caentClo: {
-                    rM9Z8S7A1ql.dismissScreen()
+                    pilot.pop()
                 },ourreeName: liveRoomData.string("nickname") ,dimpaseAvatar: liveRoomData.string("icon") )
             }
             
@@ -188,6 +187,8 @@ struct LE0xQZ6Y7WC8iv: View {
                 MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
             }
         }
+       
+        
         .onAppear{
             mpatentLoad()
             NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
@@ -204,11 +205,6 @@ struct LE0xQZ6Y7WC8iv: View {
                 let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
                 liveRoomData = result
                
-              
-                if(channelName == ""){
-                    channelName = liveRoomData.string("agoraChannelId")
-                    
-                }
                 
             } catch {
                 print(error)

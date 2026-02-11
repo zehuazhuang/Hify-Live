@@ -1,6 +1,7 @@
 import SwiftUI
+import UIPilot
 import GoogleSignIn
-import SwiftfulRouting
+import UIPilot
 
 //判断是否老用户接口参数配置
 struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
@@ -10,6 +11,7 @@ struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
     let fFlQ9sA2tf: String //redirectUri
     let lO4RZ2gjPGqDkXW4xBejJ8I: String //codeVerifier
     let bOdVsCGgJMcQHEtiZDG: String //token
+    
     
     func encode(to encoder: Encoder) throws {
         var wAcglvJU = encoder.container(keyedBy: bonDyqD2YnaVJW.self)
@@ -54,7 +56,7 @@ struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
 //登录页面
 struct zkaqn9Jn: View {
     
-    @Environment(\.router) var hTU5wZj8E2nU59
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     var body: some View {
         ZStack{
@@ -180,12 +182,33 @@ struct zkaqn9Jn: View {
                                                                         vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                                                                         
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=",type: 0)
-                                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                                        hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                                                            WUjfoptOKs8pZfhSAH0duplG {
-                                                                                ME9B8ZCwVQxn()
+                                                                        
+                                                                        NIMManager.shared.login(account: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid"), token: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("imToken")) { success in
+                                                                            if success {
+                                                                                print("云信 IM 登录成功")
+                                                                                // 只初始化一次后续获取会话/发送消息等
+                                                                                _ = IMMessageListener.shared
+                                                                                // 初次拉会话
+                                                                                RecentSessionManager.shared.fetchRecentSessions {
+                                                                                    DispatchQueue.main.async {
+                                                                                        let sessions = RecentSessionManager.shared.cache
+                                                                                        GlobalUnreadStore.shared.update(from: sessions)
+                                                                                        RecentSessionStore.shared.cache = sessions
+                                                                                        
+                                                                                        
+                                                                                    }
+                                                                                }
+                                                                            } else {
+                                                                                print("云信 IM 登录失败")
                                                                             }
                                                                         }
+                                                                        
+                                                                        
+                                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                                                      
+                                                                        
+                                                                        pilot.push(.lsoFZyn41MiKHome)
+                                                                       
                                                                     }
                                                                 } else {
                                                                     EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -200,11 +223,10 @@ struct zkaqn9Jn: View {
                                                     } else {
                                                         // 新用户（nil 或 NSNull 都会进这里）
                                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                        hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                                            WUjfoptOKs8pZfhSAH0duplG {
-                                                                ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                                            }
-                                                        }
+
+                                                        
+                                                        pilot.push(.ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? ""))
+                                                        
                                                     }
                                                 }
                                             } else {
@@ -286,11 +308,8 @@ struct zkaqn9Jn: View {
                                 .foregroundColor(Color(red: 23/255, green: 220/255, blue: 1))
                                 .underline()
                                 .onTapGesture {
-                                    hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
-                                        }
-                                    }
+                           
+                                    pilot.push(.R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu()))
                                 }
                         }
                         HStack(spacing: 0) {
@@ -302,11 +321,9 @@ struct zkaqn9Jn: View {
                                 .foregroundColor(Color(red: 23/255, green: 220/255, blue: 1))
                                 .underline()
                                 .onTapGesture {
-                                    hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
-                                        }
-                                    }
+
+                                    
+                                    pilot.push(.R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu()))
                                 }
                         }
                     }

@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 import NIMSDK
 //通用方法
 
@@ -7,7 +7,7 @@ import NIMSDK
 func openP2PChatScreen(
     userId: String,
     avatarUrl: String,
-    using router: AnyRouter
+    pilot: UIPilot<APPTJuHVkDYORXa>
 ) {
     let session = NIMSession(userId, type: .P2P)
 
@@ -26,9 +26,15 @@ func openP2PChatScreen(
     }
 
     // 4️⃣ 跳转到聊天界面
-    router.showScreen(.fullScreenCover) { _ in
-        WUjfoptOKs8pZfhSAH0duplG {
-            CgZU7mTgY46l(session: session, opponentAvatarURL: avatarUrl)
-        }
-    }
+//    router.showScreen(.fullScreenCover) { _ in
+//        WUjfoptOKs8pZfhSAH0duplG {
+//            CgZU7mTgY46l(session: session, opponentAvatarURL: avatarUrl)
+//        }
+//    }
+    pilot.push(
+        .fDsxyWVT7Chat(
+            sessionId: userId,
+            avatarUrl: avatarUrl
+        )
+    )
 }

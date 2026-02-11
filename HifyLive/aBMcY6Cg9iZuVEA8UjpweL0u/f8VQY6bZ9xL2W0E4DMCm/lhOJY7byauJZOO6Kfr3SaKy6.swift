@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 import PhotosUI
 
 //国家名字
@@ -33,7 +33,7 @@ enum JLHug8N7xnb123ngKc8C {
 //个人信息编辑页面
 struct lhOJY7byauJZOO6Kfr3SaKy6: View {
     
-    @Environment(\.router) var qciToKO5nZO70
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     @StateObject private var fFCUrf3NXxibojTjOBF2N = IyfdHMdY.bTa3L6BoprG
     
@@ -56,7 +56,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
     @State private var fLHDoyZnVjNfsF6: JLHug8N7xnb123ngKc8C = .t42WkstAqbIacYIvoRlzE4YEpY6JiwPx
     @State private var pQ76tb1f1h7CVdkYFz6zZiZOShvPg: UIImage?
     @State private var sJ7lIFbdf = false
-    let updeUsttncmI: ()-> Void
+    
     
     var body: some View {
         ZStack {
@@ -65,8 +65,8 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
             VStack(spacing: 10) {
                 HStack(spacing: 12) {
                     Button{
-                        qciToKO5nZO70.dismissScreen()
-                        updeUsttncmI()
+                        pilot.pop()
+                       
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
@@ -228,13 +228,8 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                     ScrollView(.horizontal,showsIndicators: false) {
                                         LazyHStack(spacing: 12) {
                                             Button {
-                                                qciToKO5nZO70.showScreen(.fullScreenCover){ _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        o95HINW4DpHIAT(updplVCKiB4I: {
-                                                           // asd
-                                                        })
-                                                    }
-                                                }
+                                         
+                                                pilot.push(.o95HINW4DpHIAT)
                                             } label: {
                                                 ZStack(alignment: .center) {
                                                     RoundedRectangle(cornerRadius: 8)

@@ -1,6 +1,6 @@
 import Kingfisher
 import SwiftUI
-import SwiftfulRouting
+
 
 //网络图片封装
 struct rP6kV1bS8qX3nT7<Placeholder: View>: View {
@@ -8,7 +8,9 @@ struct rP6kV1bS8qX3nT7<Placeholder: View>: View {
     let allPics: [String]?          // 所有图片
     let kB1MVUq5MoDAlsqhB: Placeholder
     let V0QmF7P9ZL: Bool?
-    @Environment(\.router) var rM9Z8S7A1ql
+    @State private var isPreviewPresented = false
+    @State private var previewPics: [String] = []
+    @State private var previewStartIndex: Int = 0
     init(
         pR9wQ2mL6hY5dF1: Any?,
         allPics: [String]? = nil,              // 传整个图片数组
@@ -41,21 +43,28 @@ struct rP6kV1bS8qX3nT7<Placeholder: View>: View {
                 guard V0QmF7P9ZL == true else { return }
                
                 
-                rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
+                
                    
                         if let pics = allPics, let index = pics.firstIndex(of: uH3fM5dR1qL8bC0) {
                            
-                                ZQ9FPreviewWrapper(pics: pics, startIndex: index)
-                                    .ignoresSafeArea()
+                            previewPics = pics
+                            previewStartIndex = index
                            
                         } else {
                            
-                                ZQ9FPreviewWrapper(pics: [uH3fM5dR1qL8bC0], startIndex: 0)
-                                    .ignoresSafeArea()
+                                
+                            previewPics = [uH3fM5dR1qL8bC0]
+                            previewStartIndex = 0
                             
                         }
-                   
-                }
+                
+               
+                    isPreviewPresented = true
+              
+               
+            }.fullScreenCover(isPresented: $isPreviewPresented) {
+                ZQ9FPreviewWrapper(pics: previewPics, startIndex: previewStartIndex)
+                    .ignoresSafeArea()
             }
            
     }

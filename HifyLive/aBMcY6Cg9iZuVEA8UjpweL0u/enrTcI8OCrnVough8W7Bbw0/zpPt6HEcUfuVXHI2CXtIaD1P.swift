@@ -1,5 +1,6 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
+
 
 //国家选择页面
 struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
@@ -10,7 +11,7 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
     @State private var filteredCountries: [[String: Any]] = []
     
     @FocusState private var dJ6wwhY5aezAaUY7ATD2: Bool
-    @Environment(\.router) var vlmreWUQbQrsDKFfZtM3Niti
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
 
     var body: some View {
         ZStack {
@@ -21,7 +22,7 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                 // 顶部导航
                 HStack(spacing: 12) {
                     Button {
-                        vlmreWUQbQrsDKFfZtM3Niti.dismissScreen()
+                        pilot.pop()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24, height: 24)
@@ -89,7 +90,7 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                                 CountryRow(item: country, searchText: pbPeJ)
                                     .onTapGesture {
                                         lr7J7X4retLhiZiJuwDo7.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 = country
-                                        vlmreWUQbQrsDKFfZtM3Niti.dismissScreen()
+                                        pilot.pop()
                                     }
                             }
                         }

@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 import Combine
 import PhotosUI
 
@@ -45,7 +45,7 @@ struct ijeWMJnw0: View {
     
     @State private var ryIGseq: [String] = []
     
-    @Environment(\.router) var n2RtsNgz80jUO3jgDqqJqHW2
+    
     
     let kUe9UtFYAvsMtAN1: DateFormatter = {
         let x45LHLkOkocY3VTMb = DateFormatter()
@@ -57,7 +57,7 @@ struct ijeWMJnw0: View {
     @State private var tP74PY69MMmqBz0UYBxC: PhotosPickerItem? = nil
     @State private var eVfd5ZmOSZbemBIh: UIImage?
     
-    
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
 
     
     @StateObject private var b311AqIo0GvW8L8UXU3M1y = EfqJ9.hlLgQUr6MegOX6Bv
@@ -74,7 +74,7 @@ struct ijeWMJnw0: View {
             VStack(spacing: 24) {
                 HStack(spacing: 12) {
                     Button{
-                        n2RtsNgz80jUO3jgDqqJqHW2.dismissScreen()
+                        pilot.pop()
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
@@ -337,11 +337,9 @@ struct ijeWMJnw0: View {
                                     }
                                     Button{
                                         gjQ0haTFS7I7wobKnyS = false
-                                        n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
-                                            WUjfoptOKs8pZfhSAH0duplG {
-                                                zpPt6HEcUfuVXHI2CXtIaD1P()
-                                            }
-                                        }
+                              
+                                        pilot.push(.zpPt6HEcUfuVXHI2CXtIaD1P)
+                                        
                                     } label: {
                                         RoundedRectangle(cornerRadius: 24)
                                             .fill(Color(red: 34/255, green: 34/255, blue: 38/255))
@@ -493,11 +491,9 @@ struct ijeWMJnw0: View {
                                                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                                                 
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("O+768P8m4+RBzx9Wfs59VxDj5rLB58mh8yswpq0JtVY=",type: 0)
-                                                n2RtsNgz80jUO3jgDqqJqHW2.showScreen(.fullScreenCover){ _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        ME9B8ZCwVQxn()
-                                                    }
-                                                }
+                                     
+                                                
+                                                pilot.push(.lsoFZyn41MiKHome)
                                             }
                                         } else {
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()

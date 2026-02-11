@@ -1,10 +1,11 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
+
 
 //about me 页面
 struct yDO7bVocx9JH0msGgIyRUs6e: View {
     
-    @Environment(\.router) var aks3LmV9p5dZuUntacOaleWfgeyd7s
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     var body: some View {
         ZStack {
@@ -14,7 +15,7 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                         .frame(width: 24,height: 24)
                         .onTapGesture {
-                            aks3LmV9p5dZuUntacOaleWfgeyd7s.dismissScreen()
+                            pilot.pop()
                         }
                     Text("k8e57l1EWt3riG/LDFHXfA==".bFHEatcgE4zzU9TCfDonsu())
                         .g0LIIcoZQsOjyND9(
@@ -38,11 +39,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                           
-                                R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu())
-                            
-                        }
+                    
+                        
+                        pilot.push(.R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xEwavMJ46oeOYnRRZ7o2dxIrFsohu7RpgADAIjnU3PwA7".bFHEatcgE4zzU9TCfDonsu()))
                     }
                     HStack(spacing: 0) {
                         Text("Terms of Service")
@@ -56,11 +55,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            
-                                R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu())
-                           
-                        }
+                      
+                        
+                        pilot.push(.R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: "fUNf8DP2p07ad1dMO78xE4HfmeOOggfY3vBbW3W/mQ8=".bFHEatcgE4zzU9TCfDonsu()))
                     }
                     HStack(spacing: 0) {
                         Text("Delete Account")
@@ -74,11 +71,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                js9GbCBiFR825bdWb7p7kVVWaBoE()
-                            }
-                        }
+                       
+                        
+                        pilot.push(.js9GbCBiFR825bdWb7p7kVVWaBoE)
                     }
                     HStack(spacing: 0) {
                         Text("Wallet")
@@ -93,11 +88,9 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                       
-                        aks3LmV9p5dZuUntacOaleWfgeyd7s.showScreen(.fullScreenCover){ _ in
-                            WUjfoptOKs8pZfhSAH0duplG {
-                                Afmox09Q1UKVfE()
-                            }
-                        }
+                      
+                        
+                        pilot.push(.Afmox09Q1UKVfE)
                     }
 
                    

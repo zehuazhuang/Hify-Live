@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B95FBD743D97394757E07E2 /* Pods_HifyLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC313510D382A2ACBC1DF4B /* Pods_HifyLive.framework */; };
 		DD0E53D22F1749120060F729 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = DD0E53D12F1749120060F729 /* Gzip */; };
+		DD0FEA592F3C7D51008C96C6 /* UIPilot in Frameworks */ = {isa = PBXBuildFile; productRef = DD0FEA582F3C7D51008C96C6 /* UIPilot */; };
 		DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */; };
 		DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */; };
 		DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C4362F15E61600365091 /* SwiftfulRouting */; };
@@ -52,6 +53,7 @@
 				DD0E53D22F1749120060F729 /* Gzip in Frameworks */,
 				DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */,
 				DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */,
+				DD0FEA592F3C7D51008C96C6 /* UIPilot in Frameworks */,
 				DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */,
 				9B95FBD743D97394757E07E2 /* Pods_HifyLive.framework in Frameworks */,
 			);
@@ -123,6 +125,7 @@
 				DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */,
 				DDE0C5CA2F15F64A00365091 /* Kingfisher */,
 				DD0E53D12F1749120060F729 /* Gzip */,
+				DD0FEA582F3C7D51008C96C6 /* UIPilot */,
 			);
 			productName = HifyLive;
 			productReference = DDECD4CD2F148B820016E861 /* Eivo.app */;
@@ -157,6 +160,7 @@
 				DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */,
+				DD0FEA572F3C7D51008C96C6 /* XCRemoteSwiftPackageReference "UIPilot" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDECD4CE2F148B820016E861 /* Products */;
@@ -385,7 +389,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6NUFR97X3A;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -426,7 +430,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6NUFR97X3A;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -491,6 +495,14 @@
 				minimumVersion = 6.1.0;
 			};
 		};
+		DD0FEA572F3C7D51008C96C6 /* XCRemoteSwiftPackageReference "UIPilot" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/canopas/UIPilot";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 		DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -522,6 +534,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */;
 			productName = Gzip;
+		};
+		DD0FEA582F3C7D51008C96C6 /* UIPilot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD0FEA572F3C7D51008C96C6 /* XCRemoteSwiftPackageReference "UIPilot" */;
+			productName = UIPilot;
 		};
 		DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

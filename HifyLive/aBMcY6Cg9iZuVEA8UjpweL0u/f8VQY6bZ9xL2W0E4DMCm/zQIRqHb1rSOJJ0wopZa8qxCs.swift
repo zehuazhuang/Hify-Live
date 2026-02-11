@@ -1,14 +1,12 @@
 import SwiftUI
+import UIPilot
 import Photos
 import Combine
-import SwiftfulRouting
 
 //个人、他人详情页面
 struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     //背景图index
     @State private var fQAcgipdIEvxLs5OpaG0: Int = 0
-    
-    @Environment(\.router) var ftgPSmzMVe
     let areoloaUid : Int
     @State private var usQ8Y7Z6Inf: [String: Any] = [:] //用户数据
    // @StateObject private var m1nKfP0PAkzYaDvH15D4fsshmC = IyfdHMdY.bTa3L6BoprG
@@ -27,8 +25,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     var  isFvNNQZQ : Bool {
         return  usQ8Y7Z6Inf.bool("followed")
     }
-    let bMy5EIRIIback :()-> Void
-   
+  
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     var body: some View {
         ZStack {
@@ -91,13 +89,9 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     HStack(spacing: 6){
                                                         if !istYGRYN4Q {
                                                             Button{
-                                                                ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                                        o95HINW4DpHIAT(updplVCKiB4I: {
-                                                                            pstjumLoad()
-                                                                        })
-                                                                    }
-                                                                }
+                                                               
+                                                                
+                                                                pilot.push(.o95HINW4DpHIAT)
                                                             } label: {
                                                                 RoundedRectangle(cornerRadius: 10)
                                                                     .fill(Color.white.opacity(0.32))
@@ -141,13 +135,10 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         }
                                         if !istYGRYN4Q {
                                             Button{
-                                                ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                    WUjfoptOKs8pZfhSAH0duplG {
-                                                        lhOJY7byauJZOO6Kfr3SaKy6(updeUsttncmI: {
-                                                            pstjumLoad()
-                                                        })
-                                                    }
-                                                }
+                                           
+                                                pilot.push(.lhOJY7byauJZOO6Kfr3SaKy6)
+                                                
+                                                
                                             } label: {
                                                 RoundedRectangle(cornerRadius: 325)
                                                     .stroke(Color.white.opacity(0.4), lineWidth: 1)
@@ -235,11 +226,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     )
                                             }.onTapGesture{
                                                 if !istYGRYN4Q{
-                                                    ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                        WUjfoptOKs8pZfhSAH0duplG {
-                                                            kaBpQbGjZ(c8WYppF6mHU: 3, )
-                                                        }
-                                                    }
+                                                  
+                                                    pilot.push(.kaBpQbGjZ(c8WYppF6mHU: 3))
                                                 }
                                             }
                                         
@@ -256,11 +244,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     )
                                             }.onTapGesture {
                                                 if !istYGRYN4Q{
-                                                    ftgPSmzMVe.showScreen(.fullScreenCover){ _ in
-                                                        WUjfoptOKs8pZfhSAH0duplG {
-                                                            kaBpQbGjZ(c8WYppF6mHU: 2, )
-                                                        }
-                                                    }
+                                                    pilot.push(.kaBpQbGjZ(c8WYppF6mHU: 2))
                                                 }
                                            
                                             }
@@ -338,26 +322,37 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }.frame(height: 95)
                                                 .frame(maxWidth: .infinity)
                                                 .onTapGesture {
-                                                    print("类型")
-                                                   print(LiveSessionManager.shared.znWne5LXPType)
-                                                   
+                                                    print("1")
+                                                    print(LiveSessionManager.shared.currentChannelUserId == areoloaUid)
                                                     if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
-                                                        ftgPSmzMVe.dismissScreen()
-                                                        if(LiveSessionManager.shared.znWne5LXPType == 2){
-                                                            //上一层也返回
-                                                            bMy5EIRIIback()
-                                                        }
+
+
+                                                        pilot.popTo(
+                                                            .zhwyzs0gELive(localUid:UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid:UInt(areoloaUid))
+                                                        )
                                                         return
                                                     }
                                                     
+                                               
+//                                                    print("类型")
+//                                                   print(LiveSessionManager.shared.znWne5LXPType)
+//                                                   
+//                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
+//                                                        ftgPSmzMVe.dismissScreen()
+//                                                        if(LiveSessionManager.shared.znWne5LXPType == 2){
+//                                                            //上一层也返回
+//                                                            bMy5EIRIIback()
+//                                                        }
+//                                                        return
+//                                                    }
+                                                    
                                       
                                                     
-                                                    ftgPSmzMVe.showScreen(.fullScreenCover) { _ in
-                                                        WUjfoptOKs8pZfhSAH0duplG {
-                                                            LE0xQZ6Y7WC8iv(channelName: "", localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
-                                                                           zA9Y4W6LUid: UInt(areoloaUid))
-                                                        }
-                                                    }
+                                                 
+                                                    
+                                                    pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(areoloaUid)))
+                                                    
+                                                    
                                                 }
                                         }.padding(.horizontal,16)
                                     }
@@ -372,8 +367,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             VStack{
                 HStack(spacing: 0) {
                     Button{
-                     
-                        ftgPSmzMVe.dismissScreen()
+                        pilot.pop()
+                        
                     } label: {
                         ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                             .frame(width: 24,height: 24)
@@ -478,12 +473,10 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                .offset(y: -28)
                         }.frame(width: 242, height: 46)
                             .onTapGesture {
-                                if LiveSessionManager.shared.znWne5LXPType == 2 {
-                                    ftgPSmzMVe.dismissScreen()
-                                    LiveSessionManager.shared.znWne5LXPType = 1
-                                    return
-                                }
-                                openP2PChatScreen(userId: usQ8Y7Z6Inf.string("yxAccid"), avatarUrl: usQ8Y7Z6Inf.string("icon"), using: ftgPSmzMVe)
+                               
+//                                openP2PChatScreen(userId: usQ8Y7Z6Inf.string("yxAccid"), avatarUrl: usQ8Y7Z6Inf.string("icon"), using: ftgPSmzMVe)
+                                
+                                
                             }
                     }.padding(.horizontal,16)
                 }

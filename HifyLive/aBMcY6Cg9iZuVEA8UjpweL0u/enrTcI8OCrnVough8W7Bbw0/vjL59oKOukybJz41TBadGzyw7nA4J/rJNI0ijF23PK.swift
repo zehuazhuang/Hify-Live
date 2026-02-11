@@ -2,7 +2,7 @@ import GoogleSignIn
 import UIKit
 
 //Google登录配置
-struct RbqBb46vxbGKGmsnZWA1R9Vx3M {
+struct RbqBb46vxbGKGmsnZWA1R9Vx3M:Equatable {
     let c5O9meXEy5dOelOBZ3QpElqG: String      // google / apple / facebook
     let qG9OYdC: String       //userid
     let tjtC42pBBkamD3FpPFfVWz: String?     //niackname

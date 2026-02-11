@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftfulRouting
+import UIPilot
 
 //国旗UI
 struct CountryFlagView: View {
@@ -26,7 +26,7 @@ struct CountryFlagView: View {
 //个人首页
 struct C8Z2x4M6YV9m: View {
     
-    @Environment(\.router) var f3gXkYHZIUAUWNv5SX2nZKCo
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     //通知
@@ -44,11 +44,9 @@ struct C8Z2x4M6YV9m: View {
                         VStack(spacing: 12) {
                             HStack(spacing: 16) {
                                 Button{
-                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"), bMy5EIRIIback: {})
-                                        }
-                                    }
+                              
+                                    
+                                    pilot.push(.itHCfaKsRUser(areoloaUid: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")))
                                 } label: {
                                     Circle()
                                         .fill(Color.white.opacity(0.2))
@@ -108,11 +106,8 @@ struct C8Z2x4M6YV9m: View {
                             }
                             HStack(spacing: 128) {
                                 Button{
-                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            kaBpQbGjZ(c8WYppF6mHU: 3)
-                                        }
-                                    }
+                                    
+                                    pilot.push(.kaBpQbGjZ(c8WYppF6mHU: 3))
                                 } label: {
                                     VStack(spacing: 4) {
                                         Text(String(qVi2QJ0SeDluhZ9xoQ8V7.n1G8RlzpcQK.count))
@@ -127,11 +122,7 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                 }
                                 Button{
-                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            kaBpQbGjZ(c8WYppF6mHU: 2, )
-                                        }
-                                    }
+                                    pilot.push(.kaBpQbGjZ(c8WYppF6mHU: 2))
                                 } label: {
                                     VStack(spacing: 4) {
                                         Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iF2ouR0gHFDSr3GJ.count))
@@ -195,11 +186,8 @@ struct C8Z2x4M6YV9m: View {
                             //vip  end
                             VStack(spacing: 0) {
                                 Button{
-                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            bfoXTzIM4dlkv07MZv45zoMZVs23()
-                                        }
-                                    }
+                                   
+                                    pilot.push(.bfoXTzIM4dlkv07MZv45zoMZVs23)
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {
@@ -318,11 +306,8 @@ struct C8Z2x4M6YV9m: View {
                                     .contentShape(Rectangle())
                                 }
                                 Button{
-                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            yDO7bVocx9JH0msGgIyRUs6e()
-                                        }
-                                    }
+                                 
+                                    pilot.push(.yDO7bVocx9JH0msGgIyRUs6e)
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {
@@ -340,11 +325,8 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
                                 Button{
-                                    f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover) { _ in
-                                        WUjfoptOKs8pZfhSAH0duplG {
-                                            ASkYEgFvkJ3xKj()
-                                        }
-                                    }
+                                 
+                                    pilot.push(.ASkYEgFvkJ3xKj)
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {
@@ -389,11 +371,11 @@ struct C8Z2x4M6YV9m: View {
                         deZMvhJctiSoCj78YDk = false
                         if lXBkygXXlhgeh963y8DmW == 1 {
                             ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw()
-                            f3gXkYHZIUAUWNv5SX2nZKCo.showScreen(.fullScreenCover){ _ in
-                                WUjfoptOKs8pZfhSAH0duplG {
-                                    zkaqn9Jn()
-                                }
-                            }
+                            
+                            NIMManager.shared.y59Dm7CdcqOut()
+                            
+                        
+                            pilot.push(.ms90KqZqLog)
                         }
                     }
                 }
