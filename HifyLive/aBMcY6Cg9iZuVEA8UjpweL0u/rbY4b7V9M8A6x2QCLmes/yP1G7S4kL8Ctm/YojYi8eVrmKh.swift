@@ -73,7 +73,6 @@ class RecentSessionManager: ObservableObject {
         let accid = session.sessionId
         let type = session.sessionType
         
-      
 
         let lastMessageText: String
 

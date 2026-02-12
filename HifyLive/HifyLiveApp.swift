@@ -77,35 +77,35 @@ struct HifyLiveApp: App {
                                ).navigationBarHidden(true)
                                
                            case let .ijeWMJnw0(hIUsWqIEhUq3,nw1qv):
-                               ijeWMJnw0(hIUsWqIEhUq3: hIUsWqIEhUq3, nw1qv: nw1qv)
+                               ijeWMJnw0(hIUsWqIEhUq3: hIUsWqIEhUq3, nw1qv: nw1qv).navigationBarHidden(true)
                            case let .R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg):
-                               R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: irJBAop3c1cEIKUf3jOsmjxJfVg)
+                               R4IDIKA6NUAIJGfAL9RJRoayyWWGY1k3(irJBAop3c1cEIKUf3jOsmjxJfVg: irJBAop3c1cEIKUf3jOsmjxJfVg).navigationBarHidden(true)
                            case .zpPt6HEcUfuVXHI2CXtIaD1P:
-                               zpPt6HEcUfuVXHI2CXtIaD1P()
+                               zpPt6HEcUfuVXHI2CXtIaD1P().navigationBarHidden(true)
                            case .UI42a1QDtyK8gG:
-                               UI42a1QDtyK8gG()
+                               UI42a1QDtyK8gG().navigationBarHidden(true)
                            case let .UZ8hTFSeCcwrAy(yffmn1UtOF):
-                               UZ8hTFSeCcwrAy(yffmn1UtOF: yffmn1UtOF)
+                               UZ8hTFSeCcwrAy(yffmn1UtOF: yffmn1UtOF).navigationBarHidden(true)
                            case .Afmox09Q1UKVfE:
-                               Afmox09Q1UKVfE()
+                               Afmox09Q1UKVfE().navigationBarHidden(true)
                            case let .kaBpQbGjZ(c8WYppF6mHU):
                                kaBpQbGjZ(c8WYppF6mHU: c8WYppF6mHU)
                            case .bfoXTzIM4dlkv07MZv45zoMZVs23:
-                               bfoXTzIM4dlkv07MZv45zoMZVs23()
+                               bfoXTzIM4dlkv07MZv45zoMZVs23().navigationBarHidden(true)
                            case .yDO7bVocx9JH0msGgIyRUs6e:
-                               yDO7bVocx9JH0msGgIyRUs6e()
+                               yDO7bVocx9JH0msGgIyRUs6e().navigationBarHidden(true)
                            case .ASkYEgFvkJ3xKj:
-                               ASkYEgFvkJ3xKj()
+                               ASkYEgFvkJ3xKj().navigationBarHidden(true)
                            case .o95HINW4DpHIAT:
-                               o95HINW4DpHIAT()
+                               o95HINW4DpHIAT().navigationBarHidden(true)
                            case .js9GbCBiFR825bdWb7p7kVVWaBoE:
-                               js9GbCBiFR825bdWb7p7kVVWaBoE()
+                               js9GbCBiFR825bdWb7p7kVVWaBoE().navigationBarHidden(true)
                            case .lhOJY7byauJZOO6Kfr3SaKy6:
-                               lhOJY7byauJZOO6Kfr3SaKy6()
+                               lhOJY7byauJZOO6Kfr3SaKy6().navigationBarHidden(true)
                            case let .CgZU7mTgY46l(session,opponentAvatarURL):
-                               CgZU7mTgY46l(session: session, opponentAvatarURL: opponentAvatarURL)
+                               CgZU7mTgY46l(session: session, opponentAvatarURL: opponentAvatarURL).navigationBarHidden(true)
                            case .QsS1CqA9M8tL2fs:
-                               QsS1CqA9M8tL2fs()
+                               QsS1CqA9M8tL2fs().navigationBarHidden(true)
                            case let .ZQ9FPreviewWrapper(pics, startIndex):
                                ZQ9FPreviewWrapper(pics: pics,startIndex: startIndex)
                                    .ignoresSafeArea()

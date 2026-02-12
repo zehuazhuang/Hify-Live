@@ -158,6 +158,7 @@ class LiveViewController: UIViewController {
         }
     }
     
+    
     deinit {
         LiveSessionManager.shared.currentChannelUserId = 0
        
@@ -167,7 +168,7 @@ class LiveViewController: UIViewController {
 
 extension LiveViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
-        
+        print("🔹 didJoinedOfUid uid:", uid)
        
         
         let canvas = AgoraRtcVideoCanvas()
