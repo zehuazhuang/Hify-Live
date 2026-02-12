@@ -148,7 +148,7 @@ struct E2VxD0iC4bYyh: View {
                                     }
                                 }
                             }
-                        }
+                        }.padding(.bottom,96)
                         SmoothPullToRefresh(
                                pullOffset: $pullOffset,
                                isRefreshing: $isRefreshing

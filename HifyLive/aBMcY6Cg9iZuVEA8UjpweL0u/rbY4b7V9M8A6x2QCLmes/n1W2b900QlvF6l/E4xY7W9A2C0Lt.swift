@@ -34,6 +34,9 @@ final class ChatProfileHeaderView: UIView {
     private var currentNickname: String = ""
     
     var onAvatarTap: ((Int) -> Void)?
+    
+    /// 图片点击：[全部图片, 当前 index]
+    var onImageTap: (([String], Int) -> Void)?
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -382,12 +385,11 @@ extension ChatProfileHeaderView: UICollectionViewDataSource {
         cell.update(url: url)
 
         cell.onTap = { [weak self] imageURL in
-            guard let self = self,
-                  let topVC = UIApplication.topViewController(),
-                  let startIndex = self.pics.firstIndex(of: imageURL) else { return }
+            guard let self,
+                  let index = self.pics.firstIndex(of: imageURL)
+            else { return }
 
-            let previewVC = ImagePreviewScrollViewController(pics: self.pics, startIndex: startIndex)
-            topVC.present(previewVC, animated: true)
+            self.onImageTap?(self.pics, index)
         }
 
         return cell

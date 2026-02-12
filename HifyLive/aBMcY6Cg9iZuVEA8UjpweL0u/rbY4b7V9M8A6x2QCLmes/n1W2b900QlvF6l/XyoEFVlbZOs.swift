@@ -112,15 +112,23 @@ class ChatMessage: Identifiable, ObservableObject {
         func loadHistory() {
             let msgs = NIMSDK.shared()
                 .conversationManager
-                .messages(in: session, message: nil, limit: 50) ?? []
+                .messages(in: session, message: nil, limit: 1000) ?? []
+           
             
             var lastTimestamp: TimeInterval = 0
             var result: [ChatMessage] = []
             
             for msg in msgs {
+                print("消息类型")
+                print(msg)
                 let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
                 
                 let chatMsg: ChatMessage?
+                
+                // 🔹 发送状态只有两种
+                        let sendStatus: SendStatus = (msg.isOutgoingMsg && msg.isBlackListed)
+                            ? .failed(reason: .wTiahblock)
+                            : .success
                 
                 if let text = msg.text {
                     chatMsg = ChatMessage(
@@ -128,7 +136,8 @@ class ChatMessage: Identifiable, ObservableObject {
                         content: .text(text),
                         isOutgoingMsg: msg.isOutgoingMsg,
                         timestamp: msg.timestamp,
-                        avatarURL: avatar
+                        avatarURL: avatar,
+                        sendStatus: sendStatus
                     )
                 } else if let imageObject = msg.messageObject as? NIMImageObject {
                     let size = CGSize(
@@ -146,7 +155,8 @@ class ChatMessage: Identifiable, ObservableObject {
                         ),
                         isOutgoingMsg: msg.isOutgoingMsg,
                         timestamp: msg.timestamp,
-                        avatarURL: avatar
+                        avatarURL: avatar,
+                        sendStatus: sendStatus
                     )
                 } else {
                     chatMsg = nil
@@ -210,17 +220,12 @@ class ChatMessage: Identifiable, ObservableObject {
             self.messages.append(chatMsg) // ✅ 先 append，显示转圈
             self.updateRecentSession(chatMsg)
             
-            // 🚫 被拉黑：只记录本地，不发云信
-              if qAiRzAlJType == 1 {
-
-                  self.inputText = ""
-                  return
-              }
+            
             
             // 发送消息
             NIMSDK.shared().chatManager.send(message, to: session) { [weak self] error in
                 guard let self = self else { return }
-
+             
                 Task { @MainActor in
                   
                     
@@ -240,7 +245,7 @@ class ChatMessage: Identifiable, ObservableObject {
 
                     // ✅ 更新发送状态
                     if let index = self.messages.firstIndex(where: { $0.messageId == message.messageId }) {
-                        self.messages[index].sendStatus = status
+                        self.messages[index].sendStatus = qAiRzAlJType == 0 ? .success : .failed(reason: .wTiahblock)
                     }
 
                     if status == .success {
@@ -248,8 +253,6 @@ class ChatMessage: Identifiable, ObservableObject {
                     }
                 }
             }
-            
-      
         }
         
         func sendImage(_ image: UIImage,qAiRzAlJType: Int) {
@@ -275,11 +278,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 self.updateRecentSession(placeholderMsg)
             }
             
-            // 🚫 被拉黑：只记录本地，不发云信
-              if qAiRzAlJType == 1 {
-                  
-                  return
-              }
+   
 
             // 上传 + 鉴黄 + 发送消息
             Task {
@@ -304,7 +303,7 @@ class ChatMessage: Identifiable, ObservableObject {
                     do {
                         try await NIMSDK.shared().chatManager.send(message, to: session)
                         Task { @MainActor in
-                            placeholderMsg.sendStatus = .success
+                            placeholderMsg.sendStatus = qAiRzAlJType == 0 ? .success : .failed(reason: .wTiahblock)
                         }
                     } catch {
                         Task { @MainActor in

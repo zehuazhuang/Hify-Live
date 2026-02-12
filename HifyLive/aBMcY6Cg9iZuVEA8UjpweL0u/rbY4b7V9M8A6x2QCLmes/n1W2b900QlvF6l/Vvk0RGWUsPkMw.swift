@@ -1,5 +1,5 @@
 
-
+//本地聊天缓存
 import RealmSwift
 
 class DBChatMessage: Object {

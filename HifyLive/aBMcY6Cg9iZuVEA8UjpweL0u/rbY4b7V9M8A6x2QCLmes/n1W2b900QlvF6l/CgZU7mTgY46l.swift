@@ -56,7 +56,7 @@ struct CgZU7mTgY46l: View {
                         // 左侧关闭按钮
                         Button {
                             RecentSessionStore.shared.markSessionRead(sessionId: session.sessionId)
-                            LiveSessionManager.shared.znWne5LXPType = 0
+                           
                         
                             pilot.pop()
                         } label: {
@@ -94,12 +94,15 @@ struct CgZU7mTgY46l: View {
                     
                     // 消息列表
                     ChatTableView(opponentInfo: opponentInfo, vm: vm, keyboardHeight: keyboard.keyboardHeight, onAvatarTap: { uid in
+
+                        if LiveSessionManager.shared.aHUdhiChZEUid == uid {
+                            pilot.popTo(
+                                .itHCfaKsRUser(areoloaUid: uid)
+                            )
+                        }else{
+                            pilot.push(.itHCfaKsRUser(areoloaUid: uid))
+                        }
                         
-                        LiveSessionManager.shared.znWne5LXPType = 2
-                     
-                        
-                        
-                        pilot.push(.itHCfaKsRUser(areoloaUid: uid))
                     })
                         
                         .padding(.horizontal,10)
@@ -200,14 +203,16 @@ struct CgZU7mTgY46l: View {
                                )
                     
                     opponentInfo = info
-                    print("用户信息")
-                    print(opponentInfo)
+                 
                     
                     iLIIszM4zwx = opponentInfo.int("beBlocked")
                     
+                    if(iLIIszM4zwx == 0){
+                        iLIIszM4zwx = opponentInfo.int("blocked")
+                    }
+                    
                    
-                    print("是否")
-                    print(iLIIszM4zwx)
+                  
                     
                 }
             }.onTapGesture {

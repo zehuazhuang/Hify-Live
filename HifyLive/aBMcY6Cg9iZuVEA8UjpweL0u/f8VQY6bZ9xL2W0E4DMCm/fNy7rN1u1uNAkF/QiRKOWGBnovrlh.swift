@@ -1,7 +1,7 @@
 //举报弹框
 import SwiftUI
 import UIPilot
-
+import NIMSDK
 struct QiRKOWGBnovrlh: View {
     @Binding var ish1z8TllyFvb: Bool
     @State private var isZ7E4xA0M2 = false
@@ -62,7 +62,6 @@ struct QiRKOWGBnovrlh: View {
                             Task{
                                 let kQcXuK4siS =  await TPb21z0U.eDNcFBMyyi.hxEXXV2aWMNka7HM2qhr1Qccen3rB(iN2NID: ihQ5ReMsh3Uid, lCOFD: ihysbsdRVA)
                                
-                                
                                 if(kQcXuK4siS){
                                     ish1z8TllyFvb = false
                                     uZIHcG0Vju0 = 0
@@ -147,8 +146,11 @@ struct QiRKOWGBnovrlh: View {
             if isy9YH69iABl {
                 E7c8MeV4vdeZfD(d9CzURL: wksgt0dUrl, fmlh3nname: szHHWP8Name, ishtTvNH4y: $isy9YH69iABl, onBlock: {
                     Task{
-                        let ishlfBPM1m =   await TPb21z0U.eDNcFBMyyi.ngIp5pudxny8o0Mdsqv(fnLUzabLaul9Cx: ihQ5ReMsh3Uid, mwNKAPngt: "")
+                        let ishlfBPM1m =   await TPb21z0U.eDNcFBMyyi.ngIp5pudxny8o0Mdsqv(fnLUzabLaul9Cx: ihQ5ReMsh3Uid, mwNKAPngt: ihysbsdRVA)
                         
+                        
+                       
+                       
                         if(ishlfBPM1m){
                             uZIHcG0Vju0 = 1
                             ish1z8TllyFvb = false

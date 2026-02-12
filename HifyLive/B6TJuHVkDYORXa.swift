@@ -13,11 +13,11 @@ enum APPTJuHVkDYORXa: Equatable {
             localUid: UInt,
             zA9Y4W6LUid: UInt
         )
-    //私聊页
-    case fDsxyWVT7Chat(
-            sessionId: String,
-            avatarUrl: String
-        )
+//    //私聊页
+//    case fDsxyWVT7Chat(
+//            sessionId: String,
+//            avatarUrl: String
+//        )
     //他人主页
     case itHCfaKsRUser(areoloaUid: Int)
     //注册页
@@ -55,5 +55,7 @@ enum APPTJuHVkDYORXa: Equatable {
     case CgZU7mTgY46l(session: NIMSession,opponentAvatarURL:String)
     //搜索页
     case QsS1CqA9M8tL2fs
+    //图片放大
+    case ZQ9FPreviewWrapper(pics: [String],startIndex: Int)
 }
 

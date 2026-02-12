@@ -25,8 +25,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     var  isFvNNQZQ : Bool {
         return  usQ8Y7Z6Inf.bool("followed")
     }
+    
+    @State private var kP0G6KEO0 = false //是否第一次加载
   
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
+    
     
     var body: some View {
         ZStack {
@@ -42,7 +45,6 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .overlay {
                                         if usQ8Y7Z6Inf.isEmpty {
                                             ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                                
                                         } else {
                                             if let picList = usQ8Y7Z6Inf["picList"] as? [[String: Any]] {
                                                 TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
@@ -89,8 +91,6 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     HStack(spacing: 6){
                                                         if !istYGRYN4Q {
                                                             Button{
-                                                               
-                                                                
                                                                 pilot.push(.o95HINW4DpHIAT)
                                                             } label: {
                                                                 RoundedRectangle(cornerRadius: 10)
@@ -322,8 +322,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }.frame(height: 95)
                                                 .frame(maxWidth: .infinity)
                                                 .onTapGesture {
-                                                    print("1")
-                                                    print(LiveSessionManager.shared.currentChannelUserId == areoloaUid)
+
                                                     if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
 
 
@@ -334,17 +333,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                     }
                                                     
                                                
-//                                                    print("类型")
-//                                                   print(LiveSessionManager.shared.znWne5LXPType)
-//                                                   
-//                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
-//                                                        ftgPSmzMVe.dismissScreen()
-//                                                        if(LiveSessionManager.shared.znWne5LXPType == 2){
-//                                                            //上一层也返回
-//                                                            bMy5EIRIIback()
-//                                                        }
-//                                                        return
-//                                                    }
+
                                                     
                                       
                                                     
@@ -473,9 +462,15 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                .offset(y: -28)
                         }.frame(width: 242, height: 46)
                             .onTapGesture {
-                               
-//                                openP2PChatScreen(userId: usQ8Y7Z6Inf.string("yxAccid"), avatarUrl: usQ8Y7Z6Inf.string("icon"), using: ftgPSmzMVe)
                                 
+                               
+                               
+                            
+                                openP2PChatScreen(
+                                           userId: usQ8Y7Z6Inf.string("yxAccid"),
+                                           avatarUrl: usQ8Y7Z6Inf.string("icon"),
+                                           pilot: pilot
+                                       )
                                 
                             }
                     }.padding(.horizontal,16)
@@ -491,21 +486,14 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             
         }
         
-        // 全屏显示被点击的图片
-//        .fullScreenCover(isPresented: Binding(
-//            get: { pVzCUaYBcF5CZ1 != nil },
-//            set: { if !$0 { pVzCUaYBcF5CZ1 = nil } }
-//        )) {
-//            if let nolocnCeMJw14L = pVzCUaYBcF5CZ1 {
-//                rfVAcKuWDyI1Ig3cm2bMxplImn70D(eOzSTDS: nolocnCeMJw14L) {
-//                    pVzCUaYBcF5CZ1 = nil
-//                }
-//            }
-//        }
+
         .onAppear{
-            
             Task {
-                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                if (!kP0G6KEO0){
+                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                    kP0G6KEO0 = true
+                }
+                
                 istYGRYN4Q =  areoloaUid != IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")
                 async let room = lyrijivecSearch(surlibateUid: areoloaUid)
                     
@@ -519,11 +507,11 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                         print(error)
                     }
-
+                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                 
+                
+               
             }
-            
-          
         }
     }
     func pstjumLoad(){

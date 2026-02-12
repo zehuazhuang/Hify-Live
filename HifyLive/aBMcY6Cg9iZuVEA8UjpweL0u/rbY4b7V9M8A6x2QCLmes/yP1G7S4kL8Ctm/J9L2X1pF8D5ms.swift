@@ -118,7 +118,7 @@ struct J9L2X1pF8D5ms: View {
                                 }
                     }
                     }
-            }
+            }.padding(.bottom,96)
         }.simultaneousGesture(
             DragGesture(minimumDistance: 5)
                 .onChanged { value in

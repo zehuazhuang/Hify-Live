@@ -2,6 +2,7 @@ import SwiftUI
 import UIPilot
 import GoogleSignIn
 import UIPilot
+import NIMSDK
 
 //判断是否老用户接口参数配置
 struct yhXTx88AnQlgWnTKSQDWeXg: Codable {
@@ -183,25 +184,9 @@ struct zkaqn9Jn: View {
                                                                         
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=",type: 0)
                                                                         
-                                                                        NIMManager.shared.login(account: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid"), token: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("imToken")) { success in
-                                                                            if success {
-                                                                                print("云信 IM 登录成功")
-                                                                                // 只初始化一次后续获取会话/发送消息等
-                                                                                _ = IMMessageListener.shared
-                                                                                // 初次拉会话
-                                                                                RecentSessionManager.shared.fetchRecentSessions {
-                                                                                    DispatchQueue.main.async {
-                                                                                        let sessions = RecentSessionManager.shared.cache
-                                                                                        GlobalUnreadStore.shared.update(from: sessions)
-                                                                                        RecentSessionStore.shared.cache = sessions
-                                                                                        
-                                                                                        
-                                                                                    }
-                                                                                }
-                                                                            } else {
-                                                                                print("云信 IM 登录失败")
-                                                                            }
-                                                                        }
+                                                                      
+                                                                        //初始化云信
+                                                                        IdVwDkHotdjRqB()
                                                                         
                                                                         
                                                                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()

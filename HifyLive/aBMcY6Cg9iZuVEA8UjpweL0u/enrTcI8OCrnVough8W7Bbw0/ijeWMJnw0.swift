@@ -2,6 +2,7 @@ import SwiftUI
 import UIPilot
 import Combine
 import PhotosUI
+import NIMSDK
 
 class Y4x7FkE3Q18iArhSXlC4Q5Z9: ObservableObject {
     static let rGZrJ0Qgm4 = Y4x7FkE3Q18iArhSXlC4Q5Z9()
@@ -491,6 +492,11 @@ struct ijeWMJnw0: View {
                                                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                                                 
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("O+768P8m4+RBzx9Wfs59VxDj5rLB58mh8yswpq0JtVY=",type: 0)
+                                                
+                                               
+                                                //初始化云信
+                                                IdVwDkHotdjRqB()
+                                                
                                      
                                                 
                                                 pilot.push(.lsoFZyn41MiKHome)

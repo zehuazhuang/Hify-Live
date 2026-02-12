@@ -84,7 +84,6 @@ struct VH5N3B7tQ6fri: View {
                                         pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl))
                                         
                                     }
-                                    
                                 )
                             } onDelete: {
                                 withAnimation {
@@ -92,7 +91,7 @@ struct VH5N3B7tQ6fri: View {
                                 }
                             }
                         }
-                    }
+                    }.padding(.bottom,96)
                 }.simultaneousGesture(
                     DragGesture(minimumDistance: 5)
                         .onChanged { value in

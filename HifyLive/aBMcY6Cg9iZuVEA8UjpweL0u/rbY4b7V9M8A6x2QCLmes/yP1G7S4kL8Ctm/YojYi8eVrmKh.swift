@@ -198,6 +198,8 @@ class RecentSessionManager: ObservableObject {
                 realm.add(dbMsg, update: .all)
             }
         }
+        print("聊天缓存")
+        print(realm)
     }
     
     private func clearRealmChatHistory() {

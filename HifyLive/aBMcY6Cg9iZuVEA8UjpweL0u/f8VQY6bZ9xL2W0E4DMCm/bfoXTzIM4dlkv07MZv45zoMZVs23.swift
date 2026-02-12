@@ -1,7 +1,7 @@
 import SwiftUI
 import UIPilot
 import Combine
-
+import NIMSDK
 //黑名单
 struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
     
@@ -85,7 +85,11 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                                             let wiCvWb: Bool =  await nd55l6NRwWuVUnbReUhjS3d1Ivg.hxEXXV2aWMNka7HM2qhr1Qccen3rB(iN2NID: ehiJO3, lCOFD: vutSbVgrqVlU9)
                                             if !wiCvWb, let pPBGkix66avlJS7b9 = nd55l6NRwWuVUnbReUhjS3d1Ivg.lT3KlfvYcav5 {
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(pPBGkix66avlJS7b9, z2E1geUN5miQ95SpoCG: false)
+                                                
                                             } else {
+                                               
+
+                                               
                                                 withAnimation(.spring(response: 0.45, dampingFraction: 0.75)) {
                                                     nmSJFpU7zyBM2yr = true
                                                 }
@@ -226,6 +230,13 @@ class TPb21z0U: ObservableObject {
             print(otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code)
           
             if otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+               
+                do {
+                       try await NIMSDK.shared().userManager.remove(fromBlackBlackList: lCOFD)
+                       print("已将 \(lCOFD) 从黑名单中移除")
+                   } catch {
+                       print("移出黑名单失败:", error.localizedDescription)
+                   }
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XOUIapGeSTiQJrB6FVylYg==",type: 0)
                 self.lLPppWtfV5O6YMV5wl9nsA4nt.removeAll { ($0.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) == String(iN2NID) }
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
@@ -259,6 +270,13 @@ class TPb21z0U: ObservableObject {
      
            
             if qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+              
+                do {
+                       try await NIMSDK.shared().userManager.add(toBlackList: mwNKAPngt)
+                       print("已将 \(mwNKAPngt) 加入黑名单")
+                   } catch {
+                       print("加入黑名单失败:", error.localizedDescription)
+                   }
                 // 成功加入黑名单
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("oLFPFtMsjDiB7wz3eZeWhQ==",type: 0)

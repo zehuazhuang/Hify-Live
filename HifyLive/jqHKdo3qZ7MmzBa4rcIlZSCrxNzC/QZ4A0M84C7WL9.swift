@@ -74,15 +74,13 @@ struct QZ4A0M84C7WL9: View {
                     
                     
                 }.frame(width: 88, height: 88)
-//                    .onTapGesture {
-//                        
-//                        isW9YQ6C8L = false
-//                        rM9Z8S7A1ql.showScreen(.fullScreenCover) { _ in
-//                            WUjfoptOKs8pZfhSAH0duplG {
-//                                zQIRqHb1rSOJJ0wopZa8qxCs(areoloaUid: info9M0Q2A6.int("userId"), bMy5EIRIIback: {})
-//                            }
-//                        }
-//                    }
+                    .onTapGesture {
+                        
+                        isW9YQ6C8L = false
+                        LiveSessionManager.shared.aHUdhiChZEUid = info9M0Q2A6.int("userId")
+                        
+                        pilot.push(.itHCfaKsRUser(areoloaUid: info9M0Q2A6.int("userId")))
+                    }
                 Spacer().frame(height: 8)
                 Text(info9M0Q2A6.string("nickname"))
                                 .g0LIIcoZQsOjyND9(
@@ -174,12 +172,12 @@ struct QZ4A0M84C7WL9: View {
                             ZJ7h766mz(tMmEWWlfgUag: "li9QY0x2EWL")
                                                .frame(width: 46, height: 46)
                                                .onTapGesture {
-                                                   LiveSessionManager.shared.znWne5LXPType = 1
+                                                 
                                                    isW9YQ6C8L = false
                                                    openP2PChatScreen(
                                                               userId: info9M0Q2A6.string("yxAccid"),
                                                               avatarUrl: info9M0Q2A6.string("icon"),
-                                                              pilot: pilot        // ✅ 注意：不是 $pilot
+                                                              pilot: pilot
                                                           )
                                                }
                             

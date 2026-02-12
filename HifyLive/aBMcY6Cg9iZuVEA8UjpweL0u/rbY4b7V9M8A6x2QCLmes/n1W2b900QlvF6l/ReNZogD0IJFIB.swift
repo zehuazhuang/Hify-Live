@@ -1,4 +1,5 @@
 import SwiftUI
+import UIPilot
 import UIKit
 import Combine
 import Kingfisher
@@ -6,7 +7,7 @@ import Kingfisher
 //聊天list UIKit
 struct ChatTableView: UIViewRepresentable {
     let opponentInfo: [String: Any]
-    
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @ObservedObject var vm: ChatViewModel
     var keyboardHeight: CGFloat = 0
     
@@ -52,7 +53,14 @@ struct ChatTableView: UIViewRepresentable {
             context.coordinator.parent.onAvatarTap(uid)
         }
         
-
+        header.onImageTap = { pics, startIndex in
+            pilot.push(
+                .ZQ9FPreviewWrapper(
+                    pics: pics,
+                    startIndex: startIndex
+                )
+            )
+        }
         
         // 🔥 只在这里设置一次
         tableView.tableHeaderView = header
@@ -175,6 +183,19 @@ struct ChatTableView: UIViewRepresentable {
             let msg = parent.vm.messages[indexPath.row]
           
             cell.configure(message: msg, avatarURL: msg.avatarURL)
+            
+            cell.onImageTap = { [weak self] imageURL in
+                guard let self else { return }
+
+                
+
+                parent.pilot.push(
+                        .ZQ9FPreviewWrapper(
+                            pics: [imageURL],
+                            startIndex: 0
+                        )
+                    )
+            }
 
             return cell
         }
@@ -223,7 +244,7 @@ class ChatCell: UITableViewCell {
     }()
     private var bubbleBottomConstraint: NSLayoutConstraint!
     private var blockHintBottomConstraint: NSLayoutConstraint!
-    
+    var onImageTap: ((String) -> Void)? //图片点击回调
    
     
     //放大图片url
@@ -274,17 +295,9 @@ class ChatCell: UITableViewCell {
         }
     //图片点击放大
     @objc private func handleImageTap() {
-        guard let imageURL = currentImageURL else { return }
-        guard let vc = contentImageView.parentViewController else { return }
-
-        // 单图也用数组传进去
-        let pics = [imageURL]
-
-        let previewVC = ImagePreviewScrollViewController(pics: pics, startIndex: 0)
-        previewVC.modalPresentationStyle = .fullScreen
-        vc.present(previewVC, animated: true)
-    }
-
+            guard let imageURL = currentImageURL else { return }
+            onImageTap?(imageURL)
+        }
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

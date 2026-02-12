@@ -12,7 +12,6 @@
 		DD0FEA592F3C7D51008C96C6 /* UIPilot in Frameworks */ = {isa = PBXBuildFile; productRef = DD0FEA582F3C7D51008C96C6 /* UIPilot */; };
 		DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */; };
 		DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */; };
-		DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C4362F15E61600365091 /* SwiftfulRouting */; };
 		DDE0C5CB2F15F64A00365091 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DDE0C5CA2F15F64A00365091 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 				DDE0C5CB2F15F64A00365091 /* Kingfisher in Frameworks */,
 				DD0E53D22F1749120060F729 /* Gzip in Frameworks */,
 				DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */,
-				DDE0C4372F15E61600365091 /* SwiftfulRouting in Frameworks */,
 				DD0FEA592F3C7D51008C96C6 /* UIPilot in Frameworks */,
 				DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */,
 				9B95FBD743D97394757E07E2 /* Pods_HifyLive.framework in Frameworks */,
@@ -120,7 +118,6 @@
 			);
 			name = HifyLive;
 			packageProductDependencies = (
-				DDE0C4362F15E61600365091 /* SwiftfulRouting */,
 				DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */,
 				DD7AB8DF2F15F4AB003B52DE /* GoogleSignInSwift */,
 				DDE0C5CA2F15F64A00365091 /* Kingfisher */,
@@ -156,7 +153,6 @@
 			mainGroup = DDECD4C42F148B820016E861;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
 				DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DD0E53D02F1749120060F729 /* XCRemoteSwiftPackageReference "GzipSwift" */,
@@ -511,14 +507,6 @@
 				minimumVersion = 9.1.0;
 			};
 		};
-		DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.1.8;
-			};
-		};
 		DDE0C5C92F15F64A00365091 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -549,11 +537,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD7AB8DC2F15F4AB003B52DE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
-		};
-		DDE0C4362F15E61600365091 /* SwiftfulRouting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DDE0C4352F15E61600365091 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
-			productName = SwiftfulRouting;
 		};
 		DDE0C5CA2F15F64A00365091 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

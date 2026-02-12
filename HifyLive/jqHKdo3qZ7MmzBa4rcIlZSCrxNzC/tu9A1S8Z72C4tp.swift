@@ -1,4 +1,5 @@
 import Kingfisher
+import UIPilot
 import SwiftUI
 
 
@@ -8,9 +9,10 @@ struct rP6kV1bS8qX3nT7<Placeholder: View>: View {
     let allPics: [String]?          // 所有图片
     let kB1MVUq5MoDAlsqhB: Placeholder
     let V0QmF7P9ZL: Bool?
-    @State private var isPreviewPresented = false
+  
     @State private var previewPics: [String] = []
     @State private var previewStartIndex: Int = 0
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     init(
         pR9wQ2mL6hY5dF1: Any?,
         allPics: [String]? = nil,              // 传整个图片数组
@@ -41,31 +43,16 @@ struct rP6kV1bS8qX3nT7<Placeholder: View>: View {
             .contentShape(Rectangle())
             .onTapGesture {
                 guard V0QmF7P9ZL == true else { return }
-               
-                
-                
-                   
                         if let pics = allPics, let index = pics.firstIndex(of: uH3fM5dR1qL8bC0) {
-                           
                             previewPics = pics
                             previewStartIndex = index
-                           
                         } else {
-                           
-                                
                             previewPics = [uH3fM5dR1qL8bC0]
                             previewStartIndex = 0
-                            
                         }
                 
-               
-                    isPreviewPresented = true
-              
-               
-            }.fullScreenCover(isPresented: $isPreviewPresented) {
-                ZQ9FPreviewWrapper(pics: previewPics, startIndex: previewStartIndex)
-                    .ignoresSafeArea()
+                pilot.push(.ZQ9FPreviewWrapper(pics: previewPics, startIndex: previewStartIndex))
             }
-           
+       
     }
 }

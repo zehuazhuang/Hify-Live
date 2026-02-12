@@ -3,16 +3,20 @@
 import UIKit
 import SwiftUI
 import Kingfisher
+import UIPilot
 //图片放大
 
 struct ZQ9FPreviewWrapper: UIViewControllerRepresentable {
 
     let pics: [String]          // 多张图片
     let startIndex: Int          // 默认显示哪一张
-
+   
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     func makeUIViewController(context: Context) -> UIViewController {
         // 返回新的多图滑动预览 VC
-        let vc = ImagePreviewScrollViewController(pics: pics, startIndex: startIndex)
+        let vc = ImagePreviewScrollViewController(pics: pics, startIndex: startIndex, onClose: {
+            pilot.pop()
+        })
         return vc
     }
     
@@ -27,14 +31,15 @@ final class ImagePreviewScrollViewController: UIViewController, UIScrollViewDele
     private let pics: [String]
     private var startIndex: Int
     private let scrollView = UIScrollView()
-    
     private let hintLabel = UILabel()
+    private let onClose: () -> Void
 
-    init(pics: [String], startIndex: Int) {
+    init(pics: [String], startIndex: Int,onClose: @escaping () -> Void) {
         self.pics = pics
         self.startIndex = startIndex
+        self.onClose = onClose
         super.init(nibName: nil, bundle: nil)
-        modalPresentationStyle = .fullScreen
+        
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -83,8 +88,10 @@ final class ImagePreviewScrollViewController: UIViewController, UIScrollViewDele
         super.viewDidLoad()
         view.backgroundColor = .black
 
-        view.insetsLayoutMarginsFromSafeArea = false
-        view.frame = UIScreen.main.bounds
+        modalPresentationCapturesStatusBarAppearance = true
+            edgesForExtendedLayout = .all
+            extendedLayoutIncludesOpaqueBars = true
+            view.insetsLayoutMarginsFromSafeArea = false
 
         setupScrollView()
         loadImages()
@@ -173,7 +180,8 @@ final class ImagePreviewScrollViewController: UIViewController, UIScrollViewDele
 
         // 单击关闭
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissSelf))
-        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tap)
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
@@ -303,7 +311,7 @@ final class ImagePreviewScrollViewController: UIViewController, UIScrollViewDele
     }
 
     @objc private func dismissSelf() {
-        dismiss(animated: true)
+        onClose()
     }
 
     @objc private func doubleTapZoom(_ sender: UITapGestureRecognizer) {

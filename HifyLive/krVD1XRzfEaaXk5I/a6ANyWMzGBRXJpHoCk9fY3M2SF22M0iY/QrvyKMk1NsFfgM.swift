@@ -25,16 +25,24 @@ func openP2PChatScreen(
         RecentSessionStore.shared.fetchRecentSessions()
     }
 
-    // 4️⃣ 跳转到聊天界面
-//    router.showScreen(.fullScreenCover) { _ in
-//        WUjfoptOKs8pZfhSAH0duplG {
-//            CgZU7mTgY46l(session: session, opponentAvatarURL: avatarUrl)
-//        }
-//    }
-    pilot.push(
-        .fDsxyWVT7Chat(
-            sessionId: userId,
-            avatarUrl: avatarUrl
+    
+    
+    // 4️⃣ 判断栈中是否已经存在该聊天页面
+    if let existing = pilot.routes.first(where: { route in
+        if case let .CgZU7mTgY46l(existingSession, _) = route {
+            return existingSession.sessionId == session.sessionId
+        }
+        return false
+    }) {
+        
+        pilot.popTo(existing)
+    } else {
+        
+        pilot.push(
+            .CgZU7mTgY46l(
+                session: session,
+                opponentAvatarURL: avatarUrl
+            )
         )
-    )
+    }
 }

@@ -2,10 +2,16 @@ import Foundation
 import NIMSDK
 
 struct JOGtDnYupP {
-    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
-    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
-    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
-    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
+    //正式
+//    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
+//    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
+//    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
+//    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
+    //预发布
+    static let loaattrdbUrl = "https://pre.hily.link" //环境地址
+    static let raslidepApId = "21448469" //id
+    static let versLErqSu = "1.0.0" //版本
+    static let zMVMMyTmNK = "ac85c4b27907b332450d8b964df087f3" //云信id
 }
 
 
@@ -330,10 +336,10 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
     if let mO4ZvxOwa = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, mO4ZvxOwa == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
         return resultJson
     }else{
-        return [:]
+        throw NSError(domain: "", code: -4, userInfo: [
+            NSLocalizedDescriptionKey: "error"
+        ])
     }
-
-   
 }
 
 

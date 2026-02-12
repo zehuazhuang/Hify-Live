@@ -160,7 +160,7 @@ class LiveViewController: UIViewController {
     
     deinit {
         LiveSessionManager.shared.currentChannelUserId = 0
-        LiveSessionManager.shared.znWne5LXPType = 0
+       
     }
 
 }

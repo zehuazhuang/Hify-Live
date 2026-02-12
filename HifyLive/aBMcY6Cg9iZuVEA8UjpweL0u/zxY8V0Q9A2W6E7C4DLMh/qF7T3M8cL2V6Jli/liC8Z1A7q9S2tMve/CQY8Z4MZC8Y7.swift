@@ -8,7 +8,6 @@ struct LE0xQZ6Y7WC8iv: View {
     let localUid: UInt
     let zA9Y4W6LUid: UInt
     @State private var liveRoomData: [String: Any] = [:] //数据
-    
     @State private var showEndView: Bool = false//主播关播显示
     @State private var showY2E8Qsc: Bool = false//显示用户底部弹框
     @State private var uY0E4QZ9MLId: Int = -1 //显示弹框用户id
@@ -16,6 +15,8 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var rlUlyPhType: Int = 0 //userId 还是 yxAccid
     @State private var showx8Z9Q2M: Bool = false//显示关闭直播间弹框
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
+    @State private var retryTask: Task<Void, Never>?
+    @State private var xHuEezXnuhxl: Bool = false//是否第一次加载
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
         self.localUid = localUid
@@ -190,26 +191,56 @@ struct LE0xQZ6Y7WC8iv: View {
        
         
         .onAppear{
-            mpatentLoad()
-            NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
-                   showEndView = true
-               }
+            print("1")
+            if (!xHuEezXnuhxl){
+                print("2")
+                mpatentLoad()
+                NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
+                       showEndView = true
+                   }
+                xHuEezXnuhxl = true
+            }
+          
         }.onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }.onDisappear {
+            retryTask?.cancel()
+            retryTask = nil
+            NotificationCenter.default.removeObserver(self)
         }
     }
     
-    func mpatentLoad(){
-        Task{
+    func mpatentLoad() {
+        retryTask = Task {
+            await retryJoinLive()
+        }
+    }
+    
+    
+    func retryJoinLive() async {
+        var retryDelay: UInt64 = 2_000_000_000
+        
+        while !Task.isCancelled {
+            
             do {
                 let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
-                liveRoomData = result
-               
+                
+                if !result.isEmpty {
+                    await MainActor.run {
+                        liveRoomData = result
+                    }
+                    break
+                }
                 
             } catch {
                 print(error)
             }
+            
+            try? await Task.sleep(nanoseconds: retryDelay)
+            retryDelay = min(retryDelay * 2, 10_000_000_000)
         }
+        
+        print("retry 结束")
     }
 }
 
