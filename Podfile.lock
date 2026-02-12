@@ -8,18 +8,12 @@ PODS:
     - YXArtemis_XCFramework
   - NIMSDK/NOS (10.9.71):
     - YXArtemis_XCFramework
-  - Realm (20.0.3):
-    - Realm/Headers (= 20.0.3)
-  - Realm/Headers (20.0.3)
-  - RealmSwift (20.0.3):
-    - Realm (= 20.0.3)
   - YXArtemis_XCFramework (1.1.6)
 
 DEPENDENCIES:
   - AgoraRtcEngine_iOS/RtcBasic
   - AliyunOSSiOS (~> 2.11.2)
   - NIMSDK
-  - RealmSwift
 
 SPEC REPOS:
   trunk:
@@ -27,8 +21,6 @@ SPEC REPOS:
     - AgoraRtcEngine_iOS
     - AliyunOSSiOS
     - NIMSDK
-    - Realm
-    - RealmSwift
     - YXArtemis_XCFramework
 
 SPEC CHECKSUMS:
@@ -36,10 +28,8 @@ SPEC CHECKSUMS:
   AgoraRtcEngine_iOS: 11f37dd846d6194a5268b084b99102e5b6aff0de
   AliyunOSSiOS: 6d6b668b82ac0c0ea2313412bcb5530b42ec97ab
   NIMSDK: f21e29aff709e248db0fecbc58b7ddd0b5df68cc
-  Realm: 853e5089d6042dff807bda000277eadfe2da93d2
-  RealmSwift: f33c19577cefcbf681345d721fcbc7b42be4c949
   YXArtemis_XCFramework: d9a8b9439d7a6c757ed00ada53a6d2dd9b13f9c7
 
-PODFILE CHECKSUM: 777406388bfa164eedf7ed0f82532d8c20809455
+PODFILE CHECKSUM: 5466de49481fdea3a0c19a3651502f75b8126478
 
 COCOAPODS: 1.16.2

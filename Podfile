@@ -12,8 +12,6 @@ target 'HifyLive' do
   # 即时通讯 / 聊天室（云信）
   pod 'NIMSDK'
 
-  pod 'RealmSwift'
-
 end
 
 post_install do |installer|
