@@ -104,22 +104,56 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                                             uT6eHPE0Of05afFQdv9n = false
                                         }
                                     } label: {
-                                        RoundedRectangle(cornerRadius: 325)
-                                            .fill(
-                                                LinearGradient(colors: [Color(red: 211/255, green: 75/255, blue: 117/255),Color(red: 237/255, green: 168/255, blue: 102/255)], startPoint: .leading, endPoint: .trailing)
-                                            )
-                                            .frame(width: 92,height: 33)
-                                            .overlay(alignment: .center) {
-                                                if uT6eHPE0Of05afFQdv9n && auGm8teVpyXJCC2rxfZsMECz == Int(mnnVXxRXFee1ZJ8ehOc9UwA.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) {
-                                                    sEzi1icPpNqqO()
-                                                } else {
-                                                    Text("kYFAuWrCeDmlqT7m07Eslw==".bFHEatcgE4zzU9TCfDonsu())
-                                                        .g0LIIcoZQsOjyND9(
-                                                            weight: .medium,
-                                                            color: Color.white
+//                                        RoundedRectangle(cornerRadius: 325)
+//                                            .fill(
+//                                                LinearGradient(colors: [Color(red: 211/255, green: 75/255, blue: 117/255),Color(red: 237/255, green: 168/255, blue: 102/255)], startPoint: .leading, endPoint: .trailing)
+//                                            )
+                                        ZStack{
+                                            if uT6eHPE0Of05afFQdv9n && auGm8teVpyXJCC2rxfZsMECz == Int(mnnVXxRXFee1ZJ8ehOc9UwA.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) {
+                                                sEzi1icPpNqqO()
+                                            } else {
+                                                Text("kYFAuWrCeDmlqT7m07Eslw==".bFHEatcgE4zzU9TCfDonsu())
+                                                    .g0LIIcoZQsOjyND9(
+                                                        weight: .medium,
+                                                        
+                                                    ).overlay(
+                                                        LinearGradient(
+                                                            colors: [
+                                                                Color(red: 239 / 255, green: 166 / 255, blue: 90 / 255),
+                                                                Color(red: 238 / 255, green: 148 / 255, blue: 148 / 255),
+                                                                Color(red: 221 / 255, green: 66 / 255, blue: 160 / 255),
+                                                                Color(red: 183 / 255, green: 55 / 255, blue: 218 / 255),
+                                                            ],
+                                                            startPoint: .leading,
+                                                            endPoint: .trailing
                                                         )
-                                                }
+                                                    )
+                                                    .mask(
+                                                        Text("kYFAuWrCeDmlqT7m07Eslw==".bFHEatcgE4zzU9TCfDonsu())
+                                                            .g0LIIcoZQsOjyND9(
+                                                                weight: .medium,
+                                                                color: .white
+                                                            )
+                                                    )
                                             }
+                                        }.frame(width: 92,height: 33)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 325)
+                                                    .stroke(
+                                                        LinearGradient(
+                                                            colors: [
+                                                                Color(red: 239 / 255, green: 166 / 255, blue: 90 / 255),
+                                                                Color(red: 238 / 255, green: 148 / 255, blue: 148 / 255),
+                                                                Color(red: 221 / 255, green: 66 / 255, blue: 160 / 255),
+                                                                Color(red: 183 / 255, green: 55 / 255, blue: 218 / 255),
+                                                            ],
+                                                            startPoint: .leading,
+                                                            endPoint: .trailing
+                                                        ),
+                                                        lineWidth: 1
+                                                    )
+                                            )
+                                           
                                     }
                                 }
                                 .padding(.horizontal,8)

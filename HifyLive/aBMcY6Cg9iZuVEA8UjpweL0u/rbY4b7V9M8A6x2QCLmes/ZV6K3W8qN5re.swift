@@ -100,10 +100,10 @@ struct xD6bLM9VWBut: View {
             LinearGradient(
                 colors: [
                     tC4mJ1P6X == 0
-                        ? Color(red: 173 / 255, green: 192 / 255, blue: 255 / 255, opacity: 0.32)
+                        ? Color(red: 138 / 255, green: 120 / 255, blue: 255 / 255, opacity: 0.2)
                         : .white.opacity(0.1),
                     tC4mJ1P6X == 0
-                        ? Color(red: 255 / 255, green: 255 / 255, blue: 255 / 255, opacity: 0.25)
+                        ? Color(red: 170 / 255, green: 84 / 255, blue: 255 / 255, opacity: 0.23)
                         : .white.opacity(0.1)
                 ],
                 startPoint: .leading,

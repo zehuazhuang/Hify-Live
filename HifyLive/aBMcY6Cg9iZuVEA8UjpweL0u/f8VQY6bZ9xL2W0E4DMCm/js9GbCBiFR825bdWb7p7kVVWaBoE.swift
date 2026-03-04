@@ -54,17 +54,12 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                     }.frame(height: 46)
                         .frame(maxWidth: .infinity)
                         .background(
-                            LinearGradient(colors: [Color(
-                                                          red: 120 / 255,
-                                                          green: 233 / 255,
-                                                          blue: 255 / 255,
-                                                          opacity: 0.32
-                                                      ), Color(
-                                                          red: 84 / 255,
-                                                          green: 105 / 255,
-                                                          blue: 199 / 255,
-                                                          opacity: 0.25
-                                                      )], startPoint: .leading, endPoint: .trailing)
+                            Color(
+                                                          red: 174 / 255,
+                                                          green: 173 / 255,
+                                                          blue: 247 / 255,
+                                                          opacity: 0.15
+                                                      )
                         ).cornerRadius(325)
                     
                     ZJ7h766mz(tMmEWWlfgUag: "nsRycpXI4C0cPPFuVP3o7FF1CjO")
@@ -85,7 +80,7 @@ struct js9GbCBiFR825bdWb7p7kVVWaBoE: View {
                         }
                 }
                 .padding(.horizontal,16)
-                .padding(.bottom,41)
+                
             }
         }
        

@@ -241,7 +241,7 @@ struct zkaqn9Jn: View {
                             }
                         }label:{
                             RoundedRectangle(cornerRadius: 36)
-                                .fill(Color.white.opacity(0.15))
+                                .fill(Color(red: 174/255, green: 173/255, blue: 247/255).opacity(0.15))
                                 .frame(height: 48)
                                 .overlay(alignment: .center) {
                                     HStack{

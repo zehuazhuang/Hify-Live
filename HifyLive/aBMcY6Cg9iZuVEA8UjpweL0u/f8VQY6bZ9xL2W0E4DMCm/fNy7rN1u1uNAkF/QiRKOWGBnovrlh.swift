@@ -44,8 +44,10 @@ struct QiRKOWGBnovrlh: View {
                     .background(
                         LinearGradient(
                             colors: [
-                                Color(red: 211 / 255, green: 75 / 255, blue: 117 / 255),
-                                Color(red: 237 / 255, green: 168 / 255, blue: 102 / 255),
+                                Color(red: 239 / 255, green: 166 / 255, blue: 90 / 255),
+                                Color(red: 238 / 255, green: 148 / 255, blue: 148 / 255),
+                                Color(red: 221 / 255, green: 66 / 255, blue: 160 / 255),
+                                Color(red: 183 / 255, green: 55 / 255, blue: 218 / 255),
                             ],
                             startPoint: .leading,
                             endPoint: .trailing
@@ -90,8 +92,10 @@ struct QiRKOWGBnovrlh: View {
                             .stroke(
                                 LinearGradient(
                                     colors: [
-                                        Color(red: 211 / 255, green: 75 / 255, blue: 117 / 255),
-                                        Color(red: 237 / 255, green: 168 / 255, blue: 102 / 255)
+                                        Color(red: 239 / 255, green: 166 / 255, blue: 90 / 255),
+                                        Color(red: 238 / 255, green: 148 / 255, blue: 148 / 255),
+                                        Color(red: 221 / 255, green: 66 / 255, blue: 160 / 255),
+                                        Color(red: 183 / 255, green: 55 / 255, blue: 218 / 255),
                                     ],
                                     startPoint: .leading,
                                     endPoint: .trailing

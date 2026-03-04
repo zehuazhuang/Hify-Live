@@ -22,9 +22,10 @@ struct ijeWMJnw0: View {
         _mIAT9zbKJKGtarbSPX1QSZm = State(
             initialValue: hIUsWqIEhUq3.tjtC42pBBkamD3FpPFfVWz ?? ""
         )
-        _zeEMuRE5FhYabIqhuh = State(
-            initialValue: hIUsWqIEhUq3.dtmb7EAgpLBXhoNSdI ?? ""
-        )
+//背景名字首字母图片
+//        _zeEMuRE5FhYabIqhuh = State(
+//            initialValue: hIUsWqIEhUq3.dtmb7EAgpLBXhoNSdI ?? ""
+//        )
     }
     
     @State private var zeEMuRE5FhYabIqhuh: String = ""
@@ -41,7 +42,6 @@ struct ijeWMJnw0: View {
     
     @State private var uj8O1bVbC9SQl6E469ySfpfYW678G: Int?
     @State private var v5FogKAlSXvg: Bool = false
-    
     @ObservedObject var ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4 = Y4x7FkE3Q18iArhSXlC4Q5Z9.rGZrJ0Qgm4
     
     @State private var ryIGseq: [String] = []
@@ -431,7 +431,7 @@ struct ijeWMJnw0: View {
                             .padding(.horizontal,22)
                         }
                         Button{
-                            
+                            print(zeEMuRE5FhYabIqhuh)
                            
                             
                             if mIAT9zbKJKGtarbSPX1QSZm.isEmpty {
@@ -448,10 +448,6 @@ struct ijeWMJnw0: View {
                                 if mIAT9zbKJKGtarbSPX1QSZm.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil {
                                     return
                                 }
-                                
-                              
-                               
-                                
                                 EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                 
                                 let bjAHgwVvI = kUe9UtFYAvsMtAN1.string(from: mQFLX0m0nVIAxht9uUGhln5su8 ?? Date())
@@ -515,15 +511,32 @@ struct ijeWMJnw0: View {
                                 gjQ0haTFS7I7wobKnyS = true
                             }
                         } label: {
-                            ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
-                                .frame(width: 262,height: 46)
-                                .overlay(alignment: .center) {
+                            
+                            if(mIAT9zbKJKGtarbSPX1QSZm.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil
+                            || zeEMuRE5FhYabIqhuh == "" || ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 == nil){
+                                ZStack{
                                     Text("Resign in")
                                         .g0LIIcoZQsOjyND9(
                                             size: 18,
-                                            weight: .semibold
+                                            weight: .semibold,
+                                            color: .white.opacity(0.4)
                                         )
-                                }
+                                }.frame(width: 262,height: 46)
+                                    .background(.white.opacity(0.15))
+                                    .cornerRadius(325)
+                            }else{
+                                ZJ7h766mz(tMmEWWlfgUag: "ovdsD4s27")
+                                    .frame(width: 262,height: 46)
+                                    .overlay(alignment: .center) {
+                                        Text("Resign in")
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 18,
+                                                weight: .semibold
+                                            )
+                                    }
+                            }
+                            
+                          
                         }
                     }
                     .padding(.bottom, 41)
@@ -533,7 +546,8 @@ struct ijeWMJnw0: View {
             if q4L7RemZyJv1BuPIAmKMZ3vaTsg {
                 BirthdayBottomSheet(
                     isPresented: $q4L7RemZyJv1BuPIAmKMZ3vaTsg,
-                    initialDate: mQFLX0m0nVIAxht9uUGhln5su8 ?? hQC0aa2
+                    initialDate: mQFLX0m0nVIAxht9uUGhln5su8 ?? hQC0aa2,
+                    mode: .yearMonth
                 ) { selected in
                     mQFLX0m0nVIAxht9uUGhln5su8 = selected
                     withAnimation(.spring()) {
@@ -558,9 +572,7 @@ struct ijeWMJnw0: View {
             .onTapGesture {
                 eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb = false
             }
-            .onAppear {
-                ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 = nil
-            }
+         
     }
 }
 

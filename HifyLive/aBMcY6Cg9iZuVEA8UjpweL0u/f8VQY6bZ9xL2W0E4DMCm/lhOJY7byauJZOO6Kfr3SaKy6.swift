@@ -63,6 +63,12 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
         ZStack {
             Color(red: 13/255, green: 13/255, blue: 18/255)
                 .ignoresSafeArea()
+            
+            
+            ZJ7h766mz(tMmEWWlfgUag: "uf3R6Ps5YRoeWp")
+                               .ignoresSafeArea()
+                               .frame(height: 462)
+                               .frame(maxWidth: .infinity,maxHeight: .infinity,alignment:.top)
             VStack(spacing: 10) {
                 HStack(spacing: 12) {
                     Button{

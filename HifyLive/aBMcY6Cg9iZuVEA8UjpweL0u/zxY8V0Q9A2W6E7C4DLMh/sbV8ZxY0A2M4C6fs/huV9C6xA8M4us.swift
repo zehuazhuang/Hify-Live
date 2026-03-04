@@ -58,11 +58,16 @@ struct huV9C6xA8M4us: View {
                 
             }.frame(width: 92,height: 33)
                             .background(
+                               
                                 LinearGradient(
-                                    colors: [Color(red: 120 / 255,green: 233 / 255,blue: 255 / 255,opacity: 0.32
-                                ), Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,
-opacity: 0.25
-                                )], startPoint: .leading, endPoint: .trailing)
+                                    colors: [
+                                        v6Er31I62R ?  Color(red: 138 / 255,green: 120 / 255,blue: 255 / 255,opacity: 0.2) :
+                                            Color(red: 174/255, green: 173/255, blue: 247/255).opacity(0.15),
+                                        v6Er31I62R ?  Color(red: 170 / 255,green: 84 / 255,blue: 255 / 255,opacity: 0.23) :
+                                            Color(red: 174/255, green: 173/255, blue: 247/255).opacity(0.15)
+                                    
+                                    ], startPoint: .leading, endPoint: .trailing)
+                                
                             )
                             .cornerRadius(325)
         }.frame(height: 76)

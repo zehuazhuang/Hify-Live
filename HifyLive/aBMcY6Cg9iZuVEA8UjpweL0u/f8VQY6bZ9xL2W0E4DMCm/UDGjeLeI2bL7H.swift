@@ -29,8 +29,6 @@ struct UDGjeLeI2bL7H: View {
                 HStack(spacing:0){
                     A6WsC0Ww6ELqEL(l4K9bX2q: (hXDX98TXUs["nickname"] as? String) ?? "", k7NmFz1p: iCHzYzK6, t3QvD8j: "1")
 
-                    
-                
                     Spacer()
                 }
                 HStack(spacing:2){
@@ -45,20 +43,15 @@ struct UDGjeLeI2bL7H: View {
             Spacer()
             Button(action: {
                 Task{
-                    
                     if(!v6Er31I62R){
                         ondZKTQ307nh()
                         return
                     }
-                   
                     let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: hXDX98TXUs.int("userId"), iA6M7W9EYL0: 1)
                     if(isA2C6WEL){
                         v6Er31I62R = !v6Er31I62R
                     }
-                    
                 }
-                
-                
             }) {
                 HStack(spacing:4){
                     if v6Er31I62R {
@@ -69,34 +62,28 @@ struct UDGjeLeI2bL7H: View {
                     Text(v6Er31I62R ? "Follow" : "Following").g0LIIcoZQsOjyND9(
                         size: 14,
                         weight: .medium,
-                        color: .white.opacity(v6Er31I62R ? 0.8 : 1)
+                        color: .white.opacity(v6Er31I62R ? 0.8 : 0.6)
                     )
             }
                 
             }.frame(width: 92,height: 33)
                             .background(
+                                
                                 LinearGradient(
-                                    colors: [Color(red: 120 / 255,green: 233 / 255,blue: 255 / 255,opacity: 0.32
-                                ), Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,
-opacity: 0.25
-                                )], startPoint: .leading, endPoint: .trailing)
+                                    colors: [
+                                        v6Er31I62R ?  Color(red: 138 / 255,green: 120 / 255,blue: 255 / 255,opacity: 0.2) :
+                                            Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15),
+                                        v6Er31I62R ? Color(red: 170 / 255,green: 84 / 255,blue: 255 / 255,opacity: 0.23) :
+                                            Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15)
+                                    
+                                    ], startPoint: .leading, endPoint: .trailing)
                             )
                             .cornerRadius(325)
         }.frame(height: 76)
             .frame(maxWidth: .infinity)
             .padding(.horizontal,10)
         .background(
-            LinearGradient(colors: [Color(
-                                          red: 120 / 255,
-                                          green: 233 / 255,
-                                          blue: 255 / 255,
-                                          opacity: 0.1
-                                      ), Color(
-                                          red: 84 / 255,
-                                          green: 105 / 255,
-                                          blue: 199 / 255,
-                                          opacity: 0.15
-                                      )], startPoint: .leading, endPoint: .trailing)
+            Color(red: 90 / 255,green: 78 / 255,blue: 115 / 255,opacity: 0.15)
         ) .cornerRadius(12)
             
             

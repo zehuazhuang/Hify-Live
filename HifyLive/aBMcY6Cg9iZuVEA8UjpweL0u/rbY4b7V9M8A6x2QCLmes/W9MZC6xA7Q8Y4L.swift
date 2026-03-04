@@ -50,7 +50,7 @@ struct W9MZC6xA7Q8Y4L: View {
                                                     .frame(width: 116,height: 46)
                                                     
                                                     .background(
-                                                        Color.white.opacity(0.25)
+                                                        Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15)
                                                     )
                                                     .cornerRadius(325)
                                                   
@@ -68,9 +68,7 @@ struct W9MZC6xA7Q8Y4L: View {
                 }.frame(width: 287, height: 263)
                 ZJ7h766mz(tMmEWWlfgUag: "clL3qP6K1M")
                                    .frame(width: 32, height: 32)
-                                   .onTapGesture {
-                                       onClose?()
-                                   }
+                                 
                 
             }
         }

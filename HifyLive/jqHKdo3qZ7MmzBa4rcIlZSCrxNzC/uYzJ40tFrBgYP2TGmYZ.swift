@@ -14,11 +14,11 @@ extension String {
 
 extension Date {
     /// 将 Date 转换为 yyyy-MM-dd 格式的字符串
-    func micBHIsg(aIRthJHzts: String = "rpxVSISmgtmCzrTRpHhzTw==".bFHEatcgE4zzU9TCfDonsu()) -> String {
+    func micBHIsg(aIRthJHzts: String = "yyyy-MM-dd") -> String {
         let mBqzyLFhbMWNzgLYVNonQZdNjc = DateFormatter()
         mBqzyLFhbMWNzgLYVNonQZdNjc.dateFormat = aIRthJHzts
-        mBqzyLFhbMWNzgLYVNonQZdNjc.locale = Locale(identifier: "5UGNfNCfUnlKjHijDy8KpQ==".bFHEatcgE4zzU9TCfDonsu())
-        mBqzyLFhbMWNzgLYVNonQZdNjc.timeZone = TimeZone(secondsFromGMT: 0)
+        mBqzyLFhbMWNzgLYVNonQZdNjc.locale = Locale(identifier: "en_US_POSIX")
+        mBqzyLFhbMWNzgLYVNonQZdNjc.timeZone = .current
         return mBqzyLFhbMWNzgLYVNonQZdNjc.string(from: self)
     }
 }

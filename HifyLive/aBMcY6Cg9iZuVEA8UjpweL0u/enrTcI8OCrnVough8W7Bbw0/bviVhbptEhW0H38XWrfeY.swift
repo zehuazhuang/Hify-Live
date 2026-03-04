@@ -2,19 +2,38 @@ import SwiftUI
 import UIKit
 import Combine
 //生日选择底部弹框
+
+enum PickerMode {
+    case yearMonthDay
+    case yearMonth
+}
+
+
 struct BirthdayBottomSheet: View {
     @Binding var isPresented: Bool
     var onDateSelected: (Date) -> Void
     @State private var isShown = false
+    var mode: PickerMode = .yearMonthDay
     
     // ⚡ 预加载 PickerWrapper
-    @StateObject private var pickerWrapper = PickerWrapperHolder()
+    @StateObject private var pickerWrapper: PickerWrapperHolder
     
-    init(isPresented: Binding<Bool>, initialDate: Date, onDateSelected: @escaping (Date) -> Void) {
+    init(
+        isPresented: Binding<Bool>,
+        initialDate: Date,
+        mode: PickerMode = .yearMonthDay,
+        onDateSelected: @escaping (Date) -> Void
+    ) {
         self._isPresented = isPresented
         self.onDateSelected = onDateSelected
-        // 预初始化 PickerWrapper
-        _pickerWrapper = StateObject(wrappedValue: PickerWrapperHolder(initialDate: initialDate))
+        self.mode = mode
+        
+        _pickerWrapper = StateObject(
+            wrappedValue: PickerWrapperHolder(
+                initialDate: initialDate,
+                mode: mode
+            )
+        )
     }
     
     var body: some View {
@@ -35,14 +54,14 @@ struct BirthdayBottomSheet: View {
                                 HStack {
                                     ZJ7h766mz(tMmEWWlfgUag: "j1GtPWGpGXrkZWpZEifKWjZWaz2")
                                         .frame(width: 24, height: 24)
-                                    Text("vySCbBGonoa5qd8IaXr4Iw==".bFHEatcgE4zzU9TCfDonsu())
+                                    Text(mode == .yearMonthDay ? "Birthday:" : "Select Month")
                                         .g0LIIcoZQsOjyND9(size: 18, weight: .semibold)
                                     Spacer()
                                 }
                                 .padding(.top,24)
                                 .padding(.leading,16)
                                 
-                                // ⚡ Picker
+                                
                                 pickerWrapper.wrapper
                                     .frame(height: 238)
                                 
@@ -83,21 +102,25 @@ struct BirthdayBottomSheet: View {
 // ⚡ 预加载 UIPickerView VC，避免每次弹框初始化时卡顿
 class PickerWrapperHolder: ObservableObject {
     @Published var selectedDate: Date
+    var mode: PickerMode
     
-    // 绑定给 UIPickerView
     lazy var wrapper: DatePickerWrapper = {
-        DatePickerWrapper(selectedDate: Binding(
-            get: { [weak self] in
-                self?.selectedDate ?? Date()
-            },
-            set: { [weak self] newDate in
-                self?.selectedDate = newDate
-            }
-        ))
+        DatePickerWrapper(
+            selectedDate: Binding(
+                get: { [weak self] in
+                    self?.selectedDate ?? Date()
+                },
+                set: { [weak self] newDate in
+                    self?.selectedDate = newDate
+                }
+            ),
+            mode: mode    // 👈 传进去
+        )
     }()
     
-    init(initialDate: Date = Date()) {
+    init(initialDate: Date = Date(), mode: PickerMode) {
         self.selectedDate = initialDate
+        self.mode = mode
     }
 }
 
@@ -105,17 +128,19 @@ class PickerWrapperHolder: ObservableObject {
 // MARK: - UIViewControllerRepresentable
 struct DatePickerWrapper: UIViewControllerRepresentable {
     @Binding var selectedDate: Date
+    var mode: PickerMode = .yearMonthDay
     
     func makeUIViewController(context: Context) -> AC3yCJzQl8F {
-        let pickerVC = AC3yCJzQl8F()
-        pickerVC.initialDate = selectedDate
-        pickerVC.onDateChanged = { newDate in
-            DispatchQueue.main.async {
-                self.selectedDate = newDate
+            let pickerVC = AC3yCJzQl8F()
+            pickerVC.mode = mode
+            pickerVC.initialDate = selectedDate
+            pickerVC.onDateChanged = { newDate in
+                DispatchQueue.main.async {
+                    self.selectedDate = newDate
+                }
             }
+            return pickerVC
         }
-        return pickerVC
-    }
     
     func updateUIViewController(_ uiViewController: AC3yCJzQl8F, context: Context) {
         if uiViewController.initialDate != selectedDate {
@@ -126,6 +151,7 @@ struct DatePickerWrapper: UIViewControllerRepresentable {
 
 class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var mode: PickerMode = .yearMonthDay
     var onDateChanged: ((Date) -> Void)?
     var initialDate: Date = Date()
     
@@ -159,9 +185,19 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     // MARK: - 初始化年份范围
     private func setupYearRange() {
         let currentYear = Calendar.current.component(.year, from: Date())
-        let maxYear = currentYear - 18
-        let minYear = currentYear - 100
-        years = Array(minYear...maxYear)
+        
+        switch mode {
+        case .yearMonthDay:
+            
+            let maxYear = currentYear - 18
+            let minYear = currentYear - 100
+            years = Array(minYear...maxYear)
+            
+        case .yearMonth:
+           
+            let minYear = currentYear - 100
+            years = Array(minYear...currentYear)
+        }
     }
     
     private func setupInitialDate() {
@@ -205,15 +241,25 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         if let yearIndex = years.firstIndex(of: selectedYear) {
             picker.selectRow(yearIndex, inComponent: 0, animated: animated)
         }
+        
         picker.selectRow(selectedMonth - 1, inComponent: 1, animated: animated)
-        picker.selectRow(selectedDay - 1, inComponent: 2, animated: animated)
+        
+        if mode == .yearMonthDay {
+            picker.selectRow(selectedDay - 1, inComponent: 2, animated: animated)
+        }
     }
     
     private func notifyDateChange() {
         var comps = DateComponents()
         comps.year = selectedYear
         comps.month = selectedMonth
-        comps.day = selectedDay
+        
+        if mode == .yearMonthDay {
+            comps.day = selectedDay
+        } else {
+            comps.day = 1
+        }
+        
         if let date = Calendar.current.date(from: comps) {
             onDateChanged?(date)
         }
@@ -238,20 +284,38 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     // MARK: - UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 3 }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        switch mode {
+        case .yearMonthDay: return 3
+        case .yearMonth: return 2
+        }
+    }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch component {
-        case 0: return years.count
-        case 1: return months.count
-        case 2: return days.count
-        default: return 0
+        switch mode {
+        case .yearMonthDay:
+            switch component {
+            case 0: return years.count
+            case 1: return months.count
+            case 2: return days.count
+            default: return 0
+            }
+            
+        case .yearMonth:
+            switch component {
+            case 0: return years.count
+            case 1: return months.count
+            default: return 0
+            }
         }
     }
     
     // MARK: - UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { rowHeight }
     
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 80 }
+    func pickerView(_ pickerView: UIPickerView,
+                    widthForComponent component: Int) -> CGFloat {
+        return pickerView.bounds.width / CGFloat(numberOfComponents(in: pickerView))
+    }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = (view as? UILabel) ?? UILabel()
@@ -259,22 +323,53 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         label.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         label.textColor = .white
         
-        switch component {
-        case 0: label.text = "\(years[row])"
-        case 1: label.text = "\(months[row])"
-        case 2: label.text = "\(days[row])"
-        default: break
+        switch mode {
+        case .yearMonthDay:
+            switch component {
+            case 0: label.text = "\(years[row])"
+            case 1: label.text = "\(months[row])"
+            case 2: label.text = "\(days[row])"
+            default: break
+            }
+            
+        case .yearMonth:
+            switch component {
+            case 0: label.text = "\(years[row])"
+            case 1: label.text = "\(months[row])"
+            default: break
+            }
         }
         return label
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch component {
-        case 0: selectedYear = years[row]; updateDays(); picker.reloadComponent(2)
-        case 1: selectedMonth = months[row]; updateDays(); picker.reloadComponent(2)
-        case 2: selectedDay = days[row]
-        default: break
-        }
+        switch mode {
+          case .yearMonthDay:
+              switch component {
+              case 0:
+                  selectedYear = years[row]
+                  updateDays()
+                  picker.reloadComponent(2)
+              case 1:
+                  selectedMonth = months[row]
+                  updateDays()
+                  picker.reloadComponent(2)
+              case 2:
+                  selectedDay = days[row]
+              default: break
+              }
+              
+          case .yearMonth:
+              switch component {
+              case 0:
+                  selectedYear = years[row]
+              case 1:
+                  selectedMonth = months[row]
+              default: break
+              }
+          }
+          
+          
         // 确保选中天数不超过最大天数
         if selectedDay > days.count { selectedDay = days.count }
         selectRows(animated: false)

@@ -5,7 +5,8 @@ func aYTO7iD() async -> [String:Any]? {
             xH0OPzEYR4M5ewWkZQAveq6Vy7: "/api/user/newLive/getUserInfo",
             tD5tEJZTT0NlaIX7eMREG92BhO3n: [String: String](),
         )
-       
+        print("接口")
+        print(xsq1a9QJATbk.code)
         if xsq1a9QJATbk.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
             // 成功
             guard

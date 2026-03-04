@@ -89,7 +89,10 @@ struct zpPt6HEcUfuVXHI2CXtIaD1P: View {
                                 let country = filteredCountries[index]
                                 CountryRow(item: country, searchText: pbPeJ)
                                     .onTapGesture {
+                                     
                                         lr7J7X4retLhiZiJuwDo7.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 = country
+                                     
+                                        
                                         pilot.pop()
                                     }
                             }

@@ -124,34 +124,25 @@ struct QP8XkW3ZButton: View {
 
     var body: some View {
         Button(action: action) {
-            Text(ti9QZ7xM4bV)
-                .g0LIIcoZQsOjyND9(
-                    size: 16,
-                    weight: .regular,
-                    color: .white.opacity(isY0A2C6WEL ? 1 : 0.6)
-                )
+            ZStack{
+                ZJ7h766mz(tMmEWWlfgUag: isY0A2C6WEL ? "z85EQRE2f9H6SK" : "epWZzJO7eD860n")
+                                   .frame(width: 88, height: 36)
+                
+                Text(ti9QZ7xM4bV)
+                    .g0LIIcoZQsOjyND9(
+                        size: 16,
+                        weight: isY0A2C6WEL ? .semibold : .regular,
+                        color: .white.opacity(isY0A2C6WEL ? 1 : 0.6)
+                    )
+            }
+           
         }
-        .frame(width: 92, height: 33)
-        .background(backgroundGradient)
+        .frame(width: 88, height: 36)
+   
         .cornerRadius(325)
         .gradientBorder(shQY7b9WEL: isY0A2C6WEL)
     }
 
-    private var backgroundGradient: LinearGradient {
-        LinearGradient(
-            colors: isY0A2C6WEL
-            ? [
-                Color(red: 120 / 255, green: 233 / 255, blue: 255 / 255, opacity: 0.32),
-                Color(red: 84 / 255, green: 105 / 255, blue: 199 / 255, opacity: 0.25)
-            ]
-            : [
-                Color.white.opacity(0.05),
-                Color.white.opacity(0.05)
-            ],
-            startPoint: .leading,
-            endPoint: .trailing
-        )
-    }
 }
 extension View {
 

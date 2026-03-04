@@ -43,29 +43,33 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                 .fill(Color.clear)
                                 .frame(height: 362)
                                 .overlay {
-                                        if usQ8Y7Z6Inf.isEmpty {
-                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                        } else {
-                                            if let picList = usQ8Y7Z6Inf["picList"] as? [[String: Any]] {
-                                                TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
-                                                    ForEach(picList.indices, id: \.self) { index in
-                                                        let pic = picList[index]
-                                                        let mediaUrl = pic["mediaUrl"] as? String ?? "" // 取出图片 URL
+                                    if let picList = usQ8Y7Z6Inf["picList"] as? [[String: Any]],
+                                       !picList.isEmpty {
 
-                                                        rP6kV1bS8qX3nT7(
-                                                            pR9wQ2mL6hY5dF1: mediaUrl,
-                                                            allPics: picList.compactMap { $0["mediaUrl"] as? String }
-                                                                .filter { !$0.lowercased().hasSuffix(".mp4") }, // 传整个数组
-                                                            V0QmF7P9ZL: true
-                                                        ) {
-                                                            ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
-                                                        }
-                                                        .tag(index)// TabView 的 selection 绑定
-                                                    }
+                                        TabView(selection: $fQAcgipdIEvxLs5OpaG0) {
+                                            ForEach(picList.indices, id: \.self) { index in
+                                                let pic = picList[index]
+                                                let mediaUrl = pic["mediaUrl"] as? String ?? ""
+
+                                                rP6kV1bS8qX3nT7(
+                                                    pR9wQ2mL6hY5dF1: mediaUrl,
+                                                    allPics: picList
+                                                        .compactMap { $0["mediaUrl"] as? String }
+                                                        .filter { !$0.lowercased().hasSuffix(".mp4") },
+                                                    V0QmF7P9ZL: true
+                                                ) {
+                                                    ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
                                                 }
-                                                .tabViewStyle(.page(indexDisplayMode: .never)) // 可选：隐藏分页指示器
+                                                .tag(index)
                                             }
                                         }
+                                        .tabViewStyle(.page(indexDisplayMode: .never))
+
+                                    } else {
+                                        // picList 不存在 或 为空数组
+                                        ZJ7h766mz(tMmEWWlfgUag: "aahgbEc4eZP6p4gEMGcYjWv")
+                                    }
+                                        
                                 }
                                 .clipped()
                             ZJ7h766mz(tMmEWWlfgUag: "jlvIw3ryygxHNI")
@@ -252,11 +256,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         Spacer()
                                     }
                                     .padding(.horizontal,16)
-                                    RoundedRectangle(cornerRadius: 0)
-                                        .fill(
-                                            Gradient(colors: [Color(red: 34/255, green: 25/255, blue: 96/255),Color(red: 43/255, green: 38/255, blue: 29/255, opacity: 0.62)])
-                                        )
-                                        .frame(height: 2)
+                                    .padding(.bottom,8)
+                                   
                                     //Room 标题
                                     
                                     //lisr room 布局
@@ -305,17 +306,20 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                                 
                                                                 ZJ7h766mz(tMmEWWlfgUag: "2Z7A9LqS1tC8M34")
                                                                     .frame(width: 20, height: 20)
+                                                                    .padding(.leading,4)
                                                                 Text("\(ncpingeRoom["joinNum"] as? Int ?? 0)")
                                                                                 .g0LIIcoZQsOjyND9(
                                                                                     size: 16,
                                                                                     weight: .regular,
                                                                                     color: .white.opacity(0.6)
                                                                                 )
+                                                                Spacer()
                                                             }.frame(width: 69,height: 25)
                                                             .background(Color.white.opacity(0.15))
                                                             .clipShape(s7q2ZC1S9A4tM8L3(radius: 12, corners: [.topLeft,.bottomRight]))
                                                             .padding(.trailing,3)
                                                             .padding(.bottom,3)
+                                                           
                                                         }
                                                     }
                                                 }.padding(.leading,4)
@@ -425,28 +429,15 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             LinearGradient(
                                                 colors: [
                                                     !isFvNNQZQ ?
-                                                    Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72) :
-                                                        Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.32)
+                                                    Color(red: 138 / 255,green: 120 / 255,blue: 255 / 255,opacity: 0.2) :
+                                                        Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15)
                                                     ,!isFvNNQZQ ?
-                                                    Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,opacity: 0.1) :
-                                                        Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.1)
+                                                    Color(red: 170 / 255,green: 84 / 255,blue: 255 / 255,opacity: 0.23) :
+                                                        Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15)
                                                 ], startPoint: .leading, endPoint: .trailing)
                                         )
                                         .cornerRadius(325)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 325)
-                                                .stroke(
-                                                    LinearGradient(
-                                                        colors: [
-                                                            Color(red: 187 / 255, green: 68 / 255, blue: 219 / 255),
-                                                            Color(red: 43 / 255, green: 93 / 255, blue: 117 / 255)
-                                                        ],
-                                                        startPoint: .leading,
-                                                        endPoint: .trailing
-                                                    ),
-                                                    lineWidth:!isFvNNQZQ ? 1 : 0
-                                                )
-                                        )
+                                        
                         
                         ZStack{
                             ZJ7h766mz(tMmEWWlfgUag: "op2sjDLkevlIcN")

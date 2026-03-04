@@ -41,11 +41,9 @@ struct C8Z2x4M6YV9m: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 72) {
                     VStack(spacing: 20) {
-                        VStack(spacing: 12) {
+                        VStack(spacing: 0) {
                             HStack(spacing: 16) {
                                 Button{
-                              
-                                    
                                     pilot.push(.itHCfaKsRUser(areoloaUid: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")))
                                 } label: {
                                     Circle()
@@ -58,52 +56,61 @@ struct C8Z2x4M6YV9m: View {
                                                 .allowsHitTesting(false)
                                         }
                                 }
-                                VStack(alignment: .leading,spacing: 4) {
-                                    HStack(spacing: 16) {
-                                        Text(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 18,
-                                                weight: .semibold,
-                                            )
-                                            .lineLimit(1)
-                                            .truncationMode(.tail)
-                                        CountryFlagView(countryCode: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("countryId"))
-                                    }
-                                    HStack(spacing: 16) {
-                                        HStack(spacing: 4) {
-                                            if let x3r45aKu1Bx = (qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int) {
-                                                ZJ7h766mz(tMmEWWlfgUag: x3r45aKu1Bx == 0 ? "vK1PV3wuy5o4JGId" : x3r45aKu1Bx == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy")
-                                                    .frame(width: 24,height: 24)
-                                            } else {
-                                                ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
-                                                    .frame(width: 24,height: 24)
-                                            }
-                                            Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
-                                                .g0LIIcoZQsOjyND9()
+                            }.padding(.bottom,12)
+                            HStack(spacing: 16) {
+                                Text(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()))
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 18,
+                                        weight: .semibold,
+                                    )
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                                
+                            }.padding(.bottom,8)
+                            
+                           
+                               
+                                HStack(spacing: 16) {
+                                    HStack(spacing: 4) {
+                                        if let x3r45aKu1Bx = (qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int) {
+                                            ZJ7h766mz(tMmEWWlfgUag: x3r45aKu1Bx == 0 ? "vK1PV3wuy5o4JGId" : x3r45aKu1Bx == 1 ? "h8bx8HHiJD1BodEG8Zfzl" : "aSUqulEy")
+                                                .frame(width: 24,height: 24)
+                                        } else {
+                                            ZJ7h766mz(tMmEWWlfgUag: "vK1PV3wuy5o4JGId")
+                                                .frame(width: 24,height: 24)
                                         }
+                                        Text(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("df7WLEb5hNmaUSKmCrDbbw==".bFHEatcgE4zzU9TCfDonsu(),default: 22)))
+                                            .g0LIIcoZQsOjyND9()
                                         RoundedRectangle(cornerRadius: 0)
                                             .fill(Color.white.opacity(0.4))
-                                            .frame(width: 1,height: 13)
-                                        HStack(spacing: 4) {
-                                            Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())))
-                                                .g0LIIcoZQsOjyND9()
-                                            Button{
-                                                let gjikAoPvX = String(
-                                                    qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int(
-                                                        "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
-                                                    )
+                                            .frame(width: 1, height: 13)
+                                            .padding(.horizontal,10)
+                                        CountryFlagView(countryCode: qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.string("countryId"))
+                                    }
+                                    RoundedRectangle(cornerRadius: 0)
+                                        .fill(Color.white.opacity(0.4))
+                                        .frame(width: 1, height: 13)
+                                    HStack(spacing: 4) {
+                                        Text("zJ15CvylxUyAMrGGzo0H4Q==".bFHEatcgE4zzU9TCfDonsu()+String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())))
+                                            .g0LIIcoZQsOjyND9()
+                                        Button{
+                                            let gjikAoPvX = String(
+                                                qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int(
+                                                    "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()
                                                 )
-                                                UIPasteboard.general.string = gjikAoPvX
-                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==",type: 0)
-                                            } label: {
-                                                ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX")
-                                                    .frame(width: 16,height: 16)
-                                            }
+                                            )
+                                            UIPasteboard.general.string = gjikAoPvX
+                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("REb1QH5U5jRdbMUtHMwvWQ==",type: 0)
+                                        } label: {
+                                            ZJ7h766mz(tMmEWWlfgUag: "gnuwJqMH3sA8Hce5wxEX")
+                                                .frame(width: 16,height: 16)
                                         }
                                     }
-                                }
-                                Spacer()
-                            }
+                                }.padding(.bottom,6)
+                            
+                            
+                            
+                            
                             HStack(spacing: 128) {
                                 Button{
                                     
@@ -140,30 +147,33 @@ struct C8Z2x4M6YV9m: View {
                         }
                         VStack(spacing: 16) {
                             //vip
- //                           HStack(spacing: 8) {
-//                                    ZStack{
-//                                        ZJ7h766mz(tMmEWWlfgUag: "jKbg9DLfbZpDr")
-//                                                           .frame(height: 97)
-//                                                           .frame(maxWidth: .infinity)
-//                                                                                VStack(alignment: .leading, spacing: 5) {
-//                                                                                    Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
-//                                                                                        .g0LIIcoZQsOjyND9(
-//                                                                                            color: Color.white.opacity(0.6)
-//                                                                                        )
-//                                                                                    HStack(spacing: 8) {
-//                                                                                        Text("9999")
-//                                                                                            .g0LIIcoZQsOjyND9(
-//                                                                                                size: 18,
-//                                                                                                weight: .black
-//                                                                                            )
-//                                                                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-//                                                                                                                                            .frame(width: 24,height: 24)
-//                                                                                        Spacer()
-//                                                                                    }
-//                                                                                }
-//                                                                                .padding(.leading,16)
-//                                    }.frame(height: 97)
-//                                        .frame(maxWidth: .infinity)
+                            HStack(spacing: 8) {
+                                    ZStack{
+                                        ZJ7h766mz(tMmEWWlfgUag: "jKbg9DLfbZpDr")
+                                                           .frame(height: 97)
+                                                           .frame(maxWidth: .infinity)
+                                                                                VStack(alignment: .leading, spacing: 5) {
+                                                                                    Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
+                                                                                        .g0LIIcoZQsOjyND9(
+                                                                                            color: Color.white.opacity(0.6)
+                                                                                        )
+                                                                                    HStack(spacing: 8) {
+                                                                                        Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum"))")
+                                                                                            .g0LIIcoZQsOjyND9(
+                                                                                                size: 18,
+                                                                                                weight: .black
+                                                                                            )
+                                                                                        ZJ7h766mz(tMmEWWlfgUag: "ew63GC7KPTvnBfzp")
+                                                                                                                                            .frame(width: 16,height: 24)
+                                                                                        Spacer()
+                                                                                    }
+                                                                                }
+                                                                                .padding(.leading,16)
+                                    }.frame(width: 168 ,height: 86)
+                                    .onTapGesture {
+                                        pilot.push(.Afmox09Q1UKVfE)
+                                    }
+                                      Spacer()
 
 //                                RoundedRectangle(cornerRadius: 12)
 //                                    .frame(width: 127,height: 78)
@@ -182,7 +192,7 @@ struct C8Z2x4M6YV9m: View {
 //                                        }
 //                                        .padding(.leading,16)
 //                                    }
-//                            }
+                            }
                             //vip  end
                             VStack(spacing: 0) {
                                 Button{

@@ -210,28 +210,15 @@ struct QZ4A0M84C7WL9: View {
                                                 LinearGradient(
                                                     colors: [
                                                         is7A0Y4W6ECL == 1 ?
-                                                        Color(red: 217 / 255,green: 28 / 255,blue: 255 / 255,opacity: 0.72) :
-                                                            Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.32)
+                                                        Color(red: 138 / 255,green: 120 / 255,blue: 255 / 255,opacity: 0.2) :
+                                                            Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15)
                                                         ,is7A0Y4W6ECL == 1 ?
-                                                        Color(red: 28 / 255,green: 215 / 255,blue: 255 / 255,opacity: 0.1) :
-                                                            Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.1)
+                                                        Color(red: 170 / 255,green: 84 / 255,blue: 255 / 255,opacity: 0.23) :
+                                                            Color(red: 174 / 255,green: 173 / 255,blue: 247 / 255,opacity: 0.15)
                                                     ], startPoint: .leading, endPoint: .trailing)
                                             )
                                             .cornerRadius(325)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 325)
-                                                    .stroke(
-                                                        LinearGradient(
-                                                            colors: [
-                                                                Color(red: 187 / 255, green: 68 / 255, blue: 219 / 255),
-                                                                Color(red: 43 / 255, green: 93 / 255, blue: 117 / 255)
-                                                            ],
-                                                            startPoint: .leading,
-                                                            endPoint: .trailing
-                                                        ),
-                                                        lineWidth:is7A0Y4W6ECL == 1 ? 1 : 0
-                                                    )
-                                            )
+                                    
                         }
                         Spacer()
                     }

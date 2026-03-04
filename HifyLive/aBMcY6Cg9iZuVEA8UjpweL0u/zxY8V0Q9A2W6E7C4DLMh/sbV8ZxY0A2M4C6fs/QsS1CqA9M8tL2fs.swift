@@ -73,7 +73,6 @@ struct QsS1CqA9M8tL2fs: View {
                             piaoncapType = 1
                             tsteadySelect = true
                         }
-                            
                     }
                     Spacer()
                     ZStack{

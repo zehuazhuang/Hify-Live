@@ -38,7 +38,7 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                                     qiizd0IijFdcEjzdYt(1)
                                 } label: {
                                     RoundedRectangle(cornerRadius: 24)
-                                        .fill(Color.white.opacity(0.15))
+                                        .fill(Color(red: 174/255, green: 173/255, blue: 247/255).opacity(0.15))
                                         .frame(height: 46)
                                         .overlay {
                                             HStack(spacing: 8) {
@@ -55,7 +55,7 @@ struct kn0Whj5gQoqK6wCVuQVzZcpMbXzjLuQq: View {
                                     qiizd0IijFdcEjzdYt(2)
                                 } label: {
                                     RoundedRectangle(cornerRadius: 24)
-                                        .fill(Color.white.opacity(0.15))
+                                        .fill(Color(red: 174/255, green: 173/255, blue: 247/255).opacity(0.15))
                                         .frame(height: 46)
                                         .overlay {
                                             HStack(spacing: 8) {

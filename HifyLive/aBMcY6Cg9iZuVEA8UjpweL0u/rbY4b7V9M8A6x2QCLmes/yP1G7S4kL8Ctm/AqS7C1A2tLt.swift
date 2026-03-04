@@ -12,19 +12,18 @@ struct AqS7C1A2tLt: View {
                     .clipShape(Circle())
                     .allowsHitTesting(false)
                 ZStack {
+                    
+                    ZJ7h766mz(tMmEWWlfgUag: "ag1RyoCDRTVrB")
+                                       .frame(width: 42, height: 16)
                     Text("Live").g0LIIcoZQsOjyND9(
                                         size: 12,
-                                        weight: .regular,
-                                    )
-                }.frame(width: 38,height: 15)
-                                .background(
-                                    LinearGradient(
-                                        colors: [Color(red: 203 / 255,green: 15 / 255,blue: 255 / 255,opacity: 1
-                                    ), Color(red: 255 / 255,green: 55 / 255,blue: 28 / 255,opacity: 1)], startPoint: .leading, endPoint: .trailing)
-                                )
-                                .cornerRadius(4)
-                                .frame(maxHeight: .infinity,alignment:.bottom)
+                                        weight: .medium,
+                    )
+                }.frame(width: 42,height: 16)
+                  .frame(maxHeight: .infinity,alignment:.bottom)
+                  .offset(y:3)
             }.frame(width: 56, height: 56)
+            
             Text(mdFf7YData.string("nickname")).g0LIIcoZQsOjyND9(
                                 size: 14,
                                 weight: .regular,
@@ -44,8 +43,8 @@ struct aW6MZ4xQ7L0Ez: View {
             .stroke(
                 LinearGradient(
                     colors: [
-                        Color(red: 217/255, green: 28/255, blue: 255/255),
-                        Color(red: 49/255, green: 198/255, blue: 232/255)
+                        Color(red: 26/255, green: 217/255, blue: 255/255),
+                        Color(red: 217/255, green: 28/255, blue: 255/255)
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing

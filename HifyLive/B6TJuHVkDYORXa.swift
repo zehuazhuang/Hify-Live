@@ -57,5 +57,7 @@ enum APPTJuHVkDYORXa: Equatable {
     case QsS1CqA9M8tL2fs
     //图片放大
     case ZQ9FPreviewWrapper(pics: [String],startIndex: Int)
+    //交易记录
+    case H7XMmrHFowMS7i
 }
 

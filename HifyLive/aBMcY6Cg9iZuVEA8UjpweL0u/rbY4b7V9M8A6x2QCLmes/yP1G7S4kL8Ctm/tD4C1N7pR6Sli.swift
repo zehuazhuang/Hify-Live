@@ -30,8 +30,8 @@ struct tD4C1N7pR6Sli: View {
             VStack(alignment:.leading,spacing:3){
                 Text(rN1Z8mR.nickname)
                                 .g0LIIcoZQsOjyND9(
-                                    size: 14,
-                                    weight: .regular
+                                    size: 16,
+                                    weight: .medium
                                 )
                 Text(rN1Z8mR.lastMessageText)
                                 .g0LIIcoZQsOjyND9(
@@ -74,11 +74,7 @@ struct tD4C1N7pR6Sli: View {
         }.frame(height: 76)
         .frame(maxWidth: .infinity)
         .padding(.horizontal,16)
-        .background(
-            LinearGradient(
-                colors: [Color(red: 120 / 255,green: 223 / 255,blue: 255 / 255,opacity: 0.06
-                              ), Color(red: 84 / 255,green: 105 / 255,blue: 199 / 255,opacity: 0.05)], startPoint: .leading, endPoint: .trailing)
-        )
+        .contentShape(Rectangle())
         .onTapGesture { onTap(rN1Z8mR) }
        
        

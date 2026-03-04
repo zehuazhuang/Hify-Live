@@ -181,8 +181,8 @@ struct CgZU7mTgY46l: View {
                                         }
                                         
                                 //礼物
-//                                ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
-//                                    .frame(width: 32, height: 32)
+                                ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
+                                    .frame(width: 32, height: 32)
                             }
                         }.padding(.horizontal,16)
                         .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
@@ -205,11 +205,11 @@ struct CgZU7mTgY46l: View {
                     opponentInfo = info
                  
                     
-                    iLIIszM4zwx = opponentInfo.int("beBlocked")
+                 //   iLIIszM4zwx = opponentInfo.int("beBlocked")
                     
-                    if(iLIIszM4zwx == 0){
+                 //   if(iLIIszM4zwx == 0){
                         iLIIszM4zwx = opponentInfo.int("blocked")
-                    }
+                 //   }
                     
                    
                   

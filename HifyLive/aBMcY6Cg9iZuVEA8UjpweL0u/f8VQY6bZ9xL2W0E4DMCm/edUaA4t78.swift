@@ -64,11 +64,11 @@ struct edUaA4t78: View {
                 ZStack(alignment: .bottom, content: {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(
-                            Gradient(colors: [Color(red: 21/255, green: 12/255, blue: 38/255),Color(red: 17/255, green: 31/255, blue: 46/255)])
+                            Gradient(colors: [Color(red: 21/255, green: 11/255, blue: 46/255),Color(red: 67/255, green: 7/255, blue: 71/255)])
                         )
                     RoundedRectangle(cornerRadius: 12)
                         .fill(
-                            Gradient(colors: [Color(red: 94/255, green: 148/255, blue: 1, opacity: 0),Color(red: 117/255, green: 237/255, blue: 1, opacity: 0.25)])
+                            Gradient(colors: [Color(red: 94/255, green: 148/255, blue: 1, opacity: 0),Color(red: 117/255, green: 186/255, blue: 1, opacity: 0.3),])
                         )
                         .frame(height: 72)
                 })

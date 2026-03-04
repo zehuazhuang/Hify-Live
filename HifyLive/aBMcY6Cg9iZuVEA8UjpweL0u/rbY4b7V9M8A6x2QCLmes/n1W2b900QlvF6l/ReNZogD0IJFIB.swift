@@ -184,10 +184,14 @@ struct ChatTableView: UIViewRepresentable {
           
             cell.configure(message: msg, avatarURL: msg.avatarURL)
             
+            cell.onResendTap = { [weak self] message in
+                self?.parent.vm.resendMessage(message)
+            }
+            
             cell.onImageTap = { [weak self] imageURL in
                 guard let self else { return }
 
-                
+
 
                 parent.pilot.push(
                         .ZQ9FPreviewWrapper(
@@ -231,6 +235,10 @@ class ChatCell: UITableViewCell {
     private var textBubbleConstraints: [NSLayoutConstraint] = []
     private var imageBubbleConstraints: [NSLayoutConstraint] = []
     
+    
+    var onResendTap: ((ChatMessage) -> Void)?
+    var currentMessage: ChatMessage?
+    
     //拉黑label
     private let blockHintLabel: UILabel = {
         let label = UILabel()
@@ -255,6 +263,9 @@ class ChatCell: UITableViewCell {
     private let statusIcon = UIImageView()
     private let sendingIndicator = UIActivityIndicatorView(style: .medium)
     private var cancellables = Set<AnyCancellable>()
+    
+    //当前发送状态
+    private var currentSendStatus: SendStatus?
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -290,9 +301,39 @@ class ChatCell: UITableViewCell {
                     statusIcon.image = UIImage(systemName: "exclamationmark.circle")
                 case .wTiahblock:
                     statusIcon.image = UIImage(named: "jtIX8vefgtZLPffo7uoIGDDyg3sfmpju")
+                    
                 }
             }
+        
+        currentSendStatus = status
         }
+    
+    @objc private func statusIconTapped() {
+        guard case .failed(let reason)? = currentSendStatus,
+              reason == .wTiahblock else { return }
+
+        // 只处理 wTiahblock
+        print("点击拉黑icon")
+        guard let vc = parentViewController else { return }
+
+        let alertView = Vvk0RGWUsPkMw(
+            onCancel: {
+                vc.dismiss(animated: true)
+            },
+            onConfirm: { [weak self] in
+                vc.dismiss(animated: true)
+                guard let message = self?.currentMessage else { return }
+                self?.onResendTap?(message)
+            }
+        )
+
+          let hosting = UIHostingController(rootView: alertView)
+        hosting.modalPresentationStyle = .overFullScreen
+        hosting.modalTransitionStyle = .crossDissolve   // 关键！
+        hosting.view.backgroundColor = .clear           // 重要
+          vc.present(hosting, animated: true)
+    }
+    
     //图片点击放大
     @objc private func handleImageTap() {
             guard let imageURL = currentImageURL else { return }
@@ -318,7 +359,13 @@ class ChatCell: UITableViewCell {
         statusIcon.contentMode = .scaleAspectFit
         statusIcon.translatesAutoresizingMaskIntoConstraints = false
         statusIcon.isHidden = true
-        bubbleContainer.addSubview(statusIcon)
+        statusIcon.isUserInteractionEnabled = true
+        let tcm87KJtap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(statusIconTapped)
+        )
+        statusIcon.addGestureRecognizer(tcm87KJtap)
+        contentView.addSubview(statusIcon)
 
 
 
@@ -389,8 +436,8 @@ class ChatCell: UITableViewCell {
         NSLayoutConstraint.activate([
             statusIcon.widthAnchor.constraint(equalToConstant: 16),
             statusIcon.heightAnchor.constraint(equalToConstant: 16),
-            statusIcon.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor, constant: -26),
-                statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor)
+            statusIcon.trailingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor, constant: -6),
+            statusIcon.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
@@ -459,10 +506,7 @@ class ChatCell: UITableViewCell {
                 equalTo: contentView.trailingAnchor,
                 constant: -40
             ),
-            blockHintLabel.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: -6
-            )
+
         ])
         
         bubbleBottomConstraint = bubbleContainer.bottomAnchor.constraint(
@@ -484,6 +528,8 @@ class ChatCell: UITableViewCell {
 
     // MARK: Configure
     func configure(message: ChatMessage, avatarURL: String?) {
+        
+        self.currentMessage = message
         
         // ⚠️ 先清掉旧订阅
           cancellables.removeAll()

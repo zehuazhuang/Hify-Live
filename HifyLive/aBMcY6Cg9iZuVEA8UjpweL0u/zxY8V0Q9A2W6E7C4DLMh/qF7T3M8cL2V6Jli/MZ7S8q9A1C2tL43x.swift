@@ -104,7 +104,7 @@ struct MZ7S8q9A1C2tL43x: View {
             
                 Spacer()
             }.padding(.horizontal,16)
-                .padding(.top,55)
+               
         }.onAppear {
             if let uid = x0W6LivDate?["userId"] as? Int {
                 L3vM9X0aQ8yF4b.shared.removeLive(by: uid)

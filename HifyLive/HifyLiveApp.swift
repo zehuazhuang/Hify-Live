@@ -13,7 +13,7 @@ class N0lU9akMbRab: NSObject, UIApplicationDelegate {
 
 @main
 struct HifyLiveApp: App {
-    
+    @StateObject private var yg881FpnD9Ee1 = RZ5EA4IPxfI4x() //订单实例
 
     @UIApplicationDelegateAdaptor(N0lU9akMbRab.self) var n0lU9akMbRab
     @StateObject var pilot = UIPilot<APPTJuHVkDYORXa>(initial: .cjMFVE23ZhInit)
@@ -109,11 +109,15 @@ struct HifyLiveApp: App {
                            case let .ZQ9FPreviewWrapper(pics, startIndex):
                                ZQ9FPreviewWrapper(pics: pics,startIndex: startIndex)
                                    .ignoresSafeArea()
+                           case .H7XMmrHFowMS7i:
+                               H7XMmrHFowMS7i()
                            }
                        }
-                   }
+                   }.environmentObject(yg881FpnD9Ee1)
                 .ignoresSafeArea()
                     .onAppear {
+                        PkeDEXpbkc4RXu.shared.goGKj6Y2p4 = yg881FpnD9Ee1
+                        UfmQhHA1doHKs.bHNA2Amheuq0.e3lm29iotZr1P6CsH()
                         utufpxtrNowtjF()
                     }//判断token是否过期，到登录页面
                     .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
@@ -124,7 +128,7 @@ struct HifyLiveApp: App {
     }
     
     func lidstateLoad() async{
-       
+        
         Task {
            // let gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5: [String:Any]? = await aYTO7iD()
             var responseData: [String: Any]? = nil
@@ -134,6 +138,8 @@ struct HifyLiveApp: App {
             while responseData == nil && attempt < maxRetries {
                 attempt += 1
                 responseData = await aYTO7iD()
+                
+               
                 
                 if responseData == nil {
                     print("第 \(attempt) 次请求返回空，重试...")

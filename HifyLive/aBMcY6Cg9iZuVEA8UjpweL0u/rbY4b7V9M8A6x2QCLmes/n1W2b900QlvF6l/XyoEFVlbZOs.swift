@@ -41,6 +41,8 @@ class ChatMessage: Identifiable, ObservableObject {
     let timestamp: TimeInterval
     let avatarURL: String?
     
+    var nimMessage: NIMMessage?
+    
     @Published var content: ChatMessageContent
     @Published var showTime: Bool = false
     @Published var sendStatus: SendStatus = .success
@@ -55,7 +57,8 @@ class ChatMessage: Identifiable, ObservableObject {
         timestamp: TimeInterval,
         avatarURL: String?,
         sendStatus: SendStatus = .success,
-        localImage: UIImage? = nil
+        localImage: UIImage? = nil,
+        nimMessage: NIMMessage? = nil
     ) {
         self.messageId = messageId
         self.content = content
@@ -64,6 +67,7 @@ class ChatMessage: Identifiable, ObservableObject {
         self.avatarURL = avatarURL
         self.sendStatus = sendStatus
         self.localImage = localImage
+        self.nimMessage = nimMessage
     }
 }
     //操作私聊
@@ -83,6 +87,7 @@ class ChatMessage: Identifiable, ObservableObject {
             self.myAvatarURL = myAvatarURL
             self.opponentAvatarURL = opponentAvatarURL
             super.init()
+            
             NIMSDK.shared().chatManager.add(self)
             
         }
@@ -108,6 +113,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 recent.timestamp = message.timestamp
             }
         
+        //加载历史消息
         @MainActor
         func loadHistory() {
             let msgs = NIMSDK.shared()
@@ -119,8 +125,7 @@ class ChatMessage: Identifiable, ObservableObject {
             var result: [ChatMessage] = []
             
             for msg in msgs {
-                print("消息类型")
-                print(msg)
+           
                 let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
                 
                 let chatMsg: ChatMessage?
@@ -137,7 +142,8 @@ class ChatMessage: Identifiable, ObservableObject {
                         isOutgoingMsg: msg.isOutgoingMsg,
                         timestamp: msg.timestamp,
                         avatarURL: avatar,
-                        sendStatus: sendStatus
+                        sendStatus: sendStatus,
+                        nimMessage : msg
                     )
                 } else if let imageObject = msg.messageObject as? NIMImageObject {
                     let size = CGSize(
@@ -156,7 +162,8 @@ class ChatMessage: Identifiable, ObservableObject {
                         isOutgoingMsg: msg.isOutgoingMsg,
                         timestamp: msg.timestamp,
                         avatarURL: avatar,
-                        sendStatus: sendStatus
+                        sendStatus: sendStatus,
+                        nimMessage : msg
                     )
                 } else {
                     chatMsg = nil
@@ -171,7 +178,7 @@ class ChatMessage: Identifiable, ObservableObject {
             
             self.messages = result
         }
-      
+        //敏感词拦截
         func canSendMessage(_ text: String) -> Bool {
             let result = V2NIMClientAntispamUtil.checkTextAntispam(text, replace: nil)
 
@@ -188,6 +195,7 @@ class ChatMessage: Identifiable, ObservableObject {
             return true
         }
         
+        //发送文本
         func sendText(qAiRzAlJType: Int) {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
             guard !inputText.isEmpty else { return }
             
@@ -203,7 +211,7 @@ class ChatMessage: Identifiable, ObservableObject {
             
             let message = NIMMessage()
             message.text = inputText
-            
+           
             // 先创建本地 ChatMessage，状态为 sending
             let chatMsg = ChatMessage(
                 messageId: message.messageId,
@@ -211,7 +219,8 @@ class ChatMessage: Identifiable, ObservableObject {
                 isOutgoingMsg: true,
                 timestamp: message.timestamp,
                 avatarURL: self.myAvatarURL,
-                sendStatus:qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock)
+                sendStatus:.sending,//qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock),
+                nimMessage: message
             )
             
             let lastTimestamp = self.messages.last?.timestamp ?? 0
@@ -223,38 +232,59 @@ class ChatMessage: Identifiable, ObservableObject {
             
             
             // 发送消息
-            NIMSDK.shared().chatManager.send(message, to: session) { [weak self] error in
-                guard let self = self else { return }
-             
-                Task { @MainActor in
-                  
-                    
-                    let status: SendStatus
-                    if let err = error as NSError? {
-                        switch err.code {
-                        case 801:
-                            status = .failed(reason: .sensitive)
-                        case NSURLErrorNotConnectedToInternet:
-                            status = .failed(reason: .network)
-                        default:
-                            status = .failed(reason: .unknown)
+//            NIMSDK.shared().chatManager.send(message, to: session) { [weak self] error in
+//                guard let self = self else { return }
+//             
+//                Task { @MainActor in
+//                  
+//                    
+//                    let status: SendStatus
+//                    if let err = error as NSError? {
+//                        switch err.code {
+//                        case 801:
+//                            status = .failed(reason: .sensitive)
+//                        case NSURLErrorNotConnectedToInternet:
+//                            status = .failed(reason: .network)
+//                        default:
+//                            status = .failed(reason: .unknown)
+//                        }
+//                    } else {
+//                        status = .success
+//                    }
+//                   
+//                   //isBlackListed
+//
+
+//                }
+//            }
+//            NIMSDK.shared().chatManager.send(message, to: session, completion: nil)
+             NIMSDK.shared().chatManager.send(message, to: session) { error in
+                if let err = error as NSError? {
+                    Task { @MainActor in
+                        if let index = self.messages.firstIndex(where: { $0.nimMessage === message }) {
+                            switch err.code {
+                            case 801:
+                                self.messages[index].sendStatus = .failed(reason: .sensitive)
+                            case NSURLErrorNotConnectedToInternet:
+                                self.messages[index].sendStatus = .failed(reason: .network)
+                            default:
+                                self.messages[index].sendStatus = .failed(reason: .unknown)
+                            }
                         }
-                    } else {
-                        status = .success
-                    }
-
-                    // ✅ 更新发送状态
-                    if let index = self.messages.firstIndex(where: { $0.messageId == message.messageId }) {
-                        self.messages[index].sendStatus = qAiRzAlJType == 0 ? .success : .failed(reason: .wTiahblock)
-                    }
-
-                    if status == .success {
-                        self.inputText = ""
                     }
                 }
+                 
+                 // ✅ 更新发送状态
+                 if let index = self.messages.firstIndex(where: { $0.messageId == message.messageId }) {
+                     self.messages[index].sendStatus = .success
+                 }
+
+                 
+                     self.inputText = ""
+                 
             }
         }
-        
+        //发送图片
         func sendImage(_ image: UIImage,qAiRzAlJType: Int) {
             guard let data = image.jpegData(compressionQuality: 0.8) else { return }
             let message = NIMMessage()
@@ -265,8 +295,9 @@ class ChatMessage: Identifiable, ObservableObject {
                 isOutgoingMsg: true,
                 timestamp: Date().timeIntervalSince1970,
                 avatarURL: myAvatarURL,
-                sendStatus: qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock),
-                localImage: image
+                sendStatus: .sending,//qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock),
+                localImage: image,
+                nimMessage: message
             )
             
             let lastTimestamp = self.messages.last?.timestamp ?? 0
@@ -285,7 +316,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 do {
                     // 1️⃣ 上传并鉴黄
                     guard let url = try await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(image, isIA8MTA: true) else {
-                        print("❌ 上传失败或图片不合规")
+                        print(" 上传失败或图片不合规")
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .failed(reason: .sensitive)
                         }
@@ -322,6 +353,47 @@ class ChatMessage: Identifiable, ObservableObject {
         }
         
         
+        @MainActor
+        func resendMessage(_ message: ChatMessage) {
+            guard message.isOutgoingMsg else { return }
+
+            guard case .failed = message.sendStatus else { return }
+
+            guard let nimMsg = message.nimMessage else {
+                assertionFailure("ChatMessage 没有 nimMessage")
+                return
+            }
+
+            message.sendStatus = .sending
+
+            do {
+                try NIMSDK.shared().chatManager.resend(nimMsg)
+                message.sendStatus = .success
+            } catch {
+                message.sendStatus = .failed(reason: .unknown)
+                print("❌ resend throw:", error)
+            }
+        }
+        
+        func chatManager(_ manager: NIMChatManager, didSend message: NIMMessage, error: Error?) {
+            Task { @MainActor in
+                guard let index = messages.firstIndex(where: { $0.nimMessage === message }) else { return }
+
+                if let _ = error {
+                    messages[index].sendStatus = .failed(reason: .unknown)
+                } else {
+                    // 这里可以拿到 isBlackListed
+                    messages[index].sendStatus = message.isBlackListed
+                        ? .failed(reason: .wTiahblock)
+                        : .success
+                }
+
+                if messages[index].sendStatus == .success {
+                    self.inputText = ""
+                }
+            }
+        }
+
 
     }
 
@@ -353,7 +425,8 @@ class ChatMessage: Identifiable, ObservableObject {
                             content: .text(text),
                             isOutgoingMsg: msg.isOutgoingMsg,
                             timestamp: timestamp,
-                            avatarURL: avatar
+                            avatarURL: avatar,
+                            nimMessage: msg
                         )
                     } else if let imageObject = msg.messageObject as? NIMImageObject {
                         let size = CGSize(
@@ -368,7 +441,8 @@ class ChatMessage: Identifiable, ObservableObject {
                             ),
                             isOutgoingMsg: msg.isOutgoingMsg,
                             timestamp: timestamp,
-                            avatarURL: avatar
+                            avatarURL: avatar,
+                            nimMessage: msg
                         )
                     }
 
@@ -380,4 +454,6 @@ class ChatMessage: Identifiable, ObservableObject {
                 }
             }
         }
+        
+
     }

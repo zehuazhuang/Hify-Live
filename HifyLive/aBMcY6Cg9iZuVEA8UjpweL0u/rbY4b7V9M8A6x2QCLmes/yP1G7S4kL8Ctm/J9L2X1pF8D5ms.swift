@@ -20,32 +20,52 @@ struct J9L2X1pF8D5ms: View {
                     
                     if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.count > 0{
                         let items = X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH
-                        ScrollView(.horizontal, showsIndicators: false) {
-                               HStack(spacing: 16) {
-                                   // 只循环最多 4 个元素
-                                   ForEach(Array(items.prefix(4)).indices, id: \.self) { index in
-                                       AqS7C1A2tLt(mdFf7YData: items[index])
-                                           .onTapGesture {
+                        VStack(spacing:0){
+                            HStack{
+                                Text("Live Streaming")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 16,
+                                                    weight: .medium
+                                                )
+                                Spacer()
+                                if items.count > 5 {
+                                    HStack(spacing:0){
+                                        Text("More")
+                                                        .g0LIIcoZQsOjyND9(
+                                                            size: 14,
+                                                            weight: .regular,
+                                                            color: .white.opacity(0.6)
+                                                        )
+                                        
+                                        ZJ7h766mz(tMmEWWlfgUag: "th0Ut3j5AeDfnIFS")
+                                                           .frame(width: 24, height: 24)
+                                    }.onTapGesture {
+                                        wzJqE7XWO()
+                                    }
+                                }
+                         
+                            }.padding(.horizontal, 16)
+                             .padding(.top,12)
+                            
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                   HStack(spacing: 16) {
+                                       // 只循环最多 4 个元素
+                                       ForEach(Array(items.prefix(4)).indices, id: \.self) { index in
+                                           AqS7C1A2tLt(mdFf7YData: items[index])
+                                               .onTapGesture {
 
-                                               
-                                               pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(items[index].int("userId"))))
-                                           }
-                                   }
-                                   Spacer()
-                                   if items.count > 4 {
-                                       VStack {
-                                           ZJ7h766mz(tMmEWWlfgUag: "mM3S8q9A2Co")
-                                               .frame(width: 56, height: 56)
-                                           Text("More")
-                                               .g0LIIcoZQsOjyND9(size: 14, weight: .regular, color: .white.opacity(0.6))
-                                       }.onTapGesture {
-                                           wzJqE7XWO()
+                                                   
+                                                   pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(items[index].int("userId"))))
+                                               }
                                        }
-                                   }
-                                 
-                               }.padding(.top,20)
-                               .padding(.horizontal, 16)
-                           }
+                                       Spacer()
+                                      
+                                     
+                                   }.padding(.top,20)
+                                   .padding(.horizontal, 16)
+                               }
+                        }
                     }
       
                 

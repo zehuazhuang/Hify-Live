@@ -83,7 +83,6 @@ struct ME9B8ZCwVQxn: View {
             
             if shR2D3nR8Q {
                 CQ7E8ZC2A4Y0le(heS7pC8R2J: $shR2D3nR8Q)
-                    
             }
             
                 
@@ -98,7 +97,7 @@ struct ME9B8ZCwVQxn: View {
            }) {
                VStack(spacing: 3) {
                           ZJ7h766mz(tMmEWWlfgUag: crformanchSelect == aenteckTab ? battemeneSeleImg : haiecenseImg)
-                              .frame(width: 30, height: 30)
+                              .frame(width: 24, height: 24)
                    Text(semblrmdanTi)
                                    .g0LIIcoZQsOjyND9(
                                        size:  14,
