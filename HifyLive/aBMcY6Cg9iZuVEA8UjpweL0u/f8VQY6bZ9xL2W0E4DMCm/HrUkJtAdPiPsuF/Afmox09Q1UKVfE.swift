@@ -20,6 +20,8 @@ struct Afmox09Q1UKVfE: View {
     @EnvironmentObject var tqaYrFHScB4LNL: RZ5EA4IPxfI4x  //订单实例
     @State private var dZJ24OCh = false //初始化一次
     @State private var sQYNvOjd5v: Bool = false //显示挽留弹窗
+    @State private var remainingSeconds: Int = 600
+    @State private var timer: Timer?
     
     var body: some View {
         ZStack{
@@ -72,7 +74,7 @@ struct Afmox09Q1UKVfE: View {
                                                 size: 14,
                                                 weight: .medium
                                             )
-                            Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum"))")
+                            Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
                                 .g0LIIcoZQsOjyND9(
                                     size: 28,
                                     weight: .black
@@ -98,94 +100,141 @@ struct Afmox09Q1UKVfE: View {
                           
                                 
                             ForEach(Array(uSM1VTVKvc0WVI.enumerated()), id: \.offset) { index, info in
-                              ZStack{
-                           
-                                VStack(spacing:0){
-                                    Spacer()
-                                    Spacer().frame(height: 18)
-                                    
+                                let nhIY70bF4 = info.int("boughtFlag") == 0 //是否首充
+                                let vX3L1Q6kF = nhIY70bF4 ? info.int("firstChargeGive") : info.int("giveDiamondNum") //额外赠送钻石
+                                ZStack{
+                                  ZStack{
+                                      LinearGradient(
+                                          gradient: Gradient(colors: [
+                                              Color(red: 27/255, green: 31/255, blue: 51/255),
+                                              Color(red: 29/255, green: 25/255, blue: 36/255),
+                                          ]),
+                                          startPoint: .top,
+                                          endPoint: .bottom
+                                      ).frame(height:140)
+                                          .frame(maxWidth: .infinity)
+                                          .cornerRadius(8)
+                                      if vX3L1Q6kF > 0 {
+                                          RoundedRectangle(cornerRadius: 8)
+                                              .fill(
+                                                  LinearGradient(
+                                                      gradient: Gradient(colors: [
+                                                          Color(red: 49/255, green: 57/255, blue: 133/255),
+                                                          Color(red: 29/255, green: 19/255, blue: 38/255),
+                                                      ]),
+                                                      startPoint: .top,
+                                                      endPoint: .bottom
+                                                  )
+                                              )
+                                              .overlay(
+                                                  RoundedRectangle(cornerRadius: 8)
+                                                      .strokeBorder(
+                                                          LinearGradient(
+                                                              colors: [
+                                                                  Color(red: 191/255, green: 205/255, blue: 255/255).opacity(0.37),
+                                                                  Color.white.opacity(0)
+                                                              ],
+                                                              startPoint: .top,
+                                                              endPoint: .bottom
+                                                          ),
+                                                          lineWidth: 0.6
+                                                      )
+                                              )
+                                              .frame(height: 140)
+                                              .frame(maxWidth: .infinity)
+                                      }
+                                      
+                                      
+                                      
+                                      
                                     VStack(spacing:0){
-                                        Text("\(String(info.int("diamondNum")))")
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 16,
-                                                weight: .bold
-                                            )
-                                        Text("+\(String(info.int("giveDiamondNum")))bonus")
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 12,
-                                                weight: .medium,
-                                                color:   Color(red: 255/255, green: 211/255, blue: 99/255)
-                                            )
                                         Spacer()
-                                    }.frame(height:32)
-                                    Spacer().frame(height: 5)
-                                    ZStack {
+                                        Spacer().frame(height: 18)
                                         
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(
-                                                LinearGradient(
-                                                    gradient: Gradient(colors: [
-                                                        Color(red: 17/255, green: 226/255, blue: 255/255),
-                                                        Color(red: 217/255, green: 28/255, blue: 255/255),
-                                                        Color(red: 217/255, green: 28/255, blue: 255/255),
-                                                    ]),
-                                                    startPoint: .leading,
-                                                    endPoint: .trailing
+                                        VStack(spacing:0){
+                                            Text("\(String(info.int("diamondNum")))")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 16,
+                                                    weight: .bold
                                                 )
-                                            )
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .stroke(Color(red: 59/255, green: 63/255, blue: 66/255), lineWidth: 1)
-                                            )
-                                            .frame(width: 91, height: 25)
-                                        
-                                        
-                                        Text("$ \(String((info["convertPrice"] as? Double) ?? 0))")
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 14,
-                                                weight: .medium
-                                            )
-                                    }
-                                    Spacer().frame(height: 9)
-                                }.frame(height:140)
-                                      .frame(maxWidth: .infinity)
-                                      .background(
-                                          LinearGradient(
-                                              gradient: Gradient(colors: [
-                                                  Color(red: 27/255, green: 31/255, blue: 51/255),
-                                                  Color(red: 29/255, green: 25/255, blue: 36/255),
-                                              ]),
-                                              startPoint: .top,
-                                              endPoint: .bottom
-                                          )
-                                      ).padding(.top,3)
+                                            if vX3L1Q6kF > 0 {
+                                                Text("+\(String(vX3L1Q6kF))bonus")
+                                                    .g0LIIcoZQsOjyND9(
+                                                        size: 12,
+                                                        weight: .medium,
+                                                        color:   Color(red: 255/255, green: 211/255, blue: 99/255)
+                                                    )
+                                            }
+                                            
+                                            Spacer()
+                                        }.frame(height:32)
+                                        Spacer().frame(height: 5)
+                                        ZStack {
+                                            
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(
+                                                    LinearGradient(
+                                                        gradient: Gradient(colors: [
+                                                            Color(red: 17/255, green: 226/255, blue: 255/255),
+                                                            Color(red: 217/255, green: 28/255, blue: 255/255),
+                                                            Color(red: 217/255, green: 28/255, blue: 255/255),
+                                                        ]),
+                                                        startPoint: .leading,
+                                                        endPoint: .trailing
+                                                    )
+                                                )
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .stroke(Color(red: 59/255, green: 63/255, blue: 66/255), lineWidth: 1)
+                                                )
+                                                .frame(width: 91, height: 25)
+                                            
+                                            
+                                            Text("$ \(String((info["convertPrice"] as? Double) ?? 0))")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 14,
+                                                    weight: .medium
+                                                )
+                                        }
+                                        Spacer().frame(height: 9)
+                                    }.frame(height:140)
+                                        .frame(maxWidth: .infinity)
+                                       
+                                }.padding(.top,3)
+                                  
+                                  
+                                      
                                   
                                   //背景图
                                   ZJ7h766mz(tMmEWWlfgUag: "eJDSJ03kdl6\(index)")
                                       .frame(width: 109, height: 90)
                                       .frame(maxHeight: .infinity,alignment: .top)
                                       
-                                      
-                                  VStack{
-                                      HStack(spacing:2){
-                                          ZJ7h766mz(tMmEWWlfgUag: "cSuo9DCYRX")
-                                              .frame(width: 53, height: 18)
-                                              .padding(.leading,4)
-                                              
-                                          Spacer()
-                                          HStack(spacing:2){
-                                              ZJ7h766mz(tMmEWWlfgUag: "y0UwIUXSNa")
-                                                  .frame(width: 9, height: 9)
-                                              Text("57:50")
-                                                              .g0LIIcoZQsOjyND9(
-                                                                  size: 9,
-                                                                  weight: .medium
-                                                              )
-                                          }.padding(.trailing,9)
-                                              .padding(.top,4)
-                                      }
-                                      Spacer()
-                                  }
+                                    if vX3L1Q6kF > 0 {
+                                        VStack{
+                                            HStack(spacing:2){
+                                                
+                                                ZJ7h766mz(tMmEWWlfgUag: "cSuo9DCYRX")
+                                                    .frame(width: 53, height: 18)
+                                                    .padding(.leading,4)
+                                                
+                                                
+                                                
+                                                Spacer()
+                                                HStack(spacing:2){
+                                                    ZJ7h766mz(tMmEWWlfgUag: "y0UwIUXSNa")
+                                                        .frame(width: 9, height: 9)
+                                                    Text(timeString)
+                                                        .g0LIIcoZQsOjyND9(
+                                                            size: 9,
+                                                            weight: .medium
+                                                        ).monospacedDigit()
+                                                }.padding(.trailing,9)
+                                                    .padding(.top,4)
+                                            }
+                                            Spacer()
+                                        }
+                                    }
                             }.frame(height:143)
                                     .frame(maxWidth: .infinity)
                                     .cornerRadius(8)
@@ -227,6 +276,8 @@ struct Afmox09Q1UKVfE: View {
                                                 
                                                 
                                                 if let nDgOeiB = resu["diamondNum"] as? Int, nDgOeiB > 0 {
+                                                  
+                                                    pkeDEXpbkc4RXu.nN2B7Q5M9 = nDgOeiB
                                                     
                                                     await pkeDEXpbkc4RXu.mZ6DqgRigNqO(productId: productId)
                                                 }
@@ -269,11 +320,11 @@ struct Afmox09Q1UKVfE: View {
                     }
                     
                     uSM1VTVKvc0WVI = sortedList
-                    
+                   
                 }
 
                 
-                
+                nR2V8Yq1Mz()
                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                 
                 
@@ -294,9 +345,36 @@ struct Afmox09Q1UKVfE: View {
                         sQYNvOjd5v = true
                     }
                 }
-                
-                
+            }
+        } .onDisappear {
+            xV1wL64FJ9()
+        }
+    }
+}
+extension Afmox09Q1UKVfE {
+    
+    var timeString: String {
+        let minutes = remainingSeconds / 60
+        let seconds = remainingSeconds % 60
+        
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func nR2V8Yq1Mz() {
+        xV1wL64FJ9()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            
+            if remainingSeconds > 0 {
+                remainingSeconds -= 1
+            } else {
+                xV1wL64FJ9()
             }
         }
+    }
+    
+    func xV1wL64FJ9() {
+        timer?.invalidate()
+        timer = nil
     }
 }

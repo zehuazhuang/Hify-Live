@@ -1040,7 +1040,7 @@ func ks5LJq4BIxOAX() async throws -> [String: Any] {
 
 //查钻石变动记录
 @MainActor
-func bRW4jX3umRIh() async throws -> [[String: Any]] {
+func bRW4jX3umRIh(yCvCoRXOXp:String) async throws -> [[String: Any]] {
     guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/diamondhistroy/newLive/queryList")") else {
         throw URLError(.badURL)
     }
@@ -1055,8 +1055,8 @@ func bRW4jX3umRIh() async throws -> [[String: Any]] {
     
     let body: [String: Any] = [
         "pageNum":"1",
-        "pageSize":"10",
-        "month":"2026-03-01",
+        "pageSize":"100",
+        "month":yCvCoRXOXp,
     ]
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -1093,8 +1093,7 @@ func bRW4jX3umRIh() async throws -> [[String: Any]] {
     
     
     if let code = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-        print("钻石记录")
-        print(array)
+       
         return array
     } else {
         return []

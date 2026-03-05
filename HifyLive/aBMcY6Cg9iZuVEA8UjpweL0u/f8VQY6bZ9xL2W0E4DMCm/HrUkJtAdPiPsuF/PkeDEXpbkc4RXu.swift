@@ -19,7 +19,8 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
     
     var wBFfm9P58PJF: (() async -> Void)?//取消支付回调
     
-    @Published var q8R2T9vC5MZ: String = ""
+    @Published var q8R2T9vC5MZ: String = "" //key
+    @Published var nN2B7Q5M9: Int = 0 //实际钻石数量
 
     override init() {
         super.init()
@@ -151,7 +152,8 @@ extension PkeDEXpbkc4RXu: SKPaymentTransactionObserver {
                         // ❌ 其他错误
                         Task { @MainActor in
                             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                                .m3nArFwdHhI82cPUmiqW8PtaaHz("keKanlrl/Y+CpZ3rb2tMYQ==", type: 1)
+                                .m3nArFwdHhI82cPUmiqW8PtaaHz("keKanlrl/Y+CpZ3rb2tMYQ==", type: 1,
+                                                             )
                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                             print("支付失败: \(error.localizedDescription)")
                         }
@@ -208,7 +210,8 @@ extension PkeDEXpbkc4RXu {
                                     
                         SKPaymentQueue.default().finishTransaction(transaction)
                     QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                        .m3nArFwdHhI82cPUmiqW8PtaaHz("/peQucgR05RwJN5sSZK/MpLhSTA/SbkaTLxc0PtIk1A=")
+                        .m3nArFwdHhI82cPUmiqW8PtaaHz("/peQucgR05RwJN5sSZK/MpLhSTA/SbkaTLxc0PtIk1A=",
+                                                     subFontText: "You have received \(nN2B7Q5M9) diamonds.",)
                 }
              
                 

@@ -22,6 +22,18 @@ extension Date {
         return mBqzyLFhbMWNzgLYVNonQZdNjc.string(from: self)
     }
 }
+//数字太大转换
+extension Int {
+    func shLK3lGBF() -> String {
+        if self < 10000 {
+            return "\(self)"
+        } else if self < 1_000_000 {
+            return String(format: "%.1fK", Double(self) / 1000)
+        } else {
+            return String(format: "%.1fM", Double(self) / 1_000_000)
+        }
+    }
+}
 
 
 //解析aijson

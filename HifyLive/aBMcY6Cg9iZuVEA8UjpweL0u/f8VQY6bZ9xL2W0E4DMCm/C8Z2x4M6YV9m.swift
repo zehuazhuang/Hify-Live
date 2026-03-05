@@ -158,7 +158,7 @@ struct C8Z2x4M6YV9m: View {
                                                                                             color: Color.white.opacity(0.6)
                                                                                         )
                                                                                     HStack(spacing: 8) {
-                                                                                        Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum"))")
+                                                                                        Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
                                                                                             .g0LIIcoZQsOjyND9(
                                                                                                 size: 18,
                                                                                                 weight: .black

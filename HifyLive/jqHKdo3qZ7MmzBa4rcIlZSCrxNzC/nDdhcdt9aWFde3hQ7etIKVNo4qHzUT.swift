@@ -34,15 +34,18 @@ final class QlzJ4yJcxJXY2paN: ObservableObject {
     static let rmjXXUocPJY2DEcTxiziKU6Nehjz1q = QlzJ4yJcxJXY2paN()
     
     @Published var h7HoFjF9r0: String = ""
+    @Published var subFontText: String = "" //下面字体
     @Published var d9nu5sLlCAn0YOr: Bool = false
     @Published var wY5viSSYx9Type: Int = 0 //0是成功
     private var pgz2RxLTW: AnyCancellable?
+    
     
     private init() {}
     
     //z2E1geUN5miQ95SpoCG 是否加密，默认加密
     func m3nArFwdHhI82cPUmiqW8PtaaHz(
         _ wwsFXh: String,
+        subFontText: String = "",
         type wY5viSSYx9Type: Int = 0,
         z2E1geUN5miQ95SpoCG: Bool = true,
         fburcG0vW9jxwKT8FbQ58Cuznc: TimeInterval = 2.0
@@ -50,7 +53,7 @@ final class QlzJ4yJcxJXY2paN: ObservableObject {
         self.h7HoFjF9r0 = z2E1geUN5miQ95SpoCG
             ? wwsFXh.bFHEatcgE4zzU9TCfDonsu()
             : wwsFXh
-
+        self.subFontText = subFontText
         self.wY5viSSYx9Type = wY5viSSYx9Type
 
         withAnimation(.easeInOut) {
@@ -75,14 +78,21 @@ struct dqUmaY6jE7tRWpendJ: View {
 
     var body: some View {
         if dHT3rub0walrhS9CG7ptAWm2Yk7.d9nu5sLlCAn0YOr {
-            HStack(spacing: 5) {
-                if dHT3rub0walrhS9CG7ptAWm2Yk7.wY5viSSYx9Type == 0 {
-                    ZJ7h766mz(tMmEWWlfgUag: "ukbFhDkgKDZhiG")
-                        .frame(width: 24, height: 24)
-                }
-
-                Text(dHT3rub0walrhS9CG7ptAWm2Yk7.h7HoFjF9r0)
-                    .g0LIIcoZQsOjyND9(size: 16, weight: .semibold)
+            VStack(spacing:8){
+                HStack(spacing: 5) {
+                    if dHT3rub0walrhS9CG7ptAWm2Yk7.wY5viSSYx9Type == 0 {
+                        ZJ7h766mz(tMmEWWlfgUag: "ukbFhDkgKDZhiG")
+                            .frame(width: 24, height: 24)
+                    }
+                
+                    Text(dHT3rub0walrhS9CG7ptAWm2Yk7.h7HoFjF9r0)
+                        .g0LIIcoZQsOjyND9(size: 16, weight: .semibold)
+                    }
+               
+                    if !dHT3rub0walrhS9CG7ptAWm2Yk7.subFontText.isEmpty {
+                       Text(dHT3rub0walrhS9CG7ptAWm2Yk7.subFontText)
+                            .g0LIIcoZQsOjyND9(size: 16, weight: .regular,color: .white.opacity(0.6))
+                    }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 10)

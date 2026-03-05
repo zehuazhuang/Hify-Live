@@ -20,7 +20,8 @@ class RecentSessionManager: ObservableObject {
 
         for r in sessions {
             guard let s = r.session,
-                  !s.sessionId.isEmpty else { continue }
+                  !s.sessionId.isEmpty,
+                  s.sessionId != "video-sky-test" else { continue }
 
             let info = UserManager.shared.getCachedUserInfo(accid: s.sessionId)
 

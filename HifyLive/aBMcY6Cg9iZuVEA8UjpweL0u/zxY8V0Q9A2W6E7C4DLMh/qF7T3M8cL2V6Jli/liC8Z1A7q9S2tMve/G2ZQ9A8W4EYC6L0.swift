@@ -460,9 +460,7 @@ extension ChatViewController {
                   continue
               }
           
-//            if msg.from == "\(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("yxAccid"))" {
-//                continue
-//            }
+
 
             let accid = msg.from ?? ""
 
