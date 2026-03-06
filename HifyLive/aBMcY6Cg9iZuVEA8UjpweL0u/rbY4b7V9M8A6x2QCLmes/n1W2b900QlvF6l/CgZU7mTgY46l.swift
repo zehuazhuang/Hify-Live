@@ -123,9 +123,10 @@ struct CgZU7mTgY46l: View {
                                     }
                                     
                                     NoResignTextField(text: $vm.inputText, isFocused: $isInputFocused,
-                                                      onSend: {
+                                                      onSend:  {
                                                               if !vm.inputText.isEmpty {
-                                                                  vm.sendText(qAiRzAlJType: iLIIszM4zwx)
+                                                                  vm.sendText(qAiRzAlJType: opponentInfo.int("beBlocked"))
+                                                                  
                                                               }
                                                           }
                                     )
@@ -143,7 +144,8 @@ struct CgZU7mTgY46l: View {
                                 ZJ7h766mz(tMmEWWlfgUag: "qS9A1C2tLse")
                                     .frame(width: 36, height: 36)
                                     .onTapGesture {
-                                        vm.sendText(qAiRzAlJType: iLIIszM4zwx)
+                                        
+                                        vm.sendText(qAiRzAlJType: opponentInfo.int("beBlocked"))
                                     }
                             }
                             .padding(.leading, 16)
@@ -165,7 +167,9 @@ struct CgZU7mTgY46l: View {
                                     }
                                     .onChange(of: selectedImage) { img in
                                         if let img {
-                                            vm.sendImage(img, qAiRzAlJType: iLIIszM4zwx)
+                                            Task{
+                                                 vm.sendImage(img, qAiRzAlJType: opponentInfo.int("beBlocked"))
+                                            }
                                         }
                                     }
                                 
@@ -219,6 +223,7 @@ struct CgZU7mTgY46l: View {
                 UIApplication.shared.endEditing()
             }
         }
+
     }
 
 

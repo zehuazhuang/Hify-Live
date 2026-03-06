@@ -77,6 +77,8 @@ class ChatMessage: Identifiable, ObservableObject {
         @Published var messages: [ChatMessage] = []
         @Published var inputText: String = ""
         
+        var onMessageUpdated: (() -> Void)?
+        
         
         // ✅ 自己头像和对方头像
         let myAvatarURL: String
@@ -196,10 +198,9 @@ class ChatMessage: Identifiable, ObservableObject {
         }
         
         //发送文本
-        func sendText(qAiRzAlJType: Int) {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
+        func sendText(qAiRzAlJType: Int)  {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
             guard !inputText.isEmpty else { return }
-            
-           
+          
             
             if EwNwNujEwMzTHX.shared.y8smb1UywDB5G3(inputText) {
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("HhzzOA2eHTNz8JANI+0SRU+WQxpWarJBlpyksmOWZzwSq+7uMt/CRKetmZWH5thv")
@@ -210,6 +211,8 @@ class ChatMessage: Identifiable, ObservableObject {
             
             
             let message = NIMMessage()
+           
+            
             message.text = inputText
            
             // 先创建本地 ChatMessage，状态为 sending
@@ -232,34 +235,11 @@ class ChatMessage: Identifiable, ObservableObject {
             
             
             // 发送消息
-//            NIMSDK.shared().chatManager.send(message, to: session) { [weak self] error in
-//                guard let self = self else { return }
-//             
-//                Task { @MainActor in
-//                  
-//                    
-//                    let status: SendStatus
-//                    if let err = error as NSError? {
-//                        switch err.code {
-//                        case 801:
-//                            status = .failed(reason: .sensitive)
-//                        case NSURLErrorNotConnectedToInternet:
-//                            status = .failed(reason: .network)
-//                        default:
-//                            status = .failed(reason: .unknown)
-//                        }
-//                    } else {
-//                        status = .success
-//                    }
-//                   
-//                   //isBlackListed
-//
 
-//                }
-//            }
-//            NIMSDK.shared().chatManager.send(message, to: session, completion: nil)
              NIMSDK.shared().chatManager.send(message, to: session) { error in
+                
                 if let err = error as NSError? {
+                   
                     Task { @MainActor in
                         if let index = self.messages.firstIndex(where: { $0.nimMessage === message }) {
                             switch err.code {
@@ -274,14 +254,17 @@ class ChatMessage: Identifiable, ObservableObject {
                     }
                 }
                  
+                 
+                 
+                 
+              
                  // ✅ 更新发送状态
                  if let index = self.messages.firstIndex(where: { $0.messageId == message.messageId }) {
-                     self.messages[index].sendStatus = .success
+                     self.messages[index].sendStatus = qAiRzAlJType == 1 ? .failed(reason: .wTiahblock) :  .success
                  }
-
+                 self.inputText = ""
                  
-                     self.inputText = ""
-                 
+                
             }
         }
         //发送图片
@@ -295,7 +278,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 isOutgoingMsg: true,
                 timestamp: Date().timeIntervalSince1970,
                 avatarURL: myAvatarURL,
-                sendStatus: .sending,//qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock),
+                sendStatus: qAiRzAlJType == 0 ? .sending : .failed(reason: .wTiahblock),
                 localImage: image,
                 nimMessage: message
             )
@@ -354,45 +337,50 @@ class ChatMessage: Identifiable, ObservableObject {
         
         
         @MainActor
-        func resendMessage(_ message: ChatMessage) {
+        func resendMessage(_ message: ChatMessage) async {
+            
+            print("重发")
+            
             guard message.isOutgoingMsg else { return }
-
             guard case .failed = message.sendStatus else { return }
-
-            guard let nimMsg = message.nimMessage else {
-                assertionFailure("ChatMessage 没有 nimMessage")
-                return
-            }
+            guard let nimMsg = message.nimMessage else { return }
 
             message.sendStatus = .sending
-
+            
             do {
+
+                // 是否被拉黑
+                let result = await T0viKk.wSremNeLspPkPRHBJnlVCs5w
+                    .ngI7Y2A8C4E0ZQ9W6xL(wTEEJpZz0iGVK: session.sessionId)
+
+                let blocked = result.int("beBlocked") == 1
+
                 try NIMSDK.shared().chatManager.resend(nimMsg)
-                message.sendStatus = .success
+
+                message.sendStatus = blocked
+                    ? .failed(reason: .wTiahblock)
+                    : .success
+
+                if !blocked {
+                  
+                    if let index = messages.firstIndex(where: { $0 === message }) {
+                       print("进入")
+                        // 删除旧的失败消息
+                        let item = messages.remove(at: index)
+                        self.messages.append(item)
+                        messages = Array(messages)
+                        onMessageUpdated?()
+                    }
+                }
+
             } catch {
+
                 message.sendStatus = .failed(reason: .unknown)
                 print("❌ resend throw:", error)
             }
         }
         
-        func chatManager(_ manager: NIMChatManager, didSend message: NIMMessage, error: Error?) {
-            Task { @MainActor in
-                guard let index = messages.firstIndex(where: { $0.nimMessage === message }) else { return }
 
-                if let _ = error {
-                    messages[index].sendStatus = .failed(reason: .unknown)
-                } else {
-                    // 这里可以拿到 isBlackListed
-                    messages[index].sendStatus = message.isBlackListed
-                        ? .failed(reason: .wTiahblock)
-                        : .success
-                }
-
-                if messages[index].sendStatus == .success {
-                    self.inputText = ""
-                }
-            }
-        }
 
 
     }

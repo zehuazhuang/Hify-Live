@@ -1,9 +1,12 @@
-//
-//  H7XMmrHFowMS7i.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/3/3.
-//
+
+
+struct ScrollOffsetKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
 //交易记录
 import SwiftUI
 import UIPilot
@@ -14,24 +17,10 @@ struct H7XMmrHFowMS7i: View {
     @State private var tf8B1Q5FNFg: Bool = false //显示选择年月器
     @State private var aYPiY9lOWJ26: Date = Date() //当前时间
     @State private var eJDSJ03kdl6: [[String: Any]] = [] //钻石记录
-    
-//    var oy5EWB1bII: [[String: Any]] {
-//        let caGr7QJGHU = Calendar.current
-//        
-//        return eJDSJ03kdl6.filter { item in
-//            guard let time = item["createTime"] as? TimeInterval else { return false }
-//            
-//            let itemDate = Date(timeIntervalSince1970: time / 1000)
-//            
-//            let itemYear = caGr7QJGHU.component(.year, from: itemDate)
-//            let itemMonth = caGr7QJGHU.component(.month, from: itemDate)
-//            
-//            let selectedYear = caGr7QJGHU.component(.year, from: aYPiY9lOWJ26)
-//            let selectedMonth = caGr7QJGHU.component(.month, from: aYPiY9lOWJ26)
-//            
-//            return itemYear == selectedYear && itemMonth == selectedMonth
-//        }
-//    }
+    @State private var qC1X7kL8Z1R: Int = 1 //分页
+    @State private var Wm9xLoadMore: Bool = true // 是否还有更多
+    @State private var isLoadingMore: Bool = false // 是否正在加载
+    @State private var isAtBottom = false //是否到底
     
     var body: some View {
         ZStack{
@@ -75,14 +64,17 @@ struct H7XMmrHFowMS7i: View {
                         }
 
                 }
-                //钻石icon
+                //start
+                if eJDSJ03kdl6.isEmpty {
+                    LQ0Z4A6C9emp()
+                }
                 ScrollView(showsIndicators: false){
                     VStack(spacing:16){
                         ForEach(eJDSJ03kdl6.indices, id: \.self) { index in
                             let item = eJDSJ03kdl6[index]
                             let date = Date(timeIntervalSince1970: TimeInterval(item.int("createTime")) / 1000)
                             let value = item.int("costNum")
-                            VStack(spacing:16){
+                            LazyVStack(spacing:16){
                                 HStack(spacing:16){
                                     ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
                                        .frame(width: 24, height: 24)
@@ -107,7 +99,21 @@ struct H7XMmrHFowMS7i: View {
                                             color: value > 0 ? Color(red: 135/255, green: 255/255, blue: 94/255) :
                                                 Color(red: 255/255, green: 92/255, blue: 89/255)
                                         )
-                                }
+                                }.background(
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .onAppear {
+                                                if index == eJDSJ03kdl6.count - 1 {
+                                                    isAtBottom = true
+                                                }
+                                            }
+                                            .onDisappear {
+                                                if index == eJDSJ03kdl6.count - 1 {
+                                                    isAtBottom = false
+                                                }
+                                            }
+                                    }
+                                )
                                 if index != eJDSJ03kdl6.count - 1 {
                                         RoundedRectangle(cornerRadius: 0)
                                             .fill(Color.white.opacity(0.15))
@@ -116,8 +122,26 @@ struct H7XMmrHFowMS7i: View {
                                     }
                             }
                         }
+                               if isLoadingMore {
+                                   ProgressView()
+                                       .tint(.white)
+                                       .scaleEffect(1.4)
+                               }
+
                     }
-                }
+                }.simultaneousGesture (
+                    DragGesture()
+                           .onChanged { value in
+                               let verticalDelta = value.translation.height
+                               if verticalDelta < 0 {
+                                   if isAtBottom && verticalDelta < -120 && !isLoadingMore {
+                                       N8QLoadMore()
+                                   }
+                               }
+                           }
+
+               )
+                //end
                 
                 
             }.padding(.horizontal,16)
@@ -144,11 +168,53 @@ struct H7XMmrHFowMS7i: View {
             
         }
     }
+    //查记录
     func loK18F8L2QLad(){
+
+        qC1X7kL8Z1R = 1
+        Wm9xLoadMore = true
+
         Task{
             EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-            eJDSJ03kdl6 = try await bRW4jX3umRIh(yCvCoRXOXp: aYPiY9lOWJ26.micBHIsg(aIRthJHzts: "yyyy-MM-01"))
+
+            let data = try await bRW4jX3umRIh(
+                kQ6F7mX3: qC1X7kL8Z1R,
+                yCvCoRXOXp: aYPiY9lOWJ26.micBHIsg(aIRthJHzts: "yyyy-MM-01")
+            )
+
+            eJDSJ03kdl6 = data
+
             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+        }
+    }
+    
+    //加载更多
+    func N8QLoadMore() {
+        
+        if !Wm9xLoadMore { return }
+        if isLoadingMore { return }
+
+        isLoadingMore = true
+        qC1X7kL8Z1R += 1
+        
+        Task{
+            do{
+                let more = try await bRW4jX3umRIh(
+                    kQ6F7mX3: qC1X7kL8Z1R,
+                    yCvCoRXOXp: aYPiY9lOWJ26.micBHIsg(aIRthJHzts: "yyyy-MM-01")
+                )
+                
+                if more.isEmpty {
+                    Wm9xLoadMore = false
+                } else {
+                    eJDSJ03kdl6.append(contentsOf: more)
+                }
+                
+            }catch{
+                print(error)
+            }
+            
+            isLoadingMore = false
         }
     }
 }

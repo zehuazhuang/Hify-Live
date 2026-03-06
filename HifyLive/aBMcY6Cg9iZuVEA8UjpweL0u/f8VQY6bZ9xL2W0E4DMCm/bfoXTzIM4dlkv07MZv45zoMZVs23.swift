@@ -36,7 +36,11 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
               
                 .padding(.leading,16)
                 if nd55l6NRwWuVUnbReUhjS3d1Ivg.er9cv27P1Ndd {
-                    BMTU5LVVTQYLXCZaN()
+                    VStack{
+                        Spacer()
+                        BMTU5LVVTQYLXCZaN()
+                        Spacer()
+                    }
                 } else if nd55l6NRwWuVUnbReUhjS3d1Ivg.lLPppWtfV5O6YMV5wl9nsA4nt.isEmpty{
                     VStack(spacing: 0,){
                         ZJ7h766mz(tMmEWWlfgUag: "npIyAxb6vfM073130T9MwCJY8")

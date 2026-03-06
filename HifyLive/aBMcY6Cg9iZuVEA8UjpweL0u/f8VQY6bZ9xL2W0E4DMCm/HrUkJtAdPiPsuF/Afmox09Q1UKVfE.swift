@@ -221,16 +221,19 @@ struct Afmox09Q1UKVfE: View {
                                                 
                                                 
                                                 Spacer()
-                                                HStack(spacing:2){
-                                                    ZJ7h766mz(tMmEWWlfgUag: "y0UwIUXSNa")
-                                                        .frame(width: 9, height: 9)
-                                                    Text(timeString)
-                                                        .g0LIIcoZQsOjyND9(
-                                                            size: 9,
-                                                            weight: .medium
-                                                        ).monospacedDigit()
-                                                }.padding(.trailing,9)
-                                                    .padding(.top,4)
+                                                if remainingSeconds > 0 {
+                                                    HStack(spacing:2){
+                                                        ZJ7h766mz(tMmEWWlfgUag: "y0UwIUXSNa")
+                                                            .frame(width: 9, height: 9)
+                                                        Text(timeString)
+                                                            .g0LIIcoZQsOjyND9(
+                                                                size: 9,
+                                                                weight: .medium
+                                                            ).monospacedDigit()
+                                                    }.padding(.trailing,9)
+                                                        .padding(.top,4)
+                                                }
+                                              
                                             }
                                             Spacer()
                                         }

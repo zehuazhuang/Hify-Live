@@ -2,7 +2,7 @@
 
 import SwiftUI
 import NIMSDK
-
+import Combine
 struct tD4C1N7pR6Sli: View {
     @ObservedObject var rN1Z8mR: CachedRecentSession
     let onTap: (CachedRecentSession) -> Void
@@ -67,7 +67,6 @@ struct tD4C1N7pR6Sli: View {
                                     .fill(Color.red)
                             )
                     }
-                  
                 }.frame(height: 48)
            
             
@@ -76,8 +75,15 @@ struct tD4C1N7pR6Sli: View {
         .padding(.horizontal,16)
         .contentShape(Rectangle())
         .onTapGesture { onTap(rN1Z8mR) }
-       
-       
+        .onAppear{
+            print("对方id")
+            print(rN1Z8mR.sessionId)
+          
+           
         
+            
+            
+        }
     }
 }
+

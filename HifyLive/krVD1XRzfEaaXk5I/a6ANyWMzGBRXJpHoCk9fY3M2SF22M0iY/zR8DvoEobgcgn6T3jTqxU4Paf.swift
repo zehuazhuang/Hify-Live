@@ -1040,7 +1040,7 @@ func ks5LJq4BIxOAX() async throws -> [String: Any] {
 
 //查钻石变动记录
 @MainActor
-func bRW4jX3umRIh(yCvCoRXOXp:String) async throws -> [[String: Any]] {
+func bRW4jX3umRIh(kQ6F7mX3:Int,yCvCoRXOXp:String) async throws -> [[String: Any]] {
     guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/diamondhistroy/newLive/queryList")") else {
         throw URLError(.badURL)
     }
@@ -1054,8 +1054,8 @@ func bRW4jX3umRIh(yCvCoRXOXp:String) async throws -> [[String: Any]] {
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
     
     let body: [String: Any] = [
-        "pageNum":"1",
-        "pageSize":"100",
+        "pageNum":kQ6F7mX3,
+        "pageSize":"10",
         "month":yCvCoRXOXp,
     ]
     

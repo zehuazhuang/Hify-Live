@@ -94,6 +94,11 @@ struct ChatTableView: UIViewRepresentable {
             })
             context.coordinator.lastCount = count
         }
+//        else {
+//            
+//            
+//            tableView.reloadData()
+//        }
 
         // 键盘底部 inset
         let inputHeight: CGFloat = 20
@@ -185,7 +190,9 @@ struct ChatTableView: UIViewRepresentable {
             cell.configure(message: msg, avatarURL: msg.avatarURL)
             
             cell.onResendTap = { [weak self] message in
-                self?.parent.vm.resendMessage(message)
+                Task {
+                    await self?.parent.vm.resendMessage(message)
+                }
             }
             
             cell.onImageTap = { [weak self] imageURL in
@@ -199,6 +206,10 @@ struct ChatTableView: UIViewRepresentable {
                             startIndex: 0
                         )
                     )
+            }
+            
+            parent.vm.onMessageUpdated = {
+                tableView.reloadData()
             }
 
             return cell
@@ -522,8 +533,8 @@ class ChatCell: UITableViewCell {
         // 默认：没拉黑 → bubble 贴底
         bubbleBottomConstraint.isActive = true
         blockHintBottomConstraint.isActive = false
+        blockHintLabel.isHidden = true
     }
-
 
 
     // MARK: Configure
@@ -626,7 +637,6 @@ class ChatCell: UITableViewCell {
         }
 
         // ✅ 显示发送状态
-       
 
         updateSendStatus(message.sendStatus, isOutgoing: message.isOutgoingMsg)
     }

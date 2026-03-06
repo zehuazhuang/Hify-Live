@@ -43,28 +43,27 @@ struct J9L2X1pF8D5ms: View {
                                         wzJqE7XWO()
                                     }
                                 }
-                         
+                                
                             }.padding(.horizontal, 16)
                              .padding(.top,12)
-                            
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                   HStack(spacing: 16) {
-                                       // 只循环最多 4 个元素
-                                       ForEach(Array(items.prefix(4)).indices, id: \.self) { index in
-                                           AqS7C1A2tLt(mdFf7YData: items[index])
+                            HStack(spacing:16) {
+                                       let displayedItems = Array(items.prefix(5))
+                                       ForEach(displayedItems.indices, id: \.self) { index in
+                                           AqS7C1A2tLt(mdFf7YData: displayedItems[index])
                                                .onTapGesture {
-
-                                                   
-                                                   pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(items[index].int("userId"))))
+                                                   pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(displayedItems[index].int("userId"))))
                                                }
+                                           if displayedItems.count == 5 {
+                                               if index != displayedItems.indices.last {
+                                                   Spacer()
+                                               }
+                                           }else if index == displayedItems.indices.last {
+                                               Spacer()
+                                           }
                                        }
-                                       Spacer()
-                                      
-                                     
                                    }.padding(.top,20)
                                    .padding(.horizontal, 16)
-                               }
+                              
                         }
                     }
       
