@@ -87,7 +87,7 @@ struct yDO7bVocx9JH0msGgIyRUs6e: View {
                     .padding(.all,12)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        pilot.push(.Afmox09Q1UKVfE)
+                        pilot.push(.Afmox09Q1UKVfE(daPQCKaHi: false))
                     }
 
                    

@@ -1,6 +1,6 @@
 import SwiftUI
 import Kingfisher
-
+//直播页弹幕
 
 struct ChatViewContainer: UIViewControllerRepresentable {
     let yxRoomId: String
@@ -8,6 +8,8 @@ struct ChatViewContainer: UIViewControllerRepresentable {
     let onMuteTappedCallback: ((UInt, Bool) -> Void)?
     
     var onUserAvatarTapped: ((String) -> Void)?
+    
+    var ong4Gu8Ogiska: () -> Void //点击礼物
     
     func didTapAvatar(userId: String) {
             onUserAvatarTapped?(userId)
@@ -25,6 +27,9 @@ struct ChatViewContainer: UIViewControllerRepresentable {
         vc.onUserAvatarTapped = { uid in
                 onUserAvatarTapped?(uid)
             }
+        vc.onGiftTapped = {
+            ong4Gu8Ogiska()
+        }
         return vc
     }
 

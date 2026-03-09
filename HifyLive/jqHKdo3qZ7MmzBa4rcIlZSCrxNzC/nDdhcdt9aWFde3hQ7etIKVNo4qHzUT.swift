@@ -26,6 +26,8 @@ struct WUjfoptOKs8pZfhSAH0duplG<pZvePB2YhReAp6: View>: View {
             }
             dqUmaY6jE7tRWpendJ()
                 .zIndex(10)
+            XQAQvuU6cZLbgEView()
+                            .zIndex(30)
         }
     }
 }

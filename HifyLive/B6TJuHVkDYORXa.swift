@@ -36,7 +36,7 @@ enum APPTJuHVkDYORXa: Equatable {
         yffmn1UtOF:String
     )
     //金币页
-    case Afmox09Q1UKVfE
+    case Afmox09Q1UKVfE(daPQCKaHi: Bool)
     //关注、粉丝页
     case kaBpQbGjZ(c8WYppF6mHU:Int)
     //黑名单

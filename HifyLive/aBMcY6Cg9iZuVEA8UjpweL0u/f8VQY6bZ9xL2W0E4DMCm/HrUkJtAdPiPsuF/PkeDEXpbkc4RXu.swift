@@ -56,6 +56,7 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
 
     // MARK: - 获取商品
     func r1roySzHMIN(ids: [String]) async {
+      
         let request = SKProductsRequest(productIdentifiers: Set(ids))
         request.delegate = self
         request.start()
@@ -65,9 +66,14 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
     // MARK: - 发起购买
     func mZ6DqgRigNqO(productId: String) async {
         EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt(nZ9V4xF6Qw:"Purchasing is in progress, please wait patiently")
+        
+        print("传进来")
+        print(productId)
 
         guard let product = jbGuJZqVg5X.first(where: { $0.productIdentifier == productId }) else {
+           
             
+            //No product found
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
                 .m3nArFwdHhI82cPUmiqW8PtaaHz("9iAqOoev7u+Hb7ijU+sP4I2HtgPqdR9tyb5KqXs4D8I=", type: 1)
             

@@ -2,7 +2,7 @@
 import SwiftUI
 import UIKit
 import UIPilot
-// 2️⃣ SwiftUI 页面返回封装后的 UIKit
+//直播页
 struct LE0xQZ6Y7WC8iv: View {
    
     let localUid: UInt
@@ -17,6 +17,8 @@ struct LE0xQZ6Y7WC8iv: View {
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @State private var retryTask: Task<Void, Never>?
     @State private var xHuEezXnuhxl: Bool = false//是否第一次加载
+    @State private var qkUZGHPNnHgfhW: Bool = false//显示礼物弹框
+    @State private var x7hEzzGUTAch0: Bool = false//显示充值商店
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
         self.localUid = localUid
@@ -44,6 +46,12 @@ struct LE0xQZ6Y7WC8iv: View {
                         rlUlyPhType = 1
                         showY2E8Qsc = true
                         gGs5OpWId = yxAccid
+                    }
+                                     },
+                                  ong4Gu8Ogiska: {
+                                         print("点击了礼物按钮")
+                    withAnimation{
+                        qkUZGHPNnHgfhW = true
                     }
                                      }
                 )
@@ -173,17 +181,47 @@ struct LE0xQZ6Y7WC8iv: View {
                 Spacer()
             }.padding(.horizontal,16)
                
-            
+            //关播直播间弹框
             if showx8Z9Q2M {
                 Z8q7S9A1C2tLClo(hllonneC8R2J: $showx8Z9Q2M, caentClo: {
                     pilot.pop()
                 },ourreeName: liveRoomData.string("nickname") ,dimpaseAvatar: liveRoomData.string("icon") )
             }
             
+            //底部用户弹框
             if showY2E8Qsc {
                 QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, isW9YQ6C8L: $showY2E8Qsc)
             }
             
+            //礼物弹框
+            if qkUZGHPNnHgfhW {
+                //礼物view
+                QX10IFCuguXvQa(dyzmBppNrJ: $qkUZGHPNnHgfhW, jhqguQVC07: {
+                    withAnimation{
+                        x7hEzzGUTAch0 = true
+                    }
+                })
+            }
+            //商店弹框
+            if x7hEzzGUTAch0 {
+                ZStack{
+                    // 半透明背景
+                    Color.black.opacity(0.3)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation { x7hEzzGUTAch0 = false }
+                        }
+                    
+                    // 弹窗本体
+                    Afmox09Q1UKVfE(daPQCKaHi: true)
+                        .frame(height: 580)
+                        .frame(maxHeight: .infinity,alignment:.bottom)
+                        
+                        
+                }
+            }
+            
+            //关播页面
             if showEndView || liveRoomData.int("liveRoomState")  == 1 {
                 MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
             }
@@ -191,9 +229,8 @@ struct LE0xQZ6Y7WC8iv: View {
        
         
         .onAppear{
-            print("1")
+            
             if (!xHuEezXnuhxl){
-                print("2")
                 mpatentLoad()
                 NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
                        showEndView = true

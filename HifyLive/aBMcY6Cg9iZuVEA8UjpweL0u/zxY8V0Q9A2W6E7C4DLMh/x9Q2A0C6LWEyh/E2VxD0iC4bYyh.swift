@@ -108,6 +108,12 @@ struct E2VxD0iC4bYyh: View {
                 ScrollView(showsIndicators: false){
                     ZStack{
                         VStack{
+                          
+                                SmoothPullToRefresh(
+                                       pullOffset: $pullOffset,
+                                       isRefreshing: $isRefreshing
+                                )
+                           
                             
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
@@ -149,10 +155,7 @@ struct E2VxD0iC4bYyh: View {
                                 }
                             }
                         }.padding(.bottom,96)
-                        SmoothPullToRefresh(
-                               pullOffset: $pullOffset,
-                               isRefreshing: $isRefreshing
-                        ).frame(maxHeight: .infinity,alignment: .top)
+                        
                     }
                 }.simultaneousGesture(
                     DragGesture()

@@ -171,7 +171,7 @@ struct C8Z2x4M6YV9m: View {
                                                                                 .padding(.leading,16)
                                     }.frame(width: 168 ,height: 86)
                                     .onTapGesture {
-                                        pilot.push(.Afmox09Q1UKVfE)
+                                        pilot.push(.Afmox09Q1UKVfE(daPQCKaHi: false))
                                     }
                                       Spacer()
 
@@ -335,8 +335,16 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
                                 Button{
-                                 
-                                    pilot.push(.ASkYEgFvkJ3xKj)
+                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第一条通知")
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                        XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第二条通知")
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                                        XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第三条通知")
+                                    }
+                                    
+                                    //跳ai页面
+                                 //   pilot.push(.ASkYEgFvkJ3xKj)
                                 } label: {
                                     HStack(spacing: 0) {
                                         HStack(spacing: 8) {

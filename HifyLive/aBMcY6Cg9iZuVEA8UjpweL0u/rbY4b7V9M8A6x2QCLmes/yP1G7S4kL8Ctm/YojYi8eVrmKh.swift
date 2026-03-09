@@ -68,12 +68,7 @@ class RecentSessionManager: ObservableObject {
 
         cache = tempCache.sorted { $0.timestamp > $1.timestamp }
         
-        // ✅ 收集所有会话ID
-            let ids = cache.map { $0.sessionId }
-
-            // ✅ 统一订阅在线状态
-            OnlineStatusManager.shared.startListen()
-            OnlineStatusManager.shared.subscribe(ids)
+       
         
         
         completion?()

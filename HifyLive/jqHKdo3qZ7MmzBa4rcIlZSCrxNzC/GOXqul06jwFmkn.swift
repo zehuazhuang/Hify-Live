@@ -25,6 +25,17 @@ func IdVwDkHotdjRqB(){
             }
             
             
+            
+           
+            
+            // ✅ 收集所有会话ID
+            let ids = RecentSessionManager.shared.cache.map { $0.sessionId }
+
+                // ✅ 统一订阅在线状态
+                OnlineStatusManager.shared.startListen()
+                OnlineStatusManager.shared.subscribe(ids)
+            
+            
         } else {
             print("云信 IM 登录失败")
         }

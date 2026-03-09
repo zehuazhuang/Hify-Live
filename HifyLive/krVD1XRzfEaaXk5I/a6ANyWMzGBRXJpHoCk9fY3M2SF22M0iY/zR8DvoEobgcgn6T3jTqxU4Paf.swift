@@ -7,16 +7,16 @@ struct JOGtDnYupP {
 //    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
 //    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
 //    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
-//    //预发布
-//    static let loaattrdbUrl = "https://pre.hily.link" //环境地址
-//    static let raslidepApId = "21448469" //id
-//    static let versLErqSu = "1.0.0" //版本
-//    static let zMVMMyTmNK = "ac85c4b27907b332450d8b964df087f3" //云信id
-    //测试
-    static let loaattrdbUrl = "https://testaes.cphub.link" //环境地址
-    static let raslidepApId = "11111111" //id
+    //预发布
+    static let loaattrdbUrl = "https://pre.hily.link" //环境地址
+    static let raslidepApId = "21448469" //id
     static let versLErqSu = "1.0.0" //版本
-    static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
+    static let zMVMMyTmNK = "ac85c4b27907b332450d8b964df087f3" //云信id
+//    //测试
+//    static let loaattrdbUrl = "https://testaes.cphub.link" //环境地址
+//    static let raslidepApId = "11111111" //id
+//    static let versLErqSu = "1.0.0" //版本
+//    static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
 }
 
 
@@ -867,10 +867,10 @@ func vaBBMmyXOh(jYPvECldH:Int,xsqZJWxTw:Int,vyLi1B0zU7:String,nVsTUsf:String,x8T
         "showType":s9Pxt3Yh9
     ]
     
-//    print("请求头：")
-//    print(request.allHTTPHeaderFields ?? [:])
-//    print("body")
-//    print(body)
+    print("请求头：")
+    print(request.allHTTPHeaderFields ?? [:])
+    print("body")
+    print(body)
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
@@ -888,7 +888,8 @@ func vaBBMmyXOh(jYPvECldH:Int,xsqZJWxTw:Int,vyLi1B0zU7:String,nVsTUsf:String,x8T
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
    
-   
+    print("json")
+    print(json)
   
     
     // 解密 result
@@ -896,6 +897,8 @@ func vaBBMmyXOh(jYPvECldH:Int,xsqZJWxTw:Int,vyLi1B0zU7:String,nVsTUsf:String,x8T
           let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
         return [:]
     }
+    print("-------")
+    print(resultStr)
     
   
     

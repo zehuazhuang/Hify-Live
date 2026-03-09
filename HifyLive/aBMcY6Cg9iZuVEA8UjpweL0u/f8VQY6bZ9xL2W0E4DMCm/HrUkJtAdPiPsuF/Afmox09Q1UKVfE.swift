@@ -14,6 +14,7 @@ struct Afmox09Q1UKVfE: View {
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @StateObject private var pkeDEXpbkc4RXu = PkeDEXpbkc4RXu.shared
     let tSh7kxFecD: [GAg6zvKCMA] = PUiSN9Hnxm9ZJ.tSh7kxFecD
+    let daPQCKaHi : Bool //是否弹窗
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG //用户信息
     @State private var mCbSNX6z2hzQ: [String: Any] = [:] //获取支付
     @State private var uSM1VTVKvc0WVI: [[String: Any]] = [] //钻石列表
@@ -22,77 +23,132 @@ struct Afmox09Q1UKVfE: View {
     @State private var sQYNvOjd5v: Bool = false //显示挽留弹窗
     @State private var remainingSeconds: Int = 600
     @State private var timer: Timer?
+    @State private var oMbsrfPQEwF = false //控制底部弹出动画
     
     var body: some View {
         ZStack{
-            Color(red: 13/255, green: 13/255, blue: 18/255)
-                .ignoresSafeArea()
+            if !daPQCKaHi {
+                Color(red: 13/255, green: 13/255, blue: 18/255)
+                    .ignoresSafeArea()
+            }else{
+                Color(red: 13/255, green: 13/255, blue: 18/255)
+                    .ignoresSafeArea()
+                    .clipShape(s7q2ZC1S9A4tM8L3(radius: 24, corners: [.topLeft,.topRight]))
+                
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color(red: 17/255, green: 31/255, blue: 46/255),
+                        Color(red: 21/255, green: 12/255, blue: 38/255),
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                ).frame(height: 64)
+                    .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+                .clipShape(s7q2ZC1S9A4tM8L3(radius: 24, corners: [.topLeft,.topRight]))
+            }
             
-            ZJ7h766mz(tMmEWWlfgUag: "zqyH6H230kp")
-                               .frame(height: 462)
-                               .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
-                               .ignoresSafeArea()
+            if !daPQCKaHi {
+                ZJ7h766mz(tMmEWWlfgUag: "zqyH6H230kp")
+                                   .frame(height: 462)
+                                   .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+                                   .ignoresSafeArea()
+            }
+            
             VStack(spacing:0){
-                HStack(spacing: 12) {
-                    ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
-                        .frame(width: 24,height: 24)
-                        .onTapGesture {
-                            pilot.pop()
-                        }
-                    Text("Diamonds")
-                        .g0LIIcoZQsOjyND9(
-                            size: 18,
-                            weight: .semibold
-                        )
-                    Spacer()
-                    HStack(spacing:4){
-                        ZJ7h766mz(tMmEWWlfgUag: "qkSFUsSC7izsB0")
-                                           .frame(width: 24, height: 24)
-                        Text("Record")
+                if !daPQCKaHi {
+                    HStack(spacing: 12) {
+                        ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
+                            .frame(width: 24,height: 24)
+                            .onTapGesture {
+                                pilot.pop()
+                            }
+                        Text("Diamonds")
                             .g0LIIcoZQsOjyND9(
-                                size: 14,
-                                weight: .medium
+                                size: 18,
+                                weight: .semibold
                             )
-                    }.onTapGesture {
-                        pilot.push(.H7XMmrHFowMS7i)
-                    }
-                    //钻石icon
-//                    ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
-//                                       .frame(width: 24, height: 24)
-                    
-                }
-                Spacer().frame(height: 20)
-                ZStack{
-                    ZJ7h766mz(tMmEWWlfgUag: "qrvEGTNjRu")
-                                       .frame(height: 97)
-                                       .frame(maxWidth: .infinity)
-                    HStack{
-                        VStack(alignment: .leading, spacing: 8) {
-                           
-                            Text("My Balance")
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 14,
-                                                weight: .medium
-                                            )
-                            Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
+                        Spacer()
+                        HStack(spacing:4){
+                            ZJ7h766mz(tMmEWWlfgUag: "qkSFUsSC7izsB0")
+                                               .frame(width: 24, height: 24)
+                            Text("Record")
                                 .g0LIIcoZQsOjyND9(
-                                    size: 28,
-                                    weight: .black
+                                    size: 14,
+                                    weight: .medium
                                 )
+                        }.onTapGesture {
+                            pilot.push(.H7XMmrHFowMS7i)
                         }
+                        //钻石icon
+                    }
+                }
+                
+                
+                if !daPQCKaHi {
+                    Spacer().frame(height: 20)
+                    ZStack{
+                        ZJ7h766mz(tMmEWWlfgUag: "qrvEGTNjRu")
+                                           .frame(height: 97)
+                                           .frame(maxWidth: .infinity)
+                        HStack{
+                            VStack(alignment: .leading, spacing: 8) {
+                               
+                                Text("My Balance")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 14,
+                                                    weight: .medium
+                                                )
+                                Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 28,
+                                        weight: .black
+                                    )
+                            }
+                            Spacer()
+                        }
+                        .padding(.leading,16)
+                    }
+                    Spacer().frame(height: 24)
+                }
+                if !daPQCKaHi {
+                    HStack{
+                        Text("Select Recharge  Amount")
+                            .g0LIIcoZQsOjyND9(
+                                size: 16,
+                                weight: .semibold
+                            )
                         Spacer()
                     }
-                    .padding(.leading,16)
+                }else{
+                    HStack(spacing:4){
+                        Text("Select Recharge  Amount")
+                            .g0LIIcoZQsOjyND9(
+                                size: 16,
+                                weight: .semibold
+                            )
+                        Spacer()
+                        HStack(spacing:12){
+                            ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
+                                .frame(width: 24, height: 24)
+                            
+                            Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16,
+                                                weight: .regular
+                                            )
+                        }
+                        .frame(height: 32)
+                        .padding(.leading,8)
+                        .padding(.trailing,11)
+                        .background(
+                            .white.opacity(0.1)
+                        ).cornerRadius(35)
+                        ZJ7h766mz(tMmEWWlfgUag: "pz76nEFbMy3")
+                            .frame(width: 24, height: 24)
+                    }.padding(.top,20)
+                    .padding(.bottom,12)
                 }
-                Spacer().frame(height: 24)
-                HStack{
-                    Text("Select Recharge  Amount")
-                        .g0LIIcoZQsOjyND9(
-                            size: 16,
-                            weight: .semibold
-                        )
-                    Spacer()
-                }
+                
                 Spacer().frame(height: 10)
                 ScrollView(showsIndicators:false){
                     VStack(spacing:8){
@@ -279,16 +335,19 @@ struct Afmox09Q1UKVfE: View {
                                                 
                                                 
                                                 
-                                                
+                                                print("1")
+                                                print(resu)
                                                 if let nDgOeiB = resu["diamondNum"] as? Int, nDgOeiB > 0 {
-                                                  
+                                                    print("2")
                                                     pkeDEXpbkc4RXu.nN2B7Q5M9 = nDgOeiB
                                                     
                                                    
                                                     
                                                     await pkeDEXpbkc4RXu.mZ6DqgRigNqO(productId: productId)
+                                                }else{
+                                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 }
-                                                
+                                                print("3")
                                                 
                                             }else{
                                                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -308,7 +367,19 @@ struct Afmox09Q1UKVfE: View {
             if sQYNvOjd5v {
                 R7mL2X9B1qZ5vY(tP3QY4dC7W: $sQYNvOjd5v)
             }
-        }.onAppear {
+        }
+        .offset(y: !daPQCKaHi ? 0 : oMbsrfPQEwF ? 0 : 580)
+        .ignoresSafeArea(edges: .bottom)
+        .onAppear {
+            if daPQCKaHi {
+                oMbsrfPQEwF = false
+                DispatchQueue.main.async {
+                    withAnimation(.easeOut(duration: 0.25)) {
+                        oMbsrfPQEwF = true
+                    }
+                }
+            }
+            
             Task {
                 guard !dZJ24OCh else { return }
                 dZJ24OCh = true

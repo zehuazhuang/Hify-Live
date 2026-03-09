@@ -1,5 +1,6 @@
 import UIKit
 import NIMSDK
+//直播页输入框布局
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,NIMChatroomManagerDelegate,
                           NIMChatManagerDelegate {
     
@@ -21,10 +22,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     let extraButton1 = UIButton(type: .custom)
     //发送按钮
     let sendButton = UIButton(type: .custom)
+    //礼物按钮
+    let tqphdfvX = UIButton(type: .custom)
     
     var onMuteTappedCallback: ((UInt, Bool) -> Void)?
     
     var onUserAvatarTapped: ((String) -> Void)?//公屏点击头像回调
+    
+    var onGiftTapped: (() -> Void)?//礼物回调
+    
+    
     
     private var didInitialJoin = false
     
@@ -90,8 +97,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
-    
-  
+    //点击礼物
+    @objc private func giftButtonTapped() {
+        onGiftTapped?()
+    }
     
 
     
@@ -182,6 +191,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         extraButton1.imageView?.contentMode = .scaleAspectFit
         extraButton1.addTarget(self, action: #selector(onMuteTapped), for: .touchUpInside)
         
+        //礼物按钮 tqphdfvX
+        tqphdfvX.setImage(UIImage(named: "eQ7qeLRM2KO"), for: .normal)
+        tqphdfvX.translatesAutoresizingMaskIntoConstraints = false
+        tqphdfvX.imageView?.contentMode = .scaleAspectFit
+        tqphdfvX.addTarget(self, action: #selector(giftButtonTapped), for: .touchUpInside)
+        
         // ZStack 包裹 TextField + 发送按钮
         let textFieldStack = UIView()
         textFieldStack.translatesAutoresizingMaskIntoConstraints = false
@@ -189,7 +204,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         textFieldStack.addSubview(sendButton)
         
         // 水平堆叠
-        let stack = UIStackView(arrangedSubviews: [textFieldStack, extraButton1])
+        let stack = UIStackView(arrangedSubviews: [textFieldStack, extraButton1,tqphdfvX])
         stack.axis = .horizontal
         stack.spacing = 8
         stack.alignment = .fill
@@ -232,9 +247,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             sendButton.widthAnchor.constraint(equalToConstant: 36),
             sendButton.heightAnchor.constraint(equalToConstant: 36),
             
-            // 按钮固定宽高
+            // 静音固定宽高
             extraButton1.widthAnchor.constraint(equalToConstant: 46),
-            extraButton1.heightAnchor.constraint(equalToConstant: 46)
+            extraButton1.heightAnchor.constraint(equalToConstant: 46),
+            
+            // 礼物固定宽高
+            tqphdfvX.widthAnchor.constraint(equalToConstant: 46),
+            tqphdfvX.heightAnchor.constraint(equalToConstant: 46)
         ])
     }
 
@@ -284,10 +303,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Send Message
     @objc private func onSendTapped() {
-        print("123")
+        
         guard let text = messageTextField.text, !text.isEmpty else { return }
         dismissKeyboard()
-        print("555")
+        
         let user = IyfdHMdY.bTa3L6BoprG
         let msg = PublicMessage(
             userId: user.iBmPfFGfxu5JV7Aii7.string("yxAccid"),

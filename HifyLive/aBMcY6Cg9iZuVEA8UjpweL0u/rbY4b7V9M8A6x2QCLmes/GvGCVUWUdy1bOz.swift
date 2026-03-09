@@ -25,7 +25,6 @@ class OnlineStatusManager: NSObject, ObservableObject, V2NIMSubscribeListener {
 
     func subscribe(_ ids: [String]) {
         print("IM登录账号:", NIMSDK.shared().loginManager.currentAccount())
-        print("SDK version:", NIMSDK.version())
         print("订阅")
         print(ids)
         

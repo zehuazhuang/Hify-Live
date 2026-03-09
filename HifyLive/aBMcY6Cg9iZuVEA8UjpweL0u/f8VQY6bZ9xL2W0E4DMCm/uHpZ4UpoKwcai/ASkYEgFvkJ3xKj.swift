@@ -156,7 +156,7 @@ struct ASkYEgFvkJ3xKj: View {
             if qO5zSP720XNL {
                 ZsQF3kwG2Bygwo(ishtTvNH4y: $qO5zSP720XNL, qZFGLpr8D4s: {
                 
-                    pilot.push(.Afmox09Q1UKVfE)
+                    pilot.push(.Afmox09Q1UKVfE(daPQCKaHi: false))
                 })
             }
         }.onAppear{

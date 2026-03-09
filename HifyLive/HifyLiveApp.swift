@@ -87,8 +87,8 @@ struct HifyLiveApp: App {
                                UI42a1QDtyK8gG().navigationBarHidden(true)
                            case let .UZ8hTFSeCcwrAy(yffmn1UtOF):
                                UZ8hTFSeCcwrAy(yffmn1UtOF: yffmn1UtOF).navigationBarHidden(true)
-                           case .Afmox09Q1UKVfE:
-                               Afmox09Q1UKVfE().navigationBarHidden(true)
+                           case let .Afmox09Q1UKVfE(daPQCKaHi):
+                               Afmox09Q1UKVfE(daPQCKaHi: daPQCKaHi).navigationBarHidden(true)
                            case let .kaBpQbGjZ(c8WYppF6mHU):
                                kaBpQbGjZ(c8WYppF6mHU: c8WYppF6mHU)
                            case .bfoXTzIM4dlkv07MZv45zoMZVs23:
