@@ -655,7 +655,7 @@ typedef NS_ENUM(NSUInteger, NIMClearMessagesStatus)
  *  设置一个会话里所有消息置为已读
  *
  *  @param session 需设置的会话
- *  @param session 结果回调
+ *  @param completion 结果回调
  *  @discussion 异步方法，消息会标记为设置的状态
  */
 - (void)markAllMessagesReadInSession:(NIMSession *)session completion:(NIMSendACKSessionsBlock)completion;

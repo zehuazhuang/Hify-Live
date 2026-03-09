@@ -64,7 +64,7 @@ typedef void (^V2NIMMarkConversationReadCallback)(NSTimeInterval timestamp);
  *  根据查询参数获取会话列表
  *
  *  @param offset 获取会话偏移量
- *  @param count 分页拉取数量
+ *  @param limit 分页拉取数量
  *  @param option 查询参数
  *  @param success 成功回调
  *  @param failure 失败回调
@@ -544,7 +544,7 @@ typedef void (^V2NIMConversationGroupListCallback)(NSArray<V2NIMConversationGrou
 - (void)onConversationGroupChanged:(V2NIMConversationGroup *)conversationGroup;
 
 /**
- *  会话分组删除回调
+ *  会话添加到分组回调
  *
  *  @param groupId 分组id
  *  @param conversations 会话列表
@@ -553,7 +553,7 @@ typedef void (^V2NIMConversationGroupListCallback)(NSArray<V2NIMConversationGrou
                       conversations:(NSArray<V2NIMConversation *> *)conversations;
 
 /**
- *  会话分组删除回调
+ *  会话从分组移除回调
  *
  *  @param groupId 分组id
  *  @param conversationIds 会话id列表

@@ -340,7 +340,7 @@ typedef void (^V2NIMSetApplicationReadSuccess)(BOOL success);
 */
 @property (nullable,nonatomic,strong) NSString *serverExtension;
 /**
-*  用户扩展字段，建议使用json格式
+*  客户端扩展字段，建议使用json格式
 */
 @property (nullable,nonatomic,strong) NSString *customerExtension;
 /**

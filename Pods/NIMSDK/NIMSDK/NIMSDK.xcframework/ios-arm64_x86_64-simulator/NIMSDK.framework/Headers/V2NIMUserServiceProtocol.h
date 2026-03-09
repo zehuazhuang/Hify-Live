@@ -236,11 +236,11 @@ typedef NS_ENUM(NSInteger, V2NIMGender) {
  */
 @property (nullable,nonatomic,strong)   NSString  *email;
 /**
- *  用户邮箱
+ *  用户生日
  */
 @property (nullable,nonatomic,strong)   NSString  *birthday;
 /**
- *  用户邮箱
+ *  电话号码
  */
 @property (nullable,nonatomic,strong)   NSString  *mobile;
 /**

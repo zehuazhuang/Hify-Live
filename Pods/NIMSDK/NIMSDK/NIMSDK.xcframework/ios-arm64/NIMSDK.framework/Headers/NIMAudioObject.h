@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 *  设置上传的url，用于发送已经上传好的资源
 *
-*  @param urlString 图片的地址
+*  @param urlString 语音的地址
 *
 */
 - (void)setUploadURL:(NSString *)urlString;

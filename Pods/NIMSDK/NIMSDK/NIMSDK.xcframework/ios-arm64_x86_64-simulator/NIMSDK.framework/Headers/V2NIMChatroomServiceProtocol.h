@@ -296,7 +296,7 @@ typedef void (^V2NIMChatroomQueueBatchUpdateResultCallback)(NSArray<NSString *> 
  * 查询历史消息
  *
  * @param option 获取聊天室消息列表查询参数
- * @param success 获取列表失败的回调
+ * @param success 获取列表成功的回调
  * @param failure 获取列表失败的回调
  */
 - (void)getMessageList:(V2NIMChatroomMessageListOption *)option
@@ -686,7 +686,7 @@ notificationExtension:(nullable NSString *)notificationExtension
 
 /**
  * 批量更新队列元素
- * @param keyValues 批量更新元素
+ * @param elements 批量更新元素
  *                   size为空， size==0， size>100， 返回参数错误
  *                   key:长度限制：128字节
  *                   value：长度限制：4096字节
@@ -721,13 +721,13 @@ notificationExtension:(nullable NSString *)notificationExtension
 
 /**
  * 聊天室新增队列元素
- * @param keyValues 新增的队列内容。
+ * @param elements 新增的队列内容。
  */
 - (void)onChatroomQueueOffered:(V2NIMChatroomQueueElement *)element;
 
 /**
  * 聊天室移除队列元素
- * @param keyValues 移除的队列内容。
+ * @param elements 移除的队列内容。
  */
 - (void)onChatroomQueuePolled:(V2NIMChatroomQueueElement *)element;
 
@@ -738,19 +738,19 @@ notificationExtension:(nullable NSString *)notificationExtension
 
 /**
  * 聊天室清理部分队列元素
- * @param keyValues 清理的队列内容
+ * @param elements 清理的队列内容
  */
 - (void)onChatroomQueuePartCleared:(NSArray<V2NIMChatroomQueueElement *> *)elements;
 
 /**
  * 聊天室批量更新队列元素
- * @param keyValues 更新的队列内容
+ * @param elements 更新的队列内容
  */
 - (void)onChatroomQueueBatchUpdated:(NSArray<V2NIMChatroomQueueElement *> *)elements;
 
 /**
  * 聊天室批量添加队列元素
- * @param keyValues 批量添加队列元素
+ * @param elements 批量添加队列元素
  */
 - (void)onChatroomQueueBatchOffered:(NSArray<V2NIMChatroomQueueElement *> *)elements;
 

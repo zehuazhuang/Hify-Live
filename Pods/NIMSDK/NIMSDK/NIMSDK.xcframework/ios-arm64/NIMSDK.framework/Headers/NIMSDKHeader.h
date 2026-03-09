@@ -429,6 +429,8 @@ typedef void(^NIMUploadLogsHandler)(NSError *error, NSString *path);
 @property (nonatomic,strong,readonly)   id<V2NIMLocalConversationService> v2LocalConversationService;
 @property (nonatomic,strong,readonly)   id<V2NIMApnsService> v2ApnsService;
 @property (nonatomic,strong,readonly)   id<V2NIMStatisticsService> v2StatisticsService;
+@property (nonatomic,strong,readonly)   id<V2NIMUtilityService> v2UtilityService;
+
 @end
 
 NS_ASSUME_NONNULL_END

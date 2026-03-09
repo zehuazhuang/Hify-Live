@@ -53,6 +53,9 @@
 @class V2NIMUpdateLocalMessageParams;
 @class V2NIMImportMessagesToLocalOption;
 @class V2NIMClearLocalMessageParams;
+@class V2NIMTextTranslateParams;
+@class V2NIMTextTranslationResult;
+@class V2NIMMessageInsertParams;
 
 @protocol V2NIMMessageListener;
 @class V2NIMThreadMessageListOption;
@@ -104,6 +107,8 @@ typedef void(^V2NIMGetPinListSuccess)(NSArray <V2NIMMessagePin *> *result);
 typedef void(^V2NIMGetThreadMessageListSuccess)(V2NIMThreadMessageListResult *result);
 /// 本地查询thread聊天消息列表的回调
 typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResult *result);
+/// 成功接收文本翻译返回结果
+typedef void (^V2NIMTranslateTextCallback)(V2NIMTextTranslationResult *result);
 /// 消息服务协议
 @protocol V2NIMMessageService <NSObject>
 
@@ -286,7 +291,7 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
  *  @param success 成功回调
  *  @param onlyDeleteLocal 是否只删除本地消息
  *      true：只删除本地，本地会将该消息标记为删除,getMessage会过滤该消息，界面不展示，卸载重装会再次显示
- *      fasle：同时删除云端
+ *      false：同时删除云端
  *  @param failure 失败回调
  */
 - (void)deleteMessage:(V2NIMMessage *)message
@@ -303,7 +308,7 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
  *  @param messages 需要删除的消息列表
  *  @param onlyDeleteLocal 是否只删除本地消息
  *      true：只删除本地，本地会将该消息标记为删除， getHistoryMessage会过滤该消息，界面不展示，卸载重装会再次显示
- *      fasle：同时删除云端
+ *      false：同时删除云端
  *  @param success 成功回调
  *  @param failure 失败回调
  */
@@ -382,6 +387,21 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
                      failure:(nullable V2NIMFailureCallback)failure;
 
 /**
+ * 插入一条本地消息， 该消息不会发送
+ * 该消息不会多端同步，只是本端显示
+ * 插入成功后， SDK会抛出回调
+ *
+ * @param message 需要插入的消息体
+ * @param params 相关插入参数
+ * @param success 成功回调
+ * @param failure 失败回调
+ */
+- (void)insertMessageToLocalEx:(V2NIMMessage *)message
+                        params:(V2NIMMessageInsertParams *)params
+                       success:(nullable V2NIMInertMessagSuccess)success
+                       failure:(nullable V2NIMFailureCallback)failure;
+
+/**
  * 批量导入本地消息， 该消息不会发送
  * 不做消息类型限制
  * 插入后表现
@@ -449,8 +469,8 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
 /**
 * 获取 pin 消息列表
 * @param conversationId 会话 ID
-* @param success 发送消息成功回调
-* @param failure 发送消息失败回调
+* @param success 获取成功回调
+* @param failure 获取失败回调
 */
 - (void)getPinnedMessageList:(NSString *)conversationId
                      success:(nullable V2NIMGetPinListSuccess)success
@@ -472,7 +492,7 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
                 failure:(V2NIMFailureCallback)failure;
 /**
 * 移除快捷评论
-* @param message 被快捷评论的消息
+* @param messageRefer 被快捷评论的消息引用
 * @param index 快捷评论索引
 * @param serverExtension 扩展字段， 最大8个字符
 * @param success 成功回调
@@ -561,7 +581,7 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
 /**
 * 查询点对点消息已读回执
 *
-* @param conversationId 需要发送已读回执的消息
+* @param conversationId 需要查询已读回执的会话ID
 * @param success 成功回调
 * @param failure 失败回调
 */
@@ -571,7 +591,7 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
 /**
 * 查询点对点消息是否对方已读 内部判断逻辑为： 消息时间小于对方已读回执时间都为true
 *
-* @param message 需要发送已读回执的消息
+* @param message 需要查询是否已读的消息
 */
 - (BOOL)isPeerRead:(V2NIMMessage *)message;
 /**
@@ -620,11 +640,11 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
 /**
 * 取消文件类附件上传，只有文件类消息可以调用该接口
 * 如果文件已经上传成功，则取消失败
-* 如果取消成功， 则对应消息文件上传状态会变成
+* 如果取消成功，则对应消息文件上传状态会变成取消状态
 *
 * @param message 需要取消附件上传的消息体
-* @param success 发送消息成功回调
-* @param failure 发送消息失败回调
+* @param success 取消成功回调
+* @param failure 取消失败回调
 */
 - (void)cancelMessageAttachmentUpload:(V2NIMMessage *)message
                               success:(nullable V2NIMSuccessCallback)success
@@ -711,6 +731,17 @@ typedef void(^V2NIMGetLocalThreadMessageListSuccess)(V2NIMThreadMessageListResul
  * 消息过滤器，云端会话的最后一条消息不受该过滤器控制
  */
 - (void)setMessageFilter:(nullable id<V2NIMMessageFilter>)filter;
+
+/**
+ *  文本翻译，支持将原始文本翻译为指定语言。（使用时需要控制台开通文本翻译功能）
+ *
+ *  @param params 文本翻译相关选项参数
+ *  @param success 成功回调
+ *  @param failure 失败回调
+ */
+- (void)translateText:(V2NIMTextTranslateParams *)params
+              success:(nullable V2NIMTranslateTextCallback)success
+              failure:(nullable V2NIMFailureCallback)failure;
 
 /**
 * 消息监听器

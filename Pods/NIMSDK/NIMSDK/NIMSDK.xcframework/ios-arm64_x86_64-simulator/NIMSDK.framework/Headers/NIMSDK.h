@@ -214,6 +214,7 @@
 #import "V2NIMLocalConversationServiceProtocol.h"
 #import "V2NIMApnsServiceProtocol.h"
 #import "V2NIMStatisticsServiceProtocol.h"
+#import "V2NIMUtilityServiceProtocol.h"
 
 /**
  *  SDK业务类
@@ -298,6 +299,7 @@
 #import "V2NIMLocationInfo.h"
 #import "V2NIMSize.h"
 #import "V2NIMRouteConfig.h"
+#import "V2NIMTextTranslate.h"
 
 /**
  *  V2 Conversation

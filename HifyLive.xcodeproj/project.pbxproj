@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B95FBD743D97394757E07E2 /* Pods_HifyLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC313510D382A2ACBC1DF4B /* Pods_HifyLive.framework */; };
+		B793DEF7D4F7A392BAEF0EDE /* Pods_HifyLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C306450703E6DFBC9517ED2 /* Pods_HifyLive.framework */; };
 		DD0E53D22F1749120060F729 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = DD0E53D12F1749120060F729 /* Gzip */; };
 		DD0FEA592F3C7D51008C96C6 /* UIPilot in Frameworks */ = {isa = PBXBuildFile; productRef = DD0FEA582F3C7D51008C96C6 /* UIPilot */; };
 		DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DD7AB8DD2F15F4AB003B52DE /* GoogleSignIn */; };
@@ -16,10 +16,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		183AEC9284EB7F5587D8867E /* Pods-HifyLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.debug.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.debug.xcconfig"; sourceTree = "<group>"; };
-		BBC7BEFA699CF2C284BE7647 /* Pods-HifyLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.release.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.release.xcconfig"; sourceTree = "<group>"; };
+		434981E89B418D30E0A926CD /* Pods-HifyLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.release.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.release.xcconfig"; sourceTree = "<group>"; };
+		43DADE89187595A0743595B7 /* Pods-HifyLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HifyLive.debug.xcconfig"; path = "Target Support Files/Pods-HifyLive/Pods-HifyLive.debug.xcconfig"; sourceTree = "<group>"; };
+		8C306450703E6DFBC9517ED2 /* Pods_HifyLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDECD4CD2F148B820016E861 /* Eivo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eivo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECC313510D382A2ACBC1DF4B /* Pods_HifyLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HifyLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -53,17 +53,17 @@
 				DD7AB8E02F15F4AB003B52DE /* GoogleSignInSwift in Frameworks */,
 				DD0FEA592F3C7D51008C96C6 /* UIPilot in Frameworks */,
 				DD7AB8DE2F15F4AB003B52DE /* GoogleSignIn in Frameworks */,
-				9B95FBD743D97394757E07E2 /* Pods_HifyLive.framework in Frameworks */,
+				B793DEF7D4F7A392BAEF0EDE /* Pods_HifyLive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0AB8BF6CE93E405175B22518 /* Frameworks */ = {
+		13D52535B28832CD7CA669B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECC313510D382A2ACBC1DF4B /* Pods_HifyLive.framework */,
+				8C306450703E6DFBC9517ED2 /* Pods_HifyLive.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -71,8 +71,8 @@
 		9701E0D8E7A6EC5B10D993F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				183AEC9284EB7F5587D8867E /* Pods-HifyLive.debug.xcconfig */,
-				BBC7BEFA699CF2C284BE7647 /* Pods-HifyLive.release.xcconfig */,
+				43DADE89187595A0743595B7 /* Pods-HifyLive.debug.xcconfig */,
+				434981E89B418D30E0A926CD /* Pods-HifyLive.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 				DDECD4CF2F148B820016E861 /* HifyLive */,
 				DDECD4CE2F148B820016E861 /* Products */,
 				9701E0D8E7A6EC5B10D993F3 /* Pods */,
-				0AB8BF6CE93E405175B22518 /* Frameworks */,
+				13D52535B28832CD7CA669B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,12 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDECD4D82F148B840016E861 /* Build configuration list for PBXNativeTarget "HifyLive" */;
 			buildPhases = (
-				88443B5D68DDD8FACC88BDA6 /* [CP] Check Pods Manifest.lock */,
+				08EAA034E0906001F9A631DD /* [CP] Check Pods Manifest.lock */,
 				DDECD4C92F148B820016E861 /* Sources */,
 				DDECD4CA2F148B820016E861 /* Frameworks */,
 				DDECD4CB2F148B820016E861 /* Resources */,
-				ACF646B54A2E633FAAE2C1A8 /* [CP] Embed Pods Frameworks */,
-				89E67DD23A948478E3132E80 /* [CP] Copy Pods Resources */,
+				447A6E46F736E8E05B1DE0C7 /* [CP] Embed Pods Frameworks */,
+				7DB9BBD023A418B716A365C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -180,7 +180,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		88443B5D68DDD8FACC88BDA6 /* [CP] Check Pods Manifest.lock */ = {
+		08EAA034E0906001F9A631DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -202,28 +202,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		89E67DD23A948478E3132E80 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ACF646B54A2E633FAAE2C1A8 /* [CP] Embed Pods Frameworks */ = {
+		447A6E46F736E8E05B1DE0C7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -231,17 +210,30 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DB9BBD023A418B716A365C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HifyLive/Pods-HifyLive-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -380,7 +372,7 @@
 		};
 		DDECD4D92F148B840016E861 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 183AEC9284EB7F5587D8867E /* Pods-HifyLive.debug.xcconfig */;
+			baseConfigurationReference = 43DADE89187595A0743595B7 /* Pods-HifyLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -423,7 +415,7 @@
 		};
 		DDECD4DA2F148B840016E861 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBC7BEFA699CF2C284BE7647 /* Pods-HifyLive.release.xcconfig */;
+			baseConfigurationReference = 434981E89B418D30E0A926CD /* Pods-HifyLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

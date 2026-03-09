@@ -29,6 +29,7 @@ struct HifyLiveApp: App {
         WebKitWarmUp.shared.warm()
         
         NIMSDK.shared().register(withAppID: JOGtDnYupP.zMVMMyTmNK, cerName: "")
+        
     }
     
     @StateObject private var qHyGWbkl4J6y35 = IyfdHMdY.bTa3L6BoprG
@@ -119,6 +120,30 @@ struct HifyLiveApp: App {
                         PkeDEXpbkc4RXu.shared.goGKj6Y2p4 = yg881FpnD9Ee1
                         UfmQhHA1doHKs.bHNA2Amheuq0.e3lm29iotZr1P6CsH()
                         utufpxtrNowtjF()
+                        
+                        // ✅ 补单逻辑
+                           PkeDEXpbkc4RXu.shared.loadPendingTransactions()
+                           for pending in PkeDEXpbkc4RXu.shared.pendingTransactions {
+                               Task {
+                                   do {
+                                       let result = try await n3Qw6R9Xb1K(
+                                           kL2Q7ZxM8R: pending.transactionID,
+                                           z8Y1QxL4Z8v: pending.receiptData,
+                                           x8V6N2kL9MZ: pending.orderCode
+                                       )
+                                       if result {
+                                           if let index = PkeDEXpbkc4RXu.shared.pendingTransactions.firstIndex(where: { $0.transactionID == pending.transactionID }) {
+                                               PkeDEXpbkc4RXu.shared.pendingTransactions.remove(at: index)
+                                               PkeDEXpbkc4RXu.shared.savePendingTransactions()
+                                           }
+                                       }
+                                   } catch {
+                                       print("补单失败，下次继续")
+                                   }
+                               }
+                           }
+                        
+                        
                     }//判断token是否过期，到登录页面
                     .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"))) { _ in
                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("CF/pQfyETmTqnvPASaLzZqpNGUPBRIo9Z7z0oPoNL/elWQYGLZRU+1kaFCnxQ07D")

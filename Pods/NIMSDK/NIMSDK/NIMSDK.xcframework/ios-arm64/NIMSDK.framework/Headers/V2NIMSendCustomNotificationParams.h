@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) V2NIMNotificationConfig *notificationConfig;
 /// 离线推送配置相关
 @property(nonatomic,strong) V2NIMNotificationPushConfig *pushConfig;
-/// 反垃圾相关配置是路由抄送相关配置
+/// 反垃圾相关配置
 @property(nonatomic,strong) V2NIMNotificationAntispamConfig *antispamConfig;
-/// 离线推送配置相关
+/// 路由抄送相关配置
 @property(nonatomic,strong) V2NIMNotificationRouteConfig *routeConfig;
 @end
 

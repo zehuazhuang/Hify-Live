@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param name 文件显示名称
 /// @param sceneName 场景名 自定义场景使用之前，需要先调用V2NIMStorageService.addCustomStorageScene新增自定义场景值 默认使用DEFAULT_IM对应的场景名
 /// @param width 图片文件宽度
-/// @param width 图片文件高度
+/// @param height 图片文件高度
 + (V2NIMMessage *)createImageMessage:(NSString *)imagePath
                                 name:(nullable NSString *)name
                            sceneName:(nullable NSString *)sceneName
@@ -75,14 +75,14 @@ NS_ASSUME_NONNULL_BEGIN
                               longitude:(double)longitude
                                 address:(NSString *)address;
 
-/// 构造自定义消息消息
+/// 构造自定义消息
 /// @param text 需要发送的文本内容
 /// @param rawAttachment 需要发送的附件
 + (V2NIMMessage *)createCustomMessage:(NSString *)text
                         rawAttachment:(NSString *)rawAttachment;
 
 
-/// 构造自定义消息消息
+/// 构造自定义消息
 /// @param attachment 需要发送的自定义附件
 /// @param subType 可以作为具体自定义类型子类型区分type字段
 + (V2NIMMessage *)createCustomMessageWithAttachment:(V2NIMMessageCustomAttachment *)attachment
@@ -95,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///     V2NIM_MESSAGE_TYPE_ROBOT，
 ///     V2NIM_MESSAGE_TYPE_TIP，
 ///     V2NIM_MESSAGE_TYPE_AVCHAT
-/// 转发的消息消息必须为发送成功的消息
+/// 转发的消息必须为发送成功的消息
 /// @param message 需要转发的消息体
 + (V2NIMMessage *)createForwardMessage:(V2NIMMessage *)message;
 

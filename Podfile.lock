@@ -3,10 +3,10 @@ PODS:
   - AgoraRtcEngine_iOS/RtcBasic (4.6.2):
     - AgoraInfra_iOS (= 1.3.5)
   - AliyunOSSiOS (2.11.2)
-  - NIMSDK (10.9.71):
-    - NIMSDK/NOS (= 10.9.71)
+  - NIMSDK (10.9.76):
+    - NIMSDK/NOS (= 10.9.76)
     - YXArtemis_XCFramework
-  - NIMSDK/NOS (10.9.71):
+  - NIMSDK/NOS (10.9.76):
     - YXArtemis_XCFramework
   - YXArtemis_XCFramework (1.1.6)
 
@@ -27,7 +27,7 @@ SPEC CHECKSUMS:
   AgoraInfra_iOS: 0bf927aad4fc425b24ca5d094b333361960f5cb0
   AgoraRtcEngine_iOS: 11f37dd846d6194a5268b084b99102e5b6aff0de
   AliyunOSSiOS: 6d6b668b82ac0c0ea2313412bcb5530b42ec97ab
-  NIMSDK: f21e29aff709e248db0fecbc58b7ddd0b5df68cc
+  NIMSDK: b3542b701964ad803cec3d7574c46df00110905e
   YXArtemis_XCFramework: d9a8b9439d7a6c757ed00ada53a6d2dd9b13f9c7
 
 PODFILE CHECKSUM: 5466de49481fdea3a0c19a3651502f75b8126478

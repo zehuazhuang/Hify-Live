@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  调用定制化api
  *
  *  @param param    api调用参数,包括 api name/param等信息 详见NIMGenericTypeAPICallParam定义
- *  @param completion  api扫行结果回调,包括error/result等信息 详见NIMNIMGenericTypeAPICallInvokeCallback定义
+ *  @param completion  api执行结果回调,包括error/result等信息 详见NIMNIMGenericTypeAPICallInvokeCallback定义
  */
 - (void)invokeAPI:(NIMGenericTypeAPICallParam* __nonnull)param
              completion:(nullable NIMGenericTypeAPICallInvokeCallback)completion;

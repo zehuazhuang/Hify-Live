@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, NIMLastMsgType){
 
 /**
  *  最后一条消息过滤
- *  @discusssion 最近会话里lastMessage为非过滤类型里的最后一条。例：@[@(NIMMessageTypeNotification)],
+ *  @discussion 最近会话里lastMessage为非过滤类型里的最后一条。例：@[@(NIMMessageTypeNotification)],
  *  表示返回的最近会话里lastMessage是最后一条非NIMMessageTypeNotification类型的消息。
  */
 @property (nonatomic, strong) NSArray<NSNumber *> *filterLastMessageTypes;

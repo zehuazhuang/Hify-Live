@@ -355,7 +355,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 消息发送相关参数
 @interface V2NIMMessageListOption : NSObject<NSCopying>
-/// 消息所属会话ID 由senderId, conversiationType， receiverId拼装而成 [必填]
+/// 消息所属会话ID 由senderId, conversationType， receiverId拼装而成 [必填]
 @property(nonatomic,strong) NSString *conversationId;
 /// 根据消息类型查询会话， 为null或空列表， 则表示查询所有消息类型 [选填]
 /// @see V2NIMMessageType
@@ -384,7 +384,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface V2NIMCloudMessageListOption : NSObject<NSCopying>
-/// 消息所属会话ID 由senderId, conversiationType， receiverId拼装而成 [必填]
+/// 消息所属会话ID 由senderId, conversationType， receiverId拼装而成 [必填]
 @property(nonatomic,strong) NSString *conversationId;
 /// 根据消息类型查询会话， 为null或空列表， 则表示查询所有消息类型 [选填]
 /// @see V2NIMMessageType
@@ -452,6 +452,23 @@ NS_ASSUME_NONNULL_BEGIN
  * NO：会话入口会保留
  */
 @property(nonatomic,assign) BOOL deleteConversation;
+
+@end
+
+/// 消息插入相关参数
+@interface V2NIMMessageInsertParams : NSObject<NSCopying>
+
+/// 会话ID。
+@property(nonatomic,strong) NSString *conversationId;
+
+/// 消息发送者账号，传空表示当前用户。
+@property(nullable,nonatomic,strong) NSString *senderId;
+
+/// 指定插入消息时间，传 0 则 sdk 使用当前 ntp 时间插入，默认0。
+@property(nonatomic,assign) NSTimeInterval createTime;
+
+/// 是否需要更新会话的最后一条信息，YES：需要，NO：不需要，默认YES。
+@property(nonatomic,assign) BOOL lastMessageUpdateEnabled;
 
 @end
 

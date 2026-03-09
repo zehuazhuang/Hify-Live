@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  推送文案，长度限制500字
- *  @discussion 推送给制定用户的特定推送文案，如果设置为 nil 则使用消息本身的推送文案
+ *  @discussion 推送给指定用户的特定推送文案，如果设置为 nil 则使用消息本身的推送文案
  *
  */
 @property (nullable,nonatomic,copy)     NSString    *apnsContent;

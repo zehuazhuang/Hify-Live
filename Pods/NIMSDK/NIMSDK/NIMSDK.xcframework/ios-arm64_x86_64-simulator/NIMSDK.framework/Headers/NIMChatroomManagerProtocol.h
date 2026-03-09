@@ -381,7 +381,7 @@ typedef NS_ENUM(NSInteger, NIMChatroomKickReason) {
 
 
 /**
- *  更新用户聊天室静言状态
+ *  更新用户聊天室禁言状态
  *
  *  @param request    更新请求
  *  @param completion 请求回调

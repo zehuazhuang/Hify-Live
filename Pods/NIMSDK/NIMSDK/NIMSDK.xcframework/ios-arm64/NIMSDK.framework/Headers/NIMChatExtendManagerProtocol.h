@@ -415,7 +415,7 @@ typedef void(^NIMLoadRecentSessionsCompletion)(NSError * _Nullable error, NSArra
 /**
  * 更新一条置顶记录的扩展信息
  * @param info 需要更新的置顶记录
- * @param completion 删除完成的回调
+ * @param completion 更新完成的回调
  */
 - (void)udpateStickTopSession:(NIMStickTopSessionInfo *)info completion:(nullable NIMUpdateStickTopSessionCompletion)completion;
 

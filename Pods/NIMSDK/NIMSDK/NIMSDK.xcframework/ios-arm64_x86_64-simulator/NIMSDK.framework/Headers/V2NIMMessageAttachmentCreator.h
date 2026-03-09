@@ -26,8 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                           longitude:(double)longitude
                                                             address:(NSString *)address;
 
-/// 构造自定义消息消息
-/// @param text 需要发送的文本内容
+/// 构造自定义消息附件
 /// @param rawAttachment 需要发送的附件
 + (V2NIMMessageAttachment *)createCustomMessageAttachment:(NSString *)rawAttachment;
 @end

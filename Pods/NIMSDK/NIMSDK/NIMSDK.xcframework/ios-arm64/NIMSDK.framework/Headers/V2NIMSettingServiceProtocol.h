@@ -119,7 +119,7 @@ typedef void (^V2NIMGetAllTeamMessageMuteModeCallback)(NSDictionary<NSString *, 
  *  设置当桌面端在线时，移动端是否需要推送
  *  运行在移动端时， 需要调用该接口
  *
- *  @param need 桌面端在线时，移动端是否需要推送 true： 需要 fasle：不需要
+ *  @param need 桌面端在线时，移动端是否需要推送 true：需要 false：不需要
  */
 - (void)setPushMobileOnDesktopOnline:(BOOL)need 
                              success:(nullable V2NIMSuccessCallback)success
@@ -208,7 +208,7 @@ typedef void (^V2NIMGetAllTeamMessageMuteModeCallback)(NSDictionary<NSString *, 
 /**
  * 免打扰是否开启
  * true：开启
- * fasle：关闭
+ * false：关闭
  */
 @property (nonatomic,assign) BOOL dndOn;
 /**

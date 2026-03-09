@@ -71,7 +71,7 @@ typedef NSUInteger(^NIMBadgeHandler)(void);
 
 
 /**
- *  更推送自定义多端推送策略配置
+ *  更新多端推送策略配置
  *
  *  @param config     多端推送策略配置
  *  @param completion 完成的回调

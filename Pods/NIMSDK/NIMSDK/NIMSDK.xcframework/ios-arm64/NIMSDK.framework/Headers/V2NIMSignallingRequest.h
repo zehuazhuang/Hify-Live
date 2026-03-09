@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 };
 
 
-#pragma makr - 直接呼叫请求参数
+#pragma mark - 直接呼叫请求参数
 @interface V2NIMSignallingCallParams : NSObject
 /**
  * 被呼叫者账号ID
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 信令相关配置
+#pragma mark - 信令相关配置
 @interface V2NIMSignallingConfig : NSObject
 /**
  * 是否需要存储离线消息。默认YES
@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 消息推送相关配置
+#pragma mark - 消息推送相关配置
 @interface V2NIMSignallingPushConfig : NSObject
 /**
  * 是否需要推送。默认为YES
@@ -150,7 +150,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 音视频相关配置
+#pragma mark - 音视频相关配置
 @interface V2NIMSignallingRtcConfig : NSObject
 /**
  * 云信音视频房间频道名称
@@ -170,7 +170,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 呼叫回包
+#pragma mark - 呼叫回包
 @interface V2NIMSignallingCallResult : NSObject
 /**
  * 频道房间相关信息
@@ -192,7 +192,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 信令频道信息
+#pragma mark - 信令频道信息
 @interface V2NIMSignallingChannelInfo : NSObject
 /**
  * 信令频道名称， 如果请求时不传，则该字段为空
@@ -236,7 +236,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 音视频相关信息
+#pragma mark - 音视频相关信息
 @interface V2NIMSignallingRtcInfo : NSObject
 /**
  * 进入音视频对应的Token
@@ -255,7 +255,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 呼叫建立请求参数
+#pragma mark - 呼叫建立请求参数
 @interface V2NIMSignallingCallSetupParams : NSObject
 /**
  * 信令频道ID， 唯一标识了该频道房间
@@ -294,7 +294,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 接受呼叫请求回包
+#pragma mark - 接受呼叫请求回包
 @interface V2NIMSignallingCallSetupResult : NSObject
 /**
  * 频道房间相关信息
@@ -316,7 +316,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 信令相关配置
+#pragma mark - 信令相关配置
 @interface V2NIMSignallingMember : NSObject
 /**
  * 成员账号ID
@@ -345,7 +345,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 信令房间相关信息
+#pragma mark - 信令房间相关信息
 @interface V2NIMSignallingRoomInfo : NSObject
 /**
  * 频道房间相关信息
@@ -360,7 +360,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 加入信令房间请求参数
+#pragma mark - 加入信令房间请求参数
 @interface V2NIMSignallingJoinParams : NSObject
 /**
  * 信令频道ID， 唯一标识了该频道房间
@@ -385,7 +385,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 邀请成员加入信令房间请求参数
+#pragma mark - 邀请成员加入信令房间请求参数
 @interface V2NIMSignallingInviteParams : NSObject
 /**
  * 信令频道ID， 唯一标识了该频道房间
@@ -424,7 +424,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 取消之前的邀请成员加入信令房间请求参数
+#pragma mark - 取消之前的邀请成员加入信令房间请求参数
 @interface V2NIMSignallingCancelInviteParams : NSObject
 /**
  * 信令频道ID， 唯一标识了该频道房间
@@ -464,7 +464,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 拒绝别人邀请加入信令房间请求参数
+#pragma mark - 拒绝别人邀请加入信令房间请求参数
 @interface V2NIMSignallingRejectInviteParams : NSObject
 /**
  * 信令频道ID， 唯一标识了该频道房间
@@ -499,7 +499,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 接受别人邀请加入信令房间请求参数
+#pragma mark - 接受别人邀请加入信令房间请求参数
 @interface V2NIMSignallingAcceptInviteParams : NSObject
 /**
  * 信令频道ID， 唯一标识了该频道房间
@@ -533,7 +533,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @property (nonatomic, assign) BOOL offlineEnabled;
 @end
 
-#pragma makr - 加入信令房间相关信息回包
+#pragma mark - 加入信令房间相关信息回包
 @interface V2NIMSignallingJoinResult : NSObject
 /**
  * 频道房间相关信息
@@ -546,7 +546,7 @@ typedef NS_ENUM(NSInteger,V2NIMSignallingEventType) {
 @end
 
 
-#pragma makr - 信令事件
+#pragma mark - 信令事件
 @interface V2NIMSignallingEvent : NSObject
 /**
  * 信令频道事件类型

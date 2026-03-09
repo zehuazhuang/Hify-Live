@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable,nonatomic,strong,readonly) V2NIMNotificationPushConfig *pushConfig;
 /// 反垃圾相关配置
 @property(nullable,nonatomic,strong,readonly) V2NIMNotificationAntispamConfig *antispamConfig;
-/// 反垃圾相关配置
+/// 路由相关配置
 @property(nullable,nonatomic,strong,readonly) V2NIMNotificationRouteConfig *routeConfig;
 @end
 

@@ -349,7 +349,7 @@ typedef NS_ENUM(NSInteger, NIMMultiLoginType){
  *  </tr>
  *  <tr><td>authType</td><td>登录鉴权方式，0（默认）：静态 token 鉴权；1：动态 token 鉴权；2：基于第三方回调的 token 鉴权</td>
  *  </tr>
- *  <tr><td>loginExt</td><td>登录自定义扩展字段。若选择基于第三方回调的 token 鉴权方式（authType 传入 3）时，该字段必传，如未传入，将报错</td>
+ *  <tr><td>loginExt</td><td>登录自定义扩展字段。若选择基于第三方回调的 token 鉴权方式（authType 传入 2）时，该字段必传，如未传入，将报错</td>
  *  </tr>
  *  <tr><td>completion</td><td>登录服务相关回调</td>
  *  </tr>

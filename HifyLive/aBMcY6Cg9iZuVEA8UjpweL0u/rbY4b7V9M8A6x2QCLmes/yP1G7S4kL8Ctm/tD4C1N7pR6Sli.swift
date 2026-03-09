@@ -75,15 +75,6 @@ struct tD4C1N7pR6Sli: View {
         .padding(.horizontal,16)
         .contentShape(Rectangle())
         .onTapGesture { onTap(rN1Z8mR) }
-        .onAppear{
-            print("对方id")
-            print(rN1Z8mR.sessionId)
-          
-           
-        
-            
-            
-        }
     }
 }
 

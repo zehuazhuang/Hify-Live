@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, NIMAudioType) {
  *  语音转文字
  *
  *  @param error 执行结果,如果成功error为nil
- *  @prarm text  转换后的文本
+ *  @param text  转换后的文本
  */
 typedef void(^NIMAudioToTextBlock)(NSError * __nullable error,NSString * __nullable text);
 

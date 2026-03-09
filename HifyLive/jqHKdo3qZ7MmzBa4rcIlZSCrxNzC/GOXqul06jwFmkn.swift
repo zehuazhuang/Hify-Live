@@ -17,11 +17,14 @@ func IdVwDkHotdjRqB(){
             // 只初始化一次后续获取会话/发送消息等
             _ = IMMessageListener.shared
             // 初次拉会话
+            
             RecentSessionManager.shared.fetchRecentSessions {
                     let sessions = RecentSessionManager.shared.cache
                     GlobalUnreadStore.shared.update(from: sessions)
                     RecentSessionStore.shared.cache = sessions
             }
+            
+            
         } else {
             print("云信 IM 登录失败")
         }

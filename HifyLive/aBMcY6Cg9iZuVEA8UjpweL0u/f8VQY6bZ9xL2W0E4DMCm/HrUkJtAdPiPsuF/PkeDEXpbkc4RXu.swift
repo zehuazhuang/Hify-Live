@@ -3,6 +3,12 @@ import SwiftUI
 import StoreKit
 import Combine
 
+struct PendingTransaction: Codable {
+    let transactionID: String
+    let receiptData: String
+    let orderCode: String
+}
+
 @MainActor
 final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
 
@@ -21,6 +27,22 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
     
     @Published var q8R2T9vC5MZ: String = "" //key
     @Published var nN2B7Q5M9: Int = 0 //实际钻石数量
+    @Published var pendingTransactions: [PendingTransaction] = [] //补单
+    
+    // 保存到 UserDefaults
+     func savePendingTransactions() {
+        if let data = try? JSONEncoder().encode(pendingTransactions) {
+            UserDefaults.standard.set(data, forKey: "pendingTransactions")
+        }
+    }
+
+    // 读取本地
+     func loadPendingTransactions() {
+        if let data = UserDefaults.standard.data(forKey: "pendingTransactions"),
+           let saved = try? JSONDecoder().decode([PendingTransaction].self, from: data) {
+            pendingTransactions = saved
+        }
+    }
 
     override init() {
         super.init()
@@ -62,24 +84,9 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 
-//    // MARK: - 发货逻辑
-//    private func axsAs4xvtJg4Pd(productId: String) {
-//
-//        let sn9RRYi99 = PUiSN9Hnxm9ZJ.nrDS82DJMap[productId] ?? 0
-//        
-//        Task {
-//            let success = try await k8VJeG1rEJh4(ovlkoBKType: sn9RRYi99)
-//            if success {
-//                if let callback = i03CT778BY {
-//                    await callback()
-//                }
-//                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-//                    .m3nArFwdHhI82cPUmiqW8PtaaHz("2Z8gUUr8Jm2yOKyEhm4P66gcqYnxUwQictDLBEJoU08=")
-//            }
-//        }
-//    }
     // MARK: - 处理所有已存在未完成订单
     private func checkUnfinishedTransactions() {
+        print("1")
         
         let transactions = SKPaymentQueue.default().transactions
         
@@ -105,8 +112,12 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
                 
             @unknown default:
                 break
+                
             }
+            
+            
         }
+        
     }
     
 }
@@ -191,13 +202,30 @@ extension PkeDEXpbkc4RXu {
                   serverVerificationData = ""
                 }
         
+        
+        
         let cousde = "{\"orderCode\":\"\(q8R2T9vC5MZ)\"}"
+        
+        
+        let pending = PendingTransaction(
+            transactionID: purchaseID,
+            receiptData: serverVerificationData,
+            orderCode: cousde
+        )
+        pendingTransactions.append(pending)
+        savePendingTransactions()
         
         Task {
             do {
-                
+                defer {
+                                
+                                SKPaymentQueue.default().finishTransaction(transaction)
+                                
+                      }
                 // 2️⃣ 发给服务器
-               
+                //测试补单
+//                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+//                return
                 
      
                let result = try await n3Qw6R9Xb1K(kL2Q7ZxM8R: purchaseID, z8Y1QxL4Z8v: serverVerificationData, x8V6N2kL9MZ: cousde)
@@ -205,13 +233,20 @@ extension PkeDEXpbkc4RXu {
              
              
                 if(result){
+                    
+                    if let index = pendingTransactions.firstIndex(where: { $0.transactionID == purchaseID }) {
+                        pendingTransactions.remove(at: index)
+                        savePendingTransactions()
+                    }
                                    
                         try await i03CT778BY?()
                                     
-                        SKPaymentQueue.default().finishTransaction(transaction)
+                       
                     QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
                         .m3nArFwdHhI82cPUmiqW8PtaaHz("/peQucgR05RwJN5sSZK/MpLhSTA/SbkaTLxc0PtIk1A=",
                                                      subFontText: "You have received \(nN2B7Q5M9) diamonds.",)
+                    
+                    
                 }
              
                 

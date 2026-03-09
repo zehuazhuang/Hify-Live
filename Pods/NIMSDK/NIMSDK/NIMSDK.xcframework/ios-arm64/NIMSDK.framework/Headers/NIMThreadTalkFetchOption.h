@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,assign) NSTimeInterval start;
 /**
- *  查询h结束时间戳，默认 当前时间+1小时，单位(s)
+ *  查询结束时间戳，默认 当前时间+1小时，单位(s)
  */
 @property (nonatomic,assign) NSTimeInterval end;
 /**

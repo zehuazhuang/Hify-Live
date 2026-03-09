@@ -51,15 +51,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 消息监听回调
 @protocol V2NIMNotificationListener <NSObject>
 /**
- *  移除通知监听
+ *  接收自定义通知回调
  *
- *  @param customNotifications
+ *  @param customNotifications 自定义通知
  */
 - (void)onReceiveCustomNotifications:(NSArray <V2NIMCustomNotification *> *)customNotifications;
 /**
- *  移除通知监听
+ *  接收广播通知回调
  *
- *  @param boradcastNotifications
+ *  @param boradcastNotifications 全员广播通知
  */
 - (void)onReceiveBroadcastNotifications:(NSArray <V2NIMBroadcastNotification *> *)boradcastNotifications;
 

@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
                            title:(nullable NSString *)title;
 
 /**
- *  维度
+ *  纬度
  */
 @property (nonatomic, assign, readonly) double latitude;
 

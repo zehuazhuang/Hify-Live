@@ -407,7 +407,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param mute        是否禁言
  *  @param userId      用户ID
  *  @param teamId      群组ID
- *  @param completion  经验操作完成后的回调
+ *  @param completion  禁言操作完成后的回调
  *  @discussion   操作成功后，云信服务器会下发禁言的群通知消息
  */
 - (void)updateMuteState:(BOOL)mute
@@ -420,7 +420,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param mute        是否禁言
  *  @param teamId      群组ID
- *  @param completion  经验操作完成后的回调
+ *  @param completion  禁言操作完成后的回调
  *  @discussion   操作成功后，云信服务器会下发禁言的群通知消息
  */
 - (void)updateMuteState:(BOOL)mute

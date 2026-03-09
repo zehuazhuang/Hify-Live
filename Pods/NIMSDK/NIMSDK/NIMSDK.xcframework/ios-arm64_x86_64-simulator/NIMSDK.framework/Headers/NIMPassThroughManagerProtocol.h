@@ -45,8 +45,7 @@ typedef void(^NIMPassThroughCompletedBlock)(NIMPassThroughHttpData* __nullable r
  *   透传HTTP请求到应用服务
  *
  *  @param reqData      透传的Http数据
- *  @param completion   经验操作完成后的回调
- *  @discussion         操作成功后，云信服务器会下发禁言的群通知消息
+ *  @param completion   请求操作完成后的回调
  */
 - (void)passThroughHttpReq:(NIMPassThroughHttpData *)reqData
                 completion:(nullable NIMPassThroughCompletedBlock)completion;

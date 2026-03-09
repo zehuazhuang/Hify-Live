@@ -44,7 +44,7 @@ typedef void(^NIMUploadCompleteBlock)(NSString * __nullable urlString,NSError * 
  *
  *  @param urlString 查询后的URL，如果未上传过该文件，则为nil
  *  @param threshold 支持文件快传的文件大小阈值，小于该阈值的则不支持快传,单位为Byte
- *  @param error     文件快传请求的错误信息，失败是为nil
+ *  @param error     文件快传请求的错误信息，成功时为nil
  */
 typedef void(^NIMFileQuickTransferCompleteBlock)(NSString * __nullable urlString, NSInteger threshold, NSError * __nullable error);
 
@@ -135,7 +135,7 @@ typedef void(^NIMFetchURLCompletion)(NSError * __nullable error, NSString * __nu
 /**
  *  下载文件
  *
- *  @param urlString  下载的RL
+ *  @param urlString  下载的URL
  *  @param filepath   下载路径
  *  @param progress   进度Block
  *  @param completion 完成Block
@@ -148,7 +148,7 @@ typedef void(^NIMFetchURLCompletion)(NSError * __nullable error, NSString * __nu
 /**
  *  下载文件
  *
- *  @param urlString  下载的RL
+ *  @param urlString  下载的URL
  *  @param filepath   下载路径
  *  @param extraInfo  资源辅助信息
  *  @param progress   进度Block
@@ -163,7 +163,7 @@ typedef void(^NIMFetchURLCompletion)(NSError * __nullable error, NSString * __nu
 /**
  *  下载文件
  *
- *  @param urlString  下载的RL
+ *  @param urlString  下载的URL
  *  @param filepath   下载路径
  *  @param type       Fcs下载类型(特殊功能,开通请联系技术支持)
  *  @param extraInfo  资源辅助信息
@@ -180,7 +180,7 @@ typedef void(^NIMFetchURLCompletion)(NSError * __nullable error, NSString * __nu
 /**
  *  下载文件
  *
- *  @param urlString  下载的RL
+ *  @param urlString  下载的URL
  *  @param filepath   下载路径
  *  @param type       Fcs下载类型(特殊功能,开通请联系技术支持)
  *  @param extraInfo  资源辅助信息

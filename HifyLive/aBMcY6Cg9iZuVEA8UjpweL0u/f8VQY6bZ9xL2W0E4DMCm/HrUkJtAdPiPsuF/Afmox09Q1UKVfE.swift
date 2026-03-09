@@ -260,6 +260,8 @@ struct Afmox09Q1UKVfE: View {
                                                 
                                                 pkeDEXpbkc4RXu.q8R2T9vC5MZ = productId
                                                 
+                                                print(pkeDEXpbkc4RXu.q8R2T9vC5MZ)
+                                                
                                                 let resu =  try await vaBBMmyXOh(
                                                     jYPvECldH: skuInfoId,
                                                     xsqZJWxTw: templateId,
@@ -281,6 +283,8 @@ struct Afmox09Q1UKVfE: View {
                                                 if let nDgOeiB = resu["diamondNum"] as? Int, nDgOeiB > 0 {
                                                   
                                                     pkeDEXpbkc4RXu.nN2B7Q5M9 = nDgOeiB
+                                                    
+                                                   
                                                     
                                                     await pkeDEXpbkc4RXu.mZ6DqgRigNqO(productId: productId)
                                                 }
