@@ -21,6 +21,7 @@ struct CgZU7mTgY46l: View {
     
         @State private var isw8UhB9Gj8t = false //显示举报
         @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
+        @State private var xJc49zdLp: Bool = false //礼物弹框
 
             init(session: NIMSession, opponentAvatarURL: String) {
             self.session = session
@@ -185,19 +186,36 @@ struct CgZU7mTgY46l: View {
                                         }
                                         
                                 //礼物
-                                ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
-                                    .frame(width: 32, height: 32)
+                                if opponentInfo.int("userType") == 2 {
+                                    ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
+                                        .frame(width: 32, height: 32)
+                                        .onTapGesture {
+                                            withAnimation{
+                                                xJc49zdLp = true
+                                            }
+                                        }
+                                }
                             }
                         }.padding(.horizontal,16)
                         .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
                     }
                 //end 底部输入框
                 
+                //举报弹框
                 if isw8UhB9Gj8t {
                     QiRKOWGBnovrlh(ish1z8TllyFvb: $isw8UhB9Gj8t, ihQ5ReMsh3Uid: opponentInfo.int("userId"),
                                    szHHWP8Name:opponentInfo.string("nickname"), wksgt0dUrl: opponentInfo.string("icon"), ihysbsdRVA: opponentInfo.string("yxAccid"), uZIHcG0Vju0: $iLIIszM4zwx,
                     )
                 }
+                //礼物弹框
+                if xJc49zdLp {
+                    QX10IFCuguXvQa(dyzmBppNrJ: $xJc49zdLp, jhqguQVC07: {
+                      
+                    }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
+                }
+               
+                
+                
             }
             .onAppear {
                 vm.loadHistory()
@@ -207,6 +225,7 @@ struct CgZU7mTgY46l: View {
                                )
                     
                     opponentInfo = info
+                 
                  
                     
                  //   iLIIszM4zwx = opponentInfo.int("beBlocked")

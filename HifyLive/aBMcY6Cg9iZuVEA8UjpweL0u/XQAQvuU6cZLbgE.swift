@@ -1,14 +1,15 @@
 import SwiftUI
 import Combine
-
+//浮窗系统通知
 class XQAQvuU6cZLbgE: ObservableObject {
     static let shared = XQAQvuU6cZLbgE()
     
     @Published var uKbjaEGR: String? = nil
     @Published var sVt7blcSwH: Bool = false
-    
+    @Published var messageID = UUID()
     private var nextMessage: String? = nil
     private var currentWorkItem: DispatchWorkItem? = nil
+    
     
     private init() {}
     
@@ -37,6 +38,7 @@ class XQAQvuU6cZLbgE: ObservableObject {
     }
     
     private func showMessage(_ message: String, duration: Double) {
+        messageID = UUID()
         uKbjaEGR = message
         withAnimation {
             sVt7blcSwH = true
@@ -65,7 +67,9 @@ struct XQAQvuU6cZLbgEView: View {
                                     size: 16,
                                     weight: .semibold
                                 )
-            }.frame(height: 76)
+            }
+            .id(manager.messageID)
+            .frame(height: 76)
                 .frame(maxWidth: .infinity)
                 .background(
                     Color(red: 13/255, green: 27/255, blue: 41/255)

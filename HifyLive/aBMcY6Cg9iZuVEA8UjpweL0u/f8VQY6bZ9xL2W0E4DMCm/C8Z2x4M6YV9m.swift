@@ -335,13 +335,16 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
                                 Button{
-                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第一条通知")
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                                        XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第二条通知")
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
-                                        XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第三条通知")
-                                    }
+//                                    Task{
+//                                        let asd =   try await cTiuphrpj0WxFn(pX8YxxAkBf: "NEW_LIVE", bDXCgArl3: 123)
+//                                        print("------")
+//                                        print(asd)
+//                                    }
+                                   
+                                    
+                                    
+//                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第一条通知")
+                                    
                                     
                                     //跳ai页面
                                  //   pilot.push(.ASkYEgFvkJ3xKj)

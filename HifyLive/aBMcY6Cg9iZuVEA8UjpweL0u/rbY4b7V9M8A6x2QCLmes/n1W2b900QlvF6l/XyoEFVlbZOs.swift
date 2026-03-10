@@ -127,6 +127,8 @@ class ChatMessage: Identifiable, ObservableObject {
             var result: [ChatMessage] = []
             
             for msg in msgs {
+                print("历史消息")
+                print(msg)
            
                 let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
                 

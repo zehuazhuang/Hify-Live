@@ -54,8 +54,12 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
     private static func handleIncomingOnMain(_ messages: [NIMMessage]) {
 
         let myAccount = NIMSDK.shared().loginManager.currentAccount()
+        
+        
 
         for message in messages {
+            print("收到消息")
+            print(message)
           
             guard
                 let session = message.session,

@@ -200,7 +200,7 @@ struct LE0xQZ6Y7WC8iv: View {
                     withAnimation{
                         x7hEzzGUTAch0 = true
                     }
-                })
+                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "NEW_LIVE", tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
             }
             //商店弹框
             if x7hEzzGUTAch0 {
@@ -211,13 +211,10 @@ struct LE0xQZ6Y7WC8iv: View {
                         .onTapGesture {
                             withAnimation { x7hEzzGUTAch0 = false }
                         }
-                    
                     // 弹窗本体
                     Afmox09Q1UKVfE(daPQCKaHi: true)
                         .frame(height: 580)
                         .frame(maxHeight: .infinity,alignment:.bottom)
-                        
-                        
                 }
             }
             
