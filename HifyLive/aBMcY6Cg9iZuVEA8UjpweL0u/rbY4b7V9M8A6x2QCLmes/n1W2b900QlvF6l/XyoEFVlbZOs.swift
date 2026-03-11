@@ -27,11 +27,23 @@ enum FailReason: Equatable {
         }
     }
 }
+
+//礼物模型
+struct GiftAttachment: Codable {
+    let giftId: Int
+    let giftName: String
+    let giftNum: Int
+    let giftPrice: Int
+    let giftIcon: String
+    let giftImg: String
+    let senderNickname: String
+}
     
     //私聊模型
     enum ChatMessageContent {
         case text(String)
         case image(url: String?, size: CGSize)
+        case gift(GiftAttachment)
     }
     
 class ChatMessage: Identifiable, ObservableObject {
@@ -79,6 +91,8 @@ class ChatMessage: Identifiable, ObservableObject {
         
         var onMessageUpdated: (() -> Void)?
         
+        var onReceiveGift: ((_ giftImg: String) -> Void)?
+        
         
         // ✅ 自己头像和对方头像
         let myAvatarURL: String
@@ -101,16 +115,20 @@ class ChatMessage: Identifiable, ObservableObject {
         }
         
         func updateRecentSession(_ message: ChatMessage) {
+           
                 guard let recent = RecentSessionStore.shared.cache.first(where: { $0.sessionId == session.sessionId }) else {
                     return
                 }
-
+           
                 switch message.content {
                 case .text(let text):
                     recent.lastMessageText = text
                 case .image:
                     recent.lastMessageText = "[Picture]"
+                case .gift:
+                    recent.lastMessageText = "[Gift messages]"
                 }
+           
 
                 recent.timestamp = message.timestamp
             }
@@ -127,8 +145,7 @@ class ChatMessage: Identifiable, ObservableObject {
             var result: [ChatMessage] = []
             
             for msg in msgs {
-                print("历史消息")
-                print(msg)
+              
            
                 let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
                 
@@ -169,7 +186,61 @@ class ChatMessage: Identifiable, ObservableObject {
                         sendStatus: sendStatus,
                         nimMessage : msg
                     )
-                } else {
+                }else if msg.messageType == .custom {
+                    guard let customObject = msg.messageObject as? NIMCustomObject,
+                          let attachment = customObject.attachment else {
+                        chatMsg = nil
+                        return
+                    }
+                    let jsonString = attachment.encode()
+                    
+                    guard let data = jsonString.data(using: .utf8) else {
+                        chatMsg = nil
+                        return
+                    }
+                    
+                    do {
+                        guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                              let type = dict["attachType"] as? String, type == "SEND_GIFT" else {
+                            chatMsg = nil
+                            return
+                        }
+
+                        guard let giftId = dict["giftId"] as? Int,
+                              let giftName = dict["giftName"] as? String,
+                              let giftNum = dict["giftNum"] as? Int,
+                              let giftPrice = dict["giftPrice"] as? Int,
+                              let giftIcon = dict["smallImg"] as? String,
+                              let giftImg = dict["giftImg"] as? String,
+                              let senderNickname = dict["senderNickname"] as? String else {
+                            chatMsg = nil
+                            return
+                        }
+                        
+                        let gift = GiftAttachment(
+                            giftId: giftId,
+                            giftName: giftName,
+                            giftNum: giftNum,
+                            giftPrice: giftPrice,
+                            giftIcon: giftIcon,
+                            giftImg: giftImg,
+                            senderNickname: senderNickname
+                        )
+                        chatMsg = ChatMessage(
+                            messageId: msg.messageId,
+                            content: .gift(gift),
+                            isOutgoingMsg: msg.isOutgoingMsg,
+                            timestamp: msg.timestamp,
+                            avatarURL: avatar,
+                            sendStatus: sendStatus,
+                            nimMessage: msg
+                        )
+                        
+                    } catch {
+                        print("JSON 解析失败: \(error)")
+                        chatMsg = nil
+                    }
+                }else {
                     chatMsg = nil
                 }
                 
@@ -434,12 +505,74 @@ class ChatMessage: Identifiable, ObservableObject {
                             avatarURL: avatar,
                             nimMessage: msg
                         )
-                    }
+                    }else if msg.messageType == .custom {
+                        guard let customObject = msg.messageObject as? NIMCustomObject,
+                              let attachment = customObject.attachment else {
+                            chatMsg = nil
+                            return
+                        }
+                        let jsonString = attachment.encode()
+                        guard let data = jsonString.data(using: .utf8) else {
+                            chatMsg = nil
+                            return
+                        }
+                        do {
+                            guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                                  let type = dict["attachType"] as? String,
+                                  type == "SEND_GIFT" else {
+                                chatMsg = nil
+                                return
+                            }
+                            guard let giftId = dict["giftId"] as? Int,
+                                  let giftName = dict["giftName"] as? String,
+                                  let giftNum = dict["giftNum"] as? Int,
+                                  let giftPrice = dict["giftPrice"] as? Int,
+                                  let giftIcon = dict["smallImg"] as? String,
+                                  let giftImg = dict["giftImg"] as? String,
+                                  let senderNickname = dict["senderNickname"] as? String else {
+                                chatMsg = nil
+                                return
+                            }
 
+                            let gift = GiftAttachment(
+                                giftId: giftId,
+                                giftName: giftName,
+                                giftNum: giftNum,
+                                giftPrice: giftPrice,
+                                giftIcon: giftIcon,
+                                giftImg: giftImg,
+                                senderNickname: senderNickname
+                            )
+
+                            chatMsg = ChatMessage(
+                                messageId: msg.messageId,
+                                content: .gift(gift),
+                                isOutgoingMsg: msg.isOutgoingMsg,
+                                timestamp: msg.timestamp,
+                                avatarURL: avatar,
+                                sendStatus: .success,
+                                nimMessage: msg
+                            )
+                            //添加回调到swift
+                            
+                        } catch {
+                            print("JSON 解析失败: \(error)")
+                            chatMsg = nil
+                        }
+                    }
+                    
                     if let chatMsg = chatMsg { // ✅ 明确绑定类型
+                       
+                         if case .gift(let gift) = chatMsg.content {
+                             onReceiveGift?(gift.giftImg)
+                         }
+                       
+                        
+                        
                         chatMsg.showTime = (timestamp - lastTimestamp > 300)
                         lastTimestamp = timestamp
                         self.messages.append(chatMsg)
+                        self.updateRecentSession(chatMsg)
                     }
                 }
             }

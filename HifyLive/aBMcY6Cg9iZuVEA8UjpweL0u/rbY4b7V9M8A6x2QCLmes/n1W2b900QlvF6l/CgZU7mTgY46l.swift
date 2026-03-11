@@ -22,6 +22,9 @@ struct CgZU7mTgY46l: View {
         @State private var isw8UhB9Gj8t = false //显示举报
         @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
         @State private var xJc49zdLp: Bool = false //礼物弹框
+        @State private var showGiftAnimation: Bool = false //礼物动画特效
+        @State private var giftAnimationURL: URL?  //礼物动画特效
+    
 
             init(session: NIMSession, opponentAvatarURL: String) {
             self.session = session
@@ -213,6 +216,13 @@ struct CgZU7mTgY46l: View {
                       
                     }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
                 }
+                
+                // 显示动画
+                if showGiftAnimation, let url = giftAnimationURL {
+                    YJWP5zTn6GK2Yd(url: url, isPlaying: $showGiftAnimation)
+                        .zIndex(100)
+                        .transition(.scale.combined(with: .opacity))
+                }
                
                 
                 
@@ -234,7 +244,12 @@ struct CgZU7mTgY46l: View {
                         iLIIszM4zwx = opponentInfo.int("blocked")
                  //   }
                     
-                   
+                    vm.onReceiveGift = { giftImg in
+                            if let url = URL(string: giftImg) {
+                                giftAnimationURL = url
+                                showGiftAnimation = true
+                            }
+                        }
                   
                     
                 }

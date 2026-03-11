@@ -8,12 +8,23 @@ PODS:
     - YXArtemis_XCFramework
   - NIMSDK/NOS (10.9.76):
     - YXArtemis_XCFramework
+  - Protobuf (3.29.6)
+  - SSZipArchive (2.6.0)
+  - SVGAPlayer (2.5.7):
+    - SVGAPlayer/Core (= 2.5.7)
+    - SVGAPlayer/ProtoFiles (= 2.5.7)
+  - SVGAPlayer/Core (2.5.7):
+    - SSZipArchive (>= 1.8.1)
+    - SVGAPlayer/ProtoFiles
+  - SVGAPlayer/ProtoFiles (2.5.7):
+    - Protobuf (~> 3.4)
   - YXArtemis_XCFramework (1.1.6)
 
 DEPENDENCIES:
   - AgoraRtcEngine_iOS/RtcBasic
   - AliyunOSSiOS (~> 2.11.2)
   - NIMSDK
+  - SVGAPlayer (~> 2.5)
 
 SPEC REPOS:
   trunk:
@@ -21,6 +32,9 @@ SPEC REPOS:
     - AgoraRtcEngine_iOS
     - AliyunOSSiOS
     - NIMSDK
+    - Protobuf
+    - SSZipArchive
+    - SVGAPlayer
     - YXArtemis_XCFramework
 
 SPEC CHECKSUMS:
@@ -28,8 +42,11 @@ SPEC CHECKSUMS:
   AgoraRtcEngine_iOS: 11f37dd846d6194a5268b084b99102e5b6aff0de
   AliyunOSSiOS: 6d6b668b82ac0c0ea2313412bcb5530b42ec97ab
   NIMSDK: b3542b701964ad803cec3d7574c46df00110905e
+  Protobuf: 8d5596f7468be5400861a6bbfb2dfe9d0d1cde34
+  SSZipArchive: 8a6ee5677c8e304bebc109e39cf0da91ccef22ea
+  SVGAPlayer: 318b85a78b61292d6ae9dfcd651f3f0d1cdadd86
   YXArtemis_XCFramework: d9a8b9439d7a6c757ed00ada53a6d2dd9b13f9c7
 
-PODFILE CHECKSUM: 5466de49481fdea3a0c19a3651502f75b8126478
+PODFILE CHECKSUM: 75b91cd0e5ffb27d45610797153e8136f5da33a9
 
 COCOAPODS: 1.16.2

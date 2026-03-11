@@ -247,6 +247,20 @@ class ChatCell: UITableViewCell {
     private var imageBubbleConstraints: [NSLayoutConstraint] = []
     
     
+    // MARK: - Gift
+    private let giftBubble = UIView()
+    private let giftImageView = UIImageView()
+    private let giftCountLabel = UILabel()
+
+    private var giftBubbleConstraints: [NSLayoutConstraint] = []
+    private let giftBorder = GradientBorderView(borderWidth: 1)
+    private let giftTitleLabel = UILabel()
+    private let giftIconView = UIImageView()
+
+    private let giftHStack = UIStackView()
+    private let giftVStack = UIStackView()
+    
+    
     var onResendTap: ((ChatMessage) -> Void)?
     var currentMessage: ChatMessage?
     
@@ -380,7 +394,7 @@ class ChatCell: UITableViewCell {
 
 
 
-
+        avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -411,6 +425,66 @@ class ChatCell: UITableViewCell {
         imageBubble.clipsToBounds = true
         imageBubble.translatesAutoresizingMaskIntoConstraints = false
         bubbleContainer.addSubview(imageBubble)
+        
+        
+        
+        // Gift bubble
+        giftBubble.layer.cornerRadius = 12
+        giftBubble.clipsToBounds = true
+        giftBubble.backgroundColor = UIColor.white.withAlphaComponent(0.15)
+        giftBubble.translatesAutoresizingMaskIntoConstraints = false
+        bubbleContainer.addSubview(giftBubble)
+        
+        // 添加渐变边框
+        giftBorder.layer.cornerRadius = 12
+        giftBorder.translatesAutoresizingMaskIntoConstraints = false
+        bubbleContainer.addSubview(giftBorder)
+        bubbleContainer.bringSubviewToFront(giftBubble) // 确保内容在上层
+
+        // gift image
+        giftImageView.contentMode = .scaleAspectFit
+        giftImageView.translatesAutoresizingMaskIntoConstraints = false
+        giftBubble.addSubview(giftImageView)
+        
+        //gift label
+        giftTitleLabel.font = JqA1kUIFont.font(size: 14, weight: .medium)
+        giftTitleLabel.textColor = UIColor.white
+        giftTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        // gift count
+        giftCountLabel.font = JqA1kUIFont.font(size: 20, weight: .black)
+        giftCountLabel.textColor = .white
+        giftCountLabel.transform = CGAffineTransform(rotationAngle: .pi / 30)
+        giftCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        // gift icon
+        giftIconView.contentMode = .scaleAspectFit
+        giftIconView.image = UIImage(named: "ulzb7LfsuPK")
+        giftIconView.translatesAutoresizingMaskIntoConstraints = false
+        giftIconView.transform = CGAffineTransform(translationX: 0, y: 5)
+        
+        // HStack
+        giftHStack.axis = .horizontal
+        giftHStack.alignment = .center
+        giftHStack.spacing = 4
+        giftHStack.translatesAutoresizingMaskIntoConstraints = false
+
+        giftHStack.addArrangedSubview(giftIconView)
+        giftHStack.addArrangedSubview(giftCountLabel)
+
+        // VStack
+        giftVStack.axis = .vertical
+        giftVStack.alignment = .leading
+        giftVStack.spacing = 4
+        giftVStack.translatesAutoresizingMaskIntoConstraints = false
+
+        giftVStack.addArrangedSubview(giftTitleLabel)
+        giftVStack.addArrangedSubview(giftHStack)
+
+        // 加入 bubble
+        giftBubble.addSubview(giftVStack)
         
         
         contentImageView.contentMode = .scaleAspectFill
@@ -503,6 +577,33 @@ class ChatCell: UITableViewCell {
             contentImageView.heightAnchor.constraint(equalToConstant: 185)
         ]
         
+        //gift
+        giftBubbleConstraints = [
+
+            giftBubble.topAnchor.constraint(equalTo: bubbleContainer.topAnchor),
+            giftBubble.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor),
+            giftBubble.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor),
+            giftBubble.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor),
+            giftBubble.heightAnchor.constraint(equalToConstant: 96),
+            
+            giftBorder.topAnchor.constraint(equalTo: bubbleContainer.topAnchor),
+               giftBorder.bottomAnchor.constraint(equalTo: bubbleContainer.bottomAnchor),
+               giftBorder.leadingAnchor.constraint(equalTo: bubbleContainer.leadingAnchor),
+               giftBorder.trailingAnchor.constraint(equalTo: bubbleContainer.trailingAnchor),
+
+            giftImageView.leadingAnchor.constraint(equalTo: giftBubble.leadingAnchor, constant: 16),
+            giftImageView.centerYAnchor.constraint(equalTo: giftBubble.centerYAnchor),
+            giftImageView.widthAnchor.constraint(equalToConstant: 72),
+            giftImageView.heightAnchor.constraint(equalToConstant: 72),
+
+            giftVStack.leadingAnchor.constraint(equalTo: giftImageView.trailingAnchor, constant: 12),
+               giftVStack.trailingAnchor.constraint(equalTo: giftBubble.trailingAnchor, constant: -16),
+               giftVStack.centerYAnchor.constraint(equalTo: giftBubble.centerYAnchor),
+
+               giftIconView.widthAnchor.constraint(equalToConstant: 14),
+               giftIconView.heightAnchor.constraint(equalToConstant: 14)
+        ]
+        
         //拉黑
         NSLayoutConstraint.activate([
             blockHintLabel.topAnchor.constraint(
@@ -562,6 +663,8 @@ class ChatCell: UITableViewCell {
 
         textBubble.isHidden = true
         imageBubble.isHidden = true
+        giftBubble.isHidden = true
+        NSLayoutConstraint.deactivate(giftBubbleConstraints)
 
         // 布局方向
         avatarLeading.isActive = !message.isOutgoingMsg
@@ -634,6 +737,29 @@ class ChatCell: UITableViewCell {
             } else {
                 contentImageView.image = UIImage(systemName: "photo")
             }
+        case .gift(let gift):
+            giftBubble.isHidden = false
+            NSLayoutConstraint.activate(giftBubbleConstraints)
+            let text = "\(gift.giftNum)"
+            let attr = NSAttributedString(
+                string: text,
+                attributes: [
+                    .font: JqA1kUIFont.font(size: 32, weight: .black),
+                    .foregroundColor:  UIColor(red: 255/255, green: 55/255, blue: 28/255, alpha: 1),        // 字体颜色
+                    .strokeColor: UIColor.white,
+                    .strokeWidth: -3.0,
+                    
+                ]
+            )
+            giftCountLabel.attributedText = attr
+
+            if let url = URL(string: gift.giftIcon) {
+                giftImageView.kf.setImage(
+                    with: url,
+                    placeholder: UIImage(systemName: "gift")
+                )
+            }
+            giftTitleLabel.text = message.isOutgoingMsg ? "Send Gift" : "Gift Received"
         }
 
         // ✅ 显示发送状态
@@ -702,7 +828,7 @@ class KeyboardObserver: NSObject {
     }
 }
 
-
+//渐变气泡
 final class GradientBubbleView: UIView {
 
     override class var layerClass: AnyClass {
@@ -759,6 +885,49 @@ final class GradientBubbleView: UIView {
         case .rightTopStraight:
             layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
+    }
+}
+//渐变边框
+final class GradientBorderView: UIView {
+    private let borderWidth: CGFloat
+    private let gradientLayer = CAGradientLayer()
+    private let shapeLayer = CAShapeLayer()
+
+    init(borderWidth: CGFloat = 2) {
+        self.borderWidth = borderWidth
+        super.init(frame: .zero)
+        setupGradient()
+    }
+
+    required init?(coder: NSCoder) {
+        self.borderWidth = 2
+        super.init(coder: coder)
+        setupGradient()
+    }
+
+    private func setupGradient() {
+        gradientLayer.colors = [
+            UIColor(red: 17/255, green: 226/255, blue: 255/255, alpha: 1).cgColor,
+            UIColor(red: 217/255, green: 28/255, blue: 255/255, alpha: 1).cgColor
+        ]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.addSublayer(gradientLayer)
+
+        gradientLayer.mask = shapeLayer
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.lineWidth = borderWidth
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
+        let path = UIBezierPath(
+            roundedRect: bounds.insetBy(dx: borderWidth/2, dy: borderWidth/2),
+            cornerRadius: layer.cornerRadius
+        )
+        shapeLayer.path = path.cgPath
     }
 }
 

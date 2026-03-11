@@ -12,6 +12,8 @@ target 'HifyLive' do
   # 即时通讯 / 聊天室（云信）
   pod 'NIMSDK'
 
+  pod 'SVGAPlayer', '~> 2.5'
+
 end
 
 post_install do |installer|

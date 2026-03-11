@@ -15,8 +15,6 @@ class RecentSessionManager: ObservableObject {
         let sessions = NIMManager.shared.fetchRecentSessions()
         var tempCache: [CachedRecentSession] = []
         
-       
-        
 
         for r in sessions {
             guard let s = r.session,
@@ -35,6 +33,8 @@ class RecentSessionManager: ObservableObject {
                     lastMessageText = lastMsg.text ?? ""
                 case .image: // 1
                     lastMessageText = "[Picture]"
+                case .custom: // 2
+                    lastMessageText = "[Gift messages]"
                 default:
                     lastMessageText = ""
                 }
@@ -89,7 +89,8 @@ class RecentSessionManager: ObservableObject {
 
             case .image: // 1
                 lastMessageText = "[Picture]"
-
+            case .custom: // 2
+                lastMessageText = "[Gift messages]"
 
 
             default:
