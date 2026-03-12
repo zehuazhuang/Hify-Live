@@ -90,6 +90,7 @@ class PublicMessageCell: UITableViewCell {
         backgroundColor = .clear
 
         // 头像
+        avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false

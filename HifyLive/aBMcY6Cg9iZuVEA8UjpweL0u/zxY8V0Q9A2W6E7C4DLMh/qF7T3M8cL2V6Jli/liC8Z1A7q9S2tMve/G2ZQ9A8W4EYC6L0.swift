@@ -473,6 +473,8 @@ extension ChatViewController {
             guard let session = msg.session, session.sessionType == .chatroom else { continue }
 
             // 1️⃣ 过滤自己之前离开前发的消息
+            print("弹幕消息")
+            print(msg)
             
             // 👇 在这里加一行
               guard msg.messageType == .text else {

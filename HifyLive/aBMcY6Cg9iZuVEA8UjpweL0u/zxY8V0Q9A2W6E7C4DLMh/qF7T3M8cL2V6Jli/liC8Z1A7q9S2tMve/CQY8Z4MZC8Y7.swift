@@ -19,10 +19,16 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var xHuEezXnuhxl: Bool = false//是否第一次加载
     @State private var qkUZGHPNnHgfhW: Bool = false//显示礼物弹框
     @State private var x7hEzzGUTAch0: Bool = false//显示充值商店
+    @State private var iENw26wu7cQ: [[String: Any]] = [] //直播间大哥位数据
+    @State private var onlineCountTask: Task<Void, Never>? //在线定时
+    @State private var eLx8RIeCY: [[String: Any]] = [] //直播间在线数据
+    
+
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
         self.localUid = localUid
         self.zA9Y4W6LUid = zA9Y4W6LUid
+        
     }
     
     var body: some View {
@@ -115,57 +121,67 @@ struct LE0xQZ6Y7WC8iv: View {
                             }
                         }
                   
-                    
-//                    HStack(spacing:4){
-//                        ForEach(0..<3) { index in
-//                            let gradientColors: [Color] = {
-//                                switch index {
-//                                case 0:
-//                                    return [Color(red: 232/255, green: 191/255, blue: 64/255).opacity(0.8),
-//                                            Color(red: 232/255, green: 132/255, blue: 65/255).opacity(0.8),]
-//                                case 1:
-//                                    return [Color(red: 175/255, green: 181/255, blue: 210/255).opacity(0.8),
-//                                            Color(red: 160/255, green: 167/255, blue: 217/255).opacity(0.8),]
-//                                case 2:
-//                                    return [Color(red: 180/255, green: 119/255, blue: 75/255).opacity(0.8),
-//                                            Color(red: 180/255, green: 119/255, blue: 75/255).opacity(0.8),]
-//                                default:
-//                                    return [Color.black, Color.gray]
-//                                }
-//                            }()
-//
-//                            ZStack {
-//                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: //"https://img.hnhily.link/00000000/20251120/829e480b33a24006a4bc7b21b53153ba.jpeg")
-//                                    .frame(width: 32, height: 32)
-//                                    .clipShape(Circle())
-//                                    .padding(.bottom, 2)
-//                                ZStack{
-//                                    Text("1.1K")
-//                                        .font(.system(size: 12, weight: .regular))
-//                                }
-//                                    .frame(width: 32,height: 14)
-//                                    .background(
-//                                        LinearGradient(
-//                                            colors: gradientColors,
-//                                            startPoint: .leading,
-//                                            endPoint: .trailing
-//                                        )
-//
-//                                    )
-//                                    .cornerRadius(12)
-//                                    .frame(maxHeight: .infinity,alignment: .bottom)
-//                            }
-//                            .frame(width: 32, height: 34)
-//                        }
-//                    }
                     Spacer()
-                    Text("\(liveRoomData.int("joinNum") )")
+                    HStack(spacing:4){
+                        
+                        ForEach(Array(iENw26wu7cQ.prefix(3)).indices, id: \.self) { index in
+                            let gradientColors: [Color] = {
+                                switch index {
+                                case 0:
+                                    return [Color(red: 232/255, green: 191/255, blue: 64/255).opacity(0.8),
+                                            Color(red: 232/255, green: 132/255, blue: 65/255).opacity(0.8),]
+                                case 1:
+                                    return [Color(red: 175/255, green: 181/255, blue: 210/255).opacity(0.8),
+                                            Color(red: 160/255, green: 167/255, blue: 217/255).opacity(0.8),]
+                                case 2:
+                                    return [Color(red: 180/255, green: 119/255, blue: 75/255).opacity(0.8),
+                                            Color(red: 180/255, green: 119/255, blue: 75/255).opacity(0.8),]
+                                default:
+                                    return [Color.black, Color.gray]
+                                }
+                            }()
+
+                            ZStack {
+                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: iENw26wu7cQ[index].string("icon"))
+                                    .frame(width: 32, height: 32)
+                                    .clipShape(Circle())
+                                    .padding(.bottom, 2)
+                                    .allowsHitTesting(false)
+                                ZStack{
+                                    Text("\(iENw26wu7cQ[index].int("totalGiftValue").shLK3lGBF())")
+                                        .font(.system(size: 12, weight: .regular))
+                                }
+                                    .frame(width: 32,height: 14)
+                                    .background(
+                                        LinearGradient(
+                                            colors: gradientColors,
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+
+                                    )
+                                    .cornerRadius(12)
+                                    .frame(maxHeight: .infinity,alignment: .bottom)
+                            }
+                            .frame(width: 32, height: 34)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                withAnimation{
+                                    rlUlyPhType = 0
+                                    showY2E8Qsc = true
+                                    uY0E4QZ9MLId = iENw26wu7cQ[index].int("userId")
+                                }
+                            }
+                        }
+                    }
+                    
+                    Text("\(eLx8RIeCY.count)")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
                                         weight: .regular
                                     )
-                                    .padding(.horizontal,5)
-                                    .padding(.vertical,7)
+                                    .padding(.horizontal,12)
+                                    .padding(.vertical,7.5)
                                     .background(.black.opacity(0.2))
                                     .cornerRadius(36)
                     
@@ -200,7 +216,7 @@ struct LE0xQZ6Y7WC8iv: View {
                     withAnimation{
                         x7hEzzGUTAch0 = true
                     }
-                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "NEW_LIVE", tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
+                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "NEW_LIVE", jEhg1fS1G8: liveRoomData.int("id"), tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
             }
             //商店弹框
             if x7hEzzGUTAch0 {
@@ -218,6 +234,14 @@ struct LE0xQZ6Y7WC8iv: View {
                 }
             }
             
+            if liveRoomData.int("agoraChannelId") != 0 {
+                GiftAnimationPlayer(
+                    manager: LiveGiftManager.manager(
+                        for: UInt(liveRoomData.int("agoraChannelId"))
+                    )
+                )
+            }
+            
             //关播页面
             if showEndView || liveRoomData.int("liveRoomState")  == 1 {
                 MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
@@ -233,11 +257,16 @@ struct LE0xQZ6Y7WC8iv: View {
                        showEndView = true
                    }
                 xHuEezXnuhxl = true
+                
+                startOnlineCountLoop()
             }
+            
+            
           
         }.onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }.onDisappear {
+            stopOnlineCountLoop()
             retryTask?.cancel()
             retryTask = nil
             NotificationCenter.default.removeObserver(self)
@@ -249,8 +278,27 @@ struct LE0xQZ6Y7WC8iv: View {
             await retryJoinLive()
         }
     }
+    //获取在线人数
+    func startOnlineCountLoop() {
+        onlineCountTask = Task {
+            while !Task.isCancelled {
+                do {
+                    eLx8RIeCY = try await d34SzmkHKFl(mcIOzuQURD: liveRoomData.int("userId"), phqabUmw: 1)
+                    
+                } catch {
+                    print("获取在线人数失败:", error)
+                }
+                try? await Task.sleep(nanoseconds: 3_000_000_000) // 3秒
+            }
+        }
+    }
+    //结束定时
+    func stopOnlineCountLoop() {
+        onlineCountTask?.cancel()
+        onlineCountTask = nil
+    }
     
-    
+    //加入直播
     func retryJoinLive() async {
         var retryDelay: UInt64 = 2_000_000_000
         
@@ -260,9 +308,20 @@ struct LE0xQZ6Y7WC8iv: View {
                 let result = try await joinlive(pmpresoZUid: Int(zA9Y4W6LUid))
                 
                 if !result.isEmpty {
+                    //直播间top3
+                    iENw26wu7cQ = try await luJfveDVkRb(pQO2dnNxqK: result.int("id"))
+                    print("top-------")
+                    print(iENw26wu7cQ)
+                    
+                    print("直播数据result")
+                    print(result.int("userId"))
+                    print(result)
+                    
+                   
                     await MainActor.run {
                         liveRoomData = result
                     }
+                   
                     break
                 }
                 

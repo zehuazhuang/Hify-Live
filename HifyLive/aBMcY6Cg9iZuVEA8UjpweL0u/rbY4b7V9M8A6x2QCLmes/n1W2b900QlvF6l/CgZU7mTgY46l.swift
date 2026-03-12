@@ -22,8 +22,9 @@ struct CgZU7mTgY46l: View {
         @State private var isw8UhB9Gj8t = false //显示举报
         @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
         @State private var xJc49zdLp: Bool = false //礼物弹框
-        @State private var showGiftAnimation: Bool = false //礼物动画特效
-        @State private var giftAnimationURL: URL?  //礼物动画特效
+
+    
+            @StateObject private var giftManager = GiftQueueManager()
     
 
             init(session: NIMSession, opponentAvatarURL: String) {
@@ -37,6 +38,7 @@ struct CgZU7mTgY46l: View {
                 myAvatarURL: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7["icon"] as? String ?? "",
                 opponentAvatarURL: opponentAvatarURL
             ))
+                
         }
     
 
@@ -114,6 +116,7 @@ struct CgZU7mTgY46l: View {
                         
                     
                     // 底部输入框
+                    if !xJc49zdLp {
                         VStack {
                             HStack {
                                 ZStack(alignment: .leading) {
@@ -193,6 +196,7 @@ struct CgZU7mTgY46l: View {
                                     ZJ7h766mz(tMmEWWlfgUag: "liM7Z8E0Yx9A6")
                                         .frame(width: 32, height: 32)
                                         .onTapGesture {
+                                            UIApplication.shared.endEditing()
                                             withAnimation{
                                                 xJc49zdLp = true
                                             }
@@ -201,6 +205,7 @@ struct CgZU7mTgY46l: View {
                             }
                         }.padding(.horizontal,16)
                         .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
+                    }
                     }
                 //end 底部输入框
                 
@@ -214,19 +219,17 @@ struct CgZU7mTgY46l: View {
                 if xJc49zdLp {
                     QX10IFCuguXvQa(dyzmBppNrJ: $xJc49zdLp, jhqguQVC07: {
                       
-                    }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
+                    }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", jEhg1fS1G8: 0, tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
                 }
                 
-                // 显示动画
-                if showGiftAnimation, let url = giftAnimationURL {
-                    YJWP5zTn6GK2Yd(url: url, isPlaying: $showGiftAnimation)
-                        .zIndex(100)
-                        .transition(.scale.combined(with: .opacity))
-                }
+
+                
+                GiftAnimationPlayer(manager: giftManager)
                
                 
                 
             }
+
             .onAppear {
                 vm.loadHistory()
                 Task {
@@ -235,8 +238,8 @@ struct CgZU7mTgY46l: View {
                                )
                     
                     opponentInfo = info
-                 
-                 
+                    
+                    
                     
                  //   iLIIszM4zwx = opponentInfo.int("beBlocked")
                     
@@ -244,12 +247,18 @@ struct CgZU7mTgY46l: View {
                         iLIIszM4zwx = opponentInfo.int("blocked")
                  //   }
                     
-                    vm.onReceiveGift = { giftImg in
-                            if let url = URL(string: giftImg) {
-                                giftAnimationURL = url
-                                showGiftAnimation = true
-                            }
-                        }
+                    vm.onReceiveGift = { giftImg, giftNum, giftId in
+                        guard let url = URL(string: giftImg) else { return }
+
+                        let giftItem = GiftAnimationItem(
+                            giftId: "\(giftId)",
+                            url: url,
+                            count: giftNum
+                        )
+                        self.giftManager.enqueueGift(giftItem)
+                        
+                       
+                    }
                   
                     
                 }

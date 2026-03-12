@@ -1202,6 +1202,8 @@ func zIOvUXp0PFIa(nA9jTgkiq:String,xD0brNNV4C:Int,gdmasRe0BC:Int,xLZR0tX7pimL:St
         "pkState":pE5bbtQ8Hb,
     ]
     
+   
+    
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
@@ -1232,9 +1234,140 @@ func zIOvUXp0PFIa(nA9jTgkiq:String,xD0brNNV4C:Int,gdmasRe0BC:Int,xLZR0tX7pimL:St
   
     
     if let code = yPN3u1oIU["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+
        
         return (result?["diamondNum"] as? Int) ?? -1
     } else {
         return -1
+    }
+}
+
+
+//查直播间大哥位 Top3
+@MainActor
+func luJfveDVkRb(pQO2dnNxqK:Int) async throws -> [[String: Any]] {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/gift/newLive/topDonor")") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    
+    let body: [String: Any] = [
+        "dbId":pQO2dnNxqK,
+    ]
+    
+
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: request)
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+  
+
+    
+    // 解密 result
+    guard let resultStr = dict["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return []
+    }
+   
+    
+    
+    // 将 JSON 数据转换为数组
+    let resultArray = try JSONSerialization.jsonObject(with: resultData, options: [])
+    
+    guard let array = resultArray as? [[String: Any]] else {
+        return []
+    }
+    
+    
+    if let code = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+       
+        return array
+    } else {
+        return []
+    }
+}
+
+
+//查主播在线用户列表
+@MainActor
+func d34SzmkHKFl(mcIOzuQURD:Int,phqabUmw:Int) async throws -> [[String: Any]] {
+    guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/live/send/rank/viewers")") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    
+    let body: [String: Any] = [
+        "anchorUserId":mcIOzuQURD,
+        "currentPage":phqabUmw,
+        "pageSize":20
+    ]
+    
+
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: request)
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+ 
+
+    
+    // 解密 result
+    guard let resultStr = dict["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return []
+    }
+   
+    
+    
+    // 将 JSON 数据转换为数组
+    let resultArray = try JSONSerialization.jsonObject(with: resultData, options: [])
+    
+    guard let array = resultArray as? [[String: Any]] else {
+        return []
+    }
+    
+    
+    if let code = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+       
+        return array
+    } else {
+        return []
     }
 }

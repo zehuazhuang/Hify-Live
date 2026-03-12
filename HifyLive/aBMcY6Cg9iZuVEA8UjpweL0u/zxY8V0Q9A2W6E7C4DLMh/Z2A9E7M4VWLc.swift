@@ -56,8 +56,17 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
         let myAccount = NIMSDK.shared().loginManager.currentAccount()
         
         
+        
 
         for message in messages {
+            
+            
+            
+
+            
+            
+            
+            
           
             guard
                 let session = message.session,

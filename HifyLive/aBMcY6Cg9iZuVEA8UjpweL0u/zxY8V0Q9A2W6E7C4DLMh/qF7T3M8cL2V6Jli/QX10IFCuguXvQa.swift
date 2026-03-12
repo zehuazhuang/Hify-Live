@@ -13,6 +13,7 @@ struct QX10IFCuguXvQa: View {
     let jhqguQVC07 :() -> Void //显示直播钻石商店
     let wlXWcyaNuj : Int? //主播id
     let mCrenfA3xJE : String //直播间、私聊页
+    let jEhg1fS1G8 :Int //直播间id
     let tGT2R2amV :String //主播云信id
     let vTubwwYkiq :String //主播名字
     @State private var e7JsX9Y1iP: [[String: Any]] = [] //礼物数据
@@ -35,6 +36,7 @@ struct QX10IFCuguXvQa: View {
                 .ignoresSafeArea()
                 .onTapGesture {
                     if focusInput {
+                        isCustomize = false
                         focusInput = false
                     }else{
                         cW2kJ7C1e()
@@ -157,36 +159,14 @@ struct QX10IFCuguXvQa: View {
                         Spacer()
                         HStack(spacing:0){
                             HStack(spacing:0){
-                                if isCustomize {
-                                    TextField("", text: $bvcTMXNxVXv)
-                                        .font(.custom("gz4QHFqRS4dH1OeOv3Zirg==".bFHEatcgE4zzU9TCfDonsu(), size: CGFloat(16)))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                        .keyboardType(.numberPad)
-                                        .focused($focusInput)
-                                        .onChange(of: bvcTMXNxVXv) { newValue in
-                                            
-                                            // 只保留数字
-                                            let filtered = newValue.filter { $0.isNumber }
-                                            
-                                            // 限制范围
-                                            if let number = Int(filtered) {
-                                                let clamped = min(max(number, 1), 99)
-                                                bvcTMXNxVXv = String(clamped)
-                                            } else {
-                                                bvcTMXNxVXv = ""
-                                            }
-                                        }
-
-                                        .padding(.leading,16)
-                                } else {
+                                
                                     Text("\(bvcTMXNxVXv)")
                                         .g0LIIcoZQsOjyND9(
                                             size: 16,
                                             weight: .semibold
                                         )
                                         .padding(.leading,16)
-                                }
+                                
                                 Spacer()
                                 ZJ7h766mz(tMmEWWlfgUag: "hjUYyuQRpd")
                                     .frame(width: 24,height: 24)
@@ -245,8 +225,8 @@ struct QX10IFCuguXvQa: View {
                                                     nA9jTgkiq: tGT2R2amV,
                                                     xD0brNNV4C: item.int("id"),
                                                     gdmasRe0BC: uSBdiKP,
-                                                    xLZR0tX7pimL: "NEW_LIVE_IM",
-                                                    uAcDaiEtw: "",
+                                                    xLZR0tX7pimL: mCrenfA3xJE,
+                                                    uAcDaiEtw: String(jEhg1fS1G8),
                                                     vxDqzCuq: "",
                                                     jKcu69C: "",
                                                     c7LgmQQhS: 0,
@@ -294,6 +274,7 @@ struct QX10IFCuguXvQa: View {
                 }
                 .padding(.top,20)
                 .padding(.horizontal,16)
+                .padding(.bottom,35)
                 .background(
                     ZJ7h766mz(tMmEWWlfgUag: "d1SPKVSkFLB")
                         .ignoresSafeArea(edges: .bottom)
@@ -342,7 +323,7 @@ struct QX10IFCuguXvQa: View {
                         )
                         .cornerRadius(8)
                         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment:.bottomTrailing)
-                        .padding(.bottom,65)
+                        .padding(.bottom,95)
                         .padding(.trailing,70)
                         .offset(y: ez2WiY381cir ? 0 : 260)
                 }
@@ -353,6 +334,7 @@ struct QX10IFCuguXvQa: View {
             .offset(y: jR6X0INMmiZ ? 0 : 374)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .scaleEffect(x: 1.01, y: 1.02, anchor: .center)
+            .ignoresSafeArea()
             .onAppear {
                 jR6X0INMmiZ = false
                 DispatchQueue.main.async {
@@ -374,6 +356,56 @@ struct QX10IFCuguXvQa: View {
                 }
                 
                 
+            }
+            
+            if isCustomize {
+                VStack{
+                    Spacer()
+                    HStack{
+                        
+                        ZStack(alignment: .leading) {
+                            if bvcTMXNxVXv.isEmpty {
+                                Text("Please enter the gift quantity")
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 16,
+                                        weight: .semibold,
+                                        color: .white.opacity(0.4)
+                                    )
+                            }
+                            
+                            TextField("", text: $bvcTMXNxVXv)
+                                .font(.custom("gz4QHFqRS4dH1OeOv3Zirg==".bFHEatcgE4zzU9TCfDonsu(), size: 16))
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .keyboardType(.numberPad)
+                                .focused($focusInput)
+                                .onChange(of: bvcTMXNxVXv) { newValue in
+                                    // 只保留数字
+                                    let filtered = newValue.filter { $0.isNumber }
+                                    
+                                    // 限制范围
+                                    if let number = Int(filtered) {
+                                        let clamped = min(max(number, 1), 99)
+                                        bvcTMXNxVXv = String(clamped)
+                                    } else {
+                                        // 允许空字符串，不影响键盘
+                                        bvcTMXNxVXv = filtered
+                                    }
+                                }
+                        }
+                        
+
+                            
+                        Spacer()
+                        ZJ7h766mz(tMmEWWlfgUag: bvcTMXNxVXv == "" ? "uRdGSr4Ov" : "eGEQnR5LzA")
+                                           .frame(width: 60, height: 34)
+                        
+                    }.padding(.horizontal,16)
+                    .frame(height: 46)
+                    .background(
+                        ZJ7h766mz(tMmEWWlfgUag: "mP5nA7LuUkPA82")
+                    )
+                }
             }
         }
     }

@@ -91,7 +91,7 @@ class ChatMessage: Identifiable, ObservableObject {
         
         var onMessageUpdated: (() -> Void)?
         
-        var onReceiveGift: ((_ giftImg: String) -> Void)?
+        var onReceiveGift: ((_ giftImg: String,_ giftNum:Int,_ giftId:Int) -> Void)?
         
         
         // ✅ 自己头像和对方头像
@@ -564,7 +564,7 @@ class ChatMessage: Identifiable, ObservableObject {
                     if let chatMsg = chatMsg { // ✅ 明确绑定类型
                        
                          if case .gift(let gift) = chatMsg.content {
-                             onReceiveGift?(gift.giftImg)
+                             onReceiveGift?(gift.giftImg,gift.giftNum,gift.giftId)
                          }
                        
                         
