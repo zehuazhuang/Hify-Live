@@ -110,9 +110,9 @@ struct GiftAnimationView: View {
         ZStack {
             if url.pathExtension.lowercased() == "mp4" {
                 if isReadyToPlay {
-                    VideoPlayer(player: player)
-                        .ignoresSafeArea()
-                        .allowsHitTesting(false)
+                    YYEVAVideoPlayerView(videoURL: url, onFinish: onFinish)
+                                       .ignoresSafeArea()
+                                       .allowsHitTesting(false)
                 }
             } else if url.pathExtension.lowercased() == "svga" {
                 SVGAPlayerViewWrapper(url: url, onFinish: onFinish)
@@ -269,8 +269,8 @@ class SVGACacheManager {
 
 struct YYEVAVideoPlayerView: UIViewRepresentable {
     let videoURL: URL
+    let onFinish: (() -> Void)?  // 增加回调
     
-    // 注意：这里不能用 private let player，因为 UIViewRepresentable 会多次调用 makeUIView
     class PlayerWrapper {
         let player = YYEVAPlayer()
     }
@@ -278,17 +278,16 @@ struct YYEVAVideoPlayerView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
         let containerView = UIView(frame: UIScreen.main.bounds)
         containerView.backgroundColor = .clear
-        containerView.layer.cornerRadius = 0   // 取消圆角
+        containerView.layer.cornerRadius = 0
+        containerView.clipsToBounds = false
         
         let player = context.coordinator.wrapper.player
         player.frame = containerView.bounds
         player.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        player.layer.cornerRadius = 0          // 取消圆角
-        player.clipsToBounds = false           // 不裁剪
-        
+        player.layer.cornerRadius = 0
         containerView.addSubview(player)
         
-        downloadAndPlay(url: videoURL, player: player)
+        downloadAndPlay(url: videoURL, player: player, onFinish: onFinish)
         
         return containerView
     }
@@ -303,17 +302,12 @@ struct YYEVAVideoPlayerView: UIViewRepresentable {
         let wrapper = PlayerWrapper()
     }
     
-    // 下载远程 MP4 并播放
-    private func downloadAndPlay(url: URL, player: YYEVAPlayer) {
+    private func downloadAndPlay(url: URL, player: YYEVAPlayer, onFinish: (() -> Void)?) {
         URLSession.shared.downloadTask(with: url) { tempURL, _, error in
-            guard let tempURL = tempURL, error == nil else {
-                print("下载失败:", error ?? "")
-                return
-            }
+            guard let tempURL = tempURL, error == nil else { return }
             
-            // 保存到 Documents 文件夹
             let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let localURL = docs.appendingPathComponent("gift.mp4")
+            let localURL = docs.appendingPathComponent(UUID().uuidString + ".mp4") // 随机文件名
             
             do {
                 if FileManager.default.fileExists(atPath: localURL.path) {
@@ -323,11 +317,16 @@ struct YYEVAVideoPlayerView: UIViewRepresentable {
                 
                 DispatchQueue.main.async {
                     player.play(localURL.path)
+                    
+                    // 监听播放结束
+                    NotificationCenter.default.addObserver(forName: NSNotification.Name("YYEVAPlayerDidFinishPlayNotification"), object: player, queue: .main) { _ in
+                        onFinish?()
+                        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("YYEVAPlayerDidFinishPlayNotification"), object: player)
+                    }
                 }
             } catch {
                 print("保存失败:", error)
             }
-            
         }.resume()
     }
 }

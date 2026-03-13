@@ -205,8 +205,10 @@ struct CgZU7mTgY46l: View {
                             }
                         }.padding(.horizontal,16)
                         .animation(.easeOut(duration: 0.25), value: keyboard.keyboardHeight)
+                    }else{
+                        Spacer().frame(height:115)
                     }
-                    }
+                }
                 //end 底部输入框
                 
                 //举报弹框
@@ -223,12 +225,6 @@ struct CgZU7mTgY46l: View {
                 }
                 
                 
-                //特效
-                YYEVAVideoPlayerView(
-                                videoURL: URL(string: "https://img.hnhily.link/document/gift/2026902426417627136.mp4")!
-                            )
-                .edgesIgnoringSafeArea(.all)
-                .allowsHitTesting(false)
                 
                 GiftAnimationPlayer(manager: giftManager)
                
