@@ -334,36 +334,32 @@ struct C8Z2x4M6YV9m: View {
                                     }
                                     .padding(.all,12)
                                 }
-                                Button{
-//                                    Task{
-//                                        let asd =   try await cTiuphrpj0WxFn(pX8YxxAkBf: "NEW_LIVE", bDXCgArl3: 123)
-//                                        print("------")
-//                                        print(asd)
+//                                Button{
+//
+//                                   
+//                                    
+//                                    
+////                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第一条通知")
+//                                    
+//                                    
+//                                    //跳ai页面
+//                                 //   pilot.push(.ASkYEgFvkJ3xKj)
+//                                } label: {
+//                                    HStack(spacing: 0) {
+//                                        HStack(spacing: 8) {
+//                                            ZJ7h766mz(tMmEWWlfgUag: "pdneI2Ds4r3BUS")
+//                                                .frame(width: 26,height: 26)
+//                                            Text("AI Consulting")
+//                                                .g0LIIcoZQsOjyND9(
+//                                                    size: 16
+//                                                )
+//                                        }
+//                                        Spacer()
+//                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+//                                            .frame(width: 24,height: 24)
 //                                    }
-                                   
-                                    
-                                    
-//                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第一条通知")
-                                    
-                                    
-                                    //跳ai页面
-                                 //   pilot.push(.ASkYEgFvkJ3xKj)
-                                } label: {
-                                    HStack(spacing: 0) {
-                                        HStack(spacing: 8) {
-                                            ZJ7h766mz(tMmEWWlfgUag: "pdneI2Ds4r3BUS")
-                                                .frame(width: 26,height: 26)
-                                            Text("AI Consulting")
-                                                .g0LIIcoZQsOjyND9(
-                                                    size: 16
-                                                )
-                                        }
-                                        Spacer()
-                                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-                                            .frame(width: 24,height: 24)
-                                    }
-                                    .padding(.all,12)
-                                }
+//                                    .padding(.all,12)
+//                                }
                             }
                             .padding(.vertical,4)
                             .background(

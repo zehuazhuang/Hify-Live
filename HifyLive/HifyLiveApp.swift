@@ -85,8 +85,8 @@ struct HifyLiveApp: App {
                                zpPt6HEcUfuVXHI2CXtIaD1P().navigationBarHidden(true)
                            case .UI42a1QDtyK8gG:
                                UI42a1QDtyK8gG().navigationBarHidden(true)
-                           case let .UZ8hTFSeCcwrAy(yffmn1UtOF):
-                               UZ8hTFSeCcwrAy(yffmn1UtOF: yffmn1UtOF).navigationBarHidden(true)
+//                           case let .UZ8hTFSeCcwrAy(yffmn1UtOF):
+//                               UZ8hTFSeCcwrAy(yffmn1UtOF: yffmn1UtOF).navigationBarHidden(true)
                            case let .Afmox09Q1UKVfE(daPQCKaHi):
                                Afmox09Q1UKVfE(daPQCKaHi: daPQCKaHi).navigationBarHidden(true)
                            case let .kaBpQbGjZ(c8WYppF6mHU):
@@ -95,8 +95,8 @@ struct HifyLiveApp: App {
                                bfoXTzIM4dlkv07MZv45zoMZVs23().navigationBarHidden(true)
                            case .yDO7bVocx9JH0msGgIyRUs6e:
                                yDO7bVocx9JH0msGgIyRUs6e().navigationBarHidden(true)
-                           case .ASkYEgFvkJ3xKj:
-                               ASkYEgFvkJ3xKj().navigationBarHidden(true)
+//                           case .ASkYEgFvkJ3xKj:
+//                               ASkYEgFvkJ3xKj().navigationBarHidden(true)
                            case .o95HINW4DpHIAT:
                                o95HINW4DpHIAT().navigationBarHidden(true)
                            case .js9GbCBiFR825bdWb7p7kVVWaBoE:

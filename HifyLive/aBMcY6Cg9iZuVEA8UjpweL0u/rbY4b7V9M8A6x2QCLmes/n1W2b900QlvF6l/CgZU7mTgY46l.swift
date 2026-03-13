@@ -148,8 +148,8 @@ struct CgZU7mTgY46l: View {
                                             }
                                             .frame(height: 40)
                                 
-                                ZJ7h766mz(tMmEWWlfgUag: "qS9A1C2tLse")
-                                    .frame(width: 36, height: 36)
+                                ZJ7h766mz(tMmEWWlfgUag: vm.inputText.isEmpty ? "IpkTpGUk7j" : "mPucBC3JYU")
+                                    .frame(width: 70, height: 38)
                                     .onTapGesture {
                                         
                                         vm.sendText(qAiRzAlJType: opponentInfo.int("beBlocked"))

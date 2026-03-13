@@ -272,7 +272,7 @@ struct QX10IFCuguXvQa: View {
                     }.padding(.bottom,15)
                      .padding(.top,20)
                 }
-                .padding(.top,20)
+                .padding(.top,10)
                 .padding(.horizontal,16)
                 .padding(.bottom,35)
                 .background(
@@ -399,6 +399,12 @@ struct QX10IFCuguXvQa: View {
                         Spacer()
                         ZJ7h766mz(tMmEWWlfgUag: bvcTMXNxVXv == "" ? "uRdGSr4Ov" : "eGEQnR5LzA")
                                            .frame(width: 60, height: 34)
+                                           .onTapGesture {
+                                               if bvcTMXNxVXv != "" {
+                                                   isCustomize = false
+                                                   focusInput = false
+                                               }
+                                           }
                         
                     }.padding(.horizontal,16)
                     .frame(height: 46)

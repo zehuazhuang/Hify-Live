@@ -31,10 +31,10 @@ enum APPTJuHVkDYORXa: Equatable {
     case zpPt6HEcUfuVXHI2CXtIaD1P
     //反馈页
     case UI42a1QDtyK8gG
-    //Ai结果页
-    case UZ8hTFSeCcwrAy(
-        yffmn1UtOF:String
-    )
+//    //Ai结果页
+//    case UZ8hTFSeCcwrAy(
+//        yffmn1UtOF:String
+//    )
     //金币页
     case Afmox09Q1UKVfE(daPQCKaHi: Bool)
     //关注、粉丝页
@@ -43,8 +43,8 @@ enum APPTJuHVkDYORXa: Equatable {
     case bfoXTzIM4dlkv07MZv45zoMZVs23
     //about me 页
     case yDO7bVocx9JH0msGgIyRUs6e
-    //Ai 页
-    case ASkYEgFvkJ3xKj
+//    //Ai 页
+//    case ASkYEgFvkJ3xKj
     //个人相册修改页
     case o95HINW4DpHIAT
     //删除账号页

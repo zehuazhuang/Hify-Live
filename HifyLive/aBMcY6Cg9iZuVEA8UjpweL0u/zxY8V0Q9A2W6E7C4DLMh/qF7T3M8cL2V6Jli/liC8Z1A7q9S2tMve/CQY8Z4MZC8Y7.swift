@@ -22,7 +22,7 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var iENw26wu7cQ: [[String: Any]] = [] //直播间大哥位数据
     @State private var onlineCountTask: Task<Void, Never>? //在线定时
     @State private var eLx8RIeCY: [[String: Any]] = [] //直播间在线数据
-    
+    @StateObject private var giftManager = GiftQueueManager()
 
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
@@ -55,11 +55,22 @@ struct LE0xQZ6Y7WC8iv: View {
                     }
                                      },
                                   ong4Gu8Ogiska: {
-                                         print("点击了礼物按钮")
+                                         
                     withAnimation{
                         qkUZGHPNnHgfhW = true
                     }
-                                     }
+                                     },
+                                  onReceiveGift: { giftImg, giftNum, giftId in
+                    guard let url = URL(string: giftImg) else { return }
+
+                    let giftItem = GiftAnimationItem(
+                        giftId: "\(giftId)",
+                        url: url,
+                        count: giftNum
+                    )
+                    self.giftManager.enqueueGift(giftItem)
+                                         
+                                      }
                 )
                 }.edgesIgnoringSafeArea(.bottom)
             VStack{
@@ -241,6 +252,8 @@ struct LE0xQZ6Y7WC8iv: View {
                     )
                 )
             }
+            //特效动画
+            GiftAnimationPlayer(manager: giftManager)
             
             //关播页面
             if showEndView || liveRoomData.int("liveRoomState")  == 1 {
@@ -284,7 +297,7 @@ struct LE0xQZ6Y7WC8iv: View {
             while !Task.isCancelled {
                 do {
                     eLx8RIeCY = try await d34SzmkHKFl(mcIOzuQURD: liveRoomData.int("userId"), phqabUmw: 1)
-                    
+                  
                 } catch {
                     print("获取在线人数失败:", error)
                 }
@@ -310,14 +323,7 @@ struct LE0xQZ6Y7WC8iv: View {
                 if !result.isEmpty {
                     //直播间top3
                     iENw26wu7cQ = try await luJfveDVkRb(pQO2dnNxqK: result.int("id"))
-                    print("top-------")
-                    print(iENw26wu7cQ)
-                    
-                    print("直播数据result")
-                    print(result.int("userId"))
-                    print(result)
-                    
-                   
+
                     await MainActor.run {
                         liveRoomData = result
                     }

@@ -31,6 +31,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var onGiftTapped: (() -> Void)?//礼物回调
     
+    var onReceiveGift: ((_ giftImg: String,_ giftNum:Int,_ giftId:Int) -> Void)? //发送礼物
+    
     
     
     private var didInitialJoin = false
@@ -312,7 +314,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             userId: user.iBmPfFGfxu5JV7Aii7.string("yxAccid"),
             avatarURL: user.iBmPfFGfxu5JV7Aii7.string("icon"),
             nickname: user.iBmPfFGfxu5JV7Aii7.string("nickname"),
-            text: text,
+            type: .text(text),
             isMine: true
         )
         appendMessage(msg)
@@ -385,8 +387,22 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let labelWidth = tableView.bounds.width - 32
         let size = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14)]
-        let rect = message.text.boundingRect(with: size, options: [.usesLineFragmentOrigin], attributes: attributes, context: nil)
-        return rect.height + 20
+        switch message.type {
+        case .text(let text):
+
+            let rect = text.boundingRect(
+                with: size,
+                options: [.usesLineFragmentOrigin],
+                attributes: attributes,
+                context: nil
+            )
+
+            return rect.height + 20
+
+        case .gift:
+            return 50
+        }
+      //  return rect.height + 20
     }
     // MARK: - RTM
 
@@ -395,6 +411,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //云信
      func joinChatroom() {
         guard let roomId = yxRoomId else { return }
+         
+         // 防止重复加入
+           if hasJoinedChannel {
+               return
+           }
         
         let request = NIMChatroomEnterRequest()
         request.roomId = roomId
@@ -470,40 +491,85 @@ extension ChatViewController {
  
     func onRecvMessages(_ messages: [NIMMessage]) {
         for msg in messages {
-            guard let session = msg.session, session.sessionType == .chatroom else { continue }
-
-            // 1️⃣ 过滤自己之前离开前发的消息
-            print("弹幕消息")
-            print(msg)
-            
-            // 👇 在这里加一行
-              guard msg.messageType == .text else {
-                  continue
-              }
-          
-
-
+        
             let accid = msg.from ?? ""
-
-            // 2️⃣ 去 SDK 拿头像和昵称（可加缓存优化）
-            NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
-                let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
-                let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
+            
+            
+            switch msg.messageType {
+             // 1️⃣ 普通文本消息（聊天室聊天）
+             case .text:
+                guard let session = msg.session, session.sessionType == .chatroom else { continue }
                 
-               
+                // 2️⃣ 去 SDK 拿头像和昵称（可加缓存优化）
+                NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
+                    let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
+                    let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
+                    
+                   
 
-                let publicMsg = PublicMessage(
-                    userId: accid,
-                    avatarURL: avatarURL,
-                    nickname: nickname,
-                    text: msg.text ?? "",
-                    isMine: msg.from == "\(self.userId ?? 0)"
-                )
+                    let publicMsg = PublicMessage(
+                        userId: accid,
+                        avatarURL: avatarURL,
+                        nickname: nickname,
+                        type: .text(msg.text ?? ""),
+                        isMine: msg.from == "\(self.userId ?? 0)"
+                    )
 
-                DispatchQueue.main.async {
-                    self.appendMessage(publicMsg)
+                    DispatchQueue.main.async {
+                        self.appendMessage(publicMsg)
+                    }
                 }
-            }
+             // 2️⃣ 自定义消息（弹幕 / 礼物 / 系统消息）
+             case .custom:
+              
+                if let object = msg.messageObject as? NIMCustomObject,
+                   let attachment = object.attachment {
+
+                    let jsonString = attachment.encode()
+                    guard !jsonString.isEmpty,
+                          let data = jsonString.data(using: .utf8) else { return }
+                    do {
+                        guard let dict = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                              let giftId = dict["giftId"] as? Int,
+                              let giftNum = dict["giftNum"] as? Int,
+                              let giftImg = dict["giftIcon"] as? String else {
+                          
+                            return
+                        }
+                      
+                        // 添加回调到 Swift
+                        print("礼物")
+                        print(dict)
+                        NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
+                            let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
+                            let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
+                            
+                            print("发送人")
+                            print(nickname)
+                            print(avatarURL)
+                            
+                            let publicMsg = PublicMessage(
+                                    userId: accid,
+                                    avatarURL: avatarURL,
+                                    nickname: nickname,
+                                    type: .gift(imgURL: giftImg, count: giftNum, giftId: giftId),
+                                    isMine: false
+                                )
+
+                                DispatchQueue.main.async {
+                                    self.appendMessage(publicMsg)
+                                }
+                        }
+                        onReceiveGift?(giftImg,giftNum,giftId)
+                    } catch {
+                        print("JSON解析失败:", error)
+                    }
+                }
+                    
+                    
+             default:
+                 break
+             }
         }
     }
     
