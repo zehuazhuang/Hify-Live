@@ -523,6 +523,7 @@ class ChatMessage: Identifiable, ObservableObject {
                                 chatMsg = nil
                                 return
                             }
+                            
                             guard let giftId = dict["giftId"] as? Int,
                                   let giftName = dict["giftName"] as? String,
                                   let giftNum = dict["giftNum"] as? Int,

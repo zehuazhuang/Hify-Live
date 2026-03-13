@@ -19,12 +19,14 @@ PODS:
   - SVGAPlayer/ProtoFiles (2.5.7):
     - Protobuf (~> 3.4)
   - YXArtemis_XCFramework (1.1.6)
+  - YYEVA (1.1.37)
 
 DEPENDENCIES:
   - AgoraRtcEngine_iOS/RtcBasic
   - AliyunOSSiOS (~> 2.11.2)
   - NIMSDK
   - SVGAPlayer (~> 2.5)
+  - YYEVA (~> 1.0)
 
 SPEC REPOS:
   trunk:
@@ -36,6 +38,7 @@ SPEC REPOS:
     - SSZipArchive
     - SVGAPlayer
     - YXArtemis_XCFramework
+    - YYEVA
 
 SPEC CHECKSUMS:
   AgoraInfra_iOS: 0bf927aad4fc425b24ca5d094b333361960f5cb0
@@ -46,7 +49,8 @@ SPEC CHECKSUMS:
   SSZipArchive: 8a6ee5677c8e304bebc109e39cf0da91ccef22ea
   SVGAPlayer: 318b85a78b61292d6ae9dfcd651f3f0d1cdadd86
   YXArtemis_XCFramework: d9a8b9439d7a6c757ed00ada53a6d2dd9b13f9c7
+  YYEVA: 9bb7cb02742c241b97ee2ba6182315af630cb5e2
 
-PODFILE CHECKSUM: 75b91cd0e5ffb27d45610797153e8136f5da33a9
+PODFILE CHECKSUM: 2e085231c1d9e1dd095474c47a69e440e3fa83fe
 
 COCOAPODS: 1.16.2

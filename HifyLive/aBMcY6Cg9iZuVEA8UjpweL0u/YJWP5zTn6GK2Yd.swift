@@ -4,6 +4,7 @@ import SwiftUI
 import AVKit
 import Combine
 import SVGAPlayer
+import YYEVA
 
 // MARK: - 礼物模型
 struct GiftAnimationItem: Identifiable, Equatable {
@@ -260,5 +261,73 @@ class SVGACacheManager {
         } failureBlock: { _ in
             completion(nil)
         }
+    }
+}
+
+
+
+
+struct YYEVAVideoPlayerView: UIViewRepresentable {
+    let videoURL: URL
+    
+    // 注意：这里不能用 private let player，因为 UIViewRepresentable 会多次调用 makeUIView
+    class PlayerWrapper {
+        let player = YYEVAPlayer()
+    }
+    
+    func makeUIView(context: Context) -> UIView {
+        let containerView = UIView(frame: UIScreen.main.bounds)
+        containerView.backgroundColor = .clear
+        containerView.layer.cornerRadius = 0   // 取消圆角
+        
+        let player = context.coordinator.wrapper.player
+        player.frame = containerView.bounds
+        player.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        player.layer.cornerRadius = 0          // 取消圆角
+        player.clipsToBounds = false           // 不裁剪
+        
+        containerView.addSubview(player)
+        
+        downloadAndPlay(url: videoURL, player: player)
+        
+        return containerView
+    }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
+    
+    class Coordinator {
+        let wrapper = PlayerWrapper()
+    }
+    
+    // 下载远程 MP4 并播放
+    private func downloadAndPlay(url: URL, player: YYEVAPlayer) {
+        URLSession.shared.downloadTask(with: url) { tempURL, _, error in
+            guard let tempURL = tempURL, error == nil else {
+                print("下载失败:", error ?? "")
+                return
+            }
+            
+            // 保存到 Documents 文件夹
+            let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let localURL = docs.appendingPathComponent("gift.mp4")
+            
+            do {
+                if FileManager.default.fileExists(atPath: localURL.path) {
+                    try FileManager.default.removeItem(at: localURL)
+                }
+                try FileManager.default.moveItem(at: tempURL, to: localURL)
+                
+                DispatchQueue.main.async {
+                    player.play(localURL.path)
+                }
+            } catch {
+                print("保存失败:", error)
+            }
+            
+        }.resume()
     }
 }

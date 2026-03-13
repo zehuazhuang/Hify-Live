@@ -222,7 +222,13 @@ struct CgZU7mTgY46l: View {
                     }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", jEhg1fS1G8: 0, tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
                 }
                 
-
+                
+                //特效
+                YYEVAVideoPlayerView(
+                                videoURL: URL(string: "https://img.hnhily.link/document/gift/2026902426417627136.mp4")!
+                            )
+                .edgesIgnoringSafeArea(.all)
+                .allowsHitTesting(false)
                 
                 GiftAnimationPlayer(manager: giftManager)
                
@@ -260,8 +266,10 @@ struct CgZU7mTgY46l: View {
                        
                     }
                   
-                    
+
                 }
+         
+                
             }.onTapGesture {
                 UIApplication.shared.endEditing()
             }

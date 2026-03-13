@@ -3,3 +3,4 @@ ${PODS_CONFIGURATION_BUILD_DIR}/AliyunOSSiOS/AliyunOSSiOS_Privacy.bundle
 ${PODS_ROOT}/NIMSDK/NIMAVChat/Resources/NMCVideoFilter.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf_Privacy.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive/SSZipArchive.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/YYEVA/YYEVABundle.bundle

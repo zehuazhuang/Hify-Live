@@ -14,6 +14,7 @@ target 'HifyLive' do
 
   pod 'SVGAPlayer', '~> 2.5'
 
+  pod 'YYEVA', '~> 1.0'
 end
 
 post_install do |installer|
