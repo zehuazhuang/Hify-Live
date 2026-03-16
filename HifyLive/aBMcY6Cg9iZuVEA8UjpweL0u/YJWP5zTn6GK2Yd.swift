@@ -88,6 +88,7 @@ struct GiftAnimationPlayer: View {
                 GiftAnimationView(url: item.url) {
                     manager.finishCurrentAnimation()
                 }
+                .id(UUID())
                 .transition(.scale.combined(with: .opacity))
                 .zIndex(10)
             }
@@ -140,6 +141,7 @@ struct GiftAnimationView: View {
     }
     
     private func startMP4Player() {
+        
         let item = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: item)
         

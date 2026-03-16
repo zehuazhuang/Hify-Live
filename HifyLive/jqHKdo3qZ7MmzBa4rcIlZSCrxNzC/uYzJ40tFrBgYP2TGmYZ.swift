@@ -33,6 +33,16 @@ extension Int {
             return String(format: "%.1fM", Double(self) / 1_000_000)
         }
     }
+    
+    func xN98uRxq() -> String {
+        if self < 1000 {
+            return "\(self)"
+        } else if self < 1_000_000 {
+            return String(format: "%.1fK", Double(self) / 1000)
+        } else {
+            return String(format: "%.1fM", Double(self) / 1_000_000)
+        }
+    }
 }
 
 

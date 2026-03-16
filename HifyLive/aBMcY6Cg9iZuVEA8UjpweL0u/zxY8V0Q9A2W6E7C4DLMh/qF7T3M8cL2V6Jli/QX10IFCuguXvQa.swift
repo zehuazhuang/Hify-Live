@@ -236,11 +236,11 @@ struct QX10IFCuguXvQa: View {
                                                 if pQWBOM > 0 {
                                                     jbPyc3Dneh.iBmPfFGfxu5JV7Aii7["diamondNum"] = pQWBOM
                                                     
-                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                                                        .m3nArFwdHhI82cPUmiqW8PtaaHz(
-                                                            "hxoNlqzSCI1zcQXENty8Hg==",
-                                                            subFontText: "Your gift has been delivered to \(vTubwwYkiq)"
-                                                        )
+//                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+//                                                        .m3nArFwdHhI82cPUmiqW8PtaaHz(
+//                                                            "hxoNlqzSCI1zcQXENty8Hg==",
+//                                                            subFontText: "Your gift has been delivered to \(vTubwwYkiq)"
+//                                                        )
                                                 }
                                             } catch {
                                                 print("\(error)")

@@ -35,20 +35,26 @@ struct SwipeRow<Content: View, ID: Hashable>: View {
         ZStack(alignment: .trailing) {
             
             // 底层删除按钮（始终存在）
-            Button(action: onDelete) {
-                ZJ7h766mz(tMmEWWlfgUag: "zJNmgI4BkuG6ca")
-                    .frame(width: 24, height: 24)
-                    .frame(width: 60, height: 76)
-                    .background(Color.red)
-            }.simultaneousGesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in }
-            )
+            if offsetX != 0 {
+                Button(action: onDelete) {
+                    ZJ7h766mz(tMmEWWlfgUag: "zJNmgI4BkuG6ca")
+                        .frame(width: 24, height: 24)
+                        .frame(width: 60, height: 76)
+                        .background(Color.red)
+                }.simultaneousGesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { _ in }
+                )
+            }
+           
 
             // 前景内容
             content
                 .background(Color(red: 13/255, green: 13/255, blue: 18/255))
                 .offset(x: offsetX)
+                .onAppear {
+                        offsetX = 0
+                    }
                 .simultaneousGesture(
                     DragGesture(minimumDistance: 8)
                         .updating($dragDirection) { value, state, _ in
@@ -106,5 +112,6 @@ struct SwipeRow<Content: View, ID: Hashable>: View {
         .frame(maxWidth: .infinity)
         .clipped()
         .animation(.interactiveSpring(), value: offsetX)
+        
     }
 }

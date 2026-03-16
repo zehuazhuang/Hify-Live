@@ -1,6 +1,6 @@
 import UIKit
 import NIMSDK
-//直播页输入框布局
+//直播页 礼物飘屏、公屏消息、输入框布局
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,NIMChatroomManagerDelegate,
                           NIMChatManagerDelegate {
     
@@ -17,6 +17,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let chatHeight: CGFloat = 300
     private var hasJoinedChannel = false
     private var isMuted = false // 保存静音状态
+    
+    //gift 飘屏
+    private var giftFloatContainer: UIView!
+    private var giftView1: GiftFloatView!
+    private var giftView2: GiftFloatView!
+    private var giftTracks: [GiftFloatView] = []
+    private var giftQueue: [PublicMessage] = []
+    private var isTrack1Busy = false
+    private var isTrack2Busy = false
+    let trackPositions: [CGFloat] = [0, 58]
     
     //静音按钮
     let extraButton1 = UIButton(type: .custom)
@@ -64,6 +74,42 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     }
     
+    //送礼飘屏
+    func showGift(_ msg: PublicMessage) {
+        let key = "\(msg.userId)_\(msg.type.giftId ?? 0)"
+
+        // 1️⃣ 检查是否可以合并到已有飘屏
+        if let track = giftTracks.first(where: { $0.currentKey == key && !$0.isHidden }) {
+            let giftCount = msg.type.giftCount ?? 0
+            let currentCount = Int(track.countLabel.text?.dropFirst() ?? "0") ?? 0
+            let totalCount = giftCount + currentCount
+            track.countLabel.text = "x\(totalCount)"
+            track.resetStayTimer(duration: 1.5)
+            return
+        }
+
+        // 2️⃣ 查找空闲轨道
+        if let emptyIndex = giftTracks.firstIndex(where: { $0.isHidden }) {
+            let track = giftTracks[emptyIndex]
+            track.showGift(msg)
+            track.frame.origin.y = CGFloat(emptyIndex) * 58
+            return
+        }
+
+        // 3️⃣ 如果没有空轨道，替换最早结束的轨道
+        if let first = giftTracks.first {
+            first.hideGift()
+            first.showGift(msg)
+            first.frame.origin.y = 0 // 可以放到上轨
+        }
+    }
+    
+    func checkGiftQueue() {
+        guard !giftQueue.isEmpty else { return }
+        let msg = giftQueue.removeFirst()
+        showGift(msg)
+    }
+    
     private func setupTopFadeMask() {
         let maskLayer = CAGradientLayer()
             maskLayer.frame = chatContainer.bounds // 关键：mask 放在容器上
@@ -77,15 +123,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             chatContainer.layer.mask = maskLayer
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        
-        // mask 位置随 scrollView.contentOffset.y 动
         var frame = fadeMaskLayer.frame
         frame.origin.y = scrollView.contentOffset.y
         fadeMaskLayer.frame = frame
-        
         CATransaction.commit()
     }
 
@@ -119,11 +163,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - UI Setup
     private func setupViews() {
+        
+       
 
         // chatContainer 包含 tableView + inputContainer
         chatContainer = UIView()
         chatContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(chatContainer)
+        
+        
         
         // 现在 chatContainer 已经存在，可以创建底部约束
         chatContainerBottomConstraint = chatContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -134,6 +182,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             chatContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             chatContainer.heightAnchor.constraint(equalToConstant: chatContainerHeight)
         ])
+        
+        
+        
+
 
   
         
@@ -151,6 +203,27 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         chatContainer.addSubview(tableView)
+        
+        
+        //礼物飘屏
+        giftFloatContainer = UIView()
+        giftFloatContainer.translatesAutoresizingMaskIntoConstraints = false
+        giftFloatContainer.backgroundColor = .clear
+        giftFloatContainer.clipsToBounds = false
+        view.addSubview(giftFloatContainer)
+        
+        giftView1 = GiftFloatView()
+        giftView1.translatesAutoresizingMaskIntoConstraints = false
+        giftView1.isHidden = true
+        giftFloatContainer.addSubview(giftView1)
+
+        giftView2 = GiftFloatView()
+        giftView2.translatesAutoresizingMaskIntoConstraints = false
+        giftView2.isHidden = true
+        giftFloatContainer.addSubview(giftView2)
+        
+        giftTracks = [giftView1, giftView2]
+      
         
         
         setupTopFadeMask()
@@ -224,6 +297,28 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.trailingAnchor.constraint(equalTo: chatContainer.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: inputContainer.topAnchor, constant: -8),
             
+            // giftFloatContainer 约束
+            giftFloatContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                giftFloatContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+                // 在 chatContainer 上面
+                giftFloatContainer.bottomAnchor.constraint(equalTo: chatContainer.topAnchor, constant: -10),
+
+                giftFloatContainer.heightAnchor.constraint(equalToConstant: 120),
+
+               // giftView1 约束
+               giftView1.leadingAnchor.constraint(equalTo: giftFloatContainer.leadingAnchor, constant: 16),
+               giftView1.topAnchor.constraint(equalTo: giftFloatContainer.topAnchor),
+               giftView1.widthAnchor.constraint(equalToConstant: 220),
+               giftView1.heightAnchor.constraint(equalToConstant: 50),
+
+               // giftView2 约束
+               giftView2.leadingAnchor.constraint(equalTo: giftFloatContainer.leadingAnchor, constant: 16),
+               giftView2.topAnchor.constraint(equalTo: giftView1.bottomAnchor, constant: 8),
+               giftView2.widthAnchor.constraint(equalToConstant: 220),
+               giftView2.heightAnchor.constraint(equalToConstant: 50),
+            
+            
             // inputContainer 高度 & 水平
             inputContainer.leadingAnchor.constraint(equalTo: chatContainer.leadingAnchor, constant: 16),
             inputContainer.trailingAnchor.constraint(equalTo: chatContainer.trailingAnchor, constant: -16),
@@ -276,6 +371,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Keyboard
     @objc private func keyboardWillShow(notification: Notification) {
+        giftFloatContainer.isHidden = true
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
@@ -291,6 +387,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @objc private func keyboardWillHide(notification: Notification) {
+        giftFloatContainer.isHidden = false
         guard let userInfo = notification.userInfo,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
 
@@ -532,7 +629,8 @@ extension ChatViewController {
                         guard let dict = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                               let giftId = dict["giftId"] as? Int,
                               let giftNum = dict["giftNum"] as? Int,
-                              let giftImg = dict["giftIcon"] as? String else {
+                              let giftImg = dict["giftIcon"] as? String,
+                              let giftSmallImg = dict["smallImg"] as? String else {
                           
                             return
                         }
@@ -544,20 +642,19 @@ extension ChatViewController {
                             let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
                             let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
                             
-                            print("发送人")
-                            print(nickname)
-                            print(avatarURL)
+                         
                             
                             let publicMsg = PublicMessage(
                                     userId: accid,
                                     avatarURL: avatarURL,
                                     nickname: nickname,
-                                    type: .gift(imgURL: giftImg, count: giftNum, giftId: giftId),
+                                    type: .gift(imgURL: giftSmallImg, count: giftNum, giftId: giftId),
                                     isMine: false
                                 )
 
                                 DispatchQueue.main.async {
                                     self.appendMessage(publicMsg)
+                                    self.showGift(publicMsg)
                                 }
                         }
                         onReceiveGift?(giftImg,giftNum,giftId)
