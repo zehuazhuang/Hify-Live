@@ -19,6 +19,11 @@ struct NoResignTextField: UIViewRepresentable {
         textField.addTarget(context.coordinator,
                             action: #selector(Coordinator.textChanged(_:)),
                             for: .editingChanged)
+        
+        
+        textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
         return textField
     }
 

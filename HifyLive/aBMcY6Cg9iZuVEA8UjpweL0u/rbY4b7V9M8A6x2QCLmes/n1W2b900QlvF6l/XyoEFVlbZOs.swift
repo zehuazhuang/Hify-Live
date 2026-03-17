@@ -31,12 +31,10 @@ enum FailReason: Equatable {
 //礼物模型
 struct GiftAttachment: Codable {
     let giftId: Int
-    let giftName: String
     let giftNum: Int
     let giftPrice: Int
     let giftIcon: String
     let giftImg: String
-    let senderNickname: String
 }
     
     //私聊模型
@@ -139,7 +137,6 @@ class ChatMessage: Identifiable, ObservableObject {
             let msgs = NIMSDK.shared()
                 .conversationManager
                 .messages(in: session, message: nil, limit: 1000) ?? []
-           
             
             var lastTimestamp: TimeInterval = 0
             var result: [ChatMessage] = []
@@ -186,45 +183,47 @@ class ChatMessage: Identifiable, ObservableObject {
                         sendStatus: sendStatus,
                         nimMessage : msg
                     )
-                }else if msg.messageType == .custom {
+                }
+                else if msg.messageType == .custom {
                     guard let customObject = msg.messageObject as? NIMCustomObject,
                           let attachment = customObject.attachment else {
+                        
                         chatMsg = nil
-                        return
+                        continue
                     }
                     let jsonString = attachment.encode()
                     
                     guard let data = jsonString.data(using: .utf8) else {
+                       
                         chatMsg = nil
-                        return
+                        continue
                     }
                     
                     do {
                         guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                               let type = dict["attachType"] as? String, type == "SEND_GIFT" else {
+                          
                             chatMsg = nil
-                            return
+                            continue
                         }
+                      
 
                         guard let giftId = dict["giftId"] as? Int,
-                              let giftName = dict["giftName"] as? String,
                               let giftNum = dict["giftNum"] as? Int,
                               let giftPrice = dict["giftPrice"] as? Int,
                               let giftIcon = dict["smallImg"] as? String,
-                              let giftImg = dict["giftImg"] as? String,
-                              let senderNickname = dict["senderNickname"] as? String else {
+                              let giftImg = dict["giftIcon"] as? String else {
+                          
                             chatMsg = nil
-                            return
+                            continue
                         }
                         
                         let gift = GiftAttachment(
                             giftId: giftId,
-                            giftName: giftName,
                             giftNum: giftNum,
                             giftPrice: giftPrice,
                             giftIcon: giftIcon,
-                            giftImg: giftImg,
-                            senderNickname: senderNickname
+                            giftImg: giftImg
                         )
                         chatMsg = ChatMessage(
                             messageId: msg.messageId,
@@ -239,8 +238,10 @@ class ChatMessage: Identifiable, ObservableObject {
                     } catch {
                         print("JSON 解析失败: \(error)")
                         chatMsg = nil
+                        continue
                     }
-                }else {
+                }
+                else {
                     chatMsg = nil
                 }
                 
@@ -509,40 +510,36 @@ class ChatMessage: Identifiable, ObservableObject {
                         guard let customObject = msg.messageObject as? NIMCustomObject,
                               let attachment = customObject.attachment else {
                             chatMsg = nil
-                            return
+                            continue
                         }
                         let jsonString = attachment.encode()
                         guard let data = jsonString.data(using: .utf8) else {
                             chatMsg = nil
-                            return
+                            continue
                         }
                         do {
                             guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                                   let type = dict["attachType"] as? String,
                                   type == "SEND_GIFT" else {
                                 chatMsg = nil
-                                return
+                                continue
                             }
                             
                             guard let giftId = dict["giftId"] as? Int,
-                                  let giftName = dict["giftName"] as? String,
                                   let giftNum = dict["giftNum"] as? Int,
                                   let giftPrice = dict["giftPrice"] as? Int,
                                   let giftIcon = dict["smallImg"] as? String,
-                                  let giftImg = dict["giftImg"] as? String,
-                                  let senderNickname = dict["senderNickname"] as? String else {
+                                  let giftImg = dict["giftImg"] as? String else {
                                 chatMsg = nil
-                                return
+                                continue
                             }
 
                             let gift = GiftAttachment(
                                 giftId: giftId,
-                                giftName: giftName,
                                 giftNum: giftNum,
                                 giftPrice: giftPrice,
                                 giftIcon: giftIcon,
-                                giftImg: giftImg,
-                                senderNickname: senderNickname
+                                giftImg: giftImg
                             )
 
                             chatMsg = ChatMessage(

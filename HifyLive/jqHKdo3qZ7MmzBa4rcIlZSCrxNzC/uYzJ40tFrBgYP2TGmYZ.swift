@@ -35,13 +35,25 @@ extension Int {
     }
     
     func xN98uRxq() -> String {
+        let value: Double
+        let suffix: String
+        
         if self < 1000 {
             return "\(self)"
         } else if self < 1_000_000 {
-            return String(format: "%.1fK", Double(self) / 1000)
+            value = Double(self) / 1000
+            suffix = "K"
         } else {
-            return String(format: "%.1fM", Double(self) / 1_000_000)
+            value = Double(self) / 1_000_000
+            suffix = "M"
         }
+        
+        let formatted = String(format: "%.1f", value)
+        
+        
+        let result = formatted.hasSuffix(".0") ? String(formatted.dropLast(2)) : formatted
+        
+        return result + suffix
     }
 }
 

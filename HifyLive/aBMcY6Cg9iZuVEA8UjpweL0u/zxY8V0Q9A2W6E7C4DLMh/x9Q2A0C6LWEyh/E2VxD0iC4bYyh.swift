@@ -93,16 +93,15 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "Zq7S9M2C18L4A3t")
                         .frame(width: 36, height: 36)
                         .onTapGesture {
-
                             pilot.push(.QsS1CqA9M8tL2fs)
                         }
                     //排名
-//                    Spacer().frame(width: 16)
-//                    ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
-//                        .frame(width: 54, height: 36)
-//                        .onTapGesture {
-//                            
-//                        }
+                    Spacer().frame(width: 16)
+                    ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
+                        .frame(width: 54, height: 36)
+                        .onTapGesture {
+                            pilot.push(.Gcx3oCl1wFkbw1)
+                        }
                 }
                 
                 ScrollView(showsIndicators: false){

@@ -351,10 +351,12 @@ struct QX10IFCuguXvQa: View {
                         return
                     }
                     
+                    print("礼物接口")
+                    print(mRw8NWOy)
+                    
                     e7JsX9Y1iP = popular
                   
                 }
-                
                 
             }
             

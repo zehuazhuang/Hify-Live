@@ -69,7 +69,12 @@ struct LE0xQZ6Y7WC8iv: View {
                         count: giftNum
                     )
                     self.giftManager.enqueueGift(giftItem)
-                                         
+                    
+                    
+                    //更新top
+                    Task{
+                       await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
+                    }
                                       }
                 )
                 }.edgesIgnoringSafeArea(.bottom)
@@ -160,7 +165,10 @@ struct LE0xQZ6Y7WC8iv: View {
                                     .allowsHitTesting(false)
                                 ZStack{
                                     Text("\(iENw26wu7cQ[index].int("totalGiftValue").xN98uRxq())")
-                                        .font(.system(size: 12, weight: .regular))
+                                        .g0LIIcoZQsOjyND9(
+                                                            size: 12,
+                                                            weight: .regular
+                                                        )
                                 }
                                     .frame(width: 32,height: 14)
                                     .background(
@@ -311,6 +319,15 @@ struct LE0xQZ6Y7WC8iv: View {
         onlineCountTask = nil
     }
     
+    // 查大哥位
+    func uNyOEJGn3o(seUMbDSk:Int) async {
+        do{
+            iENw26wu7cQ = try await luJfveDVkRb(pQO2dnNxqK: seUMbDSk)
+        }catch{
+            print(error)
+        }
+    }
+    
     //加入直播
     func retryJoinLive() async {
         var retryDelay: UInt64 = 2_000_000_000
@@ -322,11 +339,11 @@ struct LE0xQZ6Y7WC8iv: View {
                 
                 if !result.isEmpty {
                     //直播间top3
-                    iENw26wu7cQ = try await luJfveDVkRb(pQO2dnNxqK: result.int("id"))
-
-                    await MainActor.run {
-                        liveRoomData = result
-                    }
+                    
+                    await uNyOEJGn3o(seUMbDSk: result.int("id"))
+                    
+                    liveRoomData = result
+                    
                    
                     break
                 }

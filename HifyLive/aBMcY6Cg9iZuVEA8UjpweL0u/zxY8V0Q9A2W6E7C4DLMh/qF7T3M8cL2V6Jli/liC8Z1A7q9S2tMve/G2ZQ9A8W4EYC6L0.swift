@@ -636,8 +636,6 @@ extension ChatViewController {
                         }
                       
                         // 添加回调到 Swift
-                        print("礼物")
-                        print(dict)
                         NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
                             let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
                             let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""

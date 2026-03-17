@@ -179,8 +179,8 @@ class PublicMessageCell: UITableViewCell {
         messageStack.addArrangedSubview(giftCountLabel)
 
         giftImageView.contentMode = .scaleAspectFit
-        giftImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        giftImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        giftImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        giftImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
     }
 
     // MARK: - Layout
@@ -273,13 +273,17 @@ class PublicMessageCell: UITableViewCell {
             
             stackTopConstraint.constant = 0
             stackBottomConstraint.constant = 0
-            bubbleView.gradientLayer.cornerRadius = 20
+            bubbleView.gradientLayer.cornerRadius = 16
             bubbleView.gradientLayer.colors = [
                     UIColor(red: 138/255, green: 120/255, blue: 255/255, alpha: 0.25).cgColor,
                     UIColor(red: 170/255, green: 84/255, blue: 255/255, alpha: 0.23).cgColor
                 ]
             avatarImageView.isHidden = true
             giftImageView.isHidden = false
+            giftImageView.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
+            bubbleView.clipsToBounds = false
+            messageStack.clipsToBounds = false
+            
             giftCountLabel.isHidden = false
             bubbleToAvatarConstraint.isActive = false
             bubbleToLeftConstraint.isActive = true

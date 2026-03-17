@@ -335,13 +335,11 @@ struct C8Z2x4M6YV9m: View {
                                     .padding(.all,12)
                                 }
 //                                Button{
-//
-//                                   
 //                                    
-//                                    
-////                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(xcZmXTC0: "第一条通知")
-//                                    
-//                                    
+//                                    XQAQvuU6cZLbgE.shared.vEnu5pS9V(
+//                                        text: "服务器将在10分钟后维护",
+//                                        isSystem: true
+//                                    )
 //                                    //跳ai页面
 //                                 //   pilot.push(.ASkYEgFvkJ3xKj)
 //                                } label: {

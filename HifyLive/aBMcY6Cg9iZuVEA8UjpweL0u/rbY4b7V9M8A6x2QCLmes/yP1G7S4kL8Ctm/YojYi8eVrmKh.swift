@@ -98,7 +98,7 @@ class RecentSessionManager: ObservableObject {
             }
         
      
-
+        let userInfo = UserManager.shared.getCachedUserInfo(accid: accid)
         if let index = cache.firstIndex(where: { $0.sessionId == accid }) {
             // 更新已有缓存
             cache[index].lastMessageText = lastMessageText
@@ -106,12 +106,12 @@ class RecentSessionManager: ObservableObject {
             if !message.isOutgoingMsg {
                 cache[index].unreadCount += 1
             }
-            let userInfo = UserManager.shared.getCachedUserInfo(accid: accid)
+            
             cache[index].nickname = userInfo?.nickname ?? accid
             cache[index].avatarUrl = userInfo?.avatarUrl ?? ""
         } else {
             // 新增缓存
-            let userInfo = UserManager.shared.getCachedUserInfo(accid: accid)
+            
             let newCache = CachedRecentSession(
                 session: session,
                 sessionId: accid,
@@ -124,6 +124,14 @@ class RecentSessionManager: ObservableObject {
             )
             cache.append(newCache)
         }
+        XQAQvuU6cZLbgE.shared.vEnu5pS9V(
+            text: lastMessageText,
+            name: userInfo?.nickname ?? accid,
+            avatar: userInfo?.avatarUrl ?? "",
+            isSystem: false,
+            sessionId: accid
+        )
+       
     }
 
     /// 删除某个会话

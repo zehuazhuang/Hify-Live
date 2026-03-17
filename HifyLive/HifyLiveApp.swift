@@ -112,6 +112,8 @@ struct HifyLiveApp: App {
                                    .ignoresSafeArea()
                            case .H7XMmrHFowMS7i:
                                H7XMmrHFowMS7i()
+                           case .Gcx3oCl1wFkbw1:
+                               Gcx3oCl1wFkbw1()
                            }
                        }
                    }.environmentObject(yg881FpnD9Ee1)

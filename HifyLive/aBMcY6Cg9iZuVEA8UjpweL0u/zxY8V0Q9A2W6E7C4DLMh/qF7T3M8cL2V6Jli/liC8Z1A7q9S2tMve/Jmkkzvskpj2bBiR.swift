@@ -17,7 +17,9 @@ class GiftFloatView: UIView {
     private let sendLabel = UILabel()
     private let giftImageView = UIImageView()
 
-    // 数量气泡单独
+    // 数量
+    private let countStack = UIStackView()
+    private let xImageView = UIImageView()
     var countLabel = UILabel()
     
     
@@ -44,6 +46,7 @@ class GiftFloatView: UIView {
     }
     
     private func setupUI() {
+        heightAnchor.constraint(equalToConstant: 50).isActive = true
         // 渐变背景
         addSubview(backgroundGradientView)
         backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,8 +63,8 @@ class GiftFloatView: UIView {
             backgroundGradientView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-
-        avatarImageView.layer.cornerRadius = 18
+        
+        avatarImageView.layer.cornerRadius = 21
         avatarImageView.clipsToBounds = true
         avatarImageView.contentMode = .scaleAspectFill
 
@@ -89,20 +92,33 @@ class GiftFloatView: UIView {
         NSLayoutConstraint.activate([
             contentStack.leadingAnchor.constraint(equalTo: backgroundGradientView.leadingAnchor, constant: 6),
             contentStack.trailingAnchor.constraint(equalTo: backgroundGradientView.trailingAnchor, constant: -6),
-            contentStack.topAnchor.constraint(equalTo: backgroundGradientView.topAnchor, constant: 6),
-            contentStack.bottomAnchor.constraint(equalTo: backgroundGradientView.bottomAnchor, constant: -6)
         ])
         
-        addSubview(countLabel)
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
-        countLabel.textColor = .white
-        countLabel.font = .boldSystemFont(ofSize: 14)
-        countLabel.textAlignment = .center
+        addSubview(countStack)
+        countStack.translatesAutoresizingMaskIntoConstraints = false
+        countStack.axis = .horizontal
+        countStack.alignment = .center
+        countStack.spacing = 2
         
         NSLayoutConstraint.activate([
-            countLabel.leadingAnchor.constraint(equalTo: backgroundGradientView.trailingAnchor, constant: 4),
-            countLabel.centerYAnchor.constraint(equalTo: backgroundGradientView.centerYAnchor)
+            countStack.leadingAnchor.constraint(equalTo: backgroundGradientView.trailingAnchor, constant: 4),
+            countStack.centerYAnchor.constraint(equalTo: backgroundGradientView.centerYAnchor)
         ])
+        
+        xImageView.image = UIImage(named: "ulzb7LfsuPK")
+        xImageView.contentMode = .scaleAspectFit
+        xImageView.transform = CGAffineTransform(translationX: 0, y: 5)
+
+        NSLayoutConstraint.activate([
+            xImageView.widthAnchor.constraint(equalToConstant: 14),
+            xImageView.heightAnchor.constraint(equalToConstant: 14)
+        ])
+        
+        countLabel.textColor = .white
+        countLabel.font = .boldSystemFont(ofSize: 14)
+
+        countStack.addArrangedSubview(xImageView)
+        countStack.addArrangedSubview(countLabel)
         
         
         
@@ -110,8 +126,8 @@ class GiftFloatView: UIView {
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: backgroundGradientView.leadingAnchor, constant: 6),
             avatarImageView.centerYAnchor.constraint(equalTo: backgroundGradientView.centerYAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 36),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 36),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 42),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 42),
 
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 6),
             nameLabel.topAnchor.constraint(equalTo: backgroundGradientView.topAnchor, constant: 6),
@@ -136,7 +152,22 @@ class GiftFloatView: UIView {
         self.currentKey = key
 
         nameLabel.text = msg.nickname
-        countLabel.text = "x\(msg.type.giftCount ?? 0)"
+        
+        let count = msg.type.giftCount ?? 0
+        let text = "\(count)"
+
+        let attr = NSAttributedString(
+            string: text,
+            attributes: [
+                .foregroundColor: UIColor(red: 255/255, green: 55/255, blue: 28/255, alpha: 1),
+                .strokeColor: UIColor.white,
+                .strokeWidth: -3.0,
+                .font: JqA1kUIFont.font(size: 32, weight: .black)
+            ]
+        )
+
+        countLabel.attributedText = attr
+        
         avatarImageView.kf.setImage(with: URL(string: msg.avatarURL ?? ""), placeholder: UIImage(named: "gCZGrlvVVn1D"))
         giftImageView.kf.setImage(with: URL(string: msg.type.giftImageURL ?? ""))
 
