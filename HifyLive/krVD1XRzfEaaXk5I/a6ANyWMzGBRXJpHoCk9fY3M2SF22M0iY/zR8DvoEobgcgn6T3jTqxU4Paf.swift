@@ -765,7 +765,7 @@ func gtR8YJncg8Z() async throws -> [String: Any] {
     guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("/api/template/getTempLateInfo")") else {
         throw URLError(.badURL)
     }
-
+    
     var request = URLRequest(url: url)
     request.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
     request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
@@ -778,36 +778,28 @@ func gtR8YJncg8Z() async throws -> [String: Any] {
     let body: [String: Any] = [
         "searchValue":"live"
     ]
-    
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
-    
     let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
     request.httpBody = encryptedString.data(using: .utf8)
-
-    
     let (data, _) = try await URLSession.shared.data(for: request)
-    
     let json = try JSONSerialization.jsonObject(with: data, options: [])
     guard let dict = json as? [String: Any] else {
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
-  
-    
+    print("json")
+    print(json)
     // 解密 result
     guard let resultStr = dict["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String,
           let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
         return [:]
     }
     
-   
-    
-    
     // 将 JSON 数据转换为数组
     let resultObject = try JSONSerialization.jsonObject(with: resultData, options: [])
-
+    
     guard let resultDict = resultObject as? [String: Any] else {
         return [:]
     }
@@ -968,7 +960,6 @@ func n3Qw6R9Xb1K(kL2Q7ZxM8R:String,z8Y1QxL4Z8v:String,x8V6N2kL9MZ:String) async 
 
     
     if let code = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-        print("补单")
         return true
     } else {
         return false
@@ -1345,6 +1336,73 @@ func d34SzmkHKFl(mcIOzuQURD:Int,phqabUmw:Int) async throws -> [[String: Any]] {
     guard let dict = json as? [String: Any] else {
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
+ 
+
+    
+    // 解密 result
+    guard let resultStr = dict["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return []
+    }
+   
+    
+    
+    // 将 JSON 数据转换为数组
+    let resultArray = try JSONSerialization.jsonObject(with: resultData, options: [])
+    
+    guard let array = resultArray as? [[String: Any]] else {
+        return []
+    }
+    
+    
+    if let code = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+       
+        return array
+    } else {
+        return []
+    }
+}
+
+
+//查财富榜
+@MainActor
+func vFTFn8eFEdr() async throws -> [[String: Any]] {
+    guard let url = URL(string: "https://vvi.cphub.link\("/sapi/weidou/v1/client/party/room/rank/getUserRichRanks")") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    
+    let body: [String: Any] = [
+        "rankType":"day",
+    ]
+    
+
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: request)
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    print("json")
+    print(json)
  
 
     

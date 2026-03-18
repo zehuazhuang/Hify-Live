@@ -52,7 +52,7 @@ enum APPTJuHVkDYORXa: Equatable {
     //个人信息编辑页
     case lhOJY7byauJZOO6Kfr3SaKy6
     //mes进入私聊页
-    case CgZU7mTgY46l(session: NIMSession,opponentAvatarURL:String)
+    case CgZU7mTgY46l(session: NIMSession,opponentAvatarURL:String,qOH29Z5X:Bool)
     //搜索页
     case QsS1CqA9M8tL2fs
     //图片放大
@@ -60,6 +60,6 @@ enum APPTJuHVkDYORXa: Equatable {
     //交易记录
     case H7XMmrHFowMS7i
     //榜单排行榜
-    case Gcx3oCl1wFkbw1
+    case Gcx3oCl1wFkbw1(t2ZCMaqlBn:Bool)
 }
 

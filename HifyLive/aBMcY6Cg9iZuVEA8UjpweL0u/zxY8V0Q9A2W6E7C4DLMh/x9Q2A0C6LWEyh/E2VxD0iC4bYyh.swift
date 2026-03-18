@@ -100,7 +100,7 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
                         .onTapGesture {
-                            pilot.push(.Gcx3oCl1wFkbw1)
+                            pilot.push(.Gcx3oCl1wFkbw1(t2ZCMaqlBn: false))
                         }
                 }
                 

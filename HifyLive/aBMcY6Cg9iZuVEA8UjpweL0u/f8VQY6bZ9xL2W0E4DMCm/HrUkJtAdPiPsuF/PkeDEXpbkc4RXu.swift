@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import StoreKit
 import Combine
-
+//支付代码
 struct PendingTransaction: Codable {
     let transactionID: String
     let receiptData: String

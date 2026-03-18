@@ -103,8 +103,8 @@ struct HifyLiveApp: App {
                                js9GbCBiFR825bdWb7p7kVVWaBoE().navigationBarHidden(true)
                            case .lhOJY7byauJZOO6Kfr3SaKy6:
                                lhOJY7byauJZOO6Kfr3SaKy6().navigationBarHidden(true)
-                           case let .CgZU7mTgY46l(session,opponentAvatarURL):
-                               CgZU7mTgY46l(session: session, opponentAvatarURL: opponentAvatarURL).navigationBarHidden(true)
+                           case let .CgZU7mTgY46l(session,opponentAvatarURL,qOH29Z5X):
+                               CgZU7mTgY46l(session: session, opponentAvatarURL: opponentAvatarURL, qOH29Z5X: qOH29Z5X).navigationBarHidden(true)
                            case .QsS1CqA9M8tL2fs:
                                QsS1CqA9M8tL2fs().navigationBarHidden(true)
                            case let .ZQ9FPreviewWrapper(pics, startIndex):
@@ -112,8 +112,8 @@ struct HifyLiveApp: App {
                                    .ignoresSafeArea()
                            case .H7XMmrHFowMS7i:
                                H7XMmrHFowMS7i()
-                           case .Gcx3oCl1wFkbw1:
-                               Gcx3oCl1wFkbw1()
+                           case let .Gcx3oCl1wFkbw1(t2ZCMaqlBn):
+                               Gcx3oCl1wFkbw1(zCwukl6av48X: t2ZCMaqlBn)
                            }
                        }
                    }.environmentObject(yg881FpnD9Ee1)

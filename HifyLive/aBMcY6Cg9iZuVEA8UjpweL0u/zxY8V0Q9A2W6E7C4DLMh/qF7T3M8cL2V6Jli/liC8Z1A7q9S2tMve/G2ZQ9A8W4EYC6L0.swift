@@ -34,10 +34,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     let sendButton = UIButton(type: .custom)
     //礼物按钮
     let tqphdfvX = UIButton(type: .custom)
+    //私聊按钮
+    let aEgmymOw = UIButton(type: .custom)
     
     var onMuteTappedCallback: ((UInt, Bool) -> Void)?
     
     var onUserAvatarTapped: ((String) -> Void)?//公屏点击头像回调
+    
+    var puO2kKxCh: (() -> Void)?//私聊回调
     
     var onGiftTapped: (() -> Void)?//礼物回调
     
@@ -141,6 +145,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let maskLayer = chatContainer.layer.mask as? CAGradientLayer {
             maskLayer.frame = chatContainer.bounds
         }
+    }
+    //点击私聊
+    @objc private func w8esoH7cO33() {
+        puO2kKxCh?()
     }
 
     //点击礼物
@@ -266,6 +274,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         extraButton1.imageView?.contentMode = .scaleAspectFit
         extraButton1.addTarget(self, action: #selector(onMuteTapped), for: .touchUpInside)
         
+        //私聊按钮
+        aEgmymOw.setImage(UIImage(named: "oK1A9rsD5N"), for: .normal)
+        aEgmymOw.translatesAutoresizingMaskIntoConstraints = false
+        aEgmymOw.imageView?.contentMode = .scaleAspectFit
+        aEgmymOw.addTarget(self, action: #selector(w8esoH7cO33), for: .touchUpInside)
+        
         //礼物按钮 tqphdfvX
         tqphdfvX.setImage(UIImage(named: "eQ7qeLRM2KO"), for: .normal)
         tqphdfvX.translatesAutoresizingMaskIntoConstraints = false
@@ -279,7 +293,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         textFieldStack.addSubview(sendButton)
         
         // 水平堆叠
-        let stack = UIStackView(arrangedSubviews: [textFieldStack, extraButton1,tqphdfvX])
+        let stack = UIStackView(arrangedSubviews: [textFieldStack, extraButton1,aEgmymOw,tqphdfvX])
         stack.axis = .horizontal
         stack.spacing = 8
         stack.alignment = .fill
@@ -348,9 +362,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             extraButton1.widthAnchor.constraint(equalToConstant: 46),
             extraButton1.heightAnchor.constraint(equalToConstant: 46),
             
+            // 私聊固定宽高
+            aEgmymOw.widthAnchor.constraint(equalToConstant: 46),
+            aEgmymOw.heightAnchor.constraint(equalToConstant: 46),
+            
             // 礼物固定宽高
             tqphdfvX.widthAnchor.constraint(equalToConstant: 46),
-            tqphdfvX.heightAnchor.constraint(equalToConstant: 46)
+            tqphdfvX.heightAnchor.constraint(equalToConstant: 46),
+            
+            
         ])
     }
 

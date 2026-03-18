@@ -390,6 +390,9 @@ struct Afmox09Q1UKVfE: View {
                 )
                 
                 mCbSNX6z2hzQ = try await gtR8YJncg8Z()
+                
+                print("钻石数据")
+                print(mCbSNX6z2hzQ)
                
                 if let list = mCbSNX6z2hzQ["skuList"] as? [[String: Any]] {
                     

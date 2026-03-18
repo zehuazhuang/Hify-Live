@@ -2,6 +2,7 @@
 import SwiftUI
 import UIKit
 import UIPilot
+import NIMSDK
 //直播页
 struct LE0xQZ6Y7WC8iv: View {
    
@@ -22,8 +23,12 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var iENw26wu7cQ: [[String: Any]] = [] //直播间大哥位数据
     @State private var onlineCountTask: Task<Void, Never>? //在线定时
     @State private var eLx8RIeCY: [[String: Any]] = [] //直播间在线数据
-    @StateObject private var giftManager = GiftQueueManager()
-
+    @StateObject private var giftManager = GiftQueueManager() //特效
+    
+    @State private var showRankSheet: Bool = false //在线人数弹框
+    @State private var zpX1K1CogQ6: Bool = false //房主私聊
+    @State private var ahzQOxcnxEI: String = "" //私聊账号
+    @State private var session: NIMSession? = nil
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
         self.localUid = localUid
@@ -58,6 +63,16 @@ struct LE0xQZ6Y7WC8iv: View {
                                          
                     withAnimation{
                         qkUZGHPNnHgfhW = true
+                    }
+                                     },
+                                  w8esoH7cO33: {
+                    ahzQOxcnxEI = liveRoomData.string("yxAccid")
+                    session = NIMSession(ahzQOxcnxEI, type: .P2P)
+                    
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            zpX1K1CogQ6 = true
+                        }
                     }
                                      },
                                   onReceiveGift: { giftImg, giftNum, giftId in
@@ -203,6 +218,9 @@ struct LE0xQZ6Y7WC8iv: View {
                                     .padding(.vertical,7.5)
                                     .background(.black.opacity(0.2))
                                     .cornerRadius(36)
+                                    .onTapGesture {
+                                            showRankSheet = true
+                                        }
                     
                     
                     ZJ7h766mz(tMmEWWlfgUag: "pD8K1Q5tB6R9Lh")
@@ -225,7 +243,16 @@ struct LE0xQZ6Y7WC8iv: View {
             
             //底部用户弹框
             if showY2E8Qsc {
-                QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, isW9YQ6C8L: $showY2E8Qsc)
+                QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, nIq2dmKcGA0: {t6FBqjXlaJ in
+                    //私聊半屏
+                    ahzQOxcnxEI = t6FBqjXlaJ
+                    session = NIMSession(ahzQOxcnxEI, type: .P2P)
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            zpX1K1CogQ6 = true
+                        }
+                    }
+                }, isW9YQ6C8L: $showY2E8Qsc)
             }
             
             //礼物弹框
@@ -267,6 +294,23 @@ struct LE0xQZ6Y7WC8iv: View {
 //            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
 //                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
 //            }
+        }.sheet(isPresented: $showRankSheet) {
+            Gcx3oCl1wFkbw1(
+                zCwukl6av48X: true,
+                uNZ9IM5OK: eLx8RIeCY
+            )
+            .environmentObject(pilot)
+            .presentationDetents([.fraction(0.75)])
+        }.sheet(isPresented: $zpX1K1CogQ6) {
+            
+            if let session = session {
+                    CgZU7mTgY46l(
+                        session: session,
+                        opponentAvatarURL: "eLx8RIeCY", qOH29Z5X: true
+                    )
+                    .environmentObject(pilot)
+                    .presentationDetents([.fraction(0.75)])
+                }
         }
        
         

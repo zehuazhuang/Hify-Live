@@ -156,7 +156,7 @@ struct XQAQvuU6cZLbgEView: View {
             .onTapGesture {
                 if let sessionId = manager.sessionId {
                     let session = NIMSession(sessionId, type: .P2P)
-                    pilot.push(.CgZU7mTgY46l(session: session, opponentAvatarURL: manager.senderAvatar ?? ""))
+                    pilot.push(.CgZU7mTgY46l(session: session, opponentAvatarURL: manager.senderAvatar ?? "", qOH29Z5X: false))
                 } else if manager.isSystemMessage {
                     print("系统通知点击")
                 }

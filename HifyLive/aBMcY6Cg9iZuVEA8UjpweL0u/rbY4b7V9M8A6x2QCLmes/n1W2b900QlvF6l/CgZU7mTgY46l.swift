@@ -9,6 +9,7 @@ import UIPilot
 struct CgZU7mTgY46l: View {
     let opponentAvatarURL: String
     let session: NIMSession
+    let qOH29Z5X:Bool //true sheet false pilot
         @StateObject private var vm: ChatViewModel
         @FocusState private var isInputFocused: Bool
         @StateObject private var keyboard = KeyboardResponder()
@@ -22,15 +23,17 @@ struct CgZU7mTgY46l: View {
         @State private var isw8UhB9Gj8t = false //显示举报
         @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
         @State private var xJc49zdLp: Bool = false //礼物弹框
-
+    
+    
+        @Environment(\.dismiss) private var dismiss
     
             @StateObject private var giftManager = GiftQueueManager()
     
 
-            init(session: NIMSession, opponentAvatarURL: String) {
+    init(session: NIMSession, opponentAvatarURL: String,qOH29Z5X:Bool) {
             self.session = session
             self.opponentAvatarURL = opponentAvatarURL
-
+            self.qOH29Z5X = qOH29Z5X
 
             // 然后再用它初始化 StateObject
             _vm = StateObject(wrappedValue: ChatViewModel(
@@ -62,9 +65,14 @@ struct CgZU7mTgY46l: View {
                         // 左侧关闭按钮
                         Button {
                             RecentSessionStore.shared.markSessionRead(sessionId: session.sessionId)
-                           
+                            if qOH29Z5X {
+                                dismiss()
+                            }else{
+                                pilot.pop()
+                            }
+                            
                         
-                            pilot.pop()
+                            
                         } label: {
                             ZJ7h766mz(tMmEWWlfgUag: "mHNiF9OWVl")
                                 .frame(width: 24, height: 24)
@@ -96,6 +104,7 @@ struct CgZU7mTgY46l: View {
                     }
                     .padding(.horizontal,16)
                     .padding(.bottom,23)
+                    .padding(.top,qOH29Z5X ? 12 : 0)
                     
                     
                     // 消息列表

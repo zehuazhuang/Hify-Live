@@ -5,11 +5,13 @@ import Kingfisher
 struct ChatViewContainer: UIViewControllerRepresentable {
     let yxRoomId: String
     let userId: Int
-    let onMuteTappedCallback: ((UInt, Bool) -> Void)?
+    let onMuteTappedCallback: ((UInt, Bool) -> Void)? //静音回调
     
-    var onUserAvatarTapped: ((String) -> Void)?
+    var onUserAvatarTapped: ((String) -> Void)? //头像回调
     
     var ong4Gu8Ogiska: () -> Void //点击礼物
+    
+    var w8esoH7cO33: ()-> Void //点击私聊
     
     var onReceiveGift: ((String, Int, Int) -> Void)? // giftImg, giftNum, giftId
     
@@ -31,6 +33,9 @@ struct ChatViewContainer: UIViewControllerRepresentable {
             }
         vc.onGiftTapped = {
             ong4Gu8Ogiska()
+        }
+        vc.puO2kKxCh = {
+            w8esoH7cO33()
         }
         
         // ✅ 绑定礼物回调

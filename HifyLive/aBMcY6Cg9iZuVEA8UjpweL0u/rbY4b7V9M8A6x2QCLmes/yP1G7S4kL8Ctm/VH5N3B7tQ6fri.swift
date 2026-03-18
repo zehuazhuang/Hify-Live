@@ -81,7 +81,7 @@ struct VH5N3B7tQ6fri: View {
                                         sessionStore.markSessionRead(sessionId: r.sessionId)
                                         
                                      
-                                        pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl))
+                                        pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl, qOH29Z5X: false))
                                         
                                     }
                                 )

@@ -124,7 +124,7 @@ struct J9L2X1pF8D5ms: View {
 
                                            
                                                 
-                                                pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl))
+                                                pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl, qOH29Z5X: false))
                                             },
                                          
                                         )

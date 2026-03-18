@@ -2,7 +2,7 @@ import SwiftUI
 import UIPilot
 import Photos
 import Combine
-
+import NIMSDK
 //个人、他人详情页面
 struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     //背景图index
@@ -438,32 +438,32 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                         )
                                         .cornerRadius(325)
                                         
+                        if usQ8Y7Z6Inf.int("userType") == 2 {
+                            ZStack{
+                                ZJ7h766mz(tMmEWWlfgUag: "op2sjDLkevlIcN")
+                                                   .frame(width: 242, height: 46)
+                                HStack(spacing:8){
+                                    ZJ7h766mz(tMmEWWlfgUag: "gdYHiAuKo6l")
+                                                       .frame(width: 16, height: 16)
+                                    Text("Chat").g0LIIcoZQsOjyND9(size: 18,weight: .semibold)
+                                }
+                                ZJ7h766mz(tMmEWWlfgUag: "xfn63IIKmIhi")
+                                                   .frame(width: 50, height: 26)
+                                                   .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
+                                                   .offset(y: -28)
+                            }.frame(width: 242, height: 46)
+                                .onTapGesture {
+                                    
+                                    let session = NIMSession(usQ8Y7Z6Inf.string("yxAccid"), type: .P2P)
+                                    pilot.push(.CgZU7mTgY46l(session: session, opponentAvatarURL: usQ8Y7Z6Inf.string("icon"), qOH29Z5X: false))
+                                   
+                                
+                                  
+                                    
+                                }
+                        }
+                       
                         
-                        ZStack{
-                            ZJ7h766mz(tMmEWWlfgUag: "op2sjDLkevlIcN")
-                                               .frame(width: 242, height: 46)
-                            HStack(spacing:8){
-                                ZJ7h766mz(tMmEWWlfgUag: "gdYHiAuKo6l")
-                                                   .frame(width: 16, height: 16)
-                                Text("Chat").g0LIIcoZQsOjyND9(size: 18,weight: .semibold)
-                            }
-                            ZJ7h766mz(tMmEWWlfgUag: "xfn63IIKmIhi")
-                                               .frame(width: 50, height: 26)
-                                               .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topTrailing)
-                                               .offset(y: -28)
-                        }.frame(width: 242, height: 46)
-                            .onTapGesture {
-                                
-                               
-                               
-                            
-                                openP2PChatScreen(
-                                           userId: usQ8Y7Z6Inf.string("yxAccid"),
-                                           avatarUrl: usQ8Y7Z6Inf.string("icon"),
-                                           pilot: pilot
-                                       )
-                                
-                            }
                     }.padding(.horizontal,16)
                 }
             }

@@ -56,7 +56,10 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
         let myAccount = NIMSDK.shared().loginManager.currentAccount()
         
         for message in messages {
-            
+            print("有人送礼物")
+            print(message.messageObject)
+            print("-------")
+            print(message)
             //全服公告
             if message.messageType == .custom{
                 guard let customObject = message.messageObject as? NIMCustomObject,
@@ -73,8 +76,8 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                           let type = dict["attachType"] as? String, type == "SEND_GIFT" else {
                         continue
                     }
-                    print("有人送礼物")
-                    print(jsonString)
+                  
+                   
                   
 //                    guard let giftId = dict["giftId"] as? Int,
 //                          let giftNum = dict["giftNum"] as? Int,
