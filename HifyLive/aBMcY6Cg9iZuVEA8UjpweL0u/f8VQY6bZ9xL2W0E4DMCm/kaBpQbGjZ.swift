@@ -12,6 +12,7 @@ struct kaBpQbGjZ: View {
     @State private var filteredResults: [[String: Any]] = [] //过滤数据
     @State private var xI87npb7lB: Bool = false //弹取关
     @State private var xH4Gfw7C: Int = -1 //弹框坐标用户
+    @State private var u04MQAqyQwS = false //进页面加载一次
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -104,7 +105,10 @@ struct kaBpQbGjZ: View {
             iZQ7xV4bM8Ys = false
         }
         
-        .onAppear() {
+        .onAppear{
+            guard !u04MQAqyQwS else { return }
+            u04MQAqyQwS = true
+            
             Task {
                 
                 defer {

@@ -60,6 +60,8 @@ enum APPTJuHVkDYORXa: Equatable {
     //交易记录
     case H7XMmrHFowMS7i
     //榜单排行榜
-    case Gcx3oCl1wFkbw1(t2ZCMaqlBn:Bool)
+    case Gcx3oCl1wFkbw1(t2ZCMaqlBn:Bool,gD5nKIXUMI:Int)
+    //系统通知页
+    case R9Avd3G1i846xe(session:NIMSession)
 }
 

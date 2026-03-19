@@ -79,7 +79,7 @@ class LiveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .black
         NotificationCenter.default.addObserver(self, selector: #selector(handleMuteNotification(_:)), name: .muteRemoteAudio, object: nil)
         remoteVideoView.frame = view.bounds
         remoteVideoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

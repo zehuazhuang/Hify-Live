@@ -16,10 +16,10 @@ class XQAQvuU6cZLbgE: ObservableObject {
     @Published var isSystemMessage: Bool = false
     @Published var sessionId: String? = nil  // 私聊 sessionId
     
-    private var nextMessage: (text: String, name: String?, avatar: String?, isSystem: Bool, sessionId: String?)? = nil
+    @Published var timestamp: Date = Date()
+    
+    private var nextMessage: (text: String, name: String?, avatar: String?, isSystem: Bool, sessionId: String?,timestamp: Date)? = nil
     private var currentWorkItem: DispatchWorkItem? = nil
-    
-    
     
     
     private init() {}
@@ -31,10 +31,11 @@ class XQAQvuU6cZLbgE: ObservableObject {
         avatar: String? = nil,
         isSystem: Bool = false,
         sessionId: String? = nil,
+        timestamp: Date = Date(),
         duration: Double = 3.0
     ) {
         if sVt7blcSwH {
-            nextMessage = (text, name, avatar, isSystem, sessionId)
+            nextMessage = (text, name, avatar, isSystem, sessionId,timestamp)
             currentWorkItem?.cancel()
             withAnimation { sVt7blcSwH = false }
             
@@ -42,11 +43,11 @@ class XQAQvuU6cZLbgE: ObservableObject {
                 guard let self = self else { return }
                 if let msg = self.nextMessage {
                     self.nextMessage = nil
-                    self.showMessage(msg.text, name: msg.name, avatar: msg.avatar, isSystem: msg.isSystem, sessionId: msg.sessionId, duration: duration)
+                    self.showMessage(msg.text, name: msg.name, avatar: msg.avatar, isSystem: msg.isSystem, sessionId: msg.sessionId, timestamp: msg.timestamp, duration: duration)
                 }
             }
         } else {
-            showMessage(text, name: name, avatar: avatar, isSystem: isSystem, sessionId: sessionId, duration: duration)
+            showMessage(text, name: name, avatar: avatar, isSystem: isSystem, sessionId: sessionId, timestamp: timestamp, duration: duration)
         }
     }
     
@@ -56,6 +57,7 @@ class XQAQvuU6cZLbgE: ObservableObject {
         avatar: String? = nil,
         isSystem: Bool = false,
         sessionId: String? = nil,
+        timestamp: Date,
         duration: Double
     ) {
         messageID = UUID()
@@ -64,6 +66,7 @@ class XQAQvuU6cZLbgE: ObservableObject {
         senderAvatar = avatar
         self.isSystemMessage = isSystem
         self.sessionId = sessionId
+        self.timestamp = timestamp
         
         withAnimation { sVt7blcSwH = true }
         
@@ -80,14 +83,21 @@ struct XQAQvuU6cZLbgEView: View {
     @ObservedObject var manager = XQAQvuU6cZLbgE.shared
     @State private var offsetY: CGFloat = 0
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
-    
+    @ObservedObject var sessionStore = RecentSessionStore.shared
     var body: some View {
         if manager.sVt7blcSwH, let message = manager.uKbjaEGR {
             HStack(spacing: 12) {
                 if let avatar = manager.senderAvatar {
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: avatar)
-                                        .frame(width: 48,height: 48)
-                                        .clipShape(Circle())
+                    
+                    if avatar == "system" {
+                        ZJ7h766mz(tMmEWWlfgUag: "eY8bYZrPzzM")
+                                           .frame(width: 48, height: 48)
+                    }else{
+                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: avatar)
+                                            .frame(width: 48,height: 48)
+                                            .clipShape(Circle())
+                    }
+                    
                 } else if manager.isSystemMessage {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -111,7 +121,7 @@ struct XQAQvuU6cZLbgEView: View {
                                 )
                         }
                         Spacer()
-                        Text("Just now")
+                        Text("\(manager.timestamp.xq_timeAgo())")
                             .g0LIIcoZQsOjyND9(
                                 size: 14,
                                 weight: .regular,
@@ -156,7 +166,21 @@ struct XQAQvuU6cZLbgEView: View {
             .onTapGesture {
                 if let sessionId = manager.sessionId {
                     let session = NIMSession(sessionId, type: .P2P)
-                    pilot.push(.CgZU7mTgY46l(session: session, opponentAvatarURL: manager.senderAvatar ?? "", qOH29Z5X: false))
+                    // 1️⃣ 清当前会话未读（UI）
+                    GlobalUnreadStore.shared.clearUnread(
+                        for: session.sessionId,
+                        count: 0
+                    )
+
+                    // 2️⃣ 本地缓存同步
+                    sessionStore.markSessionRead(sessionId: session.sessionId)
+                    
+                    if(sessionId == "video-sky-test"){
+                        pilot.push(.R9Avd3G1i846xe(session: session))
+                    }else{
+                        pilot.push(.CgZU7mTgY46l(session: session, opponentAvatarURL: manager.senderAvatar ?? "", qOH29Z5X: false))
+                    }
+                    
                 } else if manager.isSystemMessage {
                     print("系统通知点击")
                 }

@@ -53,14 +53,26 @@ class RecentSessionStore: ObservableObject {
             .sink { [weak self] _ in
                 guard let self else { return }
                 self.cache = RecentSessionManager.shared.cache
+                self.sortCache()
             }
             .store(in: &cancellables)
+    }
+    
+    private func sortCache() {
+        cache.sort { first, second in
+            // video-sky-test 永远第一
+            if first.sessionId == "video-sky-test" { return true }
+            if second.sessionId == "video-sky-test" { return false }
+            // 其他按时间戳降序排序
+            return first.timestamp > second.timestamp
+        }
     }
     
     // 拉取最近会话
     func fetchRecentSessions() {
         RecentSessionManager.shared.fetchRecentSessions {
             self.cache = RecentSessionManager.shared.cache
+            self.sortCache()
             self.syncGlobalUnread()
         }
     }
@@ -91,6 +103,7 @@ class RecentSessionStore: ObservableObject {
         // 删除本地缓存
         RecentSessionManager.shared.removeSession(withId: id)
         self.cache = RecentSessionManager.shared.cache
+        sortCache()
     }
     
     // SDK delegate
@@ -101,7 +114,7 @@ class RecentSessionStore: ObservableObject {
                local.unreadCount = recentSession.unreadCount
                local.lastMessageText = recentSession.lastMessage?.text ?? ""
                local.timestamp = recentSession.lastMessage?.timestamp ?? 0
-
+               self.sortCache()
                objectWillChange.send()
                // ✅ 全局未读同步
                GlobalUnreadStore.shared.update(from: cache)

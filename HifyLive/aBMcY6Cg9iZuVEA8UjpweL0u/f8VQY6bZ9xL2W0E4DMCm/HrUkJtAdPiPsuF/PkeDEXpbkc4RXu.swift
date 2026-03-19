@@ -92,7 +92,7 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
 
     // MARK: - 处理所有已存在未完成订单
     private func checkUnfinishedTransactions() {
-        print("1")
+       
         
         let transactions = SKPaymentQueue.default().transactions
         
@@ -166,12 +166,12 @@ extension PkeDEXpbkc4RXu: SKPaymentTransactionObserver {
                         
                     } else {
                         
-                        // ❌ 其他错误
+                        
                         Task { @MainActor in
-                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                                .m3nArFwdHhI82cPUmiqW8PtaaHz("keKanlrl/Y+CpZ3rb2tMYQ==", type: 1,
-                                                             )
-                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+//                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+//                                .m3nArFwdHhI82cPUmiqW8PtaaHz("keKanlrl/Y+CpZ3rb2tMYQ==", type: 1,
+//                                                             )
+//                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                             print("支付失败: \(error.localizedDescription)")
                         }
                     }
@@ -196,7 +196,7 @@ extension PkeDEXpbkc4RXu {
 
     @MainActor
     private func jq2fbQgRa0hTZ4(_ transaction: SKPaymentTransaction) {
-        
+       
       
         let purchaseID = transaction.transactionIdentifier ?? ""
                 let serverVerificationData: String
@@ -208,7 +208,7 @@ extension PkeDEXpbkc4RXu {
                   serverVerificationData = ""
                 }
         
-        
+       
         
         let cousde = "{\"orderCode\":\"\(q8R2T9vC5MZ)\"}"
         
@@ -220,7 +220,7 @@ extension PkeDEXpbkc4RXu {
         )
         pendingTransactions.append(pending)
         savePendingTransactions()
-        
+       
         Task {
             do {
                 defer {
@@ -228,15 +228,11 @@ extension PkeDEXpbkc4RXu {
                                 SKPaymentQueue.default().finishTransaction(transaction)
                                 
                       }
-                // 2️⃣ 发给服务器
-//                //测试补单
-//                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-//                return
+
                 
      
                let result = try await n3Qw6R9Xb1K(kL2Q7ZxM8R: purchaseID, z8Y1QxL4Z8v: serverVerificationData, x8V6N2kL9MZ: cousde)
-                
-             
+              
              
                 if(result){
                     

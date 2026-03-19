@@ -18,8 +18,8 @@ class RecentSessionManager: ObservableObject {
 
         for r in sessions {
             guard let s = r.session,
-                  !s.sessionId.isEmpty,
-                  s.sessionId != "video-sky-test" //屏蔽系统通知 充值钻石通知
+                  !s.sessionId.isEmpty
+             //     s.sessionId != "video-sky-test" //屏蔽系统通知 充值钻石通知
             else { continue }
             
 
@@ -124,13 +124,33 @@ class RecentSessionManager: ObservableObject {
             )
             cache.append(newCache)
         }
-        XQAQvuU6cZLbgE.shared.vEnu5pS9V(
-            text: lastMessageText,
-            name: userInfo?.nickname ?? accid,
-            avatar: userInfo?.avatarUrl ?? "",
-            isSystem: false,
-            sessionId: accid
-        )
+        
+        if  accid == "video-sky-test" {
+//                                                XQAQvuU6cZLbgE.shared.vEnu5pS9V(
+//                                                    text: "服务器将在10分钟后维护",
+//                                                    isSystem: true
+//                                                )
+            
+            print(userInfo?.avatarUrl ?? "")
+            XQAQvuU6cZLbgE.shared.vEnu5pS9V(
+                text: "Top-up successful! \(lastMessageText) Diamonds has been credited to your account. ",
+                name: "Eivo Team",
+                avatar: "system",
+                isSystem: false,
+                sessionId: accid,
+                timestamp: Date(timeIntervalSince1970: message.timestamp)
+            )
+        }else{
+            XQAQvuU6cZLbgE.shared.vEnu5pS9V(
+                text: lastMessageText,
+                name: userInfo?.nickname ?? accid,
+                avatar: userInfo?.avatarUrl ?? "",
+                isSystem: false,
+                sessionId: accid,
+                timestamp: Date(timeIntervalSince1970: message.timestamp)
+            )
+        }
+        
        
     }
 

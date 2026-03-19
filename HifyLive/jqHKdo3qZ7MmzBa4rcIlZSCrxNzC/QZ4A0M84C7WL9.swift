@@ -8,7 +8,7 @@ struct QZ4A0M84C7WL9: View {
     let sBb3SaType : Int //0 userId 1 yxAccid
     let uZQx7MId : Int //用户userId
     let hN9EY2BId : String //用户yxAccid
-    let nIq2dmKcGA0: (String) -> Void
+    let nIq2dmKcGA0: (String, String) -> Void
     @Binding var isW9YQ6C8L: Bool
     @State private var isZ7E4xA0M2 = false
     @State private var info9M0Q2A6: [String: Any] = [:] //用户数据
@@ -175,7 +175,7 @@ struct QZ4A0M84C7WL9: View {
                                                    .frame(width: 46, height: 46)
                                                    .onTapGesture {
                                                        isW9YQ6C8L = false
-                                                       nIq2dmKcGA0(info9M0Q2A6.string("yxAccid"))
+                                                       nIq2dmKcGA0(info9M0Q2A6.string("yxAccid"), info9M0Q2A6.string("icon"))
                                                    }
                             }
                             

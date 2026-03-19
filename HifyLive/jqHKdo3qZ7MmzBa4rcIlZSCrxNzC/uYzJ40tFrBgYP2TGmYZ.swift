@@ -21,6 +21,24 @@ extension Date {
         mBqzyLFhbMWNzgLYVNonQZdNjc.timeZone = .current
         return mBqzyLFhbMWNzgLYVNonQZdNjc.string(from: self)
     }
+    
+    func xq_timeAgo() -> String {
+           let seconds = Int(Date().timeIntervalSince(self))
+           
+           if seconds < 60 {
+               return "Just now"
+           } else if seconds < 3600 {
+               return "\(seconds / 60)m ago"
+           } else if seconds < 86400 {
+               return "\(seconds / 3600)h ago"
+           } else {
+               let formatter = DateFormatter()
+               formatter.dateFormat = "MM/dd HH:mm"
+               formatter.locale = Locale(identifier: "en_US_POSIX")
+               formatter.timeZone = .current
+               return formatter.string(from: self)
+           }
+       }
 }
 //数字太大转换
 extension Int {

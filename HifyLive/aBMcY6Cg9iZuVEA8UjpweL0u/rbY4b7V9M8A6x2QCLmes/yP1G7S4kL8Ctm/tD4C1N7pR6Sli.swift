@@ -9,17 +9,24 @@ struct tD4C1N7pR6Sli: View {
     
 
     var body: some View {
+        let sXQUGIrFOr = rN1Z8mR.sessionId == "video-sky-test"
         HStack(spacing:10){
             ZStack{
-                ZStack{
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: rN1Z8mR.avatarUrl)
-                                       .frame(width: 44, height: 44)
-                                       .clipShape(Circle())
-                                       .allowsHitTesting(false)
-                    
-                }.frame(width: 48, height: 48)
-                    .background(.white.opacity(0.1))
-                    .clipShape(Circle())
+                if(sXQUGIrFOr) {
+                    ZJ7h766mz(tMmEWWlfgUag: "eY8bYZrPzzM")
+                                       .frame(width: 48, height: 48)
+                }else{
+                    ZStack{
+                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: rN1Z8mR.avatarUrl)
+                                               .frame(width: 44, height: 44)
+                                               .clipShape(Circle())
+                                               .allowsHitTesting(false)
+                        
+                    }.frame(width: 48, height: 48)
+                        .background(.white.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                
                 //在线状态
 //                ZJ7h766mz(tMmEWWlfgUag: "zxM23M2tC38")
 //                                   .frame(width: 10, height: 10)
@@ -28,18 +35,22 @@ struct tD4C1N7pR6Sli: View {
 //                                   .padding(.bottom,2)
             }.frame(width: 48, height: 48)
             VStack(alignment:.leading,spacing:3){
-                Text(rN1Z8mR.nickname)
-                                .g0LIIcoZQsOjyND9(
-                                    size: 16,
-                                    weight: .medium
-                                )
-                Text(rN1Z8mR.lastMessageText)
-                                .g0LIIcoZQsOjyND9(
-                                    size: 14,
-                                    weight: .regular,
-                                    color: .white.opacity(0.6)
-                                ).lineLimit(1)
-                                .truncationMode(.tail)
+                
+                Text(sXQUGIrFOr ? "Platform" : rN1Z8mR.nickname)
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 16,
+                                        weight: .medium
+                                    )
+                Text(sXQUGIrFOr ? "Top-up successful! \(rN1Z8mR.lastMessageText) Diamonds has been credited to your account. " : rN1Z8mR.lastMessageText)
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 14,
+                                        weight: .regular,
+                                        color: .white.opacity(0.6)
+                                    ).lineLimit(1)
+                                    .truncationMode(.tail)
+                
+                
+                
             }
             Spacer()
             
@@ -55,17 +66,23 @@ struct tD4C1N7pR6Sli: View {
                                     )
                     Spacer()
                     if rN1Z8mR.unreadCount > 0 {
-                        Text("\(rN1Z8mR.unreadCount)")
-                            .g0LIIcoZQsOjyND9(
-                                size: 14,
-                                weight: .regular
-                            )
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(
-                                Circle()
-                                    .fill(Color.red)
-                            )
+                        if(sXQUGIrFOr) {
+                            ZJ7h766mz(tMmEWWlfgUag: "pCK3TVVxu")
+                                               .frame(width: 28, height: 20)
+                        }else{
+                            Text("\(rN1Z8mR.unreadCount)")
+                                .g0LIIcoZQsOjyND9(
+                                    size: 14,
+                                    weight: .regular
+                                )
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(
+                                    Circle()
+                                        .fill(Color.red)
+                                )
+                        }
+                        
                     }
                 }.frame(height: 48)
            
@@ -75,6 +92,7 @@ struct tD4C1N7pR6Sli: View {
         .padding(.horizontal,16)
         .contentShape(Rectangle())
         .onTapGesture { onTap(rN1Z8mR) }
+        
     }
 }
 

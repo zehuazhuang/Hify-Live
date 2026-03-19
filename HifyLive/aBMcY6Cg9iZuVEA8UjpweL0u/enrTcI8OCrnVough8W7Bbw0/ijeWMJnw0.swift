@@ -489,7 +489,7 @@ struct ijeWMJnw0: View {
                                                 
                                                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("O+768P8m4+RBzx9Wfs59VxDj5rLB58mh8yswpq0JtVY=",type: 0)
                                                 
-                                               
+                                                bffDlNRAqVaG4T()
                                                 //初始化云信
                                                 IdVwDkHotdjRqB()
                                                 

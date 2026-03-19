@@ -26,9 +26,8 @@ struct LE0xQZ6Y7WC8iv: View {
     @StateObject private var giftManager = GiftQueueManager() //特效
     
     @State private var showRankSheet: Bool = false //在线人数弹框
-    @State private var zpX1K1CogQ6: Bool = false //房主私聊
-    @State private var ahzQOxcnxEI: String = "" //私聊账号
-    @State private var session: NIMSession? = nil
+    @State private var ahzQOxcnxEI: String = "" //对方头像
+    @State private var chatSession: ChatSessionWrapper?
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
         self.localUid = localUid
@@ -66,14 +65,12 @@ struct LE0xQZ6Y7WC8iv: View {
                     }
                                      },
                                   w8esoH7cO33: {
-                    ahzQOxcnxEI = liveRoomData.string("yxAccid")
-                    session = NIMSession(ahzQOxcnxEI, type: .P2P)
                     
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            zpX1K1CogQ6 = true
-                        }
-                    }
+                  
+                    let session = NIMSession(liveRoomData.string("yxAccid"), type: .P2P)
+                    chatSession = ChatSessionWrapper(session: session, u1NCaZAWMA: liveRoomData.string("icon"))
+                    
+                   
                                      },
                                   onReceiveGift: { giftImg, giftNum, giftId in
                     guard let url = URL(string: giftImg) else { return }
@@ -243,15 +240,13 @@ struct LE0xQZ6Y7WC8iv: View {
             
             //底部用户弹框
             if showY2E8Qsc {
-                QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, nIq2dmKcGA0: {t6FBqjXlaJ in
+                QZ4A0M84C7WL9(sBb3SaType:rlUlyPhType,uZQx7MId: uY0E4QZ9MLId,hN9EY2BId:gGs5OpWId, nIq2dmKcGA0: {t6FBqjXlaJ,djMiejuudZ in
                     //私聊半屏
-                    ahzQOxcnxEI = t6FBqjXlaJ
-                    session = NIMSession(ahzQOxcnxEI, type: .P2P)
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            zpX1K1CogQ6 = true
-                        }
-                    }
+                    
+                
+                    let session = NIMSession(t6FBqjXlaJ, type: .P2P)
+                    chatSession = ChatSessionWrapper(session: session, u1NCaZAWMA: djMiejuudZ)
+                    
                 }, isW9YQ6C8L: $showY2E8Qsc)
             }
             
@@ -291,26 +286,27 @@ struct LE0xQZ6Y7WC8iv: View {
             GiftAnimationPlayer(manager: giftManager)
             
             //关播页面
-//            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
-//                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
-//            }
+            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
+                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
+            }
         }.sheet(isPresented: $showRankSheet) {
             Gcx3oCl1wFkbw1(
                 zCwukl6av48X: true,
-                uNZ9IM5OK: eLx8RIeCY
+                uNZ9IM5OK: eLx8RIeCY,
+                gD5nKIXUMI: liveRoomData.int("id"),
+                
             )
             .environmentObject(pilot)
             .presentationDetents([.fraction(0.75)])
-        }.sheet(isPresented: $zpX1K1CogQ6) {
-            
-            if let session = session {
-                    CgZU7mTgY46l(
-                        session: session,
-                        opponentAvatarURL: "eLx8RIeCY", qOH29Z5X: true
-                    )
-                    .environmentObject(pilot)
-                    .presentationDetents([.fraction(0.75)])
-                }
+        }.sheet(item: $chatSession) { wrapper in
+            CgZU7mTgY46l(
+                session: wrapper.session,
+                opponentAvatarURL: wrapper.u1NCaZAWMA,
+                qOH29Z5X: true
+            )
+            .environmentObject(pilot)
+            .presentationDetents([.fraction(0.75)])
+            .presentationBackground(.clear)
         }
        
         
@@ -421,5 +417,14 @@ struct LiveViewContainer: UIViewControllerRepresentable {
         context: Context
     ) {
         uiViewController.updateIfNeeded(liveRoomData: liveRoomData)
+    }
+}
+
+struct ChatSessionWrapper: Identifiable {
+    let session: NIMSession
+    let u1NCaZAWMA: String   // 对方头像
+    
+    var id: String {
+        session.sessionId
     }
 }

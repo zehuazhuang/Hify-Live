@@ -23,6 +23,7 @@ struct CgZU7mTgY46l: View {
         @State private var isw8UhB9Gj8t = false //显示举报
         @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
         @State private var xJc49zdLp: Bool = false //礼物弹框
+        @State private var iFMUtEu7sKn: Bool = false//显示充值商店
     
     
         @Environment(\.dismiss) private var dismiss
@@ -229,8 +230,26 @@ struct CgZU7mTgY46l: View {
                 //礼物弹框
                 if xJc49zdLp {
                     QX10IFCuguXvQa(dyzmBppNrJ: $xJc49zdLp, jhqguQVC07: {
-                      
+                        withAnimation{
+                            iFMUtEu7sKn = true
+                        }
                     }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", jEhg1fS1G8: 0, tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
+                }
+                
+                //商店弹框
+                if iFMUtEu7sKn {
+                    ZStack{
+                        // 半透明背景
+                        Color.black.opacity(0.3)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation { iFMUtEu7sKn = false }
+                            }
+                        // 弹窗本体
+                        Afmox09Q1UKVfE(daPQCKaHi: true)
+                            .frame(height: 580)
+                            .frame(maxHeight: .infinity,alignment:.bottom)
+                    }
                 }
                 
                 

@@ -335,19 +335,21 @@ struct Afmox09Q1UKVfE: View {
                                                 
                                                 
                                                 
-                                                print("1")
-                                                print(resu)
+                                                
                                                 if let nDgOeiB = resu["diamondNum"] as? Int, nDgOeiB > 0 {
-                                                    print("2")
+                                                   
                                                     pkeDEXpbkc4RXu.nN2B7Q5M9 = nDgOeiB
                                                     
                                                    
                                                     
                                                     await pkeDEXpbkc4RXu.mZ6DqgRigNqO(productId: productId)
                                                 }else{
+                                                    
+                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+                                                        .m3nArFwdHhI82cPUmiqW8PtaaHz("9iAqOoev7u+Hb7ijU+sP4I2HtgPqdR9tyb5KqXs4D8I=", type: 1)
                                                     EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 }
-                                                print("3")
+                                                
                                                 
                                             }else{
                                                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -391,8 +393,7 @@ struct Afmox09Q1UKVfE: View {
                 
                 mCbSNX6z2hzQ = try await gtR8YJncg8Z()
                 
-                print("钻石数据")
-                print(mCbSNX6z2hzQ)
+              
                
                 if let list = mCbSNX6z2hzQ["skuList"] as? [[String: Any]] {
                     

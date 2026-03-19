@@ -22,6 +22,9 @@ final class IyfdHMdY: ObservableObject {
     /// 是否已加载完数据
     @Published var rzeKD010L4fVwfSUlarrt: Bool = false
     
+    //榜单token
+    @Published var xA6pKFG9JJCo: String = ""
+    
     //await获取当前用户关注粉丝列表
     @MainActor
     func vf0AD3wYQxpfxxjs2pE7PuO66Wls(_ tfKmqT: Int) async {
@@ -50,6 +53,21 @@ final class IyfdHMdY: ObservableObject {
         } catch {
             if tfKmqT == 3 { self.n1G8RlzpcQK = [] }
             if tfKmqT == 2 { self.iF2ouR0gHFDSr3GJ = [] }
+        }
+    }
+    
+
+}
+
+//await获取榜单token
+@MainActor
+func bffDlNRAqVaG4T()  {
+    Task{
+        do {
+            let tYq5ZIA = try await giz2OZsRuin()
+            IyfdHMdY.bTa3L6BoprG.xA6pKFG9JJCo = tYq5ZIA.string("tokenValue")
+        } catch {
+            IyfdHMdY.bTa3L6BoprG.xA6pKFG9JJCo = ""
         }
     }
 }

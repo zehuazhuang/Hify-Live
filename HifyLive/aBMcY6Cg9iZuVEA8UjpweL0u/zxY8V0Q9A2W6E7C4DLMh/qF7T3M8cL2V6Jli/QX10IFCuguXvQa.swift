@@ -67,9 +67,7 @@ struct QX10IFCuguXvQa: View {
                             .g0LIIcoZQsOjyND9(
                                 size: 16,
                                 weight: .semibold
-                            ).onTapGesture {
-                                jhqguQVC07()
-                            }
+                            )
                         
                         Spacer()
                     }
@@ -278,11 +276,11 @@ struct QX10IFCuguXvQa: View {
                                                 if pQWBOM > 0 {
                                                     jbPyc3Dneh.iBmPfFGfxu5JV7Aii7["diamondNum"] = pQWBOM
                                                     
-                                                    //                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                                                    //                                                        .m3nArFwdHhI82cPUmiqW8PtaaHz(
-                                                    //                                                            "hxoNlqzSCI1zcQXENty8Hg==",
-                                                    //                                                            subFontText: "Your gift has been delivered to \(vTubwwYkiq)"
-                                                    //                                                        )
+                                                     QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+                                                       .m3nArFwdHhI82cPUmiqW8PtaaHz(
+                                                        "hxoNlqzSCI1zcQXENty8Hg==",
+                                                        subFontText: "Your gift has been delivered to \(vTubwwYkiq)"
+                                                                                                            )
                                                 }
                                             } catch {
                                                 print("\(error)")
@@ -290,8 +288,8 @@ struct QX10IFCuguXvQa: View {
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                         }
                                     }else{
-                                        //余额不足弹出充值 未做
                                         
+                                        jhqguQVC07()
                                     }
                                     
                                     
