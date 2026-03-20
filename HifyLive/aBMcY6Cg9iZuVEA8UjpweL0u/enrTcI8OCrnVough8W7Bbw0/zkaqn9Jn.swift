@@ -75,28 +75,35 @@ struct zkaqn9Jn: View {
                 Spacer()
                 VStack(spacing: 68){
                     VStack(spacing: 24) {
-                        //                        RoundedRectangle(cornerRadius: 36)
-                        //                            .fill(Color.white)
-                        //                            .frame(height: 48)
-                        //                            .overlay(alignment: .center) {
-                        //                                HStack{
-                        //                                    RoundedRectangle(cornerRadius: 0)
-                        //                                        .fill(Color.clear)
-                        //                                        .frame(width: 24,height: 24)
-                        //                                        .overlay {
-                        //                                            ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
-                        //                                        }
-                        //                                    Spacer()
-                        //                                }
-                        //                                .padding(.leading,24)
-                        //                                Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
-                        //                                    .g0LIIcoZQsOjyND9(
-                        //                                        size: 16,
-                        //                                        weight: .semibold,
-                        //                                        color: Color(red: 13/255, green: 13/255, blue: 18/255)
-                        //                                    )
-                        //                            }
-                        //                            .padding(.horizontal,36)
+//                        //Facebook
+//                        Button{
+//                            
+//                        }label:{
+//                            RoundedRectangle(cornerRadius: 36)
+//                                .fill(Color.white)
+//                                .frame(height: 48)
+//                                .overlay(alignment: .center) {
+//                                    HStack{
+//                                        RoundedRectangle(cornerRadius: 0)
+//                                            .fill(Color.clear)
+//                                            .frame(width: 24,height: 24)
+//                                            .overlay {
+//                                                ZJ7h766mz(tMmEWWlfgUag: "gJC9l7qXpl")
+//                                            }
+//                                        Spacer()
+//                                    }
+//                                    .padding(.leading,24)
+//                                    Text("RkJq0jqVpdoZguzw8ewIYA==".bFHEatcgE4zzU9TCfDonsu())
+//                                        .g0LIIcoZQsOjyND9(
+//                                            size: 16,
+//                                            weight: .semibold,
+//                                            color: Color(red: 13/255, green: 13/255, blue: 18/255)
+//                                        )
+//                                }
+//                                .padding(.horizontal,36)
+//                        }
+                                     
+                        //Google
                         Button{
                             EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                             MNcU5G2d5lovPsrWsZR.qmeyXuu0AeNRHIjoVH8WkPZTOKbDpgVv.uN4EYG5707zDhAdkPqw(x32VMaqCadHB: dy8ovFCSzlHO2h()) { sVaytka8rmaCF in

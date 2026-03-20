@@ -68,10 +68,17 @@ struct QZ4A0M84C7WL9: View {
                     Circle()
                         .fill(Color.white.opacity(0.2))
                             .frame(width: 88, height: 88)
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: info9M0Q2A6.string("icon"))
-                        .frame(width: 80,height: 80)
-                        .clipShape(Circle())
-                        .allowsHitTesting(false)
+                    if info9M0Q2A6.string("icon") == "" {
+                        ZJ7h766mz(tMmEWWlfgUag: "gCZGrlvVVn1D")
+                            .frame(width: 80,height: 80)
+                            .clipShape(Circle())
+                    }else{
+                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: info9M0Q2A6.string("icon"))
+                            .frame(width: 80,height: 80)
+                            .clipShape(Circle())
+                            .allowsHitTesting(false)
+                    }
+                    
                     
                     
                 }.frame(width: 88, height: 88)

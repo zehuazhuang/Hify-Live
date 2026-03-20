@@ -1363,7 +1363,7 @@ func d34SzmkHKFl(mcIOzuQURD:Int,phqabUmw:Int) async throws -> [[String: Any]] {
 
 //查财富榜
 @MainActor
-func vFTFn8eFEdr() async throws -> [[String: Any]] {
+func vFTFn8eFEdr(wvh5z2I6H:String) async throws -> [[String: Any]] {
     guard let url = URL(string: "https://vvi.cphub.link\("/sapi/weidou/v1/client/party/room/rank/getUserRichRanks")") else {
         throw URLError(.badURL)
     }
@@ -1377,7 +1377,66 @@ func vFTFn8eFEdr() async throws -> [[String: Any]] {
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
     
     let body: [String: Any] = [
-        "rankType":"day",
+        "rankType":wvh5z2I6H,
+    ]
+
+    let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
+    request.httpBody = encryptedString.data(using: .utf8)
+
+    
+    let (data, _) = try await URLSession.shared.data(for: request)
+    
+    let json = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let dict = json as? [String: Any] else {
+        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
+    }
+    
+    // 解密 result
+    guard let resultStr = dict["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String,
+          let resultData = resultStr.hL9dV3bQ2fK6sJ8p().data(using: .utf8) else {
+        return []
+    }
+    
+    // 将 JSON 数据转换为数组
+    let resultArray = try JSONSerialization.jsonObject(with: resultData, options: [])
+  
+    guard let tU1FEzyQrLe = resultArray as? [String: Any] else {
+        return []
+    }
+   
+    guard let rankList = tU1FEzyQrLe["rankList"] as? [[String: Any]] else {
+        return []
+    }
+    
+    if let code = dict["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "200" {
+        return rankList
+    } else {
+        return []
+    }
+}
+
+//查魅力榜
+@MainActor
+func dB2EuHa3VY3u(mXaJwcQS7e:String) async throws -> [[String: Any]] {
+    guard let url = URL(string: "https://vvi.cphub.link\("/sapi/weidou/v1/client/party/room/rank/getCharmRanks")") else {
+        throw URLError(.badURL)
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
+    request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(IyfdHMdY.bTa3L6BoprG.xA6pKFG9JJCo, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    
+    let body: [String: Any] = [
+        "rankType":mXaJwcQS7e,
     ]
 
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])

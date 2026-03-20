@@ -286,9 +286,9 @@ struct LE0xQZ6Y7WC8iv: View {
             GiftAnimationPlayer(manager: giftManager)
             
             //关播页面
-            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
-                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
-            }
+//            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
+//                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
+//            }
         }.sheet(isPresented: $showRankSheet) {
             Gcx3oCl1wFkbw1(
                 zCwukl6av48X: true,

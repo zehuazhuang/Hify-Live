@@ -220,7 +220,7 @@ struct lhOJY7byauJZOO6Kfr3SaKy6: View {
                                             }
                                             .padding(.vertical,12)
                                             .onTapGesture {
-                                                
+                                                pilot.push(.zpPt6HEcUfuVXHI2CXtIaD1P)
                                             }
                                         
                                      

@@ -1,5 +1,6 @@
 import SwiftUI
 import UIPilot
+import NIMSDK
 //榜单排行榜
 struct Gcx3oCl1wFkbw1: View {
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
@@ -9,8 +10,12 @@ struct Gcx3oCl1wFkbw1: View {
     let zCwukl6av48X : Bool //true 直播进 false 首页进
     let uNZ9IM5OK : [[String: Any]] //在线用户数据
     let gD5nKIXUMI: Int //直播间id
-    
     @State private var xB4BENFOp: Bool = true // true Contribute false Online Viewers
+    @State private var cwom50hBfhTc: Bool = false //底部用户弹框
+    @State private var pQN3C5FxRi: Int = 0 //点击用户坐标
+    @State private var chatSession: ChatSessionWrapper? //半屏私聊
+    @State private var wYh4kyARQ: [String: Any] = [:] //当前用户的财富榜数据
+    
     init(
         zCwukl6av48X: Bool,
         uNZ9IM5OK: [[String: Any]] = [],
@@ -258,47 +263,62 @@ struct Gcx3oCl1wFkbw1: View {
                         }
                         
                         
-                        HStack(alignment: .bottom, spacing: 28) {
-                            
+                        HStack(alignment: .bottom, spacing: 0) {
+
                             // 第二名
-                            if atFBCJ7aeWP.count > 1 {
-                                RankItemView(
-                                    gDKv25ocXI: atFBCJ7aeWP[1],
-                                    colors: [
-                                        Color(red: 167/255, green: 202/255, blue: 255/255),
-                                        Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                    ],
-                                    rO06IvkUE: "gIQ4nRP"
-                                )
-                                .offset(y: 20) // 👈 往下压
-                            }
-                           
-                            if atFBCJ7aeWP.count > 0 {
-                                // 第一名（最高）
-                                RankItemView(
-                                    gDKv25ocXI: atFBCJ7aeWP[0],
-                                    colors: [
-                                        Color(red: 255/255, green: 248/255, blue: 136/255),
-                                        Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                    ],
-                                    rO06IvkUE: "x1Tms9QGDc"
-                                )
-                            }
-                           
-                            if atFBCJ7aeWP.count > 2 {
-                                // 第三名
-                                RankItemView(
-                                    gDKv25ocXI: atFBCJ7aeWP[2],
-                                    colors: [
-                                        Color(red: 255/255, green: 216/255, blue: 204/255),
-                                        Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                    ],
-                                    rO06IvkUE: "oxk8XBdCod"
-                                )
-                                .offset(y: 30) // 👈 更低
-                            }
-                           
-                        }.padding(.horizontal,16)
+                            RankItemView(
+                                gDKv25ocXI: atFBCJ7aeWP.count > 1 ? atFBCJ7aeWP[1] : [:],
+                                colors: [
+                                    Color(red: 167/255, green: 202/255, blue: 255/255),
+                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                ],
+                                rO06IvkUE: "gIQ4nRP",
+                                a5MYGuUu: zCwukl6av48X,
+                                uF7VFlMQa: {
+                                    withAnimation{
+                                        pQN3C5FxRi = 1
+                                        cwom50hBfhTc = true
+                                    }
+                                }
+                            )
+                            .offset(y: 20)
+
+                            // 第一名（最高）
+                            RankItemView(
+                                gDKv25ocXI: atFBCJ7aeWP.count > 0 ? atFBCJ7aeWP[0] : [:],
+                                colors: [
+                                    Color(red: 255/255, green: 248/255, blue: 136/255),
+                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                ],
+                                rO06IvkUE: "x1Tms9QGDc",
+                                a5MYGuUu: zCwukl6av48X,
+                                uF7VFlMQa: {
+                                    withAnimation{
+                                        pQN3C5FxRi = 0
+                                        cwom50hBfhTc = true
+                                    }
+                                }
+                            )
+
+                            // 第三名
+                            RankItemView(
+                                gDKv25ocXI: atFBCJ7aeWP.count > 2 ? atFBCJ7aeWP[2] : [:],
+                                colors: [
+                                    Color(red: 255/255, green: 216/255, blue: 204/255),
+                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                ],
+                                rO06IvkUE: "oxk8XBdCod",
+                                a5MYGuUu: zCwukl6av48X,
+                                uF7VFlMQa: {
+                                    withAnimation{
+                                        pQN3C5FxRi = 2
+                                        cwom50hBfhTc = true
+                                    }
+                                }
+                            )
+                            .offset(y: 30)
+                        }
+                        .padding(.horizontal, 16)
                         
                         ZJ7h766mz(tMmEWWlfgUag: "xbEr5dtzc93v")
                                            .frame(height: 60)
@@ -319,9 +339,11 @@ struct Gcx3oCl1wFkbw1: View {
                                         rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: uNZ9IM5OK[index].string("icon"))
                                                             .frame(width: 44,height: 44)
                                                             .clipShape(Circle())
+                                                            .allowsHitTesting(false)
                                     }.frame(width: 48,height: 48)
                                         .background(.white.opacity(0.19))
                                         .clipShape(Circle())
+                                        
                                     Spacer().frame(width: 12)
                                     Text(uNZ9IM5OK[index].string("nickname"))
                                                     .g0LIIcoZQsOjyND9(
@@ -342,40 +364,175 @@ struct Gcx3oCl1wFkbw1: View {
                 ScrollView {
                     VStack(spacing:12){
                         ForEach(Array(atFBCJ7aeWP.dropFirst(3).enumerated()), id: \.offset) { offset, item in
-                            OG8SPSFgtz0zns(cvqRWsK91e: item, pErJCVH3JV: offset + 4)
+                            OG8SPSFgtz0zns(cvqRWsK91e: item, pErJCVH3JV: offset + 4,
+                                           uF7VFlMQa: {
+                                withAnimation{
+                                    pQN3C5FxRi = offset + 3
+                                    cwom50hBfhTc = true
+                                }
+                            })
+                                
                         }
                     }
                 }.padding(.horizontal,16)
                 .padding(.top,zCwukl6av48X ? 386 : 340)
+                .padding(.bottom,h3HxHKT2xF ? 60 :0)
             }
-                
+           
             
-//            if xB4BENFOp {
-//                VStack(spacing:8){
-//                    Spacer()
-//                    RoundedRectangle(cornerRadius: 0)
-//                        .fill(Color.white.opacity(0.15))
-//                        .frame(height: 1)
-//                        .frame(maxWidth: .infinity)
-//                    OG8SPSFgtz0zns(cvqRWsK91e: [:], pErJCVH3JV: 99)
-//                        .padding(.horizontal,16)
-//                
-//                }
-//            }
+            //底部自己
+            if xB4BENFOp && h3HxHKT2xF {
+                let rankValue = a5MYGuUu ? wYh4kyARQ.int("costNum") : Int(wYh4kyARQ.string("rankValue")) ?? 0
+                let sqSXyQKd = a5MYGuUu ? wYh4kyARQ.string("icon") : wYh4kyARQ.string("avatar")
+                
+                
+                VStack(spacing:8){
+                    Spacer()
+                    RoundedRectangle(cornerRadius: 0)
+                        .fill(Color.white.opacity(0.15))
+                        .frame(height: 1)
+                        .frame(maxWidth: .infinity)
+                    HStack(spacing:0){
+                        ZStack{
+                            HStack{
+                                Text(wYh4kyARQ.int("rankIndex") == 0 ? "50+" : "\(wYh4kyARQ.int("rankIndex"))")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 16,
+                                                    weight: .semibold
+                                                )
+                                Spacer()
+                            }
+                            
+                            HStack{
+                                ZStack{
+                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("icon"))
+                                                        .frame(width: 44,height: 44)
+                                                        .clipShape(Circle())
+                                                        .allowsHitTesting(false)
+                                }.frame(width: 48,height: 48)
+                                    .background(.white.opacity(0.19))
+                                    .clipShape(Circle())
+                                    
+                                Spacer().frame(width: 10)
+                                Text(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.string("nickname"))
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 14,
+                                                    weight: .medium
+                                                )
+                                Spacer()
+                                HStack(spacing:8){
+                                    ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
+                                        .frame(width: 16, height: 16)
+                                   
+                                    Text("\(rankValue.shLK3lGBF())")
+                                                    .g0LIIcoZQsOjyND9(
+                                                        size: 14,
+                                                        weight: .regular
+                                                    )
+                                }
+                            }.padding(.leading,36)
+                        }
+                        
+                        
+                        
+                    }.padding(.horizontal,16)
+                        
+                }
+            }
+            
+            
+            //底部用户弹框
+
+            if cwom50hBfhTc, atFBCJ7aeWP.indices.contains(pQN3C5FxRi) {
+                QZ4A0M84C7WL9(
+                    sBb3SaType: 1,
+                    uZQx7MId: atFBCJ7aeWP[pQN3C5FxRi].int("userId"),
+                    hN9EY2BId: atFBCJ7aeWP[pQN3C5FxRi].string("yxAccid"),
+                    nIq2dmKcGA0: { t6FBqjXlaJ,djMiejuudZ in
+                        //私聊半屏
+                        let session = NIMSession(t6FBqjXlaJ, type: .P2P)
+                        chatSession = ChatSessionWrapper(session: session, u1NCaZAWMA: djMiejuudZ)
+                    },
+                    isW9YQ6C8L: $cwom50hBfhTc
+                )
+            }
             
         }.onAppear{
             Task{
-                if zCwukl6av48X {
-                    print("房间")
-                    print(gD5nKIXUMI)
-                    atFBCJ7aeWP =  try await qYJEUV2QGq6U(qAloWEox0: "now", jSaWDcnOS: gD5nKIXUMI)
+               await vdD89xwThuLoad()
+            }
+        }.onChange(of: o6a4AyPmo) { _ in
+            Task {
+                await vdD89xwThuLoad()
+            }
+        }.onChange(of: h3HxHKT2xF) { _ in
+            Task {
+                await vdD89xwThuLoad()
+            }
+        }.sheet(item: $chatSession) { wrapper in
+            CgZU7mTgY46l(
+                session: wrapper.session,
+                opponentAvatarURL: wrapper.u1NCaZAWMA,
+                qOH29Z5X: true
+            )
+            .environmentObject(pilot)
+            .presentationDetents([.fraction(0.75)])
+            .presentationBackground(.clear)
+        }
+    }
+    
+    func vdD89xwThuLoad() async {
+        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+        var ainDhsn9iO = ""
+        
+        if o6a4AyPmo == 0 {
+            ainDhsn9iO = "now"
+        } else if o6a4AyPmo == 1 {
+            ainDhsn9iO = "day"
+        } else {
+            ainDhsn9iO = "week"
+        }
+        
+        do {
+            if zCwukl6av48X {
+                //直播
+                atFBCJ7aeWP = try await qYJEUV2QGq6U(
+                    qAloWEox0: ainDhsn9iO,
+                    jSaWDcnOS: gD5nKIXUMI
+                )
+                print("直播数据")
+                print(atFBCJ7aeWP)
+            } else {
+                //榜单
+                if h3HxHKT2xF {
+                    atFBCJ7aeWP = try await vFTFn8eFEdr(
+                        wvh5z2I6H: ainDhsn9iO
+                    )
                 }else{
-                    atFBCJ7aeWP =  try await vFTFn8eFEdr()
+                    atFBCJ7aeWP = try await dB2EuHa3VY3u(
+                        mXaJwcQS7e: ainDhsn9iO
+                    )
                 }
                 
-                print("榜单数据")
-                print(atFBCJ7aeWP)
             }
+            
+            if zCwukl6av48X {
+                wYh4kyARQ = atFBCJ7aeWP.first {
+                   $0.int("userId") == String(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"))
+               } ?? [:]
+            }else{
+                wYh4kyARQ = atFBCJ7aeWP.first {
+                   $0.string("userId") == String(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"))
+               } ?? [:]
+            }
+            
+            
+            
+        
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+        } catch {
+            print(error)
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         }
     }
 }
@@ -384,38 +541,60 @@ struct Gcx3oCl1wFkbw1: View {
 struct OG8SPSFgtz0zns: View {
     let cvqRWsK91e:[String: Any]
     var pErJCVH3JV :Int
+    let uF7VFlMQa:() -> Void
     var body: some View {
+        let rankValue = Int(cvqRWsK91e.string("rankValue")) ?? 0
         HStack(spacing:0){
-            Text("\(pErJCVH3JV)")
-                            .g0LIIcoZQsOjyND9(
-                                size: 16,
-                                weight: .semibold
-                            )
-            Spacer().frame(width: 23)
             ZStack{
-                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: cvqRWsK91e.string("avatar"))
-                                    .frame(width: 44,height: 44)
-                                    .clipShape(Circle())
-            }.frame(width: 48,height: 48)
-                .background(.white.opacity(0.19))
-                .clipShape(Circle())
-            Spacer().frame(width: 10)
-            Text("\(cvqRWsK91e.string("nickname"))")
-                            .g0LIIcoZQsOjyND9(
-                                size: 14,
-                                weight: .medium
-                            )
-            Spacer()
-            HStack(spacing:8){
-                ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
-                    .frame(width: 16, height: 16)
-               
-                Text("\(cvqRWsK91e.string("rankValue"))")
-                                .g0LIIcoZQsOjyND9(
-                                    size: 14,
-                                    weight: .regular
-                                )
+                HStack{
+                    Text("\(pErJCVH3JV)")
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 16,
+                                        weight: .semibold
+                                    )
+                    Spacer()
+                }
+                HStack{
+                    ZStack{
+                        if cvqRWsK91e.string("avatar") == "" {
+                            ZJ7h766mz(tMmEWWlfgUag: "gCZGrlvVVn1D")
+                                .frame(width: 44,height: 44)
+                                .clipShape(Circle())
+                        }else{
+                            rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: cvqRWsK91e.string("avatar"))
+                                                .frame(width: 44,height: 44)
+                                                .clipShape(Circle())
+                                                .allowsHitTesting(false)
+                        }
+                        
+                    }.frame(width: 48,height: 48)
+                        .background(.white.opacity(0.19))
+                        .clipShape(Circle())
+                        .onTapGesture {
+                            uF7VFlMQa()
+                        }
+                    Spacer().frame(width: 10)
+                    Text("\(cvqRWsK91e.string("nickname"))")
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 14,
+                                        weight: .medium
+                                    )
+                    Spacer()
+                    HStack(spacing:8){
+                        ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
+                            .frame(width: 16, height: 16)
+                       
+                        Text("\(rankValue.shLK3lGBF())")
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 14,
+                                            weight: .regular
+                                        )
+                    }
+                }.padding(.leading,36)
             }
+            
+            
+            
         }
     }
 }
@@ -425,8 +604,12 @@ struct RankItemView: View {
     var gDKv25ocXI: [String: Any]
     var colors: [Color]
     var rO06IvkUE: String //排名top图
+    var a5MYGuUu:Bool //true 直播进 false 首页进
+    let uF7VFlMQa:() -> Void
     
     var body: some View {
+        let rankValue = a5MYGuUu ? gDKv25ocXI.int("costNum") : Int(gDKv25ocXI.string("rankValue")) ?? 0
+        let sqSXyQKd = a5MYGuUu ? gDKv25ocXI.string("icon") : gDKv25ocXI.string("avatar")
         ZStack{
             VStack {
                 Spacer()
@@ -434,17 +617,19 @@ struct RankItemView: View {
                     .g0LIIcoZQsOjyND9(
                         size: 16,
                         weight: .semibold
-                    ).padding(.bottom,12)
+                    ).padding(.bottom,10)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
                 HStack(spacing:8){
                     ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
                         .frame(width: 16, height: 16)
-                    Text("\(gDKv25ocXI.string("rankValue"))")
+                    Text("\(rankValue.shLK3lGBF())")
                         .g0LIIcoZQsOjyND9(
                             size: 14,
                             weight: .regular,
                             color: .white.opacity(0.8)
                         )
-                }.padding(.bottom,38)
+                }.padding(.bottom,35)
             }
             .frame(width: 84, height: 142)
             .background(
@@ -456,15 +641,30 @@ struct RankItemView: View {
             )
             VStack{
                 ZStack{
-                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: gDKv25ocXI.string("avatar"))
-                                        .frame(width: 72,height: 72)
-                                        .clipShape(Circle())
+                    if sqSXyQKd == "" {
+                        ZJ7h766mz(tMmEWWlfgUag: "gCZGrlvVVn1D")
+                                            .frame(width: 72,height: 72)
+                                            .clipShape(Circle())
+                    }else{
+                        rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: sqSXyQKd)
+                                            .frame(width: 72,height: 72)
+                                            .clipShape(Circle())
+                                            .allowsHitTesting(false)
+                    }
+                    
                     ZJ7h766mz(tMmEWWlfgUag: rO06IvkUE)
-                        .frame(width: 100.93, height: 100.37)
+                        .frame(width: 120, height: 120)
                         
                 }.offset(y:-26)
+                    .onTapGesture {
+                        uF7VFlMQa()
+                    }
                 Spacer()
             }
         }.frame(height: 197)
+            .onAppear{
+                print("数据")
+                print(gDKv25ocXI)
+            }
     }
 }
