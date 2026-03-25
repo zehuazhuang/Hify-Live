@@ -149,7 +149,7 @@ struct QsS1CqA9M8tL2fs: View {
                         }else{
                             
                             if !isZ8Q7x4bV9Y0A2 {
-                                LQ0Z4A6C9emp()
+                                LQ0Z4A6C9emp(mCl1LLEjan: "No  search results")
                                 
                             }else{
                                 ForEach(searchResults.indices, id: \.self) { index in

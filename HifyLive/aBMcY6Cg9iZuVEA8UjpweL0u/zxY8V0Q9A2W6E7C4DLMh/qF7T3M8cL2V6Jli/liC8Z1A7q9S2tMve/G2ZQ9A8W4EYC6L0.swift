@@ -28,6 +28,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var isTrack2Busy = false
     let trackPositions: [CGFloat] = [0, 58]
     
+    //加入飘屏
+    private var joinFloatView: JoinFloatView!
+    private var joinQueue: [String] = [] // 用户名队列
+    private var isJoinBusy = false
+    
     //静音按钮
     let extraButton1 = UIButton(type: .custom)
     //发送按钮
@@ -76,6 +81,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     deinit {
    
+    }
+    
+    //加入飘屏
+    func showJoin(name: String) {
+        // 队列先进先出
+        if isJoinBusy {
+            joinQueue.append(name)
+            return
+        }
+
+        isJoinBusy = true
+        joinFloatView.showJoin(name: name) { [weak self] in
+            guard let self = self else { return }
+            self.isJoinBusy = false
+            if !self.joinQueue.isEmpty {
+                let nextName = self.joinQueue.removeFirst()
+                self.showJoin(name: nextName)
+            }
+        }
     }
     
     //送礼飘屏
@@ -231,6 +255,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         giftFloatContainer.addSubview(giftView2)
         
         giftTracks = [giftView1, giftView2]
+        
+        
+        
+        // 单条入场飘屏
+        joinFloatView = JoinFloatView()
+        joinFloatView.translatesAutoresizingMaskIntoConstraints = false
+        joinFloatView.isHidden = true
+        view.addSubview(joinFloatView)
+
+        NSLayoutConstraint.activate([
+            joinFloatView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            joinFloatView.topAnchor.constraint(equalTo: giftFloatContainer.bottomAnchor, constant: 10),
+            joinFloatView.heightAnchor.constraint(equalToConstant: 32)
+        ])
       
         
         
@@ -540,18 +578,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let self = self else { return }
             
             if let error = error {
-                print("❌ 加入聊天室失败:", error.localizedDescription)
+                print("加入聊天室失败:", error.localizedDescription)
                 return
             }
             
-            print("✅ 成功加入聊天室:", chatroom?.roomId ?? "")
+            print("成功加入聊天室:", chatroom?.roomId ?? "")
             self.hasJoinedChannel = true
 
-            // 注册消息监听
+            
             
             Task { @MainActor in
                 NIMSDK.shared().chatManager.add(self)
-                NIMSDK.shared().chatroomManager.add(self) // 监听聊天室事件
+                NIMSDK.shared().chatroomManager.add(self)
             }
         }
     }
@@ -605,10 +643,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 }
 extension ChatViewController {
- 
+    
     func onRecvMessages(_ messages: [NIMMessage]) {
         for msg in messages {
-        
             let accid = msg.from ?? ""
             
             
@@ -636,6 +673,32 @@ extension ChatViewController {
                         self.appendMessage(publicMsg)
                     }
                 }
+            case .notification:
+
+                guard let object = msg.messageObject as? NIMNotificationObject,
+                      let content = object.content as? NIMChatroomNotificationContent else {
+                    break
+                }
+                
+              
+                
+                // 取用户信息
+                if let member = content.source {
+                        let nick = member.nick ?? ""
+
+                        switch content.eventType {
+                        case .enter:
+                            print("\(nick) 进入直播间")
+                            let name = member.nick ?? "游客"
+                                showJoin(name: name)
+                        case .exit:
+                            print("\(nick) 离开直播间")
+                            
+                        default:
+                            break
+                        }
+                    }
+
              // 2️⃣ 自定义消息（弹幕 / 礼物 / 系统消息）
              case .custom:
               
@@ -697,4 +760,68 @@ extension ChatViewController {
     }
     
    
+}
+class JoinFloatView: UIView {
+    private let nameLabel = UILabel()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+
+    required init?(coder: NSCoder) { super.init(coder: coder); setupUI() }
+
+    private func setupUI() {
+        nameLabel.font = JqA1kUIFont.font(size: 14, weight: .medium)
+        nameLabel.textColor = .white
+        addSubview(nameLabel)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+
+        backgroundColor = UIColor(red: 89/255, green: 51/255, blue: 204/255, alpha: 0.5)
+        layer.cornerRadius = 16
+        clipsToBounds = true
+    }
+
+    func showJoin(name: String, completion: @escaping () -> Void) {
+        // 设置富文本样式和间距
+        let fullText = "\(name) Joind"
+        let attributed = NSMutableAttributedString(string: fullText)
+        attributed.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: name.count))
+        let joinRange = NSRange(location: name.count + 1, length: 5)
+        attributed.addAttribute(.foregroundColor, value: UIColor.white.withAlphaComponent(0.6), range: joinRange)
+        attributed.addAttribute(.kern, value: 4.0, range: NSRange(location: name.count, length: 1))
+        nameLabel.attributedText = attributed
+
+        guard let superview = self.superview else { return }
+
+        // 初始位置：屏幕右侧外面
+        self.isHidden = false
+        self.alpha = 1
+        self.layoutIfNeeded()
+        let width = self.frame.width
+        self.transform = CGAffineTransform(translationX: superview.frame.width + width, y: 0)
+
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
+            // 飞入到原位置
+            self.transform = .identity
+        } completion: { _ in
+            // 停留 1 秒
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                // 飞出到左侧屏幕外
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
+                    self.transform = CGAffineTransform(translationX: -(width + 20), y: 0)
+                } completion: { _ in
+                    self.isHidden = true
+                    self.transform = .identity
+                    completion()
+                }
+            }
+        }
+    }
 }

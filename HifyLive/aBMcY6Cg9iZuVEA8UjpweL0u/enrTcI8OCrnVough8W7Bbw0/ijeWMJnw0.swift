@@ -28,7 +28,7 @@ struct ijeWMJnw0: View {
 //        )
     }
     
-    @State private var zeEMuRE5FhYabIqhuh: String = ""
+    @State private var zeEMuRE5FhYabIqhuh: String = ""  //头像
     
     @State private var mIAT9zbKJKGtarbSPX1QSZm: String = ""
     @FocusState private var eFtYn7uAoIoqpSJAlS7Wr3VlHxyPCMNb: Bool
@@ -62,7 +62,7 @@ struct ijeWMJnw0: View {
 
     
     @StateObject private var b311AqIo0GvW8L8UXU3M1y = EfqJ9.hlLgQUr6MegOX6Bv
-    
+    @State private var qeT0HNNf: Bool = false //显示头像红色框
     @State private var jFQJdj: Bool = false
     @State private var t8dM64f2Hl: Bool = false
     @State private var fDh5Q2siKUyAQSVbhXs1K: Bool = false
@@ -103,6 +103,11 @@ struct ijeWMJnw0: View {
                                             .frame(width: 88)
                                             .overlay(alignment: .center) {
                                                 ZStack(alignment: .center) {
+                                                    Circle()
+                                                        .stroke(
+                                                            qeT0HNNf ? Color.red : Color.clear,
+                                                            lineWidth: 1
+                                                        )
                                                     if zeEMuRE5FhYabIqhuh == "" {
                                                         Circle().fill(Color(red: 34/255, green: 34/255, blue: 38/255))
                                                             .frame(width: 80)
@@ -135,7 +140,7 @@ struct ijeWMJnw0: View {
                                                 Task { @MainActor in
                                                     if let url = try? await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j, isIA8MTA: false) {
                                                         zeEMuRE5FhYabIqhuh = url
-                                                        
+                                                        qeT0HNNf = false
                                                     } else {
                                                         print("上传失败或图片不合规")
                                                         zeEMuRE5FhYabIqhuh = ""
@@ -431,9 +436,12 @@ struct ijeWMJnw0: View {
                             .padding(.horizontal,22)
                         }
                         Button{
-                            print(zeEMuRE5FhYabIqhuh)
                            
                             
+                            if zeEMuRE5FhYabIqhuh == "" {
+                                qeT0HNNf = true
+                            }
+                           
                             if mIAT9zbKJKGtarbSPX1QSZm.isEmpty {
                                 jFQJdj = true
                             }
@@ -445,7 +453,7 @@ struct ijeWMJnw0: View {
                             }
                             
                             if let xYA8KcMnJ8l8HJAC2xuNCCW0 = ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 {
-                                if mIAT9zbKJKGtarbSPX1QSZm.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil {
+                                if mIAT9zbKJKGtarbSPX1QSZm.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil || zeEMuRE5FhYabIqhuh == "" {
                                     return
                                 }
                                 EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
@@ -499,6 +507,8 @@ struct ijeWMJnw0: View {
                                             }
                                         } else {
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                            print("进入")
+                                            print(eIOmCWgre0wHbWNAw3.message)
                                             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(eIOmCWgre0wHbWNAw3.message,z2E1geUN5miQ95SpoCG: false)
                                         }
                                         
@@ -547,7 +557,7 @@ struct ijeWMJnw0: View {
                 BirthdayBottomSheet(
                     isPresented: $q4L7RemZyJv1BuPIAmKMZ3vaTsg,
                     initialDate: mQFLX0m0nVIAxht9uUGhln5su8 ?? hQC0aa2,
-                    mode: .yearMonth
+                    mode: .yearMonthDay
                 ) { selected in
                     mQFLX0m0nVIAxht9uUGhln5su8 = selected
                     withAnimation(.spring()) {

@@ -88,7 +88,7 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
 //                    }
                     
                 } catch {
-                    print("JSON 解析失败: \(error)")
+                  //  print("JSON 解析失败: \(error)")
                     continue
                 }
             }

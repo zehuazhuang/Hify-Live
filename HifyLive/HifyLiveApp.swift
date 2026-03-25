@@ -112,8 +112,8 @@ struct HifyLiveApp: App {
                                    .ignoresSafeArea()
                            case .H7XMmrHFowMS7i:
                                H7XMmrHFowMS7i()
-                           case let .Gcx3oCl1wFkbw1(t2ZCMaqlBn,gD5nKIXUMI):
-                               Gcx3oCl1wFkbw1(zCwukl6av48X: t2ZCMaqlBn, gD5nKIXUMI: gD5nKIXUMI)
+                           case  .Gcx3oCl1wFkbw1:
+                               Gcx3oCl1wFkbw1()
                            case let .R9Avd3G1i846xe(session):
                                R9Avd3G1i846xe(session: session)
                            }
@@ -196,12 +196,16 @@ struct HifyLiveApp: App {
                 print("登录用户------")
                 print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
                 
+                
+                
                 bffDlNRAqVaG4T()
                 
                 
               
                 //初始化云信
                 IdVwDkHotdjRqB()
+                
+               
                 
                 //数据获取完毕切换页面
                 qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true

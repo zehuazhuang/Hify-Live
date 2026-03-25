@@ -39,7 +39,7 @@ struct C8Z2x4M6YV9m: View {
         ZStack {
             ZJ7h766mz(tMmEWWlfgUag: "ziFHlaHt9TDT8JNoUekRk7yFke")
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 72) {
+                VStack(spacing: 12) {
                     VStack(spacing: 20) {
                         VStack(spacing: 0) {
                             HStack(spacing: 16) {

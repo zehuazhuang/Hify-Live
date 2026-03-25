@@ -72,6 +72,7 @@ struct QX10IFCuguXvQa: View {
                         Spacer()
                     }
                     .padding(.bottom,16)
+                    .padding(.top,10)
                     
                     //礼物滑动区域
                     ZStack{
@@ -187,15 +188,22 @@ struct QX10IFCuguXvQa: View {
                     //end
                     
                     HStack(spacing:12){
-                        ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
-                            .frame(width: 24, height: 24)
-                        Text("\(jbPyc3Dneh.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
-                            .g0LIIcoZQsOjyND9(
-                                size: 16,
-                                weight: .regular
-                            ).padding(.trailing,4)
-                        ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
-                            .frame(width: 24,height: 24)
+                        HStack{
+                            ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
+                                .frame(width: 24, height: 24)
+                            Text("\(jbPyc3Dneh.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
+                                .g0LIIcoZQsOjyND9(
+                                    size: 16,
+                                    weight: .regular
+                                ).padding(.trailing,4)
+                            ZJ7h766mz(tMmEWWlfgUag: "yiO9qy150CqyRo4D1IsfV6wA35SVV")
+                                .frame(width: 24,height: 24)
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            jhqguQVC07()
+                        }
+                        
                         Spacer()
                         HStack(spacing:0){
                             HStack(spacing:0){
@@ -218,22 +226,16 @@ struct QX10IFCuguXvQa: View {
                                 }
                             }
                             ZStack{
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "mWqJSUcVC")
+                                                   .frame(width: 66, height: 36)
                                 Text("Send")
                                     .g0LIIcoZQsOjyND9(
                                         size: 16,
                                         weight: .regular
                                     )
                             }.frame(width: 66,height: 34)
-                                .background(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color(red: 217/255, green: 28/255, blue: 255/255),
-                                            Color(red: 16/255, green: 227/255, blue: 255/255),
-                                        ]),
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
+                                
                                 .clipShape(s7q2ZC1S9A4tM8L3(radius: 325, corners: [.topRight,.bottomRight]))
                                 .padding(.trailing,1)
                                 .onTapGesture {
@@ -403,56 +405,56 @@ struct QX10IFCuguXvQa: View {
             if isCustomize {
                 VStack{
                     Spacer()
-                    HStack{
-                        
-                        ZStack(alignment: .leading) {
-                            if bvcTMXNxVXv.isEmpty {
-                                Text("Please enter the gift quantity")
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 16,
-                                        weight: .semibold,
-                                        color: .white.opacity(0.4)
-                                    )
-                            }
-                            
-                            TextField("", text: $bvcTMXNxVXv)
-                                .font(.custom("gz4QHFqRS4dH1OeOv3Zirg==".bFHEatcgE4zzU9TCfDonsu(), size: 16))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .keyboardType(.numberPad)
-                                .focused($focusInput)
-                                .onChange(of: bvcTMXNxVXv) { newValue in
-                                    // 只保留数字
-                                    let filtered = newValue.filter { $0.isNumber }
-                                    
-                                    // 限制范围
-                                    if let number = Int(filtered) {
-                                        let clamped = min(max(number, 1), 99)
-                                        bvcTMXNxVXv = String(clamped)
-                                    } else {
-                                        // 允许空字符串，不影响键盘
-                                        bvcTMXNxVXv = filtered
-                                    }
+                    ZStack{
+                        Color(red: 35/255, green: 39/255, blue: 61/255)
+                        HStack{
+                            ZStack(alignment: .leading) {
+                                if bvcTMXNxVXv.isEmpty {
+                                    Text("Please enter the gift quantity")
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 16,
+                                            weight: .semibold,
+                                            color: .white.opacity(0.4)
+                                        )
                                 }
-                        }
-                        
-
-                            
-                        Spacer()
-                        ZJ7h766mz(tMmEWWlfgUag: bvcTMXNxVXv == "" ? "uRdGSr4Ov" : "eGEQnR5LzA")
-                                           .frame(width: 60, height: 34)
-                                           .onTapGesture {
-                                               if bvcTMXNxVXv != "" {
-                                                   isCustomize = false
-                                                   focusInput = false
+                                
+                                TextField("", text: $bvcTMXNxVXv)
+                                    .font(.custom("gz4QHFqRS4dH1OeOv3Zirg==".bFHEatcgE4zzU9TCfDonsu(), size: 16))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                    .keyboardType(.numberPad)
+                                    .focused($focusInput)
+                                    .onChange(of: bvcTMXNxVXv) { newValue in
+                                        // 只保留数字
+                                        let filtered = newValue.filter { $0.isNumber }
+                                        
+                                        // 限制范围
+                                        if let number = Int(filtered) {
+                                            let clamped = min(max(number, 1), 99)
+                                            bvcTMXNxVXv = String(clamped)
+                                        } else {
+                                            // 允许空字符串，不影响键盘
+                                            bvcTMXNxVXv = filtered
+                                        }
+                                    }
+                            }
+                            Spacer()
+                            ZJ7h766mz(tMmEWWlfgUag: bvcTMXNxVXv == "" ? "uRdGSr4Ov" : "eGEQnR5LzA")
+                                               .frame(width: 60, height: 34)
+                                               .onTapGesture {
+                                                   if bvcTMXNxVXv != "" {
+                                                       isCustomize = false
+                                                       focusInput = false
+                                                   }
                                                }
-                                           }
-                        
-                    }.padding(.horizontal,16)
-                    .frame(height: 46)
-                    .background(
-                        ZJ7h766mz(tMmEWWlfgUag: "mP5nA7LuUkPA82")
-                    )
+                            
+                        }.padding(.horizontal,16)
+                        .frame(height: 46)
+                        .background(
+                            ZJ7h766mz(tMmEWWlfgUag: "mP5nA7LuUkPA82")
+                        )
+                    }.frame(height: 46)
+                    
                 }
             }
         }

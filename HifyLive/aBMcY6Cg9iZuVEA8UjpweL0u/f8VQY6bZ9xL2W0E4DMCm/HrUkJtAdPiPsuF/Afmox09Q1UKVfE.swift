@@ -98,7 +98,7 @@ struct Afmox09Q1UKVfE: View {
                                                     size: 14,
                                                     weight: .medium
                                                 )
-                                Text("\(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum").shLK3lGBF())")
+                                Text("\(String(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("diamondNum")))")
                                     .g0LIIcoZQsOjyND9(
                                         size: 28,
                                         weight: .black

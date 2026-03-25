@@ -100,7 +100,7 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
                         .onTapGesture {
-                            pilot.push(.Gcx3oCl1wFkbw1(t2ZCMaqlBn: false, gD5nKIXUMI: -1))
+                            pilot.push(.Gcx3oCl1wFkbw1)
                         }
                 }
                 
@@ -116,7 +116,7 @@ struct E2VxD0iC4bYyh: View {
                             
                             if ecorjazyType {
                                 if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.isEmpty {
-                                    LQ0Z4A6C9emp()
+                                    LQ0Z4A6C9emp(mCl1LLEjan: "No Data")
                                         .padding(.top,6)
                                 }else{
                                     LazyVGrid(columns: evntemporaeCol, spacing: 7) {
@@ -136,7 +136,7 @@ struct E2VxD0iC4bYyh: View {
                                 }
                             }else{
                                 if followingCache.items.isEmpty {
-                                    LQ0Z4A6C9emp()
+                                    LQ0Z4A6C9emp(mCl1LLEjan: "No Data")
                                         .padding(.top,6)
                                     
                                 }else{

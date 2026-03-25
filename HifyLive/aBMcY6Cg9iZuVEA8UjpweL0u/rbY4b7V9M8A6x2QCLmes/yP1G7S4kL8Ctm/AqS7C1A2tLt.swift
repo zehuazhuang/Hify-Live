@@ -52,10 +52,10 @@ struct aW6MZ4xQ7L0Ez: View {
                 lineWidth: 1
             )
             .scaleEffect(pR9dV2sF1kUo ? 1.15 : 0.9)
-            .opacity(pR9dV2sF1kUo ? 0.2 : 0.8)
+
             .onAppear {
                 withAnimation(
-                    .easeInOut(duration: 1.4)
+                    .easeInOut(duration: 0.7)
                         .repeatForever(autoreverses: true)
                 ) {
                     pR9dV2sF1kUo = true

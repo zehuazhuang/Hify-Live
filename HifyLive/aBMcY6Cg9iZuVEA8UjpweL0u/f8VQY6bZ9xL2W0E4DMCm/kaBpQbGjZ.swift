@@ -49,7 +49,7 @@ struct kaBpQbGjZ: View {
                 Spacer().frame(height: 20)
                 
                 if filteredResults.isEmpty {
-                    LQ0Z4A6C9emp()
+                    LQ0Z4A6C9emp(mCl1LLEjan: "No Data")
                     Spacer()
                 }else{
                     ScrollView(showsIndicators: false){

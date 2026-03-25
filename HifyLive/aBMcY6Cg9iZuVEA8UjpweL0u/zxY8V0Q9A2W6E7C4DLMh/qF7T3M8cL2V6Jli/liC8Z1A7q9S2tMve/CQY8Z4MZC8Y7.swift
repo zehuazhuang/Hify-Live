@@ -83,10 +83,10 @@ struct LE0xQZ6Y7WC8iv: View {
                     self.giftManager.enqueueGift(giftItem)
                     
                     
-                    //更新top
-                    Task{
-                       await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
-                    }
+//                    //更新top
+//                    Task{
+//                       await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
+//                    }
                                       }
                 )
                 }.edgesIgnoringSafeArea(.bottom)
@@ -290,8 +290,7 @@ struct LE0xQZ6Y7WC8iv: View {
 //                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
 //            }
         }.sheet(isPresented: $showRankSheet) {
-            Gcx3oCl1wFkbw1(
-                zCwukl6av48X: true,
+            Eu1xbwzA1AwXn4(
                 uNZ9IM5OK: eLx8RIeCY,
                 gD5nKIXUMI: liveRoomData.int("id"),
                 
@@ -345,9 +344,9 @@ struct LE0xQZ6Y7WC8iv: View {
             while !Task.isCancelled {
                 do {
                     eLx8RIeCY = try await d34SzmkHKFl(mcIOzuQURD: liveRoomData.int("userId"), phqabUmw: 1)
-                  
+                    iENw26wu7cQ = try await luJfveDVkRb(pQO2dnNxqK: liveRoomData.int("id"))
                 } catch {
-                    print("获取在线人数失败:", error)
+                    print("获取榜单失败:", error)
                 }
                 try? await Task.sleep(nanoseconds: 3_000_000_000) // 3秒
             }

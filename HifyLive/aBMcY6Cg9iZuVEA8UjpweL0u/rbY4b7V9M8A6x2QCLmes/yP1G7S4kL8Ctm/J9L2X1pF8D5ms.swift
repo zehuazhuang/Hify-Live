@@ -73,7 +73,7 @@ struct J9L2X1pF8D5ms: View {
 
                     
                     if sessionStore.cache.isEmpty {
-                        LQ0Z4A6C9emp()
+                        LQ0Z4A6C9emp(mCl1LLEjan: "No Data")
                     } else {
                         LazyVStack {
                             ForEach(sessionStore.cache) { rZq7S8A9 in

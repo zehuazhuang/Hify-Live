@@ -66,7 +66,7 @@ struct H7XMmrHFowMS7i: View {
                 }
                 //start
                 if eJDSJ03kdl6.isEmpty {
-                    LQ0Z4A6C9emp()
+                    LQ0Z4A6C9emp(mCl1LLEjan: "There are no billing details for this month.")
                 }
                 ScrollView(showsIndicators: false){
                     VStack(spacing:16){
@@ -92,13 +92,25 @@ struct H7XMmrHFowMS7i: View {
                                                         )
                                     }
                                     Spacer()
-                                    Text(value > 0 ? "+\(value)" : "-\(value)")
-                                        .g0LIIcoZQsOjyND9(
-                                            size: 16,
-                                            weight: .medium,
-                                            color: value > 0 ? Color(red: 135/255, green: 255/255, blue: 94/255) :
-                                                Color(red: 255/255, green: 92/255, blue: 89/255)
-                                        )
+                                    if value > 0 {
+                                        Text("+\(String(value))")
+                                            .g0LIIcoZQsOjyND9(
+                                                size: 16,
+                                                weight: .medium,
+                                                color:  Color(red: 135/255, green: 255/255, blue: 94/255)
+                                            )
+                                    }else{
+                                    
+                                            Text("\(String(value))")
+                                                .g0LIIcoZQsOjyND9(
+                                                    size: 16,
+                                                    weight: .medium,
+                                                    color:  Color(red: 255/255, green: 92/255, blue: 89/255)
+                                                )
+                                       
+                                        
+                                    }
+                                    
                                 }.background(
                                     GeometryReader { geo in
                                         Color.clear

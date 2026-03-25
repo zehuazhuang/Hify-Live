@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 import Combine
-//生日选择底部弹框
+//日期选择底部弹框
 
 enum PickerMode {
     case yearMonthDay
@@ -159,13 +159,16 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     
     // 数据源
     private var years: [Int] = []
-    private let months: [Int] = Array(1...12)
+    private var months: [Int] = []
     private var days: [Int] = []
     
     // 当前选中
     private var selectedYear: Int = 2004
     private var selectedMonth: Int = 1
     private var selectedDay: Int = 1
+    
+    private let currentYear = Calendar.current.component(.year, from: Date())
+    private let currentMonth = Calendar.current.component(.month, from: Date())
     
     private let rowHeight: CGFloat = 40
     private let fontSize: CGFloat = 22
@@ -176,10 +179,23 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         
         setupYearRange()
         setupInitialDate()
+        updateMonths()
         setupPicker()
         updateDays()
         selectRows(animated: false)
         notifyDateChange()
+    }
+    
+    //更新月份
+    private func updateMonths() {
+        if selectedYear == currentYear {
+            months = Array(1...currentMonth)
+        } else {
+            months = Array(1...12)
+        }
+        
+        // 防止月份越界
+        selectedMonth = min(selectedMonth, months.last ?? selectedMonth)
     }
     
     // MARK: - 初始化年份范围
@@ -203,8 +219,10 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     private func setupInitialDate() {
         let calendar = Calendar.current
         selectedYear = calendar.component(.year, from: initialDate)
-        selectedMonth = calendar.component(.month, from: initialDate)
+       // selectedMonth = calendar.component(.month, from: initialDate)
         selectedDay = calendar.component(.day, from: initialDate)
+        updateMonths()
+        selectedMonth = min(selectedMonth, months.count)
     }
     
     // MARK: - UIPickerView
@@ -348,6 +366,8 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
               switch component {
               case 0:
                   selectedYear = years[row]
+                  updateMonths()
+                  picker.reloadComponent(1)
                   updateDays()
                   picker.reloadComponent(2)
               case 1:
@@ -363,6 +383,8 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
               switch component {
               case 0:
                   selectedYear = years[row]
+                  updateMonths()
+                  picker.reloadComponent(1)
               case 1:
                   selectedMonth = months[row]
               default: break
