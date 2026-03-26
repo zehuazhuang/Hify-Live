@@ -646,6 +646,19 @@ extension ChatViewController {
     
     func onRecvMessages(_ messages: [NIMMessage]) {
         for msg in messages {
+            
+            print("消息")
+            print(yxRoomId)
+            print(msg)
+            print("附近")
+            print(msg.messageObject)
+            
+                    guard let session = msg.session,
+                          session.sessionId == yxRoomId else {
+                        continue
+                    }
+            
+            
             let accid = msg.from ?? ""
             
             

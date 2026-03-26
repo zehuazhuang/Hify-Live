@@ -1,7 +1,5 @@
 
 //系统通知页面
-
-
 import SwiftUI
 import NIMSDK
 import UIPilot

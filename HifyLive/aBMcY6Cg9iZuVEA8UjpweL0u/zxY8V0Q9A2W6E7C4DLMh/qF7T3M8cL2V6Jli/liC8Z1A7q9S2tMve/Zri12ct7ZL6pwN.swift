@@ -8,4 +8,6 @@ class LiveSessionManager: ObservableObject {
     @Published var currentChannelUserId: UInt = 0 // 当前观看直播间 id
     
     @Published var aHUdhiChZEUid: Int = 0 // 上一个用户id，用来判断是否回退
+    
+    @Published var oep8RDxW: String = "" //全局聊天室id
 }

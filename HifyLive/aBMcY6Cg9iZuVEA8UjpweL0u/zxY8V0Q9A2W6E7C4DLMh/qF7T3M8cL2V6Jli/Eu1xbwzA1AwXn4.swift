@@ -265,7 +265,7 @@ struct Eu1xbwzA1AwXn4: View {
                 }else{
                     //在线用户
                     ScrollView{
-                        VStack{
+                        VStack(spacing:16){
                             ForEach(uNZ9IM5OK.indices,id: \.self){index in
                                 HStack{
                                     ZStack{
@@ -288,6 +288,7 @@ struct Eu1xbwzA1AwXn4: View {
                             }
                         }
                     }.padding(.horizontal,16)
+                        .padding(.top,24)
                 }
                 
                 

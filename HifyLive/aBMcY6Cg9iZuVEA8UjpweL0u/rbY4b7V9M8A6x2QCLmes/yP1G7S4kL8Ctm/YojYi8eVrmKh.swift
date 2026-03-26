@@ -19,7 +19,8 @@ class RecentSessionManager: ObservableObject {
         for r in sessions {
             guard let s = r.session,
                   !s.sessionId.isEmpty
-             //     s.sessionId != "video-sky-test" //屏蔽系统通知 充值钻石通知
+                //  ,s.sessionId != LiveSessionManager.shared.oep8RDxW //屏蔽全局聊天室
+               //   s.sessionId != "video-sky-test" //屏蔽系统通知 充值钻石通知
             else { continue }
             
 

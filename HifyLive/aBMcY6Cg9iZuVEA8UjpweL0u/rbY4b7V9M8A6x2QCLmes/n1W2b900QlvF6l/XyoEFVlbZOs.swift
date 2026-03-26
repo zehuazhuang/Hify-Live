@@ -525,6 +525,9 @@ class ChatMessage: Identifiable, ObservableObject {
                                 continue
                             }
                             
+                            print("私聊dict")
+                            print(dict)
+                            
                             guard let giftId = dict["giftId"] as? Int,
                                   let giftNum = dict["giftNum"] as? Int,
                                   let giftPrice = dict["giftPrice"] as? Int,

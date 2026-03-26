@@ -1105,12 +1105,13 @@ func cTiuphrpj0WxFn(pX8YxxAkBf:String,bDXCgArl3:Int?) async throws -> [String: A
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("iphone", forHTTPHeaderField: "User-Agent")
     
     var body: [String: Any] = [
         "scene": pX8YxxAkBf
     ]
 
-    if pX8YxxAkBf == "NEW_LIVE" {
+    if pX8YxxAkBf == "LIVE" {
         body["targetUserId"] = bDXCgArl3
     }
     
@@ -1176,18 +1177,28 @@ func zIOvUXp0PFIa(nA9jTgkiq:String,xD0brNNV4C:Int,gdmasRe0BC:Int,xLZR0tX7pimL:St
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("iphone", forHTTPHeaderField: "User-Agent")
     
-    let body: [String: Any] = [
+    var body: [String: Any] = [
         "yxAccid":nA9jTgkiq,
         "giftId":xD0brNNV4C,
         "num":gdmasRe0BC,
         "scene":xLZR0tX7pimL,
-        "liveRoomId":uAcDaiEtw,
-        "channelId":vxDqzCuq,
-        "tempId":jKcu69C,
-        "unlockType":c7LgmQQhS,
-        "pkState":pE5bbtQ8Hb,
+//        "liveRoomId":uAcDaiEtw,
+//        "channelId":vxDqzCuq,
+//        "tempId":jKcu69C,
+//        "unlockType":c7LgmQQhS,
+//        "pkState":pE5bbtQ8Hb,
     ]
+    
+    if xLZR0tX7pimL == "LIVE" {
+        body["liveRoomId"] = uAcDaiEtw
+    }
+    
+    print("请求头：")
+    print(request.allHTTPHeaderFields ?? [:])
+    print("body")
+    print(body)
     
    
     
@@ -1206,6 +1217,8 @@ func zIOvUXp0PFIa(nA9jTgkiq:String,xD0brNNV4C:Int,gdmasRe0BC:Int,xLZR0tX7pimL:St
     guard let dict = json as? [String: Any] else {
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
+    
+
    
     
     guard let yPN3u1oIU = json as? [String: Any] else { return -1 }
@@ -1244,6 +1257,7 @@ func luJfveDVkRb(pQO2dnNxqK:Int) async throws -> [[String: Any]] {
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("iphone", forHTTPHeaderField: "User-Agent")
     
     let body: [String: Any] = [
         "dbId":pQO2dnNxqK,
@@ -1308,6 +1322,7 @@ func d34SzmkHKFl(mcIOzuQURD:Int,phqabUmw:Int) async throws -> [[String: Any]] {
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
     request.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
+    request.setValue("iphone", forHTTPHeaderField: "User-Agent")
     
     let body: [String: Any] = [
         "anchorUserId":mcIOzuQURD,

@@ -11,6 +11,7 @@ struct J9L2X1pF8D5ms: View {
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @State private var openRowId: UUID? = nil
+    @State private var eHHmfq7UeU = false //是否第一次进入
     let wzJqE7XWO : ()-> Void //回到home
     var body: some View {
         
@@ -128,7 +129,11 @@ struct J9L2X1pF8D5ms: View {
                 openRowId = nil
             }
         ) .onAppear {
+            guard !eHHmfq7UeU else { return }
+            eHHmfq7UeU = true
             sessionStore.fetchRecentSessions()
+            print("数量")
+            print(sessionStore.cache.count)
             
         }
     }

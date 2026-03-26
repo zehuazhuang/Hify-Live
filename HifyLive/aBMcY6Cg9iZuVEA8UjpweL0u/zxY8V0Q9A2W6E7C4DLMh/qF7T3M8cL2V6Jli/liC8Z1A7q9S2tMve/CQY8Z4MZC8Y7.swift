@@ -257,7 +257,7 @@ struct LE0xQZ6Y7WC8iv: View {
                     withAnimation{
                         x7hEzzGUTAch0 = true
                     }
-                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "NEW_LIVE", jEhg1fS1G8: liveRoomData.int("id"), tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
+                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "LIVE", jEhg1fS1G8: liveRoomData.int("id"), tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
             }
             //商店弹框
             if x7hEzzGUTAch0 {

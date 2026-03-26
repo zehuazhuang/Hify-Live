@@ -45,17 +45,19 @@ class RecentSessionStore: ObservableObject {
 
     init() {
         // 初次加载
-        fetchRecentSessions()
+       
+            fetchRecentSessions()
+       
 
-        // 定时刷新或在 ChatViewModel 更新缓存后调用
-        Timer.publish(every: 0.3, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] _ in
-                guard let self else { return }
-                self.cache = RecentSessionManager.shared.cache
-                self.sortCache()
-            }
-            .store(in: &cancellables)
+//         定时刷新或在 ChatViewModel 更新缓存后调用
+//        Timer.publish(every: 0.3, on: .main, in: .common)
+//            .autoconnect()
+//            .sink { [weak self] _ in
+//                guard let self else { return }
+//                self.cache = RecentSessionManager.shared.cache
+//                
+//            }
+//            .store(in: &cancellables)
     }
     
     private func sortCache() {

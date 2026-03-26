@@ -18,11 +18,13 @@ func IdVwDkHotdjRqB(){
             // 只初始化一次后续获取会话/发送消息等
             _ = IMMessageListener.shared
             // 初次拉会话
-            RecentSessionManager.shared.fetchRecentSessions {
-                    let sessions = RecentSessionManager.shared.cache
-                    GlobalUnreadStore.shared.update(from: sessions)
-                    RecentSessionStore.shared.cache = sessions
-            }
+               DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                   RecentSessionManager.shared.fetchRecentSessions {
+                       let sessions = RecentSessionManager.shared.cache
+                       GlobalUnreadStore.shared.update(from: sessions)
+                       RecentSessionStore.shared.cache = sessions
+                   }
+               }
 //            // ✅ 收集所有会话ID
 //            let ids = RecentSessionManager.shared.cache.map { $0.sessionId }
 //
@@ -30,16 +32,20 @@ func IdVwDkHotdjRqB(){
 //                OnlineStatusManager.shared.startListen()
 //                OnlineStatusManager.shared.subscribe(ids)
             
+            //全局公共聊天室
+            // 进入公共聊天室
+//            Task {
+//                await GlobalPublicChatroom.shared.enterRoom()
+//            }
 //            Task{
 //                let asd = try await iowHG20TQQco()
 //                do {
 //                    
-//                    print(asd)
-//                    print(asd.string("roomId"))
+//                    LiveSessionManager.shared.oep8RDxW = asd.string("roomId")
+//                   
 //
 //                    let request = NIMChatroomEnterRequest()
 //                    request.roomId = asd.string("roomId")
-//                    request.roomNickname = "iOS_User"
 //
 //                     try await NIMSDK.shared().chatroomManager.enterChatroom(request)
 //                } catch {

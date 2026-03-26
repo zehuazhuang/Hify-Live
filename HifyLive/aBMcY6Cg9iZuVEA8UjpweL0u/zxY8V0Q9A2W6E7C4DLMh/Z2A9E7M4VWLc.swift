@@ -49,24 +49,34 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
         }
     }
 
-    // ✅ 只在 MainActor 执行
+    
     @MainActor
     private static func handleIncomingOnMain(_ messages: [NIMMessage]) {
 
         let myAccount = NIMSDK.shared().loginManager.currentAccount()
         
+        var hasValidMessage = false
+        
         for message in messages {
-            print("有人送礼物")
-            print(message.messageObject)
-            print("-------")
-            print(message)
             //全服公告
+//            print("消息")
+//            print(message)
+//            print("文件")
+//            print(message.messageObject)
             if message.messageType == .custom{
                 guard let customObject = message.messageObject as? NIMCustomObject,
                       let attachment = customObject.attachment else {
                     continue
                 }
                 let jsonString = attachment.encode()
+                
+                
+                
+                if(jsonString == ""){
+                    continue
+                }
+                
+                
                 
                 guard let data = jsonString.data(using: .utf8) else {
                     continue
@@ -76,9 +86,6 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                           let type = dict["attachType"] as? String, type == "SEND_GIFT" else {
                         continue
                     }
-                  
-                   
-                  
 //                    guard let giftId = dict["giftId"] as? Int,
 //                          let giftNum = dict["giftNum"] as? Int,
 //                          let giftPrice = dict["giftPrice"] as? Int,
@@ -92,7 +99,6 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                     continue
                 }
             }
-            
             guard
                 let session = message.session,
                 session.sessionType == .P2P,
@@ -101,6 +107,8 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
             else {
                 continue
             }
+            
+            hasValidMessage = true
 
             RecentSessionManager.shared.updateCache(
                 with: message,
@@ -108,6 +116,9 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
             )
             
         }
+        
+        // 👇 没有有效消息，直接不更新
+        guard hasValidMessage else { return }
 
         let sessions = RecentSessionManager.shared.cache
 

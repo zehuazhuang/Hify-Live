@@ -233,7 +233,7 @@ struct CgZU7mTgY46l: View {
                         withAnimation{
                             iFMUtEu7sKn = true
                         }
-                    }, wlXWcyaNuj: nil, mCrenfA3xJE: "NEW_LIVE_IM", jEhg1fS1G8: 0, tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
+                    }, wlXWcyaNuj: nil, mCrenfA3xJE: "IM", jEhg1fS1G8: 0, tGT2R2amV: opponentInfo.string("yxAccid"), vTubwwYkiq: opponentInfo.string("nickname"))
                 }
                 
                 //商店弹框

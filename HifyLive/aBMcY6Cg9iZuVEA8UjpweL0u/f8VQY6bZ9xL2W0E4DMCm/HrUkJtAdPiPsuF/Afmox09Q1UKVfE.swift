@@ -246,7 +246,7 @@ struct Afmox09Q1UKVfE: View {
                                                 .frame(width: 91, height: 25)
                                             
                                             
-                                            Text("$ \(String((info["convertPrice"] as? Double) ?? 0))")
+                                            Text("$ \(String((info["price"] as? Double) ?? 0))")
                                                 .g0LIIcoZQsOjyND9(
                                                     size: 14,
                                                     weight: .medium
@@ -402,7 +402,7 @@ struct Afmox09Q1UKVfE: View {
                     }
                     
                     uSM1VTVKvc0WVI = sortedList
-                   
+                    print(uSM1VTVKvc0WVI)
                 }
 
                 
