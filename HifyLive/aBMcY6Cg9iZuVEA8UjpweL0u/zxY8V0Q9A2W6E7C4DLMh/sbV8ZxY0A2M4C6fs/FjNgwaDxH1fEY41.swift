@@ -16,22 +16,7 @@ struct FjNgwaDxH1fEY41: View {
                                        .frame(width: 148, height: 87)
                                        .cornerRadius(8)
                                        .allowsHitTesting(false)
-                    //房间标签
-//                    HStack {
-//                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
-//                            .frame(width: 16, height: 16)
-//
-//                        Text("Sing")
-//                                        .g0LIIcoZQsOjyND9(
-//                                            size: 12,
-//                                            weight: .regular
-//                                        )
-//                    }
-//                    .padding(.horizontal,4)
-//                    .padding(.vertical,2)
-//                    .background(Color.black.opacity(0.6))
-//                    .clipShape(s7q2ZC1S9A4tM8L3(radius: 8, corners: [.bottomRight]))
-//                    .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+
                 }.frame(width: 148, height: 87)
                 
                 VStack(alignment:.leading,spacing: 0){

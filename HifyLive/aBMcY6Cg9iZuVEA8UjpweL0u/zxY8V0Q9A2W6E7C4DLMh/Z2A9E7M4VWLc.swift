@@ -58,47 +58,36 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
         var hasValidMessage = false
         
         for message in messages {
-            //全服公告
-//            print("消息")
-//            print(message)
-//            print("文件")
-//            print(message.messageObject)
-            if message.messageType == .custom{
-                guard let customObject = message.messageObject as? NIMCustomObject,
-                      let attachment = customObject.attachment else {
-                    continue
+
+            if let session = message.session,
+               session.sessionType == .chatroom,
+               message.messageType == .custom,
+               let remoteExt = message.remoteExt,
+               let attachType = remoteExt["attachType"] as? Int,
+               attachType == 66 {
+
+                // 这里只会在满足所有条件时进入（礼物消息）
+                
+            
+                guard let data = remoteExt["data"] as? [String: Any] else {
+                    return
                 }
-                let jsonString = attachment.encode()
-                
-                
-                
-                if(jsonString == ""){
-                    continue
-                }
-                
-                
-                
-                guard let data = jsonString.data(using: .utf8) else {
-                    continue
-                }
-                do {
-                    guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                          let type = dict["attachType"] as? String, type == "SEND_GIFT" else {
-                        continue
-                    }
-//                    guard let giftId = dict["giftId"] as? Int,
-//                          let giftNum = dict["giftNum"] as? Int,
-//                          let giftPrice = dict["giftPrice"] as? Int,
-//                          let giftIcon = dict["smallImg"] as? String,
-//                          let giftImg = dict["giftIcon"] as? String else {
-//                        continue
-//                    }
-                    
-                } catch {
-                  //  print("JSON 解析失败: \(error)")
-                    continue
-                }
+
+                GlobalNoticeManager.shared.show(
+                    GiftNoticeModel(
+                        senderName: data.string("sendUserNickName"),
+                        receiverName: data.string("receiveUserNickName"),
+                        giftName: data.string("giftName"),
+                        giftCount: data.int("giftNum"),
+                        giftImage: data.string("smallImg"),
+                        roomId: data.int("userId")
+                    ),
+                    stay: Double(data.string("showTime")) ?? 0
+                )
             }
+            
+            
+            
             guard
                 let session = message.session,
                 session.sessionType == .P2P,

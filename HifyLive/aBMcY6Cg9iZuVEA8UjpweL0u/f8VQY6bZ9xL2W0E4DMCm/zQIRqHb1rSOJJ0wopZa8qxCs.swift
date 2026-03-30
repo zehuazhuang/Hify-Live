@@ -326,10 +326,10 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }.frame(height: 95)
                                                 .frame(maxWidth: .infinity)
                                                 .onTapGesture {
-
+                                                    LiveSessionManager.shared.currentChannelUserId = UInt(areoloaUid)
                                                     if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
 
-
+                                                        
                                                         pilot.popTo(
                                                             .zhwyzs0gELive(localUid:UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid:UInt(areoloaUid))
                                                         )
@@ -479,6 +479,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
         
 
         .onAppear{
+            print(areoloaUid)
             Task {
                 if (!kP0G6KEO0){
                     EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()

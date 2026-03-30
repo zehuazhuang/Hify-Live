@@ -44,20 +44,7 @@ class RecentSessionStore: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     init() {
-        // 初次加载
-       
-            fetchRecentSessions()
-       
 
-//         定时刷新或在 ChatViewModel 更新缓存后调用
-//        Timer.publish(every: 0.3, on: .main, in: .common)
-//            .autoconnect()
-//            .sink { [weak self] _ in
-//                guard let self else { return }
-//                self.cache = RecentSessionManager.shared.cache
-//                
-//            }
-//            .store(in: &cancellables)
     }
     
     private func sortCache() {
@@ -71,12 +58,20 @@ class RecentSessionStore: ObservableObject {
     }
     
     // 拉取最近会话
-    func fetchRecentSessions() {
-        RecentSessionManager.shared.fetchRecentSessions {
-            self.cache = RecentSessionManager.shared.cache
-            self.sortCache()
-            self.syncGlobalUnread()
-        }
+    func fetchRecentSessions() async {
+        await withCheckedContinuation { continuation in
+               RecentSessionManager.shared.fetchRecentSessions {
+                   
+                   self.cache = RecentSessionManager.shared.cache
+                   self.sortCache()
+                   self.syncGlobalUnread()
+                   
+                   print("缓存")
+                   print(self.cache)
+                   
+                   continuation.resume() // 🔥 关键：告诉 async “结束了”
+               }
+           }
     }
     
     func syncGlobalUnread() {
@@ -116,8 +111,8 @@ class RecentSessionStore: ObservableObject {
                local.unreadCount = recentSession.unreadCount
                local.lastMessageText = recentSession.lastMessage?.text ?? ""
                local.timestamp = recentSession.lastMessage?.timestamp ?? 0
-               self.sortCache()
-               objectWillChange.send()
+               sortCache()
+              // objectWillChange.send()
                // ✅ 全局未读同步
                GlobalUnreadStore.shared.update(from: cache)
            }

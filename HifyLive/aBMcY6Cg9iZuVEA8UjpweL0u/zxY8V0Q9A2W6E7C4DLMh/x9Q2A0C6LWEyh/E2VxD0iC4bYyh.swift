@@ -12,15 +12,10 @@ struct E2VxD0iC4bYyh: View {
     ]
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @Binding var ecorjazyType: Bool // true recommend false following
-    
     @StateObject private var qVi2QJ0SeDluhZ9xoQ8V7 = IyfdHMdY.bTa3L6BoprG
     @State private var liveVC: UIViewController?
-    
     @StateObject private var followingCache = FollowingCache.shared //关注数据
-    
-    @State private var pullOffset: CGFloat = 0
     @State private var isRefreshing = false
-    private let triggerHeight: CGFloat = 80
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
     
@@ -100,6 +95,7 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
                         .onTapGesture {
+                      
                             pilot.push(.Gcx3oCl1wFkbw1)
                         }
                 }
@@ -107,11 +103,11 @@ struct E2VxD0iC4bYyh: View {
                 ScrollView(showsIndicators: false){
                     ZStack{
                         VStack{
-                          
-                                SmoothPullToRefresh(
-                                       pullOffset: $pullOffset,
-                                       isRefreshing: $isRefreshing
-                                )
+                            if isRefreshing {
+                                ProgressView()
+                                    .tint(.white)
+                                    .scaleEffect(1.4)
+                            }
                            
                             
                             if ecorjazyType {
@@ -123,6 +119,7 @@ struct E2VxD0iC4bYyh: View {
                                         ForEach(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.indices, id: \.self) { index in
                                             rL0X1V3LiveCell(bemindbeData: X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index], is7Nqdlvk: index == 0)
                                                 .onTapGesture{
+                                                    LiveSessionManager.shared.currentChannelUserId = UInt(X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH[index].int("userId"))
                                                     pilot.push(
                                                         .zhwyzs0gELive(
                                                           
@@ -144,7 +141,7 @@ struct E2VxD0iC4bYyh: View {
                                         ForEach(followingCache.items.indices, id: \.self) { index in
                                             rL0X1V3LiveCell(bemindbeData: followingCache.items[index], is7Nqdlvk: index == 0)
                                                 .onTapGesture{
-                                                    
+                                                    LiveSessionManager.shared.currentChannelUserId = UInt(followingCache.items[index].int("userId"))
 
                                                     
                                                     pilot.push(.zhwyzs0gELive(localUid: UInt(qVi2QJ0SeDluhZ9xoQ8V7.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(followingCache.items[index].int("userId"))))
@@ -158,15 +155,18 @@ struct E2VxD0iC4bYyh: View {
                     }
                 }.simultaneousGesture(
                     DragGesture()
-                        .onEnded { _ in
-                            guard pullOffset > triggerHeight, !isRefreshing else { return }
-
-                            isRefreshing = true
-                            Task {
-                                await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
-                                print("刷新")
-                                withAnimation {
-                                    isRefreshing = false
+                        .onEnded { value in
+                            let verticalDelta = value.translation.height
+                            if verticalDelta > 120 && !isRefreshing {
+                                isRefreshing = true
+                                Task {
+                                    await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
+                                    print("刷新")
+                                    await MainActor.run {
+                                        withAnimation {
+                                            isRefreshing = false
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -175,21 +175,7 @@ struct E2VxD0iC4bYyh: View {
                 
                 
                 
-            //悬浮live
-//            ZStack {
-//                ZJ7h766mz(tMmEWWlfgUag: "L9ZqA8C7S2M1t34")
-//                HStack(spacing: 2) {
-//                    ZJ7h766mz(tMmEWWlfgUag: "C7M2Z8A1L9tqS34")
-//                        .frame(width: 24, height: 24)
-//                    Text("LIVE")
-//                        .font(.system(size: 14, weight: .semibold))
-//                        .foregroundColor(.white)
-//                }
-//            }
-//            .frame(width: 79, height: 32)
-//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-//            .padding(.bottom, 122)
-//            .padding(.trailing,16)
+
             
             }
         
@@ -203,18 +189,7 @@ struct E2VxD0iC4bYyh: View {
         }
     }
 
-//                    HStack {
-//                        ZJ7h766mz(tMmEWWlfgUag: "M7C9q1Z4A8tL2S3")
-//                            .frame(width: 16, height: 16)
-//                        Text("Make Friends")
-//                                        .g0LIIcoZQsOjyND9(
-//                                            size: 12,
-//                                            weight: .regular
-//                                        )
-//                    }
-//                    .padding(4)
-//                    .background(Color.black.opacity(0.6))
-//                    .clipShape(s7q2ZC1S9A4tM8L3(radius: 8, corners: [.bottomRight]))
+
 
     // 单个直播组件
     struct rL0X1V3LiveCell: View {
@@ -327,28 +302,10 @@ extension UIApplication {
     }
 }
 
-//下拉刷新组件
-struct SmoothPullToRefresh: View {
-    @Binding var pullOffset: CGFloat
-    @Binding var isRefreshing: Bool
 
-    var body: some View {
-        GeometryReader { geo in
-            let offset = geo.frame(in: .global).minY
-
-            if offset > 0 {
-                VStack {
-                    if isRefreshing {
-                        ProgressView()
-                            .tint(.white)
-                            .scaleEffect(1.4)
-                    }
-                }
-                .frame(height: offset)
-                .offset(x: 10, y: -30)
-                .onChange(of: offset) { pullOffset = $0 }
-            }
-        }
-        .frame(height: 0)
+struct OffsetKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }

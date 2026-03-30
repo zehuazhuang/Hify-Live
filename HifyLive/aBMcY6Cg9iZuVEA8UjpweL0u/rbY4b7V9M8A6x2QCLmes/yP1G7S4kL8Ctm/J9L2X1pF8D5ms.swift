@@ -12,13 +12,18 @@ struct J9L2X1pF8D5ms: View {
     @StateObject private var X9QpF3L0b7M8R2 = L3vM9X0aQ8yF4b.shared //直播数据
     @State private var openRowId: UUID? = nil
     @State private var eHHmfq7UeU = false //是否第一次进入
+    @State private var antAWyLAMipD = false //刷新
     let wzJqE7XWO : ()-> Void //回到home
     var body: some View {
         
             ScrollView(showsIndicators: false){
                 VStack(spacing: 4) {
                 // 顶部水平快捷消息栏
-                    
+                    if antAWyLAMipD {
+                        ProgressView()
+                            .tint(.white)
+                            .scaleEffect(1.4)
+                    }
                     if X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH.count > 0{
                         let items = X9QpF3L0b7M8R2.W8pT2K6qR1mD5vH
                         VStack(spacing:0){
@@ -52,6 +57,7 @@ struct J9L2X1pF8D5ms: View {
                                        ForEach(displayedItems.indices, id: \.self) { index in
                                            AqS7C1A2tLt(mdFf7YData: displayedItems[index])
                                                .onTapGesture {
+                                                   LiveSessionManager.shared.currentChannelUserId = UInt(displayedItems[index].int("userId"))
                                                    pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(displayedItems[index].int("userId"))))
                                                }
                                            if displayedItems.count == 5 {
@@ -117,24 +123,38 @@ struct J9L2X1pF8D5ms: View {
         }.simultaneousGesture(
             DragGesture(minimumDistance: 5)
                 .onChanged { value in
-                    // 🔥 只要是明显纵向滚动
                     if abs(value.translation.height) > abs(value.translation.width) {
                         if openRowId != nil {
                             openRowId = nil
                         }
                     }
                 }
+                .onEnded { value in
+                            let dy = value.translation.height
+                            if dy > 120 && !antAWyLAMipD {
+                                Task {
+                                    antAWyLAMipD = true
+                                    print("刷新")
+                                    await sessionStore.fetchRecentSessions()
+                                    await MainActor.run {
+                                        withAnimation {
+                                            antAWyLAMipD = false
+                                        }
+                                    }
+                                }
+                            }
+                        }
         ).simultaneousGesture(
             TapGesture().onEnded {
                 openRowId = nil
             }
-        ) .onAppear {
+        )
+        .onAppear {
             guard !eHHmfq7UeU else { return }
             eHHmfq7UeU = true
-            sessionStore.fetchRecentSessions()
-            print("数量")
-            print(sessionStore.cache.count)
-            
+            Task{
+               await sessionStore.fetchRecentSessions()
+            }
         }
     }
 }

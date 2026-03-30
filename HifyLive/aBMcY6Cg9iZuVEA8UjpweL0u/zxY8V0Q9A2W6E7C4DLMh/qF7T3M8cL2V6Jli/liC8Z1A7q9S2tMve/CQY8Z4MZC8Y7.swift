@@ -33,6 +33,9 @@ struct LE0xQZ6Y7WC8iv: View {
         self.localUid = localUid
         self.zA9Y4W6LUid = zA9Y4W6LUid
         
+        print(localUid)
+        print(zA9Y4W6LUid)
+        
     }
     
     var body: some View {
@@ -47,8 +50,23 @@ struct LE0xQZ6Y7WC8iv: View {
                     Spacer()
                 ChatViewContainer(yxRoomId:liveRoomData.string("yxRoomId") , userId:liveRoomData.int("userId") ,
                                   onMuteTappedCallback: { uid, mute in
+                    
+                    GlobalNoticeManager.shared.show(
+                        GiftNoticeModel(
+                            senderName: "1",
+                            receiverName: "2",
+                            giftName: "3",
+                            giftCount: 1,
+                            giftImage: "https://huanniuchat.oss-accelerate.aliyuncs.com/document/gift/1867047485415882752.png",
+                            roomId: 1000005581
+                        ),
+                        stay: 5
+                    )
+                    
+                    
+                    
                                       
-                                        NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
+                                    //    NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
                                     },
                                   onUserAvatarTapped: { yxAccid in
                                        
@@ -257,7 +275,7 @@ struct LE0xQZ6Y7WC8iv: View {
                     withAnimation{
                         x7hEzzGUTAch0 = true
                     }
-                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "LIVE", jEhg1fS1G8: liveRoomData.int("id"), tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
+                }, wlXWcyaNuj: liveRoomData.int("userId"), mCrenfA3xJE: "NEW_LIVE", jEhg1fS1G8: liveRoomData.int("id"), tGT2R2amV: liveRoomData.string("yxAccid"), vTubwwYkiq: liveRoomData.string("nickname"))
             }
             //商店弹框
             if x7hEzzGUTAch0 {
@@ -286,9 +304,9 @@ struct LE0xQZ6Y7WC8iv: View {
             GiftAnimationPlayer(manager: giftManager)
             
             //关播页面
-//            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
-//                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
-//            }
+            if showEndView || liveRoomData.int("liveRoomState")  == 1 {
+                MZ7S8q9A1C2tL43x(x0W6LivDate: liveRoomData)
+            }
         }.sheet(isPresented: $showRankSheet) {
             Eu1xbwzA1AwXn4(
                 uNZ9IM5OK: eLx8RIeCY,

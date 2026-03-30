@@ -66,8 +66,14 @@ class RecentSessionManager: ObservableObject {
                 }
             }
         }
+        
+        tempCache.sort { first, second in
+            if first.sessionId == "video-sky-test" { return true }
+            if second.sessionId == "video-sky-test" { return false }
+            return first.timestamp > second.timestamp
+        }
 
-        cache = tempCache.sorted { $0.timestamp > $1.timestamp }
+        cache = tempCache
         
        
         
@@ -127,10 +133,7 @@ class RecentSessionManager: ObservableObject {
         }
         
         if  accid == "video-sky-test" {
-//                                                XQAQvuU6cZLbgE.shared.vEnu5pS9V(
-//                                                    text: "服务器将在10分钟后维护",
-//                                                    isSystem: true
-//                                                )
+
             
             print(userInfo?.avatarUrl ?? "")
             XQAQvuU6cZLbgE.shared.vEnu5pS9V(

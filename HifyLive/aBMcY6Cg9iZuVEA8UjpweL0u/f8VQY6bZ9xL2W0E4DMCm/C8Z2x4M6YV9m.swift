@@ -150,7 +150,7 @@ struct C8Z2x4M6YV9m: View {
                             HStack(spacing: 8) {
                                     ZStack{
                                         ZJ7h766mz(tMmEWWlfgUag: "jKbg9DLfbZpDr")
-                                                           .frame(height: 97)
+                                                           .frame(height: 86)
                                                            .frame(maxWidth: .infinity)
                                                                                 VStack(alignment: .leading, spacing: 5) {
                                                                                     Text("nXEiXqpDerOIK9cIltOdYw==".bFHEatcgE4zzU9TCfDonsu())
@@ -169,11 +169,12 @@ struct C8Z2x4M6YV9m: View {
                                                                                     }
                                                                                 }
                                                                                 .padding(.leading,16)
-                                    }.frame(width: 168 ,height: 86)
+                                    }.frame(height: 86)
+                                    .frame(maxWidth: .infinity)
                                     .onTapGesture {
                                         pilot.push(.Afmox09Q1UKVfE(daPQCKaHi: false))
                                     }
-                                      Spacer()
+                                      
 
 //                                RoundedRectangle(cornerRadius: 12)
 //                                    .frame(width: 127,height: 78)

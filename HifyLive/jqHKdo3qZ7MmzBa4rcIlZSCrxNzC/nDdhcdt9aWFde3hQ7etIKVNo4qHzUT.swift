@@ -24,10 +24,18 @@ struct WUjfoptOKs8pZfhSAH0duplG<pZvePB2YhReAp6: View>: View {
                     .transition(.opacity)
                     .zIndex(20)
             }
+            //提示
             dqUmaY6jE7tRWpendJ()
                 .zIndex(10)
+            //浮窗通知
             XQAQvuU6cZLbgEView()
                             .zIndex(30)
+            //全服公告
+            VStack {
+                GlobalGiftNoticeView(currentRoomId: Int(LiveSessionManager.shared.currentChannelUserId))
+                    Spacer()
+                }
+                .zIndex(40)
         }
     }
 }

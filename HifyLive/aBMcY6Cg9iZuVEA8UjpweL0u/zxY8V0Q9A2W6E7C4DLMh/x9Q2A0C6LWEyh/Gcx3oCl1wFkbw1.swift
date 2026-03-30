@@ -89,10 +89,9 @@ struct Gcx3oCl1wFkbw1: View {
                 
                 //hstack end
                     //财富榜
-                    VStack{
+                VStack(spacing:0){
                         //hstack start
                         HStack(spacing:8){
-                           
                             ZStack{
                                 if o6a4AyPmo == 1 {
                                     ZJ7h766mz(tMmEWWlfgUag: "qgM97bhM1")
@@ -139,99 +138,105 @@ struct Gcx3oCl1wFkbw1: View {
                         
                         
                         //hstack end
-
-                            Spacer().frame(height: 30)
                         
                         
                         
-                        HStack(alignment: .bottom, spacing: 0) {
-
-                            // 第二名
-                            RankItemView(
-                                gDKv25ocXI: atFBCJ7aeWP.count > 1 ? atFBCJ7aeWP[1] : [:],
-                                colors: [
-                                    Color(red: 167/255, green: 202/255, blue: 255/255),
-                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                ],
-                                rO06IvkUE: "gIQ4nRP",
-                                a5MYGuUu: false,
-                                uF7VFlMQa: {
-                                    withAnimation{
-                                        pQN3C5FxRi = 1
-                                        cwom50hBfhTc = true
-                                    }
+                        
+                        ScrollView{
+                            Spacer().frame(height: 20)
+                            ZStack(alignment: .bottom){
+                                HStack(alignment: .bottom, spacing: 0) {
+                                    RankItemView(
+                                        gDKv25ocXI: atFBCJ7aeWP.count > 1 ? atFBCJ7aeWP[1] : [:],
+                                        colors: [
+                                            Color(red: 167/255, green: 202/255, blue: 255/255),
+                                            Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                        ],
+                                        rO06IvkUE: "gIQ4nRP",
+                                        a5MYGuUu: false,
+                                        uF7VFlMQa: {
+                                            withAnimation{
+                                                pQN3C5FxRi = 1
+                                                cwom50hBfhTc = true
+                                            }
+                                        }
+                                    )
+                                    .offset(y: 20)
+                                    RankItemView(
+                                        gDKv25ocXI: atFBCJ7aeWP.count > 0 ? atFBCJ7aeWP[0] : [:],
+                                        colors: [
+                                            Color(red: 255/255, green: 248/255, blue: 136/255),
+                                            Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                        ],
+                                        rO06IvkUE: "x1Tms9QGDc",
+                                        a5MYGuUu: false,
+                                        uF7VFlMQa: {
+                                            withAnimation{
+                                                pQN3C5FxRi = 0
+                                                cwom50hBfhTc = true
+                                            }
+                                        }
+                                    )
+                                    RankItemView(
+                                        gDKv25ocXI: atFBCJ7aeWP.count > 2 ? atFBCJ7aeWP[2] : [:],
+                                        colors: [
+                                            Color(red: 255/255, green: 216/255, blue: 204/255),
+                                            Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                        ],
+                                        rO06IvkUE: "oxk8XBdCod",
+                                        a5MYGuUu: false,
+                                        uF7VFlMQa: {
+                                            withAnimation{
+                                                pQN3C5FxRi = 2
+                                                cwom50hBfhTc = true
+                                            }
+                                        }
+                                    )
+                                    .offset(y: 30)
                                 }
-                            )
-                            .offset(y: 20)
-
-                            // 第一名（最高）
-                            RankItemView(
-                                gDKv25ocXI: atFBCJ7aeWP.count > 0 ? atFBCJ7aeWP[0] : [:],
-                                colors: [
-                                    Color(red: 255/255, green: 248/255, blue: 136/255),
-                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                ],
-                                rO06IvkUE: "x1Tms9QGDc",
-                                a5MYGuUu: false,
-                                uF7VFlMQa: {
-                                    withAnimation{
-                                        pQN3C5FxRi = 0
-                                        cwom50hBfhTc = true
-                                    }
+                                .padding(.horizontal, 16)
+                                ZJ7h766mz(tMmEWWlfgUag: "xbEr5dtzc93v")
+                                    .frame(height: 35.9)
+                                                   .frame(maxWidth: .infinity)
+                            }
+                            
+                            
+                            LazyVStack(spacing:12){
+                                ForEach(Array(atFBCJ7aeWP.dropFirst(3).enumerated()), id: \.offset) { offset, item in
+                                    OG8SPSFgtz0zns(cvqRWsK91e: item, pErJCVH3JV: offset + 4, ug5Hb1dC1: false,
+                                                   uF7VFlMQa: {
+                                        withAnimation{
+                                            pQN3C5FxRi = offset + 3
+                                            cwom50hBfhTc = true
+                                        }
+                                    })
+                                        
                                 }
+                            }.padding(.horizontal,16)
+                        }.padding(.bottom,h3HxHKT2xF ? 60 :0)
+                            .mask(
+                                LinearGradient(
+                                    gradient: Gradient(stops: [
+                                        .init(color: .clear, location: 0),
+                                        .init(color: .black, location: 0.02),
+                                        .init(color: .black, location: 1)
+                                    ]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
                             )
-
-                            // 第三名
-                            RankItemView(
-                                gDKv25ocXI: atFBCJ7aeWP.count > 2 ? atFBCJ7aeWP[2] : [:],
-                                colors: [
-                                    Color(red: 255/255, green: 216/255, blue: 204/255),
-                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                ],
-                                rO06IvkUE: "oxk8XBdCod",
-                                a5MYGuUu: false,
-                                uF7VFlMQa: {
-                                    withAnimation{
-                                        pQN3C5FxRi = 2
-                                        cwom50hBfhTc = true
-                                    }
-                                }
-                            )
-                            .offset(y: 30)
-                        }
-                        .padding(.horizontal, 16)
-                        
-                        ZJ7h766mz(tMmEWWlfgUag: "xbEr5dtzc93v")
-                                           .frame(height: 60)
-                                           .frame(maxWidth: .infinity)
-                                           .offset(y: -30)
-                       
-                       Spacer()
-                        
+                        //滑动 end
                     }
-                    
-                
-                
-                
             }
             //排行list
           
-                ScrollView {
-                    VStack(spacing:12){
-                        ForEach(Array(atFBCJ7aeWP.dropFirst(3).enumerated()), id: \.offset) { offset, item in
-                            OG8SPSFgtz0zns(cvqRWsK91e: item, pErJCVH3JV: offset + 4, ug5Hb1dC1: false,
-                                           uF7VFlMQa: {
-                                withAnimation{
-                                    pQN3C5FxRi = offset + 3
-                                    cwom50hBfhTc = true
-                                }
-                            })
-                                
-                        }
-                    }
-                }.padding(.horizontal,16)
-                .padding(.top,340)
-                .padding(.bottom,h3HxHKT2xF ? 60 :0)
+                //ScrollView {
+                    
+                   
+                    
+//                }.padding(.horizontal,16)
+//                .padding(.top,340)
+//                .padding(.bottom,h3HxHKT2xF ? 60 :0)
            
            
             

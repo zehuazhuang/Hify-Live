@@ -144,7 +144,7 @@ class LiveViewController: UIViewController {
         remoteVideoView.subviews.forEach { $0.removeFromSuperview() }
 
         print("🚀 Join channel:", channelName)
-
+        
         engine.joinChannel(
             byToken: token,
             channelId: channelName,
@@ -183,7 +183,7 @@ extension LiveViewController: AgoraRtcEngineDelegate {
                 self.loadingView.removeFromSuperview()
             }
         
-        LiveSessionManager.shared.currentChannelUserId = UInt(uid)
+        
     }
     func rtcEngine(
         _ engine: AgoraRtcEngineKit,

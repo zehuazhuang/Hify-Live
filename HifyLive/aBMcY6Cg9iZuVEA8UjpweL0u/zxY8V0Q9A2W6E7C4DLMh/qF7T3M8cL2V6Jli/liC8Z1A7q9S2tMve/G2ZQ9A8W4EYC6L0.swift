@@ -647,16 +647,14 @@ extension ChatViewController {
     func onRecvMessages(_ messages: [NIMMessage]) {
         for msg in messages {
             
-            print("消息")
-            print(yxRoomId)
-            print(msg)
-            print("附近")
-            print(msg.messageObject)
+           
             
-                    guard let session = msg.session,
-                          session.sessionId == yxRoomId else {
-                        continue
-                    }
+           
+            guard let session = msg.session,
+                  session.sessionType == .chatroom,
+                  session.sessionId == yxRoomId else {
+                continue
+            }
             
             
             let accid = msg.from ?? ""
@@ -687,77 +685,55 @@ extension ChatViewController {
                     }
                 }
             case .notification:
-
                 guard let object = msg.messageObject as? NIMNotificationObject,
                       let content = object.content as? NIMChatroomNotificationContent else {
                     break
                 }
-                
-              
-                
                 // 取用户信息
                 if let member = content.source {
                         let nick = member.nick ?? ""
-
                         switch content.eventType {
                         case .enter:
-                            print("\(nick) 进入直播间")
                             let name = member.nick ?? "游客"
                                 showJoin(name: name)
                         case .exit:
                             print("\(nick) 离开直播间")
-                            
                         default:
                             break
                         }
                     }
-
              // 2️⃣ 自定义消息（弹幕 / 礼物 / 系统消息）
              case .custom:
-              
-                if let object = msg.messageObject as? NIMCustomObject,
-                   let attachment = object.attachment {
-
-                    let jsonString = attachment.encode()
-                    guard !jsonString.isEmpty,
-                          let data = jsonString.data(using: .utf8) else { return }
-                    do {
-                        guard let dict = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                              let giftId = dict["giftId"] as? Int,
-                              let giftNum = dict["giftNum"] as? Int,
-                              let giftImg = dict["giftIcon"] as? String,
-                              let giftSmallImg = dict["smallImg"] as? String else {
-                          
-                            return
-                        }
-                      
-                        // 添加回调到 Swift
-                        NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
-                            let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
-                            let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
-                            
-                         
-                            
-                            let publicMsg = PublicMessage(
-                                    userId: accid,
-                                    avatarURL: avatarURL,
-                                    nickname: nickname,
-                                    type: .gift(imgURL: giftSmallImg, count: giftNum, giftId: giftId),
-                                    isMine: false
-                                )
-
-                                DispatchQueue.main.async {
-                                    self.appendMessage(publicMsg)
-                                    self.showGift(publicMsg)
-                                }
-                        }
-                        onReceiveGift?(giftImg,giftNum,giftId)
-                    } catch {
-                        print("JSON解析失败:", error)
-                    }
+                guard let remoteExt = msg.remoteExt,
+                      let data = remoteExt["data"] as? [String: Any],
+                      let giftId = data["giftId"] as? Int,
+                      let giftNum = data["giftNum"] as? Int,
+                      let giftImg = data["giftIcon"] as? String,
+                      let giftSmallImg = data["smallImg"] as? String else {
+                    return
                 }
                     
-                    
+                    // 添加回调到 Swift
+                    NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
+                        let nickname = users?.first?.userInfo?.nickName ?? "Unknown"
+                        let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
+                        
+                     
+                        
+                        let publicMsg = PublicMessage(
+                                userId: accid,
+                                avatarURL: avatarURL,
+                                nickname: nickname,
+                                type: .gift(imgURL: giftSmallImg, count: giftNum, giftId: giftId),
+                                isMine: false
+                            )
+
+                            DispatchQueue.main.async {
+                                self.appendMessage(publicMsg)
+                                self.showGift(publicMsg)
+                            }
+                    }
+                    onReceiveGift?(giftImg,giftNum,giftId)
              default:
                  break
              }

@@ -227,23 +227,9 @@ struct Afmox09Q1UKVfE: View {
                                         Spacer().frame(height: 5)
                                         ZStack {
                                             
-                                            RoundedRectangle(cornerRadius: 20)
-                                                .fill(
-                                                    LinearGradient(
-                                                        gradient: Gradient(colors: [
-                                                            Color(red: 17/255, green: 226/255, blue: 255/255),
-                                                            Color(red: 217/255, green: 28/255, blue: 255/255),
-                                                            Color(red: 217/255, green: 28/255, blue: 255/255),
-                                                        ]),
-                                                        startPoint: .leading,
-                                                        endPoint: .trailing
-                                                    )
-                                                )
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .stroke(Color(red: 59/255, green: 63/255, blue: 66/255), lineWidth: 1)
-                                                )
-                                                .frame(width: 91, height: 25)
+                                            ZJ7h766mz(tMmEWWlfgUag: "xSO4h0sz8Q")
+                                                               .frame(width: 91, height: 25)
+
                                             
                                             
                                             Text("$ \(String((info["price"] as? Double) ?? 0))")

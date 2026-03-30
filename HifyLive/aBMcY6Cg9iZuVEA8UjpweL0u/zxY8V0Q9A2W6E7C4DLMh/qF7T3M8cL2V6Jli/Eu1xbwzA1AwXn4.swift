@@ -22,7 +22,10 @@ struct Eu1xbwzA1AwXn4: View {
     @State private var pQN3C5FxRi: Int = 0 //点击用户坐标
     @State private var chatSession: ChatSessionWrapper? //半屏私聊
     @State private var wYh4kyARQ: [String: Any] = [:] //当前用户的财富榜数据
-    @State private var countdownText: String = "" //时间倒计时
+    @State private var now: Date = Date()
+    @State private var todayEndDate: Date = Date()
+    @State private var weekEndDate: Date = Date()
+    
     
     init(
         uNZ9IM5OK: [[String: Any]] = [],
@@ -111,7 +114,7 @@ struct Eu1xbwzA1AwXn4: View {
                 //hstack end
                 if xB4BENFOp {
                     //财富榜
-                    VStack{
+                    VStack(spacing:0){
                         //hstack start
                         HStack(spacing:8){
                             
@@ -178,87 +181,120 @@ struct Eu1xbwzA1AwXn4: View {
                         
                         
                         //hstack end
-                       
+                            
+                        if o6a4AyPmo != 0 {
                             HStack(spacing:4){
                                 ZJ7h766mz(tMmEWWlfgUag: "y0UwIUXSNa")
                                     .frame(width: 9, height: 9)
-                                    .opacity(o6a4AyPmo == 0 ? 0 : 1)
+                                    
                                 
-                                Text(o6a4AyPmo == 0 ? " " : countdownText)
-                                    .g0LIIcoZQsOjyND9(
-                                        size: 12,
-                                        weight: .regular,
-                                        color: .white.opacity(o6a4AyPmo == 0 ? 0 : 0.8)
+                                TimelineView(.periodic(from: .now, by: 1)) { context in
+                                    CountdownLabel(
+                                        date: context.date,
+                                        mode: o6a4AyPmo,
+                                        todayEnd: todayEndDate,
+                                        weekEnd: weekEndDate
                                     )
-                            }
-                            .padding(.top,6)
-                            .padding(.bottom,40)
-                       
-                        
-                        
-                        HStack(alignment: .bottom, spacing: 0) {
-
-                            // 第二名
-                            RankItemView(
-                                gDKv25ocXI: atFBCJ7aeWP.count > 1 ? atFBCJ7aeWP[1] : [:],
-                                colors: [
-                                    Color(red: 167/255, green: 202/255, blue: 255/255),
-                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                ],
-                                rO06IvkUE: "gIQ4nRP",
-                                a5MYGuUu: true,
-                                uF7VFlMQa: {
-                                    withAnimation{
-                                        pQN3C5FxRi = 1
-                                        cwom50hBfhTc = true
-                                    }
                                 }
-                            )
-                            .offset(y: 20)
-
-                            // 第一名（最高）
-                            RankItemView(
-                                gDKv25ocXI: atFBCJ7aeWP.count > 0 ? atFBCJ7aeWP[0] : [:],
-                                colors: [
-                                    Color(red: 255/255, green: 248/255, blue: 136/255),
-                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                ],
-                                rO06IvkUE: "x1Tms9QGDc",
-                                a5MYGuUu: true,
-                                uF7VFlMQa: {
-                                    withAnimation{
-                                        pQN3C5FxRi = 0
-                                        cwom50hBfhTc = true
-                                    }
-                                }
-                            )
-
-                            // 第三名
-                            RankItemView(
-                                gDKv25ocXI: atFBCJ7aeWP.count > 2 ? atFBCJ7aeWP[2] : [:],
-                                colors: [
-                                    Color(red: 255/255, green: 216/255, blue: 204/255),
-                                    Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
-                                ],
-                                rO06IvkUE: "oxk8XBdCod",
-                                a5MYGuUu: true,
-                                uF7VFlMQa: {
-                                    withAnimation{
-                                        pQN3C5FxRi = 2
-                                        cwom50hBfhTc = true
-                                    }
-                                }
-                            )
-                            .offset(y: 30)
+                                .frame(height: 20)
+                            }.padding(.top,12)
                         }
-                        .padding(.horizontal, 16)
-                        
-                        ZJ7h766mz(tMmEWWlfgUag: "xbEr5dtzc93v")
-                                           .frame(height: 60)
-                                           .frame(maxWidth: .infinity)
-                                           .offset(y: -30)
+                            
+                           
+                            
                        
-                       Spacer()
+                        
+                        ScrollView{
+                            Spacer().frame(height: o6a4AyPmo == 0 ? 57 : 30)
+                            ZStack(alignment: .bottom){
+                                HStack(alignment: .bottom, spacing: 0) {
+
+                                    // 第二名
+                                    RankItemView(
+                                        gDKv25ocXI: atFBCJ7aeWP.count > 1 ? atFBCJ7aeWP[1] : [:],
+                                        colors: [
+                                            Color(red: 167/255, green: 202/255, blue: 255/255),
+                                            Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                        ],
+                                        rO06IvkUE: "gIQ4nRP",
+                                        a5MYGuUu: true,
+                                        uF7VFlMQa: {
+                                            withAnimation{
+                                                pQN3C5FxRi = 1
+                                                cwom50hBfhTc = true
+                                            }
+                                        }
+                                    )
+                                    .offset(y: 20)
+
+                                    // 第一名（最高）
+                                    RankItemView(
+                                        gDKv25ocXI: atFBCJ7aeWP.count > 0 ? atFBCJ7aeWP[0] : [:],
+                                        colors: [
+                                            Color(red: 255/255, green: 248/255, blue: 136/255),
+                                            Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                        ],
+                                        rO06IvkUE: "x1Tms9QGDc",
+                                        a5MYGuUu: true,
+                                        uF7VFlMQa: {
+                                            withAnimation{
+                                                pQN3C5FxRi = 0
+                                                cwom50hBfhTc = true
+                                            }
+                                        }
+                                    )
+
+                                    // 第三名
+                                    RankItemView(
+                                        gDKv25ocXI: atFBCJ7aeWP.count > 2 ? atFBCJ7aeWP[2] : [:],
+                                        colors: [
+                                            Color(red: 255/255, green: 216/255, blue: 204/255),
+                                            Color(red: 13/255, green: 13/255, blue: 20/255).opacity(0)
+                                        ],
+                                        rO06IvkUE: "oxk8XBdCod",
+                                        a5MYGuUu: true,
+                                        uF7VFlMQa: {
+                                            withAnimation{
+                                                pQN3C5FxRi = 2
+                                                cwom50hBfhTc = true
+                                            }
+                                        }
+                                    )
+                                    .offset(y: 30)
+                                }
+                                .padding(.horizontal, 16)
+                                ZJ7h766mz(tMmEWWlfgUag: "xbEr5dtzc93v")
+                                    .frame(height: 35.9)
+                                                   .frame(maxWidth: .infinity)
+                            }
+                            LazyVStack(spacing:12){
+                                ForEach(Array(atFBCJ7aeWP.dropFirst(3).enumerated()), id: \.offset) { offset, item in
+                                    OG8SPSFgtz0zns(cvqRWsK91e: item, pErJCVH3JV: offset + 4, ug5Hb1dC1: true,
+                                                   uF7VFlMQa: {
+                                        withAnimation{
+                                            pQN3C5FxRi = offset + 3
+                                            cwom50hBfhTc = true
+                                        }
+                                    })
+                                }
+                            }.padding(.horizontal,16)
+                        }.padding(.bottom,h3HxHKT2xF ? 60 :0)
+                        .mask(
+                            LinearGradient(
+                                gradient: Gradient(stops: [
+                                    .init(color: .clear, location: 0),
+                                    .init(color: .black, location: 0.05),
+                                    .init(color: .black, location: 1)
+                                ]),
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        //滑动 end
+                        
+                     
+                       
+                      
                         
                     }
                     
@@ -293,25 +329,7 @@ struct Eu1xbwzA1AwXn4: View {
                 
                 
             }
-            //排行list
-            if xB4BENFOp {
-                ScrollView {
-                    VStack(spacing:12){
-                        ForEach(Array(atFBCJ7aeWP.dropFirst(3).enumerated()), id: \.offset) { offset, item in
-                            OG8SPSFgtz0zns(cvqRWsK91e: item, pErJCVH3JV: offset + 4, ug5Hb1dC1: true,
-                                           uF7VFlMQa: {
-                                withAnimation{
-                                    pQN3C5FxRi = offset + 3
-                                    cwom50hBfhTc = true
-                                }
-                            })
-                                
-                        }
-                    }
-                }.padding(.horizontal,16)
-                .padding(.top,396)
-                .padding(.bottom,h3HxHKT2xF ? 60 :0)
-            }
+
            
             
             //底部自己
@@ -392,24 +410,27 @@ struct Eu1xbwzA1AwXn4: View {
             }
             
         }.onAppear{
+            let calendar = Calendar.current
+               todayEndDate = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
+               weekEndDate = calendar.nextDate(
+                   after: Date(),
+                   matching: DateComponents(hour: 23, minute: 59, second: 59, weekday: 7),
+                   matchingPolicy: .nextTime
+               )!
             Task{
+
                await vdD89xwThuLoad()
             }
-            updateCountdown()
         }.onChange(of: o6a4AyPmo) { _ in
             Task {
                 await vdD89xwThuLoad()
             }
         }.onChange(of: h3HxHKT2xF) { _ in
-            updateCountdown()
             Task {
                 await vdD89xwThuLoad()
             }
-        }.onReceive(
-            Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-        ) { _ in
-            updateCountdown()
         }
+
         .sheet(item: $chatSession) { wrapper in
             CgZU7mTgY46l(
                 session: wrapper.session,
@@ -422,56 +443,9 @@ struct Eu1xbwzA1AwXn4: View {
         }
     }
     
-    func updateCountdown() {
-        // This live 不显示
-        if o6a4AyPmo == 0 {
-            countdownText = ""
-        }
-        // Today
-        else if o6a4AyPmo == 1 {
-            countdownText = remainingToday()
-        }
-        // Week
-        else {
-            countdownText = remainingWeek()
-        }
-    }
+
     
-    func remainingToday() -> String {
-        let now = Date()
-        let calendar = Calendar.current
-        
-        let endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: now)!
-        
-        let diff = calendar.dateComponents([.hour, .minute, .second], from: now, to: endOfDay)
-        
-        return String(format: "%02dh %02dm %02ds",
-                      diff.hour ?? 0,
-                      diff.minute ?? 0,
-                      diff.second ?? 0)
-    }
-    
-    func remainingWeek() -> String {
-        let now = Date()
-        let calendar = Calendar.current
-        
-        let weekday = calendar.component(.weekday, from: now)
-        
-        // iOS 默认：周日 = 1
-        let daysToEnd = (8 - weekday) % 7
-        
-        let endOfWeek = calendar.date(byAdding: .day, value: daysToEnd, to: now)!
-        
-        let finalDate = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: endOfWeek)!
-        
-        let diff = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: finalDate)
-        
-        return String(format: "%dd %02dh %02dm %02ds",
-                      diff.day ?? 0,
-                      diff.hour ?? 0,
-                      diff.minute ?? 0,
-                      diff.second ?? 0)
-    }
+ 
     
     func vdD89xwThuLoad() async {
       
@@ -517,3 +491,44 @@ struct Eu1xbwzA1AwXn4: View {
     }
 }
 
+struct CountdownLabel: View {
+    let date: Date
+    let mode: Int
+    let todayEnd: Date
+    let weekEnd: Date
+
+    var body: some View {
+        Text(formattedRemaining(for: date))
+            .g0LIIcoZQsOjyND9(
+                size: 12,
+                weight: .regular,
+                color: .white.opacity(0.8)
+            ).monospacedDigit()
+    }
+
+    private func formattedRemaining(for now: Date) -> String {
+        if mode == 2 {
+            return remainingWeek(from: now)
+        } else {
+            return remainingToday(from: now)
+        }
+    }
+    func remainingToday(from current: Date) -> String {
+        let diff = Int(todayEnd.timeIntervalSince(current))
+        if diff <= 0 { return "00h 00m 00s" }
+        let h = diff / 3600
+        let m = (diff % 3600) / 60
+        let s = diff % 60
+        return String(format: "%02dh %02dm %02ds", h, m, s)
+    }
+
+    func remainingWeek(from current: Date) -> String {
+        let diff = Int(weekEnd.timeIntervalSince(current))
+        if diff <= 0 { return "0d 00h 00m 00s" }
+        let d = diff / 86400
+        let h = (diff % 86400) / 3600
+        let m = (diff % 3600) / 60
+        let s = diff % 60
+        return String(format: "%dd %02dh %02dm %02ds", d, h, m, s)
+    }
+}

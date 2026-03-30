@@ -32,26 +32,22 @@ func IdVwDkHotdjRqB(){
 //                OnlineStatusManager.shared.startListen()
 //                OnlineStatusManager.shared.subscribe(ids)
             
-            //全局公共聊天室
-            // 进入公共聊天室
-//            Task {
-//                await GlobalPublicChatroom.shared.enterRoom()
-//            }
-//            Task{
-//                let asd = try await iowHG20TQQco()
-//                do {
-//                    
-//                    LiveSessionManager.shared.oep8RDxW = asd.string("roomId")
-//                   
-//
-//                    let request = NIMChatroomEnterRequest()
-//                    request.roomId = asd.string("roomId")
-//
-//                     try await NIMSDK.shared().chatroomManager.enterChatroom(request)
-//                } catch {
-//                    print("进入聊天室失败: \(error)")
-//                }
-//            }
+            //进入公共聊天室
+            Task{
+                let asd = try await iowHG20TQQco()
+                do {
+                    
+                    LiveSessionManager.shared.oep8RDxW = asd.string("roomId")
+                   
+
+                    let request = NIMChatroomEnterRequest()
+                    request.roomId = asd.string("roomId")
+
+                     try await NIMSDK.shared().chatroomManager.enterChatroom(request)
+                } catch {
+                    print("进入聊天室失败: \(error)")
+                }
+            }
         } else {
             print("云信 IM 登录失败")
         }

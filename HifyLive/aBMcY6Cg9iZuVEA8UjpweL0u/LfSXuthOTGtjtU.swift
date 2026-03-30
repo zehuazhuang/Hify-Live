@@ -7,77 +7,212 @@
 
 import Foundation
 import NIMSDK
-
-// MARK: - 全局公共聊天室管理器
-@objc
-final class GlobalPublicChatroom: NSObject, NIMChatroomManagerDelegate {
+import Combine
+import SwiftUI
+import UIPilot
+//全服公告
+struct GiftNoticeModel {
+    let senderName: String      // 送礼人
+    let receiverName: String    // 被送人
+    let giftName: String        // 礼物名
+    let giftCount: Int          // 数量
+    let giftImage: String       // 图片URL or 本地名
+    let roomId: Int             // 房间ID
+}
+final class GlobalNoticeManager: ObservableObject {
+    static let shared = GlobalNoticeManager()
     
-    static let shared = GlobalPublicChatroom()
+    @Published var model: GiftNoticeModel?
+    @Published var isShowing: Bool = false
+    var currentStay: Double = 3.0
     
-    // 当前公共聊天室ID
-    private(set) var roomId: String?
+    private var cancellable: AnyCancellable?
     
-
-    
-    private override init() {
-        super.init()
-        NIMSDK.shared().chatroomManager.add(self)
-    }
-    
-    deinit {
-        NIMSDK.shared().chatroomManager.remove(self)
-    }
-    
-    // MARK: - 加入公共聊天室
-    func enterRoom() async {
-        do {
-            // 这里调用你自己的接口获取房间信息
-            let response = try await iowHG20TQQco()
-            let roomId = response.string("roomId")
-            if roomId.isEmpty {
-                print("获取房间ID失败")
-                return
+    func show(_ model: GiftNoticeModel, stay: Double = 3.0) {
+        self.model = model
+        self.currentStay = stay
+        withAnimation(.easeInOut(duration: 1)) {
+            isShowing = true
+        }
+        
+        cancellable?.cancel()
+        cancellable = Just(())
+            .delay(for: .seconds(stay + 2), scheduler: RunLoop.main)
+            .sink { [weak self] in
+                withAnimation(.easeInOut(duration: 1)) {
+                    self?.isShowing = false
+                }
             }
-            self.roomId = roomId
-            
-            let request = NIMChatroomEnterRequest()
-            request.roomId = roomId
-            
-            try await NIMSDK.shared().chatroomManager.enterChatroom(request)
-            
-            print("✅ 已加入公共聊天室: \(roomId)")
-            
-        } catch {
-            print("❌ 进入公共聊天室失败: \(error)")
+    }
+}
+struct MarqueeContent<Content: View>: View {
+    let content: Content
+    let speed: Double
+    let maxWidth: CGFloat? // ✅ 新增最大宽度参数
+    
+    @State private var offset: CGFloat = 0
+    @State private var contentWidth: CGFloat = 0
+    
+    init(speed: Double = 30,
+         maxWidth: CGFloat? = nil,
+         @ViewBuilder content: () -> Content) {
+        self.content = content()
+        self.speed = speed
+        self.maxWidth = maxWidth
+    }
+    
+    var body: some View {
+        GeometryReader { geo in
+            let containerWidth = maxWidth ?? geo.size.width 
+            HStack(spacing: 0) {
+                content
+                    .fixedSize(horizontal: true, vertical: false)
+                    .background(
+                        GeometryReader { inner in
+                            Color.clear.onAppear {
+                                contentWidth = inner.size.width
+                                start(container: containerWidth)
+                            }
+                        }
+                    )
+                    .offset(x: offset)
+                
+                if contentWidth > containerWidth {
+                    content
+                        .frame(width: contentWidth)
+                        .offset(x: offset + contentWidth + 20)
+                }
+            }
+            .frame(width: containerWidth, alignment: .leading)
+            .clipped()
         }
     }
     
-    // MARK: - 消息回调
-    nonisolated func onRecv(_ messages: [NIMMessage], from chatroom: NIMChatroom) {
-        Task { @MainActor in
-            // 安全解包 roomId
-            guard let roomId = chatroom.roomId else { return }
-            Self.handleIncoming(messages, roomId: roomId)
-        }
-    }
-    
-    @MainActor
-    private static func handleIncoming(_ messages: [NIMMessage], roomId: String) {
-        print("roomId 回调: \(roomId), 当前 roomId: \(shared.roomId ?? "")")
+    private func start(container: CGFloat) {
+        guard contentWidth > container else { return }
         
-        guard let currentRoomId = shared.roomId, currentRoomId == roomId else {
-            return
-        }
+        offset = 0
+        let duration = (contentWidth + container) / speed
         
-        for message in messages {
-            print("公共聊天室消息完整对象: \(message)")
-            if let text = message.text {
-                print("文本消息: \(text)")
-            } else if let custom = message.messageObject as? NIMCustomObject {
-                print("自定义消息: \(custom)")
-            } else {
-                print("其他类型消息: \(message.messageType.rawValue)")
+        DispatchQueue.main.async {
+            withAnimation(.linear(duration: duration).repeatForever(autoreverses: false)) {
+                offset = -(contentWidth + 20)
             }
         }
     }
 }
+
+    
+struct GlobalGiftNoticeView: View {
+
+    @ObservedObject var manager = GlobalNoticeManager.shared
+    var currentRoomId: Int
+
+    @State private var xOffset: CGFloat = UIScreen.main.bounds.width
+    @State private var showNotice: Bool = false
+    @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
+    
+
+    var body: some View {
+        if let model = manager.model,
+           manager.isShowing {
+
+            ZStack {
+                HStack {
+                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: model.giftImage)
+                        .frame(width: 58, height: 58)
+                    Spacer()
+                }
+
+                HStack(spacing: 8) {
+                    MarqueeContent {
+                        buildText(model: model)
+                    }.offset(y:20)
+
+                   
+                    if model.roomId != currentRoomId {
+                        ZJ7h766mz(tMmEWWlfgUag: "nPiyjyCZ2")
+                            .frame(width: 48, height: 22)
+                            .onTapGesture {
+                                jumpToRoom(model.roomId)
+                            }
+                    }
+                    
+                }.padding(.leading,60)
+
+                   
+                
+               
+            }
+            .padding(.horizontal, 16)
+            .frame(height: 59)
+            .frame(maxWidth: .infinity)
+            .background(
+                ZJ7h766mz(tMmEWWlfgUag: "dOtJzip3FNW2")
+                    .frame(height: 58)
+                    .frame(maxWidth: .infinity)
+            )
+            .cornerRadius(18)
+            .padding(.horizontal, 16)
+            .offset(x: xOffset)
+            .onAppear {
+                print("房间")
+                print(model.roomId)
+                print(currentRoomId)
+                animateInOut(stay: manager.currentStay)
+            }
+        }
+    }
+
+    func animateInOut(stay: Double) {
+        // 初始位置屏幕右侧
+        xOffset = UIScreen.main.bounds.width
+
+        // 飞入 1s
+        withAnimation(.easeOut(duration: 1)) {
+            xOffset = 0
+        }
+
+        // 停留 stay 秒后飞出
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1 + stay) {
+            withAnimation(.easeIn(duration: 1)) {
+                xOffset = -UIScreen.main.bounds.width
+            }
+        }
+    }
+
+    @ViewBuilder
+    func buildText(model: GiftNoticeModel) -> some View {
+        HStack(spacing: 0) {
+            Text(model.senderName)
+                .g0LIIcoZQsOjyND9(size: 14, weight: .medium,
+                                  color: Color(red: 23/255, green: 220/255, blue: 255/255))
+
+            Text(" Send ")
+                .g0LIIcoZQsOjyND9(size: 14, weight: .medium)
+
+            Text(model.receiverName)
+                .g0LIIcoZQsOjyND9(size: 14, weight: .medium,
+                                  color: Color(red: 89/255, green: 247/255, blue: 255/255))
+
+            Text(" \(model.giftName) X\(model.giftCount).")
+                .g0LIIcoZQsOjyND9(size: 14, weight: .medium)
+        }
+        .padding(.leading, 60)
+        .lineLimit(1)
+        .fixedSize(horizontal: true, vertical: false)
+    }
+    
+    private func jumpToRoom(_ id: Int) {
+        print("跳转房间: \(id)")
+        LiveSessionManager.shared.currentChannelUserId = UInt(id)
+        pilot.push(
+            .zhwyzs0gELive(
+              
+                localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
+                zA9Y4W6LUid: UInt(id)
+            )
+        )
+    }
+}
+

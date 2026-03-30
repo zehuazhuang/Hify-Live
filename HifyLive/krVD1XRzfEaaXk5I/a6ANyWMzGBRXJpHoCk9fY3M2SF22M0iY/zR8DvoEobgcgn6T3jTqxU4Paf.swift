@@ -1191,7 +1191,7 @@ func zIOvUXp0PFIa(nA9jTgkiq:String,xD0brNNV4C:Int,gdmasRe0BC:Int,xLZR0tX7pimL:St
 //        "pkState":pE5bbtQ8Hb,
     ]
     
-    if xLZR0tX7pimL == "LIVE" {
+    if xLZR0tX7pimL == "NEW_LIVE" {
         body["liveRoomId"] = uAcDaiEtw
     }
     
