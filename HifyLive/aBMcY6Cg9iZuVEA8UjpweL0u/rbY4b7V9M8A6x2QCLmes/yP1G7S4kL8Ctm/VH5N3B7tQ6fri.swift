@@ -64,7 +64,7 @@ struct VH5N3B7tQ6fri: View {
                     Spacer()
                 }
             }else{
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 8) {
                         ForEach(filteredSessions, id: \.id) { session in
                             SwipeRow(id: session.id, openRowId: $openRowId) {

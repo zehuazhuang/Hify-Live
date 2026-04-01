@@ -42,12 +42,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                         Spacer()
                     }
                 } else if nd55l6NRwWuVUnbReUhjS3d1Ivg.lLPppWtfV5O6YMV5wl9nsA4nt.isEmpty{
-                    VStack(spacing: 0,){
-                        ZJ7h766mz(tMmEWWlfgUag: "npIyAxb6vfM073130T9MwCJY8")
-                            .frame(width: 343,height: 248)
-                            .padding(.top,90)
-                        Spacer()
-                    }
+                    LQ0Z4A6C9emp(mCl1LLEjan: "No Data")
                 } else {
                     ScrollView(showsIndicators: false) {
                         VStackLayout(spacing: 12) {

@@ -209,6 +209,10 @@ struct HifyLiveApp: App {
                 
                 //数据获取完毕切换页面
                 qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
+                
+                if let firstRoute = pilot.routes.first {
+                    pilot.popTo(firstRoute, inclusive: true)
+                }
                 pilot.push(.lsoFZyn41MiKHome)
             }
         }

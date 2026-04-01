@@ -65,11 +65,9 @@ class RecentSessionStore: ObservableObject {
                    self.cache = RecentSessionManager.shared.cache
                    self.sortCache()
                    self.syncGlobalUnread()
+                
                    
-                   print("缓存")
-                   print(self.cache)
-                   
-                   continuation.resume() // 🔥 关键：告诉 async “结束了”
+                   continuation.resume()
                }
            }
     }

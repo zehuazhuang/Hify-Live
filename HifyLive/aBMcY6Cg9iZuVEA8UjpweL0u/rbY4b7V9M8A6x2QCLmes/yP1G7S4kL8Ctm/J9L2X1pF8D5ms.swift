@@ -14,6 +14,7 @@ struct J9L2X1pF8D5ms: View {
     @State private var eHHmfq7UeU = false //是否第一次进入
     @State private var antAWyLAMipD = false //刷新
     let wzJqE7XWO : ()-> Void //回到home
+    @State private var pulse: CGFloat = 0.9
     var body: some View {
         
             ScrollView(showsIndicators: false){
@@ -55,7 +56,12 @@ struct J9L2X1pF8D5ms: View {
                             HStack(spacing:16) {
                                        let displayedItems = Array(items.prefix(5))
                                        ForEach(displayedItems.indices, id: \.self) { index in
-                                           AqS7C1A2tLt(mdFf7YData: displayedItems[index])
+                                            AqS7C1A2tLt(mdFf7YData: displayedItems[index], sQAaUsT619o: $pulse)
+                                                .onAppear {
+                                                               withAnimation(.easeInOut(duration: 0.7).repeatForever(autoreverses: true)) {
+                                                                   pulse = 1.15
+                                                               }
+                                                           }
                                                .onTapGesture {
                                                    LiveSessionManager.shared.currentChannelUserId = UInt(displayedItems[index].int("userId"))
                                                    pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(displayedItems[index].int("userId"))))

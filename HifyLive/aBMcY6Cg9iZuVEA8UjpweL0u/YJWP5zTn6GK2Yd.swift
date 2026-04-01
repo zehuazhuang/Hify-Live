@@ -12,12 +12,20 @@ struct GiftAnimationItem: Identifiable, Equatable {
     let giftId: String
     let url: URL
     var count: Int = 1
+    var message: ChatMessage?
+
+    static func == (lhs: GiftAnimationItem, rhs: GiftAnimationItem) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 // MARK: - 队列管理器
 class GiftQueueManager: ObservableObject {
     
     @Published var currentItem: GiftAnimationItem?  // 当前播放的礼物
+    
+    // 🔥 新增
+    var onAnimationStart: ((GiftAnimationItem) -> Void)?
     
     private var queue: [GiftAnimationItem] = []      // 礼物队列
     private let maxQueue = 50
@@ -52,6 +60,8 @@ class GiftQueueManager: ObservableObject {
         guard currentItem == nil, !queue.isEmpty else { return }
         let next = queue.removeFirst()
         currentItem = next
+        
+        
     }
     
     // 动画播放完毕
@@ -88,8 +98,24 @@ struct GiftAnimationPlayer: View {
                 GiftAnimationView(url: item.url) {
                     manager.finishCurrentAnimation()
                 }
-                .id(UUID())
-                .transition(.scale.combined(with: .opacity))
+                .id(item.id)
+                .onAppear {
+                                    // 👇 监听“真正开始播放”
+                                    NotificationCenter.default.addObserver(
+                                        forName: .giftAnimationDidStart,
+                                        object: nil,
+                                        queue: .main
+                                    ) { _ in
+                                        manager.onAnimationStart?(item)
+                                    }
+                                }
+                .onDisappear {
+                                    NotificationCenter.default.removeObserver(
+                                        self,
+                                        name: .giftAnimationDidStart,
+                                        object: nil
+                                    )
+                                }
                 .zIndex(10)
             }
         }
@@ -117,6 +143,10 @@ struct GiftAnimationView: View {
                 }
             } else if url.pathExtension.lowercased() == "svga" {
                 SVGAPlayerViewWrapper(url: url, onFinish: onFinish)
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+            }else if url.pathExtension.lowercased() == "png" {
+                GiftPNGAnimationView(url: url, onFinish: onFinish)
                     .ignoresSafeArea()
                     .allowsHitTesting(false)
             }
@@ -152,6 +182,10 @@ struct GiftAnimationView: View {
                 if status == .readyToPlay {
                     isReadyToPlay = true
                     player?.play()
+                    
+                    DispatchQueue.main.async {
+                           NotificationCenter.default.post(name: .giftAnimationDidStart, object: nil)
+                       }
                     
                     if let endObserver {
                         NotificationCenter.default.removeObserver(endObserver)
@@ -222,6 +256,10 @@ class SVGAPlayerContainer: UIView {
             self.player?.stopAnimation()
             self.player?.videoItem = videoItem
             self.player?.startAnimation()
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .giftAnimationDidStart, object: nil)
+            }
         }
     }
 }
@@ -271,7 +309,7 @@ class SVGACacheManager {
 
 struct YYEVAVideoPlayerView: UIViewRepresentable {
     let videoURL: URL
-    let onFinish: (() -> Void)?  // 增加回调
+    let onFinish: (() -> Void)?
     
     class PlayerWrapper {
         let player = YYEVAPlayer()
@@ -309,7 +347,7 @@ struct YYEVAVideoPlayerView: UIViewRepresentable {
             guard let tempURL = tempURL, error == nil else { return }
             
             let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let localURL = docs.appendingPathComponent(UUID().uuidString + ".mp4") // 随机文件名
+            let localURL = docs.appendingPathComponent(UUID().uuidString + ".mp4")
             
             do {
                 if FileManager.default.fileExists(atPath: localURL.path) {
@@ -331,4 +369,105 @@ struct YYEVAVideoPlayerView: UIViewRepresentable {
             }
         }.resume()
     }
+}
+struct GiftPNGAnimationView: View {
+    let url: URL
+    let onFinish: () -> Void
+    
+    @State private var offsetY: CGFloat = 0
+    @State private var scale: CGFloat = 1.0
+    @State private var opacity: Double = 1.0
+    @State private var isImageReady = false
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                
+                
+                AsyncImage(url: url) { phase in
+                    switch phase {
+                        
+                    case .empty:
+                        Color.clear
+                        
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .onAppear {
+                                if !isImageReady {
+                                    isImageReady = true
+                                    DispatchQueue.main.async {
+                                              NotificationCenter.default.post(name: .giftAnimationDidStart, object: nil)
+                                          }
+                                    startAnimation(screenHeight: geo.size.height)
+                                }
+                            }
+                        
+                    case .failure:
+                        Color.clear
+                            .onAppear {
+                                
+                                if !isImageReady {
+                                    isImageReady = true
+                                    DispatchQueue.main.async {
+                                              NotificationCenter.default.post(name: .giftAnimationDidStart, object: nil)
+                                          }
+                                    startAnimation(screenHeight: geo.size.height)
+                                }
+                            }
+                        
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+                    .frame(width: 80, height: 80)
+                    .offset(y: offsetY)
+                    .scaleEffect(scale)
+                    
+            }
+            .frame(
+                width: geo.size.width,
+                height: geo.size.height,
+                
+            ).onAppear {
+                offsetY = geo.size.height / 2 + 100
+            }
+        }
+    }
+    
+    private func startAnimation(screenHeight: CGFloat) {
+        
+        let target: CGFloat = 0
+        
+        
+        withAnimation(.easeOut(duration: 0.6)) {
+            offsetY = target
+        }
+        
+       
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            
+           
+            withAnimation(.easeOut(duration: 0.6)) {
+                scale = 1.5
+            }
+            
+           
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                
+             
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                    scale = 1.0
+                }
+            }
+        }
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            onFinish()
+        }
+    }
+}
+extension Notification.Name {
+    static let giftAnimationDidStart = Notification.Name("giftAnimationDidStart")
 }

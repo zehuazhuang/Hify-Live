@@ -35,7 +35,7 @@ struct R9Avd3G1i846xe: View {
                     Spacer().frame(width: 24, height: 24)
                 }.padding(.bottom,23)
                 
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     VStack(spacing:24){
                         ForEach(messages,id: \.messageId){ msg in
                             VStack(alignment:.leading,spacing:16){

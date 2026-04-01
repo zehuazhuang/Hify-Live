@@ -16,13 +16,11 @@ class OnlineStatusManager: NSObject, ObservableObject, V2NIMSubscribeListener {
     override init() {
         super.init()
        
-     
-    }
-    
-    func startListen() {
         NIMSDK.shared().v2SubscriptionService.add(self)
     }
-
+    
+   
+    
     func subscribe(_ ids: [String]) {
         print("IM登录账号:", NIMSDK.shared().loginManager.currentAccount())
         print("订阅")
@@ -40,6 +38,7 @@ class OnlineStatusManager: NSObject, ObservableObject, V2NIMSubscribeListener {
         } failure: { error in
             print("订阅失败 \(error)")
         }
+        
     }
 
     func onUserStatusChanged(_ data: [V2NIMUserStatus]) {
@@ -53,3 +52,5 @@ class OnlineStatusManager: NSObject, ObservableObject, V2NIMSubscribeListener {
         return status == .USER_STATUS_TYPE_LOGIN
     }
 }
+
+

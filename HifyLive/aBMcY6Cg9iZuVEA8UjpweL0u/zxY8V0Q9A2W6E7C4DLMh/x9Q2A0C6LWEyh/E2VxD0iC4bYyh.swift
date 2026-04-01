@@ -95,7 +95,6 @@ struct E2VxD0iC4bYyh: View {
                     ZJ7h766mz(tMmEWWlfgUag: "S3Z1qM7L9C28At4")
                         .frame(width: 54, height: 36)
                         .onTapGesture {
-                      
                             pilot.push(.Gcx3oCl1wFkbw1)
                         }
                 }
@@ -252,41 +251,41 @@ struct E2VxD0iC4bYyh: View {
             .frame(height: 205)
             .background(Color.white.opacity(0.1))
             .cornerRadius(8)
-            .overlay(
-                Group {
-                    if is7Nqdlvk {
-                        
-                        let angle = 116.57 * Double.pi / 180
-                        let dx = cos(angle)
-                        let dy = sin(angle)
-                        
-                        
-                        let startPoint = UnitPoint(
-                            x: 0.5 + dx / 2,
-                            y: 0.5 + dy / 2
-                        )
-                        let endPoint = UnitPoint(
-                            x: 0.5 - dx / 2,
-                            y: 0.5 - dy / 2
-                        )
-                        
-                        RoundedRectangle(cornerRadius: 7, style: .continuous)
-                            .stroke(
-                                LinearGradient(
-                                    stops: [
-                                        .init(color: Color(red: 217/255, green: 28/255, blue: 255/255), location: 0.0),
-                                        .init(color: Color(red: 217/255, green: 28/255, blue: 255/255), location: 0.85),
-                                        .init(color: Color(red: 0/255, green: 242/255, blue: 255/255), location: 1.0),
-                                    ],
-                                    startPoint: startPoint,
-                                    endPoint: endPoint
-                                ),
-                                lineWidth: 2
-                            )
-                            .padding(1)
-                    }
-                }
-            )
+//            .overlay(
+//                Group {
+//                    if is7Nqdlvk {
+//                        
+//                        let angle = 116.57 * Double.pi / 180
+//                        let dx = cos(angle)
+//                        let dy = sin(angle)
+//                        
+//                        
+//                        let startPoint = UnitPoint(
+//                            x: 0.5 + dx / 2,
+//                            y: 0.5 + dy / 2
+//                        )
+//                        let endPoint = UnitPoint(
+//                            x: 0.5 - dx / 2,
+//                            y: 0.5 - dy / 2
+//                        )
+//                        
+//                        RoundedRectangle(cornerRadius: 7, style: .continuous)
+//                            .stroke(
+//                                LinearGradient(
+//                                    stops: [
+//                                        .init(color: Color(red: 217/255, green: 28/255, blue: 255/255), location: 0.0),
+//                                        .init(color: Color(red: 217/255, green: 28/255, blue: 255/255), location: 0.85),
+//                                        .init(color: Color(red: 0/255, green: 242/255, blue: 255/255), location: 1.0),
+//                                    ],
+//                                    startPoint: startPoint,
+//                                    endPoint: endPoint
+//                                ),
+//                                lineWidth: 2
+//                            )
+//                            .padding(1)
+//                    }
+//                }
+//            )
         }
     }
 

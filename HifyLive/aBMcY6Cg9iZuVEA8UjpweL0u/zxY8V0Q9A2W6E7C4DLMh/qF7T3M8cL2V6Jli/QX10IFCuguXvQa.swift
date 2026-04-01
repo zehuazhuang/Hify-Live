@@ -87,11 +87,12 @@ struct QX10IFCuguXvQa: View {
                                     VStack(spacing: 0) {
                                         rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: item.string("giftSmallImg"))
                                             .frame(width: 48,height: 48)
-                                        Text(item.string("name"))
-                                            .g0LIIcoZQsOjyND9(
-                                                size: 14,
-                                                weight: .regular
-                                            ).padding(.bottom,8)
+                                        MarqueeText(
+                                            text: item.string("name"),
+                                            size: 14,
+                                            weight: .regular
+                                        )
+                                        .padding(.bottom, 8)
                                         HStack(spacing:4){
                                             ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")
                                                 .frame(width: 14, height: 14)
@@ -285,6 +286,7 @@ struct QX10IFCuguXvQa: View {
                                                                                                             )
                                                 }
                                             } catch {
+                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                 print("\(error)")
                                             }
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -372,7 +374,7 @@ struct QX10IFCuguXvQa: View {
             }
             .frame(height: 408)
             .frame(maxWidth: .infinity)
-            .offset(y: jR6X0INMmiZ ? 0 : 374)
+            .offset(y: jR6X0INMmiZ ? 0 : 408)
             
             .scaleEffect(x: 1.01, y: 1.02, anchor: .center)
             
@@ -392,13 +394,9 @@ struct QX10IFCuguXvQa: View {
                         guard let popular = mRw8NWOy["Popular"] as? [[String: Any]] else {
                             return
                         }
-                        
-                        
-                        
                         e7JsX9Y1iP = popular
                         
                     }
-                    
                 }
             
             if isCustomize {
@@ -465,6 +463,78 @@ struct QX10IFCuguXvQa: View {
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             dyzmBppNrJ = false
+        }
+    }
+}
+//跑马灯字体
+struct MarqueeText: View {
+    let text: String
+    let size: Int
+    let weight: Font.Weight
+    
+    let speed: Double = 30
+    private let containerWidth: CGFloat = (UIScreen.main.bounds.width - 32 - 24) / 4
+    
+    @State private var offset: CGFloat = 0
+    @State private var textWidth: CGFloat = 0
+    @State private var shouldScroll: Bool = false
+    @State private var animationStarted: Bool = false
+    
+    var body: some View {
+        ZStack {
+            if !shouldScroll {
+                Text(text)
+                    .g0LIIcoZQsOjyND9(size: size, weight: weight)
+                    .frame(width: containerWidth)
+            } else {
+                HStack(spacing: 40) {
+                    Text(text)
+                        .g0LIIcoZQsOjyND9(size: size, weight: weight)
+                        .lineLimit(1)
+                        .fixedSize(horizontal: true, vertical: false)
+                    Text(text)
+                        .g0LIIcoZQsOjyND9(size: size, weight: weight)
+                        .lineLimit(1)
+                        .fixedSize(horizontal: true, vertical: false)
+                }
+                .offset(x: offset)
+                .frame(width: containerWidth, alignment: .leading)
+                .onAppear {
+                    startAnimationIfNeeded()
+                }
+            }
+        }
+        .background(
+            Text(text)
+                .g0LIIcoZQsOjyND9(size: size, weight: weight)
+                .fixedSize()
+                .background(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                textWidth = geo.size.width
+                                shouldScroll = textWidth > containerWidth
+                            }
+                    }
+                )
+                .hidden()
+        )
+        .frame(width: containerWidth, height: 20)
+        .clipped()
+    }
+    
+    private func startAnimationIfNeeded() {
+        guard shouldScroll, !animationStarted else { return }
+        animationStarted = true
+        let distance = textWidth + 40
+        let duration = distance / speed
+        offset = 0
+        
+        withAnimation(
+            Animation.linear(duration: duration)
+                .repeatForever(autoreverses: false)
+        ) {
+            offset = -distance
         }
     }
 }

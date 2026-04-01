@@ -123,7 +123,7 @@ struct GlobalGiftNoticeView: View {
                         .frame(width: 58, height: 58)
                     Spacer()
                 }
-
+                
                 HStack(spacing: 8) {
                     MarqueeContent {
                         buildText(model: model)
@@ -154,11 +154,9 @@ struct GlobalGiftNoticeView: View {
             )
             .cornerRadius(18)
             .padding(.horizontal, 16)
+            .padding(.top, 58)
             .offset(x: xOffset)
             .onAppear {
-                print("房间")
-                print(model.roomId)
-                print(currentRoomId)
                 animateInOut(stay: manager.currentStay)
             }
         }

@@ -59,6 +59,7 @@ struct ChatViewContainer: UIViewControllerRepresentable {
 enum ChatMessageType {
     case text(String)          // 普通文本消息
     case gift(imgURL: String, count: Int, giftId: Int) // 礼物消息
+    case notice(String)
 }
 
 
@@ -109,6 +110,9 @@ class PublicMessageCell: UITableViewCell {
     
     private var stackTopConstraint: NSLayoutConstraint!
     private var stackBottomConstraint: NSLayoutConstraint!
+    
+    //公告
+    private let noticeView = NoticeBubbleView()
 
     var onAvatarTapped: (() -> Void)?
 
@@ -186,6 +190,19 @@ class PublicMessageCell: UITableViewCell {
         giftImageView.contentMode = .scaleAspectFit
         giftImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
         giftImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
+        contentView.addSubview(noticeView)          // ✅ 添加公告视图
+                noticeView.translatesAutoresizingMaskIntoConstraints = false
+
+                NSLayoutConstraint.activate([
+                    noticeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+                    noticeView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+                    noticeView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -8),
+                    noticeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+                ])
+                
+                noticeView.isHidden = true
     }
 
     // MARK: - Layout
@@ -221,7 +238,7 @@ class PublicMessageCell: UITableViewCell {
     // MARK: - Configure
 
     func configure(with message: PublicMessage) {
-
+        
         if let urlString = message.avatarURL,
            let url = URL(string: urlString) {
 
@@ -232,7 +249,17 @@ class PublicMessageCell: UITableViewCell {
         }
 
         switch message.type {
+        case .notice(let text):
+            noticeView.isHidden = false
+              bubbleView.isHidden = true
+              avatarImageView.isHidden = true
+              bubbleToAvatarConstraint.isActive = false
+              bubbleToLeftConstraint.isActive = false
 
+              noticeView.setGradientText(text, colors: [
+                UIColor(red: 16/255, green: 227/255, blue: 255/255, alpha: 1),
+                UIColor(red: 85/255, green: 255/255, blue: 28/255, alpha: 1)
+              ])
         case .text(let text):
             stackTopConstraint.constant = 6
             stackBottomConstraint.constant = -6
@@ -332,6 +359,7 @@ class PublicMessageCell: UITableViewCell {
             )
             
             giftCountLabel.attributedText = kJ6HiNumText
+        
         }
     }
 
@@ -427,6 +455,8 @@ final class GiftBubbleView: UIView {
         giftImageView.translatesAutoresizingMaskIntoConstraints = false
         giftCountLabel.translatesAutoresizingMaskIntoConstraints = false
         nicknameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+       
     }
 
     private func setupLayout() {
@@ -461,5 +491,87 @@ final class GiftBubbleView: UIView {
         if let url = URL(string: giftImageURL) {
             giftImageView.kf.setImage(with: url)
         }
+    }
+}
+
+
+
+final class NoticeBubbleView: UIView {
+
+    private let bubbleView = UIView()
+    private let messageLabel = UILabel()
+    private let gradientLayer = CAGradientLayer()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+        setupLayout()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
+        setupLayout()
+    }
+
+    private func setupViews() {
+        bubbleView.layer.cornerRadius = 8
+        bubbleView.layer.masksToBounds = true
+        bubbleView.backgroundColor = UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 0.25)
+
+        // 设置渐变颜色（可以修改成自己想要的渐变）
+        gradientLayer.colors = [
+            UIColor(red: 16/255, green: 227/255, blue: 255/255, alpha: 1).cgColor,
+            UIColor(red: 85/255, green: 255/255, blue: 28/255, alpha: 1).cgColor
+        ]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        bubbleView.layer.insertSublayer(gradientLayer, at: 0)
+
+        messageLabel.font = JqA1kUIFont.font(size: 14, weight: .semibold)
+        messageLabel.textColor = .white
+        messageLabel.numberOfLines = 0
+
+        addSubview(bubbleView)
+        bubbleView.addSubview(messageLabel)
+
+        bubbleView.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            bubbleView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bubbleView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bubbleView.topAnchor.constraint(equalTo: topAnchor),
+            bubbleView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            messageLabel.leadingAnchor.constraint(equalTo: bubbleView.leadingAnchor, constant: 6),
+            messageLabel.trailingAnchor.constraint(equalTo: bubbleView.trailingAnchor, constant: -6),
+            messageLabel.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant: 6),
+            messageLabel.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor, constant: -6)
+        ])
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bubbleView.bounds
+    }
+
+    /// 设置文字并渐变
+    func setGradientText(_ text: String, colors: [UIColor]) {
+        messageLabel.text = text
+        messageLabel.layoutIfNeeded() // 确保 AutoLayout 更新完
+
+        gradientLayer.removeFromSuperlayer() // 避免重复添加
+        gradientLayer.frame = bubbleView.bounds
+        gradientLayer.colors = colors.map { $0.cgColor }
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+
+        // 使用 label 的 layer 作为 mask
+        messageLabel.layer.removeFromSuperlayer()
+        gradientLayer.mask = messageLabel.layer
+        bubbleView.layer.addSublayer(gradientLayer)
     }
 }

@@ -196,8 +196,7 @@ struct QsS1CqA9M8tL2fs: View {
                 let results = try await hifySearch(type: tsteadySelect ? 1 : 2, searchValue: q2C4Mtl3iNa)
                    searchResults = results
                 
-                    print("搜索数据")
-                print(searchResults)
+               
                 if(tsteadySelect){
                         piaoncapType = 1
                 }else{

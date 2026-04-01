@@ -24,13 +24,14 @@ struct CgZU7mTgY46l: View {
         @State private var iLIIszM4zwx = -1 //0 没拉黑 1已拉黑
         @State private var xJc49zdLp: Bool = false //礼物弹框
         @State private var iFMUtEu7sKn: Bool = false//显示充值商店
+        @State private var upeHWOkV7Fb: [[String: Any]] = [] //快捷消息
     
     
         @Environment(\.dismiss) private var dismiss
     
-            @StateObject private var giftManager = GiftQueueManager()
+        @StateObject private var giftManager = GiftQueueManager()
     
-
+    
     init(session: NIMSession, opponentAvatarURL: String,qOH29Z5X:Bool) {
             self.session = session
             self.opponentAvatarURL = opponentAvatarURL
@@ -128,6 +129,40 @@ struct CgZU7mTgY46l: View {
                     // 底部输入框
                     if !xJc49zdLp {
                         VStack {
+                            if upeHWOkV7Fb.isEmpty {
+                                Spacer().frame(height: 40)
+                            }else{
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 8) {
+                                        ForEach(upeHWOkV7Fb.indices, id: \.self) { index in
+                                            let item = upeHWOkV7Fb[index]
+                                            
+                                          
+                                            
+                                            Text(item.string("content"))
+                                                            .g0LIIcoZQsOjyND9(
+                                                                size: 14,
+                                                                weight: .regular
+                                                            ).padding(.horizontal,20)
+                                                .padding(.vertical,7.5)
+                                                .background(.white.opacity(0.15))
+                                                .cornerRadius(37)
+                                                .onTapGesture {
+                                                    let text = item.string("content")
+                                                        if !text.isEmpty {
+                                                            vm.inputText = text
+                                                            vm.sendText(qAiRzAlJType: opponentInfo.int("beBlocked"))
+                                                        }
+                                                }
+                                        }
+                                    }
+                                    
+                                    
+                                    
+                                }
+                            }
+                            
+                           
                             HStack {
                                 ZStack(alignment: .leading) {
                                     if vm.inputText.isEmpty {
@@ -268,29 +303,40 @@ struct CgZU7mTgY46l: View {
                                )
                     
                     opponentInfo = info
-                    
-                    
-                    
-                 //   iLIIszM4zwx = opponentInfo.int("beBlocked")
-                    
-                 //   if(iLIIszM4zwx == 0){
+                    //快捷消息
+                    upeHWOkV7Fb =  try await sfWiOA3TikY()
+     
                         iLIIszM4zwx = opponentInfo.int("blocked")
-                 //   }
+              
                     
-                    vm.onReceiveGift = { giftImg, giftNum, giftId in
+                    vm.onReceiveGift = { giftImg, giftNum, giftId, msg in
                         guard let url = URL(string: giftImg) else { return }
 
                         let giftItem = GiftAnimationItem(
                             giftId: "\(giftId)",
                             url: url,
-                            count: giftNum
+                            count: giftNum,
+                            message: msg // 🔥 关键：带上消息
                         )
-                        self.giftManager.enqueueGift(giftItem)
                         
-                       
+                        self.giftManager.enqueueGift(giftItem)
+                    }
+                    
+                    giftManager.onAnimationStart = { item in
+                        guard let msg = item.message else { return }
+                        
+                     
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                            vm.messages.append(msg)
+                            vm.updateRecentSession(msg)
+                        }
                     }
                   
-
+                    
+                    
+                    
+                    
                 }
          
                 

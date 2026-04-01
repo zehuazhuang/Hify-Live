@@ -309,7 +309,7 @@ struct LE0xQZ6Y7WC8iv: View {
             }
         }.sheet(isPresented: $showRankSheet) {
             Eu1xbwzA1AwXn4(
-                uNZ9IM5OK: eLx8RIeCY,
+                vGC3obKy3jw: liveRoomData.int("userId"),
                 gD5nKIXUMI: liveRoomData.int("id"),
                 
             )

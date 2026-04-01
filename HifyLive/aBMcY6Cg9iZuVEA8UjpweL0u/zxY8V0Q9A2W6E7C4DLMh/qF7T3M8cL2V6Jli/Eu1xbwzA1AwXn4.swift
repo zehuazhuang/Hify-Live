@@ -15,7 +15,7 @@ struct Eu1xbwzA1AwXn4: View {
     @State private var h3HxHKT2xF: Bool = true // true Wealth false Charm
     @State private var o6a4AyPmo: Int = 0  // 0 this live 1 today 2 week
     @State private var atFBCJ7aeWP: [[String: Any]] = [] //财富榜数据
-    let uNZ9IM5OK : [[String: Any]] //在线用户数据
+    let vGC3obKy3jw : Int //在线用户数据
     let gD5nKIXUMI: Int //直播间id
     @State private var xB4BENFOp: Bool = true // true Contribute false Online Viewers
     @State private var cwom50hBfhTc: Bool = false //底部用户弹框
@@ -26,12 +26,14 @@ struct Eu1xbwzA1AwXn4: View {
     @State private var todayEndDate: Date = Date()
     @State private var weekEndDate: Date = Date()
     
+    @State private var uNZ9IM5OK: [[String: Any]] = [] //直播间在线数据
+    
     
     init(
-        uNZ9IM5OK: [[String: Any]] = [],
+        vGC3obKy3jw: Int,
         gD5nKIXUMI:Int
     ) {
-        self.uNZ9IM5OK = uNZ9IM5OK
+        self.vGC3obKy3jw = vGC3obKy3jw
         self.gD5nKIXUMI = gD5nKIXUMI
     }
     var body: some View {
@@ -204,7 +206,7 @@ struct Eu1xbwzA1AwXn4: View {
                             
                        
                         
-                        ScrollView{
+                        ScrollView(showsIndicators: false){
                             Spacer().frame(height: o6a4AyPmo == 0 ? 57 : 30)
                             ZStack(alignment: .bottom){
                                 HStack(alignment: .bottom, spacing: 0) {
@@ -300,7 +302,7 @@ struct Eu1xbwzA1AwXn4: View {
                     
                 }else{
                     //在线用户
-                    ScrollView{
+                    ScrollView(showsIndicators: false){
                         VStack(spacing:16){
                             ForEach(uNZ9IM5OK.indices,id: \.self){index in
                                 HStack{
@@ -420,6 +422,8 @@ struct Eu1xbwzA1AwXn4: View {
             Task{
 
                await vdD89xwThuLoad()
+                
+                
             }
         }.onChange(of: o6a4AyPmo) { _ in
             Task {
@@ -462,14 +466,18 @@ struct Eu1xbwzA1AwXn4: View {
         
         do {
            
-            //直播
+            //财富榜数据
             atFBCJ7aeWP = try await qYJEUV2QGq6U(
                 qAloWEox0: ainDhsn9iO,
                 jSaWDcnOS: gD5nKIXUMI
             )
+            
+            atFBCJ7aeWP = atFBCJ7aeWP.filter {
+                    ($0["costNum"] as? Int ?? 0) > 0
+                }
 
-//            print("直播数据")
-//            print(atFBCJ7aeWP)
+            print("财富榜数据")
+            print(atFBCJ7aeWP)
 
             // 取最后一个
             wYh4kyARQ = atFBCJ7aeWP.last ?? [:]

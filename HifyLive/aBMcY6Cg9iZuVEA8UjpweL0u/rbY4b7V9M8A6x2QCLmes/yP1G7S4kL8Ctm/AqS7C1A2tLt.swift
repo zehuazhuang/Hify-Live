@@ -3,10 +3,12 @@
 import SwiftUI
 struct AqS7C1A2tLt: View {
     let mdFf7YData: [String: Any]
+    @Binding var sQAaUsT619o: CGFloat
     var body: some View {
         VStack(spacing:4){
             ZStack{
                 aW6MZ4xQ7L0Ez().frame(width: 56, height: 56)
+                    .scaleEffect(sQAaUsT619o)
                 rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: mdFf7YData.string("icon"))
                     .frame(width: 52,height: 52)
                     .clipShape(Circle())
@@ -36,7 +38,7 @@ struct AqS7C1A2tLt: View {
 }
 //光圈动画
 struct aW6MZ4xQ7L0Ez: View {
-    @State private var pR9dV2sF1kUo = false
+    
 
     var body: some View {
         Circle()
@@ -51,15 +53,6 @@ struct aW6MZ4xQ7L0Ez: View {
                 ),
                 lineWidth: 1
             )
-            .scaleEffect(pR9dV2sF1kUo ? 1.15 : 0.9)
-
-            .onAppear {
-                withAnimation(
-                    .easeInOut(duration: 0.7)
-                        .repeatForever(autoreverses: true)
-                ) {
-                    pR9dV2sF1kUo = true
-                }
-            }
+            
     }
 }

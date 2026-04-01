@@ -142,7 +142,7 @@ struct Gcx3oCl1wFkbw1: View {
                         
                         
                         
-                        ScrollView{
+                        ScrollView(showsIndicators: false){
                             Spacer().frame(height: 20)
                             ZStack(alignment: .bottom){
                                 HStack(alignment: .bottom, spacing: 0) {

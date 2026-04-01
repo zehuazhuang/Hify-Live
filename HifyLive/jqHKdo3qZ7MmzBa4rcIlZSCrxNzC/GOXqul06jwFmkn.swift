@@ -17,6 +17,11 @@ func IdVwDkHotdjRqB(){
             print("云信 IM 登录成功")
             // 只初始化一次后续获取会话/发送消息等
             _ = IMMessageListener.shared
+            
+            // 初始化监听器
+            _ = OnlineStatusManager.shared
+            
+            
             // 初次拉会话
                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                    RecentSessionManager.shared.fetchRecentSessions {
@@ -24,13 +29,21 @@ func IdVwDkHotdjRqB(){
                        GlobalUnreadStore.shared.update(from: sessions)
                        RecentSessionStore.shared.cache = sessions
                    }
+                   
+                   // ✅ 收集所有会话ID
+                   let ids = RecentSessionManager.shared.cache.map { $0.sessionId }
+
+                       // ✅ 统一订阅在线状态
+                    
+                       OnlineStatusManager.shared.subscribe(ids)
+                   
+                   
                }
-//            // ✅ 收集所有会话ID
-//            let ids = RecentSessionManager.shared.cache.map { $0.sessionId }
-//
-//                // ✅ 统一订阅在线状态
-//                OnlineStatusManager.shared.startListen()
-//                OnlineStatusManager.shared.subscribe(ids)
+            
+            
+            
+           
+            
             
             //进入公共聊天室
             Task{

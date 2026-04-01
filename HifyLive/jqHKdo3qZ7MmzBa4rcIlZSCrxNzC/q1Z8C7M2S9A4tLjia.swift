@@ -2,8 +2,8 @@ import Foundation
 import CommonCrypto
 
 extension String {
-    private static let uB8sQ2kL1mF4tR3 = "9986sdff5s4f1123" // Key
-    private static let KxN7dV4oP9qL2rFh = "9986sdff5s4y456a" // IV
+    private static let uB8sQ2kL1mF4tR3 = "cbilx4v7vgz6jpw7" // Key
+    private static let KxN7dV4oP9qL2rFh = "dmnry3u8bhk5zq9f" // IV
 
     //加密
     func tYwP1zF6sM8vR2kq(key: String? = nil, iv: String? = nil) -> String {
@@ -15,7 +15,7 @@ extension String {
         }
         return cNf7kV3dB2mL5wS.mV4tR8kL1pZ2xQ6()
     }
-
+    
     //解密
     func hL9dV3bQ2fK6sJ8p(key: String? = nil, iv: String? = nil) -> String {
         let XnB3qW5lA0vC8kZ = (key ?? String.uB8sQ2kL1mF4tR3).data(using: .utf8)!

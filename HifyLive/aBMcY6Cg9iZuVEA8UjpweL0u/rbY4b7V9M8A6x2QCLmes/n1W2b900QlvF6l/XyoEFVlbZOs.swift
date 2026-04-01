@@ -89,7 +89,7 @@ class ChatMessage: Identifiable, ObservableObject {
         
         var onMessageUpdated: (() -> Void)?
         
-        var onReceiveGift: ((_ giftImg: String,_ giftNum:Int,_ giftId:Int) -> Void)?
+        var onReceiveGift: ((_ giftImg: String,_ giftNum:Int,_ giftId:Int,_ msg: ChatMessage) -> Void)?
         
         
         // ✅ 自己头像和对方头像
@@ -129,6 +129,10 @@ class ChatMessage: Identifiable, ObservableObject {
            
 
                 recent.timestamp = message.timestamp
+            
+            Task{
+               await RecentSessionStore.shared.fetchRecentSessions()
+            }
             }
         
         //加载历史消息
@@ -531,18 +535,21 @@ class ChatMessage: Identifiable, ObservableObject {
                             guard let giftId = dict["giftId"] as? Int,
                                   let giftNum = dict["giftNum"] as? Int,
                                   let giftPrice = dict["giftPrice"] as? Int,
-                                  let giftIcon = dict["smallImg"] as? String,
-                                  let giftImg = dict["giftImg"] as? String else {
+                                  let smallImg = dict["smallImg"] as? String,
+                                  let giftIcon = dict["giftIcon"] as? String else {
                                 chatMsg = nil
                                 continue
                             }
+                            
+                            //渲染动画
+                            
 
                             let gift = GiftAttachment(
                                 giftId: giftId,
                                 giftNum: giftNum,
                                 giftPrice: giftPrice,
-                                giftIcon: giftIcon,
-                                giftImg: giftImg
+                                giftIcon: smallImg,
+                                giftImg: giftIcon
                             )
 
                             chatMsg = ChatMessage(
@@ -555,7 +562,9 @@ class ChatMessage: Identifiable, ObservableObject {
                                 nimMessage: msg
                             )
                             //添加回调到swift
-                            
+                            if let chatMsg = chatMsg {
+                                onReceiveGift?(giftIcon, giftNum, giftId, chatMsg)
+                            }
                         } catch {
                             print("JSON 解析失败: \(error)")
                             chatMsg = nil
@@ -564,16 +573,20 @@ class ChatMessage: Identifiable, ObservableObject {
                     
                     if let chatMsg = chatMsg { // ✅ 明确绑定类型
                        
-                         if case .gift(let gift) = chatMsg.content {
-                             onReceiveGift?(gift.giftImg,gift.giftNum,gift.giftId)
-                         }
+
                        
                         
                         
                         chatMsg.showTime = (timestamp - lastTimestamp > 300)
                         lastTimestamp = timestamp
-                        self.messages.append(chatMsg)
-                        self.updateRecentSession(chatMsg)
+                        
+                        
+                        if case .gift = chatMsg.content {
+                            
+                        } else {
+                            self.messages.append(chatMsg)
+                            self.updateRecentSession(chatMsg)
+                        }
                     }
                 }
             }

@@ -18,6 +18,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var hasJoinedChannel = false
     private var isMuted = false // 保存静音状态
     
+    
     //gift 飘屏
     private var giftFloatContainer: UIView!
     private var giftView1: GiftFloatView!
@@ -543,7 +544,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let size = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14)]
         switch message.type {
-        case .text(let text):
+        case .notice(let text), .text(let text):
 
             let rect = text.boundingRect(
                 with: size,
@@ -585,7 +586,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("成功加入聊天室:", chatroom?.roomId ?? "")
             self.hasJoinedChannel = true
 
-            
+            let msg = PublicMessage(
+                userId: "",
+                avatarURL: "",
+                nickname: "",
+                type: .notice("Weclome to Eive.Please respect each other and chat in decent manner"),
+                isMine: true
+            )
+            appendMessage(msg)
             
             Task { @MainActor in
                 NIMSDK.shared().chatManager.add(self)
