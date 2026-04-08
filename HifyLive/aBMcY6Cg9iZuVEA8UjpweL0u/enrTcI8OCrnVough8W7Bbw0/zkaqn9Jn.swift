@@ -242,7 +242,7 @@ struct zkaqn9Jn: View {
                                     }
                                 case .failure(let u0lXlYLQiGrjGGOpB9Mp as NSError):
                                     if u0lXlYLQiGrjGGOpB9Mp.code == GIDSignInError.canceled.rawValue {
-                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")//Cancel login
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==",type: 1)//Cancel login
                                     } else {
                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=")//Google login failed.
                                     }

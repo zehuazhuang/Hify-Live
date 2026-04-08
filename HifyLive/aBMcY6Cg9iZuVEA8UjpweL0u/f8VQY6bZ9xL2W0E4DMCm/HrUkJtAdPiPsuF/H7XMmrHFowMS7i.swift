@@ -164,8 +164,7 @@ struct H7XMmrHFowMS7i: View {
                     initialDate: aYPiY9lOWJ26,
                     mode: .yearMonth
                 ) { selected in
-                    print(aYPiY9lOWJ26)
-                    print(selected)
+                 
                     if(aYPiY9lOWJ26 != selected){
                         loK18F8L2QLad()
                     }

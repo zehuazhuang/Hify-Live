@@ -10,24 +10,52 @@ extension Date {
         let Yw2bF6cA = DateFormatter()
         
         if Xv3nT8zQ.isDateInToday(self) {
-            // 当天：显示具体时间，如 17:08
             Yw2bF6cA.dateFormat = "HH:mm"
             return Yw2bF6cA.string(from: self)
         } else if Xv3nT8zQ.isDateInYesterday(self) {
-            // 昨天：显示 "yesterday"
             return "yesterday"
         } else {
             let Gn4rS8kD = Xv3nT8zQ.component(.year, from: self)
             let Pf7qJ2vB = Xv3nT8zQ.component(.year, from: Vh5yL1oM)
             
             if Gn4rS8kD == Pf7qJ2vB {
-                // 今年内：显示月日，如 12-23
                 Yw2bF6cA.dateFormat = "MM-dd"
                 return Yw2bF6cA.string(from: self)
             } else {
-                // 往年：显示年月日，如 2024-12-25
                 Yw2bF6cA.dateFormat = "yyyy-MM-dd"
                 return Yw2bF6cA.string(from: self)
+            }
+        }
+    }
+    
+    func oQBlX821fcQ() -> String {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "HH:mm"
+        let timeString = formatter.string(from: self)
+        
+        if calendar.isDateInToday(self) {
+            return timeString
+            
+        } else if calendar.isDateInYesterday(self) {
+            return "yesterday \(timeString)"
+            
+        } else {
+            let targetYear = calendar.component(.year, from: self)
+            let currentYear = calendar.component(.year, from: now)
+            
+            if targetYear == currentYear {
+                formatter.dateFormat = "MM-dd"
+                let dateString = formatter.string(from: self)
+                return "\(dateString) \(timeString)"
+                
+            } else {
+                formatter.dateFormat = "yyyy-MM-dd"
+                let dateString = formatter.string(from: self)
+                return "\(dateString) \(timeString)"
             }
         }
     }

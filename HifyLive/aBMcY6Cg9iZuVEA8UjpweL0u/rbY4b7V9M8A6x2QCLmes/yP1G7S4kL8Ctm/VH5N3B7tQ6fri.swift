@@ -59,8 +59,7 @@ struct VH5N3B7tQ6fri: View {
             
             if x2E7Y8Z {
                 VStack{
-                    ZJ7h766mz(tMmEWWlfgUag: "npIyAxb6vfM073130T9MwCJY8")
-                                       .frame(width: 343, height: 248)
+                    LQ0Z4A6C9emp(mCl1LLEjan: "No Data")
                     Spacer()
                 }
             }else{

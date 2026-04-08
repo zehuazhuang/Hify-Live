@@ -15,6 +15,8 @@ struct ChatViewContainer: UIViewControllerRepresentable {
     
     var onReceiveGift: ((String, Int, Int) -> Void)? // giftImg, giftNum, giftId
     
+    var nd8XGgxX9b: ((Bool) -> Void) //加入离开直播间 true 加入 false 离开
+    
     func didTapAvatar(userId: String) {
             onUserAvatarTapped?(userId)
         }
@@ -42,6 +44,10 @@ struct ChatViewContainer: UIViewControllerRepresentable {
                vc.onReceiveGift = { giftImg, giftNum, giftId in
                    onReceiveGift?(giftImg, giftNum, giftId)
                }
+        
+        vc.nd8XGgxX9b = { rfvgzQ4 in
+            nd8XGgxX9b(rfvgzQ4)
+        }
         return vc
     }
 

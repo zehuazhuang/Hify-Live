@@ -29,6 +29,8 @@ final class UserManager {
             let nickname = user.userInfo?.nickName ?? ""
             let avatarUrl = user.userInfo?.avatarUrl ?? ""
             
+            print(user.userInfo?.ext)
+            
             
             
             

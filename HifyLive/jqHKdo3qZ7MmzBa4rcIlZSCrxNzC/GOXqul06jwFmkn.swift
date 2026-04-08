@@ -30,12 +30,27 @@ func IdVwDkHotdjRqB(){
                        RecentSessionStore.shared.cache = sessions
                    }
                    
-                   // ✅ 收集所有会话ID
-                   let ids = RecentSessionManager.shared.cache.map { $0.sessionId }
-
-                       // ✅ 统一订阅在线状态
-                    
-                       OnlineStatusManager.shared.subscribe(ids)
+//                   // ✅ 收集所有会话ID
+//                   let ids = RecentSessionManager.shared.cache.map { $0.sessionId }
+//
+//                       // ✅ 统一订阅在线状态
+//                    
+//                       OnlineStatusManager.shared.subscribe(ids)
+//                   
+//                   let service = NIMSDK.shared().subscriptionService
+//                   
+//                   subscriptionService.subscribe(
+//                       eventTypes: [1], // 在线状态类型
+//                       publisherAccountIds: ["user1","user2"],
+//                       expiry: 3600
+//                   ) { error in
+//                   }
+//                   print(NIMSDK.shared().version)
+//                   NIMSDK.shared().userManager.fetchUserInfos(["5a27c50df7984f0bbd7bd3180ccc7647"]) { users, error in
+//                       if let user = users?.first {
+//                           print(user.userInfo?.ext)
+//                       }
+//                   }
                    
                    
                }

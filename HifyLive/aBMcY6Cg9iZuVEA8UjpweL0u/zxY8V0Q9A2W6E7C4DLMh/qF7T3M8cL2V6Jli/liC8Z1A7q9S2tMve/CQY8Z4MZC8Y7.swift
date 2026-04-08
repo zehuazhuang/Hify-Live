@@ -22,11 +22,11 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var x7hEzzGUTAch0: Bool = false//显示充值商店
     @State private var iENw26wu7cQ: [[String: Any]] = [] //直播间大哥位数据
     @State private var onlineCountTask: Task<Void, Never>? //在线定时
-    @State private var eLx8RIeCY: [[String: Any]] = [] //直播间在线数据
+    @State private var eLx8RIeCY: Int = 0 //直播间在线人数
     @StateObject private var giftManager = GiftQueueManager() //特效
-    
+    @State private var lastTopRefreshTime: Date? = nil
+    @State private var scheduledTopRefreshTask: Task<Void, Never>? = nil
     @State private var showRankSheet: Bool = false //在线人数弹框
-    @State private var ahzQOxcnxEI: String = "" //对方头像
     @State private var chatSession: ChatSessionWrapper?
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
@@ -101,11 +101,53 @@ struct LE0xQZ6Y7WC8iv: View {
                     self.giftManager.enqueueGift(giftItem)
                     
                     
-//                    //更新top
-//                    Task{
-//                       await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
-//                    }
-                                      }
+                    // 节流刷新top
+                   
+                                        let now = Date()
+                                        let throttleInterval: TimeInterval = 3
+                                        
+                                       
+                                        if let lastTime = lastTopRefreshTime, now.timeIntervalSince(lastTime) >= throttleInterval {
+                                            Task {
+                                                await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
+                                            }
+                                            lastTopRefreshTime = now
+                                            
+                                            
+                                            scheduledTopRefreshTask?.cancel()
+                                            scheduledTopRefreshTask = nil
+                                            
+                                        } else if lastTopRefreshTime == nil {
+                                            
+                                            Task {
+                                                await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
+                                            }
+                                            lastTopRefreshTime = now
+                                            
+                                        } else {
+                                            
+                                            scheduledTopRefreshTask?.cancel()
+                                            let delay = throttleInterval - now.timeIntervalSince(lastTopRefreshTime!)
+                                            
+                                            scheduledTopRefreshTask = Task {
+                                                try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+                                                await uNyOEJGn3o(seUMbDSk: liveRoomData.int("id"))
+                                                lastTopRefreshTime = Date()
+                                                scheduledTopRefreshTask = nil
+                                            }
+                                        }
+                                    
+                    
+                    
+                    
+                }, nd8XGgxX9b: {rfvgzQ4 in
+                   
+                    if rfvgzQ4 {
+                        eLx8RIeCY += 1
+                    }else{
+                        eLx8RIeCY -= 1
+                    }
+                }
                 )
                 }.edgesIgnoringSafeArea(.bottom)
             VStack{
@@ -224,7 +266,7 @@ struct LE0xQZ6Y7WC8iv: View {
                         }
                     }
                     
-                    Text("\(eLx8RIeCY.count)")
+                    Text("\(eLx8RIeCY)")
                                     .g0LIIcoZQsOjyND9(
                                         size: 14,
                                         weight: .regular
@@ -325,12 +367,10 @@ struct LE0xQZ6Y7WC8iv: View {
             .presentationDetents([.fraction(0.75)])
             .presentationBackground(.clear)
         }
-       
-        
         .onAppear{
-            
             if (!xHuEezXnuhxl){
                 mpatentLoad()
+                
                 NotificationCenter.default.addObserver(forName: .liveEnded, object: nil, queue: .main) { _ in
                        showEndView = true
                    }
@@ -338,9 +378,6 @@ struct LE0xQZ6Y7WC8iv: View {
                 
                 startOnlineCountLoop()
             }
-            
-            
-          
         }.onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }.onDisappear {
@@ -361,10 +398,12 @@ struct LE0xQZ6Y7WC8iv: View {
         onlineCountTask = Task {
             while !Task.isCancelled {
                 do {
-                    eLx8RIeCY = try await d34SzmkHKFl(mcIOzuQURD: liveRoomData.int("userId"), phqabUmw: 1)
+                    
                     iENw26wu7cQ = try await luJfveDVkRb(pQO2dnNxqK: liveRoomData.int("id"))
+                    
+                    
                 } catch {
-                    print("获取榜单失败:", error)
+                    print("获取top3失败:", error)
                 }
                 try? await Task.sleep(nanoseconds: 3_000_000_000) // 3秒
             }
@@ -400,8 +439,10 @@ struct LE0xQZ6Y7WC8iv: View {
                     await uNyOEJGn3o(seUMbDSk: result.int("id"))
                     
                     liveRoomData = result
+                    //获取在线人数
+                    eLx8RIeCY = try await d34SzmkHKFl(mcIOzuQURD: liveRoomData.int("userId"), phqabUmw: 1).count
                     
-                   
+                    
                     break
                 }
                 

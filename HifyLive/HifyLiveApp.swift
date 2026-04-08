@@ -192,7 +192,7 @@ struct HifyLiveApp: App {
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                 
-               
+                
                 print("登录用户------")
                 print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
                 
@@ -201,19 +201,18 @@ struct HifyLiveApp: App {
                 bffDlNRAqVaG4T()
                 
                 
-              
+                
                 //初始化云信
                 IdVwDkHotdjRqB()
                 
-               
+                
                 
                 //数据获取完毕切换页面
                 qHyGWbkl4J6y35.rzeKD010L4fVwfSUlarrt = true
                 
-                if let firstRoute = pilot.routes.first {
-                    pilot.popTo(firstRoute, inclusive: true)
-                }
+                
                 pilot.push(.lsoFZyn41MiKHome)
+              
             }
         }
     }

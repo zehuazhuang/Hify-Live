@@ -278,10 +278,11 @@ class ChatMessage: Identifiable, ObservableObject {
         //发送文本
         func sendText(qAiRzAlJType: Int)  {// qAiRzAlJType: Int 0未被拉黑 1被拉黑
             guard !inputText.isEmpty else { return }
-          
+            
+            
             
             if EwNwNujEwMzTHX.shared.y8smb1UywDB5G3(inputText) {
-                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("HhzzOA2eHTNz8JANI+0SRU+WQxpWarJBlpyksmOWZzwSq+7uMt/CRKetmZWH5thv")
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("HhzzOA2eHTNz8JANI+0SRU+WQxpWarJBlpyksmOWZzwSq+7uMt/CRKetmZWH5thv",type: 1)
                      self.inputText = ""
                     return
                 }
@@ -289,6 +290,7 @@ class ChatMessage: Identifiable, ObservableObject {
             
             
             let message = NIMMessage()
+
            
             
             message.text = inputText

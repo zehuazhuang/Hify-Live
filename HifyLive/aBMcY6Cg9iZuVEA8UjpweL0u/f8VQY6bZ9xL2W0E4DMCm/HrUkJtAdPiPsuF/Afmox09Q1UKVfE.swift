@@ -388,7 +388,7 @@ struct Afmox09Q1UKVfE: View {
                     }
                     
                     uSM1VTVKvc0WVI = sortedList
-                    print(uSM1VTVKvc0WVI)
+                   
                 }
 
                 

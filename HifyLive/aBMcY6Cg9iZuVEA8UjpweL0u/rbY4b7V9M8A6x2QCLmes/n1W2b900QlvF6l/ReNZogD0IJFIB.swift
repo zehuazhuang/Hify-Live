@@ -679,7 +679,7 @@ class ChatCell: UITableViewCell {
 
         // 时间显示
         timeLabel.isHidden = !message.showTime
-        timeLabel.text = message.showTime ? Date(timeIntervalSince1970: message.timestamp).Jq9K2pW7Lr() : nil
+        timeLabel.text = message.showTime ? Date(timeIntervalSince1970: message.timestamp).oQBlX821fcQ() : nil
         bubbleContainer.isHidden = false
         
         //拉黑

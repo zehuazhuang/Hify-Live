@@ -15,7 +15,7 @@ struct Eu1xbwzA1AwXn4: View {
     @State private var h3HxHKT2xF: Bool = true // true Wealth false Charm
     @State private var o6a4AyPmo: Int = 0  // 0 this live 1 today 2 week
     @State private var atFBCJ7aeWP: [[String: Any]] = [] //财富榜数据
-    let vGC3obKy3jw : Int //在线用户数据
+    let vGC3obKy3jw : Int //直播用户id
     let gD5nKIXUMI: Int //直播间id
     @State private var xB4BENFOp: Bool = true // true Contribute false Online Viewers
     @State private var cwom50hBfhTc: Bool = false //底部用户弹框
@@ -423,6 +423,8 @@ struct Eu1xbwzA1AwXn4: View {
 
                await vdD89xwThuLoad()
                 
+                uNZ9IM5OK =   try await d34SzmkHKFl(mcIOzuQURD: vGC3obKy3jw, phqabUmw: 1)
+                
                 
             }
         }.onChange(of: o6a4AyPmo) { _ in
@@ -452,8 +454,6 @@ struct Eu1xbwzA1AwXn4: View {
  
     
     func vdD89xwThuLoad() async {
-      
-        
         var ainDhsn9iO = ""
         
         if o6a4AyPmo == 0 {

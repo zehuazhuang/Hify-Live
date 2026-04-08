@@ -53,7 +53,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var onReceiveGift: ((_ giftImg: String,_ giftNum:Int,_ giftId:Int) -> Void)? //发送礼物
     
-    
+    var nd8XGgxX9b: ((Bool) -> Void)? //加入离开直播间 true 加入 false 离开
     
     private var didInitialJoin = false
     
@@ -347,7 +347,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             // tableView
             tableView.topAnchor.constraint(equalTo: chatContainer.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: chatContainer.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: chatContainer.trailingAnchor, constant: -16),
+            tableView.trailingAnchor.constraint(equalTo: chatContainer.trailingAnchor, constant: -100),
             tableView.bottomAnchor.constraint(equalTo: inputContainer.topAnchor, constant: -8),
             
             // giftFloatContainer 约束
@@ -563,7 +563,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - RTM
 
     
-
+    private var hasSentWelcomeMessage = false
     //云信
      func joinChatroom() {
         guard let roomId = yxRoomId else { return }
@@ -586,14 +586,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("成功加入聊天室:", chatroom?.roomId ?? "")
             self.hasJoinedChannel = true
 
-            let msg = PublicMessage(
-                userId: "",
-                avatarURL: "",
-                nickname: "",
-                type: .notice("Weclome to Eive.Please respect each other and chat in decent manner"),
-                isMine: true
-            )
-            appendMessage(msg)
+            if !self.hasSentWelcomeMessage {
+                self.hasSentWelcomeMessage = true
+                
+                let msg = PublicMessage(
+                    userId: "",
+                    avatarURL: "",
+                    nickname: "",
+                    type: .notice("Weclome to Eive.Please respect each other and chat in decent manner"),
+                    isMine: true
+                )
+                appendMessage(msg)
+            }
             
             Task { @MainActor in
                 NIMSDK.shared().chatManager.add(self)
@@ -704,8 +708,11 @@ extension ChatViewController {
                         case .enter:
                             let name = member.nick ?? "游客"
                                 showJoin(name: name)
+                            
+                            nd8XGgxX9b?(true)
                         case .exit:
                             print("\(nick) 离开直播间")
+                            nd8XGgxX9b?(false)
                         default:
                             break
                         }

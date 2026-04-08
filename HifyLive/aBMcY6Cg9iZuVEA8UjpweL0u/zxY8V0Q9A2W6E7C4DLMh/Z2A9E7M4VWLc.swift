@@ -72,6 +72,8 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                 guard let data = remoteExt["data"] as? [String: Any] else {
                     return
                 }
+                print("大额礼物")
+                print(remoteExt)
 
                 GlobalNoticeManager.shared.show(
                     GiftNoticeModel(

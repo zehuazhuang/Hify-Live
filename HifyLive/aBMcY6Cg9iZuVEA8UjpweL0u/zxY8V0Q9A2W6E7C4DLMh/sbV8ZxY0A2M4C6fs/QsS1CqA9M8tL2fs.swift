@@ -38,13 +38,16 @@ struct QsS1CqA9M8tL2fs: View {
                     sZ4V2b7EALDWCou(
                         q2C4Mtl3iNa: $q2C4Mtl3iNa,
                         i6L2M4Yai0s: $iZQ7xV4bM8Ys, on8M9xY6Q0: {velogranText in
-                            // ✅ 写入搜索历史
-                                   SearchHistoryManager.shared.add(velogranText)
-                                   searchHistory = SearchHistoryManager.shared.load()
+                           
+                                  
                             
                             Task {
                                 await oA0T1rQLoad()
+                                
+                                
                             }
+                            
+                            
                             
                         }, hQqgApVK1Qn: {
                         }
@@ -103,6 +106,7 @@ struct QsS1CqA9M8tL2fs: View {
                 if piaoncapType == 0  {
                 VStack(spacing:0){
                    
+                    if !searchHistory.isEmpty  {
                         HStack{
                             Text("Search History")
                                 .g0LIIcoZQsOjyND9(
@@ -112,6 +116,8 @@ struct QsS1CqA9M8tL2fs: View {
                             Spacer()
                         }.padding(.bottom,12)
                             .padding(.top,8)
+                    }
+                        
                         
                         
                         if searchResults.isEmpty{
@@ -207,6 +213,9 @@ struct QsS1CqA9M8tL2fs: View {
                 }else{
                     isZ8Q7x4bV9Y0A2 = true
                 }
+                
+                SearchHistoryManager.shared.add(q2C4Mtl3iNa)
+                searchHistory = SearchHistoryManager.shared.load()
                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                } catch {
                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
