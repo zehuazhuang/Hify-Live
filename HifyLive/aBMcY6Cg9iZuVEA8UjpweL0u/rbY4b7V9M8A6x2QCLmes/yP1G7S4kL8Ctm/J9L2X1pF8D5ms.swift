@@ -110,6 +110,7 @@ struct J9L2X1pF8D5ms: View {
                                                     pilot.push(.R9Avd3G1i846xe(session: r.session))
                                                 }else{
                                                     pilot.push(.CgZU7mTgY46l(session: r.session, opponentAvatarURL: r.avatarUrl, qOH29Z5X: false))
+                                                    
                                                 }
                                                 
                                                 

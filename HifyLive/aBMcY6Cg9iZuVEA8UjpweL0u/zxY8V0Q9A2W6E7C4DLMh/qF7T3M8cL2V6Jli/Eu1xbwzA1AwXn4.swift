@@ -200,6 +200,8 @@ struct Eu1xbwzA1AwXn4: View {
                                 }
                                 .frame(height: 20)
                             }.padding(.top,12)
+                        }else{
+                            Spacer().frame(height: 5)
                         }
                             
                            

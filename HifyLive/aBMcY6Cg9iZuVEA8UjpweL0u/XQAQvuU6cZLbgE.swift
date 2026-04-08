@@ -179,6 +179,7 @@ struct XQAQvuU6cZLbgEView: View {
                         pilot.push(.R9Avd3G1i846xe(session: session))
                     }else{
                         pilot.push(.CgZU7mTgY46l(session: session, opponentAvatarURL: manager.senderAvatar ?? "", qOH29Z5X: false))
+                        
                     }
                     
                 } else if manager.isSystemMessage {

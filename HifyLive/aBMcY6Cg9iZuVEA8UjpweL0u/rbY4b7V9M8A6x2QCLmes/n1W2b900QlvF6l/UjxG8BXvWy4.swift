@@ -15,6 +15,7 @@ class CachedRecentSession: Identifiable, ObservableObject {
     @Published var unreadCount: Int
     @Published var nickname: String
     @Published var avatarUrl: String
+    @Published var isOnline: Bool
 
     init(session: NIMSession,
          sessionId: String,
@@ -23,7 +24,8 @@ class CachedRecentSession: Identifiable, ObservableObject {
          timestamp: TimeInterval,
          unreadCount: Int,
          nickname: String,
-         avatarUrl: String) {
+         avatarUrl: String,
+         isOnline: Bool) {
         self.session = session
         self.sessionId = sessionId
         self.sessionType = sessionType
@@ -32,6 +34,7 @@ class CachedRecentSession: Identifiable, ObservableObject {
         self.unreadCount = unreadCount
         self.nickname = nickname
         self.avatarUrl = avatarUrl
+        self.isOnline = isOnline
     }
 }
 
@@ -47,6 +50,17 @@ class RecentSessionStore: ObservableObject {
 
     }
     
+    func updateOnlineStatus(accid: String, isOnline: Bool) {
+        DispatchQueue.main.async {
+            for session in self.cache {
+                // 只处理单聊
+                if session.sessionType == .P2P && session.sessionId == accid {
+                    session.isOnline = isOnline
+                }
+            }
+        }
+    }
+    
     private func sortCache() {
         cache.sort { first, second in
             // video-sky-test 永远第一
@@ -60,16 +74,38 @@ class RecentSessionStore: ObservableObject {
     // 拉取最近会话
     func fetchRecentSessions() async {
         await withCheckedContinuation { continuation in
-               RecentSessionManager.shared.fetchRecentSessions {
-                   
-                   self.cache = RecentSessionManager.shared.cache
-                   self.sortCache()
-                   self.syncGlobalUnread()
+            RecentSessionManager.shared.fetchRecentSessions {
+                // 更新本地缓存和排序
+                self.cache = RecentSessionManager.shared.cache
+                self.sortCache()
+                self.syncGlobalUnread()
                 
-                   
-                   continuation.resume()
-               }
-           }
+                
+                for cachedSession in self.cache {
+                    let accid = cachedSession.sessionId
+                    NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, _ in
+                        guard let user = users?.first else { return }
+
+                        Task { @MainActor in
+                            if let extString = user.userInfo?.ext,
+                               let data = extString.data(using: .utf8),
+                               let ext = try? JSONDecoder().decode(UserExt.self, from: data) {
+                                
+                                let online = (ext.onlineStatus == 1)
+                                
+                                
+                                cachedSession.isOnline = online
+
+                                
+                                RecentSessionStore.shared.updateOnlineStatus(accid: accid, isOnline: online)
+                            }
+                        }
+                    }
+                }
+                
+                continuation.resume()
+            }
+        }
     }
     
     func syncGlobalUnread() {

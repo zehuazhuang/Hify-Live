@@ -25,6 +25,7 @@ struct CgZU7mTgY46l: View {
         @State private var xJc49zdLp: Bool = false //礼物弹框
         @State private var iFMUtEu7sKn: Bool = false//显示充值商店
         @State private var upeHWOkV7Fb: [[String: Any]] = [] //快捷消息
+        @State private var isOpponentOnline: Bool = false
     
     
         @Environment(\.dismiss) private var dismiss
@@ -45,6 +46,22 @@ struct CgZU7mTgY46l: View {
             ))
                 
         }
+    
+    func fetchOpponentOnlineStatus() {
+        let accid = session.sessionId
+        NIMSDK.shared().userManager.fetchUserInfos([accid]) { users, error in
+            guard let user = users?.first else { return }
+            
+            
+            Task { @MainActor in
+                if let extString = user.userInfo?.ext,
+                   let data = extString.data(using: .utf8),
+                   let ext = try? JSONDecoder().decode(UserExt.self, from: data) {
+                    self.isOpponentOnline = (ext.onlineStatus == 1)
+                }
+            }
+        }
+    }
     
 
 
@@ -85,8 +102,8 @@ struct CgZU7mTgY46l: View {
                         // 中间标题
                         HStack {
                             //在线状态
-//                            ZJ7h766mz(tMmEWWlfgUag: "zxM23M2tC38")
-//                                .frame(width: 10, height: 10)
+                            ZJ7h766mz(tMmEWWlfgUag: isOpponentOnline ? "zxM23M2tC38" : "i7CwZ3wGTsV")
+                                .frame(width: 10, height: 10)
                             Text(opponentInfo.string("nickname"))
                                 .g0LIIcoZQsOjyND9(size: 16, weight: .regular)
                         }
@@ -307,6 +324,8 @@ struct CgZU7mTgY46l: View {
                     upeHWOkV7Fb =  try await sfWiOA3TikY()
      
                         iLIIszM4zwx = opponentInfo.int("blocked")
+                    
+                    fetchOpponentOnlineStatus()
               
                     
                     vm.onReceiveGift = { giftImg, giftNum, giftId, msg in

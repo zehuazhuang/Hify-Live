@@ -43,8 +43,6 @@ struct QsS1CqA9M8tL2fs: View {
                             
                             Task {
                                 await oA0T1rQLoad()
-                                
-                                
                             }
                             
                             
@@ -76,6 +74,12 @@ struct QsS1CqA9M8tL2fs: View {
                             piaoncapType = 1
                             tsteadySelect = true
                         }
+                        
+                        if q2C4Mtl3iNa != "" {
+                            Task {
+                                await oA0T1rQLoad()
+                            }
+                        }
                     }
                     Spacer()
                     ZStack{
@@ -99,6 +103,11 @@ struct QsS1CqA9M8tL2fs: View {
                         withAnimation{
                             piaoncapType = 2
                             tsteadySelect = false
+                        }
+                        if q2C4Mtl3iNa != "" {
+                            Task {
+                                await oA0T1rQLoad()
+                            }
                         }
                     }
                 }.padding(.top,15)

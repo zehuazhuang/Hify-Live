@@ -28,11 +28,12 @@ struct tD4C1N7pR6Sli: View {
                 }
                 
                 //在线状态
-//                ZJ7h766mz(tMmEWWlfgUag: "zxM23M2tC38")
-//                                   .frame(width: 10, height: 10)
-//                                   .frame(maxWidth: .infinity,maxHeight: .infinity,alignment:.bottomTrailing)
-//                                   .padding(.trailing,2)
-//                                   .padding(.bottom,2)
+            
+                ZJ7h766mz(tMmEWWlfgUag: rN1Z8mR.isOnline ? "zxM23M2tC38" : "i7CwZ3wGTsV")
+                                   .frame(width: 10, height: 10)
+                                   .frame(maxWidth: .infinity,maxHeight: .infinity,alignment:.bottomTrailing)
+                                   .padding(.trailing,2)
+                                   .padding(.bottom,2)
             }.frame(width: 48, height: 48)
             VStack(alignment:.leading,spacing:3){
                 

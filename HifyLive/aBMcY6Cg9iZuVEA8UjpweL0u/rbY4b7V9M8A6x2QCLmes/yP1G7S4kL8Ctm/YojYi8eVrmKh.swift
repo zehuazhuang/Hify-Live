@@ -53,16 +53,18 @@ class RecentSessionManager: ObservableObject {
                 timestamp: r.lastMessage?.timestamp ?? 0,
                 unreadCount: r.unreadCount,
                 nickname: info?.nickname ?? s.sessionId, // 先用ID占位
-                avatarUrl: info?.avatarUrl ?? ""
+                avatarUrl: info?.avatarUrl ?? "",
+                isOnline: false
             )
 
             tempCache.append(cached)
 
             // 异步更新昵称和头像
-            UserManager.shared.getUserInfo(accid: s.sessionId) { nickname, avatarUrl in
+            UserManager.shared.getUserInfo(accid: s.sessionId) { nickname, avatarUrl,isOnline in
                 DispatchQueue.main.async {
                     cached.nickname = nickname
                     cached.avatarUrl = avatarUrl
+                    cached.isOnline = isOnline
                 }
             }
         }
@@ -127,7 +129,8 @@ class RecentSessionManager: ObservableObject {
                 timestamp: message.timestamp,
                 unreadCount: message.isOutgoingMsg ? 0 : 1,
                 nickname: userInfo?.nickname ?? accid,
-                avatarUrl: userInfo?.avatarUrl ?? ""
+                avatarUrl: userInfo?.avatarUrl ?? "",
+                isOnline: false
             )
             cache.append(newCache)
         }
