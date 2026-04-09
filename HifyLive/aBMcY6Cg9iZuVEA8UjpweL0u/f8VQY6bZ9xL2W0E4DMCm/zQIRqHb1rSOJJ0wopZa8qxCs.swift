@@ -479,7 +479,7 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
         
 
         .onAppear{
-            print(areoloaUid)
+            
             Task {
                 if (!kP0G6KEO0){
                     EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
@@ -685,8 +685,7 @@ class T0viKk: ObservableObject {
                     return [:]
                 }
                 let atXeZc0tWzWWpIN8DRa5DB = wvhfld.hL9dV3bQ2fK6sJ8p()
-//                print("----json")
-//                print(atXeZc0tWzWWpIN8DRa5DB)
+
              
                 if let nQ4WzLmrneR1qX8c9nRwkH = atXeZc0tWzWWpIN8DRa5DB.kPOR9FHwcEZJv9YDf4W01D() {
                     return nQ4WzLmrneR1qX8c9nRwkH

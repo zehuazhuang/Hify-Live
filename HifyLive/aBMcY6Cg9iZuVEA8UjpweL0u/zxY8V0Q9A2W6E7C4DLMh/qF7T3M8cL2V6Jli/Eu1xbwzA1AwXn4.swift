@@ -481,8 +481,14 @@ struct Eu1xbwzA1AwXn4: View {
             print("财富榜数据")
             print(atFBCJ7aeWP)
 
-            // 取最后一个
-            wYh4kyARQ = atFBCJ7aeWP.last ?? [:]
+            
+            if let lastItem = atFBCJ7aeWP.last,
+               let userId = lastItem["userId"] as? Int,
+               userId == IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId") {
+                
+                
+                wYh4kyARQ = lastItem
+            }
 
             // 移除最后一个
             if !atFBCJ7aeWP.isEmpty {

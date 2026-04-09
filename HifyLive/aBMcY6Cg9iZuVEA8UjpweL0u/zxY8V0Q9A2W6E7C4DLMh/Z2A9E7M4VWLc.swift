@@ -74,18 +74,47 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                 }
                 print("大额礼物")
                 print(remoteExt)
+                
+                if let appIdList = data["appIdList"] as? [Any], !appIdList.isEmpty {
+                       
+                      
+                    
+                    if let appIdList = data["appIdList"] as? [String] {
+                        
+                        if(appIdList.contains(JOGtDnYupP.raslidepApId)){
+                            GlobalNoticeManager.shared.show(
+                                GiftNoticeModel(
+                                    senderName: data.string("sendUserNickName"),
+                                    receiverName: data.string("receiveUserNickName"),
+                                    giftName: data.string("giftName"),
+                                    giftCount: data.int("giftNum"),
+                                    giftImage: data.string("smallImg"),
+                                    roomId: data.int("userId")
+                                ),
+                                stay: Double(data.string("showTime")) ?? 0
+                            )
+                        }
+                    }
+                       
+                        
+                    } else {
+                        
+                        
+                        
+                        GlobalNoticeManager.shared.show(
+                            GiftNoticeModel(
+                                senderName: data.string("sendUserNickName"),
+                                receiverName: data.string("receiveUserNickName"),
+                                giftName: data.string("giftName"),
+                                giftCount: data.int("giftNum"),
+                                giftImage: data.string("smallImg"),
+                                roomId: data.int("userId")
+                            ),
+                            stay: Double(data.string("showTime")) ?? 0
+                        )
+                    }
 
-                GlobalNoticeManager.shared.show(
-                    GiftNoticeModel(
-                        senderName: data.string("sendUserNickName"),
-                        receiverName: data.string("receiveUserNickName"),
-                        giftName: data.string("giftName"),
-                        giftCount: data.int("giftNum"),
-                        giftImage: data.string("smallImg"),
-                        roomId: data.int("userId")
-                    ),
-                    stay: Double(data.string("showTime")) ?? 0
-                )
+               
             }
             
             

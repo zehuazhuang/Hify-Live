@@ -230,11 +230,20 @@ struct LE0xQZ6Y7WC8iv: View {
                             }()
 
                             ZStack {
-                                rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: iENw26wu7cQ[index].string("icon"))
-                                    .frame(width: 32, height: 32)
-                                    .clipShape(Circle())
-                                    .padding(.bottom, 2)
-                                    .allowsHitTesting(false)
+                                if(iENw26wu7cQ[index].string("icon") == ""){
+                                    ZJ7h766mz(tMmEWWlfgUag: "gCZGrlvVVn1D")
+                                        .frame(width: 32, height: 32)
+                                        .clipShape(Circle())
+                                        .padding(.bottom, 2)
+                                        .allowsHitTesting(false)
+                                }else{
+                                    rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: iENw26wu7cQ[index].string("icon"))
+                                        .frame(width: 32, height: 32)
+                                        .clipShape(Circle())
+                                        .padding(.bottom, 2)
+                                        .allowsHitTesting(false)
+                                }
+                                
                                 ZStack{
                                     Text("\(iENw26wu7cQ[index].int("totalGiftValue").xN98uRxq())")
                                         .g0LIIcoZQsOjyND9(
