@@ -480,6 +480,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 for msg in messages {
                    
                     guard let session = msg.session,
+                          session.sessionType == .P2P,
                           session.sessionId == self.session.sessionId else { continue }
 
                     let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
@@ -586,6 +587,7 @@ class ChatMessage: Identifiable, ObservableObject {
                         if case .gift = chatMsg.content {
                             
                         } else {
+                            print("进入了")
                             self.messages.append(chatMsg)
                             self.updateRecentSession(chatMsg)
                         }

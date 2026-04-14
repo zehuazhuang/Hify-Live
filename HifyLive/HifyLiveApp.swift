@@ -18,6 +18,8 @@ struct HifyLiveApp: App {
     @UIApplicationDelegateAdaptor(N0lU9akMbRab.self) var n0lU9akMbRab
     @StateObject var pilot = UIPilot<APPTJuHVkDYORXa>(initial: .cjMFVE23ZhInit)
     init() {
+        //网络监听
+        _ = Yi9m02SYzI7dI.shared
       
         //初始化Google clientID
         Task { @MainActor in

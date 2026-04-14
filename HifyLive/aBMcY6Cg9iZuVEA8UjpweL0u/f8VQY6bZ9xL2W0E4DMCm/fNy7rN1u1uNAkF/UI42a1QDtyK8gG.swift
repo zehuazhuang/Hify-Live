@@ -183,14 +183,20 @@ struct UI42a1QDtyK8gG: View {
                                            .frame(width: 262, height: 46)
                                            .frame(maxWidth: .infinity,alignment: .center)
                                            .onTapGesture {
-                                               if(zl2SSqI7hK != -1 && descriptionText != "" ){
+                                               if !Yi9m02SYzI7dI.shared.isConnected {
+                                                   QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("K0e4tAjTJcHU6EUVZUTWoNwIwhkclCvfsmmek2Z5efk=",type: 1)
+                                                   return
+                                               }
+                                               
+                                               if(zl2SSqI7hK != -1 ){
                                                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                                    
                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
                                                        
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("lJjLBJiZZo0QtTGrUm7tagx9NHD5bjuEKsfuukH+JMQ=")
                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                       pilot.pop()
+                                                       LiveSessionManager.shared.selectedTab = .lonaranpeH
+                                                       pilot.popTo(.lsoFZyn41MiKHome)
                                                    }
                                                }else{
                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("xnyswHR1AgUmKQ2sYl5pA50bRnPpa5dqnovKeoJzXv3wlikYkM/cxmVc5911mWjp")

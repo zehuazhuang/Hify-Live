@@ -351,9 +351,10 @@ func joinlive(pmpresoZUid: Int) async throws -> [String: Any] {
 //关注 (uid,1关注 2取消)
 @MainActor
 func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
-    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+    
     // 1️⃣ 构建 URL
     guard let url = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("Ax+One5OZLxypA3n9ZqrTHJJ1ZEzLjrxPPGLBCuA4W4=".bFHEatcgE4zzU9TCfDonsu())") else {
+        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         throw URLError(.badURL)
     }
     
@@ -374,6 +375,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
     
@@ -398,7 +400,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
     }
     
     if(code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu()){
-        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+        
         vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
         vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
         
@@ -442,7 +444,18 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {
         throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
     }
-    
+    print("-----url-----")
+       print(url)
+       print("HTTP Method:", request.httpMethod ?? "")
+       
+       if let headers = request.allHTTPHeaderFields {
+           for (key, value) in headers {
+               print("\(key): \(value)")
+           }
+       }
+       print("------------")
+       print(body)
+   
     
     let encryptedString = jsonString.tYwP1zF6sM8vR2kq()
     request.httpBody = encryptedString.data(using: .utf8)
@@ -461,9 +474,11 @@ func jhM2W7E8YxL(mosh4E7CxL: String) async throws -> Bool {
     else {
         return false
     }
+    print("-----json-------")
+    print(jsonObject)
     
     if (code != "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu()){
-        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("p406yIqFNP66yyym3aest2AnEw1t8jrp/TIHdHnoGUYmdgvqL5OeFo9H2bo20ZiU")
+        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("p406yIqFNP66yyym3aest2AnEw1t8jrp/TIHdHnoGUYmdgvqL5OeFo9H2bo20ZiU",type: 1)
     }
   
     

@@ -48,6 +48,10 @@ struct CQ7E8ZC2A4Y0le: View {
                                                .onTapGesture{
                                                    RecentSessionManager.shared.clearAllSessions()
                                                    heS7pC8R2J = false
+                                                   
+                                                   Task{
+                                                      await RecentSessionStore.shared.fetchRecentSessions()
+                                                   }
                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("+pbctOXhsAk5VyWVYe/fX0vqdZEA/9/1IMmxhVOFRVA=")
                                                }
                             

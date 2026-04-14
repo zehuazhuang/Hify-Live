@@ -14,10 +14,10 @@ class FollowingCache: ObservableObject {
 
     @MainActor
     func loadFollowing(forceRefresh: Bool = false) async {
-        if !forceRefresh, let cache = cache, !cache.isEmpty {
-            items = cache
-            return
-        }
+//        if !forceRefresh, let cache = cache, !cache.isEmpty {
+//            items = cache
+//            return
+//        }
 
         do {
             let result = try await mK4tQ1bHVd9sL2()

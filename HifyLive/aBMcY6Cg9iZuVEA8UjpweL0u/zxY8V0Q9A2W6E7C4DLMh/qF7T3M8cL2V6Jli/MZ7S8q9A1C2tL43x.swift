@@ -90,13 +90,14 @@ struct MZ7S8q9A1C2tL43x: View {
                     .cornerRadius(325)
                     .onTapGesture {
                         Task{
+                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                             let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: x0W6LivDate?["userId"] as? Int ?? 0, iA6M7W9EYL0: 1)
                             
                             if(isA2C6WEL){
                                 isFollowing = false
                                
                             }
-                            
+                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                             
                         }
                     }

@@ -463,6 +463,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc private func onSendTapped() {
         
         guard let text = messageTextField.text, !text.isEmpty else { return }
+        
+        //检测敏感词汇
+        if EwNwNujEwMzTHX.shared.y8smb1UywDB5G3(messageTextField.text!) {
+            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("HhzzOA2eHTNz8JANI+0SRU+WQxpWarJBlpyksmOWZzwSq+7uMt/CRKetmZWH5thv",type: 1)
+            messageTextField.text = ""
+            return
+            }
+        
+        
         dismissKeyboard()
         
         let user = IyfdHMdY.bTa3L6BoprG

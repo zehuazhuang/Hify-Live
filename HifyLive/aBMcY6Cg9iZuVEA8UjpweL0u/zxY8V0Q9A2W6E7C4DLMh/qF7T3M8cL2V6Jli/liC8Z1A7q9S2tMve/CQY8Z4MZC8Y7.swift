@@ -179,6 +179,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                                .frame(width: 28, height: 20)
                                                .onTapGesture {
                                                    Task {
+                                                       EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                                        do {
                                                            let is9MZC7A4 =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL:liveRoomData.int("userId") , iA6M7W9EYL0: 1)
                                                            if(is9MZC7A4){
@@ -186,7 +187,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                                                mpatentLoad()
 
                                                            }
-                                                          
+                                                           EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                                        } catch {
                                                            print(error)
                                                        }

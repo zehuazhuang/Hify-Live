@@ -8,10 +8,12 @@ struct QsS1CqA9M8tL2fs: View {
     @State private var iZQ7xV4bM8Ys: Bool = false
     @State private var tsteadySelect: Bool = true //
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
-    @State private var piaoncapType: Int = 0 //0历史 1房间 2用户
+    @State private var piaoncapType: Int = 0 //0历史 1房间 2用户 3不展示数据
     @State private var searchResults: [[String: Any]] = []
     @State private var isZ8Q7x4bV9Y0A2: Bool = true
     @State private var searchHistory: [String] = [] //搜索框输入历史
+    @State private var ovkXIqBE3: Bool = false //弹取关
+    @State private var wlaOcPSXK: Int = -1 //弹框坐标用户
     
     var body: some View {
         ZStack{
@@ -176,12 +178,48 @@ struct QsS1CqA9M8tL2fs: View {
                                                 
                                                 pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(item.int("userId"))))
                                             }
-                                    } else {
+                                    } else if (piaoncapType == 2) {
                                         huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa,cF8eDIYj: {
-                                            Task {
-                                                await oA0T1rQLoad()
+                                        
+                                            
+                                            if(item.int("isFollow") == 1){
+                                                withAnimation{
+                                                    ovkXIqBE3 = true
+                                                    wlaOcPSXK = index
+                                                }
+                                                return;
                                             }
-                                        })
+                                            
+                                            Task {
+                                                do {
+                                                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+
+                                                    let success = try await fol6W9ZQ4xC2(
+                                                        uY2M8A4E7C0xL: item.int("userId"),
+                                                        iA6M7W9EYL0: item.int("isFollow") == 0 ? 1 : 2
+                                                    )
+
+                                                    if success {
+                                                        await MainActor.run {
+                                                            var newItem = searchResults[index]
+                                                            let old = newItem.int("isFollow")
+                                                            newItem["isFollow"] = old == 0 ? 1 : 0
+                                                            searchResults[index] = newItem
+                                                        }
+                                                    }
+
+                                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+
+                                                } catch {
+                                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("P2ioQwHU3PNz9WK0p/ld10xqxGd8o7wzcpv4SdrB7W/L6lY9jAhEVgYfuei2iECk",type: 1)
+                                                }
+                                            }
+                                            
+                                        },
+                                        v6Er31I62R: item.int("isFollow") == 0
+                                        
+                                        )
                                         .onTapGesture {
                                           
                                             
@@ -194,6 +232,41 @@ struct QsS1CqA9M8tL2fs: View {
                     }
                 }.padding(.top,8)
             }.padding(.horizontal,16)
+            
+            //取关弹框
+            if ovkXIqBE3 {
+                W9MZC6xA7Q8Y4L(avatarURL: searchResults[wlaOcPSXK].string("icon"), nickname: searchResults[wlaOcPSXK].string("nickname"),onClose:{
+                    ovkXIqBE3 = false
+                },
+                onUnfollow:{
+                    
+                    Task {
+                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                do {
+                                    let isA2C6WEL = try await fol6W9ZQ4xC2(
+                                        uY2M8A4E7C0xL: searchResults[wlaOcPSXK].int("userId"),
+                                        iA6M7W9EYL0: 2
+                                    )
+                                    
+                                    if isA2C6WEL {
+                                                await MainActor.run {
+                                                    var newItem = searchResults[wlaOcPSXK]
+                                                    newItem["isFollow"] = 0
+                                                    searchResults[wlaOcPSXK] = newItem
+                                                    ovkXIqBE3 = false
+                                                }
+                                            }
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    
+                                } catch {
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("P2ioQwHU3PNz9WK0p/ld10xqxGd8o7wzcpv4SdrB7W/L6lY9jAhEVgYfuei2iECk",type: 1)
+                                    print( error)
+                                }
+                            }
+                }
+                )
+            }
         }
         .onAppear {
             searchHistory = SearchHistoryManager.shared.load()
@@ -204,12 +277,12 @@ struct QsS1CqA9M8tL2fs: View {
     }
     func oA0T1rQLoad() async  {
         EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-       
+        piaoncapType = 3
         Task { @MainActor in
          
             do {
                 let results = try await hifySearch(type: tsteadySelect ? 1 : 2, searchValue: q2C4Mtl3iNa)
-                   searchResults = results
+                searchResults = results
                 
                
                 if(tsteadySelect){
@@ -222,6 +295,8 @@ struct QsS1CqA9M8tL2fs: View {
                 }else{
                     isZ8Q7x4bV9Y0A2 = true
                 }
+                
+                
                 
                 SearchHistoryManager.shared.add(q2C4Mtl3iNa)
                 searchHistory = SearchHistoryManager.shared.load()

@@ -219,7 +219,7 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     private func setupInitialDate() {
         let calendar = Calendar.current
         selectedYear = calendar.component(.year, from: initialDate)
-       // selectedMonth = calendar.component(.month, from: initialDate)
+        selectedMonth = calendar.component(.month, from: initialDate)
         selectedDay = calendar.component(.day, from: initialDate)
         updateMonths()
         selectedMonth = min(selectedMonth, months.count)

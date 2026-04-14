@@ -7,7 +7,8 @@ struct ME9B8ZCwVQxn: View {
         case rongrandtM
         case eormakgnaM
     }
-    @State private var crformanchSelect: NgcenieTab = .lonaranpeH
+   // @State private var crformanchSelect: NgcenieTab = .lonaranpeH
+    @StateObject private var tabManager = LiveSessionManager.shared
     
     @State private var s4V9Y0A2C6WEL = false //聊天页more底部弹框
     @State private var shR2D3nR8Q = false //清空消息二次弹窗
@@ -18,22 +19,22 @@ struct ME9B8ZCwVQxn: View {
             Group {
                 ZStack {
                     E2VxD0iC4bYyh(ecorjazyType: $ecorjazyTypeInHome)
-                        .opacity(crformanchSelect == .lonaranpeH ? 1 : 0)
-                        .allowsHitTesting(crformanchSelect == .lonaranpeH)
+                        .opacity(tabManager.selectedTab == .lonaranpeH ? 1 : 0)
+                        .allowsHitTesting(tabManager.selectedTab == .lonaranpeH)
 
                     jQp7ZL9aM8Wtm(mo0LQ7DAi: {
                         s4V9Y0A2C6WEL = true
                     }, hGSH6kR: {
-                        crformanchSelect = .lonaranpeH
+                        tabManager.selectedTab = .lonaranpeH
                         ecorjazyTypeInHome = true
                         
                     })
-                    .opacity(crformanchSelect == .rongrandtM ? 1 : 0)
-                    .allowsHitTesting(crformanchSelect == .rongrandtM)
+                    .opacity(tabManager.selectedTab == .rongrandtM ? 1 : 0)
+                    .allowsHitTesting(tabManager.selectedTab == .rongrandtM)
 
                     C8Z2x4M6YV9m()
-                        .opacity(crformanchSelect == .eormakgnaM ? 1 : 0)
-                        .allowsHitTesting(crformanchSelect == .eormakgnaM)
+                        .opacity(tabManager.selectedTab == .eormakgnaM ? 1 : 0)
+                        .allowsHitTesting(tabManager.selectedTab == .eormakgnaM)
                 }
             }
              .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -93,16 +94,16 @@ struct ME9B8ZCwVQxn: View {
     @ViewBuilder
        private func nS9Zq7L4A1(aenteckTab: NgcenieTab, haiecenseImg: String, battemeneSeleImg: String,semblrmdanTi: String) -> some View {
            Button(action: {
-               crformanchSelect = aenteckTab
+               tabManager.selectedTab = aenteckTab
            }) {
                VStack(spacing: 3) {
-                          ZJ7h766mz(tMmEWWlfgUag: crformanchSelect == aenteckTab ? battemeneSeleImg : haiecenseImg)
+                          ZJ7h766mz(tMmEWWlfgUag: tabManager.selectedTab == aenteckTab ? battemeneSeleImg : haiecenseImg)
                               .frame(width: 24, height: 24)
                    Text(semblrmdanTi)
                                    .g0LIIcoZQsOjyND9(
                                        size:  14,
-                                       weight: crformanchSelect == aenteckTab ? .black : .regular,
-                                       color: crformanchSelect == aenteckTab ? .white : .white.opacity(0.4)
+                                       weight: tabManager.selectedTab == aenteckTab ? .black : .regular,
+                                       color: tabManager.selectedTab == aenteckTab ? .white : .white.opacity(0.4)
                                    )
                       }
            }.frame(width: 60,height: 47)

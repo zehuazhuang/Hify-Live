@@ -83,6 +83,7 @@ struct kaBpQbGjZ: View {
                 onUnfollow:{
                     
                     Task {
+                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                 do {
                                     let isA2C6WEL = try await fol6W9ZQ4xC2(
                                         uY2M8A4E7C0xL: filteredResults[xH4Gfw7C].int("userId"),
@@ -93,8 +94,10 @@ struct kaBpQbGjZ: View {
                                         
                                         filteredResults[xH4Gfw7C]["followed"] = 0
                                     }
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                     
                                 } catch {
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                     print( error)
                                 }
                             }

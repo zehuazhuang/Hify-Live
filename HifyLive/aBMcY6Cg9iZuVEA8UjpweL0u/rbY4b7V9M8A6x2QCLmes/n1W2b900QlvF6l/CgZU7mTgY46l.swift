@@ -347,14 +347,11 @@ struct CgZU7mTgY46l: View {
                      
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                            print("1")
                             vm.messages.append(msg)
                             vm.updateRecentSession(msg)
                         }
                     }
-                  
-                    
-                    
-                    
                     
                 }
          

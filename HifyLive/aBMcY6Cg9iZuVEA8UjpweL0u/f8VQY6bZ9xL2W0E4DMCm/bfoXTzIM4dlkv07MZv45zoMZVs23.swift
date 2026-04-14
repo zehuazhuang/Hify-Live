@@ -83,7 +83,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                                             let vutSbVgrqVlU9: String = mnnVXxRXFee1ZJ8ehOc9UwA.string("HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu())
                                             let wiCvWb: Bool =  await nd55l6NRwWuVUnbReUhjS3d1Ivg.hxEXXV2aWMNka7HM2qhr1Qccen3rB(iN2NID: ehiJO3, lCOFD: vutSbVgrqVlU9)
                                             if !wiCvWb, let pPBGkix66avlJS7b9 = nd55l6NRwWuVUnbReUhjS3d1Ivg.lT3KlfvYcav5 {
-                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(pPBGkix66avlJS7b9, z2E1geUN5miQ95SpoCG: false)
+                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(pPBGkix66avlJS7b9,type: 1, z2E1geUN5miQ95SpoCG: false)
                                                 
                                             } else {
                                                

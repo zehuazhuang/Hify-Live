@@ -47,10 +47,12 @@ struct UDGjeLeI2bL7H: View {
                         ondZKTQ307nh()
                         return
                     }
+                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                     let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: hXDX98TXUs.int("userId"), iA6M7W9EYL0: 1)
                     if(isA2C6WEL){
                         v6Er31I62R = !v6Er31I62R
                     }
+                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                 }
             }) {
                 HStack(spacing:4){

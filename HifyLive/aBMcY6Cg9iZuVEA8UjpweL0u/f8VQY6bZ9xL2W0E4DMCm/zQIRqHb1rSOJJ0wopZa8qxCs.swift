@@ -27,6 +27,8 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
     }
     
     @State private var kP0G6KEO0 = false //是否第一次加载
+    
+    @State private var xI87npb7lB: Bool = false //弹取关
   
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
@@ -401,15 +403,29 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                         
                         
                         Button(action: {
+                            
+                            if isFvNNQZQ {
+                                withAnimation{
+                                    xI87npb7lB = true
+                                }
+                                return;
+                            }
                            
                             Task{
-                                
-                                let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: areoloaUid, iA6M7W9EYL0: isFvNNQZQ ? 2 : 1)
-                                if(isA2C6WEL){
-                                    pstjumLoad()
-    
-                                   
+                                do{
+                                    EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                    let isA2C6WEL =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL: areoloaUid, iA6M7W9EYL0: isFvNNQZQ ? 2 : 1)
+                                    if(isA2C6WEL){
+                                        pstjumLoad()
+        
+                                       
+                                    }
+                                }catch{
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("P2ioQwHU3PNz9WK0p/ld10xqxGd8o7wzcpv4SdrB7W/L6lY9jAhEVgYfuei2iECk",type: 1)
                                 }
+                                
+                                
                             }
                         }) {
                             HStack(spacing:4){
@@ -469,6 +485,37 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
             }
             //vstack 关注、聊天 end
             
+            
+            if xI87npb7lB {
+                W9MZC6xA7Q8Y4L(avatarURL: usQ8Y7Z6Inf.string("icon"), nickname: usQ8Y7Z6Inf.string("nickname"),onClose:{
+                    xI87npb7lB = false
+                },
+                onUnfollow:{
+                    
+                    Task {
+                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+                                do {
+                                    let isA2C6WEL = try await fol6W9ZQ4xC2(
+                                        uY2M8A4E7C0xL: usQ8Y7Z6Inf.int("userId"),
+                                        iA6M7W9EYL0: 2
+                                    )
+                                    
+                                    if(isA2C6WEL){
+                                        
+                                        usQ8Y7Z6Inf["followed"] = 0
+                                    }
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    
+                                } catch {
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    print( error)
+                                }
+                            }
+                }
+                )
+            }
+            
+            //举报弹框
             if isvk1OJMmL {
                 QiRKOWGBnovrlh(ish1z8TllyFvb: $isvk1OJMmL, ihQ5ReMsh3Uid: areoloaUid,
                                szHHWP8Name:usQ8Y7Z6Inf.string("nickname"), wksgt0dUrl: usQ8Y7Z6Inf.string("icon"), ihysbsdRVA: usQ8Y7Z6Inf.string("yxAccid"), uZIHcG0Vju0: $wJPbA3THnzX,

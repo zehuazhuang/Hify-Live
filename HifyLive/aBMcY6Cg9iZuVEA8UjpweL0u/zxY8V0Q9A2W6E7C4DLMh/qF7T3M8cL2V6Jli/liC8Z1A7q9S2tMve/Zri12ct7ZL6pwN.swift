@@ -10,4 +10,6 @@ class LiveSessionManager: ObservableObject {
     @Published var aHUdhiChZEUid: Int = 0 // 上一个用户id，用来判断是否回退
     
     @Published var oep8RDxW: String = "" //全局聊天室id
+    
+    @Published var selectedTab: ME9B8ZCwVQxn.NgcenieTab = .lonaranpeH
 }

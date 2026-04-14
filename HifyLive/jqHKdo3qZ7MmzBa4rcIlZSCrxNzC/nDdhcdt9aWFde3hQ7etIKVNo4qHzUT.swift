@@ -13,8 +13,8 @@ struct WUjfoptOKs8pZfhSAH0duplG<pZvePB2YhReAp6: View>: View {
     init(@ViewBuilder qT1pcbSu1NhjQovXgZFtQd9P5: () -> pZvePB2YhReAp6) {
         self.hxG8wfUYjRwRzYIdMmbpiIUUI = qT1pcbSu1NhjQovXgZFtQd9P5()
     }
-
-
+    
+    
     var body: some View {
         ZStack {
             hxG8wfUYjRwRzYIdMmbpiIUUI
