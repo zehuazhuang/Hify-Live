@@ -50,6 +50,29 @@ class RecentSessionStore: ObservableObject {
 
     }
     
+    //已读friend
+    func markFriendSessionsRead(accidSet: Set<String>) {
+        objectWillChange.send()
+        
+        for session in cache {
+            // 只处理朋友（命中 accidSet）
+            if accidSet.contains(session.sessionId) {
+                let unread = session.unreadCount
+                session.unreadCount = 0
+                
+                // 同步全局未读
+                GlobalUnreadStore.shared.clearUnread(
+                    for: session.sessionId,
+                    count: unread
+                )
+                
+                // 同步 SDK
+                NIMSDK.shared().conversationManager
+                    .markAllMessagesRead(in: session.session)
+            }
+        }
+    }
+    
     func updateOnlineStatus(accid: String, isOnline: Bool) {
         DispatchQueue.main.async {
             for session in self.cache {
@@ -77,6 +100,14 @@ class RecentSessionStore: ObservableObject {
             RecentSessionManager.shared.fetchRecentSessions {
                 // 更新本地缓存和排序
                 self.cache = RecentSessionManager.shared.cache
+                
+                // 过滤黑名单
+                          let blockedSet = TPb21z0U.eDNcFBMyyi.blockedAccidSet
+                          self.cache.removeAll { session in
+                              session.sessionType == .P2P && blockedSet.contains(session.sessionId)
+                          }
+                
+                
                 self.sortCache()
                 self.syncGlobalUnread()
                 
@@ -190,3 +221,4 @@ extension RecentSessionStore {
     
     
 }
+

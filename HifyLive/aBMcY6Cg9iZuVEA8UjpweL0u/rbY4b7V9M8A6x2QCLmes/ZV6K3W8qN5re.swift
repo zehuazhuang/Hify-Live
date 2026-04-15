@@ -22,8 +22,18 @@ struct ZV6K3W8qN5re: View {
                     
                     xD6bLM9VWBut(tC4mJ1P6X: 0, L7sB2F9ac: {
                         // 1️⃣ 标记所有会话已读
-                        RecentSessionStore.shared.markAllSessionsRead()
-                        GlobalUnreadStore.shared.clearAllUnread()
+                        print(LiveSessionManager.shared.kYNYWwuQUS)
+                        if LiveSessionManager.shared.kYNYWwuQUS == 1 {
+                            RecentSessionStore.shared.markFriendSessionsRead(
+                                accidSet: Set(
+                                    IyfdHMdY.bTa3L6BoprG.gx0Y2M6W9 // Following
+                                )
+                            )
+                        } else {
+                            RecentSessionStore.shared.markAllSessionsRead()
+                            GlobalUnreadStore.shared.clearAllUnread()
+                        }
+
                         sE92F3V9XA = false
                         
                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("qYjfs2pmw3ddn1aXQzTkaI2lO7S5If9ZeOGsX4Fo+JU=")

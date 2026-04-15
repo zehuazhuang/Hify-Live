@@ -25,8 +25,8 @@ struct CgZU7mTgY46l: View {
         @State private var xJc49zdLp: Bool = false //礼物弹框
         @State private var iFMUtEu7sKn: Bool = false//显示充值商店
         @State private var upeHWOkV7Fb: [[String: Any]] = [] //快捷消息
-        @State private var isOpponentOnline: Bool = false
-    
+        @State private var isOpponentOnline: Bool = false //在线状态
+        @State private var sQYNvOjd5v: Bool = false //显示挽留弹窗
     
         @Environment(\.dismiss) private var dismiss
     
@@ -295,13 +295,29 @@ struct CgZU7mTgY46l: View {
                         Color.black.opacity(0.3)
                             .ignoresSafeArea()
                             .onTapGesture {
-                                withAnimation { iFMUtEu7sKn = false }
+                                if LiveSessionManager.shared.o45JZp9AD1sB {
+                                    withAnimation {
+                                        iFMUtEu7sKn = false
+                                        LiveSessionManager.shared.o45JZp9AD1sB = false
+                                    }
+                                }else{
+                                    withAnimation{
+                                        sQYNvOjd5v = true
+                                    }
+                                    LiveSessionManager.shared.o45JZp9AD1sB = true
+                                }
+                                
                             }
                         // 弹窗本体
                         Afmox09Q1UKVfE(daPQCKaHi: true)
                             .frame(height: 580)
                             .frame(maxHeight: .infinity,alignment:.bottom)
                     }
+                }
+                
+                //挽留弹窗
+                if sQYNvOjd5v {
+                    R7mL2X9B1qZ5vY(tP3QY4dC7W: $sQYNvOjd5v)
                 }
                 
                 
@@ -344,15 +360,19 @@ struct CgZU7mTgY46l: View {
                     giftManager.onAnimationStart = { item in
                         guard let msg = item.message else { return }
                         
-                     
+                        let exists = vm.messages.contains { old in
+                             old.messageId == msg.messageId
+                         }
+
+                         guard !exists else { return }
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        
                             print("1")
                             vm.messages.append(msg)
                             vm.updateRecentSession(msg)
-                        }
+                        
                     }
-                    
+                   
                 }
          
                 

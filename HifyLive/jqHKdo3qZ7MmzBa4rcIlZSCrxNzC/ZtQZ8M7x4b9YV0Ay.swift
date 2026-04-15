@@ -30,23 +30,31 @@ struct A6WsC0Ww6ELqEL: View {
         }
 
         var views: [Text] = []
-        var remainingText = l4K9bX2q
-        let lowerSearch = k7NmFz1p.lowercased()
+        let fullText = l4K9bX2q as NSString
+        let searchText = k7NmFz1p
+        var searchLocation = 0
 
-        while let range = remainingText.lowercased().range(of: lowerSearch) {
-            let prefix = String(remainingText[..<range.lowerBound])
-            if !prefix.isEmpty {
+        while searchLocation < fullText.length {
+            let searchRange = NSRange(location: searchLocation, length: fullText.length - searchLocation)
+            let foundRange = fullText.range(of: searchText, options: [.caseInsensitive], range: searchRange)
+
+            if foundRange.location == NSNotFound {
+                let tail = fullText.substring(from: searchLocation)
+                if !tail.isEmpty {
+                    views.append(createText(tail, color: .white))
+                }
+                break
+            }
+
+            if foundRange.location > searchLocation {
+                let prefix = fullText.substring(with: NSRange(location: searchLocation, length: foundRange.location - searchLocation))
                 views.append(createText(prefix, color: .white))
             }
 
-            let match = String(remainingText[range])
+            let match = fullText.substring(with: foundRange)
             views.append(createText(match, color: Color(red: 23/255, green: 220/255, blue: 255/255)))
 
-            remainingText = String(remainingText[range.upperBound...])
-        }
-
-        if !remainingText.isEmpty {
-            views.append(createText(remainingText, color: .white))
+            searchLocation = foundRange.location + foundRange.length
         }
 
         return views

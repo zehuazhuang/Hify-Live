@@ -3,6 +3,7 @@ import UIPilot
 import UIKit
 import Combine
 import Kingfisher
+import NIMSDK
 
 //聊天list UIKit
 struct ChatTableView: UIViewRepresentable {
@@ -15,6 +16,8 @@ struct ChatTableView: UIViewRepresentable {
         Coordinator(self)
     }
     let onAvatarTap: (Int) -> Void
+    
+   
     
     func makeUIView(context: Context) -> UITableView {
        
@@ -207,6 +210,31 @@ struct ChatTableView: UIViewRepresentable {
                         )
                     )
             }
+            //头像跳转
+            cell.onAvatarTap = { [weak self] in
+                guard let self else { return }
+                
+                let msg = self.parent.vm.messages[indexPath.row]
+                
+                
+                
+                
+                
+                if msg.isOutgoingMsg {
+                    self.parent.onAvatarTap(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId"))
+                } else {
+                    guard
+                        let info = self.lastOpponentInfo,
+                        let uid = info["userId"] as? Int
+                    else {
+                        
+                        return
+                    }
+                    
+                    self.parent.onAvatarTap(uid)
+                }
+                   
+            }
             
             parent.vm.onMessageUpdated = {
                 tableView.reloadData()
@@ -259,6 +287,8 @@ class ChatCell: UITableViewCell {
 
     private let giftHStack = UIStackView()
     private let giftVStack = UIStackView()
+    
+    var onAvatarTap: (() -> Void)? //点击头像
     
     
     var onResendTap: ((ChatMessage) -> Void)?
@@ -359,6 +389,10 @@ class ChatCell: UITableViewCell {
           vc.present(hosting, animated: true)
     }
     
+    @objc private func handleAvatarTap() {
+        onAvatarTap?()
+    }
+    
     //图片点击放大
     @objc private func handleImageTap() {
             guard let imageURL = currentImageURL else { return }
@@ -398,6 +432,13 @@ class ChatCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.isUserInteractionEnabled = true
+
+        let avatarTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleAvatarTap)
+        )
+        avatarImageView.addGestureRecognizer(avatarTap)
         contentView.addSubview(avatarImageView)
 
         timeLabel.font = JqA1kUIFont.font(size: 14, weight: .regular)

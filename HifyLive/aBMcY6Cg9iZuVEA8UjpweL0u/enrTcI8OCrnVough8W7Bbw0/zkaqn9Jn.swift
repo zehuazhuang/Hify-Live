@@ -188,7 +188,10 @@ struct zkaqn9Jn: View {
                                                                         //获取关注粉丝列表
                                                                         vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                                                                         vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
-                                                                        
+                                                                        //获取拉黑
+                                                                        Task{
+                                                                            await TPb21z0U.eDNcFBMyyi.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
+                                                                        }
                                                                         
                                                                         
                                                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=",type: 0)
@@ -244,7 +247,7 @@ struct zkaqn9Jn: View {
                                     if u0lXlYLQiGrjGGOpB9Mp.code == GIDSignInError.canceled.rawValue {
                                         QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==",type: 1)//Cancel login
                                     } else {
-                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=")//Google login failed.
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=",type: 1)//Google login failed.
                                     }
                                     EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                                 }

@@ -156,6 +156,8 @@ struct QiRKOWGBnovrlh: View {
                        
                        
                         if(ishlfBPM1m){
+                            await TPb21z0U.eDNcFBMyyi.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
+                            await RecentSessionStore.shared.fetchRecentSessions()
                             uZIHcG0Vju0 = 1
                             ish1z8TllyFvb = false
                         }

@@ -91,7 +91,8 @@ class LiveGiftManager {
 // MARK: - 礼物动画播放视图
 struct GiftAnimationPlayer: View {
     @ObservedObject var manager: GiftQueueManager
-    
+    @State private var startObserver: NSObjectProtocol?
+
     var body: some View {
         ZStack {
             if let item = manager.currentItem {
@@ -100,22 +101,20 @@ struct GiftAnimationPlayer: View {
                 }
                 .id(item.id)
                 .onAppear {
-                                    // 👇 监听“真正开始播放”
-                                    NotificationCenter.default.addObserver(
-                                        forName: .giftAnimationDidStart,
-                                        object: nil,
-                                        queue: .main
-                                    ) { _ in
-                                        manager.onAnimationStart?(item)
-                                    }
-                                }
+                    startObserver = NotificationCenter.default.addObserver(
+                        forName: .giftAnimationDidStart,
+                        object: nil,
+                        queue: .main
+                    ) { _ in
+                        manager.onAnimationStart?(item)
+                    }
+                }
                 .onDisappear {
-                                    NotificationCenter.default.removeObserver(
-                                        self,
-                                        name: .giftAnimationDidStart,
-                                        object: nil
-                                    )
-                                }
+                    if let startObserver {
+                        NotificationCenter.default.removeObserver(startObserver)
+                        self.startObserver = nil
+                    }
+                }
                 .zIndex(10)
             }
         }

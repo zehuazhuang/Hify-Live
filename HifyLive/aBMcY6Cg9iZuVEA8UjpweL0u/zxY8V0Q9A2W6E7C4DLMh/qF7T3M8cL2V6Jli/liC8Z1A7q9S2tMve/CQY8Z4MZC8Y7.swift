@@ -28,6 +28,7 @@ struct LE0xQZ6Y7WC8iv: View {
     @State private var scheduledTopRefreshTask: Task<Void, Never>? = nil
     @State private var showRankSheet: Bool = false //在线人数弹框
     @State private var chatSession: ChatSessionWrapper?
+    @State private var xa75H58IWv: Bool = false //显示挽留弹窗
     init(localUid: UInt, zA9Y4W6LUid: UInt) {
        
         self.localUid = localUid
@@ -336,13 +337,29 @@ struct LE0xQZ6Y7WC8iv: View {
                     Color.black.opacity(0.3)
                         .ignoresSafeArea()
                         .onTapGesture {
-                            withAnimation { x7hEzzGUTAch0 = false }
+                            if LiveSessionManager.shared.o45JZp9AD1sB {
+                                withAnimation {
+                                    x7hEzzGUTAch0 = false
+                                    LiveSessionManager.shared.o45JZp9AD1sB = false
+                                }
+                            }else{
+                                withAnimation{
+                                    xa75H58IWv = true
+                                }
+                                LiveSessionManager.shared.o45JZp9AD1sB = true
+                            }
+                            
                         }
                     // 弹窗本体
                     Afmox09Q1UKVfE(daPQCKaHi: true)
                         .frame(height: 580)
                         .frame(maxHeight: .infinity,alignment:.bottom)
                 }
+            }
+            
+            //挽留弹窗
+            if xa75H58IWv {
+                R7mL2X9B1qZ5vY(tP3QY4dC7W: $xa75H58IWv)
             }
             
             if liveRoomData.int("agoraChannelId") != 0 {

@@ -23,6 +23,11 @@ class RecentSessionManager: ObservableObject {
                //   s.sessionId != "video-sky-test" //屏蔽系统通知 充值钻石通知
             else { continue }
             
+            if s.sessionType == .P2P,
+                    TPb21z0U.eDNcFBMyyi.isBlocked(accid: s.sessionId) {
+                     continue
+                 }
+            
 
             let info = UserManager.shared.getCachedUserInfo(accid: s.sessionId)
 
@@ -76,11 +81,29 @@ class RecentSessionManager: ObservableObject {
         }
 
         cache = tempCache
-        
+        filterBlockedSessions()
        
         
         
         completion?()
+    }
+    //清空朋友会话
+    func clearFriendSessions(accidSet: Set<String>) {
+        objectWillChange.send()
+        
+        cache.removeAll { session in
+            accidSet.contains(session.sessionId)
+        }
+        
+        GlobalUnreadStore.shared.update(from: cache)
+    }
+    
+    //过滤拉黑
+    private func filterBlockedSessions() {
+        let blockedSet = TPb21z0U.eDNcFBMyyi.blockedAccidSet
+        cache.removeAll {
+            $0.sessionType == .P2P && blockedSet.contains($0.sessionId)
+        }
     }
 
 
@@ -145,7 +168,7 @@ class RecentSessionManager: ObservableObject {
                 avatar: "system",
                 isSystem: false,
                 sessionId: accid,
-                timestamp: Date(timeIntervalSince1970: message.timestamp)
+                timestamp: Date()
             )
         }else{
             XQAQvuU6cZLbgE.shared.vEnu5pS9V(
@@ -154,11 +177,11 @@ class RecentSessionManager: ObservableObject {
                 avatar: userInfo?.avatarUrl ?? "",
                 isSystem: false,
                 sessionId: accid,
-                timestamp: Date(timeIntervalSince1970: message.timestamp)
+                timestamp: Date()
             )
         }
         
-       
+        filterBlockedSessions()
     }
 
     /// 删除某个会话

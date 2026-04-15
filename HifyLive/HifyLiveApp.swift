@@ -159,6 +159,7 @@ struct HifyLiveApp: App {
     }
     
     func lidstateLoad() async{
+       
         
         Task {
            // let gUYkcLEvc5ndcD5NIGlQgbY4C3v1L5: [String:Any]? = await aYTO7iD()
@@ -193,7 +194,8 @@ struct HifyLiveApp: App {
                 //获取关注粉丝列表
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
-                
+                //获取拉黑
+                await TPb21z0U.eDNcFBMyyi.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
                 
                 print("登录用户------")
                 print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)

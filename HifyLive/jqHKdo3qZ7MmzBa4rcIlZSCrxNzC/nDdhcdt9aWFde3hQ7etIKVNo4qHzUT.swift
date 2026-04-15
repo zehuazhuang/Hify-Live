@@ -93,6 +93,9 @@ struct dqUmaY6jE7tRWpendJ: View {
                     if dHT3rub0walrhS9CG7ptAWm2Yk7.wY5viSSYx9Type == 0 {
                         ZJ7h766mz(tMmEWWlfgUag: "ukbFhDkgKDZhiG")
                             .frame(width: 24, height: 24)
+                    }else if dHT3rub0walrhS9CG7ptAWm2Yk7.wY5viSSYx9Type == 2 {
+                        ZJ7h766mz(tMmEWWlfgUag: "zgW2JBZiXFBfs")
+                            .frame(width: 24, height: 24)
                     }
                 
                     Text(dHT3rub0walrhS9CG7ptAWm2Yk7.h7HoFjF9r0)

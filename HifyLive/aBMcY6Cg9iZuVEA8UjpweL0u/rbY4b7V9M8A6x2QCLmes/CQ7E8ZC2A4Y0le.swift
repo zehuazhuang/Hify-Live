@@ -46,7 +46,16 @@ struct CQ7E8ZC2A4Y0le: View {
                             ZJ7h766mz(tMmEWWlfgUag: "cofD9tL5X4F")
                                                .frame(width: 136, height: 46)
                                                .onTapGesture{
-                                                   RecentSessionManager.shared.clearAllSessions()
+                                                   
+                                                   
+                                                   
+                                                   if LiveSessionManager.shared.kYNYWwuQUS == 1 {
+                                                          RecentSessionStore.shared.clearFriendSessions(accidSet: filteredAccidSet)
+                                                          RecentSessionStore.shared.markFriendSessionsRead(accidSet: filteredAccidSet)
+                                                      } else {
+                                                          RecentSessionStore.shared.cache.removeAll()
+                                                          RecentSessionStore.shared.markAllSessionsRead()
+                                                      }
                                                    heS7pC8R2J = false
                                                    
                                                    Task{

@@ -8,6 +8,8 @@ extension Date {
         let Xv3nT8zQ = Calendar.current
         let Vh5yL1oM = Date()
         let Yw2bF6cA = DateFormatter()
+        Yw2bF6cA.timeZone = .current
+        Yw2bF6cA.locale = .current
         
         if Xv3nT8zQ.isDateInToday(self) {
             Yw2bF6cA.dateFormat = "HH:mm"
@@ -33,6 +35,8 @@ extension Date {
         let now = Date()
         
         let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
         
         formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: self)

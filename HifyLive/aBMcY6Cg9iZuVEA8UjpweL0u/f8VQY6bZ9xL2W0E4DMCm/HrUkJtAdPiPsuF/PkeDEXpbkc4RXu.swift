@@ -43,15 +43,29 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
             pendingTransactions = saved
         }
     }
+    
+    @objc private func networkLost() {
+        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("K0e4tAjTJcHU6EUVZUTWoNwIwhkclCvfsmmek2Z5efk=",type: 1)
+        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+    }
 
     override init() {
         super.init()
         SKPaymentQueue.default().add(self)   // 监听交易
         checkUnfinishedTransactions()
+        
+        //网络监听
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(networkLost),
+            name: .networkLost,
+            object: nil
+        )
     }
 
     deinit {
         SKPaymentQueue.default().remove(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - 获取商品
@@ -65,19 +79,30 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
 
     // MARK: - 发起购买
     func mZ6DqgRigNqO(productId: String) async {
+
+        if let callback = wBFfm9P58PJF {
+            await callback()
+        }
         EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt(nZ9V4xF6Qw:"Purchasing is in progress, please wait patiently")
+        
+        if !Yi9m02SYzI7dI.shared.isConnected {
+            
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("K0e4tAjTJcHU6EUVZUTWoNwIwhkclCvfsmmek2Z5efk=",type: 1)
+            return
+        }
         
         print("传进来")
         print(productId)
 
         guard let product = jbGuJZqVg5X.first(where: { $0.productIdentifier == productId }) else {
            
-            
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
             //No product found
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
                 .m3nArFwdHhI82cPUmiqW8PtaaHz("9iAqOoev7u+Hb7ijU+sP4I2HtgPqdR9tyb5KqXs4D8I=", type: 1)
             
-            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+            
             return
         }
 
@@ -149,32 +174,33 @@ extension PkeDEXpbkc4RXu: SKPaymentTransactionObserver {
                 
                 // 🔥 区分是否是用户主动取消
                 if let error = transaction.error as? SKError {
-                    
-                    if error.code == .paymentCancelled {
-                        
-                        // ✅ 用户主动取消
-                        Task { @MainActor in
-
-                            
-                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                            
-                            if let callback = wBFfm9P58PJF {
-                                await callback()
-                            }
-                           
-                        }
-                        
-                    } else {
-                        
-                        
-                        Task { @MainActor in
-//                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-//                                .m3nArFwdHhI82cPUmiqW8PtaaHz("keKanlrl/Y+CpZ3rb2tMYQ==", type: 1,
-//                                                             )
-//                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                            print("支付失败: \(error.localizedDescription)")
-                        }
+                    Task { @MainActor in
+                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+                            .m3nArFwdHhI82cPUmiqW8PtaaHz("keKanlrl/Y+CpZ3rb2tMYQ==", type: 2,
+                                                         )
+                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                        print("支付失败: \(error.localizedDescription)")
                     }
+//                    if error.code == .paymentCancelled {
+//                        
+//                        // ✅ 用户主动取消
+//                        Task { @MainActor in
+//
+//                            
+//                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+//                            
+//                            if let callback = wBFfm9P58PJF {
+//                                await callback()
+//                            }
+//                           
+//                        }
+//                        
+//                    } else {
+//                        
+//                        
+//                    
+//                    }
                 }
 
                 SKPaymentQueue.default().finishTransaction(transaction)
@@ -256,6 +282,7 @@ extension PkeDEXpbkc4RXu {
                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
             } catch {
                 print("服务器校验失败，下次补单")
+                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
             }
         }
     }

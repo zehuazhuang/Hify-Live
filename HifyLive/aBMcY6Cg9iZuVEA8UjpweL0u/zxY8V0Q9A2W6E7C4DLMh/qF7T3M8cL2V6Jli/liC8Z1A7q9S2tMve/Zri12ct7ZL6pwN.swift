@@ -12,4 +12,10 @@ class LiveSessionManager: ObservableObject {
     @Published var oep8RDxW: String = "" //全局聊天室id
     
     @Published var selectedTab: ME9B8ZCwVQxn.NgcenieTab = .lonaranpeH
+    
+    @Published var o45JZp9AD1sB:Bool = false //是否第一次点击钻石商品
+    
+    @Published var kYNYWwuQUS:Int = 0 //0 message 1 friend
 }
+
+

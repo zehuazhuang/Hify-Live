@@ -41,17 +41,23 @@ struct edUaA4t78: View {
                         Button{
                             zu3HcMXPeFbA9jPbx7NGu(1)
                         } label: {
-                            RoundedRectangle(cornerRadius: 325)
-                                .fill(Color.white.opacity(0.25))
-                                .frame(width: 136,height: 46)
-                                .overlay(alignment: .center) {
-                                    ZJ7h766mz(tMmEWWlfgUag: "kYSIeo")
-                                    Text("Continue")
-                                        .g0LIIcoZQsOjyND9(
-                                            size: 18,
-                                            weight: .semibold
-                                        )
-                                }
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 325)
+                                    .fill(Color.white.opacity(0.25))
+                                    .frame(width: 136,height: 46)
+                                
+                                ZJ7h766mz(tMmEWWlfgUag: "kYSIeo")
+                                    .frame(width: 136,height: 46)
+                                
+                                Text("Continue")
+                                    .g0LIIcoZQsOjyND9(
+                                        size: 18,
+                                        weight: .semibold
+                                    )
+                            }
+                           
+                               
+                                
                         }
                     }
                 }

@@ -5,7 +5,7 @@ import NIMSDK
 //黑名单
 struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
     
-    @StateObject private var nd55l6NRwWuVUnbReUhjS3d1Ivg = TPb21z0U.eDNcFBMyyi
+    @ObservedObject var nd55l6NRwWuVUnbReUhjS3d1Ivg = TPb21z0U.eDNcFBMyyi
     
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     
@@ -76,6 +76,7 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
                                     }
                                     Spacer()
                                     Button{
+                                        if uT6eHPE0Of05afFQdv9n { return }
                                         Task {
                                             let ehiJO3: Int = Int(mnnVXxRXFee1ZJ8ehOc9UwA.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) ?? 0//userId
                                             auGm8teVpyXJCC2rxfZsMECz = ehiJO3
@@ -172,6 +173,8 @@ struct bfoXTzIM4dlkv07MZv45zoMZVs23: View {
         }
         .task {
             await nd55l6NRwWuVUnbReUhjS3d1Ivg.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
+        }.onDisappear {
+            nd55l6NRwWuVUnbReUhjS3d1Ivg.refreshIfNeededWhenClose()
         }
     }
 }
@@ -212,6 +215,17 @@ class TPb21z0U: ObservableObject {
     @Published var er9cv27P1Ndd = false
     @Published var lT3KlfvYcav5: String?
     private var eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
+    @Published var needRefreshAfterClose = false
+    
+    func refreshIfNeededWhenClose() {
+        guard needRefreshAfterClose else { return }
+        needRefreshAfterClose = false
+        
+        Task {
+            await self.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
+            await RecentSessionStore.shared.fetchRecentSessions()
+        }
+    }
     
     // MARK: - 异步加载黑名单
     func rlvC3Or8aIGlvbdryVCVS9bqGC9D() async {
@@ -273,7 +287,7 @@ class TPb21z0U: ObservableObject {
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XOUIapGeSTiQJrB6FVylYg==",type: 0)
                 self.lLPppWtfV5O6YMV5wl9nsA4nt.removeAll { ($0.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) == String(iN2NID) }
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
-                
+                self.needRefreshAfterClose = true
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
                 return true
@@ -312,6 +326,7 @@ class TPb21z0U: ObservableObject {
                    }
                 // 成功加入黑名单
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true
+                self.needRefreshAfterClose = true
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("oLFPFtMsjDiB7wz3eZeWhQ==",type: 0)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
                 vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
@@ -357,6 +372,24 @@ struct wZA6oIowbVae5FtrdTTFAaiz3WYirkvI: Codable {
             forKey: bonDyqD2YnaVJW(
                 "HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()
             )
+        )
+    }
+}
+extension TPb21z0U {
+    
+    /// 当前 accid 是否在黑名单中
+    func isBlocked(accid: String) -> Bool {
+        lLPppWtfV5O6YMV5wl9nsA4nt.contains {
+            $0.string("HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()) == accid
+        }
+    }
+    
+    /// 黑名单 accid 集合
+    var blockedAccidSet: Set<String> {
+        Set(
+            lLPppWtfV5O6YMV5wl9nsA4nt.compactMap {
+                $0.string("HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu())
+            }
         )
     }
 }

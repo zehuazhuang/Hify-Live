@@ -1,6 +1,5 @@
-
-//检测网络
 import Network
+import UIKit
 
 class Yi9m02SYzI7dI {
     static let shared = Yi9m02SYzI7dI()
@@ -13,9 +12,22 @@ class Yi9m02SYzI7dI {
     private init() {
         monitor.pathUpdateHandler = { path in
             DispatchQueue.main.async {
-                self.isConnected = path.status == .satisfied
+                let connected = path.status == .satisfied
+                
+                // 只有状态变化时才处理
+                if self.isConnected != connected {
+                    self.isConnected = connected
+                    
+                    if !connected {
+                        NotificationCenter.default.post(name: .networkLost, object: nil)
+                    }
+                }
             }
         }
         monitor.start(queue: queue)
     }
+}
+
+extension Notification.Name {
+    static let networkLost = Notification.Name("networkLost")
 }

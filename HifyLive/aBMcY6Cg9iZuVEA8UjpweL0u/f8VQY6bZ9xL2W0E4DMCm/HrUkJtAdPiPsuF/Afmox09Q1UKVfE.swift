@@ -20,10 +20,11 @@ struct Afmox09Q1UKVfE: View {
     @State private var uSM1VTVKvc0WVI: [[String: Any]] = [] //钻石列表
     @EnvironmentObject var tqaYrFHScB4LNL: RZ5EA4IPxfI4x  //订单实例
     @State private var dZJ24OCh = false //初始化一次
-    @State private var sQYNvOjd5v: Bool = false //显示挽留弹窗
+    
     @State private var remainingSeconds: Int = 600
     @State private var timer: Timer?
     @State private var oMbsrfPQEwF = false //控制底部弹出动画
+    
     
     var body: some View {
         ZStack{
@@ -287,6 +288,13 @@ struct Afmox09Q1UKVfE: View {
                                         Task {
                                             EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                             
+                                            if !Yi9m02SYzI7dI.shared.isConnected {
+                                                
+                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("K0e4tAjTJcHU6EUVZUTWoNwIwhkclCvfsmmek2Z5efk=",type: 1)
+                                                return
+                                            }
+                                            
                                             
                                             if let list = info["skuInfoList"] as? [[String: Any]] {
                                                 
@@ -352,13 +360,12 @@ struct Afmox09Q1UKVfE: View {
                 }
             }.padding(.horizontal,16)
             
-            if sQYNvOjd5v {
-                R7mL2X9B1qZ5vY(tP3QY4dC7W: $sQYNvOjd5v)
-            }
+           
         }
         .offset(y: !daPQCKaHi ? 0 : oMbsrfPQEwF ? 0 : 580)
         .ignoresSafeArea(edges: .bottom)
         .onAppear {
+            LiveSessionManager.shared.o45JZp9AD1sB = false
             if daPQCKaHi {
                 oMbsrfPQEwF = false
                 DispatchQueue.main.async {
@@ -407,11 +414,9 @@ struct Afmox09Q1UKVfE: View {
 
                 }
                 
-                // 设置取消支付回调
+                // 设置第一次点击商品回调
                 pkeDEXpbkc4RXu.wBFfm9P58PJF = {
-                    withAnimation{
-                        sQYNvOjd5v = true
-                    }
+                    LiveSessionManager.shared.o45JZp9AD1sB = true
                 }
             }
         } .onDisappear {

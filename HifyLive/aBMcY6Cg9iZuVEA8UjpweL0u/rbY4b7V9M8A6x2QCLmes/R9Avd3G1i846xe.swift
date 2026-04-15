@@ -12,7 +12,7 @@ struct R9Avd3G1i846xe: View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
                 .ignoresSafeArea()
-                
+            
             ZJ7h766mz(tMmEWWlfgUag: "e6W4Zx7QYbEL")
                 .scaledToFill()
                 .frame(height: 462)
@@ -29,12 +29,12 @@ struct R9Avd3G1i846xe: View {
                             .frame(width: 24, height: 24)
                     }
                     Spacer()
-                        Text("Eivo Team")
-                            .g0LIIcoZQsOjyND9(size: 16, weight: .regular)
+                    Text("Eivo Team")
+                        .g0LIIcoZQsOjyND9(size: 16, weight: .regular)
                     Spacer()
                     Spacer().frame(width: 24, height: 24)
                 }.padding(.bottom,23)
-                
+                ScrollViewReader { proxy in
                 ScrollView(showsIndicators: false){
                     VStack(spacing:24){
                         ForEach(messages,id: \.messageId){ msg in
@@ -53,7 +53,7 @@ struct R9Avd3G1i846xe: View {
                                 }
                                 HStack(alignment: .top, spacing:8){
                                     ZJ7h766mz(tMmEWWlfgUag: "eY8bYZrPzzM")
-                                                       .frame(width: 48, height: 48)
+                                        .frame(width: 48, height: 48)
                                     if let text = msg.text, !text.isEmpty {
                                         Text("Top-up successful! \(text) Diamonds have been credited to your account.")
                                             .g0LIIcoZQsOjyND9(size: 14, weight: .regular)
@@ -66,14 +66,20 @@ struct R9Avd3G1i846xe: View {
                                 }
                             }
                         }
+                    }.onAppear{
+                        messages = NIMSDK.shared().conversationManager.messages(in: session, message: nil, limit: 1000) ?? []
+                        
+                        DispatchQueue.main.async {
+                                                    if let lastId = messages.last?.messageId {
+                                                        proxy.scrollTo(lastId, anchor: .bottom)
+                                                    }
+                                                }
+                        
                     }
                 }
-            }.padding(.horizontal,16)
-        }.onAppear{
-            messages = Array((NIMSDK.shared().conversationManager.messages(in: session, message: nil, limit: 1000) ?? []).reversed())
-            
-            
-            
+            }
+                
+        }.padding(.horizontal,16)
         }
     }
 }

@@ -410,6 +410,7 @@ func fol6W9ZQ4xC2(uY2M8A4E7C0xL: Int, iA6M7W9EYL0: Int) async throws -> Bool {
             await FollowingCache.shared.loadFollowing(forceRefresh: true)
             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("EMnULaLM6ZF45iH0cANSKQ==",type: 0)
         }
+        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
     }
     
     

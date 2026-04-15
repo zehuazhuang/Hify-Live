@@ -40,6 +40,7 @@ struct jQp7ZL9aM8Wtm: View {
                         .onTapGesture {
                             withAnimation{
                                 echjeteaType = 0
+                                LiveSessionManager.shared.kYNYWwuQUS = 0
                             }
                         }
                         ZStack{
@@ -61,6 +62,7 @@ struct jQp7ZL9aM8Wtm: View {
                         .onTapGesture {
                             withAnimation{
                                 echjeteaType = 1
+                                LiveSessionManager.shared.kYNYWwuQUS = 1
                             }
                         }
                     }.padding(.top,8)
