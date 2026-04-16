@@ -17,6 +17,7 @@ struct QZ4A0M84C7WL9: View {
     @State private var r20e4mWkY = false //弹取关
     @State private var qQLT5JKPC = false //弹拉黑
     @State private var nJECQo7O4rE = -1 //0 未拉黑 1已拉黑
+    let yaXdI1QB7uP:(Int)->Void
     
     var exFkPlIB : Bool { //是否当前用户
         if (sBb3SaType == 0){
@@ -288,6 +289,8 @@ struct QZ4A0M84C7WL9: View {
             withAnimation{
                 is7A0Y4W6ECL = info9M0Q2A6.int("followed") == 0 ? 1 : 2
                 nJECQo7O4rE = info9M0Q2A6.int("blocked")
+                
+                yaXdI1QB7uP(info9M0Q2A6.int("followed"))
             }
            
         }

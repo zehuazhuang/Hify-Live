@@ -11,7 +11,7 @@ struct ZV6K3W8qN5re: View {
                 .onTapGesture {
                     cW2kJ7C1e()
                 }
-
+            
             ZStack{
                 // 你的弹框内容
                 
@@ -24,11 +24,7 @@ struct ZV6K3W8qN5re: View {
                         // 1️⃣ 标记所有会话已读
                         print(LiveSessionManager.shared.kYNYWwuQUS)
                         if LiveSessionManager.shared.kYNYWwuQUS == 1 {
-                            RecentSessionStore.shared.markFriendSessionsRead(
-                                accidSet: Set(
-                                    IyfdHMdY.bTa3L6BoprG.gx0Y2M6W9 // Following
-                                )
-                            )
+                            RecentSessionStore.shared.markFriendSessionsRead()
                         } else {
                             RecentSessionStore.shared.markAllSessionsRead()
                             GlobalUnreadStore.shared.clearAllUnread()

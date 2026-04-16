@@ -51,12 +51,18 @@ class RecentSessionStore: ObservableObject {
     }
     
     //已读friend
-    func markFriendSessionsRead(accidSet: Set<String>) {
+    func markFriendSessionsRead() {
         objectWillChange.send()
         
+        // 关注 + 粉丝，自动去重
+        let friendAccidSet = Set(
+            IyfdHMdY.bTa3L6BoprG.gx0Y2M6W9 +
+            IyfdHMdY.bTa3L6BoprG.fZ7W2C0YxML
+        )
+        
         for session in cache {
-            // 只处理朋友（命中 accidSet）
-            if accidSet.contains(session.sessionId) {
+            // 只处理朋友会话
+            if friendAccidSet.contains(session.sessionId) {
                 let unread = session.unreadCount
                 session.unreadCount = 0
                 
@@ -67,8 +73,7 @@ class RecentSessionStore: ObservableObject {
                 )
                 
                 // 同步 SDK
-                NIMSDK.shared().conversationManager
-                    .markAllMessagesRead(in: session.session)
+                NIMSDK.shared().conversationManager.markAllMessagesRead(in: session.session)
             }
         }
     }

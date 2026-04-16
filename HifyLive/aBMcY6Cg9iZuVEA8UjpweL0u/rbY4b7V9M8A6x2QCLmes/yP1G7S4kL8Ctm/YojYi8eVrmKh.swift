@@ -88,11 +88,36 @@ class RecentSessionManager: ObservableObject {
         completion?()
     }
     //清空朋友会话
-    func clearFriendSessions(accidSet: Set<String>) {
+    func clearFriendSessions() {
         objectWillChange.send()
         
+        // 关注 + 粉丝，自动去重
+        let friendAccidSet = Set(
+            IyfdHMdY.bTa3L6BoprG.gx0Y2M6W9 +
+            IyfdHMdY.bTa3L6BoprG.fZ7W2C0YxML
+        )
+        
+        let sessionsToDelete = cache.filter { session in
+            friendAccidSet.contains(session.sessionId)
+        }
+        
+        // 先删 SDK 最近会话
+        for item in sessionsToDelete {
+            if let recent = NIMSDK.shared().conversationManager.recentSession(by: item.session) {
+                let option = NIMDeleteRecentSessionOption()
+                NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
+                    if let error = error {
+                        print("删除朋友会话失败：\(error.localizedDescription)")
+                    } else {
+                        print("删除朋友会话成功")
+                    }
+                }
+            }
+        }
+        
+        // 再删本地 cache
         cache.removeAll { session in
-            accidSet.contains(session.sessionId)
+            friendAccidSet.contains(session.sessionId)
         }
         
         GlobalUnreadStore.shared.update(from: cache)

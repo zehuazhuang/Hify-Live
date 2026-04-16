@@ -62,12 +62,14 @@ struct QiRKOWGBnovrlh: View {
                             }
                         }else{
                             Task{
+                                EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                                 let kQcXuK4siS =  await TPb21z0U.eDNcFBMyyi.hxEXXV2aWMNka7HM2qhr1Qccen3rB(iN2NID: ihQ5ReMsh3Uid, lCOFD: ihysbsdRVA)
                                
                                 if(kQcXuK4siS){
                                     ish1z8TllyFvb = false
                                     uZIHcG0Vju0 = 0
                                 }
+                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                             }
                         }
                        
@@ -150,17 +152,19 @@ struct QiRKOWGBnovrlh: View {
             if isy9YH69iABl {
                 E7c8MeV4vdeZfD(d9CzURL: wksgt0dUrl, fmlh3nname: szHHWP8Name, ishtTvNH4y: $isy9YH69iABl, onBlock: {
                     Task{
+                        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
                         let ishlfBPM1m =   await TPb21z0U.eDNcFBMyyi.ngIp5pudxny8o0Mdsqv(fnLUzabLaul9Cx: ihQ5ReMsh3Uid, mwNKAPngt: ihysbsdRVA)
                         
                         
-                       
-                       
+                        
+                        
                         if(ishlfBPM1m){
                             await TPb21z0U.eDNcFBMyyi.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
                             await RecentSessionStore.shared.fetchRecentSessions()
                             uZIHcG0Vju0 = 1
                             ish1z8TllyFvb = false
                         }
+                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                     }
                 })
             }

@@ -175,10 +175,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc private func w8esoH7cO33() {
         puO2kKxCh?()
     }
-
+    
     //点击礼物
     @objc private func giftButtonTapped() {
         onGiftTapped?()
+    }
+    
+    @objc private func textDidChange() {
+        let isEmpty = messageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+        
+        let imageName = isEmpty ? "mXuQY8y93" : "qS9A1C2tLse" // 👈换成你想要的图
+        sendButton.setImage(UIImage(named: imageName), for: .normal)
+        
+        //（可选）顺便控制是否可点击
+        sendButton.isEnabled = !isEmpty
     }
     
 
@@ -232,6 +242,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         tableView.contentInsetAdjustmentBehavior = .never
+        tableView.showsVerticalScrollIndicator = false
         
         
         
@@ -298,10 +309,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTextField.returnKeyType = .send
         messageTextField.delegate = self
         messageTextField.translatesAutoresizingMaskIntoConstraints = false
-        
+        messageTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         // 发送按钮
         
-        sendButton.setImage(UIImage(named: "qS9A1C2tLse"), for: .normal)
+        sendButton.setImage(UIImage(named: "mXuQY8y93"), for: .normal)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.imageView?.contentMode = .scaleAspectFit
         sendButton.addTarget(self, action: #selector(onSendTapped), for: .touchUpInside)
@@ -330,6 +341,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         textFieldStack.translatesAutoresizingMaskIntoConstraints = false
         textFieldStack.addSubview(messageTextField)
         textFieldStack.addSubview(sendButton)
+        
         
         // 水平堆叠
         let stack = UIStackView(arrangedSubviews: [textFieldStack, extraButton1,aEgmymOw,tqphdfvX])
@@ -492,12 +504,27 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func appendMessage(_ msg: PublicMessage) {
         messages.append(msg)
-        let newIndexPath = IndexPath(row: messages.count - 1, section: 0)
-        tableView.performBatchUpdates({
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        }, completion: { _ in
-            self.scrollToBottom(animated: true)
-        })
+        
+        if messages.count > 50 {
+            messages.removeFirst()
+            
+            tableView.performBatchUpdates({
+                tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+                
+                let newIndexPath = IndexPath(row: messages.count - 1, section: 0)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }, completion: { _ in
+                self.scrollToBottom(animated: true)
+            })
+            
+        } else {
+            let newIndexPath = IndexPath(row: messages.count - 1, section: 0)
+            tableView.performBatchUpdates({
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }, completion: { _ in
+                self.scrollToBottom(animated: true)
+            })
+        }
     }
     
     private func scrollToBottom(animated: Bool) {

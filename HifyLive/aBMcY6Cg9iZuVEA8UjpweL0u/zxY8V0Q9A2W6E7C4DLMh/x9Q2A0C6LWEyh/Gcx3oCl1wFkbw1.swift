@@ -310,7 +310,9 @@ struct Gcx3oCl1wFkbw1: View {
                         let session = NIMSession(t6FBqjXlaJ, type: .P2P)
                         chatSession = ChatSessionWrapper(session: session, u1NCaZAWMA: djMiejuudZ)
                     },
-                    isW9YQ6C8L: $cwom50hBfhTc
+                    isW9YQ6C8L: $cwom50hBfhTc, yaXdI1QB7uP: {e570ZTkO2 in
+                       
+                    }
                 )
             }
             
@@ -328,12 +330,14 @@ struct Gcx3oCl1wFkbw1: View {
             }
         }
         .sheet(item: $chatSession) { wrapper in
-            CgZU7mTgY46l(
-                session: wrapper.session,
-                opponentAvatarURL: wrapper.u1NCaZAWMA,
-                qOH29Z5X: true
-            )
-            .environmentObject(pilot)
+            WUjfoptOKs8pZfhSAH0duplG {
+                CgZU7mTgY46l(
+                    session: wrapper.session,
+                    opponentAvatarURL: wrapper.u1NCaZAWMA,
+                    qOH29Z5X: true
+                )
+                .environmentObject(pilot)
+            }
             .presentationDetents([.fraction(0.75)])
             .presentationBackground(.clear)
         }

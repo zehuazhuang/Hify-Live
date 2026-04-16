@@ -409,7 +409,9 @@ struct Eu1xbwzA1AwXn4: View {
                         let session = NIMSession(t6FBqjXlaJ, type: .P2P)
                         chatSession = ChatSessionWrapper(session: session, u1NCaZAWMA: djMiejuudZ)
                     },
-                    isW9YQ6C8L: $cwom50hBfhTc
+                    isW9YQ6C8L: $cwom50hBfhTc, yaXdI1QB7uP: {e570ZTkO2 in
+                       
+                    }
                 )
             }
             

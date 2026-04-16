@@ -47,12 +47,13 @@ struct CQ7E8ZC2A4Y0le: View {
                                                .frame(width: 136, height: 46)
                                                .onTapGesture{
                                                    
-                                                   
+                                                   print(LiveSessionManager.shared.kYNYWwuQUS)
                                                    
                                                    if LiveSessionManager.shared.kYNYWwuQUS == 1 {
-                                                          RecentSessionStore.shared.clearFriendSessions(accidSet: filteredAccidSet)
-                                                          RecentSessionStore.shared.markFriendSessionsRead(accidSet: filteredAccidSet)
+                                                       RecentSessionManager.shared.clearFriendSessions()
+                                                       RecentSessionStore.shared.markFriendSessionsRead()
                                                       } else {
+                                                          RecentSessionManager.shared.clearAllSessions()
                                                           RecentSessionStore.shared.cache.removeAll()
                                                           RecentSessionStore.shared.markAllSessionsRead()
                                                       }
@@ -62,6 +63,7 @@ struct CQ7E8ZC2A4Y0le: View {
                                                       await RecentSessionStore.shared.fetchRecentSessions()
                                                    }
                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("+pbctOXhsAk5VyWVYe/fX0vqdZEA/9/1IMmxhVOFRVA=")
+                                                   
                                                }
                             
                         }.padding(.top,18)

@@ -1,9 +1,4 @@
-//
-//  LfSXuthOTGtjtU.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/3/26.
-//
+
 
 import Foundation
 import NIMSDK
@@ -24,25 +19,69 @@ final class GlobalNoticeManager: ObservableObject {
     
     @Published var model: GiftNoticeModel?
     @Published var isShowing: Bool = false
+    @Published var noticeId = UUID()   // 用来强制刷新视图，重新触发动画
+    
     var currentStay: Double = 3.0
     
-    private var cancellable: AnyCancellable?
+    private var queue: [(model: GiftNoticeModel, stay: Double)] = []
+    private var isPlaying: Bool = false
+    private var hideWorkItem: DispatchWorkItem?
     
+    private init() {}
+    
+    /// 外部调用：加入队列
     func show(_ model: GiftNoticeModel, stay: Double = 3.0) {
-        self.model = model
-        self.currentStay = stay
-        withAnimation(.easeInOut(duration: 1)) {
-            isShowing = true
+        DispatchQueue.main.async {
+               self.queue.append((model, stay))
+               self.playNextIfNeeded()
+           }
+    }
+    
+    /// 清空队列（可选）
+    func clearAll() {
+        hideWorkItem?.cancel()
+        hideWorkItem = nil
+        queue.removeAll()
+        model = nil
+        isShowing = false
+        isPlaying = false
+    }
+    
+    private func playNextIfNeeded() {
+        guard !isPlaying, !queue.isEmpty else { return }
+        
+        isPlaying = true
+        
+        let item = queue.removeFirst()
+        self.model = item.model
+        self.currentStay = item.stay
+        self.noticeId = UUID()
+        
+        withAnimation(.easeInOut(duration: 0.25)) {
+            self.isShowing = true
         }
         
-        cancellable?.cancel()
-        cancellable = Just(())
-            .delay(for: .seconds(stay + 2), scheduler: RunLoop.main)
-            .sink { [weak self] in
-                withAnimation(.easeInOut(duration: 1)) {
-                    self?.isShowing = false
-                }
+        // 总时长：飞入1秒 + 停留stay秒 + 飞出1秒
+        let totalDuration = 1.0 + item.stay + 1.0
+        
+        hideWorkItem?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            
+            withAnimation(.easeInOut(duration: 0.25)) {
+                self.isShowing = false
             }
+            
+            // 给 SwiftUI 一点时间完成隐藏和移除
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.model = nil
+                self.isPlaying = false
+                self.playNextIfNeeded()
+            }
+        }
+        
+        hideWorkItem = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + totalDuration, execute: work)
     }
 }
 struct MarqueeContent<Content: View>: View {
@@ -109,14 +148,10 @@ struct GlobalGiftNoticeView: View {
     var currentRoomId: Int
 
     @State private var xOffset: CGFloat = UIScreen.main.bounds.width
-    @State private var showNotice: Bool = false
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
-    
 
     var body: some View {
-        if let model = manager.model,
-           manager.isShowing {
-
+        if let model = manager.model, manager.isShowing {
             ZStack {
                 HStack {
                     rP6kV1bS8qX3nT7(pR9wQ2mL6hY5dF1: model.giftImage)
@@ -127,9 +162,10 @@ struct GlobalGiftNoticeView: View {
                 HStack(spacing: 8) {
                     MarqueeContent {
                         buildText(model: model)
-                    }.offset(y:20)
+                    }
+                    .id(manager.noticeId)
+                    .offset(y: 20)
 
-                   
                     if model.roomId != currentRoomId {
                         ZJ7h766mz(tMmEWWlfgUag: "nPiyjyCZ2")
                             .frame(width: 48, height: 22)
@@ -137,12 +173,8 @@ struct GlobalGiftNoticeView: View {
                                 jumpToRoom(model.roomId)
                             }
                     }
-                    
-                }.padding(.leading,60)
-
-                   
-                
-               
+                }
+                .padding(.leading, 60)
             }
             .padding(.horizontal, 16)
             .frame(height: 59)
@@ -157,21 +189,26 @@ struct GlobalGiftNoticeView: View {
             .padding(.top, 58)
             .offset(x: xOffset)
             .onAppear {
+                if manager.isShowing {
+                    animateInOut(stay: manager.currentStay)
+                }
+            }
+            .onChange(of: manager.noticeId) { _ in
                 animateInOut(stay: manager.currentStay)
+            }
+            .onDisappear {
+                xOffset = UIScreen.main.bounds.width
             }
         }
     }
 
     func animateInOut(stay: Double) {
-        // 初始位置屏幕右侧
         xOffset = UIScreen.main.bounds.width
 
-        // 飞入 1s
         withAnimation(.easeOut(duration: 1)) {
             xOffset = 0
         }
 
-        // 停留 stay 秒后飞出
         DispatchQueue.main.asyncAfter(deadline: .now() + 1 + stay) {
             withAnimation(.easeIn(duration: 1)) {
                 xOffset = -UIScreen.main.bounds.width
@@ -200,13 +237,12 @@ struct GlobalGiftNoticeView: View {
         .lineLimit(1)
         .fixedSize(horizontal: true, vertical: false)
     }
-    
+
     private func jumpToRoom(_ id: Int) {
         print("跳转房间: \(id)")
         LiveSessionManager.shared.currentChannelUserId = UInt(id)
         pilot.push(
             .zhwyzs0gELive(
-              
                 localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")),
                 zA9Y4W6LUid: UInt(id)
             )

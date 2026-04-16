@@ -68,8 +68,8 @@ struct LE0xQZ6Y7WC8iv: View {
                     
                                       
                                     //    NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
-                                    },
-                                  onUserAvatarTapped: { yxAccid in
+                    },
+                    onUserAvatarTapped: { yxAccid in
                                        
                     withAnimation{
                         rlUlyPhType = 1
@@ -77,13 +77,13 @@ struct LE0xQZ6Y7WC8iv: View {
                         gGs5OpWId = yxAccid
                     }
                                      },
-                                  ong4Gu8Ogiska: {
+                    ong4Gu8Ogiska: {
                                          
                     withAnimation{
                         qkUZGHPNnHgfhW = true
                     }
-                                     },
-                                  w8esoH7cO33: {
+                    },
+                    w8esoH7cO33: {
                     
                   
                     let session = NIMSession(liveRoomData.string("yxAccid"), type: .P2P)
@@ -176,6 +176,10 @@ struct LE0xQZ6Y7WC8iv: View {
                         }
                             
                         if liveRoomData.int("followFlag") == 0 {
+                            
+                            
+                            
+                            
                             ZJ7h766mz(tMmEWWlfgUag: "d7daxM4M9A2")
                                                .frame(width: 28, height: 20)
                                                .onTapGesture {
@@ -185,7 +189,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                                            let is9MZC7A4 =  try await fol6W9ZQ4xC2(uY2M8A4E7C0xL:liveRoomData.int("userId") , iA6M7W9EYL0: 1)
                                                            if(is9MZC7A4){
                                                                
-                                                               mpatentLoad()
+                                                               liveRoomData["followFlag"] = 1
 
                                                            }
                                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
@@ -318,7 +322,10 @@ struct LE0xQZ6Y7WC8iv: View {
                     let session = NIMSession(t6FBqjXlaJ, type: .P2P)
                     chatSession = ChatSessionWrapper(session: session, u1NCaZAWMA: djMiejuudZ)
                     
-                }, isW9YQ6C8L: $showY2E8Qsc)
+                }, isW9YQ6C8L: $showY2E8Qsc, yaXdI1QB7uP: {e570ZTkO2 in
+                    
+                    liveRoomData["followFlag"] = e570ZTkO2
+                })
             }
             
             //礼物弹框
@@ -385,13 +392,14 @@ struct LE0xQZ6Y7WC8iv: View {
             .environmentObject(pilot)
             .presentationDetents([.fraction(0.75)])
         }.sheet(item: $chatSession) { wrapper in
-            CgZU7mTgY46l(
-                session: wrapper.session,
-                opponentAvatarURL: wrapper.u1NCaZAWMA,
-                qOH29Z5X: true
-            )
-            .environmentObject(pilot)
-            .presentationDetents([.fraction(0.75)])
+            WUjfoptOKs8pZfhSAH0duplG {
+                CgZU7mTgY46l(
+                    session: wrapper.session,
+                    opponentAvatarURL: wrapper.u1NCaZAWMA,
+                    qOH29Z5X: true
+                )
+                .environmentObject(pilot)
+            }.presentationDetents([.fraction(0.75)])
             .presentationBackground(.clear)
         }
         .onAppear{
