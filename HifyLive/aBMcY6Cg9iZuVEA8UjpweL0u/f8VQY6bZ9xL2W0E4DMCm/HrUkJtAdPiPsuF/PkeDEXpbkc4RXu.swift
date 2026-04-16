@@ -92,8 +92,7 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
             return
         }
         
-        print("传进来")
-        print(productId)
+       
 
         guard let product = jbGuJZqVg5X.first(where: { $0.productIdentifier == productId }) else {
            

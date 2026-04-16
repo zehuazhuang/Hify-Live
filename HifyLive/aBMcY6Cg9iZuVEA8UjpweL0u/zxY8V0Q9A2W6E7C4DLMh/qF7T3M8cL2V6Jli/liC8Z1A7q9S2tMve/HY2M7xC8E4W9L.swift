@@ -5,6 +5,7 @@ import Kingfisher
 struct ChatViewContainer: UIViewControllerRepresentable {
     let yxRoomId: String
     let userId: Int
+    let hostYxAccid: String
     let onMuteTappedCallback: ((UInt, Bool) -> Void)? //静音回调
     
     var onUserAvatarTapped: ((String) -> Void)? //头像回调
@@ -28,6 +29,7 @@ struct ChatViewContainer: UIViewControllerRepresentable {
         vc.view.backgroundColor = .clear
         vc.yxRoomId = yxRoomId
         vc.userId = userId
+        vc.hostYxAccid = hostYxAccid
         vc.onMuteTappedCallback = onMuteTappedCallback
         vc.preferredContentSize = CGSize(width: 0, height: 400)
         vc.onUserAvatarTapped = { uid in
@@ -54,6 +56,7 @@ struct ChatViewContainer: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: ChatViewController, context: Context) {
             uiViewController.yxRoomId = yxRoomId
             uiViewController.userId = userId
+        uiViewController.hostYxAccid = hostYxAccid
         if(yxRoomId != ""){
             // ⚡ 这里触发 VC 内的 joinRTMChannel
                 uiViewController.joinChatroom()
@@ -75,6 +78,7 @@ struct PublicMessage {
     let nickname: String
     let type: ChatMessageType
     var isMine: Bool
+    let isHost: Bool
 }
 
 extension ChatMessageType {
@@ -131,6 +135,7 @@ class PublicMessageCell: UITableViewCell {
         setupViews()
         setupLayout()
     }
+    
 
     required init?(coder: NSCoder) {
         fatalError()
@@ -151,7 +156,7 @@ class PublicMessageCell: UITableViewCell {
         )
 
         avatarImageView.contentMode = .scaleAspectFill
-        avatarImageView.layer.cornerRadius = 16
+        avatarImageView.layer.cornerRadius = 12
         avatarImageView.clipsToBounds = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarImageView.isUserInteractionEnabled = true
@@ -223,8 +228,8 @@ class PublicMessageCell: UITableViewCell {
 
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
                 avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-                avatarImageView.widthAnchor.constraint(equalToConstant: 32),
-                avatarImageView.heightAnchor.constraint(equalToConstant: 32),
+                avatarImageView.widthAnchor.constraint(equalToConstant: 24),
+                avatarImageView.heightAnchor.constraint(equalToConstant: 24),
 
                 bubbleToAvatarConstraint,
 
@@ -252,6 +257,9 @@ class PublicMessageCell: UITableViewCell {
                 with: url,
                 placeholder: UIImage(named: "gCZGrlvVVn1D")
             )
+        } else {
+            
+            avatarImageView.image = UIImage(named: "gCZGrlvVVn1D")
         }
 
         switch message.type {
@@ -267,7 +275,7 @@ class PublicMessageCell: UITableViewCell {
                 UIColor(red: 85/255, green: 255/255, blue: 28/255, alpha: 1)
               ])
         case .text(let text):
-            stackTopConstraint.constant = 6
+            stackTopConstraint.constant = 4
             stackBottomConstraint.constant = -6
             bubbleView.isHidden = false
             bubbleView.gradientLayer.cornerRadius = 8
@@ -282,8 +290,19 @@ class PublicMessageCell: UITableViewCell {
             bubbleToAvatarConstraint.isActive = true
             bubbleToLeftConstraint.isActive = false
             
+            let maxLength = 12
+            let nickname = message.nickname.count > maxLength
+                ? String(message.nickname.prefix(maxLength)) + "..."
+                : message.nickname
+
+            let nameFont = JqA1kUIFont.font(size: 14, weight: .semibold)
+            let textFont = JqA1kUIFont.font(size: 14, weight: .regular)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 4   // 控制“名字行”和“正文行”的间距
+
             let attributedText = NSMutableAttributedString(
-                string: message.nickname + ": ",
+                string: nickname,
                 attributes: [
                     .foregroundColor: UIColor(
                         red: 92/255,
@@ -291,16 +310,34 @@ class PublicMessageCell: UITableViewCell {
                         blue: 255/255,
                         alpha: 1
                     ),
-                    .font: JqA1kUIFont.font(size: 14, weight: .semibold)
-                ])
+                    .font: nameFont,
+                    .paragraphStyle: paragraphStyle
+                ]
+            )
+
+            if message.isHost, let image = UIImage(named: "mG8XPUzMhxN4") {
+                attributedText.append(NSAttributedString(string: " "))
+
+                let attachment = NSTextAttachment()
+                attachment.image = image
+
+                let badgeHeight: CGFloat = 18
+                let badgeWidth: CGFloat = 50
+                let yOffset = (nameFont.capHeight - badgeHeight) / 2
+                attachment.bounds = CGRect(x: 0, y: yOffset, width: badgeWidth, height: badgeHeight)
+
+                attributedText.append(NSAttributedString(attachment: attachment))
+            }
 
             attributedText.append(
                 NSAttributedString(
-                    string: text,
+                    string: "\n" + text,
                     attributes: [
                         .foregroundColor: UIColor.white,
-                        .font: JqA1kUIFont.font(size: 14, weight: .regular)
-                    ])
+                        .font: textFont,
+                        .paragraphStyle: paragraphStyle
+                    ]
+                )
             )
 
             messageLabel.attributedText = attributedText

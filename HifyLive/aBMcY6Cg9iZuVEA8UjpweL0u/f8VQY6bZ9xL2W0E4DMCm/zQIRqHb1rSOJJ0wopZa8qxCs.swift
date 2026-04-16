@@ -328,8 +328,12 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                             }.frame(height: 95)
                                                 .frame(maxWidth: .infinity)
                                                 .onTapGesture {
+                                                    
+                                                   
+                                                    
+                                                    
                                                     if TPb21z0U.eDNcFBMyyi.isBlocked(accid: usQ8Y7Z6Inf.string("yxAccid")) {
-                                                         
+                                                      
                                                          
                                                          QlzJ4yJcxJXY2paN
                                                              .rmjXXUocPJY2DEcTxiziKU6Nehjz1q
@@ -337,16 +341,17 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                          
                                                          return
                                                      }
-                                                    LiveSessionManager.shared.currentChannelUserId = UInt(areoloaUid)
+                                                    
+                                                    
                                                     if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
-
+                                                       
                                                         
                                                         pilot.popTo(
                                                             .zhwyzs0gELive(localUid:UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid:UInt(areoloaUid))
                                                         )
                                                         return
                                                     }
-                                                    
+                                                    LiveSessionManager.shared.currentChannelUserId = UInt(areoloaUid)
                                                     pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(areoloaUid)))
                                                     
                                                     

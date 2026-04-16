@@ -49,25 +49,22 @@ struct LE0xQZ6Y7WC8iv: View {
 
             VStack {
                     Spacer()
-                ChatViewContainer(yxRoomId:liveRoomData.string("yxRoomId") , userId:liveRoomData.int("userId") ,
+                ChatViewContainer(yxRoomId:liveRoomData.string("yxRoomId") , userId:liveRoomData.int("userId"), hostYxAccid: liveRoomData.string("yxAccid") ,
                                   onMuteTappedCallback: { uid, mute in
                     
-                    GlobalNoticeManager.shared.show(
-                        GiftNoticeModel(
-                            senderName: "1",
-                            receiverName: "2",
-                            giftName: "3",
-                            giftCount: 1,
-                            giftImage: "https://huanniuchat.oss-accelerate.aliyuncs.com/document/gift/1867047485415882752.png",
-                            roomId: 1000005581
-                        ),
-                        stay: 5
-                    )
                     
-                    
+                    //静音功能
+                    NotificationCenter.default.post(
+                            name: .muteRemoteAudio,
+                            object: nil,
+                            userInfo: [
+                                "uid": uid,
+                                "mute": mute
+                            ]
+                        )
                     
                                       
-                                    //    NotificationCenter.default.post(name: .muteRemoteAudio, object: nil, userInfo: ["uid": uid, "mute": mute])
+                                    
                     },
                     onUserAvatarTapped: { yxAccid in
                                        

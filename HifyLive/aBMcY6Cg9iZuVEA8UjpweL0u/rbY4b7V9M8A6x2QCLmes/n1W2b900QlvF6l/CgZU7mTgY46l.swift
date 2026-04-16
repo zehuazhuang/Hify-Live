@@ -4,6 +4,7 @@ import NIMSDK
 
 import Combine
 import UIPilot
+import AVFoundation
 //CgZU7mTgY46l
 //私聊页
 struct CgZU7mTgY46l: View {
@@ -112,6 +113,12 @@ struct CgZU7mTgY46l: View {
                         
                         // 右侧按钮
                         Button {
+                            
+                            if opponentInfo.string("nickname") == "" {
+                                return
+                            }
+                            
+                            
                             UIApplication.shared.endEditing()
                             withAnimation{
                                 isw8UhB9Gj8t = true
@@ -351,10 +358,26 @@ struct CgZU7mTgY46l: View {
                             giftId: "\(giftId)",
                             url: url,
                             count: giftNum,
-                            message: msg // 🔥 关键：带上消息
+                            message: msg
                         )
                         
                         self.giftManager.enqueueGift(giftItem)
+                        
+                      
+                            let hasPlayingItem = self.giftManager.currentItem != nil
+
+                           
+                        if hasPlayingItem {
+                            let exists = vm.messages.contains { old in
+                                old.messageId == msg.messageId
+                            }
+
+                            if !exists {
+                                vm.messages.append(msg)
+                                vm.updateRecentSession(msg)
+                            }
+                        }
+                        
                     }
                     
                     giftManager.onAnimationStart = { item in
@@ -367,7 +390,7 @@ struct CgZU7mTgY46l: View {
                          guard !exists else { return }
                         
                         
-                            print("1")
+                           
                             vm.messages.append(msg)
                             vm.updateRecentSession(msg)
                         
@@ -500,6 +523,28 @@ struct CameraPicker: UIViewControllerRepresentable {
 
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.dismiss()
+        }
+    }
+    
+    func requestCameraPermission(completion: @escaping (Bool) -> Void) {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+
+        switch status {
+        case .authorized:
+            completion(true)
+
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
+            }
+
+        case .denied, .restricted:
+            completion(false)
+
+        @unknown default:
+            completion(false)
         }
     }
 }

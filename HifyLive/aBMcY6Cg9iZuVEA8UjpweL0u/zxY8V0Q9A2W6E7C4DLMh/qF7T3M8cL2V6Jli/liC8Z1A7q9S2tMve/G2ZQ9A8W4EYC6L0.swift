@@ -6,7 +6,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var yxRoomId: String!
     var userId: Int! //主播id
-    
+    var hostYxAccid: String! //房主云信id
     private var messages: [PublicMessage] = []
     private var tableView: UITableView!
     private var messageTextField: UITextField!
@@ -70,12 +70,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
         
-       
+        
         
         setupViews()
         setupKeyboardObservers()
      
-       
+        setupDefaultMessage()
     }
     
     
@@ -277,9 +277,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(joinFloatView)
 
         NSLayoutConstraint.activate([
-            joinFloatView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            joinFloatView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             joinFloatView.topAnchor.constraint(equalTo: giftFloatContainer.bottomAnchor, constant: 10),
-            joinFloatView.heightAnchor.constraint(equalToConstant: 32)
+            joinFloatView.heightAnchor.constraint(equalToConstant: 28)
         ])
       
         
@@ -492,7 +492,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             avatarURL: user.iBmPfFGfxu5JV7Aii7.string("icon"),
             nickname: user.iBmPfFGfxu5JV7Aii7.string("nickname"),
             type: .text(text),
-            isMine: true
+            isMine: true,
+            isHost: false
         )
         appendMessage(msg)
         messageTextField.text = ""
@@ -547,17 +548,26 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = "PublicMessageCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? PublicMessageCell ??
-                   PublicMessageCell(style: .default, reuseIdentifier: cellId)
+//        let cellId = "PublicMessageCell"
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? PublicMessageCell ??
+//                   PublicMessageCell(style: .default, reuseIdentifier: cellId)
+//        let message = messages[indexPath.row]
+//        cell.configure(with: message)
+//        // 头像点击
+//        cell.onAvatarTapped = { [weak self] in
+//            self?.onUserAvatarTapped?(message.userId)
+//           }
+//        
+//        return cell
         let message = messages[indexPath.row]
-        cell.configure(with: message)
-        // 头像点击
-        cell.onAvatarTapped = { [weak self] in
-            self?.onUserAvatarTapped?(message.userId)
+           let cell = PublicMessageCell(style: .default, reuseIdentifier: nil)
+           cell.configure(with: message)
+
+           cell.onAvatarTapped = { [weak self] in
+               self?.onUserAvatarTapped?(message.userId)
            }
-        
-        return cell
+
+           return cell
     }
 
     // 占位 header，用于消息少时推到底
@@ -598,8 +608,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     // MARK: - RTM
 
+    //公告
+    private func setupDefaultMessage() {
+        print("第一次进入")
+        let msg = PublicMessage(
+            userId: "",
+            avatarURL: "",
+            nickname: "",
+            type: .notice("Weclome to Eive.Please respect each other and chat in decent manner"),
+            isMine: false,
+            isHost: false
+        )
+        
+        messages = [msg] // 👈 直接作为第一条
+    }
     
-    private var hasSentWelcomeMessage = false
     //云信
      func joinChatroom() {
         guard let roomId = yxRoomId else { return }
@@ -622,18 +645,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("成功加入聊天室:", chatroom?.roomId ?? "")
             self.hasJoinedChannel = true
 
-            if !self.hasSentWelcomeMessage {
-                self.hasSentWelcomeMessage = true
-                
-                let msg = PublicMessage(
-                    userId: "",
-                    avatarURL: "",
-                    nickname: "",
-                    type: .notice("Weclome to Eive.Please respect each other and chat in decent manner"),
-                    isMine: true
-                )
-                appendMessage(msg)
-            }
+          
+            
+
             
             Task { @MainActor in
                 NIMSDK.shared().chatManager.add(self)
@@ -719,13 +733,17 @@ extension ChatViewController {
                     let avatarURL = users?.first?.userInfo?.avatarUrl ?? ""
                     
                    
+                    
+                    
+                   
 
                     let publicMsg = PublicMessage(
                         userId: accid,
                         avatarURL: avatarURL,
                         nickname: nickname,
                         type: .text(msg.text ?? ""),
-                        isMine: msg.from == "\(self.userId ?? 0)"
+                        isMine: msg.from == "\(self.userId ?? 0)",
+                        isHost: accid == self.hostYxAccid
                     )
 
                     DispatchQueue.main.async {
@@ -776,7 +794,8 @@ extension ChatViewController {
                                 avatarURL: avatarURL,
                                 nickname: nickname,
                                 type: .gift(imgURL: giftSmallImg, count: giftNum, giftId: giftId),
-                                isMine: false
+                                isMine: false,
+                                isHost: false
                             )
 
                             DispatchQueue.main.async {
@@ -824,7 +843,7 @@ class JoinFloatView: UIView {
         ])
 
         backgroundColor = UIColor(red: 89/255, green: 51/255, blue: 204/255, alpha: 0.5)
-        layer.cornerRadius = 16
+        layer.cornerRadius = 14
         clipsToBounds = true
     }
 

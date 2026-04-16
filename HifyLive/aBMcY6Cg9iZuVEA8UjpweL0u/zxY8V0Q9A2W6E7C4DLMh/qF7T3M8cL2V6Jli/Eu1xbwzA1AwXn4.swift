@@ -99,7 +99,7 @@ struct Eu1xbwzA1AwXn4: View {
                                 }
                                 
                             }
-                            .frame(width: 149,height: 34)
+                            .frame(width: 155,height: 34)
                             .contentShape(Rectangle())
                             .onTapGesture {
                                 withAnimation{

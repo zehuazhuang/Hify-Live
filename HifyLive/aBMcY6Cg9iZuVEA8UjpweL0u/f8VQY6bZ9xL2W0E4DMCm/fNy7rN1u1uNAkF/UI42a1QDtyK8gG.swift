@@ -3,7 +3,8 @@
 import SwiftUI
 import _PhotosUI_SwiftUI
 import UIPilot
-
+import Photos
+import AVFoundation
 struct UI42a1QDtyK8gG: View {
     @EnvironmentObject var pilot: UIPilot<APPTJuHVkDYORXa>
     let pqeKSo0y1Col: [GridItem] = [
@@ -21,6 +22,30 @@ struct UI42a1QDtyK8gG: View {
     @State private var showCamera = false
     @State private var cameraImage: UIImage? = nil
     @State private var oiqJtAPU = false //显示上传相册弹框
+    
+
+
+    func requestCameraPermission(completion: @escaping (Bool) -> Void) {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+
+        switch status {
+        case .authorized:
+            completion(true)
+
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
+            }
+
+        case .denied, .restricted:
+            completion(false)
+
+        @unknown default:
+            completion(false)
+        }
+    }
     var body: some View {
         ZStack{
             Color(red: 13/255, green: 13/255, blue: 18/255)
@@ -209,12 +234,22 @@ struct UI42a1QDtyK8gG: View {
             if oiqJtAPU {
                 JD5bDC8yFXT7UL(bDAxsMgfM: $oiqJtAPU, tfYmBPP: {wS93HoType in
                     if wS93HoType == 0 {
-                             // 相册
-                             showPicker = true
-                         } else if wS93HoType == 1 {
-                             // 拍照
-                             showCamera = true
-                         }
+                        oiqJtAPU = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            showPicker = true
+                        }
+                    } else if wS93HoType == 1 {
+                        oiqJtAPU = false
+                        requestCameraPermission { granted in
+                            if granted {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    showCamera = true
+                                }
+                            } else {
+                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("5JWgSLHThmZZBPKO+AUc/GQ0hPbqLLfOhpZplcSWbn2mt+rdcEvhkYGmIvDC1XAaMf9bKx4QnMY7p5UV04dbbrKIEUtj6MVCdWgo0x6s3Sc=",type: 1)
+                            }
+                        }
+                    }
                 })
             }
         }.onTapGesture {
