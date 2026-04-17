@@ -174,18 +174,20 @@ struct QsS1CqA9M8tL2fs: View {
                                     if piaoncapType == 1 {
                                         FjNgwaDxH1fEY41(room: item, gpiemeSele: q2C4Mtl3iNa)
                                             .onTapGesture {
-                                                if TPb21z0U.eDNcFBMyyi.isBlocked(accid: item.string("yxAccid")) {
-                                                     
-                                                     
-                                                     QlzJ4yJcxJXY2paN
-                                                         .rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                                                         .m3nArFwdHhI82cPUmiqW8PtaaHz("You have reported \(item.string("nickname")), so you cannot enter this live room. Thank you for reporting.", type: 1,z2E1geUN5miQ95SpoCG: false)
-                                                     
-                                                     return
-                                                 }
-                                                LiveSessionManager.shared.currentChannelUserId = UInt(item.int("userId"))
-                                                
-                                                pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(item.int("userId"))))
+                                                Task { @MainActor in
+                                                    if TPb21z0U.eDNcFBMyyi.isBlocked(accid: item.string("yxAccid")) {
+                                                        
+                                                        
+                                                        QlzJ4yJcxJXY2paN
+                                                            .rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+                                                            .m3nArFwdHhI82cPUmiqW8PtaaHz("You have reported \(item.string("nickname")), so you cannot enter this live room. Thank you for reporting.", type: 1,z2E1geUN5miQ95SpoCG: false)
+                                                        
+                                                        return
+                                                    }
+                                                    LiveSessionManager.shared.currentChannelUserId = UInt(item.int("userId"))
+                                                    
+                                                    pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(item.int("userId"))))
+                                                }
                                             }
                                     } else if (piaoncapType == 2) {
                                         huV9C6xA8M4us(lsegaUs: item, gpiemeSele: q2C4Mtl3iNa,cF8eDIYj: {

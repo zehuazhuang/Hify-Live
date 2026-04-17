@@ -11,10 +11,11 @@ class RecentSessionManager: ObservableObject {
     @Published private(set) var cache: [CachedRecentSession] = []
 
     /// 拉取 SDK 最近会话并转换为自定义缓存
+    @MainActor
     func fetchRecentSessions(forceRefresh: Bool = false, completion: (() -> Void)? = nil) {
         let sessions = NIMManager.shared.fetchRecentSessions()
         var tempCache: [CachedRecentSession] = []
-        
+        let blockedSet = TPb21z0U.eDNcFBMyyi.blockedAccidSet
 
         for r in sessions {
             guard let s = r.session,
@@ -23,10 +24,9 @@ class RecentSessionManager: ObservableObject {
                //   s.sessionId != "video-sky-test" //屏蔽系统通知 充值钻石通知
             else { continue }
             
-            if s.sessionType == .P2P,
-                    TPb21z0U.eDNcFBMyyi.isBlocked(accid: s.sessionId) {
-                     continue
-                 }
+            if s.sessionType == .P2P, blockedSet.contains(s.sessionId) {
+                        continue
+                    }
             
 
             let info = UserManager.shared.getCachedUserInfo(accid: s.sessionId)
@@ -66,11 +66,11 @@ class RecentSessionManager: ObservableObject {
 
             // 异步更新昵称和头像
             UserManager.shared.getUserInfo(accid: s.sessionId) { nickname, avatarUrl,isOnline in
-                DispatchQueue.main.async {
-                    cached.nickname = nickname
-                    cached.avatarUrl = avatarUrl
-                    cached.isOnline = isOnline
-                }
+                Task { @MainActor in
+                               cached.nickname = nickname
+                               cached.avatarUrl = avatarUrl
+                               cached.isOnline = isOnline
+                           }
             }
         }
         

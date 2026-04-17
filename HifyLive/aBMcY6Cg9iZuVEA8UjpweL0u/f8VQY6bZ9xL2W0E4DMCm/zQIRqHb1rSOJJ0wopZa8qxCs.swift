@@ -330,31 +330,32 @@ struct zQIRqHb1rSOJJ0wopZa8qxCs: View {
                                                 .onTapGesture {
                                                     
                                                    
-                                                    
-                                                    
-                                                    if TPb21z0U.eDNcFBMyyi.isBlocked(accid: usQ8Y7Z6Inf.string("yxAccid")) {
-                                                      
-                                                         
-                                                         QlzJ4yJcxJXY2paN
-                                                             .rmjXXUocPJY2DEcTxiziKU6Nehjz1q
-                                                             .m3nArFwdHhI82cPUmiqW8PtaaHz("You have reported \(usQ8Y7Z6Inf.string("nickname")), so you cannot enter this live room. Thank you for reporting.", type: 1,z2E1geUN5miQ95SpoCG: false)
-                                                         
-                                                         return
-                                                     }
-                                                    
-                                                    
-                                                    if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
-                                                       
+                                                    Task { @MainActor in
                                                         
-                                                        pilot.popTo(
-                                                            .zhwyzs0gELive(localUid:UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid:UInt(areoloaUid))
-                                                        )
-                                                        return
+                                                        if TPb21z0U.eDNcFBMyyi.isBlocked(accid: usQ8Y7Z6Inf.string("yxAccid")) {
+                                                            
+                                                            
+                                                            QlzJ4yJcxJXY2paN
+                                                                .rmjXXUocPJY2DEcTxiziKU6Nehjz1q
+                                                                .m3nArFwdHhI82cPUmiqW8PtaaHz("You have reported \(usQ8Y7Z6Inf.string("nickname")), so you cannot enter this live room. Thank you for reporting.", type: 1,z2E1geUN5miQ95SpoCG: false)
+                                                            
+                                                            return
+                                                        }
+                                                        
+                                                        
+                                                        
+                                                        if LiveSessionManager.shared.currentChannelUserId == areoloaUid {
+                                                            
+                                                            
+                                                            pilot.popTo(
+                                                                .zhwyzs0gELive(localUid:UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid:UInt(areoloaUid))
+                                                            )
+                                                            return
+                                                        }
+                                                        LiveSessionManager.shared.currentChannelUserId = UInt(areoloaUid)
+                                                        pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(areoloaUid)))
+                                                        
                                                     }
-                                                    LiveSessionManager.shared.currentChannelUserId = UInt(areoloaUid)
-                                                    pilot.push(.zhwyzs0gELive(localUid: UInt(IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("userId")), zA9Y4W6LUid: UInt(areoloaUid)))
-                                                    
-                                                    
                                                 }
                                         }.padding(.horizontal,16)
                                     }
