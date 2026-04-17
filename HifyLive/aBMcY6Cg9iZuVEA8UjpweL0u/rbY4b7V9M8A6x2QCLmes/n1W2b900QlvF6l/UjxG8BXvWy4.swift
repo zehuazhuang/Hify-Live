@@ -100,6 +100,7 @@ class RecentSessionStore: ObservableObject {
     }
     
     // 拉取最近会话
+    @MainActor
     func fetchRecentSessions() async {
         await withCheckedContinuation { continuation in
             RecentSessionManager.shared.fetchRecentSessions {

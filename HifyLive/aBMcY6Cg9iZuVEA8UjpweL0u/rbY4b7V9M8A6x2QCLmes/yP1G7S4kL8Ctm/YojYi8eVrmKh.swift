@@ -124,6 +124,7 @@ class RecentSessionManager: ObservableObject {
     }
     
     //过滤拉黑
+    @MainActor
     private func filterBlockedSessions() {
         let blockedSet = TPb21z0U.eDNcFBMyyi.blockedAccidSet
         cache.removeAll {
