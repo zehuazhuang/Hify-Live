@@ -134,6 +134,7 @@ class RecentSessionManager: ObservableObject {
 
 
     /// 更新本地缓存（发送或接收消息）
+    @MainActor
     func updateCache(with message: NIMMessage, session: NIMSession) {
         let accid = session.sessionId
         let type = session.sessionType
