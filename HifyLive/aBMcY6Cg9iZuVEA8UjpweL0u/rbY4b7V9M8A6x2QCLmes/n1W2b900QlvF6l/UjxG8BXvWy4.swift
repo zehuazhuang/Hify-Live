@@ -160,9 +160,9 @@ class RecentSessionStore: ObservableObject {
             let option = NIMDeleteRecentSessionOption()
             NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
                 if let error = error {
-                    print("删除最近会话失败：", error.localizedDescription)
+                    print("error", error.localizedDescription)
                 } else {
-                    print("删除最近会话成功")
+                    print("success")
                 }
             }
         }

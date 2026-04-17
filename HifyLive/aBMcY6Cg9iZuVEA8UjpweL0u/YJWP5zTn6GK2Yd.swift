@@ -364,7 +364,7 @@ struct YYEVAVideoPlayerView: UIViewRepresentable {
                     }
                 }
             } catch {
-                print("保存失败:", error)
+                print("error:", error)
             }
         }.resume()
     }

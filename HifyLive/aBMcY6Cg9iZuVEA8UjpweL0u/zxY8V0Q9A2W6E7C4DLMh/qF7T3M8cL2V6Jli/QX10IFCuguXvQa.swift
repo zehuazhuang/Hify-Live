@@ -337,7 +337,7 @@ struct QX10IFCuguXvQa: View {
                                 .padding(.vertical,6)
                                 .contentShape(Rectangle())
                                 .onTapGesture {
-                                    print("选择了\(pJDa77Y8TY[index])")
+                                    
                                     
                                     if index != 0 {
                                         isCustomize = false

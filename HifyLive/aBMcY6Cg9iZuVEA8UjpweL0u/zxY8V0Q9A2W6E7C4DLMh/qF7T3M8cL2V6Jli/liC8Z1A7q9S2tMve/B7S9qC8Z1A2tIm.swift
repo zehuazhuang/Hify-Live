@@ -193,19 +193,19 @@ extension LiveViewController: AgoraRtcEngineDelegate {
     ) {
     
 
-            print("🎬 主播开始推视频（首帧到达）")
+          //  print("🎬 主播开始推视频（首帧到达）")
     }
 
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid: UInt, reason: AgoraUserOfflineReason) {
         switch reason {
         case .quit:
-            print("主播主动退出直播")
+          //  print("主播主动退出直播")
             handleHostClosed()
         case .dropped:
-            print("主播掉线或网络异常")
+           // print("主播掉线或网络异常")
             handleHostClosed()
         default:
-            print("主播离开（未知原因）: \(reason.rawValue)")
+            print(" \(reason.rawValue)")
             handleHostClosed()
         }
     }
@@ -218,7 +218,7 @@ extension LiveViewController: AgoraRtcEngineDelegate {
      //   present(alert, animated: true)
     }
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurError errorCode: AgoraErrorCode) {
-        print("🚨 Agora Error:", errorCode.rawValue)
+        print("Agora Error:", errorCode.rawValue)
     }
 }
 extension Notification.Name {

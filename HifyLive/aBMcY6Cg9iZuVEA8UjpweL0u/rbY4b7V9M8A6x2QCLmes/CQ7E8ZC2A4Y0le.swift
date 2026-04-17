@@ -47,7 +47,7 @@ struct CQ7E8ZC2A4Y0le: View {
                                                .frame(width: 136, height: 46)
                                                .onTapGesture{
                                                    
-                                                   print(LiveSessionManager.shared.kYNYWwuQUS)
+                                                   
                                                    
                                                    if LiveSessionManager.shared.kYNYWwuQUS == 1 {
                                                        RecentSessionManager.shared.clearFriendSessions()

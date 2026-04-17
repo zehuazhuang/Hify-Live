@@ -107,9 +107,9 @@ class RecentSessionManager: ObservableObject {
                 let option = NIMDeleteRecentSessionOption()
                 NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
                     if let error = error {
-                        print("删除朋友会话失败：\(error.localizedDescription)")
+                        print("error：\(error.localizedDescription)")
                     } else {
-                        print("删除朋友会话成功")
+                        print("success")
                     }
                 }
             }
@@ -186,7 +186,7 @@ class RecentSessionManager: ObservableObject {
         if  accid == "video-sky-test" {
 
             
-            print(userInfo?.avatarUrl ?? "")
+
             XQAQvuU6cZLbgE.shared.vEnu5pS9V(
                 text: "Top-up successful! \(lastMessageText) Diamonds has been credited to your account. ",
                 name: "Eivo Team",
@@ -227,7 +227,7 @@ class RecentSessionManager: ObservableObject {
             if let recent = NIMSDK.shared().conversationManager.recentSession(by: cached.session) {
                 NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
                     if let error = error {
-                        print("删除最近会话失败：", error.localizedDescription)
+                        print("error：", error.localizedDescription)
                     }
                 }
             }
@@ -252,7 +252,7 @@ class RecentSessionManager: ObservableObject {
             for recent in recents {
                 NIMSDK.shared().conversationManager.delete(recent, option: option) { error in
                     if let error = error {
-                        print("删除 SDK 最近会话失败:", error.localizedDescription)
+                        print("error:", error.localizedDescription)
                     }
                 }
             }

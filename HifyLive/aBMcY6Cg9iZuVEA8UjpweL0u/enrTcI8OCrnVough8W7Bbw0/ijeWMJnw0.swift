@@ -142,7 +142,6 @@ struct ijeWMJnw0: View {
                                                         zeEMuRE5FhYabIqhuh = url
                                                         qeT0HNNf = false
                                                     } else {
-                                                        print("上传失败或图片不合规")
                                                         zeEMuRE5FhYabIqhuh = ""
                                                         
                                                     }
@@ -507,8 +506,6 @@ struct ijeWMJnw0: View {
                                             }
                                         } else {
                                             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                            print("进入")
-                                            print(eIOmCWgre0wHbWNAw3.message)
                                             QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(eIOmCWgre0wHbWNAw3.message,z2E1geUN5miQ95SpoCG: false)
                                         }
                                         

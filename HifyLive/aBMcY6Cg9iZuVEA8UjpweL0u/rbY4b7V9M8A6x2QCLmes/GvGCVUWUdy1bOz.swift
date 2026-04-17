@@ -22,11 +22,9 @@ class OnlineStatusManager: NSObject, ObservableObject, V2NIMSubscribeListener {
    
     
     func subscribe(_ ids: [String]) {
-        print("IM登录账号:", NIMSDK.shared().loginManager.currentAccount())
-        print("订阅")
-        print(ids)
+  
         
-        let uniqueIds = Array(Set(ids)) // 去重
+        let uniqueIds = Array(Set(ids))
         
         let option = V2NIMSubscribeUserStatusOption()
         option.accountIds = uniqueIds
@@ -34,9 +32,9 @@ class OnlineStatusManager: NSObject, ObservableObject, V2NIMSubscribeListener {
         option.immediateSync = true
 
         NIMSDK.shared().v2SubscriptionService.subscribeUserStatus(option) { failed in
-            print("订阅完成 \(failed)")
+            print("end \(failed)")
         } failure: { error in
-            print("订阅失败 \(error)")
+            print("error \(error)")
         }
         
     }

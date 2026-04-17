@@ -23,12 +23,12 @@ final class NIMManager {
         NIMSDK.shared().loginManager.logout { error in
             
             if let error = error {
-                print("云信退出失败:", error.localizedDescription)
+                print("error:", error.localizedDescription)
                
                 return
             }
             
-            print("云信退出成功")
+          
             
            
             RecentSessionManager.shared.logoutAndClearAll()

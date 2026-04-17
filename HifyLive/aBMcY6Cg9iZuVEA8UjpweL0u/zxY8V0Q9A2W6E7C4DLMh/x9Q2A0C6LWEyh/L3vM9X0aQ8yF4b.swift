@@ -22,14 +22,13 @@ class L3vM9X0aQ8yF4b: ObservableObject {
         do {
            
             let result = try await rP6kV1bS8qX3nT7()
-            print("result")
-            print(result)
+     
            
             W8pT2K6qR1mD5vH = result
             H7nC3B5yZ0fJ8sL = result
         } catch {
           
-            print("获取直播列表失败:", error)
+            print("error:", error)
         }
     }
 }

@@ -240,7 +240,6 @@ class ChatMessage: Identifiable, ObservableObject {
                         )
                         
                     } catch {
-                        print("JSON 解析失败: \(error)")
                         chatMsg = nil
                         continue
                     }
@@ -262,12 +261,12 @@ class ChatMessage: Identifiable, ObservableObject {
         func canSendMessage(_ text: String) -> Bool {
             let result = V2NIMClientAntispamUtil.checkTextAntispam(text, replace: nil)
 
-            // 1️⃣ 严重违规（拦截）
+          
             if result.operateType.rawValue == 1 {
                 return false
             }
 
-            // 2️⃣ 命中敏感 / 灌水（被替换）
+           
             if result.replacedText != text {
                 return false
             }
@@ -309,12 +308,12 @@ class ChatMessage: Identifiable, ObservableObject {
             let lastTimestamp = self.messages.last?.timestamp ?? 0
             chatMsg.showTime = (message.timestamp - lastTimestamp > 300)
             
-            self.messages.append(chatMsg) // ✅ 先 append，显示转圈
+            self.messages.append(chatMsg)
             self.updateRecentSession(chatMsg)
             
             
             
-            // 发送消息
+            
 
              NIMSDK.shared().chatManager.send(message, to: session) { error in
                 
@@ -338,7 +337,7 @@ class ChatMessage: Identifiable, ObservableObject {
                  
                  
               
-                 // ✅ 更新发送状态
+                 
                  if let index = self.messages.firstIndex(where: { $0.messageId == message.messageId }) {
                      self.messages[index].sendStatus = qAiRzAlJType == 1 ? .failed(reason: .wTiahblock) :  .success
                  }
@@ -351,9 +350,9 @@ class ChatMessage: Identifiable, ObservableObject {
         func sendImage(_ image: UIImage,qAiRzAlJType: Int) {
             guard let data = image.jpegData(compressionQuality: 0.8) else { return }
             let message = NIMMessage()
-            // 占位消息对象
+            
             let placeholderMsg = ChatMessage(
-                messageId: UUID().uuidString, // 可以用 UUID
+                messageId: UUID().uuidString,
                 content: .image(url: nil, size: image.size),
                 isOutgoingMsg: true,
                 timestamp: Date().timeIntervalSince1970,
@@ -366,7 +365,7 @@ class ChatMessage: Identifiable, ObservableObject {
             let lastTimestamp = self.messages.last?.timestamp ?? 0
             placeholderMsg.showTime = (message.timestamp - lastTimestamp > 300)
 
-            // 先显示占位消息
+            
             Task { @MainActor in
                 self.messages.append(placeholderMsg)
                 self.updateRecentSession(placeholderMsg)
@@ -374,26 +373,26 @@ class ChatMessage: Identifiable, ObservableObject {
             
    
 
-            // 上传 + 鉴黄 + 发送消息
+            
             Task {
                 do {
-                    // 1️⃣ 上传并鉴黄
+                    
                     guard let url = try await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(image, isIA8MTA: true) else {
-                        print(" 上传失败或图片不合规")
+                      
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .failed(reason: .sensitive)
                         }
                         return
                     }
 
-                    print("✅ 图片通过鉴黄，URL:", url)
+                    
 
                     // 2️⃣ 构建 NIMMessage
                     let imageObject = NIMImageObject(data: data, extension: "jpg")
                     let message = NIMMessage()
                     message.messageObject = imageObject
 
-                    // 3️⃣ 异步发送消息
+                    
                     do {
                         try await NIMSDK.shared().chatManager.send(message, to: session)
                         Task { @MainActor in
@@ -403,14 +402,12 @@ class ChatMessage: Identifiable, ObservableObject {
                         Task { @MainActor in
                             placeholderMsg.sendStatus = .failed(reason: .unknown)
                         }
-                        print("❌ 消息发送失败:", error)
                     }
 
                 } catch {
                     Task { @MainActor in
                         placeholderMsg.sendStatus = .failed(reason: .unknown)
                     }
-                    print("❌ 上传或鉴黄失败:", error)
                 }
             }
         }
@@ -419,7 +416,7 @@ class ChatMessage: Identifiable, ObservableObject {
         @MainActor
         func resendMessage(_ message: ChatMessage) async {
             
-            print("重发")
+           
             
             guard message.isOutgoingMsg else { return }
             guard case .failed = message.sendStatus else { return }
@@ -444,8 +441,7 @@ class ChatMessage: Identifiable, ObservableObject {
                 if !blocked {
                   
                     if let index = messages.firstIndex(where: { $0 === message }) {
-                       print("进入")
-                        // 删除旧的失败消息
+                       
                         let item = messages.remove(at: index)
                         self.messages.append(item)
                         messages = Array(messages)
@@ -456,7 +452,7 @@ class ChatMessage: Identifiable, ObservableObject {
             } catch {
 
                 message.sendStatus = .failed(reason: .unknown)
-                print("❌ resend throw:", error)
+ 
             }
         }
         
@@ -486,7 +482,7 @@ class ChatMessage: Identifiable, ObservableObject {
                     let avatar = msg.isOutgoingMsg ? myAvatarURL : opponentAvatarURL
                     let timestamp = msg.timestamp
 
-                    var chatMsg: ChatMessage? // 注意这里 var，方便修改状态
+                    var chatMsg: ChatMessage?
 
                     if let text = msg.text {
                         chatMsg = ChatMessage(
@@ -532,8 +528,7 @@ class ChatMessage: Identifiable, ObservableObject {
                                 continue
                             }
                             
-                            print("私聊dict")
-                            print(dict)
+
                             
                             guard let giftId = dict["giftId"] as? Int,
                                   let giftNum = dict["giftNum"] as? Int,
@@ -564,17 +559,16 @@ class ChatMessage: Identifiable, ObservableObject {
                                 sendStatus: .success,
                                 nimMessage: msg
                             )
-                            //添加回调到swift
+                            
                             if let chatMsg = chatMsg {
                                 onReceiveGift?(giftIcon, giftNum, giftId, chatMsg)
                             }
                         } catch {
-                            print("JSON 解析失败: \(error)")
                             chatMsg = nil
                         }
                     }
                     
-                    if let chatMsg = chatMsg { // ✅ 明确绑定类型
+                    if let chatMsg = chatMsg {
                        
 
                        
@@ -587,7 +581,7 @@ class ChatMessage: Identifiable, ObservableObject {
                         if case .gift = chatMsg.content {
                             
                         } else {
-                            print("进入了")
+                            
                             self.messages.append(chatMsg)
                             self.updateRecentSession(chatMsg)
                         }

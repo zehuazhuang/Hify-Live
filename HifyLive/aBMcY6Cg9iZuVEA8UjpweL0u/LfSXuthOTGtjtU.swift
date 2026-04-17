@@ -239,7 +239,7 @@ struct GlobalGiftNoticeView: View {
     }
 
     private func jumpToRoom(_ id: Int) {
-        print("跳转房间: \(id)")
+       
         LiveSessionManager.shared.currentChannelUserId = UInt(id)
         pilot.push(
             .zhwyzs0gELive(

@@ -272,17 +272,15 @@ class TPb21z0U: ObservableObject {
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "Z53mkVKRc+/3aEy88R1ziVjUXb5ZXXyoGLM0HtCaN3g=".bFHEatcgE4zzU9TCfDonsu(),///api/user/removeBlockUser
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: wZA6oIowbVae5FtrdTTFAaiz3WYirkvI(sjNradeQwuW02y7kiF6ozTd: 1, qRdFOAhW7ayZvfxQCha: iN2NID, eTf1z86aGoFMNQJUV7Tx: lCOFD)
             )
-            print("取消拉黑")
-           
-            print(otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code)
+
           
             if otSFfF0QgnGZCEXuL0RMm0RAtV2RZUV.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
                
                 do {
                        try await NIMSDK.shared().userManager.remove(fromBlackBlackList: lCOFD)
-                       print("已将 \(lCOFD) 从黑名单中移除")
+                      
                    } catch {
-                       print("移出黑名单失败:", error.localizedDescription)
+                       print("error:", error.localizedDescription)
                    }
                 QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XOUIapGeSTiQJrB6FVylYg==",type: 0)
                 self.lLPppWtfV5O6YMV5wl9nsA4nt.removeAll { ($0.string("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())) == String(iN2NID) }
@@ -310,9 +308,7 @@ class TPb21z0U: ObservableObject {
                 xH0OPzEYR4M5ewWkZQAveq6Vy7: "CfhquXmyZHp3DW0wpE2+Fr38IYBhI3i+2pTnmmC0zfk=".bFHEatcgE4zzU9TCfDonsu(),
                 tD5tEJZTT0NlaIX7eMREG92BhO3n: wZA6oIowbVae5FtrdTTFAaiz3WYirkvI(sjNradeQwuW02y7kiF6ozTd: 1, qRdFOAhW7ayZvfxQCha: fnLUzabLaul9Cx, eTf1z86aGoFMNQJUV7Tx: mwNKAPngt)
             )
-            print("---拉黑code")
-          //  print(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj)
-            print(qBiYBwzAdHAVgLTRNxn0QPPieDHjrKj.code)
+
             
      
            
@@ -320,9 +316,9 @@ class TPb21z0U: ObservableObject {
               
                 do {
                        try await NIMSDK.shared().userManager.add(toBlackList: mwNKAPngt)
-                       print("已将 \(mwNKAPngt) 加入黑名单")
+                      
                    } catch {
-                       print("加入黑名单失败:", error.localizedDescription)
+                       print("error:", error.localizedDescription)
                    }
                 // 成功加入黑名单
                 self.eJp4p4AH6hoOVGFxQir89aeBTTQH0Sf = true

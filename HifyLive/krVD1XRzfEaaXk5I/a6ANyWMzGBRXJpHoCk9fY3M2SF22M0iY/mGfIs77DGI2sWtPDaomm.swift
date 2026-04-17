@@ -78,10 +78,7 @@ final class WOKmjUjM {
         biHmuVi1B21WPGO.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu() //POST
         biHmuVi1B21WPGO.allHTTPHeaderFields = mUKxiOp6eoowXkAujNLiR()
         
-//        print("------请求头")
-//        print(mUKxiOp6eoowXkAujNLiR())
-//        print("-----body")
-//        print(lCPuY6S9Ov185igRRdGb8fQizbjuqw)
+
         
         
         do {
@@ -114,7 +111,7 @@ final class WOKmjUjM {
                 
                 // 检测 401
                 if bWtqmD7lucTVd.statusCode == 401 {
-//                    print("⚠️ Token 已过期，请重新登录")
+
                     ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw() // 清除 token
                     NIMManager.shared.y59Dm7CdcqOut()
                     NotificationCenter.default.post(name: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"), object: nil)

@@ -368,7 +368,7 @@ class ChatCell: UITableViewCell {
               reason == .wTiahblock else { return }
 
         // 只处理 wTiahblock
-        print("点击拉黑icon")
+ 
         guard let vc = parentViewController else { return }
 
         let alertView = Vvk0RGWUsPkMw(

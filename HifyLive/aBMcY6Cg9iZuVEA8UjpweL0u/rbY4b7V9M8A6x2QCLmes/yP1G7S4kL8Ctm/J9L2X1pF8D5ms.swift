@@ -154,7 +154,6 @@ struct J9L2X1pF8D5ms: View {
                             if dy > 120 && !antAWyLAMipD {
                                 Task {
                                     antAWyLAMipD = true
-                                    print("刷新")
                                     await sessionStore.fetchRecentSessions()
                                     try? await Task.sleep(nanoseconds: 800_000_000)
                                     await MainActor.run {
@@ -177,9 +176,6 @@ struct J9L2X1pF8D5ms: View {
                await sessionStore.fetchRecentSessions()
             }
             
-            let blacklist = TPb21z0U.eDNcFBMyyi
-            print("黑名单")
-            print(blacklist.lLPppWtfV5O6YMV5wl9nsA4nt)
         }
     }
 }

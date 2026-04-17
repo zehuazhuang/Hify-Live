@@ -144,7 +144,7 @@ struct HifyLiveApp: App {
                                            }
                                        }
                                    } catch {
-                                       print("补单失败，下次继续")
+                                       print("error")
                                    }
                                }
                            }
@@ -174,13 +174,13 @@ struct HifyLiveApp: App {
                
                 
                 if responseData == nil {
-                    print("第 \(attempt) 次请求返回空，重试...")
-                    try? await Task.sleep(nanoseconds: 1_000_000_000) // 等 1 秒再重试
+                   
+                    try? await Task.sleep(nanoseconds: 1_000_000_000)
                 }
             }
 
             if let data = responseData {
-                print("成功获取数据:", data)
+                print("data:", data)
             }
             if let kRWrAfSFZzA6re6E68Sfhxj: [String:Any] = responseData {
                 qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7 = kRWrAfSFZzA6re6E68Sfhxj
@@ -197,8 +197,7 @@ struct HifyLiveApp: App {
                 //获取拉黑
                 await TPb21z0U.eDNcFBMyyi.rlvC3Or8aIGlvbdryVCVS9bqGC9D()
                 
-                print("登录用户------")
-                print(qHyGWbkl4J6y35.iBmPfFGfxu5JV7Aii7)
+               
                 
                 
                 

@@ -201,7 +201,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             let iconName = isMuted ? "xuiasdjing" : "ahdiqwYuj"
             extraButton1.setImage(UIImage(named: iconName), for: .normal)
-            print(isMuted ? "🔇 已静音主播" : "🔊 已取消静音")
+            
         }
     
     // MARK: - UI Setup
@@ -278,8 +278,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         NSLayoutConstraint.activate([
             joinFloatView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-            joinFloatView.topAnchor.constraint(equalTo: giftFloatContainer.bottomAnchor, constant: 10),
-            joinFloatView.heightAnchor.constraint(equalToConstant: 28)
+            joinFloatView.topAnchor.constraint(equalTo: giftFloatContainer.bottomAnchor, constant: 6),
+            joinFloatView.heightAnchor.constraint(equalToConstant: 28),
+            joinFloatView.widthAnchor.constraint(lessThanOrEqualToConstant: 220)
         ])
       
         
@@ -367,7 +368,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 giftFloatContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
                 // 在 chatContainer 上面
-                giftFloatContainer.bottomAnchor.constraint(equalTo: chatContainer.topAnchor, constant: -10),
+            giftFloatContainer.bottomAnchor.constraint(equalTo: chatContainer.topAnchor, constant: -44),
 
                 giftFloatContainer.heightAnchor.constraint(equalToConstant: 120),
 
@@ -610,7 +611,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //公告
     private func setupDefaultMessage() {
-        print("第一次进入")
+        
         let msg = PublicMessage(
             userId: "",
             avatarURL: "",
@@ -638,11 +639,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let self = self else { return }
             
             if let error = error {
-                print("加入聊天室失败:", error.localizedDescription)
+                print("join error:", error.localizedDescription)
                 return
             }
             
-            print("成功加入聊天室:", chatroom?.roomId ?? "")
+            
             self.hasJoinedChannel = true
 
           
@@ -659,7 +660,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func leaveChatroomIfNeeded() {
         guard hasJoinedChannel, let roomId = yxRoomId else { return }
         NIMSDK.shared().chatroomManager.exitChatroom(roomId) { error in
-            print("✅ 离开聊天室:", error == nil ? "成功" : "失败")
+           // print("✅ 离开聊天室:", error == nil ? "成功" : "失败")
         }
         hasJoinedChannel = false
         
@@ -684,9 +685,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         NIMSDK.shared().chatManager.send(message, to: session) { error in
             DispatchQueue.main.async {
                 if let error = error {
-                    print("❌ 发送聊天室消息失败:", error)
-                } else {
-                    print("✅ 发送聊天室消息成功")
+                    print("error:", error)
                 }
             }
         }
@@ -765,7 +764,7 @@ extension ChatViewController {
                             
                             nd8XGgxX9b?(true)
                         case .exit:
-                            print("\(nick) 离开直播间")
+                            
                             nd8XGgxX9b?(false)
                         default:
                             break

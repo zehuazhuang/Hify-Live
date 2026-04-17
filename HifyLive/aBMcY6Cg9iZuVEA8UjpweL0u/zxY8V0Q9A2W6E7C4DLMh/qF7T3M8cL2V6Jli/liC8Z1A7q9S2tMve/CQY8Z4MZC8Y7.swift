@@ -34,8 +34,7 @@ struct LE0xQZ6Y7WC8iv: View {
         self.localUid = localUid
         self.zA9Y4W6LUid = zA9Y4W6LUid
         
-        print(localUid)
-        print(zA9Y4W6LUid)
+     
         
     }
     
@@ -435,7 +434,7 @@ struct LE0xQZ6Y7WC8iv: View {
                     
                     
                 } catch {
-                    print("获取top3失败:", error)
+                    print("error:", error)
                 }
                 try? await Task.sleep(nanoseconds: 3_000_000_000) // 3秒
             }
@@ -486,7 +485,7 @@ struct LE0xQZ6Y7WC8iv: View {
             retryDelay = min(retryDelay * 2, 10_000_000_000)
         }
         
-        print("retry 结束")
+       
     }
 }
 

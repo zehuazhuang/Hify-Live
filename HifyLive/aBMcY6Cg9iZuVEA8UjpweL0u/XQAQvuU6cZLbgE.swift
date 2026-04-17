@@ -183,7 +183,7 @@ struct XQAQvuU6cZLbgEView: View {
                     }
                     
                 } else if manager.isSystemMessage {
-                    print("系统通知点击")
+                 //   print("系统通知点击")
                 }
                 // 点击后隐藏通知
                 withAnimation { manager.sVt7blcSwH = false }

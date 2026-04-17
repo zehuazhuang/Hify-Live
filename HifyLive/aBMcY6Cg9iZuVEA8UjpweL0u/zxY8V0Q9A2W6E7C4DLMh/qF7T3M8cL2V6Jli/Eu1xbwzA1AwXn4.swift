@@ -480,8 +480,7 @@ struct Eu1xbwzA1AwXn4: View {
                     ($0["costNum"] as? Int ?? 0) > 0
                 }
 
-            print("财富榜数据")
-            print(atFBCJ7aeWP)
+         
 
             
             if let lastItem = atFBCJ7aeWP.last,

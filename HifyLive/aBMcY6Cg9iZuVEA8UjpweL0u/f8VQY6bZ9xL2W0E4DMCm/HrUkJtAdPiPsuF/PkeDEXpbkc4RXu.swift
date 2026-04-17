@@ -122,7 +122,7 @@ final class PkeDEXpbkc4RXu: NSObject, ObservableObject {
         
         if transactions.isEmpty { return }
         
-        print("检测到未完成订单，开始补单")
+
         
         for transaction in transactions {
             
@@ -179,7 +179,7 @@ extension PkeDEXpbkc4RXu: SKPaymentTransactionObserver {
                                                          )
                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                         EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                        print("支付失败: \(error.localizedDescription)")
+                        print("error: \(error.localizedDescription)")
                     }
 //                    if error.code == .paymentCancelled {
 //                        
@@ -280,7 +280,6 @@ extension PkeDEXpbkc4RXu {
                
                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
             } catch {
-                print("服务器校验失败，下次补单")
                 EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
             }
         }

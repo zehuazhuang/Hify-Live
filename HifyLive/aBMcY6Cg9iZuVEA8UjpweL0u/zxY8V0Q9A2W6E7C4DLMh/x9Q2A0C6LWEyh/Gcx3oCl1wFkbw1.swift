@@ -381,7 +381,7 @@ struct Gcx3oCl1wFkbw1: View {
             
             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         } catch {
-            print(error)
+         
             EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
         }
     }

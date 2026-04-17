@@ -123,12 +123,7 @@ final class IsZTtO2FdO13EJk8A2xBPRHSqlJx {
                 return
             }
 
-            // 打印调试
-//            print("AccessKeyId:", mRiCvGrGv2YkIyNzjW92iJV4punfe8)
-//            print("AccessKeySecret:", bg6PWC4t4zFY5ZNyyaDxXg1qOk)
-//            print("SecurityToken:", smCq83tXPFye)
-//            print("Bucket:", d5UnyEb9VUQfp)
-//            print("Host:", rZXtCmhawcqHFiAyXfNB9MQ)
+
 
             // OSS SDK 推荐方式，不传 expiration
             let ie0lNIij9BXj4y3hbBt = OSSStsTokenCredentialProvider(

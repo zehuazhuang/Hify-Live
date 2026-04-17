@@ -62,11 +62,9 @@ final class UfmQhHA1doHKs: ObservableObject {
                 DispatchQueue.main.async {
                     self.o6Ex5Lgp7q46dDOd3db = bMHS63lL9v67ma5HGA // 数组，每个元素是字典
                 }
-            } else {
-//                                print("解析 JSON 失败: 不是数组")
             }
         } catch {
-//                            print("解压或解析失败:", error)
+
         }
     }
 }

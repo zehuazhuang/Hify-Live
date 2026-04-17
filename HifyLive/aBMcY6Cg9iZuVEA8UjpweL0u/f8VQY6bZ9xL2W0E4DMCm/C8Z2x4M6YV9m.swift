@@ -362,7 +362,6 @@ struct C8Z2x4M6YV9m: View {
                         }
                     edUaA4t78 { lXBkygXXlhgeh963y8DmW in
                         deZMvhJctiSoCj78YDk = false
-                        print(lXBkygXXlhgeh963y8DmW)
                         if lXBkygXXlhgeh963y8DmW == 1 {
                             ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw()
                             

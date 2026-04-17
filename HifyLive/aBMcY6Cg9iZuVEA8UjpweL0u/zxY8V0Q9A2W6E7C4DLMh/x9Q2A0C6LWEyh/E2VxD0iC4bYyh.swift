@@ -182,7 +182,7 @@ struct E2VxD0iC4bYyh: View {
                                 isRefreshing = true
                                 Task {
                                     await X9QpF3L0b7M8R2.R4kF1V9bQ7mL2xT(forceRefresh: true)
-                                    print("刷新")
+                                   
                                     await MainActor.run {
                                         withAnimation {
                                             isRefreshing = false
