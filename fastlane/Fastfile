@@ -115,7 +115,8 @@ platform :ios do
         type: "development",
         app_identifier: [bundle_id],
         force_for_new_devices: true,
-        readonly: true,
+        readonly: false,
+        force: true,
         )
 
     match_result = match(
@@ -123,7 +124,8 @@ platform :ios do
         username: username,
         type: export_method.gsub("-", ""),
         app_identifier: [bundle_id],
-        readonly: true,
+        readonly: false,
+        force: true,
         )
     puts match_result
     UI.important("✅ match_result: #{match_result}")
