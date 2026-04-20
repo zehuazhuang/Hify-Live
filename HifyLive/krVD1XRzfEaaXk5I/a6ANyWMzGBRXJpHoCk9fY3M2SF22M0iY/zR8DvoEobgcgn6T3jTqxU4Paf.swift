@@ -3,7 +3,7 @@ import NIMSDK
 
 struct JOGtDnYupP {
     //正式
-    static let rLZ9H0jmS7Url = "https://vvi.hnhily.link"
+    static let rLZ9H0jmS7Url = "PQnYMg/ScHU/fneflsCD/LWzImXZPGAf0gSYDRMnCZE=".bFHEatcgE4zzU9TCfDonsu()
     static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu()
     static let raslidepApId = "Su2KJTUdnyjpaOMmKWpp9A==".bFHEatcgE4zzU9TCfDonsu()
     static let versLErqSu = "FNhflfN/d1l7671FUc7GrA==".bFHEatcgE4zzU9TCfDonsu()
