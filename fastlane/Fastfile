@@ -115,7 +115,7 @@ platform :ios do
         type: "development",
         app_identifier: [bundle_id],
         force_for_new_devices: true,
-        readonly: true,
+        readonly: false,
         )
 
     match_result = match(
