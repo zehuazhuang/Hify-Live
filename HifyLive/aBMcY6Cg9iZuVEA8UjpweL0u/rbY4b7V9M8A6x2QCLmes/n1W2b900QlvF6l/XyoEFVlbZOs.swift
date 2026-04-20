@@ -17,13 +17,13 @@ enum FailReason: Equatable {
     var message: String {
         switch self {
         case .sensitive:
-            return "发送失败：包含敏感内容"
+            return "Sending Failed: Contains sensitive content."
         case .network:
-            return "发送失败：网络异常"
+            return "Sending Failed: Network Error"
         case .unknown:
-            return "发送失败"
+            return "Sending Failed"
         case .wTiahblock:
-            return "被拉黑发不出"
+            return "Blocked—unable to send."
         }
     }
 }

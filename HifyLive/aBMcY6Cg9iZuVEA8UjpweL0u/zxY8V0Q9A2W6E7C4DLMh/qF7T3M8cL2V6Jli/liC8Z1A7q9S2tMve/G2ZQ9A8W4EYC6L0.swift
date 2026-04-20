@@ -107,7 +107,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func showGift(_ msg: PublicMessage) {
         let key = "\(msg.userId)_\(msg.type.giftId ?? 0)"
 
-        // 1️⃣ 检查是否可以合并到已有飘屏
+        
         if let track = giftTracks.first(where: { $0.currentKey == key && !$0.isHidden }) {
             let giftCount = msg.type.giftCount ?? 0
             let currentCount = Int(track.countLabel.text?.dropFirst() ?? "0") ?? 0
@@ -117,7 +117,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
 
-        // 2️⃣ 查找空闲轨道
+        
         if let emptyIndex = giftTracks.firstIndex(where: { $0.isHidden }) {
             let track = giftTracks[emptyIndex]
             track.showGift(msg)
@@ -125,11 +125,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
 
-        // 3️⃣ 如果没有空轨道，替换最早结束的轨道
+        
         if let first = giftTracks.first {
             first.hideGift()
             first.showGift(msg)
-            first.frame.origin.y = 0 // 可以放到上轨
+            first.frame.origin.y = 0
         }
     }
     
@@ -141,12 +141,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func setupTopFadeMask() {
         let maskLayer = CAGradientLayer()
-            maskLayer.frame = chatContainer.bounds // 关键：mask 放在容器上
+            maskLayer.frame = chatContainer.bounds
             maskLayer.colors = [
-                UIColor.clear.cgColor,               // 顶部透明
-                UIColor.black.cgColor                // 底部完全显示
+                UIColor.clear.cgColor,
+                UIColor.black.cgColor
             ]
-            maskLayer.locations = [0.0, 0.5]        // 顶部 10% 渐变
+            maskLayer.locations = [0.0, 0.5]
             maskLayer.startPoint = CGPoint(x: 0, y: 0)
             maskLayer.endPoint = CGPoint(x: 0, y: 1)
             
@@ -184,10 +184,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc private func textDidChange() {
         let isEmpty = messageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
         
-        let imageName = isEmpty ? "mXuQY8y93" : "qS9A1C2tLse" // 👈换成你想要的图
+        let imageName = isEmpty ? "mXuQY8y93" : "qS9A1C2tLse"
         sendButton.setImage(UIImage(named: imageName), for: .normal)
         
-        //（可选）顺便控制是否可点击
+        
         sendButton.isEnabled = !isEmpty
     }
     
@@ -501,6 +501,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // 发送消息到聊天室
         sendMessage(text)
+        
+        textDidChange()
     }
 
     
@@ -756,10 +758,10 @@ extension ChatViewController {
                 }
                 // 取用户信息
                 if let member = content.source {
-                        let nick = member.nick ?? ""
+                       
                         switch content.eventType {
                         case .enter:
-                            let name = member.nick ?? "游客"
+                            let name = member.nick ?? "Unknown"
                                 showJoin(name: name)
                             
                             nd8XGgxX9b?(true)

@@ -1,8 +1,4 @@
-//
-//  GvGCVUWUdy1bOz.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/3/9.
+
 //订阅在线状态
 import NIMSDK
 import Combine

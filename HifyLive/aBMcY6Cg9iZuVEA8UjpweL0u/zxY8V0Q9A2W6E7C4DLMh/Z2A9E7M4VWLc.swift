@@ -66,13 +66,13 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                let attachType = remoteExt["attachType"] as? Int,
                attachType == 66 {
 
-                // 这里只会在满足所有条件时进入（礼物消息）
+                
                 
             
                 guard let data = remoteExt["data"] as? [String: Any] else {
                     return
                 }
-               
+
                 
                 if let appIdList = data["appIdList"] as? [Any], !appIdList.isEmpty {
                       
@@ -95,21 +95,7 @@ final class IMMessageListener: NSObject, NIMChatManagerDelegate {
                        
                         
                     }
-//                else {
-//                        
-//                        
-//                        GlobalNoticeManager.shared.show(
-//                            GiftNoticeModel(
-//                                senderName: data.string("sendUserNickName"),
-//                                receiverName: data.string("receiveUserNickName"),
-//                                giftName: data.string("giftName"),
-//                                giftCount: data.int("giftNum"),
-//                                giftImage: data.string("smallImg"),
-//                                roomId: data.int("userId")
-//                            ),
-//                            stay: Double(data.string("showTime")) ?? 0
-//                        )
-//                    }
+
 
                
             }

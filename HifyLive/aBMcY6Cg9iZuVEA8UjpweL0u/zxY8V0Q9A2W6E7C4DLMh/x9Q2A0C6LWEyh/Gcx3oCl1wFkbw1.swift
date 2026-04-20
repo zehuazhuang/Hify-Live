@@ -330,7 +330,7 @@ struct Gcx3oCl1wFkbw1: View {
             }
         }
         .sheet(item: $chatSession) { wrapper in
-            WUjfoptOKs8pZfhSAH0duplG {
+            WUjfoptOKs8pZfhSAH0duplG(showGlobalNotice: false) {
                 CgZU7mTgY46l(
                     session: wrapper.session,
                     opponentAvatarURL: wrapper.u1NCaZAWMA,

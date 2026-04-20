@@ -124,19 +124,26 @@ class RecentSessionStore: ObservableObject {
                         guard let user = users?.first else { return }
 
                         Task { @MainActor in
-                            if let extString = user.userInfo?.ext,
-                               let data = extString.data(using: .utf8),
-                               let ext = try? JSONDecoder().decode(UserExt.self, from: data) {
-                                
-                                let online = (ext.onlineStatus == 1)
-                                
-                                
-                                cachedSession.isOnline = online
+                                   
+                                    let newNickname = (user.userInfo?.nickName?.isEmpty == false)
+                                        ? (user.userInfo?.nickName ?? "")
+                                        : accid
 
-                                
-                                RecentSessionStore.shared.updateOnlineStatus(accid: accid, isOnline: online)
-                            }
-                        }
+                                    let newAvatar = user.userInfo?.avatarUrl ?? ""
+
+                                    cachedSession.nickname = newNickname
+                                    cachedSession.avatarUrl = newAvatar
+
+                                    // 再更新在线状态
+                                    if let extString = user.userInfo?.ext,
+                                       let data = extString.data(using: .utf8),
+                                       let ext = try? JSONDecoder().decode(UserExt.self, from: data) {
+
+                                        let online = (ext.onlineStatus == 1)
+                                        cachedSession.isOnline = online
+                                        RecentSessionStore.shared.updateOnlineStatus(accid: accid, isOnline: online)
+                                    }
+                                }
                     }
                 }
                 

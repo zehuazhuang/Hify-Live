@@ -173,6 +173,23 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     private let rowHeight: CGFloat = 40
     private let fontSize: CGFloat = 22
     
+    private var maxAllowedDate: Date {
+        let calendar = Calendar.current
+        return calendar.date(byAdding: .year, value: -18, to: Date()) ?? Date()
+    }
+
+    private var maxAllowedYear: Int {
+        Calendar.current.component(.year, from: maxAllowedDate)
+    }
+
+    private var maxAllowedMonth: Int {
+        Calendar.current.component(.month, from: maxAllowedDate)
+    }
+
+    private var maxAllowedDay: Int {
+        Calendar.current.component(.day, from: maxAllowedDate)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
@@ -188,14 +205,15 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     
     //更新月份
     private func updateMonths() {
-        if selectedYear == currentYear {
-            months = Array(1...currentMonth)
+        if selectedYear == maxAllowedYear {
+            months = Array(1...maxAllowedMonth)
         } else {
             months = Array(1...12)
         }
-        
-        // 防止月份越界
-        selectedMonth = min(selectedMonth, months.last ?? selectedMonth)
+
+        if let lastMonth = months.last {
+            selectedMonth = min(selectedMonth, lastMonth)
+        }
     }
     
     // MARK: - 初始化年份范围
@@ -204,10 +222,9 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         
         switch mode {
         case .yearMonthDay:
-            
-            let maxYear = currentYear - 18
-            let minYear = currentYear - 100
-            years = Array(minYear...maxYear)
+                let maxYear = maxAllowedYear
+                let minYear = maxYear - 82
+                years = Array(minYear...maxYear)
             
         case .yearMonth:
            
@@ -218,11 +235,14 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
     
     private func setupInitialDate() {
         let calendar = Calendar.current
-        selectedYear = calendar.component(.year, from: initialDate)
-        selectedMonth = calendar.component(.month, from: initialDate)
-        selectedDay = calendar.component(.day, from: initialDate)
+        let safeDate = min(initialDate, maxAllowedDate)
+
+        selectedYear = calendar.component(.year, from: safeDate)
+        selectedMonth = calendar.component(.month, from: safeDate)
+        selectedDay = calendar.component(.day, from: safeDate)
+
         updateMonths()
-        selectedMonth = min(selectedMonth, months.count)
+        updateDays()
     }
     
     // MARK: - UIPickerView
@@ -244,14 +264,23 @@ class AC3yCJzQl8F: UIViewController, UIPickerViewDataSource, UIPickerViewDelegat
         var comps = DateComponents()
         comps.year = selectedYear
         comps.month = selectedMonth
+
         let calendar = Calendar.current
+
         if let date = calendar.date(from: comps),
            let range = calendar.range(of: .day, in: .month, for: date) {
-            days = Array(range)
+
+            var maxDay = range.count
+
+            if selectedYear == maxAllowedYear && selectedMonth == maxAllowedMonth {
+                maxDay = min(maxDay, maxAllowedDay)
+            }
+
+            days = Array(1...maxDay)
         } else {
             days = Array(1...31)
         }
-        // 确保 day 不超过最大天数
+
         selectedDay = min(selectedDay, days.count)
     }
     

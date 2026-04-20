@@ -3,6 +3,7 @@ import NIMSDK
 
 struct JOGtDnYupP {
     //正式
+    static let rLZ9H0jmS7Url = "https://vvi.hnhily.link"
     static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu()
     static let raslidepApId = "Su2KJTUdnyjpaOMmKWpp9A==".bFHEatcgE4zzU9TCfDonsu()
     static let versLErqSu = "FNhflfN/d1l7671FUc7GrA==".bFHEatcgE4zzU9TCfDonsu()
@@ -596,163 +597,7 @@ func rEh36ZSearch(ovlkoBKType: Int) async throws -> [[String: Any]] {
 }
 
 
-////操作diamondNum
-//@MainActor
-//func k8VJeG1rEJh4(ovlkoBKType: Int) async throws -> Bool {
-//    guard let qp7bKcVf = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("zoMQeTZXG+yBBEZ4f/nzsV01BeJTKGjREJeJx72cPZk=".bFHEatcgE4zzU9TCfDonsu())") else {
-//        throw URLError(.badURL)
-//    }
-//
-//    var sx4vHtQw = URLRequest(url: qp7bKcVf)
-//    sx4vHtQw.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
-//    sx4vHtQw.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
-//    
-//    let df9kPl3w: [String: Any] = [
-//        "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu(): IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()),
-//        "V6H5VEfPt0tf1pc8UPrGgw==".bFHEatcgE4zzU9TCfDonsu():ovlkoBKType
-//    ]
-//    
-//    let xn2fQp8d = try JSONSerialization.data(withJSONObject: df9kPl3w, options: [])
-//    guard let zk5vRt1y = String(data: xn2fQp8d, encoding: .utf8) else {
-//        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-//    }
-//    
-//    let mv3wLp8c = zk5vRt1y.tYwP1zF6sM8vR2kq()
-//    sx4vHtQw.httpBody = mv3wLp8c.data(using: .utf8)
-//
-//    
-//    let (data, _) = try await URLSession.shared.data(for: sx4vHtQw)
-//    
-//    let hx1nVz6s = try JSONSerialization.jsonObject(with: data, options: [])
-//    guard let bk4pWr9f = hx1nVz6s as? [String: Any] else {
-//        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-//    }
-//
-//
-//    
-//    if let code = bk4pWr9f["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-//        return true
-//    } else {
-//        return false
-//    }
-//}
 
-////查对应diamondNum
-//@MainActor
-//func s9EAe7DPKU() async throws -> Int {
-//    guard let qp7bKcVf = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("VQngpohv2RSvWRMjWFCviO2m7x3tQCC3IHa9QlYX458=".bFHEatcgE4zzU9TCfDonsu())") else {
-//        throw URLError(.badURL)
-//    }
-//
-//    var sx4vHtQw = URLRequest(url: qp7bKcVf)
-//    sx4vHtQw.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
-//    sx4vHtQw.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
-//    sx4vHtQw.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
-//    
-//    let df9kPl3w: [String: Any] = [
-//        "oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu(): IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7.int("oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu())
-//    ]
-//    
-//    let xn2fQp8d = try JSONSerialization.data(withJSONObject: df9kPl3w, options: [])
-//    guard let zk5vRt1y = String(data: xn2fQp8d, encoding: .utf8) else {
-//        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-//    }
-//    
-//    let mv3wLp8c = zk5vRt1y.tYwP1zF6sM8vR2kq()
-//    sx4vHtQw.httpBody = mv3wLp8c.data(using: .utf8)
-//
-//    
-//    let (data, _) = try await URLSession.shared.data(for: sx4vHtQw)
-//    
-//    let hx1nVz6s = try JSONSerialization.jsonObject(with: data, options: [])
-//    guard let bk4pWr9f = hx1nVz6s as? [String: Any] else {
-//        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "error"])
-//    }
-//    
-//    guard let resultStr = bk4pWr9f["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String else {
-//        return 0
-//    }
-//    let decryptedStr = resultStr.hL9dV3bQ2fK6sJ8p()
-//  
-//   
-//    
-//    
-//    if let code = bk4pWr9f["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-//        return Int(decryptedStr) ?? 0
-//    } else {
-//        return 0
-//    }
-//}
-
-//ai接口   /api/dash/scope/textIssues
-//@MainActor
-//func wUxKwoiMSH(a8rLStnIHfC:String) async throws -> String {
-//    guard let aKizfGAB = URL(string: "\(JOGtDnYupP.loaattrdbUrl)\("GsFnPc2X/f7aobXnr93oYhJECxk2fnEwep2XUN5J2OI=".bFHEatcgE4zzU9TCfDonsu())") else {
-//        throw URLError(.badURL)
-//    }
-//
-//    var q8HYFTfoEX = URLRequest(url: aKizfGAB)
-//    q8HYFTfoEX.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
-//    q8HYFTfoEX.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
-//    q8HYFTfoEX.setValue("\(JOGtDnYupP.versLErqSu)", forHTTPHeaderField: "Lk7BrUILkWCahgrrMWOljA==".bFHEatcgE4zzU9TCfDonsu())
-//    q8HYFTfoEX.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fiaiU4sbcNXzTzXA, forHTTPHeaderField: "id14e0qm/f9qOtXAfms/CA==".bFHEatcgE4zzU9TCfDonsu())
-//    q8HYFTfoEX.setValue("f3H1kWTUPAokQRTc/YRo2SdZMdBwtVX/DK3GeWeDHlg=".bFHEatcgE4zzU9TCfDonsu(), forHTTPHeaderField: "rgt87F4MfDPc3s53eug40w==".bFHEatcgE4zzU9TCfDonsu())
-//    q8HYFTfoEX.setValue(ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.nOlVkD, forHTTPHeaderField: "BKuUg/kfLV0gqKYcWCIqTA==".bFHEatcgE4zzU9TCfDonsu())
-//    
-//    let mgtlJjJSofF: [String: Any] = [
-//        "4Rl+wufvcznO+bhiRa+zXjg0I2UFlBTK+hd+veBNd1E=".bFHEatcgE4zzU9TCfDonsu(): [
-//            [
-//                "5Y6kajBzgPKbZLt9h1OljA==".bFHEatcgE4zzU9TCfDonsu(): "nCzjHJjY69lAFGPPmCjEzQ==".bFHEatcgE4zzU9TCfDonsu(),
-//                "9GjQB6+Z9mTzYtBA8hOn6Q==".bFHEatcgE4zzU9TCfDonsu(): "\("Xv8VvYtj06m87PXiCV5M1tErUTOfO6yezHGMxqUVqEA=".bFHEatcgE4zzU9TCfDonsu())\(a8rLStnIHfC)\("hGYCO2OIRBQJKOF/1RYmlowhzhI7QCJuI+QFFuFQock=".bFHEatcgE4zzU9TCfDonsu())"
-//            ]
-//        ]
-//    ]
-//    
-//    let nl9URJeD = try JSONSerialization.data(withJSONObject: mgtlJjJSofF, options: [])
-//    guard let rJUtlIfFAN = String(data: nl9URJeD, encoding: .utf8) else {
-//        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "AkteF/GcVRV5/DtmIvFLPQ==".bFHEatcgE4zzU9TCfDonsu()])
-//    }
-//    
-//    let yZyWJII7f = rJUtlIfFAN.tYwP1zF6sM8vR2kq()
-//    q8HYFTfoEX.httpBody = yZyWJII7f.data(using: .utf8)
-//
-//    
-//    let (data, _) = try await URLSession.shared.data(for: q8HYFTfoEX)
-//    
-//    let bkIbzQNjMHU = try JSONSerialization.jsonObject(with: data, options: [])
-//    guard let b69TDVhU0 = bkIbzQNjMHU as? [String: Any] else {
-//        throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "AkteF/GcVRV5/DtmIvFLPQ==".bFHEatcgE4zzU9TCfDonsu()])
-//    }
-//    
-//    
-//    guard let eNquEsbDi6 = b69TDVhU0["3kaiUTUqa1od+4LspC6jGg==".bFHEatcgE4zzU9TCfDonsu()] as? String else {
-//        return "Xv6RKs+UxeU5aJDX7m/RjFX+PO67XYwKC5iPRGoEaiU=".bFHEatcgE4zzU9TCfDonsu()
-//    }
-//    let decryptedStr = eNquEsbDi6.hL9dV3bQ2fK6sJ8p()
-//    
-//    
-// 
-//    
-//    if let mO4ZvxOwa = b69TDVhU0["Kn2/ws1Rnf8zNd5fHo1Oxw==".bFHEatcgE4zzU9TCfDonsu()] as? String, mO4ZvxOwa == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-//        if let tyid8UPwr = decryptedStr.data(using: .utf8),
-//           let fwJQ2HDJ = try? JSONSerialization.jsonObject(with: tyid8UPwr) as? [String: Any],
-//           let s8lP3rvX29O: String = fwJQ2HDJ.value(forKeyPath: ["L0x3eyhy70hdb4VYAhL4hQ==".bFHEatcgE4zzU9TCfDonsu(), "giIPfy109z/WpyvBOHxdyA==".bFHEatcgE4zzU9TCfDonsu(), "cEDWduQ1VqtBgK+zD7aenQ==".bFHEatcgE4zzU9TCfDonsu(), "mLRgXS56CMuxNqQyFKVnbA==".bFHEatcgE4zzU9TCfDonsu(), "9GjQB6+Z9mTzYtBA8hOn6Q==".bFHEatcgE4zzU9TCfDonsu()]) {
-//          
-//            return s8lP3rvX29O
-//        }else{
-//            return "Xv6RKs+UxeU5aJDX7m/RjFX+PO67XYwKC5iPRGoEaiU=".bFHEatcgE4zzU9TCfDonsu()
-//        }
-//    } else {
-//        return "Xv6RKs+UxeU5aJDX7m/RjFX+PO67XYwKC5iPRGoEaiU=".bFHEatcgE4zzU9TCfDonsu()
-//    }
-//}
 
 //获取支付列表
 @MainActor
@@ -880,10 +725,10 @@ func vaBBMmyXOh(jYPvECldH:Int,xsqZJWxTw:Int,vyLi1B0zU7:String,nVsTUsf:String,x8T
 //表单验证
 @MainActor
 func n3Qw6R9Xb1K(kL2Q7ZxM8R:String,z8Y1QxL4Z8v:String,x8V6N2kL9MZ:String) async throws -> Bool {
-    guard let url = URL(string: "0gpxpFDPBNTADaY9hV0iaAbVUUtr+8hLZM3D6ruAISX0V01wMFZzUCisEMtU58p4".bFHEatcgE4zzU9TCfDonsu()) else {
+    guard let url = URL(string: "\(JOGtDnYupP.rLZ9H0jmS7Url)\("ABbrGJvwIABS8ruWg4gsg7i8SZczuE3MkbdtXj1IAPo=".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
-
+   
     var request = URLRequest(url: url)
     request.httpMethod = "TwpekIooLUCgvTHFl+MwxQ==".bFHEatcgE4zzU9TCfDonsu()
     request.setValue("\(JOGtDnYupP.raslidepApId)", forHTTPHeaderField: "/+vyNnyngEXe9nlWlLUFXw==".bFHEatcgE4zzU9TCfDonsu())
@@ -1322,7 +1167,7 @@ func d34SzmkHKFl(mcIOzuQURD:Int,phqabUmw:Int) async throws -> [[String: Any]] {
 //查财富榜
 @MainActor
 func vFTFn8eFEdr(wvh5z2I6H:String) async throws -> [[String: Any]] {
-    guard let url = URL(string: "5jjiCHeVD0MPiL2zrVLXI3yZjuBsG7U0xxZPnLOp++fKeABgyIWBXKewU70weyDh3sF4Ns7NobAfTzB7quaqik/7ohMsHQG6zuNb+bR1X3Y=".bFHEatcgE4zzU9TCfDonsu()) else {
+    guard let url = URL(string: "\(JOGtDnYupP.rLZ9H0jmS7Url)\("mrEHL455CbQwLQpqhjk7nT3JNvi4ZUwrno0G3Tp85XTX9F7r8Ff0+ymtBv7TG0KVmzUExC+fPpxyfVe5VC/1iA==".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 
@@ -1381,7 +1226,7 @@ func vFTFn8eFEdr(wvh5z2I6H:String) async throws -> [[String: Any]] {
 //查魅力榜
 @MainActor
 func dB2EuHa3VY3u(mXaJwcQS7e:String) async throws -> [[String: Any]] {
-    guard let url = URL(string: "5jjiCHeVD0MPiL2zrVLXI3yZjuBsG7U0xxZPnLOp++fKeABgyIWBXKewU70weyDh3sF4Ns7NobAfTzB7quaqipHpckgFweV5SPEVBvruk3Y=".bFHEatcgE4zzU9TCfDonsu()) else {
+    guard let url = URL(string: "\(JOGtDnYupP.rLZ9H0jmS7Url)\("mrEHL455CbQwLQpqhjk7nT3JNvi4ZUwrno0G3Tp85XR3ZRwL3YQei548WCKVK9F15NqPJ1t2QAJ79/CNFzK+CQ==".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 
@@ -1440,7 +1285,7 @@ func dB2EuHa3VY3u(mXaJwcQS7e:String) async throws -> [[String: Any]] {
 //交换token
 @MainActor
 func giz2OZsRuin() async throws -> [String: Any] {
-    guard let url = URL(string: "5jjiCHeVD0MPiL2zrVLXIymyugiTGts3b2zLQ6RLsxce5nrFme+LZjP83CGPoR16dUjl6luFJBKb7h1z79ToCw==".bFHEatcgE4zzU9TCfDonsu()) else {
+    guard let url = URL(string: "\(JOGtDnYupP.rLZ9H0jmS7Url)\("/Bjljj/DBatEF6Ii33u2zwsyMMdAXy7f1aGzuv5E/RZMXUfj87yjNDCLJH1ijmyQ".bFHEatcgE4zzU9TCfDonsu())") else {
         throw URLError(.badURL)
     }
 
@@ -1627,7 +1472,7 @@ func sfWiOA3TikY() async throws -> [[String: Any]] {
     
     let body: [String: Any] = [:]
     
-
+    
     
     let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
     guard let jsonString = String(data: jsonData, encoding: .utf8) else {

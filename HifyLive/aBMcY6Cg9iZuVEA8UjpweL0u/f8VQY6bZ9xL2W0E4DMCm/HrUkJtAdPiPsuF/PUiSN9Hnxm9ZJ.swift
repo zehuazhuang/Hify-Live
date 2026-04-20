@@ -17,7 +17,6 @@ struct PUiSN9Hnxm9ZJ {
         .init(k0SBAq4pgTjj8: "dbogexpociryhcfs", dtcSMAfVsF4S: 24500, akepPKRtaWm: 49.99),
         .init(k0SBAq4pgTjj8: "dswirlavryszmvgv", dtcSMAfVsF4S: 49000, akepPKRtaWm: 99.99),
     ]
-    
 
 
     static let nrDS82DJMap: [String: Int] =

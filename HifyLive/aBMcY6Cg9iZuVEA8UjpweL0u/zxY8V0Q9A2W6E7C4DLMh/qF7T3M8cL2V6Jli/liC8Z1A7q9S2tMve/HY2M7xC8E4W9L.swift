@@ -363,8 +363,13 @@ class PublicMessageCell: UITableViewCell {
             bubbleToAvatarConstraint.isActive = false
             bubbleToLeftConstraint.isActive = true
             
+            let maxLength = 12
+            let nickname = message.nickname.count > maxLength
+                ? String(message.nickname.prefix(maxLength)) + "..."
+                : message.nickname
+            
             let attributedText = NSMutableAttributedString(
-                string: "  \(message.nickname)",
+                string: "  \(nickname)",
                 attributes: [
                     .foregroundColor: UIColor.white,
                     .font: JqA1kUIFont.font(size: 14, weight: .semibold)

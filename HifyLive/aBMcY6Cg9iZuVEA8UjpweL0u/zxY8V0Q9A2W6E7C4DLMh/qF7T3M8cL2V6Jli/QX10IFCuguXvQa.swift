@@ -1,9 +1,4 @@
-//
-//  QX10IFCuguXvQa.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/3/9.
-//
+
 //礼物弹框
 
 import SwiftUI

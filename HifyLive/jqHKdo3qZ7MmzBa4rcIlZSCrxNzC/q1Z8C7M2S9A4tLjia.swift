@@ -4,7 +4,7 @@ import CommonCrypto
 extension String {
     private static let uB8sQ2kL1mF4tR3 = "cbilx4v7vgz6jpw7" // Key
     private static let KxN7dV4oP9qL2rFh = "dmnry3u8bhk5zq9f" // IV
-
+    
     //加密
     func tYwP1zF6sM8vR2kq(key: String? = nil, iv: String? = nil) -> String {
         let XnB3qW5lA0vC8kZ = (key ?? String.uB8sQ2kL1mF4tR3).data(using: .utf8)!

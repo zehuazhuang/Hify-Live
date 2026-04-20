@@ -15,7 +15,7 @@ final class UserManager {
     private var cache: [String: (nickname: String, avatarUrl: String, isOnline: Bool)] = [:]
 
     // MARK: - 获取用户信息
-    /// 优先从缓存读取，否则异步拉取网络数据
+    
     func getUserInfo(accid: String, completion: @escaping (String, String, Bool) -> Void) {
         // 先查缓存
         if let info = cache[accid] {
@@ -44,13 +44,12 @@ final class UserManager {
                 self.cache[accid] = (nickname, avatarUrl, isOnline)
                 RecentSessionStore.shared.updateOnlineStatus(accid: accid, isOnline: isOnline)
 
-                completion(nickname, avatarUrl, isOnline) // ✅ 三个参数
+                completion(nickname, avatarUrl, isOnline)
             }
         }
     }
 
     // MARK: - 批量预加载用户信息
-    /// 仅拉取缓存中不存在的 accid
     func preloadUsers(accids: [String]) {
         let uncached = accids.filter { cache[$0] == nil }
         guard !uncached.isEmpty else { return }
@@ -63,7 +62,7 @@ final class UserManager {
                 let nickname = user.userInfo?.nickName ?? accid
                 let avatarUrl = user.userInfo?.avatarUrl ?? ""
 
-                // ✅ 用 Task 切换到 MainActor
+                
                 Task { @MainActor in
                     var isOnline: Bool = false
 
@@ -73,10 +72,10 @@ final class UserManager {
                         isOnline = (ext.onlineStatus == 1)
                     }
 
-                    // ✅ 写缓存
+                    
                     self.cache[accid] = (nickname, avatarUrl, isOnline)
 
-                    // ✅ 同步到会话列表
+                    
                     RecentSessionStore.shared.updateOnlineStatus(accid: accid, isOnline: isOnline)
                 }
             }

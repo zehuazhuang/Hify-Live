@@ -34,7 +34,7 @@ struct SwipeRow<Content: View, ID: Hashable>: View {
     var body: some View {
         ZStack(alignment: .trailing) {
             
-            // 底层删除按钮（始终存在）
+           
             if offsetX != 0 {
                 Button(action: onDelete) {
                     ZJ7h766mz(tMmEWWlfgUag: "zJNmgI4BkuG6ca")
@@ -75,14 +75,14 @@ struct SwipeRow<Content: View, ID: Hashable>: View {
                             let translation = value.translation.width
 
                             if offsetX == 0 {
-                                   // 初次左滑
+                                  
                                    guard translation < 0 else { return }
-                                   offsetX = max(translation, -threshold) // ❌ 不会超过 -threshold
+                                   offsetX = max(translation, -threshold)
                                    openRowId = id
                                } else {
-                                   // 已经展开，再次拖动
+                                 
                                    let newOffset = -threshold + translation
-                                   offsetX = min(0, max(newOffset, -threshold)) // 🔹 保证范围 [-threshold, 0]
+                                   offsetX = min(0, max(newOffset, -threshold))
                                }
                         }
                         .onEnded { _ in

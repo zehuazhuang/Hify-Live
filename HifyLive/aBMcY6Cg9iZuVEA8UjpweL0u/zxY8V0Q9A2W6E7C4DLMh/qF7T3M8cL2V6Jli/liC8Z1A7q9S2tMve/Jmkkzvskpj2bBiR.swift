@@ -1,9 +1,4 @@
-//
-//  Jmkkzvskpj2bBiR.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/3/16.
-//
+
 
 import UIKit
 import Kingfisher

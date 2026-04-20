@@ -5,14 +5,18 @@ import Combine
 
 struct WUjfoptOKs8pZfhSAH0duplG<pZvePB2YhReAp6: View>: View {
     let hxG8wfUYjRwRzYIdMmbpiIUUI: pZvePB2YhReAp6
-
+    let showGlobalNotice: Bool
     
     @StateObject private var xZLto = EfqJ9.hlLgQUr6MegOX6Bv
     
     
-    init(@ViewBuilder qT1pcbSu1NhjQovXgZFtQd9P5: () -> pZvePB2YhReAp6) {
-        self.hxG8wfUYjRwRzYIdMmbpiIUUI = qT1pcbSu1NhjQovXgZFtQd9P5()
-    }
+    init(
+           showGlobalNotice: Bool = true,
+           @ViewBuilder qT1pcbSu1NhjQovXgZFtQd9P5: () -> pZvePB2YhReAp6
+       ) {
+           self.showGlobalNotice = showGlobalNotice
+           self.hxG8wfUYjRwRzYIdMmbpiIUUI = qT1pcbSu1NhjQovXgZFtQd9P5()
+       }
     
     
     var body: some View {
@@ -27,15 +31,19 @@ struct WUjfoptOKs8pZfhSAH0duplG<pZvePB2YhReAp6: View>: View {
             //提示
             dqUmaY6jE7tRWpendJ()
                 .zIndex(10)
+            if showGlobalNotice {
             //浮窗通知
             XQAQvuU6cZLbgEView()
                             .zIndex(30)
             //全服公告
-            VStack {
-                GlobalGiftNoticeView(currentRoomId: Int(LiveSessionManager.shared.currentChannelUserId))
-                    Spacer()
-                }
-                .zIndex(40)
+            
+                VStack {
+                    GlobalGiftNoticeView(currentRoomId: Int(LiveSessionManager.shared.currentChannelUserId))
+                        Spacer()
+                    }
+                    .zIndex(40)
+            }
+            
         }
     }
 }

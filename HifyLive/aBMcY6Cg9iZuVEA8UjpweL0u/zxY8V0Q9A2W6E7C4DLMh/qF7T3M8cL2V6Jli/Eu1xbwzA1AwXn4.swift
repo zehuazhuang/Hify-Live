@@ -1,9 +1,4 @@
-//
-//  Eu1xbwzA1AwXn4.swift
-//  HifyLive
-//
-//  Created by yangyang on 2026/3/25.
-//
+
 
 import SwiftUI
 import UIPilot

@@ -66,7 +66,7 @@ struct LE0xQZ6Y7WC8iv: View {
                                     
                     },
                     onUserAvatarTapped: { yxAccid in
-                                       
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     withAnimation{
                         rlUlyPhType = 1
                         showY2E8Qsc = true
@@ -388,7 +388,7 @@ struct LE0xQZ6Y7WC8iv: View {
             .environmentObject(pilot)
             .presentationDetents([.fraction(0.75)])
         }.sheet(item: $chatSession) { wrapper in
-            WUjfoptOKs8pZfhSAH0duplG {
+            WUjfoptOKs8pZfhSAH0duplG(showGlobalNotice: false) {
                 CgZU7mTgY46l(
                     session: wrapper.session,
                     opponentAvatarURL: wrapper.u1NCaZAWMA,
