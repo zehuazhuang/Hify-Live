@@ -394,6 +394,7 @@
 				INFOPLIST_FILE = HifyLive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Eivo;
 				INFOPLIST_KEY_NSCameraUsageDescription = "A camera is required for watching the live video stream.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location access may be used during registration to help suggest your country or region. We do not use location for tracking or background location services.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "A microphone is required for voice interaction.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "The app needs to save images to the photo album.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -437,6 +438,7 @@
 				INFOPLIST_FILE = HifyLive/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Eivo;
 				INFOPLIST_KEY_NSCameraUsageDescription = "A camera is required for watching the live video stream.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location access may be used during registration to help suggest your country or region. We do not use location for tracking or background location services.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "A microphone is required for voice interaction.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "The app needs to save images to the photo album.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
