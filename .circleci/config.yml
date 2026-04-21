@@ -1,22 +1,20 @@
-# .circleci/config.yml
 version: 2.1
 
 jobs:
-  build-and-upload:
+  build ipa:
     macos:
       xcode: "16.4.0"
 
     environment:
-      BUNDLE_PATH: vendor/bundle # Bundler 安装路径，方便缓存
+      AUTO_NUKE_DISTRIBUTION_SIGNING: "1"
+      BUNDLE_PATH: vendor/bundle
+      CI_READONLY_MATCH: "1"
+      ALLOW_MATCH_REPAIR: "1"
       FL_OUTPUT_DIR: build
-
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
-    #      FASTLANE_USER: "${FASTLANE_USER}"
-    #      ASC_KEY_ID: "${ASC_KEY_ID}"
-    #      ASC_ISSUER_ID: "${ASC_ISSUER_ID}"
-    #      ASC_KEY_CONTENT: "${ASC_KEY_CONTENT}"
-    #      MATCH_PASSWORD: "${MATCH_PASSWORD}"
+      MATCH_PROFILE_NAME: "match AppStore com.thoinot.arbeau CI"
+      USE_XCODE_MANAGED_SIGNING: "1"
 
     steps:
       - checkout
@@ -29,6 +27,21 @@ jobs:
             git config --global user.email "ci@example.com"
             git config --global user.name "CI Bot"
             git config --list | grep user.
+
+      - run:
+          name: Write App Store Connect API key
+          command: |
+            mkdir -p fastlane
+            if [ -f AuthKey_63F57AWPKX.p8 ]; then
+              cp AuthKey_63F57AWPKX.p8 fastlane/AuthKey_63F57AWPKX.p8
+            elif [ -n "$ASC_KEY_CONTENT" ]; then
+              printf "%s" "$ASC_KEY_CONTENT" | tr -d '\r' > fastlane/AuthKey_63F57AWPKX.p8
+            else
+              printf "%s" "$ASC_KEY_CONTENT_BASE64" | tr -d '\r\n' | base64 --decode > fastlane/AuthKey_63F57AWPKX.p8
+            fi
+            chmod 600 fastlane/AuthKey_63F57AWPKX.p8
+            test -f fastlane/AuthKey_63F57AWPKX.p8
+            grep -q "BEGIN PRIVATE KEY" fastlane/AuthKey_63F57AWPKX.p8
 
       - restore_cache:
           keys:
@@ -48,7 +61,8 @@ jobs:
           name: Install Bundler & Gems
           command: |
             gem install bundler
-            bundle install --path vendor/bundle
+            bundle config set path vendor/bundle
+            bundle install
 
       - save_cache:
           paths:
@@ -56,24 +70,55 @@ jobs:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
 
       - run:
-          name: Run Fastlane
+          name: Build IPA only
           command: bundle exec fastlane release
 
       - run:
-          name: Zip ipa
+          name: Normalize IPA artifact
           command: |
-            cd build/gym
-            zip ipa.zip *.ipa
+            if [ -f build/Eivo-appstore-release.ipa ]; then
+              ls -lah build/Eivo-appstore-release.ipa
+              exit 0
+            fi
+
+            if [ -f build/HifyLive.ipa ]; then
+              mv build/HifyLive.ipa build/Eivo-appstore-release.ipa
+              ls -lah build/Eivo-appstore-release.ipa
+              exit 0
+            fi
+
+            if [ -d build/HifyLive/Payload ]; then
+              cd build/HifyLive
+              zip -qry ../Eivo-appstore-release.ipa Payload
+              cd -
+              ls -lah build/Eivo-appstore-release.ipa
+              exit 0
+            fi
+
+            if [ -d build/Payload ]; then
+              cd build
+              zip -qry Eivo-appstore-release.ipa Payload
+              cd -
+              ls -lah build/Eivo-appstore-release.ipa
+              exit 0
+            fi
+
+            echo "Expected IPA artifact not found"
+            find build -maxdepth 3 -print
+            exit 1
 
       - store_artifacts:
-          path: build
+          path: build/Eivo-appstore-release.ipa
+
+      - store_artifacts:
+          path: build/HifyLive.xcresult
 
 workflows:
   version: 2
-  build-and-upload:
+  ios ipa:
     jobs:
-      - build-and-upload:
+      - build ipa:
           filters:
             branches:
               only:
-                - 1.2.0
+                - main
