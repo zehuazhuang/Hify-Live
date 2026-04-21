@@ -98,6 +98,7 @@ final class PkeDEXpbkc4RXu: ObservableObject {
         Task{
            let xS2bi4lIs = try await k8VJeG1rEJh4(ovlkoBKType: sn9RRYi99)
             if(xS2bi4lIs){
+                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
                 if let callback = i03CT778BY {
                                    await callback()
                                }
