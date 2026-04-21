@@ -1,154 +1,272 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+require "shellwords"
+require "pathname"
+require "base64"
 
 default_platform(:ios)
 
+username       = ENV["FASTLANE_USER"]
+asc_key_id     = ENV["ASC_KEY_ID"]
+asc_issuer_id  = ENV["ASC_ISSUER_ID"]
+asc_key_filepath = ENV["ASC_KEY_FILEPATH"]
 
+scheme         = ENV["SCHEME"]
+bundle_id      = ENV["BUNDLE_ID"]
+app_name       = ENV["APP_NAME"]
+export_method  = ENV["EXPORT_METHOD"] || "app-store"  # 默认 app-store
+team_id        = ENV["TEAM_ID"]
+ci_readonly_match = ENV["CI_READONLY_MATCH"] == "1"
+allow_match_repair = ENV["ALLOW_MATCH_REPAIR"] == "1"
+auto_nuke_distribution_signing = ENV["AUTO_NUKE_DISTRIBUTION_SIGNING"] == "1"
+match_profile_name = ENV["MATCH_PROFILE_NAME"] || "match AppStore #{bundle_id} CI"
+use_xcode_managed_signing = ENV.fetch("USE_XCODE_MANAGED_SIGNING", "1") == "1"
 
-username = ENV["FASTLANE_USER"]
-asc_key_id = ENV["ASC_KEY_ID"]
-asc_issuer_id = ENV["ASC_ISSUER_ID"]
-asc_key_content = ENV["ASC_KEY_CONTENT"]
+def xcode_auth_xcargs(asc_key_id, asc_issuer_id, asc_key_filepath)
+  [
+    "-allowProvisioningUpdates",
+    "-authenticationKeyPath #{Shellwords.escape(asc_key_filepath)}",
+    "-authenticationKeyID #{Shellwords.escape(asc_key_id)}",
+    "-authenticationKeyIssuerID #{Shellwords.escape(asc_issuer_id)}"
+  ].join(" ")
+end
 
-team_id = ENV["TEAM_ID"]
-scheme = ENV["SCHEME"]
-bundle_id = ENV["BUNDLE_ID"]
-app_name = ENV["APP_NAME"]
-export_method = ENV["EXPORT_METHOD"]
+def ensure_asc_key_file!(asc_key_filepath)
+  candidate_paths = [
+    File.expand_path(asc_key_filepath.to_s, Dir.pwd),
+    File.expand_path(asc_key_filepath.to_s, __dir__),
+    File.expand_path(asc_key_filepath.to_s, File.expand_path("..", __dir__))
+  ].uniq
 
-pgy_api_key = ENV["pgy_api_key"]
+  existing_path = candidate_paths.find { |path| File.exist?(path) }
+  return existing_path if existing_path
 
+  key_content = ENV["ASC_KEY_CONTENT"]
+  key_content = Base64.decode64(ENV["ASC_KEY_CONTENT_BASE64"]) if key_content.to_s.empty? && !ENV["ASC_KEY_CONTENT_BASE64"].to_s.empty?
+
+  if key_content.to_s.empty?
+    UI.user_error!("❌ App Store Connect API key 文件不存在。已检查：#{candidate_paths.join(', ')}。请在 CI 中提供 `ASC_KEY_CONTENT` 或 `ASC_KEY_CONTENT_BASE64`，或者确保 `ASC_KEY_FILEPATH` 指向一个已存在的 .p8 文件。")
+  end
+
+  explicit_path = candidate_paths.first
+  File.write(explicit_path, key_content)
+  File.chmod(0600, explicit_path)
+  explicit_path
+end
 
 platform :ios do
 
   before_all do |lane, options|
+    asc_key_abspath = ensure_asc_key_file!(asc_key_filepath)
+    ENV["ASC_KEY_ABSPATH"] = asc_key_abspath
 
     UI.header "Step: before_all"
-    UI.header "options = '#{options}'"
-
     UI.important "username = #{username}"
-  	UI.important "asc_key_id = #{asc_key_id}"
-  	UI.important "asc_issuer_id = #{asc_issuer_id}"
-  	UI.important "asc_key_content = #{asc_key_content}"
-
-  	UI.important "bundle_id = #{bundle_id}"
-  	UI.important "app_name = #{app_name}"
-  	UI.important "export_method = #{export_method}"
-  	UI.important "match_type = #{export_method.gsub("-", "")}"
-  	UI.important "pgy_api_key = #{pgy_api_key}"
-
-	  UI.important "is_ci = #{is_ci}"
+    UI.important "asc_key_id = #{asc_key_id}"
+    UI.important "asc_issuer_id = #{asc_issuer_id}"
+    UI.important "asc_key_content = #{asc_key_filepath}"
+    UI.important "asc_key_abspath = #{asc_key_abspath}"
+    UI.important "bundle_id = #{bundle_id}"
+    UI.important "app_name = #{app_name}"
+    UI.important "export_method = #{export_method}"
+    UI.important "team_id = #{team_id}"
+    UI.important "match_profile_name = #{match_profile_name}"
+    UI.important "auto_nuke_distribution_signing = #{auto_nuke_distribution_signing}"
+    UI.important "use_xcode_managed_signing = #{use_xcode_managed_signing}"
 
     setup_circle_ci
   end
 
+  ######################################################
+  # ✅ 只打包 IPA（不上传）
+  ######################################################
   lane :release do
+    if use_xcode_managed_signing
+      prepare_xcode_managed_signing
+      build_with_xcode_managed_signing
+      next
+    end
+
     on_match
     prepare_gym
+
     gym(
-      export_method: export_method,
-      # output_directory: "./build",
-      # buildlog_path: "./build",
+      scheme: scheme,
+      configuration: "Release",        # 指定 Release，避免找 Development 证书
+      export_method: export_method,    # app-store / ad-hoc / enterprise
       clean: true,
-      silent: true,
-      )
-    deliver(
-      skip_metadata: true,
-      skip_screenshots: true,
-      run_precheck_before_submit: false,
-      submit_for_review: false
-    ) if export_method == "app-store"
- 
-    pgyer(api_key: pgy_api_key) if export_method == "ad-hoc"
+      silent: false,
+      output_directory: "./build",
+      output_name: "#{app_name}.ipa"
+    )
+
+    UI.success("✅ 打包完成！IPA 文件已输出到 ./build/#{app_name}.ipa")
+  end
+
+  lane :build_with_xcode_managed_signing do
+    asc_key_abspath = ENV.fetch("ASC_KEY_ABSPATH")
+    auth_xcargs = xcode_auth_xcargs(asc_key_id, asc_issuer_id, asc_key_abspath)
+
+    gym(
+      scheme: scheme,
+      configuration: "Release",
+      export_method: export_method,
+      clean: true,
+      silent: false,
+      output_directory: "./build",
+      output_name: "Eivo-appstore-release.ipa",
+      export_team_id: team_id,
+      result_bundle: true,
+      skip_profile_detection: true,
+      export_options: {
+        signingStyle: "automatic",
+        method: export_method,
+        teamID: team_id
+      },
+      xcargs: auth_xcargs,
+      xcodebuild_formatter: ""
+    )
+
+    UI.success("✅ 已使用 Xcode Managed Signing 打包完成！IPA 文件已输出到 ./build/Eivo-appstore-release.ipa")
+  end
+
+  ######################################################
+  # ✅ 签名匹配（只用 App Store profile）
+  ######################################################
+  lane :repair_signing do
+    asc_key_abspath = ENV.fetch("ASC_KEY_ABSPATH")
+    app_store_connect_api_key(
+      key_id: asc_key_id,
+      issuer_id: asc_issuer_id,
+      key_filepath: asc_key_abspath,
+      in_house: false
+    )
+
+    UI.important("⚠️ 准备重建 App Store 签名资产，会撤销当前 Team 下的 App Store Distribution 证书和对应描述文件")
+
+    match_nuke(
+      git_branch: username,
+      username: username,
+      type: "appstore",
+      app_identifier: [bundle_id],
+      profile_name: match_profile_name,
+      skip_confirmation: true
+    )
+
+    match(
+      git_branch: username,
+      username: username,
+      type: "appstore",
+      app_identifier: [bundle_id],
+      profile_name: match_profile_name,
+      readonly: false
+    )
+
+    UI.success("✅ 已重建 App Store 签名资产")
   end
 
   lane :on_match do
-
+    asc_key_abspath = ENV.fetch("ASC_KEY_ABSPATH")
     app_store_connect_api_key(
-      key_id: ENV["ASC_KEY_ID"],
-      issuer_id: ENV["ASC_ISSUER_ID"],
-      # key_content: ENV["ASC_KEY_CONTENT"],
-      # 或者使用key_filepath指向一个文件
-      key_filepath: "AuthKey_#{ENV["ASC_KEY_ID"]}.p8",
-      in_house: false # 如果是企业账号，设为true
+      key_id: asc_key_id,
+      issuer_id: asc_issuer_id,
+      key_filepath: asc_key_abspath,
+      in_house: false
     )
 
-  	# produce( # Alias for the create_app_online action
-    #   username: username,
-    #   app_identifier: bundle_id,
-    #   # app_name: app_name,
-    #   skip_itc: true,
-    #   enable_services: {
-    #     push_notification: "on",
-    #   }
-    #   )
-
-    # match_nuke(
-    #   type: "development",
-    #   )
-
-    # CI 中执行 match 创建新证书上传到 git 报错 Author identity unknown，需要指定 Git 用户身份
-    # sh "git config --global user.email 'ci@example.com'"
-    # sh "git config --global user.name 'CI Bot'"
-
-    register_devices(
-      devices: {
-        "iPhone" => "00008030-002A12B03320903F",
-      }
-    )
-
-  	match(
+    begin
+      # CI should only consume signing assets already stored in the match repo.
+      match_result = match(
         git_branch: username,
         username: username,
-        type: "development",
+        type: "appstore",               # 只用 App Store 证书
         app_identifier: [bundle_id],
-        force_for_new_devices: true,
-        readonly: false,
-        force: true,
-        )
+        profile_name: match_profile_name,
+        readonly: true
+      )
+      UI.success("✅ 已找到可用 App Store 证书和描述文件")
+    rescue => e
+      UI.important("⚠️ 只读签名同步失败：#{e}")
 
-    match_result = match(
-        git_branch: username,
-        username: username,
-        type: export_method.gsub("-", ""),
-        app_identifier: [bundle_id],
-        readonly: false,
-        force: true,
+      if ci_readonly_match && !allow_match_repair
+        UI.user_error!("❌ CI 仅允许只读同步签名资产，已停止自动创建证书/描述文件。请先在本地或受控环境执行 `ALLOW_MATCH_REPAIR=1 bundle exec fastlane on_match` 修复 match 仓库，或清理 Apple Developer Portal 中重复的 profile：match AppStore #{bundle_id}")
+      end
+
+      UI.important("⚠️ 开始创建或修复证书/描述文件")
+
+      begin
+        match_result = match(
+          git_branch: username,
+          username: username,
+          type: "appstore",
+          app_identifier: [bundle_id],
+          profile_name: match_profile_name,
+          readonly: false
         )
-    puts match_result
-    UI.important("✅ match_result: #{match_result}")
+      rescue => repair_error
+        if repair_error.to_s.include?("Could not create another Distribution certificate")
+          unless auto_nuke_distribution_signing
+            UI.user_error!("❌ Apple Developer 账号的 Distribution certificate 数量已满。由于清理操作会影响当前 Team 的 App Store 签名资产，CI 默认不会自动执行。请确认该 Team 下没有其他 App 依赖这些证书后，再设置 `AUTO_NUKE_DISTRIBUTION_SIGNING=1` 重新运行一次 CI，或在本地执行 `bundle exec fastlane repair_signing`。")
+          end
+
+          UI.important("⚠️ Distribution certificate 已达到上限，开始重建 App Store 签名资产")
+          repair_signing
+          match_result = match(
+            git_branch: username,
+            username: username,
+            type: "appstore",
+            app_identifier: [bundle_id],
+            profile_name: match_profile_name,
+            readonly: true
+          )
+        else
+          raise repair_error
+        end
+      end
+
+      UI.success("✅ 新证书生成成功")
+    end
+
     profiles = lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
-	  UI.important("profiles = #{profiles}")
+    UI.important("profiles = #{profiles}")
+  end
 
+  ######################################################
+  # ✅ 更新签名配置
+  ######################################################
+  lane :prepare_xcode_managed_signing do
+    update_code_signing_settings(
+      use_automatic_signing: true,
+      path: "HifyLive.xcodeproj",
+      targets: [scheme],
+      build_configurations: ["Release"],
+      team_id: team_id
+    )
+
+    update_code_signing_settings(
+      use_automatic_signing: true,
+      path: "HifyLive.xcodeproj",
+      targets: [scheme],
+      build_configurations: ["Debug", "Release"],
+      code_sign_identity: "",
+      team_id: team_id
+    )
   end
 
   lane :prepare_gym do
+    profile_name = lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING][bundle_id]
+    unless profile_name
+      UI.user_error!("⚠️ 找不到描述文件，请先执行 on_match 成功")
+    end
 
-    team_id = ENV["sigh_#{bundle_id}_development_team-id"]
-    UI.important("Team ID: #{team_id}")
-
-    profile_name = ENV["sigh_#{bundle_id}_development_profile-name"]
-	  UI.important "profile_name = #{profile_name}"
+    UI.important("profile_name = #{profile_name}")
 
     update_code_signing_settings(
       use_automatic_signing: false,
-      team_id: team_id,
+      path: "HifyLive.xcodeproj",
       profile_name: profile_name,
+      targets: [scheme],               # 指定 target
+      build_configurations: ["Release"],  # ✅ 改成数组
+      team_id: team_id
     )
-    
-
   end
 
 end
