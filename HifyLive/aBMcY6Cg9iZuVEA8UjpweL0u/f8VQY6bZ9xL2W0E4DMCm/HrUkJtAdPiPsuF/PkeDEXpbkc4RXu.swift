@@ -10,6 +10,7 @@ final class PkeDEXpbkc4RXu: ObservableObject {
     @Published var jbGuJZqVg5X: [Product] = []
 
     private var kS4zGWFzLwy: Task<Void, Never>?
+    private var y8JwHandledTransactions: Set<UInt64> = []
     
     var i03CT778BY: (() async -> Void)?
 
@@ -88,6 +89,13 @@ final class PkeDEXpbkc4RXu: ObservableObject {
         if transaction.revocationDate != nil {
             return
         }
+        
+        guard !y8JwHandledTransactions.contains(transaction.id) else {
+            await transaction.finish()
+            return
+        }
+        y8JwHandledTransactions.insert(transaction.id)
+        
         axsAs4xvtJg4Pd(productId: transaction.productID)
         await transaction.finish()
         
@@ -107,4 +115,3 @@ final class PkeDEXpbkc4RXu: ObservableObject {
         }
     }
 }
-
