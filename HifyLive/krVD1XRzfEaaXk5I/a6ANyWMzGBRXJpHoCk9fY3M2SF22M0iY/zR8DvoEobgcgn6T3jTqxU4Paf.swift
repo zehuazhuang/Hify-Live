@@ -2,16 +2,11 @@ import Foundation
 import NIMSDK
 
 struct JOGtDnYupP {
-//    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
-//    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
-//    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
-//    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
-        //测试
-        static let rLZ9H0jmS7Url = "https://vvi.cphub.link" //验单、财富榜环境地址
-        static let loaattrdbUrl = "https://testaes.cphub.link" //环境地址
-        static let raslidepApId = "11111111" //id
-        static let versLErqSu = "1.0.0" //版本
-        static let zMVMMyTmNK = "124f689baed25c488e1330bc42e528af" //云信id
+    static let loaattrdbUrl = "hUeOnMhj7nu7AePEAoih4UAD9NQ5SJ+orijLXgNlvHM=".bFHEatcgE4zzU9TCfDonsu() //环境地址
+    static let raslidepApId = "dkEgGoCekX9IFX5MSR9t4Q==".bFHEatcgE4zzU9TCfDonsu() //id
+    static let versLErqSu = "k54xCvaSTtCtQFaKvbedhw==".bFHEatcgE4zzU9TCfDonsu() //版本
+    static let zMVMMyTmNK = "nxI8qTO1K0saYv2rTkG64DG5b5qkt6FMDQdxymtl+FqDQoXzB1YxPjRW35ly0xPu".bFHEatcgE4zzU9TCfDonsu() //云信id
+
 }
 
 
