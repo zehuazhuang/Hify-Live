@@ -151,6 +151,16 @@ class RecentSessionManager: ObservableObject {
         self.cache.removeAll() // ⚡不要改 RecentSessionManager.shared.cache
     }
     
+    func clearAllLocalData() {
+        let realm = try! Realm()
+        let messages = realm.objects(DBChatMessage.self)
+        try! realm.write {
+            realm.delete(messages)
+        }
+        
+        self.cache.removeAll()
+    }
+    
     
     private func cacheHistoryToRealm(session: NIMSession) {
         guard let msgs = NIMSDK.shared().conversationManager.messages(in: session, message: nil, limit: 100) else { return }

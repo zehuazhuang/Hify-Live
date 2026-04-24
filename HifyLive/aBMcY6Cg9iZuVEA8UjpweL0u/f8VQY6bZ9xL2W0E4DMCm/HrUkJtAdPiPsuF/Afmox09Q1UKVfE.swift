@@ -51,7 +51,7 @@ struct Afmox09Q1UKVfE: View {
                 ScrollView(showsIndicators:false){
                     VStack(spacing:8){
                         LazyVGrid(columns: qmLT3WCISX, spacing: 8) {
-                            ForEach(0..<10) { index in
+                            ForEach(0..<7) { index in
                                 VStack(spacing:0){
                                     Spacer()
                                     ZJ7h766mz(tMmEWWlfgUag: "nTRZMGM43EhuR")

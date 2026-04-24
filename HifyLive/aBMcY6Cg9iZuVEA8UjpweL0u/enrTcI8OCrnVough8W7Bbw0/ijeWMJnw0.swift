@@ -120,6 +120,14 @@ struct ijeWMJnw0: View {
                                     }
                                 }
                             )
+                            .overlay {
+                                Circle()
+                                    .stroke(
+                                        gjQ0haTFS7I7wobKnyS ? Color.red : Color.clear,
+                                        lineWidth: 1
+                                    )
+                                    .frame(width: 88, height: 88)
+                            }
                             .onChange(of: tP74PY69MMmqBz0UYBxC) { ai2JEy7KhUD in
                                 guard let ai2JEy7KhUD else { return }
                                 // 先加载为 Data
@@ -134,6 +142,7 @@ struct ijeWMJnw0: View {
                                                 Task { @MainActor in
                                                     if let url = try? await pt5uxFoWaSL6Aj2i9XTDnpHDrEQ08I(xd69OWx2Frrlwb9Zr5j, isIA8MTA: false) {
                                                         zeEMuRE5FhYabIqhuh = url
+                                                        gjQ0haTFS7I7wobKnyS = false
                                                         
                                                     } else {
                                                         print("上传失败或图片不合规")
@@ -438,6 +447,9 @@ struct ijeWMJnw0: View {
                             if mIAT9zbKJKGtarbSPX1QSZm.isEmpty {
                                 jFQJdj = true
                             }
+                            if zeEMuRE5FhYabIqhuh.isEmpty {
+                                gjQ0haTFS7I7wobKnyS = true
+                            }
                             if mQFLX0m0nVIAxht9uUGhln5su8 == nil {
                                 t8dM64f2Hl = true
                             }
@@ -446,7 +458,10 @@ struct ijeWMJnw0: View {
                             }
                             
                             if let xYA8KcMnJ8l8HJAC2xuNCCW0 = ul32Z7mBcRJhzPEN4faJjXhf1UBxJ4.kQ6M6hDLcPaNgkYCfus4bl1ZLX0k4 {
-                                if mIAT9zbKJKGtarbSPX1QSZm.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil {
+                                if mIAT9zbKJKGtarbSPX1QSZm.isEmpty || zeEMuRE5FhYabIqhuh.isEmpty || mQFLX0m0nVIAxht9uUGhln5su8 == nil || uj8O1bVbC9SQl6E469ySfpfYW678G == nil {
+                                    if zeEMuRE5FhYabIqhuh.isEmpty {
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("Please upload an avatar",z2E1geUN5miQ95SpoCG: false)
+                                    }
                                     return
                                 }
                                 

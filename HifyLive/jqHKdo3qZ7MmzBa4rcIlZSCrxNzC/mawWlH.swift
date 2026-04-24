@@ -75,6 +75,15 @@ final class ZRsco2bysq39NmLBBhFtU044p: ObservableObject {
     /// 登出--清除token
     func lVl52wvq4fL2AjD8MczeYD9FTXtw() {
         fiaiU4sbcNXzTzXA = nil
+        bM7TelSL1RiLs8539FWAC = 0
+        fP9yQC0UH00 = ""
+        ndyZHpylAsdd = ""
+        TokenManager.shared.clear()
+        IyfdHMdY.bTa3L6BoprG.xK7M2qClearCurrentUser()
+        GlobalUnreadStore.shared.clearAllUnread()
+        RecentSessionManager.shared.clearAllLocalData()
+        RecentSessionStore.shared.cache = []
+        NIMManager.shared.logout()
     }
     
     /// 登录--保存token

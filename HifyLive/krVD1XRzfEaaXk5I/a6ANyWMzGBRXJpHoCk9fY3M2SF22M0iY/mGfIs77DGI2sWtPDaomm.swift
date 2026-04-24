@@ -90,6 +90,10 @@ final class WOKmjUjM {
             guard let nEa4KCzHwxluWISVzOXqVwukQ9 = String(data: d7hTYfwIR, encoding: .utf8) else {
                 throw NSError(domain: "rS5burW4QkK/9yJ7MUbz4A==".bFHEatcgE4zzU9TCfDonsu(), code: -1, userInfo: [NSLocalizedDescriptionKey: "EFbsDh1PQGFj37y1bb/KJ75hHJu8VfRfhEGPBcQVaVg=".bFHEatcgE4zzU9TCfDonsu()])
             }
+//            print("========== REQUEST BEGIN ==========")
+//            print("Request URL: \(tmXsNyLk9jl.absoluteString)")
+//            print("Request Headers: \(biHmuVi1B21WPGO.allHTTPHeaderFields ?? [:])")
+//            print("Request Body: \(nEa4KCzHwxluWISVzOXqVwukQ9)")
             
             let o2HZU0mJ = nEa4KCzHwxluWISVzOXqVwukQ9.tYwP1zF6sM8vR2kq() // 你的加密方法
           
@@ -102,18 +106,21 @@ final class WOKmjUjM {
         
         URLSession.shared.dataTask(with: biHmuVi1B21WPGO) { fHzNVSPyWl1PBPEr, odwmhGvKuEz7uG, iXeEEC6uYGesqcZFyS0azNH in
             DispatchQueue.main.async {
-                if let _ = iXeEEC6uYGesqcZFyS0azNH {
+                if let iXeEEC6uYGesqcZFyS0azNH = iXeEEC6uYGesqcZFyS0azNH {
+
                     eUBbaLZvAje5GLxMb(.failure(UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw:"9fZeXzm2b8JDi9URhrOPCQ==".bFHEatcgE4zzU9TCfDonsu())))
                     return
                 }
                 
                 guard let bWtqmD7lucTVd = odwmhGvKuEz7uG as? HTTPURLResponse else {
+
                     eUBbaLZvAje5GLxMb(.failure(UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw:"2DM2Z94bu6d8JPzzIf8jsun0SnWw62x3q/6Ntp98akQkE0An2ZjWccqq39/HHg1pN2F46Szhu50OUr5rn+kPTw==".bFHEatcgE4zzU9TCfDonsu())))
                     return
                 }
                 
                 // 检测 401
                 if bWtqmD7lucTVd.statusCode == 401 {
+
 //                    print("⚠️ Token 已过期，请重新登录")
                     ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.lVl52wvq4fL2AjD8MczeYD9FTXtw() // 清除 token
                     NotificationCenter.default.post(name: NSNotification.Name("ppQrKwB8irEoW2EvXL1it8JDDf7"), object: nil)
@@ -121,9 +128,17 @@ final class WOKmjUjM {
                 }
                 
                 guard let tQk6UNCOXMjVF = fHzNVSPyWl1PBPEr else {
+
                     eUBbaLZvAje5GLxMb(.failure(UVvaHCnbKWNk4KQPzW5aJDt(cj1N1slhsxdjKjCewAzR3TFUsJw:"zKJ0JhTyNQKhBwONwPSNv/6ZA+dkt4xcIDrr2g61RgHGWBNMyyqv0OYQoTDCFFpy".bFHEatcgE4zzU9TCfDonsu())))
                     return
                 }
+                
+//                if let responseString = String(data: tQk6UNCOXMjVF, encoding: .utf8) {
+//                    print("Response Body: \(responseString)")
+//                } else {
+//                    print("Response Body: <non-utf8 data, \(tQk6UNCOXMjVF.count) bytes>")
+//                }
+//                print("=========== REQUEST END ===========")
                 
                 eUBbaLZvAje5GLxMb(.success(tQk6UNCOXMjVF))
             }

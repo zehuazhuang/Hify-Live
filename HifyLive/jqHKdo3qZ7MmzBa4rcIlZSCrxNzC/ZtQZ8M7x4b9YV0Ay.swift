@@ -30,23 +30,27 @@ struct A6WsC0Ww6ELqEL: View {
         }
 
         var views: [Text] = []
-        var remainingText = l4K9bX2q
-        let lowerSearch = k7NmFz1p.lowercased()
+        var searchStartIndex = l4K9bX2q.startIndex
 
-        while let range = remainingText.lowercased().range(of: lowerSearch) {
-            let prefix = String(remainingText[..<range.lowerBound])
+        while let range = l4K9bX2q.range(
+            of: k7NmFz1p,
+            options: [.caseInsensitive, .diacriticInsensitive],
+            range: searchStartIndex..<l4K9bX2q.endIndex
+        ) {
+            let prefix = String(l4K9bX2q[searchStartIndex..<range.lowerBound])
             if !prefix.isEmpty {
                 views.append(createText(prefix, color: .white))
             }
 
-            let match = String(remainingText[range])
+            let match = String(l4K9bX2q[range])
             views.append(createText(match, color: Color(red: 23/255, green: 220/255, blue: 255/255)))
 
-            remainingText = String(remainingText[range.upperBound...])
+            searchStartIndex = range.upperBound
         }
 
-        if !remainingText.isEmpty {
-            views.append(createText(remainingText, color: .white))
+        let suffix = String(l4K9bX2q[searchStartIndex...])
+        if !suffix.isEmpty {
+            views.append(createText(suffix, color: .white))
         }
 
         return views

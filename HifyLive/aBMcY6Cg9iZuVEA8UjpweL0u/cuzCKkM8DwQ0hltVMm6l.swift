@@ -70,6 +70,14 @@ extension Dictionary where Key == String, Value == Any {
 }
 
 extension IyfdHMdY {
+    func xK7M2qClearCurrentUser() {
+        iBmPfFGfxu5JV7Aii7 = [:]
+        n1G8RlzpcQK = []
+        iF2ouR0gHFDSr3GJ = []
+        uHvAw2RQt5e3D68ldNmdTdSG2q3M2eQi = []
+        rzeKD010L4fVwfSUlarrt = false
+    }
+    
     /// 获取关注用户的云信 ID
     var gx0Y2M6W9: [String] {
         n1G8RlzpcQK.compactMap { $0["yxAccid"] as? String }

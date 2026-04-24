@@ -1,5 +1,6 @@
 import SwiftUI
 import GoogleSignIn
+import AuthenticationServices
 import SwiftfulRouting
 
 //判断是否老用户接口参数配置
@@ -94,145 +95,9 @@ struct zkaqn9Jn: View {
                         //                                    )
                         //                            }
                         //                            .padding(.horizontal,36)
-                        Button{
-                            EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
-                            MNcU5G2d5lovPsrWsZR.qmeyXuu0AeNRHIjoVH8WkPZTOKbDpgVv.uN4EYG5707zDhAdkPqw(x32VMaqCadHB: dy8ovFCSzlHO2h()) { sVaytka8rmaCF in
-                                switch sVaytka8rmaCF {
-                                case .success(let on98qnn55lS6bK68e):
-                                    let syVAw8opyyC18fy2P11 = yhXTx88AnQlgWnTKSQDWeXg(
-                                        bqFlC8rSGVAykM: "GvLdksIxbN40IeWj8FLE6A==".bFHEatcgE4zzU9TCfDonsu(), //GOOGLE
-                                        floxo4ndK6gGCn1l2W51drazUKbnGnD: "",
-                                        fFlQ9sA2tf: "",
-                                        lO4RZ2gjPGqDkXW4xBejJ8I: "",
-                                        bOdVsCGgJMcQHEtiZDG: on98qnn55lS6bK68e.ocl2SJadHjn67BFo7Gd9deM2Mc4hF ?? ""
-                                    )
-                                    
-                                    ///api/auth/isOldAccount
-                                    WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "eYD8YW6vlAe/1ZzO7FmQNMqhZywgtvS/TinJ1Y0VgVc=".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: syVAw8opyyC18fy2P11) { (hEFVdnk1mBu9OXgq2wYAWzeztE0gqr: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
-                                        switch hEFVdnk1mBu9OXgq2wYAWzeztE0gqr {
-                                        case .success(let cmBllstUOfe):
-                                           
-                                            if cmBllstUOfe.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-                                                guard
-                                                    let j9NQ5xqz3ZL = cmBllstUOfe.result,
-                                                    !j9NQ5xqz3ZL.isEmpty
-                                                else {
-                                                    return
-                                                }
-                                                let c55guwIGLg4RHRJey8dk9m3jln8NMOo = j9NQ5xqz3ZL.hL9dV3bQ2fK6sJ8p()
-                                                
-                                               
-                                                
-                                                
-                                                if let nAT4VBfqN62FOc8x6XFADpNqJ = c55guwIGLg4RHRJey8dk9m3jln8NMOo.kPOR9FHwcEZJv9YDf4W01D() {
-                                                    let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]//userInfo
-                                                    if let qb9c6NkMMK5 = hOQva7h2 as? [String: Any] {
-                                                      
-                                                       
-                                                        let z6DrSn7Ai = Calendar.current
-                                                        let dateMinus22Years = z6DrSn7Ai.date(byAdding: .year, value: -22, to: Date()) ?? Date()
-                                                        let lPzflCklCBlTkurInYG0Owe = Int64(dateMinus22Years.timeIntervalSince1970 * 1000)
-                                                        let tF60d: Int64
-                                                        if let lSb3zx5YG4IGFUt1CV9lI9Js = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int64 {//birthday
-                                                            tF60d = lSb3zx5YG4IGFUt1CV9lI9Js
-                                                        } else if let wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int {//birthday
-                                                            // 如果字典里是 Int 类型
-                                                            tF60d = Int64(wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S)
-                                                        } else {
-                                                            tF60d = lPzflCklCBlTkurInYG0Owe
-                                                        }
-                                                        // 将毫秒转换为秒
-                                                        let zX6HlaP = Date(timeIntervalSince1970: TimeInterval(tF60d) / 1000)
-                                                        // 设置日期格式
-                                                        let nrTgHasms = DateFormatter()
-                                                        nrTgHasms.dateFormat = "rpxVSISmgtmCzrTRpHhzTw==".bFHEatcgE4zzU9TCfDonsu()
-                                                        nrTgHasms.timeZone = TimeZone.current // 或者指定时区
-                                                        
-                                                        let jZU3hAIkF1Q2ZT61Lpo7W2 = nrTgHasms.string(from: zX6HlaP)
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        let tjo7FSBXRqDGtC42gybnBERwh = cpEtaR(wKrCAroUqTbC2rd9pcKfELDDQ: on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG, hVH5DxQ7Q558SdJWLt: nAT4VBfqN62FOc8x6XFADpNqJ["gJFgAqy/EDYR9MmYgpNFnQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", cImAJ4BdZYF9hJ4x: qb9c6NkMMK5.int("userId"), hmNWPkT: on98qnn55lS6bK68e.sI9ab2lfhqbpaKAkkJ18gYAi ?? "", fRKTOb3: qb9c6NkMMK5["BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", oT9WD2aupYPQUmLUQMwvo: qb9c6NkMMK5["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", wLsFSPTENSsbKoQTDC:qb9c6NkMMK5["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0, spnXcOm: qb9c6NkMMK5["n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", ptxrDJchMpilBtm: jZU3hAIkF1Q2ZT61Lpo7W2, vOPrjVF8S5VO8uXporotTUlUO: qb9c6NkMMK5["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] ?? [],)
-                                                        
-                                                        ///api/auth/login
-                                                        WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu(), b3q0LlCSk: tjo7FSBXRqDGtC42gybnBERwh) { (b3zxt9oFNSK8MBwN1W43: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
-                                                            switch b3zxt9oFNSK8MBwN1W43 {
-                                                            case .success(let gqjUVaiuMpMg9Tt):
-                                                              
-                                                                if gqjUVaiuMpMg9Tt.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
-                                                                    guard
-                                                                        let eAC6HoUudAyh = gqjUVaiuMpMg9Tt.result,
-                                                                        !eAC6HoUudAyh.isEmpty
-                                                                    else {
-                                                                        return
-                                                                    }
-                                                                    let xPQrkVrZihZJl1fsnnMP = eAC6HoUudAyh.hL9dV3bQ2fK6sJ8p()
-                                                                   
-                                                                    if let u5vLFlYL5m6LMIVVh08Uj5D = xPQrkVrZihZJl1fsnnMP.kPOR9FHwcEZJv9YDf4W01D() {
-                                                                        ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.xPI2sSbHAr7u1jAZisVjgs8JXZCRZ07t(tEkU2eDdLMlnNOn: u5vLFlYL5m6LMIVVh08Uj5D["km2wMXC6wIJi3UcUM7XhmA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                                                        ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC = u5vLFlYL5m6LMIVVh08Uj5D["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0
-                                                                        ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fP9yQC0UH00 =  u5vLFlYL5m6LMIVVh08Uj5D["HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? ""
-                                                                        IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7 = u5vLFlYL5m6LMIVVh08Uj5D
-                                                                        
-                                                                        //获取关注粉丝列表
-                                                                        vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
-                                                                        vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
-                                                                        
-                                                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=",type: 0)
-                                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                                        hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                                                            WUjfoptOKs8pZfhSAH0duplG {
-                                                                                ME9B8ZCwVQxn()
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                } else {
-                                                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(gqjUVaiuMpMg9Tt.message,z2E1geUN5miQ95SpoCG: false)
-                                                                }
-                                                                
-                                                            case .failure(_):
-                                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("hhOl6/VUEq+mQVyGto4rnS/pNZHCom6WeachEyfneieYY3GFdHKoa4iQygGkvAQm")
-                                                            }
-                                                        }
-                                                    } else {
-                                                        // 新用户（nil 或 NSNull 都会进这里）
-                                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                        hTU5wZj8E2nU59.showScreen(.fullScreenCover){ _ in
-                                                            WUjfoptOKs8pZfhSAH0duplG {
-                                                                ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            } else {
-                                                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(cmBllstUOfe.message,z2E1geUN5miQ95SpoCG: false)
-                                            }
-                                            
-                                        case .failure(let u0lXlYLQiGrjGGOpB9Mp):
-                                            var uArr57u4wCFEBiObMWHD5lidt7K:String = ""
-                                            if let lceNSIyqcTobVEYEgAQrxBBYhBKmg5B = u0lXlYLQiGrjGGOpB9Mp as? UVvaHCnbKWNk4KQPzW5aJDt {
-                                                uArr57u4wCFEBiObMWHD5lidt7K = lceNSIyqcTobVEYEgAQrxBBYhBKmg5B.eUJLh
-                                            } else {
-                                                uArr57u4wCFEBiObMWHD5lidt7K = u0lXlYLQiGrjGGOpB9Mp.localizedDescription
-                                            }
-                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(uArr57u4wCFEBiObMWHD5lidt7K)
-                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                        }
-                                    }
-                                case .failure(let u0lXlYLQiGrjGGOpB9Mp as NSError):
-                                    if u0lXlYLQiGrjGGOpB9Mp.code == GIDSignInError.canceled.rawValue {
-                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")//Cancel login
-                                    } else {
-                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=")//Google login failed.
-                                    }
-                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
-                                }
-                            }
-                        }label:{
+                        Button {
+                            FE5pRappleGoogle()
+                        } label: {
                             RoundedRectangle(cornerRadius: 36)
                                 .fill(Color.white.opacity(0.15))
                                 .frame(height: 48)
@@ -255,27 +120,35 @@ struct zkaqn9Jn: View {
                                 }
                         }
                         .padding(.horizontal,36)
-                        //                        RoundedRectangle(cornerRadius: 36)
-                        //                            .fill(Color.white.opacity(0.15))
-                        //                            .frame(height: 48)
-                        //                            .overlay(alignment: .center) {
-                        //                                HStack{
-                        //                                    RoundedRectangle(cornerRadius: 0)
-                        //                                        .fill(Color.clear)
-                        //                                        .frame(width: 24,height: 24)
-                        //                                        .overlay {
-                        //                                            ZJ7h766mz(tMmEWWlfgUag: "bnrAYa3PAg0WbL3lpWXzVp2Jmt2I")
-                        //                                        }
-                        //                                    Spacer()
-                        //                                }
-                        //                                .padding(.leading,24)
-                        //                                Text("I9zk5wRlDKY72GaixML2yw==".bFHEatcgE4zzU9TCfDonsu())
-                        //                                    .g0LIIcoZQsOjyND9(
-                        //                                        size: 16,
-                        //                                        weight: .semibold,
-                        //                                    )
-                        //                            }
-                        //                            .padding(.horizontal,36)
+                        Button {
+                            UE7mAppleLogin()
+                        } label: {
+                            RoundedRectangle(cornerRadius: 36)
+                                .fill(Color.white.opacity(0.15))
+                                .frame(height: 48)
+                                .overlay(alignment: .center) {
+                                    HStack {
+                                        RoundedRectangle(cornerRadius: 0)
+                                            .fill(Color.clear)
+                                            .frame(width: 24, height: 24)
+                                            .overlay {
+                                                Image(systemName: "apple.logo")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .foregroundStyle(.white)
+                                                    .padding(2)
+                                            }
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 24)
+                                    Text("Continue with Apple")
+                                        .g0LIIcoZQsOjyND9(
+                                            size: 16,
+                                            weight: .semibold
+                                        )
+                                }
+                        }
+                        .padding(.horizontal,36)
                     }
                     VStack(spacing: 0){
                         HStack(spacing: 0) { Text("JYw50MN182cCw/XQmmjS00do2RvFcYO7hBzR/X2HSMb5KknzdLCg2neQVYUB5tUp".bFHEatcgE4zzU9TCfDonsu())
@@ -321,5 +194,164 @@ struct zkaqn9Jn: View {
         UIApplication.shared.connectedScenes
             .compactMap { ($0 as? UIWindowScene)?.keyWindow }
             .first?.rootViewController ?? UIViewController()
+    }
+    
+    func FE5pRappleGoogle() {
+        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+        MNcU5G2d5lovPsrWsZR.qmeyXuu0AeNRHIjoVH8WkPZTOKbDpgVv.uN4EYG5707zDhAdkPqw(x32VMaqCadHB: dy8ovFCSzlHO2h()) { sVaytka8rmaCF in
+            A1ppleOrGoogleFinish(sVaytka8rmaCF, loginFailedMessage: "I0NOjWtZlN6xjoiCBBXY9aqHi5gINpg4EegToEgi9RE=".bFHEatcgE4zzU9TCfDonsu())
+        }
+    }
+    
+    func UE7mAppleLogin() {
+        EfqJ9.hlLgQUr6MegOX6Bv.w9VPVHt()
+        MNcU5G2d5lovPsrWsZR.qmeyXuu0AeNRHIjoVH8WkPZTOKbDpgVv.n8N7M9pQ2sApple(x32VMaqCadHB: dy8ovFCSzlHO2h()) { sVaytka8rmaCF in
+            A1ppleOrGoogleFinish(sVaytka8rmaCF, loginFailedMessage: "Apple login failed")
+        }
+    }
+    
+    func A1ppleOrGoogleFinish(
+        _ sVaytka8rmaCF: Result<RbqBb46vxbGKGmsnZWA1R9Vx3M, Error>,
+        loginFailedMessage: String
+    ) {
+        switch sVaytka8rmaCF {
+        case .success(let on98qnn55lS6bK68e):
+            xQ2eAppleGoogleLogin(on98qnn55lS6bK68e)
+        case .failure(let u0lXlYLQiGrjGGOpB9Mp):
+            let nsError = u0lXlYLQiGrjGGOpB9Mp as NSError
+            if U8mCancelLogin(nsError) {
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("ID7LhJN2TVG+G1sA+veqBw==")
+            } else {
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(nsError.localizedDescription == "用户取消登录" ? "ID7LhJN2TVG+G1sA+veqBw==".bFHEatcgE4zzU9TCfDonsu() : loginFailedMessage)
+            }
+            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+        }
+    }
+    
+    func U8mCancelLogin(_ error: NSError) -> Bool {
+        error.code == GIDSignInError.canceled.rawValue ||
+        (error.domain == ASAuthorizationError.errorDomain &&
+         error.code == ASAuthorizationError.canceled.rawValue) ||
+        error.localizedDescription == "用户取消登录"
+    }
+    
+    //苹果、谷歌都走这个方法
+    func xQ2eAppleGoogleLogin(_ on98qnn55lS6bK68e: RbqBb46vxbGKGmsnZWA1R9Vx3M) {
+        let isOldAccountPath = "eYD8YW6vlAe/1ZzO7FmQNMqhZywgtvS/TinJ1Y0VgVc=".bFHEatcgE4zzU9TCfDonsu()
+        let loginPath = "//Yz8OnEreyddD+30LWrWw==".bFHEatcgE4zzU9TCfDonsu()
+        print("Third-party login platform: \(on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG)")
+        print("isOldAccount path: \(isOldAccountPath)")
+        print("login path: \(loginPath)")
+        
+        let syVAw8opyyC18fy2P11 = yhXTx88AnQlgWnTKSQDWeXg(
+            bqFlC8rSGVAykM: on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG,
+            floxo4ndK6gGCn1l2W51drazUKbnGnD: "",
+            fFlQ9sA2tf: "",
+            lO4RZ2gjPGqDkXW4xBejJ8I: "",
+            bOdVsCGgJMcQHEtiZDG: on98qnn55lS6bK68e.ocl2SJadHjn67BFo7Gd9deM2Mc4hF ?? ""
+        )
+        
+        WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: isOldAccountPath, b3q0LlCSk: syVAw8opyyC18fy2P11) { (hEFVdnk1mBu9OXgq2wYAWzeztE0gqr: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+            switch hEFVdnk1mBu9OXgq2wYAWzeztE0gqr {
+            case .success(let cmBllstUOfe):
+                if cmBllstUOfe.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+                    guard
+                        let j9NQ5xqz3ZL = cmBllstUOfe.result,
+                        !j9NQ5xqz3ZL.isEmpty
+                    else {
+                        return
+                    }
+                    let c55guwIGLg4RHRJey8dk9m3jln8NMOo = j9NQ5xqz3ZL.hL9dV3bQ2fK6sJ8p()
+                    
+                    if let nAT4VBfqN62FOc8x6XFADpNqJ = c55guwIGLg4RHRJey8dk9m3jln8NMOo.kPOR9FHwcEZJv9YDf4W01D() {
+                        let hOQva7h2 = nAT4VBfqN62FOc8x6XFADpNqJ["81G1W3wOXjFG2Mp3CbOpOg==".bFHEatcgE4zzU9TCfDonsu()]
+                        if let qb9c6NkMMK5 = hOQva7h2 as? [String: Any] {
+                            let z6DrSn7Ai = Calendar.current
+                            let dateMinus22Years = z6DrSn7Ai.date(byAdding: .year, value: -22, to: Date()) ?? Date()
+                            let lPzflCklCBlTkurInYG0Owe = Int64(dateMinus22Years.timeIntervalSince1970 * 1000)
+                            let tF60d: Int64
+                            if let lSb3zx5YG4IGFUt1CV9lI9Js = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int64 {
+                                tF60d = lSb3zx5YG4IGFUt1CV9lI9Js
+                            } else if let wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S = qb9c6NkMMK5["r9m4DBfC1PJPAxrJqUKxjw=="] as? Int {
+                                tF60d = Int64(wdBwSgo9knIbCLZ7Jk6k9aXNYaIgn5S)
+                            } else {
+                                tF60d = lPzflCklCBlTkurInYG0Owe
+                            }
+                            
+                            let zX6HlaP = Date(timeIntervalSince1970: TimeInterval(tF60d) / 1000)
+                            let nrTgHasms = DateFormatter()
+                            nrTgHasms.dateFormat = "rpxVSISmgtmCzrTRpHhzTw==".bFHEatcgE4zzU9TCfDonsu()
+                            nrTgHasms.timeZone = TimeZone.current
+                            
+                            let jZU3hAIkF1Q2ZT61Lpo7W2 = nrTgHasms.string(from: zX6HlaP)
+                            
+                            let tjo7FSBXRqDGtC42gybnBERwh = cpEtaR(wKrCAroUqTbC2rd9pcKfELDDQ: on98qnn55lS6bK68e.c5O9meXEy5dOelOBZ3QpElqG, hVH5DxQ7Q558SdJWLt: nAT4VBfqN62FOc8x6XFADpNqJ["gJFgAqy/EDYR9MmYgpNFnQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", cImAJ4BdZYF9hJ4x: qb9c6NkMMK5.int("userId"), hmNWPkT: on98qnn55lS6bK68e.sI9ab2lfhqbpaKAkkJ18gYAi ?? "", fRKTOb3: qb9c6NkMMK5["BRZTNxzF2tiDYdydqQz6ZQ==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", oT9WD2aupYPQUmLUQMwvo: qb9c6NkMMK5["epJeJ5mHHtIgvijlrcmUsg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", wLsFSPTENSsbKoQTDC: qb9c6NkMMK5["L5n0qfdvZqNQucJVPr5TZg==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0, spnXcOm: qb9c6NkMMK5["n5PP0bel6KDkIOVbFb+EYg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "", ptxrDJchMpilBtm: jZU3hAIkF1Q2ZT61Lpo7W2, vOPrjVF8S5VO8uXporotTUlUO: qb9c6NkMMK5["yz0sixGzozcHcCcfNkfJkg==".bFHEatcgE4zzU9TCfDonsu()] as? [String] ?? [])
+                            
+                            WOKmjUjM.dq0JZ94RcmDb3.zhuqPvhpwoDjs(tk5afnKIwTiQL5Ai79O0AnK3f5G: loginPath, b3q0LlCSk: tjo7FSBXRqDGtC42gybnBERwh) { (b3zxt9oFNSK8MBwN1W43: Result<JUsmLn3i59tKLD7RL294I0nAG, Error>) in
+                                switch b3zxt9oFNSK8MBwN1W43 {
+                                case .success(let gqjUVaiuMpMg9Tt):
+                                    if gqjUVaiuMpMg9Tt.code == "ZFEsEWiI1qFkYs8V4dAooA==".bFHEatcgE4zzU9TCfDonsu() {
+                                        guard
+                                            let eAC6HoUudAyh = gqjUVaiuMpMg9Tt.result,
+                                            !eAC6HoUudAyh.isEmpty
+                                        else {
+                                            return
+                                        }
+                                        let xPQrkVrZihZJl1fsnnMP = eAC6HoUudAyh.hL9dV3bQ2fK6sJ8p()
+                                        
+                                        if let u5vLFlYL5m6LMIVVh08Uj5D = xPQrkVrZihZJl1fsnnMP.kPOR9FHwcEZJv9YDf4W01D() {
+                                            ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.xPI2sSbHAr7u1jAZisVjgs8JXZCRZ07t(tEkU2eDdLMlnNOn: u5vLFlYL5m6LMIVVh08Uj5D["km2wMXC6wIJi3UcUM7XhmA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                            ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.bM7TelSL1RiLs8539FWAC = u5vLFlYL5m6LMIVVh08Uj5D["oPJJrP0sgO34aN0D8qwL6Q==".bFHEatcgE4zzU9TCfDonsu()] as? Int ?? 0
+                                            ZRsco2bysq39NmLBBhFtU044p.i4WviDgqenaDYvEMcIY9fsb4smXSQb1.fP9yQC0UH00 = u5vLFlYL5m6LMIVVh08Uj5D["HKd/L3NovhrAFZdHjyoJDg==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? ""
+                                            IyfdHMdY.bTa3L6BoprG.iBmPfFGfxu5JV7Aii7 = u5vLFlYL5m6LMIVVh08Uj5D
+                                            
+                                            vf0AD3wYQxpfxxjs2pE7PuO66Wls(2)
+                                            vf0AD3wYQxpfxxjs2pE7PuO66Wls(3)
+                                            
+                                            QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("XS5YWJG/KqDXh4sd84P1/iqUTmmqCkg0qxMxw7i9rKo=", type: 0)
+                                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                            hTU5wZj8E2nU59.showScreen(.fullScreenCover) { _ in
+                                                WUjfoptOKs8pZfhSAH0duplG {
+                                                    ME9B8ZCwVQxn()
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        print("登录失败")
+                                        EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                        QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(gqjUVaiuMpMg9Tt.message, z2E1geUN5miQ95SpoCG: false)
+                                    }
+                                    
+                                case .failure(_):
+                                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz("hhOl6/VUEq+mQVyGto4rnS/pNZHCom6WeachEyfneieYY3GFdHKoa4iQygGkvAQm")
+                                }
+                            }
+                        } else {
+                            print("新用户")
+                            EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                            hTU5wZj8E2nU59.showScreen(.fullScreenCover) { _ in
+                                WUjfoptOKs8pZfhSAH0duplG {
+                                    ijeWMJnw0(hIUsWqIEhUq3: on98qnn55lS6bK68e, nw1qv: nAT4VBfqN62FOc8x6XFADpNqJ["V479/ySOsucS0vXiEwceFA==".bFHEatcgE4zzU9TCfDonsu()] as? String ?? "")
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+                    QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(cmBllstUOfe.message, z2E1geUN5miQ95SpoCG: false)
+                }
+                
+            case .failure(let u0lXlYLQiGrjGGOpB9Mp):
+                var uArr57u4wCFEBiObMWHD5lidt7K: String = ""
+                if let lceNSIyqcTobVEYEgAQrxBBYhBKmg5B = u0lXlYLQiGrjGGOpB9Mp as? UVvaHCnbKWNk4KQPzW5aJDt {
+                    uArr57u4wCFEBiObMWHD5lidt7K = lceNSIyqcTobVEYEgAQrxBBYhBKmg5B.eUJLh
+                } else {
+                    uArr57u4wCFEBiObMWHD5lidt7K = u0lXlYLQiGrjGGOpB9Mp.localizedDescription
+                }
+                QlzJ4yJcxJXY2paN.rmjXXUocPJY2DEcTxiziKU6Nehjz1q.m3nArFwdHhI82cPUmiqW8PtaaHz(uArr57u4wCFEBiObMWHD5lidt7K)
+                EfqJ9.hlLgQUr6MegOX6Bv.gCQfGMHte60TbdzVw()
+            }
+        }
     }
 }

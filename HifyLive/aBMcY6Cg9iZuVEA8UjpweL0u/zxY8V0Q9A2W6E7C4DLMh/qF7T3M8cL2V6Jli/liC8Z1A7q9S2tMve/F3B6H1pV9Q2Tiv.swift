@@ -11,9 +11,35 @@ final class NIMManager {
     
 
     func login(account: String, token: String, completion: @escaping (Bool) -> Void) {
-        // 新版 SDK 登录
-        NIMSDK.shared().loginManager.login(account, token: token) { error in
-            completion(error == nil)
+        let currentAccount = NIMSDK.shared().loginManager.currentAccount()
+
+        let performLogin = {
+            NIMSDK.shared().loginManager.login(account, token: token) { error in
+                completion(error == nil)
+            }
+        }
+        
+        if !currentAccount.isEmpty && currentAccount != account {
+            logout { _ in
+                RecentSessionManager.shared.clearAllLocalData()
+                GlobalUnreadStore.shared.clearAllUnread()
+                RecentSessionStore.shared.cache = []
+                performLogin()
+            }
+        } else {
+            performLogin()
+        }
+    }
+    
+    func logout(completion: ((Bool) -> Void)? = nil) {
+        let currentAccount = NIMSDK.shared().loginManager.currentAccount()
+        guard !currentAccount.isEmpty else {
+            completion?(true)
+            return
+        }
+        
+        NIMSDK.shared().loginManager.logout { error in
+            completion?(error == nil)
         }
     }
     
@@ -49,4 +75,3 @@ final class NIMManager {
         return session
     }
 }
-
